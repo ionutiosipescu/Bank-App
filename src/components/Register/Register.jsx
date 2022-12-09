@@ -9,7 +9,7 @@ function Register() {
     <div className="wrapper">
       <div className="register_wrapper">
         <div className="register_container">
-          <h1>Register</h1>
+          <h1>Register Test</h1>
           <div className="register_form_wrapper">
             <form action="" className="register_form">
               <div className="register_form_part">
