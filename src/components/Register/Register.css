@@ -1,0 +1,59 @@
+.register_container {
+  width: 100%;
+}
+
+.register_logo {
+  width: 150px;
+}
+
+.register_form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.register_form_part {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+}
+
+.register_form_part .form_item:first-of-type {
+  margin-right: 12px;
+}
+
+.form_item.city {
+  width: 50%;
+}
+
+.register_form_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.register_form_wrapper > form:first-of-type {
+  margin-right: 50px;
+}
+
+.register_form_check {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.checkbox > span {
+  display: flex;
+}
+
+p > a {
+  margin-left: 10px;
+}
+.checkbox > p {
+  margin-right: 100px;
+}
+
+.register_btn {
+  width: 200px;
+}
