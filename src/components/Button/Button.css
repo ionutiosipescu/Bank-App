@@ -1,0 +1,43 @@
+.btn {
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  border: 1px solid var(--purple);
+  background: var(--white);
+  color: var(--purple);
+  transition: 0.3s;
+}
+
+.btn-small {
+  width: 100px;
+}
+
+.btn-medium {
+  width: 150px;
+}
+
+.btn-large {
+  width: 200px;
+}
+
+.btn-100 {
+  width: 100%;
+}
+
+.btn-fill {
+  background: var(--purple);
+  color: var(--white);
+}
+
+.btn:hover {
+  background: var(--blue);
+  border: 1px solid var(--blue);
+  color: var(--white);
+}
+
+.btn.btn-fill:hover {
+  background: var(--blue);
+  border: 1px solid var(--blue);
+}
