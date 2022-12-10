@@ -4,6 +4,8 @@ import "./Login.css";
 import logo from "../../images/logo.png";
 import illustration from "../../images/login-hero.webp";
 import { Link } from "react-router-dom";
+import Button from "../../components/Button/Button";
+import Input from "../../components/Input/Input";
 
 function Login() {
   return (
@@ -11,34 +13,25 @@ function Login() {
       <div className="login_wrapper">
         <div className="login_container">
           <img src={logo} className="login_logo" />
-          {/* <h1>Log In</h1> */}
           <p className="login_text">The only place for all your finances!</p>
           <br />
           <form action="" className="form">
-            <label htmlFor="" className="form_item">
-              Email
-            </label>
-            <input type="text" className="form_item" />
-            <label htmlFor="" className="form_item">
-              Password
-            </label>
-            <input type="password" className="form_item" />
-            <div className="checkbox">
-              <span>
+            <Input type="text" label="Username" />
+            <Input type="password" label="Password" />
+            <div className="checkbox-container">
+              <div className="checkbox">
                 <input type="checkbox" />
                 <p>Keep me logged in</p>
-              </span>
+              </div>
+              <Link>Forgot Password?</Link>
             </div>
-            <Link to="/" className="btn">
-              Log In
-            </Link>
+            <Button link="/" label="Log In" size="100" fill="fill" />
           </form>
           <div className="footer">
             <div className="register">
               <h5>Don't have an account?</h5>
               <Link to="/register">Sign Up</Link>
             </div>
-            <Link>Forgot your Password?</Link>
           </div>
         </div>
         {/*  */}
