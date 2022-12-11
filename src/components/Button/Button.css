@@ -41,3 +41,13 @@
   background: var(--blue);
   border: 1px solid var(--blue);
 }
+
+/* Colors */
+
+.btn-purple {
+  background-color: var(--purple);
+}
+
+.btn-blue {
+  background-color: var(--blue);
+}

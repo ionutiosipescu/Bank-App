@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Button.css";
 
-function Button({ label, link, size, fill }) {
+function Button({ label, to, size, fill, color }) {
   return (
-    <Link to={link} className={`btn btn-${size} btn-${fill}`}>
+    <Link to={to} className={`btn btn-${size} btn-${fill} btn-${color}`}>
       {label}
     </Link>
   );
