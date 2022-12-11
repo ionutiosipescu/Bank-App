@@ -1,0 +1,30 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 40px;
+  display: flex;
+  margin: 10px;
+  padding: 40px;
+  overflow: hidden;
+  background-color: var(--white);
+}
+
+/* Sizes */
+
+.card-sm {
+  width: 500px;
+  height: 330px;
+}
+
+.card-md {
+  width: 730px;
+  height: 450px;
+}
+
+.card-fit {
+  width: fit-content;
+  height: fit-content;
+}

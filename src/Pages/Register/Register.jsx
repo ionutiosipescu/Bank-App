@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Register.css";
 
-import illustration from "../../images/register.webp";
-import Input from "../../components/Input/Input";
-import Button from "../../components/Button/Button";
+import illustration from "../../assets/images/register.webp";
+import Input from "../../components/StaticComponents/Input/Input";
+import Button from "../../components/StaticComponents/Button/Button";
 
 function Register() {
   return (

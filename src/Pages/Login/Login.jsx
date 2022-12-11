@@ -1,11 +1,11 @@
 import React from "react";
 import "./Login.css";
 
-import logo from "../../images/logo.png";
-import illustration from "../../images/login-hero.webp";
+import logo from "../../assets/images/logo.png";
+import illustration from "../../assets/images/login-hero.webp";
 import { Link } from "react-router-dom";
-import Button from "../../components/Button/Button";
-import Input from "../../components/Input/Input";
+import Button from "../../components/StaticComponents/Button/Button";
+import Input from "../../components/StaticComponents/Input/Input";
 
 function Login() {
   return (
@@ -14,7 +14,6 @@ function Login() {
         <div className="login_container">
           <img src={logo} className="login_logo" />
           <p className="login_text">The only place for all your finances!</p>
-          <br />
           <form action="" className="form">
             <Input type="text" label="Username" />
             <Input type="password" label="Password" />
