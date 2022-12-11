@@ -1,4 +1,16 @@
 .home {
   display: flex;
   background-color: var(--gray-light);
+  height: 100%;
+  width: 100%;
+}
+
+/* Test */
+
+.nav {
+  height: 100vh;
+  width: 250px;
+  background-color: var(--white);
+  margin-right: 30px;
+  padding: 20px;
 }

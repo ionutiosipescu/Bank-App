@@ -24,7 +24,7 @@ function Login() {
               </div>
               <Link>Forgot Password?</Link>
             </div>
-            <Button to="/" label="Log In" size="100" isPrimary />
+            <Button to="/dashboard" label="Log In" size="100" isPrimary />
           </form>
           <div className="footer">
             <div className="register">

@@ -1,33 +1,24 @@
 import React from "react";
 import "./Home.css";
-import { Link } from "react-router-dom";
-import BalanceCard from "../../components/BalanceCard/BalanceCard";
+import { Route, Routes } from "react-router-dom";
 
-import { accounts } from "../../dummyData";
-import Card from "../../components/StaticComponents/Card/Card";
+import Dashboard from "./../Dashboard/Dashboard";
+import Button from "../../components/StaticComponents/Button/Button";
+import Cards from "../Cards/Cards";
 
 function Home() {
-  console.log(accounts[0].createdOn);
   return (
     <div className="home">
-      <BalanceCard
-        color="purple"
-        balance={accounts[0].balance}
-        cardNum="0123 4567 8910"
-        name={accounts[0].owner}
-        valid="08/26"
-      />
-      <BalanceCard
-        color="green"
-        balance={accounts[0].balance}
-        cardNum="0123 4567 8910"
-        name={accounts[0].owner}
-        valid="08/26"
-      />
-      <Card>
-        <h1>Hello</h1>
-      </Card>
-      <Link to="/login">Log In Now</Link>
+      <div className="nav">
+        <Button label="Log In" to="/login" size="100" isPrimary />
+        <Button label="Dashboard" to="/dashboard" size="100" isPrimary />
+        <Button label="Cards" to="/cards" size="100" isPrimary />
+      </div>
+      <Routes>
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/cards" element={<Cards />} />
+        <Route path="/transfers" element={<Dashboard />} />
+      </Routes>
     </div>
   );
 }
