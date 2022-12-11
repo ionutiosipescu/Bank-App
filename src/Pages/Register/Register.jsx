@@ -61,7 +61,7 @@ function Register() {
                   Yes, I agree with the <Link>Terms and Services</Link>
                 </p>
               </div>
-              <Button label="Register" link="/" size="large" fill="fill" />
+              <Button label="Register" to="/" size="lg" isPrimary />
             </div>
           </div>
           <div className="footer">
