@@ -1,12 +1,12 @@
 import React from "react";
 import "./Register.css";
-import UserProfileForm from "../../components/UserProfileForm/UserProfileForm";
+import RegisterForm from "../../components/RegisterForm/RegisterForm";
 import { RegisterContainer } from "./Register.style";
 
 function Register() {
   return (
     <RegisterContainer>
-      <UserProfileForm />
+      <RegisterForm />
     </RegisterContainer>
   );
 }

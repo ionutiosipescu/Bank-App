@@ -17,7 +17,8 @@
 
 .register_form {
   display: flex;
-  flex-direction: column;
+  width: 100%;
+  justify-content: space-between;
   margin-bottom: 20px;
 }
 
@@ -42,9 +43,9 @@
   justify-content: space-between;
 }
 
-.register_form_wrapper > form:first-of-type {
+/* .register_form_wrapper > form:first-of-type {
   margin-right: 50px;
-}
+} */
 
 .register_form_check {
   display: flex;

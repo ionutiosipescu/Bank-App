@@ -9,5 +9,4 @@ function Input({ label, ...otherProps }) {
     </Group>
   );
 }
-
 export default Input;
