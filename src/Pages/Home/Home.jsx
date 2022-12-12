@@ -3,7 +3,7 @@ import "./Home.css";
 import { Route, Routes } from "react-router-dom";
 
 import Dashboard from "./../Dashboard/Dashboard";
-import Button from "../../components/StaticComponents/Button/Button";
+import Button from "../../components/UI/Button/Button";
 import Cards from "../Cards/Cards";
 
 function Home() {

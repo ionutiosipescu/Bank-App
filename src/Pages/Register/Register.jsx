@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import "./Register.css";
 
 import illustration from "../../assets/images/register.webp";
-import Input from "../../components/StaticComponents/Input/Input";
-import Button from "../../components/StaticComponents/Button/Button";
+import Input from "../../components/UI/Input/Input";
+import Button from "../../components/UI/Button/Button";
 
 function Register() {
   return (
