@@ -1,13 +1,13 @@
 import React from "react";
 import "./Register.css";
 import RegisterForm from "../../components/RegisterForm/RegisterForm";
-import { RegisterContainer } from "./Register.style";
+import { Wrapper } from "../../components/Form/Form.style";
 
 function Register() {
   return (
-    <RegisterContainer>
+    <Wrapper>
       <RegisterForm />
-    </RegisterContainer>
+    </Wrapper>
   );
 }
 

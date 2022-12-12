@@ -6,17 +6,20 @@ export const RegisterFormPart = styled.div`
   align-items: flex-end;
 `;
 export const RegitsterFormContainer = styled.div`
-  width: 680px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 65%;
 `;
 export const RegisterFormWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
 `;
 export const CheckboxContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  margin-bottom: 20px;
+  width: 80%;
 `;

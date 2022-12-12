@@ -69,3 +69,13 @@ h5 > a {
   width: 100%;
   clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
 }
+
+.register-hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  width: 30%;
+  height: 100%;
+  background: var(--purple);
+}

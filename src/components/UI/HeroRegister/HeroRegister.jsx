@@ -3,7 +3,7 @@ import illustration from "../../../assets/images/register.webp";
 
 function HeroRegister() {
   return (
-    <div className="hero">
+    <div className="register-hero">
       <img src={illustration} alt="" />
     </div>
   );
