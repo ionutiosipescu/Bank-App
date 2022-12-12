@@ -2,7 +2,7 @@ import React from "react";
 import "./Dashboard.css";
 
 import BalanceCard from "../../components/BalanceCard/BalanceCard";
-import { accounts } from "../../dummyData";
+import { accounts } from "../../utils/data/dummyData";
 
 function Dashboard() {
   return (
