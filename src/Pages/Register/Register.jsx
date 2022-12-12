@@ -9,48 +9,44 @@ import Button from "../../components/UI/Button/Button";
 function Register() {
   return (
     <div className="wrapper">
-      <div className="register_wrapper">
-        <div className="register_container">
+      <div className="register-wrapper">
+        <div className="register-container">
           <h1>Register</h1>
-          <div className="register_form_container">
-            <div className="register_form_wrapper">
-              <form action="" className="register_form">
-                <div className="register_form_part">
-                  <Input type="text" label="First Name" size="small" />
-                  <Input type="text" label="Last Name" size="small" />
+          <div className="register-form-container">
+            <div className="register-form-wrapper">
+              <form action="" className="register-form">
+                <div className="register-form-part">
+                  <Input type="text" label="First Name" size="sm" />
+                  <Input type="text" label="Last Name" size="sm" />
                 </div>
-                <Input type="email" label="Email" />
-                <div className="register_form_part">
+                <Input type="email" label="Email" size="md" />
+                <div className="register-form-part">
                   <Input
                     type="text"
                     label="Address"
-                    size="small"
+                    size="sm"
                     placeholder="City"
                   />
                   <Input
                     type="text"
-                    size="small"
+                    size="sm"
                     placeholder="Number, Suite, etc"
                   />
                 </div>
               </form>
               {/*  */}
-              <form action="" className="register_form">
-                <div className="register_form_part">
-                  <Input type="text" label="Username" size="small" />
-                  <Input type="text" label="Mobile Number" size="small" />
+              <form action="" className="register-form">
+                <div className="register-form-part">
+                  <Input type="text" label="Username" size="sm" />
+                  <Input type="text" label="Mobile Number" size="sm" />
                 </div>
-                <div className="register_form_part">
-                  <Input type="text" label="Sex" size="small" />
-                  <Input type="date" label="Birth Date" size="small" />
+                <div className="register-form-part">
+                  <Input type="text" label="Sex" size="sm" />
+                  <Input type="date" label="Birth Date" size="sm" />
                 </div>
-                <div className="register_form_part">
-                  <Input type="password" label="Password" size="small" />
-                  <Input
-                    type="password"
-                    label="Confirm Password"
-                    size="small"
-                  />
+                <div className="register-form-part">
+                  <Input type="password" label="Password" size="sm" />
+                  <Input type="password" label="Confirm Password" size="sm" />
                 </div>
               </form>
             </div>
@@ -72,7 +68,9 @@ function Register() {
           </div>
         </div>
         <div className="hero">
-          <img src={illustration} alt="" />
+          <div className="register-art">
+            <img src={illustration} alt="" />
+          </div>
         </div>
       </div>
     </div>

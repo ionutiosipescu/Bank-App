@@ -10,15 +10,22 @@
 
 .input {
   height: 30px;
-  width: 310px;
   border: 1px solid var(--purple);
   border-radius: 30px;
   padding: 0 12px 0 10px;
   margin-bottom: 10px;
 }
 
-.input-small {
+.input-sm {
   width: 150px;
+}
+
+.input-md {
+  width: 310px;
+}
+
+.input-lg {
+  width: 410px;
 }
 
 .input:focus {

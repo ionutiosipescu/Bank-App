@@ -10,13 +10,13 @@ import Input from "../../components/UI/Input/Input";
 function Login() {
   return (
     <div className="wrapper">
-      <div className="login_wrapper">
-        <div className="login_container">
-          <img src={logo} className="login_logo" />
-          <p className="login_text">The only place for all your finances!</p>
+      <div className="login-wrapper">
+        <div className="login-container">
+          <img src={logo} className="login-logo" />
+          <p className="login-text">The only place for all your finances!</p>
           <form action="" className="form">
-            <Input type="text" label="Username" />
-            <Input type="password" label="Password" />
+            <Input type="text" label="Username" size="lg" />
+            <Input type="password" label="Password" size="lg" />
             <div className="checkbox-container">
               <div className="checkbox">
                 <input type="checkbox" />
@@ -35,8 +35,8 @@ function Login() {
         </div>
         {/*  */}
         <div className="hero">
-          <div className="hero_art">
-            <img src={illustration} alt="" />
+          <div className="hero-art">
+            <img src={illustration} alt="" className="illustration" />
           </div>
         </div>
         {/*  */}
