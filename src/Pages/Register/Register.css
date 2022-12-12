@@ -45,7 +45,8 @@
 .register-form-wrapper > form:first-of-type {
   margin-right: 50px;
 }
-*/ .register-form-check {
+
+.register-form-check {
   display: flex;
   align-items: flex-start;
   justify-content: center;
