@@ -1,4 +1,4 @@
-.register_container {
+.register-container {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -7,47 +7,45 @@
   height: 70%;
 }
 
-.register_form_container {
+.register-form-container {
   width: 680px;
 }
 
-.register_logo {
+.register-logo {
   width: 150px;
 }
 
-.register_form {
+.register-form {
   display: flex;
   width: 100%;
   justify-content: space-between;
   margin-bottom: 20px;
 }
 
-.register_form_part {
+.register-form-part {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  /* height: 40px; */
 }
 
-.register_form_part .form_item:first-of-type {
+.register-form-part .form-item:first-of-type {
   margin-right: 12px;
 }
 
-.form_item.city {
+.form-item.city {
   width: 50%;
 }
 
-.register_form_wrapper {
+.register-form-wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-/* .register_form_wrapper > form:first-of-type {
+.register-form-wrapper > form:first-of-type {
   margin-right: 50px;
-} */
-
-.register_form_check {
+}
+*/ .register-form-check {
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -61,6 +59,12 @@ h5 > a {
   margin-left: 10px;
 }
 
-.register_btn {
-  width: 200px;
+.register-art {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--blue);
+  height: 100%;
+  width: 100%;
+  clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
 }
