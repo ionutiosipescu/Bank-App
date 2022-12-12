@@ -1,21 +1,22 @@
 import React from "react";
 import Input from "../UI/Input/Input";
+import { RegisterFormPart } from "../UserProfileSectionOne/UserProfileSectionOne.style";
 
 function UserProfileSectionTwo() {
   return (
     <form action="" className="register_form">
-      <div className="register_form_part">
-        <Input type="text" label="Username" size="small" />
-        <Input type="text" label="Mobile Number" size="small" />
-      </div>
-      <div className="register_form_part">
-        <Input type="text" label="Sex" size="small" />
-        <Input type="date" label="Birth Date" size="small" />
-      </div>
-      <div className="register_form_part">
-        <Input type="password" label="Password" size="small" />
-        <Input type="password" label="Confirm Password" size="small" />
-      </div>
+      <RegisterFormPart>
+        <Input type="text" label="Username" small />
+        <Input type="text" label="Mobile Number" small />
+      </RegisterFormPart>
+      <RegisterFormPart>
+        <Input type="text" label="Sex" small />
+        <Input type="date" label="Birth Date" small />
+      </RegisterFormPart>
+      <RegisterFormPart>
+        <Input type="password" label="Password" small />
+        <Input type="password" label="Confirm Password" small />
+      </RegisterFormPart>
     </form>
   );
 }

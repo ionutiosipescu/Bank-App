@@ -1,4 +1,4 @@
-.input-wrapper {
+/* .input-wrapper {
   display: flex;
   flex-direction: column;
   margin: 0 10px 10px 0;
@@ -24,4 +24,4 @@
 .input:focus {
   outline: none;
   border: 2px solid var(--blue);
-}
+} */

@@ -1,16 +1,11 @@
 import React from "react";
-import "./Input.css";
+import { InputForm, Group } from "./Input.style";
 
-function Input({ type, label, size, placeholder }) {
+function Input({ label, ...otherProps }) {
   return (
-    <div className="input-wrapper">
-      <label className="label">{label}</label>
-      <input
-        type={type}
-        className={`input input-${size}`}
-        placeholder={placeholder}
-      />
-    </div>
+    <Group>
+      <InputForm {...otherProps} />
+    </Group>
   );
 }
 
