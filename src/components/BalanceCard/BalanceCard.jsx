@@ -1,19 +1,25 @@
 import React from "react";
-import "./BalanceCard.css";
-import "../UI/Card/Card.css";
 import { PropTypes } from "prop-types";
+import { CardContainer } from "../UI/Card/Card.style";
+import {
+  CardBody,
+  CardFooter,
+  CardHeader,
+  Circle,
+  Pill,
+} from "./BalanceCard.style";
 
-function BalanceCard({ balance, color, name, valid, cardNum }) {
+function BalanceCard({ balance, color, name, valid, cardNum, size }) {
   return (
-    <div className={`card card-sm card-${color}`}>
-      <div className="card-header">
+    <CardContainer color={color} size={size}>
+      <CardHeader>
         <h2>My Balance</h2>
         <h1>{balance}</h1>
-      </div>
-      <div className="card-body">
+      </CardHeader>
+      <CardBody>
         <h1>{cardNum}</h1>
-      </div>
-      <div className="card-footer">
+      </CardBody>
+      <CardFooter>
         <div>
           <h3>Card Holder</h3>
           <h2>{name}</h2>
@@ -22,18 +28,19 @@ function BalanceCard({ balance, color, name, valid, cardNum }) {
           <h3>Valid Until</h3>
           <h2>{valid}</h2>
         </div>
-      </div>
-      <div className="circle circle-one"></div>
-      <div className="circle circle-two"></div>
-      <div className="pill pill-one"></div>
-      <div className="pill pill-two"></div>
-    </div>
+      </CardFooter>
+      <Circle one />
+      <Circle two />
+      <Pill one color={color} />
+      <Pill two color={color} />
+    </CardContainer>
   );
 }
 
 BalanceCard.propTypes = {
   balance: PropTypes.string,
   color: PropTypes.oneOf(["purple", "green"]),
+  size: PropTypes.oneOf(["sm", "md", "fit"]),
   name: PropTypes.string,
   valid: PropTypes.string,
   cardNum: PropTypes.string,

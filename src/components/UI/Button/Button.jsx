@@ -1,19 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Button.css";
 import { PropTypes } from "prop-types";
+import { Btn } from "./Button.style";
 
 function Button({ label, to, size, isPrimary, handleClick }) {
   const primary = isPrimary ? "primary" : "secondary";
 
   return (
-    <Link
+    <Btn
+      as={Link}
       to={to}
       className={`btn btn-${size} btn-${primary}`}
       onClick={handleClick}
     >
       {label}
-    </Link>
+    </Btn>
   );
 }
 

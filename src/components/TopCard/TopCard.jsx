@@ -3,28 +3,29 @@ import "./TopCard.css";
 
 import { TbTransferIn, TbTransferOut } from "react-icons/tb";
 import { TiArrowSortedDown, TiArrowSortedUp } from "react-icons/ti";
-import Charts from "../Chart/Chart";
+import AreaChart from "../Charts/AreaChart";
+import { PropTypes } from "prop-types";
+import { CardContainer } from "./../UI/Card/Card.style";
+import { CardBody, CardFeature, CardHeader, CardIcon } from "./TopCard.style";
 
-function TopCard({ amount, percent, type, isPrimary, children }) {
+function TopCard({ amount, percent, label, isPrimary, size }) {
   return (
-    <div className="card top_card card-sm">
-      <div className="top_card-header">
-        <div className="top_card-title">
-          <div
-            className={isPrimary ? "top_card-icon primary" : "top_card-icon"}
-          >
-            {type == "Income" ? (
+    <CardContainer size={size}>
+      <CardHeader>
+        <CardHeader style={{ width: "50%" }}>
+          <CardIcon isPrimary={isPrimary}>
+            {isPrimary ? (
               <TbTransferIn size={25} color="white" />
             ) : (
               <TbTransferOut size={25} color="white" />
             )}
-          </div>
+          </CardIcon>
           <div>
-            <h5>{type}</h5>
-            <h1>{type == "Income" ? `+${amount}` : `-${amount}`}</h1>
+            <h5>{label}</h5>
+            <h1>{isPrimary ? `+${amount}` : `-${amount}`}</h1>
           </div>
-        </div>
-        <div className="top_card-feature">
+        </CardHeader>
+        <CardFeature>
           {percent > 0 ? (
             <>
               <TiArrowSortedUp color="green" size={20} />
@@ -36,14 +37,22 @@ function TopCard({ amount, percent, type, isPrimary, children }) {
               <h5 style={{ color: "red" }}>{percent}%</h5>
             </>
           )}
-          <div className="">last month</div>
-        </div>
-      </div>
-      <div className="top_card-body">
-        <Charts />
-      </div>
-    </div>
+          <div>last month</div>
+        </CardFeature>
+      </CardHeader>
+      <CardBody>
+        <AreaChart isPrimary={isPrimary} />
+      </CardBody>
+    </CardContainer>
   );
 }
+
+TopCard.propTypes = {
+  amount: PropTypes.string,
+  size: PropTypes.oneOf(["sm", "md", "fit"]),
+  percent: PropTypes.string,
+  label: PropTypes.string,
+  isPrimary: PropTypes.bool,
+};
 
 export default TopCard;

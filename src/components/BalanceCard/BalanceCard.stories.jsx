@@ -10,6 +10,7 @@ const Template = (args) => <BalanceCard {...args} />;
 export const Primary = Template.bind({});
 Primary.args = {
   color: "purple",
+  size: "sm",
   balance: "12,456.78",
   cardNum: "0123 4567 8910",
   name: "Alexandru Aandonesei",
@@ -19,6 +20,7 @@ Primary.args = {
 export const Secondary = Template.bind({});
 Secondary.args = {
   color: "green",
+  size: "sm",
   balance: "12,456.78",
   cardNum: "0123 4567 8910",
   name: "Alexandru Aandonesei",
