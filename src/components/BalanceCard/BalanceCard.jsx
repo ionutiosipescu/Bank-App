@@ -1,6 +1,6 @@
 import React from "react";
 import "./BalanceCard.css";
-import Card from "../UI/Card/Card";
+import "../UI/Card/Card.css";
 import { PropTypes } from "prop-types";
 
 function BalanceCard({ balance, color, name, valid, cardNum }) {

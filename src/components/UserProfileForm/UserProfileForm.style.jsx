@@ -5,7 +5,7 @@ export const RegisterFormPart = styled.div`
   justify-content: space-between;
   align-items: flex-end;
 `;
-export const RegitsterFormContainer = styled.div`
+export const RegitsterFormContainer = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;

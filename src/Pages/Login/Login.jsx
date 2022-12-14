@@ -1,11 +1,8 @@
 import React from "react";
 import "./Login.css";
 
-import logo from "../../assets/images/logo.png";
 import illustration from "../../assets/images/login-hero.webp";
-import { Link } from "react-router-dom";
-import Button from "../../components/UI/Button/Button";
-import Input from "../../components/UI/Input/Input";
+
 /////////////////
 
 import { Wrapper, FormWrapper } from "./../../components/Form/Form.style";

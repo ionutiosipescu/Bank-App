@@ -51,102 +51,104 @@ function UserProfileForm() {
       <h1>Register</h1>
       <RegitsterFormContainer>
         <RegisterFormWrapper>
-          <div>
-            <RegisterFormPart>
-              <Input
-                onChange={handleChange}
-                type="text"
-                label="First Name"
-                small
-                name="firstName"
-                value={firstName}
-              />
-              <Input
-                onChange={handleChange}
-                type="text"
-                label="Last Name"
-                small
-                name="lastName"
-                value={lastName}
-              />
-            </RegisterFormPart>
-            <Input type="email" label="Email" value={email} name="email" />
-            <RegisterFormPart>
-              <Input
-                onChange={handleChange}
-                type="text"
-                label="Address"
-                small
-                placeholder="City"
-                value={city}
-                name="city"
-              />
-              <Input
-                onChange={handleChange}
-                type="text"
-                small
-                placeholder="Number, Suite, etc"
-                value={number}
-                name="number"
-              />
-            </RegisterFormPart>
-          </div>
-          <div>
-            <RegisterFormPart>
-              <Input
-                onChange={handleChange}
-                type="text"
-                label="Username"
-                small
-                value={displayName}
-                name="displayName"
-              />
-              <Input
-                onChange={handleChange}
-                type="text"
-                label="Mobile Number"
-                small
-                value={mobile}
-                name="mobile"
-              />
-            </RegisterFormPart>
-            <RegisterFormPart>
-              <Input
-                onChange={handleChange}
-                type="text"
-                label="Gender"
-                small
-                value={gender}
-                name="gender"
-              />
-              <Input
-                onChange={handleChange}
-                type="date"
-                label="Birth Date"
-                small
-                value={birthDate}
-                name="birthDate"
-              />
-            </RegisterFormPart>
-            <RegisterFormPart>
-              <Input
-                onChange={handleChange}
-                type="password"
-                label="Password"
-                small
-                value={password}
-                name="password"
-              />
-              <Input
-                onChange={handleChange}
-                type="password"
-                label="Confirm Password"
-                small
-                value={confirmPassword}
-                name="confirmPassword"
-              />
-            </RegisterFormPart>
-          </div>
+          <form action="" className="register-form">
+            <div>
+              <RegisterFormPart>
+                <Input
+                  onChange={handleChange}
+                  type="text"
+                  label="First Name"
+                  small
+                  name="firstName"
+                  value={firstName}
+                />
+                <Input
+                  onChange={handleChange}
+                  type="text"
+                  label="Last Name"
+                  small
+                  name="lastName"
+                  value={lastName}
+                />
+              </RegisterFormPart>
+              <Input type="email" label="Email" value={email} name="email" />
+              <RegisterFormPart>
+                <Input
+                  onChange={handleChange}
+                  type="text"
+                  label="Address"
+                  small
+                  placeholder="City"
+                  value={city}
+                  name="city"
+                />
+                <Input
+                  onChange={handleChange}
+                  type="text"
+                  small
+                  placeholder="Number, Suite, etc"
+                  value={number}
+                  name="number"
+                />
+              </RegisterFormPart>
+            </div>
+            <div>
+              <RegisterFormPart>
+                <Input
+                  onChange={handleChange}
+                  type="text"
+                  label="Username"
+                  small
+                  value={displayName}
+                  name="displayName"
+                />
+                <Input
+                  onChange={handleChange}
+                  type="text"
+                  label="Mobile Number"
+                  small
+                  value={mobile}
+                  name="mobile"
+                />
+              </RegisterFormPart>
+              <RegisterFormPart>
+                <Input
+                  onChange={handleChange}
+                  type="text"
+                  label="Gender"
+                  small
+                  value={gender}
+                  name="gender"
+                />
+                <Input
+                  onChange={handleChange}
+                  type="date"
+                  label="Birth Date"
+                  small
+                  value={birthDate}
+                  name="birthDate"
+                />
+              </RegisterFormPart>
+              <RegisterFormPart>
+                <Input
+                  onChange={handleChange}
+                  type="password"
+                  label="Password"
+                  small
+                  value={password}
+                  name="password"
+                />
+                <Input
+                  onChange={handleChange}
+                  type="password"
+                  label="Confirm Password"
+                  small
+                  value={confirmPassword}
+                  name="confirmPassword"
+                />
+              </RegisterFormPart>
+            </div>
+          </form>
         </RegisterFormWrapper>
         <CheckboxContainer>
           <TermsAndCondition />

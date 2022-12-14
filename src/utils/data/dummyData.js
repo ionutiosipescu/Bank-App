@@ -24,3 +24,18 @@ export const accounts = [
     cardNumber: "9327 6547 9823",
   },
 ];
+
+export const chartDataIncome = [
+  { id: 1, month: 1, income: 312, outcome: 132 },
+  { id: 2, month: 2, income: 432, outcome: 312 },
+  { id: 3, month: 3, income: 423, outcome: 123 },
+  { id: 4, month: 4, income: 543, outcome: 31 },
+  { id: 5, month: 5, income: 232, outcome: 31 },
+  { id: 6, month: 6, income: 243, outcome: 12 },
+  { id: 7, month: 7, income: 423, outcome: 321 },
+  { id: 8, month: 8, income: 534, outcome: 32 },
+  { id: 9, month: 9, income: 243, outcome: 132 },
+  { id: 10, month: 10, income: 332, outcome: 15 },
+  { id: 11, month: 11, income: 423, outcome: 165 },
+  { id: 12, month: 12, income: 321, outcome: 276 },
+];
