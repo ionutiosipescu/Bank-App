@@ -10,29 +10,35 @@ import PlanForm from "../form_pages_register/PlanForm/PlanForm";
 import ConfirmForm from "../form_pages_register/ConfirmForm/ConfirmForm";
 
 function FormRegister() {
-  const [checkedRo, setCheckedRo] = useState(false);
-  const [checkedEur, setCheckedEur] = useState(false);
+  const [checkedRo, setCheckedRo] = useState("");
+  const [checkedEur, setCheckedEur] = useState("");
   const [page, setPage] = useState(0);
-  const [formFields, setFormFields] = useState({
-    lastName: "",
-    firstName: "",
-    email: "",
-    city: "",
-    number: "",
-    displayName: "",
-    mobile: "",
-    birthDate: "",
-    gender: "",
-    password: "",
-    confirmPassword: "",
-    typeOfPlan: "",
-    currencyRon: checkedRo,
-    currencyEuro: checkedEur,
+  const [userData, setUserData] = useState({
+    userDataObj: {
+      userProfile: {
+        lastName: "",
+        firstName: "",
+        email: "",
+        city: "",
+        number: "",
+        displayName: "",
+        mobile: "",
+        birthDate: "",
+        gender: "",
+        password: "",
+        confirmPassword: "",
+        createdAt: "",
+      },
+      userPlan: [],
+      transfers: [],
+      savings: null,
+      loans: null,
+    },
   });
 
   const values = {
-    formFields,
-    setFormFields,
+    userData,
+    setUserData,
     checkedRo,
     checkedEur,
     setCheckedRo,
@@ -54,7 +60,7 @@ function FormRegister() {
   };
 
   const handleSubmit = () => {
-    console.log(formFields);
+    console.log(userData);
   };
 
   return (

@@ -3,15 +3,24 @@ import { RegisterFormPart } from "../../FormRegister/FormRegister.style";
 import Input from "../../../../components/UI/Input/Input";
 
 function PersonalForm({ values }) {
-  const { formFields, setFormFields } = values;
-  const { lastName, firstName, city, number, birthDate, gender } = formFields;
+  const { userData, setUserData } = values;
+  const { lastName, firstName, city, number, birthDate, gender } =
+    userData.userDataObj.userProfile;
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-
-    setFormFields({ ...formFields, [name]: value });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUserData({
+      ...userData,
+      userDataObj: {
+        ...userData.userDataObj,
+        userProfile: {
+          ...userData.userDataObj.userProfile,
+          [name]: value,
+        },
+      },
+    });
   };
-  console.log(formFields);
+  console.log(userData);
   return (
     <>
       <RegisterFormPart>
@@ -21,7 +30,7 @@ function PersonalForm({ values }) {
           label="First Name"
           small
           name="firstName"
-          value={firstName}
+          value={firstName || ""}
         />
         <Input
           onChange={handleChange}
@@ -29,7 +38,7 @@ function PersonalForm({ values }) {
           label="Last Name"
           small
           name="lastName"
-          value={lastName}
+          value={lastName || ""}
         />
       </RegisterFormPart>
       <RegisterFormPart>
@@ -39,7 +48,7 @@ function PersonalForm({ values }) {
           label="Address"
           small
           placeholder="City"
-          value={city}
+          value={city || ""}
           name="city"
         />
         <Input
@@ -47,7 +56,7 @@ function PersonalForm({ values }) {
           type="text"
           small
           placeholder="Number, Suite, etc"
-          value={number}
+          value={number || ""}
           name="number"
         />
       </RegisterFormPart>
@@ -57,7 +66,7 @@ function PersonalForm({ values }) {
           type="text"
           label="Gender"
           small
-          value={gender}
+          value={gender || ""}
           name="gender"
         />
         <Input
@@ -65,7 +74,7 @@ function PersonalForm({ values }) {
           type="date"
           label="Birth Date"
           small
-          value={birthDate}
+          value={birthDate || ""}
           name="birthDate"
         />
       </RegisterFormPart>

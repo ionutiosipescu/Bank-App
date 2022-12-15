@@ -1,22 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 
 function ConfirmForm({ values }) {
-  const { formFields } = values;
-  console.log(formFields);
+  //   const { userData } = values;
+  //   console.log(userData);
   return (
     <div>
-      <h2>Your Final Account Details:</h2>
-      <ul>
-        {Object.entries(formFields).map((key) => {
-          const randomKey = Math.random().toString(36).slice(2);
-          return (
-            <li key={randomKey}>
-              {key[0]}: --- {key[1]}
-            </li>
-          );
-        })}
-      </ul>
+      <h1>confirm</h1>
     </div>
+    // <div>
+    //   <h2>Your Final Account Details:</h2>
+    //   <ul>
+    //     {Object.entries(userData).map((key) => {
+    //       const randomKey = Math.random().toString(36).slice(2);
+    //       return (
+    //         <li key={randomKey}>
+    //           {key[0]}: --- {key[1]}
+    //         </li>
+    //       );
+    //     })}
+    //   </ul>
+    // </div>
   );
 }
 

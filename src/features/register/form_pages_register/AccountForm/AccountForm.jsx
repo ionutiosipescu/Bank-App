@@ -3,21 +3,31 @@ import Input from "../../../../components/UI/Input/Input";
 import { RegisterFormPart } from "../../FormRegister/FormRegister.style";
 
 function AccountForm({ values }) {
-  const { formFields, setFormFields } = values;
+  const { userData, setUserData } = values;
 
-  const { displayName, email, password, confirmPassword, mobile } = formFields;
-  const handleChange = (event) => {
-    const { name, value } = event.target;
+  const { displayName, email, password, confirmPassword, mobile } =
+    userData.userDataObj.userProfile;
 
-    setFormFields({ ...formFields, [name]: value });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUserData({
+      ...userData,
+      userDataObj: {
+        ...userData.userDataObj,
+        userProfile: {
+          ...userData.userDataObj.userProfile,
+          [name]: value,
+        },
+      },
+    });
   };
-  console.log(formFields);
+  console.log(userData);
   return (
     <div>
       <Input
         type="email"
         label="Email"
-        value={email}
+        value={email || ""}
         name="email"
         onChange={handleChange}
       />
@@ -27,7 +37,7 @@ function AccountForm({ values }) {
           type="text"
           label="Username"
           small
-          value={displayName}
+          value={displayName || ""}
           name="displayName"
         />
         <Input
@@ -35,7 +45,7 @@ function AccountForm({ values }) {
           type="text"
           label="Mobile Number"
           small
-          value={mobile}
+          value={mobile || ""}
           name="mobile"
         />
       </RegisterFormPart>
@@ -45,7 +55,7 @@ function AccountForm({ values }) {
           type="password"
           label="Password"
           small
-          value={password}
+          value={password || ""}
           name="password"
         />
         <Input
@@ -53,7 +63,7 @@ function AccountForm({ values }) {
           type="password"
           label="Confirm Password"
           small
-          value={confirmPassword}
+          value={confirmPassword || ""}
           name="confirmPassword"
         />
       </RegisterFormPart>

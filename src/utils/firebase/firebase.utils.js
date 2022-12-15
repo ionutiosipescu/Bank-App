@@ -50,7 +50,7 @@ export const getUserData = async () => {
 };
 
 //   aici putem schimba userAuth cu user din Redux pentru Register
-export const createUserDocumentFromAuth = async (
+export const createUserDocument = async (
   userAuth,
   additionalInformation = {}
 ) => {
