@@ -2,6 +2,7 @@ import React from "react";
 import { RegisterFormPart } from "../../FormRegister/FormRegister.style";
 import Input from "../../../../components/UI/Input/Input";
 import { useState } from "react";
+import "./PlanForm.css";
 
 function PlanForm({ values }) {
   const [planDataRo, setPlanDataRo] = useState({
@@ -118,30 +119,37 @@ function PlanForm({ values }) {
           name="currency"
         />
       </RegisterFormPart>
-      <div onChange={handleChangeRonPlan}>
-        <Input type="radio" value="normal" name="typeOfPlanRo" label="Normal" />
-        <Input
-          type="radio"
-          value="premium"
-          name="typeOfPlanRo"
-          label="Premium"
-        />
-        <Input type="radio" value="vip" name="typeOfPlanRo" label="VIP" />
-      </div>
-      <div onChange={handleChangeEurPlan}>
-        <Input
-          type="radio"
-          value="normal"
-          name="typeOfPlanEuro"
-          label="Normal"
-        />
-        <Input
-          type="radio"
-          value="premium"
-          name="typeOfPlanEuro"
-          label="Premium"
-        />
-        <Input type="radio" value="vip" name="typeOfPlanEuro" label="VIP" />
+      <div className="containerplan">
+        <div onChange={handleChangeRonPlan}>
+          <Input
+            type="radio"
+            value="normal"
+            name="typeOfPlanRo"
+            label="Normal"
+          />
+          <Input
+            type="radio"
+            value="premium"
+            name="typeOfPlanRo"
+            label="Premium"
+          />
+          <Input type="radio" value="vip" name="typeOfPlanRo" label="VIP" />
+        </div>
+        <div onChange={handleChangeEurPlan}>
+          <Input
+            type="radio"
+            value="normal"
+            name="typeOfPlanEuro"
+            label="Normal"
+          />
+          <Input
+            type="radio"
+            value="premium"
+            name="typeOfPlanEuro"
+            label="Premium"
+          />
+          <Input type="radio" value="vip" name="typeOfPlanEuro" label="VIP" />
+        </div>
       </div>
     </div>
   );

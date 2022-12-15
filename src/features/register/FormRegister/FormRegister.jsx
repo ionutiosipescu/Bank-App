@@ -10,6 +10,7 @@ import PlanForm from "../form_pages_register/PlanForm/PlanForm";
 import ConfirmForm from "../form_pages_register/ConfirmForm/ConfirmForm";
 
 function FormRegister() {
+  const date = new Date();
   const [checkedRo, setCheckedRo] = useState("");
   const [checkedEur, setCheckedEur] = useState("");
   const [page, setPage] = useState(0);
