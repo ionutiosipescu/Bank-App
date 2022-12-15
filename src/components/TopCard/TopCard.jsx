@@ -1,12 +1,13 @@
 import React from "react";
-import "./TopCard.css";
+import { PropTypes } from "prop-types";
+
+import { CardContainer } from "./../UI/Card/Card.style";
+import { CardBody, CardFeature, CardHeader, CardIcon } from "./TopCard.style";
 
 import { TbTransferIn, TbTransferOut } from "react-icons/tb";
 import { TiArrowSortedDown, TiArrowSortedUp } from "react-icons/ti";
+
 import AreaChart from "../Charts/AreaChart";
-import { PropTypes } from "prop-types";
-import { CardContainer } from "./../UI/Card/Card.style";
-import { CardBody, CardFeature, CardHeader, CardIcon } from "./TopCard.style";
 
 function TopCard({ amount, percent, label, isPrimary, size }) {
   return (

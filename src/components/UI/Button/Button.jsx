@@ -3,17 +3,17 @@ import { Link } from "react-router-dom";
 import { PropTypes } from "prop-types";
 import { Btn } from "./Button.style";
 
-function Button({ label, to, size, isPrimary, handleClick }) {
-  const primary = isPrimary ? "primary" : "secondary";
-
+function Button({ label, to, size, isPrimary, handleClick, children }) {
   return (
     <Btn
       as={Link}
       to={to}
-      className={`btn btn-${size} btn-${primary}`}
+      size={size}
       onClick={handleClick}
+      primary={isPrimary}
     >
       {label}
+      {children}
     </Btn>
   );
 }

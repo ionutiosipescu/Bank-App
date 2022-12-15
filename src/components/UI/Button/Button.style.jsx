@@ -1,51 +1,36 @@
 import styled from "styled-components";
 
 export const Btn = styled.button`
-  height: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 50px;
   border: 1px solid var(--purple);
-  background: var(--white);
-  color: var(--purple);
   transition: 0.3s;
-  margin: 10px 0 10px 0;
-  &.btn-sm {
-    width: 100px;
-  }
-  &.btn-sm {
-    width: 100px;
-  }
-  &.btn-md {
-    width: 150px;
-  }
-  &.btn-lg {
-    width: 200px;
-  }
-  &.btn-100 {
-    width: 100%;
-  }
-  &.btn-fit {
-    width: fit-content;
-    padding: 0 10px 0 10px;
-  }
-  &.btn-circle {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-  }
-  &.btn-primary {
-    background: var(--purple);
-    color: var(--white);
-  }
-  &.btn-secondary {
-    background: var(--white);
-    color: var(--purple);
-  }
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 50px;
+  ${(props) =>
+    props.size === "sm"
+      ? "width: 100px; height: 30px;"
+      : props.size === "md"
+      ? "width: 150px; height: 30px;"
+      : props.size === "lg"
+      ? "width: 200px; height: 30px;"
+      : props.size === "100"
+      ? "width: 100%; height: 30px;"
+      : props.size === "fit"
+      ? "width: fit-content; height: 30px;"
+      : "width: 40px; height: 40px;"};
+  ${(props) =>
+    props.primary
+      ? "background: var(--purple); color: var(--white);"
+      : "background: var(--white); color: var(--purple);"}
   &:hover {
     background: var(--blue);
     border: 1px solid var(--blue);
     color: var(--white);
+  }
+  & ${(props) => props.children} {
+    transition: 0.3;
   }
 `;

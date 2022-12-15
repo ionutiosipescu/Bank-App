@@ -32,4 +32,5 @@ export const CardContainer = styled.div`
       : props.size == "md"
       ? "480px"
       : "fit-content"};
+  box-shadow: 0px 0px 25px -8px rgba(21, 20, 47, 0.73);
 `;
