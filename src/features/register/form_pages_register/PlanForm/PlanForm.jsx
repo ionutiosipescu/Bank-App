@@ -5,6 +5,7 @@ import { useState } from "react";
 import "./PlanForm.css";
 
 function PlanForm({ values }) {
+  const [radioChecked, setRadioChecked] = useState(false);
   const [planDataRo, setPlanDataRo] = useState({
     typeOfPlanRo: "",
     currency: "ron",
@@ -23,6 +24,12 @@ function PlanForm({ values }) {
     setCheckedRo,
     setCheckedEur,
   } = values;
+  const plantypes = {
+    normal: "normal",
+    premium: "premium",
+    vip: "vip",
+  };
+  const { normal, premium, vip } = plantypes;
 
   const arrDataForm = userData.userDataObj.userPlan;
   //   //   currency - ron
@@ -98,6 +105,9 @@ function PlanForm({ values }) {
     }
   };
 
+  const handlerRadio = () => {
+    setRadioChecked((radioChecked) => !radioChecked);
+  };
   console.log(userData);
   return (
     <div>
@@ -105,6 +115,7 @@ function PlanForm({ values }) {
         <Input
           onChange={handleChangeRon}
           type="checkbox"
+          checked={checkedRo}
           label="Ron"
           small
           value="ron"
@@ -113,6 +124,7 @@ function PlanForm({ values }) {
         <Input
           onChange={handleChangeEuro}
           type="checkbox"
+          checked={checkedEur}
           label="Euro"
           small
           value="euro"
@@ -123,17 +135,26 @@ function PlanForm({ values }) {
         <div onChange={handleChangeRonPlan}>
           <Input
             type="radio"
-            value="normal"
+            onChange={handlerRadio}
+            checked={
+              planDataRo.typeOfPlanRo === "" ? radioChecked : !radioChecked
+            }
+            value={normal || ""}
             name="typeOfPlanRo"
             label="Normal"
           />
           <Input
             type="radio"
-            value="premium"
+            value={premium || ""}
             name="typeOfPlanRo"
             label="Premium"
           />
-          <Input type="radio" value="vip" name="typeOfPlanRo" label="VIP" />
+          <Input
+            type="radio"
+            value={vip || ""}
+            name="typeOfPlanRo"
+            label="VIP"
+          />
         </div>
         <div onChange={handleChangeEurPlan}>
           <Input
