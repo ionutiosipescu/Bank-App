@@ -1,5 +1,4 @@
 import React from "react";
-import "./Dashboard.css";
 
 import BalanceCard from "../../components/BalanceCard/BalanceCard";
 import { accounts } from "../../utils/data/dummyData";
@@ -25,6 +24,14 @@ function Dashboard() {
         isPrimary
       />
       <TopCard label="Outcome" amount="$1,215.37" percent="-0.2" size="sm" />
+      <TopCard label="Outcome" amount="$1,215.37" percent="-0.2" size="md" />
+      <TopCard
+        label="Outcome"
+        amount="$1,215.37"
+        percent="-0.2"
+        size="md"
+        isPrimary
+      />
     </DashboardContainer>
   );
 }
