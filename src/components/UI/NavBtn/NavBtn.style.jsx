@@ -16,9 +16,20 @@ export const NavBtnContainer = styled.div`
   &:hover h2 {
     opacity: 1;
   }
-  &:hover :nth-child(1) {
+  /* &:hover :nth-child(1) {
+    background-color: var(--purple);
+    color: var(--white);
+    transition: 0.3s;
+  } */
+  ${(props) =>
+    props.active === true
+      ? `& :nth-child(1) {
     background-color: var(--purple);
     color: var(--white);
     transition: 0.3s;
   }
+  & h2 {
+    opacity: 1;
+  }`
+      : ""}
 `;
