@@ -109,10 +109,7 @@ function PlanForm({ values }) {
   const handlerRadio = () => {
     setRadioChecked((radioChecked) => !radioChecked);
   };
-  // console.log(planDataRo);
-  console.log(planDataRo.typeOfPlanRo);
-  // console.log(userData);
-  console.log(arrDataForm[0]?.typeOfPlanRo);
+  console.log(userData);
   return (
     <div>
       <RegisterFormPart>
