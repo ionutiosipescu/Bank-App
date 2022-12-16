@@ -31,9 +31,6 @@ function FormRegister() {
         createdAt: "",
       },
       userPlan: [],
-      transfers: [],
-      savings: null,
-      loans: null,
     },
   });
 
