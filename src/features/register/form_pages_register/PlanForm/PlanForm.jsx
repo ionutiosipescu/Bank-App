@@ -58,6 +58,7 @@ function PlanForm({ values }) {
   // typeOfPlanRo
   const handleChangeRonPlan = (e) => {
     const { name, value } = e.target;
+    setPlanDataRo({ ...planDataRo, [name]: value });
     setUserData({
       ...userData,
       userDataObj: {
@@ -108,7 +109,10 @@ function PlanForm({ values }) {
   const handlerRadio = () => {
     setRadioChecked((radioChecked) => !radioChecked);
   };
-  console.log(userData);
+  // console.log(planDataRo);
+  console.log(planDataRo.typeOfPlanRo);
+  // console.log(userData);
+  console.log(arrDataForm[0]?.typeOfPlanRo);
   return (
     <div>
       <RegisterFormPart>
@@ -134,22 +138,24 @@ function PlanForm({ values }) {
       <div className="containerplan">
         <div onChange={handleChangeRonPlan}>
           <Input
+            readOnly
             type="radio"
-            onChange={handlerRadio}
-            checked={
-              planDataRo.typeOfPlanRo === "" ? radioChecked : !radioChecked
-            }
+            checked={arrDataForm[0]?.typeOfPlanRo === "normal"}
             value={normal || ""}
             name="typeOfPlanRo"
             label="Normal"
           />
           <Input
+            readOnly
             type="radio"
+            checked={arrDataForm[0]?.typeOfPlanRo === "premium"}
             value={premium || ""}
             name="typeOfPlanRo"
             label="Premium"
           />
           <Input
+            readOnly
+            checked={arrDataForm[0]?.typeOfPlanRo === "vip"}
             type="radio"
             value={vip || ""}
             name="typeOfPlanRo"
