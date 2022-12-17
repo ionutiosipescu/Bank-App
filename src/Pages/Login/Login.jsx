@@ -13,35 +13,35 @@ import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setRegisterUser } from "../../state-management/registerUser/registerUser.action";
 
-const testDataUser = {
-  username: "",
-  password: "",
-};
+// const testDataUser = {
+//   username: "",
+//   password: "",
+// };
 
 function Login() {
   const dispatch = useDispatch();
   // selector
   const register = useSelector(selectRegisterUser);
+  const { username, password } = register;
   // componentState
-  const [registerUser, setRegisterUserTest] = useState(testDataUser);
+  // const [registerUser, setRegisterUserTest] = useState(testDataUser);
   // destructuring componentState
-  const { username, password } = registerUser;
+  // const { username, password } = registerUser;
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setRegisterUserTest({ ...registerUser, [name]: value });
-    console.log(registerUser);
+    // const { name, value } = e.target;
+    dispatch(setRegisterUser(register, e));
+    // console.log(registerUser);
   };
 
   const handlerSubmit = (e) => {
     e.preventDefault();
-    dispatch(setRegisterUser(registerUser));
+    // dispatch(setRegisterUser(registerUser));
   };
 
   useEffect(() => {
     console.log(register);
-  }, [registerUser]);
-  console.log(register);
+  }, []);
 
   return (
     <div className="wrapper">
