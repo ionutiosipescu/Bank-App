@@ -1,1 +1,1 @@
-export const selectRegisterUser = (state) => state.user.testState;
+export const selectRegisterUser = (state) => state.user.LoginData;

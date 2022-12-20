@@ -1,8 +1,9 @@
 import { REGISTER_ACTION_TYPES } from "./registerUser.types";
 
 const INITIAL_STATE = {
-  testState: {
+  LoginData: {
     username: "",
+    email: "",
     password: "",
   },
 };
@@ -12,7 +13,7 @@ export const registerReducer = (state = INITIAL_STATE, action) => {
 
   switch (type) {
     case REGISTER_ACTION_TYPES.SET_REGISTER_USER:
-      return { ...state, testState: { ...payload } };
+      return { ...state, LoginData: { ...payload } };
     default:
       return state;
   }
