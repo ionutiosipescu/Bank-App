@@ -15,7 +15,7 @@ function Button({ label, to, size, primary, handleClick, children }) {
 Button.propTypes = {
   label: PropTypes.string,
   to: PropTypes.string,
-  size: PropTypes.oneOf(["sm", "md", "lg", "100", "fit"]),
+  size: PropTypes.oneOf(["sm", "md", "lg", "xl", "100", "fit"]),
   primary: PropTypes.bool,
   handleClick: PropTypes.func,
 };

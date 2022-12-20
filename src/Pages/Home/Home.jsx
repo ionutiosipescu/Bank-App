@@ -11,7 +11,7 @@ import NavBtn from "../../components/UI/NavBtn/NavBtn";
 import logo from "../../assets/images/logo.png";
 import SideBar from "../../layouts/SideBar/SideBar";
 import NavBar from "./../../layouts/NavBar/NavBar";
-import Settings from "../../components/Settings/Settings";
+import Settings from "../../Pages/Settings/Settings";
 
 function Home() {
   return (

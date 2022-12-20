@@ -6,13 +6,11 @@ export const RadioContainer = styled.div`
   justify-content: space-between;
   width: 125px;
   height: 110px;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   cursor: default;
   & > p {
     opacity: 0.8;
   }
-
-  margin-top: 50px;
 `;
 
 export const RadioPill = styled.div`

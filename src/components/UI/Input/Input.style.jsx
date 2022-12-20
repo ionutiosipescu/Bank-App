@@ -9,10 +9,10 @@ export const Group = styled.div`
   }
 `;
 export const InputForm = styled.input`
-  height: 30px;
+  height: 40px;
   width: ${(props) => (props.small ? "150px" : "310px")};
   border: 1px solid var(--purple);
-  border-radius: 30px;
+  border-radius: 40px;
   padding: 0 12px 0 10px;
   margin-bottom: 10px;
   &:focus {
