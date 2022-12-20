@@ -9,13 +9,13 @@ import { TiArrowSortedDown, TiArrowSortedUp } from "react-icons/ti";
 
 import AreaChart from "../Charts/AreaChart";
 
-function TopCard({ amount, percent, label, isPrimary, size }) {
+function TopCard({ amount, percent, label, primary, size }) {
   return (
     <CardContainer size={size}>
       <CardHeader>
         <CardHeader style={{ width: "50%" }}>
-          <CardIcon isPrimary={isPrimary}>
-            {isPrimary ? (
+          <CardIcon primary={primary}>
+            {primary ? (
               <TbTransferIn size={25} color="white" />
             ) : (
               <TbTransferOut size={25} color="white" />
@@ -23,7 +23,7 @@ function TopCard({ amount, percent, label, isPrimary, size }) {
           </CardIcon>
           <div>
             <h5>{label}</h5>
-            <h1>{isPrimary ? `+${amount}` : `-${amount}`}</h1>
+            <h1>{primary ? `+${amount}` : `-${amount}`}</h1>
           </div>
         </CardHeader>
         <CardFeature>
@@ -42,7 +42,7 @@ function TopCard({ amount, percent, label, isPrimary, size }) {
         </CardFeature>
       </CardHeader>
       <CardBody>
-        <AreaChart isPrimary={isPrimary} />
+        <AreaChart primary={primary} />
       </CardBody>
     </CardContainer>
   );
@@ -53,7 +53,7 @@ TopCard.propTypes = {
   size: PropTypes.oneOf(["sm", "md", "fit"]),
   percent: PropTypes.string,
   label: PropTypes.string,
-  isPrimary: PropTypes.bool,
+  primary: PropTypes.bool,
 };
 
 export default TopCard;

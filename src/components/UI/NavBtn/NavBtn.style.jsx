@@ -9,13 +9,7 @@ export const NavBtnContainer = styled.div`
   & > * {
     margin-right: 20px !important;
   }
-  & h2 {
-    opacity: 0.7;
-    color: var(--text);
-  }
-  &:hover h2 {
-    opacity: 1;
-  }
+
   /* &:hover :nth-child(1) {
     background-color: var(--purple);
     color: var(--white);
@@ -32,4 +26,14 @@ export const NavBtnContainer = styled.div`
     opacity: 1;
   }`
       : ""}
+`;
+
+export const Label = styled.h2`
+  font-size: 1.6rem;
+  font-weight: 600;
+  opacity: 0.7;
+  color: var(--text);
+  &:hover {
+    opacity: 1;
+  }
 `;

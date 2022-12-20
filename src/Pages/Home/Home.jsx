@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 
-import { HomeContainer, HomeWrapper, TemporaryNav } from "./Home.style";
+import { HomeContainer, HomeWrapper } from "./Home.style";
 import { BsCreditCard, BsHouseDoor } from "react-icons/bs";
 
 import Dashboard from "./../Dashboard/Dashboard";
@@ -10,6 +10,8 @@ import Cards from "../Cards/Cards";
 import NavBtn from "../../components/UI/NavBtn/NavBtn";
 import logo from "../../assets/images/logo.png";
 import SideBar from "../../layouts/SideBar/SideBar";
+import NavBar from "./../../layouts/NavBar/NavBar";
+import Settings from "../../components/Settings/Settings";
 
 function Home() {
   return (
@@ -26,18 +28,18 @@ function Home() {
           <NavBtn to="/" label="Transactions">
             <BsCreditCard size={22} />
           </NavBtn>
-          <NavBtn to="/dashboard" label="Settings">
+          <NavBtn to="/" label="Settings">
             <BsCreditCard size={22} />
           </NavBtn>
         </div>
-        <Button label="Log Out" to="/login" size="100" isPrimary />
+        <Button label="Log Out" to="/login" size="100" primary={true} />
       </SideBar>
       <HomeContainer>
-        <h1>Navigation Bar</h1>
+        <NavBar />
         <Routes>
           <Route path="/dashboard" title="Dashboard" element={<Dashboard />} />
           <Route path="/cards" element={<Cards />} />
-          <Route path="/transfers" element={<Dashboard />} />
+          <Route path="/settings" element={<Settings />} />
         </Routes>
       </HomeContainer>
     </HomeWrapper>

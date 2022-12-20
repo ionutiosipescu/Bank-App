@@ -15,7 +15,7 @@ export const CardIcon = styled.div`
   height: 50px;
   border-radius: 50%;
   background-color: ${(props) =>
-    props.isPrimary ? "var(--purple)" : "var(--blue)"};
+    props.primary ? "var(--purple)" : "var(--blue)"};
 `;
 
 export const CardFeature = styled.div`
@@ -26,5 +26,6 @@ export const CardFeature = styled.div`
 
 export const CardBody = styled.div`
   width: 100%;
+  height: 80%;
   margin: 10px 0px 10px 0px;
 `;

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Btn = styled.button`
+export const Btn = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,7 +24,7 @@ export const Btn = styled.button`
   ${(props) =>
     props.primary
       ? "background: var(--purple); color: var(--white);"
-      : "background: var(--white); color: var(--purple);"}
+      : "background: none; color: var(--purple);"}
   &:hover {
     background: var(--blue);
     border: 1px solid var(--blue);

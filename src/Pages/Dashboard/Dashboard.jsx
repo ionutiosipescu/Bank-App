@@ -21,7 +21,7 @@ function Dashboard() {
         amount="$5,542.23"
         percent="+0.5"
         size="sm"
-        isPrimary
+        primary={true}
       />
       <TopCard label="Outcome" amount="$1,215.37" percent="-0.2" size="sm" />
       <TopCard label="Outcome" amount="$1,215.37" percent="-0.2" size="md" />
@@ -30,7 +30,7 @@ function Dashboard() {
         amount="$1,215.37"
         percent="-0.2"
         size="md"
-        isPrimary
+        primary={true}
       />
     </DashboardContainer>
   );
