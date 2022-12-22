@@ -1,13 +1,7 @@
 import React from "react";
 import { PropTypes } from "prop-types";
-import { CardContainer } from "../UI/Card/Card.style";
-import {
-  CardBody,
-  CardFooter,
-  CardHeader,
-  Circle,
-  Pill,
-} from "./BalanceCard.style";
+import { CardContainer, CardHeader } from "../UI/Card/Card.style";
+import { CardBody, CardFooter, Circle, Pill } from "./BalanceCard.style";
 
 function BalanceCard({ balance, color, name, valid, cardNum, size }) {
   return (

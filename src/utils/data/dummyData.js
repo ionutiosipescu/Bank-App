@@ -39,3 +39,21 @@ export const chartData = [
   { id: 11, month: 11, income: 423, outcome: 165 },
   { id: 12, month: 12, income: 321, outcome: 276 },
 ];
+
+export const dailyBalanceData = [
+  { id: 1, day: "Mon", thisWeek: 9312, lastWeek: 17132 },
+  { id: 2, day: "Tue", thisWeek: 8912, lastWeek: 11132 },
+  { id: 3, day: "Wed", thisWeek: 5312, lastWeek: 15132 },
+  { id: 4, day: "Thu", thisWeek: 12912, lastWeek: 10132 },
+  { id: 5, day: "Fri", thisWeek: 7812, lastWeek: 2932 },
+  { id: 6, day: "Sat", thisWeek: 18395, lastWeek: 9732 },
+  { id: 7, day: "Sun", thisWeek: 12346, lastWeek: 13432 },
+];
+
+export const outcomeData = [
+  { id: 1, item: "Needs", amount: 5312 },
+  { id: 2, item: "Groceries", amount: 1912 },
+  { id: 3, item: "Subcribtions", amount: 610 },
+  { id: 4, item: "Tax", amount: 2912 },
+  { id: 5, item: "Utils", amount: 812 },
+];

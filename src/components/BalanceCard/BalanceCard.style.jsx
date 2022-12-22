@@ -1,15 +1,5 @@
 import styled from "styled-components";
 
-export const CardHeader = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  z-index: 2;
-  & > h1 {
-    font-size: 3rem;
-  }
-`;
-
 export const CardBody = styled.div`
   display: flex;
   justify-content: end;

@@ -4,6 +4,8 @@ import BalanceCard from "../../components/BalanceCard/BalanceCard";
 import { accounts } from "../../utils/data/dummyData";
 import TopCard from "../../components/TopCard/TopCard";
 import { DashboardContainer } from "./Dashboard.style";
+import OverviewCard from "./../../components/OverviewCard/OverviewCard";
+import OutcomeChart from "./../../components/OutcomeChart/OutcomeChart";
 
 function Dashboard() {
   return (
@@ -24,14 +26,8 @@ function Dashboard() {
         primary={true}
       />
       <TopCard label="Outcome" amount="$1,215.37" percent="-0.2" size="sm" />
-      <TopCard label="Outcome" amount="$1,215.37" percent="-0.2" size="md" />
-      <TopCard
-        label="Outcome"
-        amount="$1,215.37"
-        percent="-0.2"
-        size="md"
-        primary={true}
-      />
+      <OverviewCard />
+      <OutcomeChart />
     </DashboardContainer>
   );
 }

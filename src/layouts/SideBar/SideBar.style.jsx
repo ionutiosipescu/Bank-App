@@ -4,7 +4,7 @@ export const SideBarWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100vh;
+  height: 100%;
   width: 250px;
   background-color: var(--white);
   padding: 20px;

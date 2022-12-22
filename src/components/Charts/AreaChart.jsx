@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { chartData as chartData } from "../../utils/data/dummyData";
 
 import { Line } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
 
-function AreaChart({ primary }) {
+function AreaChart({ primary, chartData }) {
   const backgroundColor = primary ? "#6160dc50" : "#54c5eb50";
   const borderColor = primary ? "#6160dc" : "#54c5eb";
 

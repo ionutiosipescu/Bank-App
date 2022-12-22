@@ -6,7 +6,7 @@ import {
   DropDownSelector,
 } from "./DropDown.style";
 
-import { MdArrowDropDown } from "react-icons/md";
+import { MdArrowDropDown, MdArrowDropUp } from "react-icons/md";
 
 const languages = ["English", "Romanian", "French"];
 
@@ -24,7 +24,7 @@ function DropDown({ label }) {
       <DropDownSelector active={active}>
         <DropDownHeader onClick={handleDropDown}>
           {selected}
-          <MdArrowDropDown size={40} />
+          {active ? <MdArrowDropUp size={40} /> : <MdArrowDropDown size={40} />}
         </DropDownHeader>
         {languages.map((language, index) => (
           <DropDownItem

@@ -25,7 +25,8 @@ export const CardFeature = styled.div`
 `;
 
 export const CardBody = styled.div`
+  display: flex;
   width: 100%;
-  height: 80%;
+  height: 100%;
   margin: 10px 0px 10px 0px;
 `;

@@ -9,7 +9,7 @@ export const SettingsContainer = styled.div`
   width: 1600px;
   height: 800px;
   border-radius: 50px;
-  margin-top: 25px;
+  margin-top: 10px;
   background-color: var(--white);
   box-shadow: 0px 0px 15px -8px rgba(21, 20, 47, 0.73);
 `;

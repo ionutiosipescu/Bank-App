@@ -9,6 +9,8 @@ import { TiArrowSortedDown, TiArrowSortedUp } from "react-icons/ti";
 
 import AreaChart from "../Charts/AreaChart";
 
+import { chartData as chartData } from "../../utils/data/dummyData";
+
 function TopCard({ amount, percent, label, primary, size }) {
   return (
     <CardContainer size={size}>
@@ -42,7 +44,7 @@ function TopCard({ amount, percent, label, primary, size }) {
         </CardFeature>
       </CardHeader>
       <CardBody>
-        <AreaChart primary={primary} />
+        <AreaChart primary={primary} chartData={chartData} />
       </CardBody>
     </CardContainer>
   );
