@@ -18,12 +18,17 @@ const CustomInput = ({ label, ...props }) => {
 
   //   const dispatch = useDispatch();
   //   const register = useSelector(selectRegisterUser);
+  //   dispatch(setRegisterUser(register, field));
 
-  //   const handleChange = (e) => {
-  //     dispatch(setRegisterUser(register, e));
-  //   };
+  const [field, meta, helpers] = useField(props);
+  //   const { error, value } = meta;
+  //   const { name, value } = field;
 
-  const [field, meta] = useField(props);
+  //   console.log(error, value);
+  //   console.log(name, value);
+  //   console.log(field);
+  //   console.log(meta);
+  //   console.log(props);
 
   return (
     <>
@@ -32,6 +37,10 @@ const CustomInput = ({ label, ...props }) => {
         <InputForm
           {...field}
           {...props}
+          onChange={(e) => {
+            field.onChange(e);
+            props.valid(e);
+          }}
           className={meta.touched && meta.error ? "input-error" : ""}
         />
         {meta.touched && meta.error && <Error>{meta.error}</Error>}

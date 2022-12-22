@@ -6,28 +6,39 @@ import { advancedSchema } from "../ValidationSchema/ValidationSchema";
 import CustomInput from "../CustomInputsLogIn/CustomInput";
 import CustomCheckbox from "../CustomInputsLogIn/CustomCheckbox";
 import CustomPassword from "../CustomInputsLogIn/CustomPassword";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { selectRegisterUser } from "../../../state-management/registerUser/registerUser.selector";
+import { setRegisterUser } from "../../../state-management/registerUser/registerUser.action";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function FormLogIn() {
-  // const register = useSelector(selectRegisterUser);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const navigate = useNavigate();
+  const register = useSelector(selectRegisterUser);
+  const dispatch = useDispatch();
+
+  // const [isSubmitting, setIsSubmitting] = useState(false);
+  // const navigate = useNavigate();
 
   const onSubmit = (values, actions) => {
-    console.log(values);
-    console.log(actions);
-    setIsSubmitting(true);
+    // console.log(actions);
+    // setIsSubmitting(true);
+    // console.log(register);
   };
+  const valid = (e) => {
+    // console.log(e);
+    dispatch(setRegisterUser(register, e));
+  };
+  // useEffect(() => {
+  //   if (isSubmitting) {
+  //     navigate("/dashboard");
+  //   } else {
+  //     return;
+  //   }
+  // }, [isSubmitting]);
 
-  useEffect(() => {
-    if (isSubmitting) {
-      navigate("/dashboard");
-    } else {
-      return;
-    }
-  }, [isSubmitting]);
+  // useEffect(() => {
+  //   console.log(register);
+  // }, [register]);
 
   return (
     <Formik
@@ -41,6 +52,7 @@ function FormLogIn() {
           name="username"
           type="text"
           placeholder="Enter your username"
+          valid={valid}
         />
         <CustomPassword
           label="Password"
