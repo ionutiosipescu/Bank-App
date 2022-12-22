@@ -23,7 +23,7 @@ function FormLogIn() {
     console.log(loginData);
   };
 
-  const valid = debounce((e) => {
+  const setData = debounce((e) => {
     dispatch(setLogInUser(loginData, e));
   }, 500);
   // useEffect(() => {
@@ -46,14 +46,14 @@ function FormLogIn() {
           name="username"
           type="text"
           placeholder="Enter your username"
-          valid={valid}
+          setData={setData}
         />
         <CustomPassword
           label="Password"
           name="password"
           type="password"
           placeholder="Enter your password"
-          valid={valid}
+          setData={setData}
         />
         <CustomCheckbox type="checkbox" name="acceptedTos" />
 

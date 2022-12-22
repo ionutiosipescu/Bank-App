@@ -19,7 +19,7 @@ const CustomInput = ({ label, ...props }) => {
           {...props}
           onChange={(e) => {
             field.onChange(e);
-            props.valid(e);
+            props.setData(e);
           }}
           className={meta.touched && meta.error ? "input-error" : ""}
         />
