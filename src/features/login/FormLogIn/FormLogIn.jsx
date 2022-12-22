@@ -11,22 +11,22 @@ import { selectRegisterUser } from "../../../state-management/registerUser/regis
 import { setRegisterUser } from "../../../state-management/registerUser/registerUser.action";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { selectLoginUser } from "../../../state-management/loginUser/loginUser.selector";
+import { setLogInUser } from "../../../state-management/loginUser/loginUser.action";
 
 function FormLogIn() {
-  const register = useSelector(selectRegisterUser);
+  const loginData = useSelector(selectLoginUser);
   const dispatch = useDispatch();
 
   // const [isSubmitting, setIsSubmitting] = useState(false);
   // const navigate = useNavigate();
 
   const onSubmit = (values, actions) => {
-    // console.log(actions);
     // setIsSubmitting(true);
-    // console.log(register);
+    console.log(loginData);
   };
   const valid = (e) => {
-    // console.log(e);
-    dispatch(setRegisterUser(register, e));
+    dispatch(setLogInUser(loginData, e));
   };
   // useEffect(() => {
   //   if (isSubmitting) {
@@ -35,10 +35,6 @@ function FormLogIn() {
   //     return;
   //   }
   // }, [isSubmitting]);
-
-  // useEffect(() => {
-  //   console.log(register);
-  // }, [register]);
 
   return (
     <Formik
@@ -59,6 +55,7 @@ function FormLogIn() {
           name="password"
           type="password"
           placeholder="Enter your password"
+          valid={valid}
         />
         <CustomCheckbox type="checkbox" name="acceptedTos" />
 
