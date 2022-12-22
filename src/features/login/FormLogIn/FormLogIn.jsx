@@ -7,12 +7,9 @@ import CustomInput from "../CustomInputsLogIn/CustomInput";
 import CustomCheckbox from "../CustomInputsLogIn/CustomCheckbox";
 import CustomPassword from "../CustomInputsLogIn/CustomPassword";
 import { useSelector, useDispatch } from "react-redux";
-import { selectRegisterUser } from "../../../state-management/registerUser/registerUser.selector";
-import { setRegisterUser } from "../../../state-management/registerUser/registerUser.action";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { selectLoginUser } from "../../../state-management/loginUser/loginUser.selector";
 import { setLogInUser } from "../../../state-management/loginUser/loginUser.action";
+import { debounce } from "debounce";
 
 function FormLogIn() {
   const loginData = useSelector(selectLoginUser);
@@ -25,9 +22,10 @@ function FormLogIn() {
     // setIsSubmitting(true);
     console.log(loginData);
   };
-  const valid = (e) => {
+
+  const valid = debounce((e) => {
     dispatch(setLogInUser(loginData, e));
-  };
+  }, 500);
   // useEffect(() => {
   //   if (isSubmitting) {
   //     navigate("/dashboard");
