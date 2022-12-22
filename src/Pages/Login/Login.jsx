@@ -12,6 +12,7 @@ import { selectRegisterUser } from "../../state-management/registerUser/register
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setRegisterUser } from "../../state-management/registerUser/registerUser.action";
+import axios from "axios";
 
 // const testDataUser = {
 //   username: "",
@@ -36,6 +37,9 @@ function Login() {
 
   const handlerSubmit = (e) => {
     e.preventDefault();
+    axios
+      .get("http://localhost:8080/user/all")
+      .then((res) => console.log(res.data));
     // dispatch(setRegisterUser(registerUser));
   };
 
