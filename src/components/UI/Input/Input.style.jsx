@@ -20,3 +20,22 @@ export const InputForm = styled.input`
     border: 2px solid var(--blue);
   }
 `;
+
+export const Checkbox = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 15px 0px 15px;
+  input {
+    width: fit-content;
+    margin: 0 10px 0 0;
+    transform: scale(1.25);
+  }
+`;
+
+export const Error = styled.div`
+  color: #fc8181;
+  font-size: 0.75rem;
+  text-align: left;
+  margin-top: 0.25rem;
+`;
