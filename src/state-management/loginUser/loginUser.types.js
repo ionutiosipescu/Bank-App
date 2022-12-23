@@ -1,0 +1,3 @@
+export const LOGIN_ACTION_TYPES = {
+  SET_LOGIN_USER: "SET_LOGIN_USER",
+};
