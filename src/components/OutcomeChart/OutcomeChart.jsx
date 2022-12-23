@@ -4,25 +4,25 @@ import { CardBody } from "../TopCard/TopCard.style";
 import { CardContainer, CardHeader } from "./../UI/Card/Card.style";
 
 import { outcomeData as chartData } from "../../utils/data/dummyData";
-import { OutcomeBody } from "./OutcomeChart.style";
+import { LegendItem, OutcomeBody } from "./OutcomeChart.style";
+import { BsCircleFill } from "react-icons/bs";
 
 function OutcomeChart() {
-  const [primary, setPrimary] = useState(true);
-
   return (
     <CardContainer size="md">
       <CardHeader flex="row">
         <h3>Outcome Categories</h3>
       </CardHeader>
-      <CardBody style={{ paddingBottom: "40px" }}>
-        <DoughnutChart primary={primary} chartData={chartData} />
+      <CardBody style={{ padding: "10px 20px 40px 20px" }}>
+        <DoughnutChart chartData={chartData} />
         <OutcomeBody>
-          <h2>Legend</h2>
-          <div>
-            {chartData.map((item) => (
-              <h5>{item.item}</h5>
-            ))}
-          </div>
+          <h1>Legend</h1>
+          {chartData.map((item) => (
+            <LegendItem>
+              <BsCircleFill color={item.color} />
+              <h2>{item.item}</h2>
+            </LegendItem>
+          ))}
         </OutcomeBody>
       </CardBody>
     </CardContainer>

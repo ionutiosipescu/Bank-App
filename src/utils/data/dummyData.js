@@ -51,9 +51,9 @@ export const dailyBalanceData = [
 ];
 
 export const outcomeData = [
-  { id: 1, item: "Needs", amount: 5312 },
-  { id: 2, item: "Groceries", amount: 1912 },
-  { id: 3, item: "Subcribtions", amount: 610 },
-  { id: 4, item: "Tax", amount: 2912 },
-  { id: 5, item: "Utils", amount: 812 },
+  { id: 1, item: "Needs", amount: 5312, color: "#6160dc" },
+  { id: 2, item: "Groceries", amount: 1912, color: "#54c5eb" },
+  { id: 3, item: "Subcribtions", amount: 610, color: "#ffb74a" },
+  { id: 4, item: "Tax", amount: 2912, color: "#00a389" },
+  { id: 5, item: "Utils", amount: 812, color: "#ff4a55" },
 ];
