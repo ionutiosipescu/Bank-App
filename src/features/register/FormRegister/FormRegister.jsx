@@ -4,10 +4,11 @@ import {
   RegisterFormWrapper,
 } from "./FormRegister.style";
 import { useState } from "react";
-import AccountForm from "../form_pages_register/AccountForm/AccountForm";
-import PersonalForm from "../form_pages_register/PersonalForm/PersonalForm";
-import PlanForm from "../form_pages_register/PlanForm/PlanForm";
-import ConfirmForm from "../form_pages_register/ConfirmForm/ConfirmForm";
+import AccountForm from "../FormPagesRegister/AccountForm/AccountForm";
+import PersonalForm from "../FormPagesRegister/PersonalForm/PersonalForm";
+import PlanForm from "../FormPagesRegister/PlanForm/PlanForm";
+import ConfirmForm from "../FormPagesRegister/ConfirmForm/ConfirmForm";
+import { Form, Formik } from "formik";
 
 function FormRegister() {
   const date = new Date();

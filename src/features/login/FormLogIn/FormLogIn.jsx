@@ -34,9 +34,15 @@ function FormLogIn() {
   //   }
   // }, [isSubmitting]);
 
+  const initialObject = {
+    username: "",
+    password: "",
+    acceptedTos: false,
+  };
+
   return (
     <Formik
-      initialValues={{ username: "", password: "", acceptedTos: false }}
+      initialValues={{ ...initialObject }}
       validationSchema={advancedSchema}
       onSubmit={onSubmit}
     >
