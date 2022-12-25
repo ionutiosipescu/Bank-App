@@ -38,7 +38,7 @@ function FormLogIn() {
   // }, [isSubmitting]);
 
   const handletest = () => {
-    dispatch(setStep(step + 1));
+    dispatch(setStep(step - 1));
     console.log(step);
   };
 

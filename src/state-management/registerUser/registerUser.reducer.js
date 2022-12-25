@@ -1,9 +1,22 @@
 import { REGISTER_ACTION_TYPES } from "./registerUser.types";
 
 const INITIAL_STATE = {
-  RegisterData: {
-    username: "",
-    password: "",
+  userDataObj: {
+    userProfile: {
+      lastName: "",
+      firstName: "",
+      email: "",
+      city: "",
+      number: "",
+      displayName: "",
+      mobile: "",
+      birthDate: "",
+      gender: "",
+      password: "",
+      confirmPassword: "",
+      createdAt: "",
+    },
+    userPlan: [],
   },
 };
 
