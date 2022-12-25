@@ -10,17 +10,20 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectLoginUser } from "../../../state-management/loginUser/loginUser.selector";
 import { setLogInUser } from "../../../state-management/loginUser/loginUser.action";
 import { debounce } from "debounce";
+import { selectStep } from "../../../state-management/registerUser/step/stepredux";
+import { setStep } from "../../../state-management/registerUser/step/stepredux";
 
 function FormLogIn() {
-  const loginData = useSelector(selectLoginUser);
   const dispatch = useDispatch();
+  const loginData = useSelector(selectLoginUser);
+  const step = useSelector(selectStep);
 
   // const [isSubmitting, setIsSubmitting] = useState(false);
   // const navigate = useNavigate();
 
   const onSubmit = (values, actions) => {
     // setIsSubmitting(true);
-    console.log(loginData);
+    // console.log(loginData);
   };
 
   const setData = debounce((e) => {
@@ -34,12 +37,21 @@ function FormLogIn() {
   //   }
   // }, [isSubmitting]);
 
+  const handletest = () => {
+    dispatch(setStep(step + 1));
+    console.log(step);
+  };
+
+  useEffect(() => {
+    console.log(step);
+  }, [step]);
+
   const initialObject = {
     username: "",
     password: "",
     acceptedTos: false,
   };
-
+  console.log(step);
   return (
     <Formik
       initialValues={{ ...initialObject }}
@@ -64,6 +76,9 @@ function FormLogIn() {
         <CustomCheckbox type="checkbox" name="acceptedTos" />
 
         <button type="submit">Submit</button>
+        <button onClick={handletest} type="button">
+          test
+        </button>
       </Form>
     </Formik>
   );
