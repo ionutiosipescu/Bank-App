@@ -12,15 +12,15 @@ function Step() {
     case 0:
       stepContent = <PersonalForm />;
       break;
-    case 1:
-      stepContent = <AccountForm />;
-      break;
-    case 2:
-      stepContent = <PlanForm />;
-      break;
-    case 3:
-      stepContent = <ConfirmForm />;
-      break;
+    // case 1:
+    //   stepContent = <AccountForm />;
+    //   break;
+    // case 2:
+    //   stepContent = <PlanForm />;
+    //   break;
+    // case 3:
+    //   stepContent = <ConfirmForm />;
+    //   break;
     default:
       break;
   }

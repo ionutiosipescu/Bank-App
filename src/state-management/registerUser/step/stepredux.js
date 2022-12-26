@@ -4,7 +4,7 @@ export const STEP_TYPES = {
   SET_STEP: "SET_STEP",
 };
 
-const INITIAL_STATE = 1;
+const INITIAL_STATE = 0;
 
 export const stepReducer = (state = INITIAL_STATE, action) => {
   const { type, payload } = action;

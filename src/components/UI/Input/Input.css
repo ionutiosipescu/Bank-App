@@ -2,4 +2,27 @@ input.input-error,
 select.input-error {
   border-color: #fc8181;
 }
-
+.date-picker {
+  height: 30px;
+  width: 150px;
+  border: 1px solid var(--purple);
+  border-radius: 30px;
+  padding: 0 12px 0 10px;
+  margin-bottom: 10px;
+}
+.date-picker:focus {
+    outline: none;
+    border: 2px solid var(--blue);
+}
+.specia {
+  height: 30px;
+  width: 150px;
+  border: 1px solid var(--purple);
+  border-radius: 30px;
+  padding: 0 12px 0 10px;
+  margin-bottom: 10px;
+}
+.specia:focus{
+    outline: none;
+    border: 2px solid var(--blue);
+}

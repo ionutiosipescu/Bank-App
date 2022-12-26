@@ -1,29 +1,125 @@
 import React from "react";
 import { RegisterFormPart } from "../../FormRegister/FormRegister.style";
-import Input from "../../../../components/UI/Input/Input";
+import { Formik, Form } from "formik";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { setRegisterUser } from "../../../../state-management/registerUser/registerUser.action";
+import { selectRegisterUser } from "../../../../state-management/registerUser/registerUser.selector";
+import { registerSchema } from "../../ValidationSchema/ValidationSchema";
+import CustomInput from "../../CustomInputsRegister/CustomInput";
+import CustomSelect from "../../CustomInputsRegister/CustomSelect";
+import FormikControl from "../../CustomInputsRegister/FormikControl";
+import { options } from "../../CustomInputsRegister/CustomRadioInputGroup";
 
-function PersonalForm({ values }) {
-  const { userData, setUserData } = values;
-  const { lastName, firstName, city, number, birthDate, gender } =
-    userData.userDataObj.userProfile;
+function PersonalForm() {
+  // const setData = (e) => {
+  //   dispatch(setLogInUser(loginData, e));
+  // };
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setUserData({
-      ...userData,
-      userDataObj: {
-        ...userData.userDataObj,
-        userProfile: {
-          ...userData.userDataObj.userProfile,
-          [name]: value,
-        },
-      },
-    });
+  const handleSubmit = (values) => {
+    console.log(values);
   };
-  console.log(userData);
+
+  const initialObject = {
+    firstname: "",
+    lastname: "",
+    country: "",
+    address: "",
+    age: "",
+    gender: "",
+  };
   return (
     <>
-      <RegisterFormPart>
+      <Formik
+        initialValues={{ ...initialObject }}
+        validationSchema={registerSchema}
+        onSubmit={handleSubmit}
+      >
+        <Form className="form">
+          <RegisterFormPart>
+            <CustomInput
+              label="Firstname"
+              name="firstname"
+              type="text"
+              small
+              placeholder="Enter your firstname"
+            />
+            <CustomInput
+              label="Lastname"
+              name="lastname"
+              type="text"
+              small
+              placeholder="Enter your lastname"
+            />
+          </RegisterFormPart>
+          <RegisterFormPart>
+            <CustomSelect
+              label="Country"
+              name="country"
+              placeholder="Select a country"
+              small
+            >
+              <option value="">Select a country</option>
+              <option value="romania">Romania</option>
+              <option value="italia">Italia</option>
+              <option value="spania">Spania</option>
+              <option value="germania">Germania</option>
+            </CustomSelect>
+            <CustomInput
+              label="Address"
+              name="address"
+              type="text"
+              small
+              placeholder="Enter your address"
+            />
+          </RegisterFormPart>
+          <RegisterFormPart>
+            <FormikControl
+              type="radio"
+              control="radio"
+              label="Gender"
+              name="gender"
+              options={options}
+            />
+            <CustomInput
+              label="Age"
+              name="age"
+              type="number"
+              small
+              placeholder="Enter your age"
+            />
+          </RegisterFormPart>
+
+          <button type="submit">submit</button>
+        </Form>
+      </Formik>
+    </>
+  );
+}
+
+export default PersonalForm;
+
+// const { userData, setUserData } = values;
+// const { lastName, firstName, city, number, birthDate, gender } =
+//   userData.userDataObj.userProfile;
+
+// const handleChange = (e) => {
+//   const { name, value } = e.target;
+//   setUserData({
+//     ...userData,
+//     userDataObj: {
+//       ...userData.userDataObj,
+//       userProfile: {
+//         ...userData.userDataObj.userProfile,
+//         [name]: value,
+//       },
+//     },
+//   });
+// };
+// console.log(userData);
+
+{
+  /* <RegisterFormPart>
         <Input
           onChange={handleChange}
           type="text"
@@ -77,9 +173,5 @@ function PersonalForm({ values }) {
           value={birthDate || ""}
           name="birthDate"
         />
-      </RegisterFormPart>
-    </>
-  );
+      </RegisterFormPart> */
 }
-
-export default PersonalForm;

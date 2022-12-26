@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import DatePicker from "react-datepicker";
 
 export const Group = styled.div`
   display: flex;
@@ -8,6 +9,7 @@ export const Group = styled.div`
     margin-bottom: 10px;
   }
 `;
+
 export const InputForm = styled.input`
   height: 30px;
   width: ${(props) => (props.small ? "150px" : "310px")};
@@ -15,6 +17,30 @@ export const InputForm = styled.input`
   border-radius: 30px;
   padding: 0 12px 0 10px;
   margin-bottom: 10px;
+  &:focus {
+    outline: none;
+    border: 2px solid var(--blue);
+  }
+`;
+export const InputSelect = styled.select`
+  height: 30px;
+  width: ${(props) => (props.small ? "150px" : "310px")};
+  border: 1px solid var(--purple);
+  border-radius: 30px;
+  padding: 0 12px 0 10px;
+  margin-bottom: 10px;
+  &:focus {
+    outline: none;
+    border: 2px solid var(--blue);
+  }
+`;
+
+export const InputDate = styled(DatePicker)`
+  height: 30px;
+  width: ${(props) => (props.small ? "150px" : "310px")};
+  border: 1px solid var(--purple);
+  border-radius: 30px;
+  padding: 0 12px 0 10px;
   &:focus {
     outline: none;
     border: 2px solid var(--blue);
