@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const HomeWrapper = styled.div`
   display: flex;
   background-color: var(--gray-light);
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   @media (max-width: 1545px) {
     height: fit-content;
     width: 100%;
