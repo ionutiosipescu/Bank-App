@@ -20,25 +20,27 @@ const RadioButtons = ({ label, ...props }) => {
   return (
     <Group>
       <label>{label}</label>
-      <Field name={props.name}>
-        {({ field }) => {
-          return props.options.map((option) => {
-            return (
-              <React.Fragment key={option.key}>
-                <input
-                  {...field}
-                  {...props}
-                  id={option.value}
-                  value={option.value}
-                  checked={field.value === option.value}
-                  className={meta.touched && meta.error ? "input-error" : ""}
-                />
-                <label htmlFor={option.value}>{option.key}</label>
-              </React.Fragment>
-            );
-          });
-        }}
-      </Field>
+      <div className="radio-container">
+        <Field name={props.name}>
+          {({ field }) => {
+            return props.options.map((option) => {
+              return (
+                <React.Fragment key={option.key}>
+                  <input
+                    {...field}
+                    {...props}
+                    id={option.value}
+                    value={option.value}
+                    checked={field.value === option.value}
+                    className={meta.touched && meta.error ? "input-error" : ""}
+                  />
+                  <label htmlFor={option.value}>{option.key}</label>
+                </React.Fragment>
+              );
+            });
+          }}
+        </Field>
+      </div>
       {meta.touched && meta.error && <Error>{meta.error}</Error>}
     </Group>
   );

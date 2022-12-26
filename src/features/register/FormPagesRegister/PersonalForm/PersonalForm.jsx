@@ -35,7 +35,7 @@ function PersonalForm() {
         validationSchema={registerSchema}
         onSubmit={handleSubmit}
       >
-        <Form className="form">
+        <Form className="personal-form">
           <RegisterFormPart>
             <CustomInput
               label="Firstname"

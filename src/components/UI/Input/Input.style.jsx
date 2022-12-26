@@ -2,6 +2,7 @@ import styled from "styled-components";
 import DatePicker from "react-datepicker";
 
 export const Group = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   margin: 0 10px 10px 0;
@@ -62,6 +63,7 @@ export const Checkbox = styled.div`
 export const Error = styled.div`
   color: #fc8181;
   font-size: 0.75rem;
-  text-align: left;
   margin-top: 0.25rem;
+  position: absolute;
+  bottom: -10px;
 `;
