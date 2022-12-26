@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { withRouter } from "storybook-addon-react-router-v6";
 
 export const NavBarContainer = styled.div`
   display: flex;
@@ -6,6 +7,7 @@ export const NavBarContainer = styled.div`
   align-items: center;
   width: 100%;
   height: 60px;
+  padding-right: 10px;
 `;
 
 export const NavBarSection = styled.div`
@@ -25,5 +27,10 @@ export const ProfileContainer = styled.div`
     margin-right: 12px;
     border-radius: 40px;
     border: 1px solid var(--purple);
+  }
+  @media (max-width: 900px) {
+    & > h2 {
+      display: none;
+    }
   }
 `;

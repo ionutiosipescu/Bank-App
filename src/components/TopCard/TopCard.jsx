@@ -24,23 +24,23 @@ function TopCard({ amount, percent, label, primary, size }) {
             )}
           </CardIcon>
           <div>
-            <h5>{label}</h5>
-            <h1>{primary ? `+${amount}` : `-${amount}`}</h1>
+            <h4>{label}</h4>
+            <h2>{primary ? `+${amount}` : `-${amount}`}</h2>
           </div>
         </CardHeader>
         <CardFeature>
           {percent > 0 ? (
             <>
               <TiArrowSortedUp color="green" size={20} />
-              <h5 style={{ color: "green" }}>{percent}%</h5>
+              <h4 style={{ color: "green" }}>{percent}%</h4>
             </>
           ) : (
             <>
               <TiArrowSortedDown color="red" size={20} />
-              <h5 style={{ color: "red" }}>{percent}%</h5>
+              <h4 style={{ color: "red" }}>{percent}%</h4>
             </>
           )}
-          <div>last month</div>
+          {/* <div>last month</div> */}
         </CardFeature>
       </CardHeader>
       <CardBody>

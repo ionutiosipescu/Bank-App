@@ -16,11 +16,11 @@ function OutcomeChart() {
       <CardBody style={{ padding: "10px 20px 40px 20px" }}>
         <DoughnutChart chartData={chartData} />
         <OutcomeBody>
-          <h1>Legend</h1>
+          <h2 style={{ marginBottom: "20px" }}>Legend</h2>
           {chartData.map((item) => (
-            <LegendItem>
+            <LegendItem key={item.id}>
               <BsCircleFill color={item.color} />
-              <h2>{item.item}</h2>
+              <h4>{item.item}</h4>
             </LegendItem>
           ))}
         </OutcomeBody>

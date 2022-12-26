@@ -7,7 +7,7 @@ function BalanceCard({ balance, color, name, valid, cardNum, size }) {
   return (
     <CardContainer color={color} size={size}>
       <CardHeader>
-        <h2>My Balance</h2>
+        <h3>My Balance</h3>
         <h1>{balance}</h1>
       </CardHeader>
       <CardBody>
@@ -15,12 +15,12 @@ function BalanceCard({ balance, color, name, valid, cardNum, size }) {
       </CardBody>
       <CardFooter>
         <div>
-          <h3>Card Holder</h3>
-          <h2>{name}</h2>
+          <h4>Card Holder</h4>
+          <h3>{name}</h3>
         </div>
         <div>
-          <h3>Valid Until</h3>
-          <h2>{valid}</h2>
+          <h4>Valid Until</h4>
+          <h3>{valid}</h3>
         </div>
       </CardFooter>
       <Circle one />

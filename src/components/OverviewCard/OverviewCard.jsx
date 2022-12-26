@@ -5,6 +5,7 @@ import { CardBody } from "../TopCard/TopCard.style";
 import { CardContainer, CardHeader } from "./../UI/Card/Card.style";
 
 import { dailyBalanceData as chartData } from "../../utils/data/dummyData";
+import { Item } from "./OverviewCard.style";
 
 function OverviewCard() {
   const [primary, setPrimary] = useState(true);
@@ -14,18 +15,18 @@ function OverviewCard() {
       <CardHeader flex="row">
         <h3>Overview</h3>
         <div>
-          <div onClick={(e) => setPrimary(true)}>
+          <Item onClick={() => setPrimary(true)}>
             <BsRecordCircleFill
               color={`${primary ? "var(--purple)" : "var(--gray-dark)"}`}
             />
             <p>This Week</p>
-          </div>
-          <div onClick={(e) => setPrimary(false)}>
+          </Item>
+          <Item onClick={() => setPrimary(false)}>
             <BsRecordCircleFill
               color={`${primary ? "var(--gray-dark)" : "var(--blue)"}`}
             />
             <p>Last Week</p>
-          </div>
+          </Item>
         </div>
       </CardHeader>
       <CardBody>

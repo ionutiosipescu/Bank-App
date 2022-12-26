@@ -5,6 +5,15 @@ export const CardHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  margin-bottom: 5px;
+  & > div {
+    margin-right: 20px;
+  }
+  @media (max-width: 1635px) {
+    & > div {
+      margin-right: 5px;
+    }
+  } ;
 `;
 
 export const CardIcon = styled.div`
@@ -28,5 +37,5 @@ export const CardBody = styled.div`
   display: flex;
   width: 100%;
   height: 100%;
-  margin: 10px 0px 10px 0px;
+  /* padding-bottom: 10px; */
 `;

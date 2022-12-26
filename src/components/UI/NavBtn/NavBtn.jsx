@@ -5,7 +5,7 @@ import Button from "../Button/Button";
 import { Label, NavBtnContainer } from "./NavBtn.style";
 import { PropTypes } from "prop-types";
 
-function NavBtn({ to, children, label }) {
+function NavBtn({ to, children, label, active }) {
   const [btnState, setBtnState] = useState(false);
 
   const handleClick = () => {
@@ -15,7 +15,7 @@ function NavBtn({ to, children, label }) {
   return (
     <NavBtnContainer active={btnState} onClick={handleClick}>
       <Button to={to}>{children}</Button>
-      <Label as={Link} to={to}>
+      <Label as={Link} to={to} active={active}>
         {label}
       </Label>
     </NavBtnContainer>
