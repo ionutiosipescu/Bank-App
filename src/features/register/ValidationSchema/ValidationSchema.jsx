@@ -1,7 +1,5 @@
 import * as yup from "yup";
 
-const addressRules = /\d/;
-
 export const registerSchema = yup.object().shape({
   firstname: yup
     .string()
@@ -21,7 +19,7 @@ export const registerSchema = yup.object().shape({
     .string()
     .min(10, "Street, number, etc ...")
     .max(50, "Address is too long")
-    .matches(addressRules, { message: "Invalid Address" })
+    .matches(/\d/, { message: "Invalid Address" }) // /\d/ require at least 1 number
     .required("Required"),
   age: yup
     .number()

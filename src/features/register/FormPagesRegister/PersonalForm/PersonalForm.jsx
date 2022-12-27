@@ -15,6 +15,7 @@ import RadioButtons from "../../CustomInputsRegister/CustomRadioInputGroup";
 function PersonalForm() {
   const dispatch = useDispatch();
   const registerData = useSelector(selectRegisterUser);
+  // const { firstname, lastname, country, address, age, gender } = registerData; // keep data after next and back button
 
   const setData = (e) => {
     dispatch(setRegisterUser(registerData, e));
@@ -52,6 +53,7 @@ function PersonalForm() {
               small
               placeholder="Enter your firstname"
               setData={setData}
+              // value={firstname || ""}
             />
             <CustomInput
               label="Lastname"
