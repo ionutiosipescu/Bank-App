@@ -23,6 +23,7 @@ export const InputForm = styled.input`
     border: 2px solid var(--blue);
   }
 `;
+export const InputRadio = styled.input``;
 export const InputSelect = styled.select`
   height: 30px;
   width: ${(props) => (props.small ? "150px" : "310px")};

@@ -17,10 +17,10 @@ const CustomInput = ({ label, ...props }) => {
         <InputForm
           {...field}
           {...props}
-          //   onChange={(e) => {
-          //     field.onChange(e);
-          //     props.setData(e);
-          //   }}
+          onChange={(e) => {
+            field.onChange(e);
+            props.setData(e);
+          }}
           className={meta.touched && meta.error ? "input-error" : ""}
         />
         {meta.touched && meta.error && <Error>{meta.error}</Error>}

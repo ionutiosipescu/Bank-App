@@ -3,7 +3,7 @@ import { Field } from "formik";
 import { useField } from "formik";
 import {
   Group,
-  InputForm,
+  InputRadio,
   Error,
 } from "../../../components/UI/Input/Input.style";
 import "../../../components/UI/Input/Input.css";
@@ -16,7 +16,6 @@ export const options = [
 const RadioButtons = ({ label, ...props }) => {
   //   const { label, name, options, ...rest } = props;
   const [field, meta] = useField(props);
-
   return (
     <Group>
       <label>{label}</label>
@@ -26,9 +25,13 @@ const RadioButtons = ({ label, ...props }) => {
             return props.options.map((option) => {
               return (
                 <React.Fragment key={option.key}>
-                  <input
+                  <InputRadio
                     {...field}
                     {...props}
+                    onChange={(e) => {
+                      field.onChange(e);
+                      props.setData(e);
+                    }}
                     id={option.value}
                     value={option.value}
                     checked={field.value === option.value}

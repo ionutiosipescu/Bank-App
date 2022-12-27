@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { RegisterFormPart } from "../../FormRegister/FormRegister.style";
 import { Formik, Form } from "formik";
 import { useDispatch } from "react-redux";
@@ -10,15 +10,23 @@ import CustomInput from "../../CustomInputsRegister/CustomInput";
 import CustomSelect from "../../CustomInputsRegister/CustomSelect";
 import FormikControl from "../../CustomInputsRegister/FormikControl";
 import { options } from "../../CustomInputsRegister/CustomRadioInputGroup";
+import RadioButtons from "../../CustomInputsRegister/CustomRadioInputGroup";
 
 function PersonalForm() {
-  // const setData = (e) => {
-  //   dispatch(setLogInUser(loginData, e));
-  // };
+  const dispatch = useDispatch();
+  const registerData = useSelector(selectRegisterUser);
+
+  const setData = (e) => {
+    dispatch(setRegisterUser(registerData, e));
+  };
 
   const handleSubmit = (values) => {
     console.log(values);
+    console.log(registerData);
   };
+  useEffect(() => {
+    console.log(registerData);
+  }, [registerData]);
 
   const initialObject = {
     firstname: "",
@@ -43,6 +51,7 @@ function PersonalForm() {
               type="text"
               small
               placeholder="Enter your firstname"
+              setData={setData}
             />
             <CustomInput
               label="Lastname"
@@ -50,6 +59,7 @@ function PersonalForm() {
               type="text"
               small
               placeholder="Enter your lastname"
+              setData={setData}
             />
           </RegisterFormPart>
           <RegisterFormPart>
@@ -58,6 +68,7 @@ function PersonalForm() {
               name="country"
               placeholder="Select a country"
               small
+              setData={setData}
             >
               <option value="">Select a country</option>
               <option value="romania">Romania</option>
@@ -71,15 +82,17 @@ function PersonalForm() {
               type="text"
               small
               placeholder="Enter your address"
+              setData={setData}
             />
           </RegisterFormPart>
           <RegisterFormPart>
-            <FormikControl
+            <RadioButtons
               type="radio"
-              control="radio"
+              // control="radio"
               label="Gender"
               name="gender"
               options={options}
+              setData={setData}
             />
             <CustomInput
               label="Age"
@@ -87,6 +100,7 @@ function PersonalForm() {
               type="number"
               small
               placeholder="Enter your age"
+              setData={setData}
             />
           </RegisterFormPart>
 

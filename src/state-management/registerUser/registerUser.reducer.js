@@ -1,23 +1,21 @@
 import { REGISTER_ACTION_TYPES } from "./registerUser.types";
 
 const INITIAL_STATE = {
-  userDataObj: {
-    userProfile: {
-      lastName: "",
-      firstName: "",
-      email: "",
-      city: "",
-      number: "",
-      displayName: "",
-      mobile: "",
-      birthDate: "",
-      gender: "",
-      password: "",
-      confirmPassword: "",
-      createdAt: "",
-    },
-    userPlan: [],
+  userProfile: {
+    firstname: "",
+    lastname: "",
+    country: "",
+    address: "",
+    age: "",
+    gender: "",
+    email: "",
+    displayName: "",
+    mobile: "",
+    password: "",
+    confirmPassword: "",
+    createdAt: "",
   },
+  userPlan: [],
 };
 
 export const registerReducer = (state = INITIAL_STATE, action) => {
@@ -25,7 +23,7 @@ export const registerReducer = (state = INITIAL_STATE, action) => {
 
   switch (type) {
     case REGISTER_ACTION_TYPES.SET_REGISTER_USER:
-      return { ...state, RegisterData: { ...payload } };
+      return { ...state, userProfile: { ...payload } };
     default:
       return state;
   }

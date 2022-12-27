@@ -16,6 +16,10 @@ const CustomSelect = ({ label, ...props }) => {
         <InputSelect
           {...field}
           {...props}
+          onChange={(e) => {
+            field.onChange(e);
+            props.setData(e);
+          }}
           className={meta.touched && meta.error ? "input-error" : ""}
         />
         {meta.touched && meta.error && <Error>{meta.error}</Error>}
