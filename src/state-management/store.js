@@ -5,31 +5,19 @@ import { rootReducer } from "./root-reducer";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
-// varianta cu logger
+const persistConfig = {
+  key: "root",
+  storage,
+  blacklist: ["login", "_persist"],
+};
 
-const createStoreWithMiddlerware = applyMiddleware(logger)(configureStore);
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-export const store = createStoreWithMiddlerware({ reducer: rootReducer });
+const middleWares = [logger];
 
-// varianta cu logger si local storage care momentan functioneaza doar local storage nu si logger
+export const store = configureStore({
+  reducer: persistedReducer,
+  middleware: middleWares,
+});
 
-// const persistConfig = {
-//   key: "root",
-//   storage,
-//   blacklist: ["login", "_persist"],
-// };
-
-// const persistedReducer = persistReducer(persistConfig, rootReducer);
-
-// const createStoreWithMiddlerware = applyMiddleware(logger);
-
-// export const store = configureStore({
-//   reducer: persistedReducer,
-//   middleware: (getDefaultMiddleware) =>
-//     getDefaultMiddleware({
-//       serializableCheck: false,
-//     }),
-//   logger,
-// });
-
-// export const persistor = persistStore(store);
+export const persistor = persistStore(store);

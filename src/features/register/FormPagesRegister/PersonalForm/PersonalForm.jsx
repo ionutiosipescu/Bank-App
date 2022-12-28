@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { RegisterFormPart } from "../../FormRegister/FormRegister.style";
 import { Formik, Form } from "formik";
 import { useDispatch } from "react-redux";
@@ -13,9 +13,18 @@ import { options } from "../../CustomInputsRegister/CustomRadioInputGroup";
 import RadioButtons from "../../CustomInputsRegister/CustomRadioInputGroup";
 
 function PersonalForm() {
+  const [dataFromLs, setDataFromLS] = useState("");
   const dispatch = useDispatch();
   const registerData = useSelector(selectRegisterUser);
-  // const { firstname, lastname, country, address, age, gender } = registerData; // keep data after next and back button
+  const { firstname, lastname, country, address, age, gender } = registerData; // destructure data from Redux for updating on every keypress
+  const {
+    firstname: firstnameLs,
+    lastname: lastnameLs,
+    country: countryLs,
+    address: addressLs,
+    age: ageLs,
+    gender: genderLs,
+  } = dataFromLs; // destructure data from Local Storage when refresh the page
 
   const setData = (e) => {
     dispatch(setRegisterUser(registerData, e));
@@ -27,7 +36,22 @@ function PersonalForm() {
   };
   useEffect(() => {
     console.log(registerData);
+    console.log(dataFromLs);
   }, [registerData]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await JSON.parse(localStorage.getItem("persist:root"));
+        const registerData = await JSON.parse(data.register);
+        const userProfileData = await registerData.userProfile;
+        setDataFromLS(userProfileData);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
 
   const initialObject = {
     firstname: "",
@@ -53,7 +77,7 @@ function PersonalForm() {
               small
               placeholder="Enter your firstname"
               setData={setData}
-              // value={firstname || ""}
+              value={firstname || firstnameLs}
             />
             <CustomInput
               label="Lastname"
@@ -62,6 +86,7 @@ function PersonalForm() {
               small
               placeholder="Enter your lastname"
               setData={setData}
+              value={lastname || lastnameLs}
             />
           </RegisterFormPart>
           <RegisterFormPart>
@@ -71,6 +96,7 @@ function PersonalForm() {
               placeholder="Select a country"
               small
               setData={setData}
+              value={country || countryLs}
             >
               <option value="">Select a country</option>
               <option value="romania">Romania</option>
@@ -85,6 +111,7 @@ function PersonalForm() {
               small
               placeholder="Enter your address"
               setData={setData}
+              value={address || addressLs}
             />
           </RegisterFormPart>
           <RegisterFormPart>
@@ -95,6 +122,8 @@ function PersonalForm() {
               name="gender"
               options={options}
               setData={setData}
+              value={gender || genderLs}
+              checked={gender || genderLs}
             />
             <CustomInput
               label="Age"
@@ -103,6 +132,7 @@ function PersonalForm() {
               small
               placeholder="Enter your age"
               setData={setData}
+              value={age || ageLs}
             />
           </RegisterFormPart>
 
