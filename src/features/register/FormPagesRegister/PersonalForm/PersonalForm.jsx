@@ -8,23 +8,26 @@ import { selectRegisterUser } from "../../../../state-management/registerUser/re
 import { registerSchema } from "../../ValidationSchema/ValidationSchema";
 import CustomInput from "../../CustomInputsRegister/CustomInput";
 import CustomSelect from "../../CustomInputsRegister/CustomSelect";
-import FormikControl from "../../CustomInputsRegister/FormikControl";
 import { options } from "../../CustomInputsRegister/CustomRadioInputGroup";
 import RadioButtons from "../../CustomInputsRegister/CustomRadioInputGroup";
+import { selectRegisterLocalStorage } from "../../../../state-management/registerhelper/registerhelper.selector";
+import { fetchRegisterLocalStorageAsync } from "../../../../state-management/registerhelper/registerhelper.actions";
+import { getLocalStorage } from "../../../../utils/helpers/localStorage/getLocalStorage";
+import axios from "axios";
 
 function PersonalForm() {
-  const [dataFromLs, setDataFromLS] = useState("");
+  // const [dataFromLs, setDataFromLS] = useState("");
   const dispatch = useDispatch();
   const registerData = useSelector(selectRegisterUser);
-  const { firstname, lastname, country, address, age, gender } = registerData; // destructure data from Redux for updating on every keypress
-  const {
-    firstname: firstnameLs,
-    lastname: lastnameLs,
-    country: countryLs,
-    address: addressLs,
-    age: ageLs,
-    gender: genderLs,
-  } = dataFromLs; // destructure data from Local Storage when refresh the page
+  // const dataFromLs = useSelector(selectRegisterLocalStorage);
+  const { firstname, lastname, country, address, age } = registerData; // destructure data from Redux for updating on every keypress
+  // const {
+  //   firstname: firstnameLs,
+  //   lastname: lastnameLs,
+  //   country: countryLs,
+  //   address: addressLs,
+  //   age: ageLs,
+  // } = dataFromLs; // destructure data from Local Storage when refresh the page
 
   const setData = (e) => {
     dispatch(setRegisterUser(registerData, e));
@@ -36,35 +39,29 @@ function PersonalForm() {
   };
   useEffect(() => {
     console.log(registerData);
-    console.log(dataFromLs);
+    // console.log(dataFromLs);
   }, [registerData]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await JSON.parse(localStorage.getItem("persist:root"));
-        const registerData = await JSON.parse(data.register);
-        const userProfileData = await registerData.userProfile;
-        setDataFromLS(userProfileData);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   dispatch(fetchRegisterLocalStorageAsync());
+  // }, []);
 
-  const initialObject = {
-    firstname: "",
-    lastname: "",
-    country: "",
-    address: "",
-    age: "",
-    gender: "",
-  };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const userProfileData = await getLocalStorage("persist:root");
+  //       setDataFromLS(userProfileData);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+  //   fetchData();
+  // }, []);
+
   return (
     <>
       <Formik
-        initialValues={{ ...initialObject }}
+        initialValues={{ ...registerData }}
         validationSchema={registerSchema}
         onSubmit={handleSubmit}
       >
@@ -77,7 +74,7 @@ function PersonalForm() {
               small
               placeholder="Enter your firstname"
               setData={setData}
-              value={firstname || firstnameLs}
+              value={firstname || ""}
             />
             <CustomInput
               label="Lastname"
@@ -86,7 +83,7 @@ function PersonalForm() {
               small
               placeholder="Enter your lastname"
               setData={setData}
-              value={lastname || lastnameLs}
+              value={lastname || ""}
             />
           </RegisterFormPart>
           <RegisterFormPart>
@@ -96,7 +93,7 @@ function PersonalForm() {
               placeholder="Select a country"
               small
               setData={setData}
-              value={country || countryLs}
+              value={country || ""}
             >
               <option value="">Select a country</option>
               <option value="romania">Romania</option>
@@ -111,19 +108,17 @@ function PersonalForm() {
               small
               placeholder="Enter your address"
               setData={setData}
-              value={address || addressLs}
+              value={address || ""}
             />
           </RegisterFormPart>
           <RegisterFormPart>
             <RadioButtons
               type="radio"
-              // control="radio"
               label="Gender"
               name="gender"
               options={options}
               setData={setData}
-              value={gender || genderLs}
-              checked={gender || genderLs}
+              // dataFromLs={dataFromLs}
             />
             <CustomInput
               label="Age"
@@ -132,10 +127,9 @@ function PersonalForm() {
               small
               placeholder="Enter your age"
               setData={setData}
-              value={age || ageLs}
+              value={age || ""}
             />
           </RegisterFormPart>
-
           <button type="submit">submit</button>
         </Form>
       </Formik>
@@ -144,80 +138,3 @@ function PersonalForm() {
 }
 
 export default PersonalForm;
-
-// const { userData, setUserData } = values;
-// const { lastName, firstName, city, number, birthDate, gender } =
-//   userData.userDataObj.userProfile;
-
-// const handleChange = (e) => {
-//   const { name, value } = e.target;
-//   setUserData({
-//     ...userData,
-//     userDataObj: {
-//       ...userData.userDataObj,
-//       userProfile: {
-//         ...userData.userDataObj.userProfile,
-//         [name]: value,
-//       },
-//     },
-//   });
-// };
-// console.log(userData);
-
-{
-  /* <RegisterFormPart>
-        <Input
-          onChange={handleChange}
-          type="text"
-          label="First Name"
-          small
-          name="firstName"
-          value={firstName || ""}
-        />
-        <Input
-          onChange={handleChange}
-          type="text"
-          label="Last Name"
-          small
-          name="lastName"
-          value={lastName || ""}
-        />
-      </RegisterFormPart>
-      <RegisterFormPart>
-        <Input
-          onChange={handleChange}
-          type="text"
-          label="Address"
-          small
-          placeholder="City"
-          value={city || ""}
-          name="city"
-        />
-        <Input
-          onChange={handleChange}
-          type="text"
-          small
-          placeholder="Number, Suite, etc"
-          value={number || ""}
-          name="number"
-        />
-      </RegisterFormPart>
-      <RegisterFormPart>
-        <Input
-          onChange={handleChange}
-          type="text"
-          label="Gender"
-          small
-          value={gender || ""}
-          name="gender"
-        />
-        <Input
-          onChange={handleChange}
-          type="date"
-          label="Birth Date"
-          small
-          value={birthDate || ""}
-          name="birthDate"
-        />
-      </RegisterFormPart> */
-}

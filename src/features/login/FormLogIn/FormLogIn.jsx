@@ -10,25 +10,29 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectLoginUser } from "../../../state-management/loginUser/loginUser.selector";
 import { setLogInUser } from "../../../state-management/loginUser/loginUser.action";
 import { debounce } from "debounce";
-import { selectStep } from "../../../state-management/registerUser/step/stepredux";
-import { setStep } from "../../../state-management/registerUser/step/stepredux";
+import { selectStep } from "../../../state-management/registerhelper/registerhelper.selector";
+import { setStep } from "../../../state-management/registerhelper/registerhelper.actions";
+import axios from "axios";
 
 function FormLogIn() {
   const dispatch = useDispatch();
   const loginData = useSelector(selectLoginUser);
-  const step = useSelector(selectStep);
 
   // const [isSubmitting, setIsSubmitting] = useState(false);
   // const navigate = useNavigate();
 
   const onSubmit = (values, actions) => {
     // setIsSubmitting(true);
-    // console.log(loginData);
+    console.log(loginData);
+    // axios
+    //   .post("http://localhost:8080/bank/auth/signup", loginData)
+    //   .then((res) => console.log(res.data));
   };
 
   const setData = debounce((e) => {
     dispatch(setLogInUser(loginData, e));
   }, 500);
+
   // useEffect(() => {
   //   if (isSubmitting) {
   //     navigate("/dashboard");
@@ -37,21 +41,12 @@ function FormLogIn() {
   //   }
   // }, [isSubmitting]);
 
-  const handletest = () => {
-    dispatch(setStep(step - 1));
-    console.log(step);
-  };
-
-  useEffect(() => {
-    console.log(step);
-  }, [step]);
-
   const initialObject = {
     username: "",
     password: "",
+    email: "",
     acceptedTos: false,
   };
-  console.log(step);
   return (
     <Formik
       initialValues={{ ...initialObject }}
@@ -66,6 +61,13 @@ function FormLogIn() {
           placeholder="Enter your username"
           setData={setData}
         />
+        <CustomInput
+          label="Email"
+          name="email"
+          type="email"
+          placeholder="Enter your email"
+          setData={setData}
+        />
         <CustomPassword
           label="Password"
           name="password"
@@ -76,9 +78,6 @@ function FormLogIn() {
         <CustomCheckbox type="checkbox" name="acceptedTos" />
 
         <button type="submit">Submit</button>
-        <button onClick={handletest} type="button">
-          test
-        </button>
       </Form>
     </Formik>
   );

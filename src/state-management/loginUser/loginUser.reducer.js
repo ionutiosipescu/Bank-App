@@ -4,6 +4,7 @@ const INITIAL_STATE = {
   LoginData: {
     username: "",
     password: "",
+    email: "",
   },
 };
 

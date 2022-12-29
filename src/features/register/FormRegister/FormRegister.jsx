@@ -12,8 +12,8 @@ import { Form, Formik } from "formik";
 import Step from "../Step/Step";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { setStep } from "../../../state-management/registerUser/step/stepredux";
-import { selectStep } from "../../../state-management/registerUser/step/stepredux";
+import { setStep } from "../../../state-management/registerhelper/registerhelper.actions";
+import { selectStep } from "../../../state-management/registerhelper/registerhelper.selector";
 
 function FormRegister() {
   const dispatch = useDispatch();

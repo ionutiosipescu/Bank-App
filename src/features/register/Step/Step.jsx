@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { selectStep } from "../../../state-management/registerUser/step/stepredux";
+import { selectStep } from "../../../state-management/registerhelper/registerhelper.selector";
 import AccountForm from "../FormPagesRegister/AccountForm/AccountForm";
 import ConfirmForm from "../FormPagesRegister/ConfirmForm/ConfirmForm";
 import PersonalForm from "../FormPagesRegister/PersonalForm/PersonalForm";

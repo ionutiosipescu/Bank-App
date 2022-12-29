@@ -7,6 +7,8 @@ import {
   Error,
 } from "../../../components/UI/Input/Input.style";
 import "../../../components/UI/Input/Input.css";
+import { useSelector } from "react-redux";
+import { selectRegisterUser } from "../../../state-management/registerUser/registerUser.selector";
 
 export const options = [
   { key: "Male", value: "male" },
@@ -14,7 +16,8 @@ export const options = [
 ];
 
 const RadioButtons = ({ label, ...props }) => {
-  //   const { label, name, options, ...rest } = props;
+  const registerData = useSelector(selectRegisterUser);
+  const { gender } = registerData;
   const [field, meta] = useField(props);
   return (
     <Group>
@@ -33,8 +36,8 @@ const RadioButtons = ({ label, ...props }) => {
                       props.setData(e);
                     }}
                     id={option.value}
-                    value={option.value}
-                    checked={field.value === option.value}
+                    value={option.value || ""}
+                    checked={gender === option.value}
                     className={meta.touched && meta.error ? "input-error" : ""}
                   />
                   <label htmlFor={option.value}>{option.key}</label>
