@@ -5,15 +5,9 @@ import Button from "../Button/Button";
 import { Label, NavBtnContainer } from "./NavBtn.style";
 import { PropTypes } from "prop-types";
 
-function NavBtn({ to, children, label, active }) {
-  const [btnState, setBtnState] = useState(false);
-
-  const handleClick = () => {
-    setBtnState(!btnState);
-  };
-
+function NavBtn({ to, children, label, active, selected, onClick }) {
   return (
-    <NavBtnContainer active={btnState} onClick={handleClick}>
+    <NavBtnContainer selected={selected} onClick={onClick}>
       <Button to={to}>{children}</Button>
       <Label as={Link} to={to} active={active}>
         {label}

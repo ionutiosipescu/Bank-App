@@ -6,7 +6,7 @@ export const TopContainer = styled.div`
   height: 50vh;
   width: calc(100% - 30px);
   margin: 30px 30px 0 0;
-  padding: 20px;
+  padding: 30px;
   border-radius: 40px;
   background-color: var(--white);
   box-shadow: 0px 0px 15px -8px rgba(21, 20, 47, 0.73);
@@ -34,14 +34,16 @@ export const CardsContainer = styled.div`
     }
     ${(props) =>
       props.clicked
-        ? "transform: translate(-100px, 0px); z-index: 1;"
-        : "transform: translate(-150px, -50px); z-index: 2;"};
+        ? "transform: translate(-120px, -20px); z-index: 1;"
+        : "transform: translate(-170px, -50px); z-index: 2;"};
   }
   & > div:last-child {
     ${(props) =>
       props.clicked
-        ? "transform: translate(-150px, -50px); z-index: 2;"
-        : "transform: translate(-100px, 0px); z-index: 1;"};
+        ? "transform: translate(-170px, -50px); z-index: 2;"
+        : "transform: translate(-130px, -10px); z-index: 1;"};
+  }
+  @media (max-width: 1680px) {
   }
 `;
 

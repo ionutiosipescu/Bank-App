@@ -5,15 +5,28 @@ import NavBtn from "../../components/UI/NavBtn/NavBtn";
 import Button from "../../components/UI/Button/Button";
 
 import {
-  BsArrowLeftRight,
+  // BsArrowLeftRight,
   BsCreditCard,
   BsHouseDoor,
   BsPersonXFill,
+  BsTools,
 } from "react-icons/bs";
 import { SiWebmoney } from "react-icons/si";
 import { TiChevronLeft, TiChevronRight } from "react-icons/ti";
 
+const pages = [
+  {
+    link: "/dashboard",
+    label: "Dashboard",
+    icon: <BsHouseDoor size={22} />,
+  },
+  { link: "/cards", label: "Cards", icon: <BsCreditCard size={22} /> },
+  { link: "/service", label: "Services", icon: <BsTools size={22} /> },
+];
+
 function SideBar({ active, handleActive }) {
+  const [selected, setSelected] = useState(null);
+
   return (
     <SideBarWrapper active={active}>
       <BtnContainer>
@@ -38,26 +51,17 @@ function SideBar({ active, handleActive }) {
             </>
           )}
         </LogoContainer>
-        <NavBtn
-          to="/dashboard"
-          label={active ? "Dashboard" : ""}
-          active={active}
-        >
-          <BsHouseDoor size={22} />
-        </NavBtn>
-        <NavBtn
-          to="/transactions"
-          label={active ? "Transactions" : ""}
-          active={active}
-        >
-          <BsArrowLeftRight size={22} />
-        </NavBtn>
-        <NavBtn to="/cards" label={active ? "Cards" : ""} active={active}>
-          <BsCreditCard size={22} />
-        </NavBtn>
-        <NavBtn to="/" label={active ? "Something2" : ""} active={active}>
-          <BsCreditCard size={22} />
-        </NavBtn>
+        {pages.map((page, index) => (
+          <NavBtn
+            to={page.link}
+            label={active ? page.label : ""}
+            active={active}
+            onClick={() => setSelected(index)}
+            selected={selected === index ? true : false}
+          >
+            {page.icon}
+          </NavBtn>
+        ))}
       </BtnContainer>
       {active ? (
         <Button label="Log Out" to="/login" size="100" primary={true} />

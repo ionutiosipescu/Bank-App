@@ -6,14 +6,14 @@ export const NavBtnContainer = styled.div`
   width: 80%;
   cursor: pointer;
   ${(props) =>
-    props.active === true
+    props.selected === true
       ? `& :nth-child(1) {
     background-color: var(--purple);
     color: var(--white);
     transition: 0.3s;
   }
-  & h2 {
-    opacity: 1;
+  & * {
+    opacity: 1 !important;
   }`
       : ""}
 `;

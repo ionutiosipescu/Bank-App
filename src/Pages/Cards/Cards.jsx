@@ -60,10 +60,10 @@ function Cards() {
             <FeatureCard type="withdraw" />
           </FeatureContainer>
           <CardInfo
-            name={data.owner}
-            cardNumber={data.cardNumber}
-            valid={data.validity}
-            currency="EUR"
+            name={clicked ? data_2.owner : data.owner}
+            cardNumber={clicked ? data_2.cardNumber : data.cardNumber}
+            valid={clicked ? data_2.validity : data.validity}
+            currency={clicked ? "USD" : "EUR"}
           />
         </RightWrapper>
       </TopContainer>
