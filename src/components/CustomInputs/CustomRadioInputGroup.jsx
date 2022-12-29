@@ -1,14 +1,10 @@
 import React from "react";
 import { Field } from "formik";
 import { useField } from "formik";
-import {
-  Group,
-  InputRadio,
-  Error,
-} from "../../../components/UI/Input/Input.style";
-import "../../../components/UI/Input/Input.css";
+import { Group, InputRadio, Error } from "../UI/Input/Input.style";
+import "../UI/Input/Input.css";
 import { useSelector } from "react-redux";
-import { selectRegisterUser } from "../../../state-management/registerUser/registerUser.selector";
+import { selectRegisterUser } from "../../state-management/registerUser/registerUser.selector";
 
 export const options = [
   { key: "Male", value: "male" },

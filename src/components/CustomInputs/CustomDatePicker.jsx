@@ -4,7 +4,7 @@ import {
   InputForm,
   InputDate,
   Error,
-} from "../../../components/UI/Input/Input.style";
+} from "../UI/Input/Input.style";
 import "../../../components/UI/Input/Input.css";
 import { useField, useFormikContext } from "formik";
 import "react-datepicker/dist/react-datepicker.css";

@@ -1,10 +1,6 @@
 import { useField } from "formik";
-import {
-  InputForm,
-  Error,
-  Checkbox,
-} from "../../../components/UI/Input/Input.style";
-import "../../../components/UI/Input/Input.css";
+import { InputForm, Error, Checkbox } from "../UI/Input/Input.style";
+import "../UI/Input/Input.css";
 
 const CustomCheckbox = ({ label, ...props }) => {
   const [field, meta] = useField(props);
@@ -18,9 +14,8 @@ const CustomCheckbox = ({ label, ...props }) => {
           className={meta.touched && meta.error ? "input-error" : ""}
         />
         <span>I accept the terms of service</span>
+        {meta.touched && meta.error && <Error>{meta.error}</Error>}
       </Checkbox>
-
-      {meta.touched && meta.error && <Error>{meta.error}</Error>}
     </>
   );
 };

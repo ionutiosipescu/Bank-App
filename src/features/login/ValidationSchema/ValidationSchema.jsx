@@ -16,7 +16,9 @@ export const advancedSchema = yup.object().shape({
   email: yup.string().email("Please enter a valid email").required("Required"),
   acceptedTos: yup
     .boolean()
-    .oneOf([true], "Please accept the terms of service"),
+    .oneOf([true], "Please accept the terms of service")
+    .required("Required"),
+
   //   jobType: yup
   //     .string()
   //     .oneOf(["designer", "developer", "manager", "other"], "Invalid Job Type")

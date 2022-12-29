@@ -50,6 +50,7 @@ export const InputDate = styled(DatePicker)`
 `;
 
 export const Checkbox = styled.div`
+  position: relative;
   display: flex;
   justify-content: flex-start;
   align-items: center;

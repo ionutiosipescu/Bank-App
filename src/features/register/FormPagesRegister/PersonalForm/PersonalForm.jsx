@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { RegisterFormPart } from "../../FormRegister/FormRegister.style";
 import { Formik, Form } from "formik";
 import { useDispatch } from "react-redux";
@@ -6,28 +6,15 @@ import { useSelector } from "react-redux";
 import { setRegisterUser } from "../../../../state-management/registerUser/registerUser.action";
 import { selectRegisterUser } from "../../../../state-management/registerUser/registerUser.selector";
 import { registerSchema } from "../../ValidationSchema/ValidationSchema";
-import CustomInput from "../../CustomInputsRegister/CustomInput";
-import CustomSelect from "../../CustomInputsRegister/CustomSelect";
-import { options } from "../../CustomInputsRegister/CustomRadioInputGroup";
-import RadioButtons from "../../CustomInputsRegister/CustomRadioInputGroup";
-import { selectRegisterLocalStorage } from "../../../../state-management/registerhelper/registerhelper.selector";
-import { fetchRegisterLocalStorageAsync } from "../../../../state-management/registerhelper/registerhelper.actions";
-import { getLocalStorage } from "../../../../utils/helpers/localStorage/getLocalStorage";
-import axios from "axios";
+import CustomInput from "../../../../components/CustomInputs/CustomInput";
+import CustomSelect from "../../../../components/CustomInputs/CustomSelect";
+import { options } from "../../../../components/CustomInputs/CustomRadioInputGroup";
+import RadioButtons from "../../../../components/CustomInputs/CustomRadioInputGroup";
 
 function PersonalForm() {
-  // const [dataFromLs, setDataFromLS] = useState("");
   const dispatch = useDispatch();
   const registerData = useSelector(selectRegisterUser);
-  // const dataFromLs = useSelector(selectRegisterLocalStorage);
   const { firstname, lastname, country, address, age } = registerData; // destructure data from Redux for updating on every keypress
-  // const {
-  //   firstname: firstnameLs,
-  //   lastname: lastnameLs,
-  //   country: countryLs,
-  //   address: addressLs,
-  //   age: ageLs,
-  // } = dataFromLs; // destructure data from Local Storage when refresh the page
 
   const setData = (e) => {
     dispatch(setRegisterUser(registerData, e));
@@ -39,24 +26,7 @@ function PersonalForm() {
   };
   useEffect(() => {
     console.log(registerData);
-    // console.log(dataFromLs);
   }, [registerData]);
-
-  // useEffect(() => {
-  //   dispatch(fetchRegisterLocalStorageAsync());
-  // }, []);
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const userProfileData = await getLocalStorage("persist:root");
-  //       setDataFromLS(userProfileData);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-  //   fetchData();
-  // }, []);
 
   return (
     <>
@@ -118,7 +88,6 @@ function PersonalForm() {
               name="gender"
               options={options}
               setData={setData}
-              // dataFromLs={dataFromLs}
             />
             <CustomInput
               label="Age"

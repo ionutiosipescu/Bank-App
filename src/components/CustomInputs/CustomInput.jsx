@@ -1,12 +1,9 @@
 import { useField } from "formik";
-import {
-  Group,
-  InputForm,
-  Error,
-} from "../../../components/UI/Input/Input.style";
-import "../../../components/UI/Input/Input.css";
+import { Group, InputForm, Error } from "../UI/Input/Input.style";
+import "../UI/Input/Input.css";
 
-const CustomPassword = ({ label, ...props }) => {
+const CustomInput = ({ label, ...props }) => {
+  // fiedl , meta, helpers
   const [field, meta] = useField(props);
 
   return (
@@ -27,4 +24,4 @@ const CustomPassword = ({ label, ...props }) => {
     </>
   );
 };
-export default CustomPassword;
+export default CustomInput;

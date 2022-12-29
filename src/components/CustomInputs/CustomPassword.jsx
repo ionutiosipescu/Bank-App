@@ -1,19 +1,15 @@
 import { useField } from "formik";
-import {
-  Group,
-  InputSelect,
-  Error,
-} from "../../../components/UI/Input/Input.style";
-import "../../../components/UI/Input/Input.css";
+import { Group, InputForm, Error } from "../UI/Input/Input.style";
+import "../UI/Input/Input.css";
 
-const CustomSelect = ({ label, ...props }) => {
+const CustomPassword = ({ label, ...props }) => {
   const [field, meta] = useField(props);
 
   return (
     <>
       <Group>
         <label>{label}</label>
-        <InputSelect
+        <InputForm
           {...field}
           {...props}
           onChange={(e) => {
@@ -27,4 +23,4 @@ const CustomSelect = ({ label, ...props }) => {
     </>
   );
 };
-export default CustomSelect;
+export default CustomPassword;
