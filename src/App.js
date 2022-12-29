@@ -6,7 +6,7 @@ import ProtectedRoutes from "./ProtectedRoutes";
 
 function App() {
   return (
-    <>
+    <div>
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
@@ -14,7 +14,7 @@ function App() {
           <Route path="/*" element={<Home />} />
         </Route>
       </Routes>
-    </>
+    </div>
   );
 }
 

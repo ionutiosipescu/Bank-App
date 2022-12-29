@@ -6,11 +6,6 @@ export const CardBody = styled.div`
   align-items: center;
   width: 100%;
   z-index: 2;
-  @media (max-width: 1395px) {
-    & > h1 {
-      font-size: 1.8rem;
-    }
-  }
 `;
 
 export const CardFooter = styled.div`
@@ -47,7 +42,7 @@ export const Pill = styled.div`
     props.one ? "translate(230px, 70px)" : "translate(170px, 120px)"};
   opacity: ${(props) => (props.two ? "0.5" : "1")};
   background-color: ${(props) =>
-    props.color == "purple" ? "var(--blue)" : "var(--yellow)"};
+    props.color == "purple" ? "var(--blue)" : "var(--red)"};
   @media (max-width: 1395px) {
     transform: ${(props) =>
       props.one ? "translate(190px, 70px)" : "translate(140px, 120px)"};

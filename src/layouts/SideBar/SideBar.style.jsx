@@ -2,20 +2,18 @@ import styled from "styled-components";
 
 export const SideBarWrapper = styled.div`
   position: fixed;
-  top: 0;
-  left: 0;
   z-index: 10;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 100vh;
-  width: ${(props) => (props.active ? "300px" : "90px")};
-  background-color: var(--white);
+  height: 100%;
+  width: 250px;
   padding: 20px;
   box-shadow: 0px 0px 25px -8px rgba(21, 20, 47, 0.73);
+  background-color: var(--white);
   transition: 0.3s;
-  @media (max-width: 700px) {
+  @media (max-width: 1024px) {
     padding: 5px;
     width: ${(props) => (props.active ? "300px" : "65px")};
   }
@@ -43,7 +41,7 @@ export const BtnContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  align-items: center;
+  /* align-items: center; */
   height: fit-content;
   width: 100%;
 `;

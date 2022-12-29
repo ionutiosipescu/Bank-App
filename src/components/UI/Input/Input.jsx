@@ -3,7 +3,7 @@ import { InputForm, Group } from "./Input.style";
 
 function Input({ label, ...otherProps }) {
   return (
-    <Group>
+    <Group {...otherProps}>
       <label>{label}</label>
       <InputForm {...otherProps} />
     </Group>

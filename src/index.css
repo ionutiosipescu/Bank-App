@@ -36,3 +36,15 @@ code {
   --white: #fff;
   --text: #22242c;
 }
+
+.dark {
+  --purple: #64cef1;
+  --blue: #8080eb;
+  --yellow: #ffb74a;
+  --green: #00a389;
+  --red: #ff4a55;
+  --gray-dark: #f5f5f5;
+  --gray-light: #22242c;
+  --white: #2f2f3d;
+  --text: #e8ebff;
+}

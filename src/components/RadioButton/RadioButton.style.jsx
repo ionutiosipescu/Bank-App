@@ -6,7 +6,6 @@ export const RadioContainer = styled.div`
   justify-content: space-between;
   width: 125px;
   height: 110px;
-  font-size: 1.2rem;
   cursor: default;
   & > p {
     opacity: 0.8;
@@ -32,7 +31,6 @@ export const RadioPill = styled.div`
     ${(props) =>
       props.active === true ? "margin-left: 25px;" : "margin-right: 25px;"}
     font-weight: 600;
-    font-size: 1.2rem;
   }
 `;
 

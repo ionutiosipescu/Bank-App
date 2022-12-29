@@ -4,7 +4,12 @@ import { BtnContainer, LogoContainer, SideBarWrapper } from "./SideBar.style";
 import NavBtn from "../../components/UI/NavBtn/NavBtn";
 import Button from "../../components/UI/Button/Button";
 
-import { BsCreditCard, BsHouseDoor, BsPersonXFill } from "react-icons/bs";
+import {
+  BsArrowLeftRight,
+  BsCreditCard,
+  BsHouseDoor,
+  BsPersonXFill,
+} from "react-icons/bs";
 import { SiWebmoney } from "react-icons/si";
 import { TiChevronLeft, TiChevronRight } from "react-icons/ti";
 
@@ -40,10 +45,14 @@ function SideBar({ active, handleActive }) {
         >
           <BsHouseDoor size={22} />
         </NavBtn>
-        <NavBtn to="/cards" label={active ? "Cards" : ""} active={active}>
-          <BsCreditCard size={22} />
+        <NavBtn
+          to="/transactions"
+          label={active ? "Transactions" : ""}
+          active={active}
+        >
+          <BsArrowLeftRight size={22} />
         </NavBtn>
-        <NavBtn to="/" label={active ? "Something" : ""} active={active}>
+        <NavBtn to="/cards" label={active ? "Cards" : ""} active={active}>
           <BsCreditCard size={22} />
         </NavBtn>
         <NavBtn to="/" label={active ? "Something2" : ""} active={active}>

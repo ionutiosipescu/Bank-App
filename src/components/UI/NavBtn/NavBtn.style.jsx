@@ -19,7 +19,6 @@ export const NavBtnContainer = styled.div`
 `;
 
 export const Label = styled.h2`
-  font-size: 1.2rem;
   font-weight: 600;
   opacity: 0.7;
   color: var(--text);

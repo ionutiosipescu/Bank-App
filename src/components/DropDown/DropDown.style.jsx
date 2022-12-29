@@ -3,13 +3,12 @@ import styled from "styled-components";
 export const DropDownContainer = styled.div`
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
   width: 225px;
   height: 180px;
-  font-size: 1.2rem;
   cursor: default;
   & > p {
     opacity: 0.8;
+    margin-bottom: 10px;
   }
 `;
 
@@ -22,7 +21,6 @@ export const DropDownSelector = styled.div`
       : "height: 60px; border-radius: 30px; padding: 0px 25px; & > p { display: none; }"}
 
   justify-content: space-between;
-  font-size: 1.2rem;
   font-weight: 600;
   width: 100%;
   margin-top: 20px;

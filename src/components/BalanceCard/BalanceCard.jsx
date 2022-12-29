@@ -3,15 +3,15 @@ import { PropTypes } from "prop-types";
 import { CardContainer, CardHeader } from "../UI/Card/Card.style";
 import { CardBody, CardFooter, Circle, Pill } from "./BalanceCard.style";
 
-function BalanceCard({ balance, color, name, valid, cardNum, size }) {
+function BalanceCard({ balance, color, name, valid, cardNum, size, onClick }) {
   return (
-    <CardContainer color={color} size={size}>
+    <CardContainer color={color} size={size} onClick={onClick}>
       <CardHeader>
         <h3>My Balance</h3>
-        <h1>{balance}</h1>
+        <h2>{balance}</h2>
       </CardHeader>
       <CardBody>
-        <h1>{cardNum}</h1>
+        <h2>{cardNum}</h2>
       </CardBody>
       <CardFooter>
         <div>

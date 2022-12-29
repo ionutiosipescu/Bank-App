@@ -15,19 +15,17 @@ function TopCard({ amount, percent, label, primary, size }) {
   return (
     <CardContainer size={size}>
       <CardHeader>
-        <CardHeader style={{ width: "50%" }}>
-          <CardIcon primary={primary}>
-            {primary ? (
-              <TbTransferIn size={25} color="white" />
-            ) : (
-              <TbTransferOut size={25} color="white" />
-            )}
-          </CardIcon>
-          <div>
-            <h4>{label}</h4>
-            <h2>{primary ? `+${amount}` : `-${amount}`}</h2>
-          </div>
-        </CardHeader>
+        <CardIcon primary={primary}>
+          {primary ? (
+            <TbTransferIn size={25} color="white" />
+          ) : (
+            <TbTransferOut size={25} color="white" />
+          )}
+        </CardIcon>
+        <div>
+          <h4>{label}</h4>
+          <h3>{primary ? `+${amount}` : `-${amount}`}</h3>
+        </div>
         <CardFeature>
           {percent > 0 ? (
             <>

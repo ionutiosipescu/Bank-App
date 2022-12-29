@@ -1,47 +1,32 @@
 import styled from "styled-components";
-import TopCard from "./../../components/TopCard/TopCard";
 
 export const DashboardContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: start;
   width: 100%;
-  height: 100%;
-  @media (max-width: 1545px) {
-    flex-direction: row;
-  }
-  @media (max-width: 1125px) {
-    flex-direction: row;
-  }
-  @media (max-width: 965px) {
-    flex-direction: column;
+  height: 100vh;
+  @media (max-width: 1024px) {
+    /* flex-direction: row; */
   }
 `;
 
 export const TopContainer = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
-  @media (max-width: 1545px) {
-    flex-direction: column;
+  @media (max-width: 1024px) {
+    /* flex-direction: column; */
   }
 `;
 
 export const BottomContainer = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
-  @media (max-width: 1545px) {
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  @media (max-width: 1125px) {
-    flex-direction: column-reverse;
-    justify-content: flex-end;
-  }
-  @media (max-width: 965px) {
-    flex-direction: column;
+  @media (max-width: 1024px) {
+    /* flex-direction: column; */
   }
 `;

@@ -6,14 +6,6 @@ export const CardHeader = styled.div`
   align-items: center;
   width: 100%;
   margin-bottom: 5px;
-  & > div {
-    margin-right: 20px;
-  }
-  @media (max-width: 1635px) {
-    & > div {
-      margin-right: 5px;
-    }
-  } ;
 `;
 
 export const CardIcon = styled.div`

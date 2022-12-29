@@ -9,15 +9,27 @@ export const Group = styled.div`
   }
 `;
 export const InputForm = styled.input`
-  height: 40px;
-  width: ${(props) => (props.small ? "150px" : "310px")};
-  border: 1px solid var(--purple);
+  ${(props) =>
+    props.small
+      ? "width: 150px; height: 40px;"
+      : props.large
+      ? "width: 400px; height: 60px;"
+      : "width: 310px; height: 40px;"};
+  border: 1px solid var(--gray-dark);
   border-radius: 40px;
-  padding: 0 12px 0 10px;
+  padding: 0 20px 0 20px;
   margin-bottom: 10px;
   &:focus {
     outline: none;
     border: 2px solid var(--blue);
+  }
+  @media (max-width: 1680px) {
+    ${(props) =>
+      props.small
+        ? "width: 150px; height: 40px;"
+        : props.large
+        ? "width: 300px; height: 40px;"
+        : "width: 310px; height: 40px;"};
   }
 `;
 
