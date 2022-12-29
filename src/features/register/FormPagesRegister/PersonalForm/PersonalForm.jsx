@@ -5,10 +5,10 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { setRegisterUser } from "../../../../state-management/registerUser/registerUser.action";
 import { selectRegisterUser } from "../../../../state-management/registerUser/registerUser.selector";
-import { registerSchema } from "../../ValidationSchema/ValidationSchema";
+import { registerSchemaPersonal } from "../../ValidationSchema/ValidationSchema";
+import { options } from "../../../../components/CustomInputs/CustomRadioInputGroup";
 import CustomInput from "../../../../components/CustomInputs/CustomInput";
 import CustomSelect from "../../../../components/CustomInputs/CustomSelect";
-import { options } from "../../../../components/CustomInputs/CustomRadioInputGroup";
 import RadioButtons from "../../../../components/CustomInputs/CustomRadioInputGroup";
 
 function PersonalForm() {
@@ -32,7 +32,7 @@ function PersonalForm() {
     <>
       <Formik
         initialValues={{ ...registerData }}
-        validationSchema={registerSchema}
+        validationSchema={registerSchemaPersonal}
         onSubmit={handleSubmit}
       >
         <Form className="personal-form">

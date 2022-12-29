@@ -1,6 +1,6 @@
 import * as yup from "yup";
 
-export const registerSchema = yup.object().shape({
+export const registerSchemaPersonal = yup.object().shape({
   firstname: yup
     .string()
     .min(2, "Username must be at least 2 characters long")
@@ -29,6 +29,13 @@ export const registerSchema = yup.object().shape({
     .max(100, "Invalid age")
     .required("Required"),
   gender: yup.string().required("Required"),
+});
 
-  // date: yup.string().required("Required"),
+export const registerSchemaAccount = yup.object().shape({
+  displayName: yup
+    .string()
+    .min(2, "Display name must be at least 2 characters long")
+    .max(120, "Display name is too long")
+    .required("Required"),
+  email: yup.string().email("Please enter a valid email").required("Required"),
 });
