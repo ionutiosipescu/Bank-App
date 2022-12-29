@@ -9,7 +9,7 @@ export const Btn = styled.div`
   margin-top: 10px;
   margin-bottom: 10px;
   border-radius: 50px;
-  box-shadow: 0px 0px 25px -8px rgba(21, 20, 47, 0.73);
+  box-shadow: 0px 0px 12px -8px rgba(21, 20, 47, 0.8);
   ${(props) =>
     props.size === "sm"
       ? "width: 100px; height: 30px;"

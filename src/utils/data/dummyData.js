@@ -6,6 +6,8 @@ export const accounts = [
     balance: "€ 12,345.67",
     validity: "09/26",
     cardNumber: "1413 8975 8374",
+    phoneNumber: "071236556",
+    address: "Aleea Minunilor 2, Bucuresti, 3468, Romania",
   },
   {
     owner: "Radu Stan",

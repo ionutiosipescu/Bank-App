@@ -25,7 +25,7 @@ function NavBar() {
         <Button to="">
           <RiNotification4Line size={22} />
         </Button>
-        <ProfileContainer as={Link} to="/">
+        <ProfileContainer as={Link} to="/profile">
           <img src={avatar} alt="" />
           <h2>{accounts[0].owner}</h2>
         </ProfileContainer>

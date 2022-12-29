@@ -7,9 +7,7 @@ import Dashboard from "./../Dashboard/Dashboard";
 import Cards from "../Cards/Cards";
 import NavBar from "./../../layouts/NavBar/NavBar";
 import Settings from "../../Pages/Settings/Settings";
-import Transactions from "../Transactions/Transactions";
-
-// import logo from "../../assets/images/logo.png";
+import Profile from "./../Profile/Profile";
 
 function Home() {
   const [active, setActive] = useState(true);
@@ -24,13 +22,9 @@ function Home() {
         <NavBar />
         <Routes>
           <Route path="/dashboard" title="Dashboard" element={<Dashboard />} />
-          <Route
-            path="/transactions"
-            title="Transactions"
-            element={<Transactions />}
-          />
           <Route path="/cards" element={<Cards />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </HomeContainer>
     </HomeWrapper>
