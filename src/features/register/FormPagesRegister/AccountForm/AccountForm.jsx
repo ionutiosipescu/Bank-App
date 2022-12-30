@@ -48,6 +48,32 @@ function AccountForm() {
               placeholder=""
               setData={setData}
             />
+            <CustomInput
+              label="Phone number"
+              name="mobile"
+              type="number"
+              small
+              placeholder="Enter your phone number"
+              setData={setData}
+            />
+          </RegisterFormPart>
+          <RegisterFormPart>
+            <CustomInput
+              label="Password"
+              name="password"
+              type="password"
+              small
+              placeholder="Enter your password"
+              setData={setData}
+            />
+            <CustomInput
+              label="ConfirmPassword"
+              name="confirmPassword"
+              type="password"
+              small
+              placeholder="Enter your password"
+              setData={setData}
+            />
           </RegisterFormPart>
           <button type="submit">submit</button>
         </Form>

@@ -1,4 +1,5 @@
 import * as yup from "yup";
+import "yup-phone";
 
 export const registerSchemaPersonal = yup.object().shape({
   firstname: yup
@@ -31,6 +32,13 @@ export const registerSchemaPersonal = yup.object().shape({
   gender: yup.string().required("Required"),
 });
 
+const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$/;
+// min 5 characters, 1 upper case letter, 1 lower case letter, 1 numeric digit.
+const phoneSchema = yup
+  .string()
+  .phone("RO", undefined, "Invalid Phone Number")
+  .required();
+
 export const registerSchemaAccount = yup.object().shape({
   displayName: yup
     .string()
@@ -38,4 +46,14 @@ export const registerSchemaAccount = yup.object().shape({
     .max(120, "Display name is too long")
     .required("Required"),
   email: yup.string().email("Please enter a valid email").required("Required"),
+  mobile: phoneSchema,
+  password: yup
+    .string()
+    .min(5)
+    .matches(passwordRules, { message: "Please create a stronger password" })
+    .required("Required"),
+  confirmPassword: yup
+    .string()
+    .oneOf([yup.ref("password"), null], "Passwords must match")
+    .required("Required"),
 });
