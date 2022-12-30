@@ -1,6 +1,7 @@
 import * as yup from "yup";
 import "yup-phone";
 
+// Personal Form
 export const registerSchemaPersonal = yup.object().shape({
   firstname: yup
     .string()
@@ -39,6 +40,7 @@ const phoneSchema = yup
   .phone("RO", undefined, "Invalid Phone Number")
   .required();
 
+// Account Form
 export const registerSchemaAccount = yup.object().shape({
   displayName: yup
     .string()
@@ -57,3 +59,7 @@ export const registerSchemaAccount = yup.object().shape({
     .oneOf([yup.ref("password"), null], "Passwords must match")
     .required("Required"),
 });
+
+// export const registerSchemaPlan = yup.object().shape({
+//   currency:
+// });

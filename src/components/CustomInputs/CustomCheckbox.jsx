@@ -3,8 +3,8 @@ import { InputForm, Error, Checkbox } from "../UI/Input/Input.style";
 import "../UI/Input/Input.css";
 
 const CustomCheckbox = ({ label, ...props }) => {
-  const [field, meta] = useField(props);
-
+  const [field, meta, helpers] = useField(props);
+  console.log(field, meta, helpers);
   return (
     <>
       <Checkbox>

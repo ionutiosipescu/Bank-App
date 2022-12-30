@@ -15,9 +15,9 @@ function Step() {
     case 1:
       stepContent = <AccountForm />;
       break;
-    // case 2:
-    //   stepContent = <PlanForm />;
-    //   break;
+    case 2:
+      stepContent = <PlanForm />;
+      break;
     // case 3:
     //   stepContent = <ConfirmForm />;
     //   break;

@@ -24,6 +24,10 @@ export const registerReducer = (state = INITIAL_STATE, action) => {
   switch (type) {
     case REGISTER_ACTION_TYPES.SET_REGISTER_USER:
       return { ...state, userProfile: { ...payload } };
+    case REGISTER_ACTION_TYPES.SET_REGISTER_PLAN_ADD:
+      return { ...state, userPlan: [...payload] };
+    case REGISTER_ACTION_TYPES.SET_REGISTER_PLAN_REMOVE:
+      return { ...state, userPlan: [...payload] };
     default:
       return state;
   }

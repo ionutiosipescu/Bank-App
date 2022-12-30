@@ -6,6 +6,16 @@ export const setStep = (step) => {
   return createAction(REGISTER_HELPER_TYPES.SET_STEP, step);
 };
 
+export const setPlanRon = (planToUpdate, e) => {
+  const { name, value } = e.target;
+  return { ...planToUpdate, [name]: value };
+};
+
+export const setObjectPlan = (planToUpdate, e) => {
+  const plan = setPlanRon(planToUpdate, e);
+  return createAction(REGISTER_HELPER_TYPES.SET_PLAN, plan);
+};
+
 // nu il mai folosesc il pastrez ca ex
 
 // export const fetchLocalStorageSuccess = (registerLocalStorage) =>
