@@ -8,7 +8,7 @@ function BalanceCard({ balance, color, name, valid, cardNum, size, onClick }) {
     <CardContainer color={color} size={size} onClick={onClick}>
       <CardHeader>
         <h3>My Balance</h3>
-        <h2>{balance}</h2>
+        <h1>{balance}</h1>
       </CardHeader>
       <CardBody>
         <h2>{cardNum}</h2>
