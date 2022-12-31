@@ -27,16 +27,16 @@ function BarChart({ primary, chartData }) {
     ],
   };
 
-  return (
-    <Bar
-      data={data}
-      options={{
-        plugins: { legend: false },
-        responsive: true,
-        update: true,
-      }}
-    />
-  );
+  const options = {
+    plugins: { legend: false },
+    scales: {
+      x: { grid: { display: false }, ticks: { display: false } },
+      y: { grid: { display: false }, ticks: { display: false } },
+    },
+    maintainAspectRatio: false,
+  };
+
+  return <Bar data={data} options={options} />;
 }
 
 export default BarChart;

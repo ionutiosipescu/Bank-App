@@ -10,19 +10,29 @@ function AreaChart({ primary, chartData }) {
   const data = chartData.map((data) => (primary ? data.income : data.outcome));
 
   const [userData, setUserData] = useState({
-    labels: chartData.map((data) => data.month),
-    datasets: [
-      {
-        tension: 0.4,
-        fill: "origin",
-        data: data,
-        backgroundColor: backgroundColor,
-        borderColor: borderColor,
+    data: {
+      labels: chartData.map((data) => data.month),
+      datasets: [
+        {
+          tension: 0.4,
+          fill: "origin",
+          data: data,
+          backgroundColor: backgroundColor,
+          borderColor: borderColor,
+        },
+      ],
+    },
+    options: {
+      plugins: { legend: false },
+      scales: {
+        x: { grid: { display: false }, ticks: { display: false } },
+        y: { grid: { display: false }, ticks: { display: false } },
       },
-    ],
+      maintainAspectRatio: false,
+    },
   });
 
-  return <Line data={userData} options={{ plugins: { legend: false } }} />;
+  return <Line data={userData.data} options={userData.options} />;
 }
 
 export default AreaChart;

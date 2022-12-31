@@ -4,6 +4,7 @@ import { TopContainer } from "../Cards/Cards.style";
 import { PlanContainer } from "./Profile.style";
 
 import { accounts } from "../../utils/data/dummyData";
+import PlanCard from "../../components/PlanCard/PlanCard";
 
 function Profile() {
   return (
@@ -14,7 +15,9 @@ function Profile() {
         email={accounts[0].email}
         phoneNumber={accounts[0].phoneNumber}
       ></ProfileComponent>
-      <PlanContainer></PlanContainer>
+      <PlanContainer>
+        <PlanCard />
+      </PlanContainer>
     </TopContainer>
   );
 }
