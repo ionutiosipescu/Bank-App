@@ -4,8 +4,8 @@ export const TopContainer = styled.div`
   display: flex;
   align-items: center;
   height: 50vh;
-  width: calc(100% - 30px);
-  margin: 30px 30px 0 0;
+  width: calc(100% - 60px);
+  margin: 30px 30px 20px 0;
   padding: 30px;
   border-radius: 40px;
   background-color: var(--white);

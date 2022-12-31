@@ -19,6 +19,9 @@ export const PlanContainer = styled.div`
   );
   color: var(--white);
   box-shadow: 0px 0px 15px -8px rgba(21, 20, 47, 0.73);
+  @media (max-width: 1680px) {
+    aspect-ratio: 7/8;
+  }
 `;
 
 export const PlanSection = styled.div`

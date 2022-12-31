@@ -16,7 +16,6 @@ export const SettingsContainer = styled.div`
     margin-bottom: 50px;
   }
   @media (max-width: 1440px) {
-    width: calc(90% - 60px);
     height: fit-content;
     & h2 {
       margin-bottom: 20px;

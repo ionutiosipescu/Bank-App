@@ -4,7 +4,6 @@ import { Bubble, PlanContainer, PlanSection } from "./PlanCard.style";
 import Button from "./../UI/Button/Button";
 
 import { plans } from "../../utils/data/dummyData";
-import { Circle, Pill } from "./../BalanceCard/BalanceCard.style";
 
 const plan = plans[0];
 

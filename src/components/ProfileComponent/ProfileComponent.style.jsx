@@ -23,15 +23,16 @@ export const ProfileContainer = styled.div`
 
 export const ProfileInfo = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   width: 100%;
-  height: 45%;
+  height: 40%;
   margin-top: 40px;
+  padding-right: 30px;
 `;
 
 export const InfoSection = styled.div`
   display: flex;
-  width: 30%;
+  max-width: 30%;
   & > div:last-of-type {
     margin-left: 30px;
     max-width: 50%;
