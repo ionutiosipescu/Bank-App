@@ -12,7 +12,7 @@ export const Btn = styled.div`
   box-shadow: 0px 0px 12px -8px rgba(21, 20, 47, 0.8);
   ${(props) =>
     props.size === "sm"
-      ? "width: 100px; height: 30px;"
+      ? "width: 100px; height: 30px; font-size: 0.8rem;"
       : props.size === "md"
       ? "width: 150px; height: 40px;"
       : props.size === "lg"

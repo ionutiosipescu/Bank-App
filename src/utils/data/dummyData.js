@@ -8,6 +8,7 @@ export const accounts = [
     cardNumber: "1413 8975 8374",
     phoneNumber: "071236556",
     address: "Aleea Minunilor 2, Bucuresti, 3468, Romania",
+    plan: 1,
   },
   {
     owner: "Radu Stan",
@@ -16,6 +17,7 @@ export const accounts = [
     balance: "$ 2,334.71",
     validity: "04/26",
     cardNumber: "6534 2657 8787",
+    plan: 2,
   },
   {
     owner: "Ionut Iosipescu",
@@ -24,6 +26,26 @@ export const accounts = [
     balance: "$ 345.67",
     validity: "09/25",
     cardNumber: "9327 6547 9823",
+    plan: 3,
+  },
+];
+
+export const plans = [
+  {
+    plan: 1,
+    name: "Standard",
+    cardLimit: "100,000",
+    loanLimit: "50,000",
+  },
+  {
+    plan: 2,
+    name: "Gold",
+    cardLimit: 1500000,
+  },
+  {
+    plan: 3,
+    name: "Platinum",
+    cardLimit: "unlimited",
   },
 ];
 

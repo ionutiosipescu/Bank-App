@@ -3,8 +3,9 @@ import styled from "styled-components";
 export const CardHeader = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
+  height: 35%;
   margin-bottom: 5px;
 `;
 
@@ -28,6 +29,6 @@ export const CardFeature = styled.div`
 export const CardBody = styled.div`
   display: flex;
   width: 100%;
-  height: 100%;
+  height: 65%;
   /* padding-bottom: 10px; */
 `;

@@ -48,8 +48,12 @@ export const InfoSection = styled.div`
 `;
 
 export const Icon = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 40px;
   height: 40px;
   border-radius: 40px;
   background-color: var(--purple);
+  color: var(--white);
 `;

@@ -8,6 +8,8 @@ import {
   InfoSection,
 } from "./ProfileComponent.style";
 
+import { RiMailLine, RiMapPinLine, RiPhoneLine } from "react-icons/ri";
+
 import avatar from "../../assets/images/avatar.png";
 
 function ProfileComponent({ image, name, address, email, phoneNumber }) {
@@ -24,21 +26,27 @@ function ProfileComponent({ image, name, address, email, phoneNumber }) {
       </ProfileContainer>
       <ProfileInfo>
         <InfoSection>
-          <Icon></Icon>
+          <Icon>
+            <RiMapPinLine size={25} />
+          </Icon>
           <div>
             <h4>Address</h4>
             <p>{address}</p>
           </div>
         </InfoSection>
         <InfoSection>
-          <Icon></Icon>
+          <Icon>
+            <RiMailLine size={25} />
+          </Icon>
           <div>
             <h4>Email</h4>
             <p>{email} </p>
           </div>
         </InfoSection>
         <InfoSection>
-          <Icon></Icon>
+          <Icon>
+            <RiPhoneLine size={25} />
+          </Icon>
           <div>
             <h4>Phone</h4>
             <p>{phoneNumber} </p>

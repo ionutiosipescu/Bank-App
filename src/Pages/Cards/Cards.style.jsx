@@ -34,7 +34,7 @@ export const CardsContainer = styled.div`
     }
     ${(props) =>
       props.clicked
-        ? "transform: translate(-120px, -20px); z-index: 1;"
+        ? "transform: translate(-130px, -10px); z-index: 1;"
         : "transform: translate(-170px, -50px); z-index: 2;"};
   }
   & > div:last-child {
