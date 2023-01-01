@@ -1,12 +1,12 @@
 import React from "react";
-import { ButtonWrapper } from "./Services.style";
+import { ButtonWrapper, ServicesWrapper } from "./Services.style";
 import Button from "./../../components/UI/Button/Button";
 import { TopContainer } from "./../Cards/Cards.style";
 import { SettingsContainer } from "./../Settings/Settings.style";
 
 function Services() {
   return (
-    <>
+    <ServicesWrapper>
       <ButtonWrapper>
         <Button
           to={"/savings"}
@@ -16,15 +16,15 @@ function Services() {
           onClick={""}
         />
         <Button
-          to={"/loans"}
-          label="Loans"
+          to={"/exchange"}
+          label="Exchange"
           size="xl"
           primary={true}
           onClick={""}
         />
         <Button
-          to={"/exchange"}
-          label="Exchange"
+          to={"/loans"}
+          label="Loans"
           size="xl"
           primary={true}
           onClick={""}
@@ -45,8 +45,7 @@ function Services() {
         />
       </ButtonWrapper>
       <TopContainer></TopContainer>
-      <SettingsContainer></SettingsContainer>
-    </>
+    </ServicesWrapper>
   );
 }
 

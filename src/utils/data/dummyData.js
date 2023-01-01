@@ -12,6 +12,16 @@ export const accounts = [
     plan: 1,
     phoneNumber: "+4071236556",
     address: "Aleea Minunilor 2, Bucuresti",
+    savings: [
+      { label: "Healthcare", amount: 50122, id: 123435567 },
+      { label: "Investments", amount: 50122, id: 123435567 },
+      { label: "Healthcare", amount: 50122, id: 123435567 },
+      { label: "Investments", amount: 50122, id: 123435567 },
+      { label: "Healthcare", amount: 50122, id: 123435567 },
+      { label: "Investments", amount: 50122, id: 123435567 },
+      { label: "Healthcare", amount: 50122, id: 123435567 },
+      { label: "Investments", amount: 50122, id: 123435567 },
+    ],
   },
   {
     owner: "Radu Stan",

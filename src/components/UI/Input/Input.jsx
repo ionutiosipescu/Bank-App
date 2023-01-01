@@ -1,11 +1,11 @@
 import React from "react";
 import { InputForm, Group } from "./Input.style";
 
-function Input({ label, ...otherProps }) {
+function Input({ label, min, max, ...otherProps }) {
   return (
     <Group {...otherProps}>
       <label>{label}</label>
-      <InputForm {...otherProps} />
+      <InputForm {...otherProps} min={min} max={max} />
     </Group>
   );
 }
