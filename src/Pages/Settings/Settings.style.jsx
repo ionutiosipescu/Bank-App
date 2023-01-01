@@ -21,7 +21,6 @@ export const SettingsContainer = styled.div`
       margin-bottom: 20px;
     }
     padding: 30px;
-    /* height: 50%; */
   }
 `;
 

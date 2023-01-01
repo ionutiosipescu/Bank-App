@@ -6,14 +6,18 @@ export const OutcomeBody = styled.div`
   justify-content: center;
   width: calc(50% - 50px);
   height: 100%;
-  margin: -50px 0 0 150px;
 `;
 
 export const LegendItem = styled.div`
   display: flex;
+  justify-content: space-between;
   align-items: center;
   margin: 10px 0;
+  & > div {
+    display: flex;
+    align-items: center;
+  }
   & h4 {
-    margin: 0 20px;
+    margin: 0 10px;
   }
 `;

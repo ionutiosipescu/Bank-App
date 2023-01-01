@@ -28,7 +28,9 @@ export const CardFeature = styled.div`
 
 export const CardBody = styled.div`
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
-  height: 65%;
+  height: 100%;
   /* padding-bottom: 10px; */
 `;

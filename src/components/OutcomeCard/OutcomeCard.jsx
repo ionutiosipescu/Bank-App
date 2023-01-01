@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import DoughnutChart from "../Charts/DoughnutChart";
 import { CardBody } from "../TopCard/TopCard.style";
-import { CardContainer, CardHeader } from "./../UI/Card/Card.style";
+import { CardContainer, CardHeader } from "../UI/Card/Card.style";
 
 import { outcomeData as chartData } from "../../utils/data/dummyData";
-import { LegendItem, OutcomeBody } from "./OutcomeChart.style";
+import { LegendItem, OutcomeBody } from "./OutcomeCard.style";
 import { BsCircleFill } from "react-icons/bs";
 
 function OutcomeChart() {
@@ -13,14 +13,19 @@ function OutcomeChart() {
       <CardHeader flex="row">
         <h3>Outcome Categories</h3>
       </CardHeader>
-      <CardBody style={{ padding: "10px 20px 40px 20px" }}>
+      <CardBody>
         <DoughnutChart chartData={chartData} />
         <OutcomeBody>
-          <h2 style={{ marginBottom: "20px" }}>Legend</h2>
+          <h3 style={{ marginBottom: "20px" }}>Legend</h3>
           {chartData.map((item) => (
             <LegendItem key={item.id}>
-              <BsCircleFill color={item.color} />
-              <h4>{item.item}</h4>
+              <div>
+                <BsCircleFill color={item.color} />
+                <h4>
+                  {item.item} {`(${item.percentage}%)`}
+                </h4>
+              </div>
+              <h4>{item.amount}</h4>
             </LegendItem>
           ))}
         </OutcomeBody>
