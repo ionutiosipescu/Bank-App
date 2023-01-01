@@ -8,7 +8,7 @@ export const CardContainer = styled.div`
   justify-content: space-between;
   border-radius: 40px;
   margin: 15px 30px 15px 0;
-  padding: 20px 30px;
+  padding: 30px;
   overflow: hidden;
   box-shadow: 0px 0px 15px -8px rgba(21, 20, 47, 0.73);
   background-color: ${(props) =>
