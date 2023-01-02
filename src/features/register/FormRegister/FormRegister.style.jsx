@@ -4,6 +4,7 @@ export const RegisterFormPart = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  gap: 30px;
 `;
 export const RegitsterFormContainer = styled.form`
   display: flex;
@@ -13,9 +14,9 @@ export const RegitsterFormContainer = styled.form`
 `;
 export const RegisterFormWrapper = styled.div`
   display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
+  flex-direction: column;
 `;
 export const CheckboxContainer = styled.div`
   display: flex;

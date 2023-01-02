@@ -1,0 +1,89 @@
+/* Colors */
+
+.card-purple {
+  background-color: var(--purple) !important;
+  color: var(--white) !important;
+}
+
+.card-green {
+  background-color: var(--green) !important;
+  color: var(--white) !important;
+}
+
+/* /////////////// */
+
+.card-header {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  z-index: 2;
+}
+
+.card-header > h1 {
+  font-size: 3rem;
+}
+
+.card-body {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  z-index: 2;
+}
+
+.card-footer {
+  display: flex;
+  width: 100%;
+  z-index: 2;
+}
+
+.card-footer > div {
+  margin-right: 30px;
+}
+
+.card-footer h3 {
+  margin-bottom: 8px;
+}
+
+/* Style components */
+
+.circle {
+  position: absolute;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  opacity: 0.4;
+  background-color: var(--white);
+}
+
+.circle-one {
+  translate: 180px;
+}
+
+.circle-two {
+  translate: 135px;
+}
+
+.pill {
+  position: absolute;
+  width: 100px;
+  height: 300px;
+  border-radius: 50px;
+}
+
+.card-purple .pill {
+  background-color: var(--blue);
+}
+
+.card-green .pill {
+  background-color: var(--yellow);
+}
+
+.pill-one {
+  transform: translate(210px, 70px);
+}
+
+.pill-two {
+  transform: translate(170px, 120px);
+  opacity: 0.5;
+}

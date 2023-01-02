@@ -13,9 +13,12 @@ export const advancedSchema = yup.object().shape({
     .min(5)
     .matches(passwordRules, { message: "Please create a stronger password" })
     .required("Required"),
+  email: yup.string().email("Please enter a valid email").required("Required"),
   acceptedTos: yup
     .boolean()
-    .oneOf([true], "Please accept the terms of service"),
+    .oneOf([true], "Please accept the terms of service")
+    .required("Required"),
+
   //   jobType: yup
   //     .string()
   //     .oneOf(["designer", "developer", "manager", "other"], "Invalid Job Type")

@@ -1,0 +1,4 @@
+export const REGISTER_HELPER_TYPES = {
+  SET_STEP: "SET_STEP",
+  SET_PLAN: "SET_PLAN",
+};
