@@ -8,7 +8,7 @@ export const CardContainer = styled.div`
   justify-content: space-between;
   border-radius: 40px;
   margin: 15px 30px 15px 0;
-  padding: 20px 30px;
+  padding: 30px;
   overflow: hidden;
   box-shadow: 0px 0px 15px -8px rgba(21, 20, 47, 0.73);
   background-color: ${(props) =>
@@ -86,4 +86,28 @@ export const CardHeader = styled.div`
     justify-content: space-between;
     cursor: pointer;
   }
+`;
+
+export const ServiceCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 58%;
+  aspect-ratio: 5/4;
+  border-radius: 40px;
+  padding: 30px 40px;
+  background-color: var(--white);
+  box-shadow: 0px 0px 15px -8px rgba(21, 20, 47, 0.73);
+`;
+
+export const ServiceInputsCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 38%;
+  aspect-ratio: 3/4;
+  border-radius: 40px;
+  padding: 30px 40px;
+  background-color: var(--white);
+  box-shadow: 0px 0px 15px -8px rgba(21, 20, 47, 0.73);
 `;

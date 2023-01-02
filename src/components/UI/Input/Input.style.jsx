@@ -13,7 +13,7 @@ export const InputForm = styled.input`
     props.small
       ? "width: 150px; height: 40px;"
       : props.large
-      ? "width: 400px; height: 60px;"
+      ? "width: 400px; height: 60px; font-size: 1.2rem;"
       : "width: 310px; height: 40px;"};
   border: 1px solid var(--gray-dark);
   border-radius: 40px;

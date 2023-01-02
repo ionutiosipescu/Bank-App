@@ -29,10 +29,11 @@ export const Btn = styled.div`
       ? "background: var(--purple); color: var(--white);"
       : "background: var(--white); color: var(--purple);"}
   &:hover {
+    scale: 1.08;
     ${(props) =>
       props.primary
-        ? "background: var(--white); color: var(--purple);"
-        : "background: var(--purple); color: var(--white); border: 1px solid var(--purple);"}
+        ? "background: var(--purple-dark); color: var(--white);"
+        : "background: var(--purple-light); color: var(--white); border: 1px solid var(--purple-dark);"}
   }
   & ${(props) => props.children} {
     transition: 0.3;

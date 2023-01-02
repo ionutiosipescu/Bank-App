@@ -11,7 +11,7 @@ import BalanceCard from "../../components/BalanceCard/BalanceCard";
 import { accounts } from "../../utils/data/dummyData";
 import TopCard from "../../components/TopCard/TopCard";
 import OverviewCard from "./../../components/OverviewCard/OverviewCard";
-import OutcomeChart from "./../../components/OutcomeChart/OutcomeChart";
+import OutcomeChart from "../../components/OutcomeCard/OutcomeCard";
 
 function Dashboard() {
   return (

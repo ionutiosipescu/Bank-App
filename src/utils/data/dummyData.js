@@ -12,6 +12,16 @@ export const accounts = [
     plan: 1,
     phoneNumber: "+4071236556",
     address: "Aleea Minunilor 2, Bucuresti",
+    savings: [
+      { label: "Healthcare", amount: 50122, id: 123435567 },
+      { label: "Investments", amount: 50122, id: 123435567 },
+      { label: "Healthcare", amount: 50122, id: 123435567 },
+      { label: "Investments", amount: 50122, id: 123435567 },
+      { label: "Healthcare", amount: 50122, id: 123435567 },
+      { label: "Investments", amount: 50122, id: 123435567 },
+      { label: "Healthcare", amount: 50122, id: 123435567 },
+      { label: "Investments", amount: 50122, id: 123435567 },
+    ],
   },
   {
     owner: "Radu Stan",
@@ -143,10 +153,25 @@ export const dailyBalanceData = [
   { id: 7, day: "Sun", thisWeek: 12346, lastWeek: 13432 },
 ];
 
-export const outcomeData = [
+const outcomeDataRaw = [
   { id: 1, item: "Needs", amount: 5312, color: "#6160dc" },
   { id: 2, item: "Groceries", amount: 1912, color: "#54c5eb" },
   { id: 3, item: "Subcribtions", amount: 610, color: "#ffb74a" },
   { id: 4, item: "Tax", amount: 2912, color: "#00a389" },
   { id: 5, item: "Utils", amount: 812, color: "#ff4a55" },
 ];
+
+function calculatePercentages(objects) {
+  // Calculate the sum of all the amount properties
+  const sum = objects.reduce((acc, obj) => acc + obj.amount, 0);
+
+  // Map the objects array to an array of objects with the percentage property
+  const withPercentages = objects.map((obj) => {
+    const percentage = Math.ceil((obj.amount / sum) * 100);
+    return { ...obj, percentage };
+  });
+
+  return withPercentages;
+}
+
+export const outcomeData = calculatePercentages(outcomeDataRaw);
