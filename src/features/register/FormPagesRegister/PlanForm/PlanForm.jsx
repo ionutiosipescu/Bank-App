@@ -25,16 +25,15 @@ function PlanForm() {
   //   dispatch(setRegisterPlan(plan, planRon));
   // };
 
-  // const setToggle = () => {
-  //   dispatch(setToggleRon(checkedRon));
-  // };
   const setPlan = (e) => {
+    const { name, value, checked } = e.target;
+    console.log(name, value, checked);
     dispatch(updateRegisterPlanAsync(planUpdate, e, plan));
   };
   const handleSubmit = (value) => {
-    console.log(value);
-    console.log(planUpdate);
-    console.log(plan);
+    // console.log(value);
+    // console.log(planUpdate);
+    // console.log(plan);
   };
   // useEffect(() => {
   //   console.log(checkedRon);
