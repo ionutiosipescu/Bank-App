@@ -14,65 +14,92 @@ import { setToggleRon } from "../../../../state-management/registerhelper/regist
 import CustomChecboxplan from "../../../../components/CustomInputs/CustomChecboxPlan";
 import { setRegisterPlanRemove } from "../../../../state-management/registerUser/registerUser.action";
 import { updateRegisterPlanAsync } from "../../../../state-management/registerUser/registerUser.action";
+import { currencyData } from "../../../../utils/data/currencyData";
+import { initArrPlans } from "../../../../state-management/registerhelper/registerhelper.actions";
+import { setShowPlans } from "../../../../state-management/registerhelper/registerhelper.actions";
+import RadioButtonsPlan from "../../../../components/CustomInputs/CustomRadioInputGroupPlan";
+import { setTypeOfPlan } from "../../../../state-management/registerhelper/registerhelper.actions";
+import { updateRegisterPlanCheckboxAsync } from "../../../../state-management/registerUser/registerUser.action";
 
 function PlanForm() {
+  const options = [
+    { key: "Standard", value: "standard" },
+    { key: "Premium", value: "premium" },
+    { key: "Vip", value: "vip" },
+  ];
   const dispatch = useDispatch();
-  const planUpdate = useSelector(selectPlan);
-  const plan = useSelector(selectRegisterPlan);
+  const planData = useSelector(selectPlan);
+  const userDataArrPlan = useSelector(selectRegisterPlan);
 
-  // const setData = (e) => {
-  //   dispatch(setToggleRon(checkedRon));
-  //   dispatch(setRegisterPlan(plan, planRon));
+  const handleSubmit = () => {
+    console.log(planData);
+  };
+
+  // useEffect(() => {
+  //   dispatch(initArrPlans(currencyData));
+  // }, []);
+
+  // const handleBox = (index) => {
+  //   dispatch(setShowPlans(planData, index));
+  // };
+  const handleBox = (index, e) => {
+    dispatch(
+      updateRegisterPlanCheckboxAsync(userDataArrPlan, planData, index, e)
+    );
+  };
+
+  // const handleRadio = (index, e) => {
+  //   dispatch(setTypeOfPlan(planData, index, e));
   // };
 
-  const setPlan = (e) => {
-    const { name, value, checked } = e.target;
-    console.log(name, value, checked);
-    dispatch(updateRegisterPlanAsync(planUpdate, e, plan));
+  const handleRadio = (index, e) => {
+    // update registerHelper Plan Data with chosen plan
+    // And
+    // update Redux with object plan
+    dispatch(updateRegisterPlanAsync(userDataArrPlan, planData, index, e));
   };
-  const handleSubmit = (value) => {
-    // console.log(value);
-    // console.log(planUpdate);
-    // console.log(plan);
-  };
-  // useEffect(() => {
-  //   console.log(checkedRon);
-  // }, [checkedRon]);
+
   return (
     <>
       <Formik
-        initialValues={{ ...planUpdate }}
         // validationSchema={registerSchemaPlan}
+        initialValues={{ ...planData }}
         onSubmit={handleSubmit}
       >
         <Form className="personal-form">
-          <CustomChecboxplan
-            type="checkbox"
-            name="currency"
-            value="ron"
-            small
-            label="Ron"
-            setPlan={setPlan}
-          />
-          <CustomChecboxplan
-            type="checkbox"
-            name="currency"
-            value="euro"
-            small
-            label="Euro"
-            setPlan={setPlan}
-          />
-
-          {/* <Input
-//           onChange={handleChangeRon}
-//           type="checkbox"
-//           checked={checkedRo}
-//           label="Ron"
-//           small
-//           value="ron"
-//           name="currency"
-//         /> */}
-          <button type="submit">submit</button>
+          {planData.map((plan, index) => {
+            return (
+              <div key={index}>
+                <CustomChecboxplan
+                  key={plan.currency}
+                  name={plan.currency}
+                  value={plan.currency}
+                  label={plan.namePlan}
+                  checked={plan.showPlans}
+                  plan={plan}
+                  small
+                  type="checkbox"
+                  handleBox={handleBox}
+                  index={index}
+                />
+                {plan.showPlans && (
+                  <div>
+                    <RadioButtonsPlan
+                      type="radio"
+                      label="Type Of Plan"
+                      name={plan.namePlan}
+                      options={options}
+                      handleRadio={handleRadio}
+                      index={index}
+                      plan={plan}
+                      typeOfPlan={plan.typeOfPlan}
+                    />
+                  </div>
+                )}
+              </div>
+            );
+          })}
+          <button type="submit">Submit</button>
         </Form>
       </Formik>
     </>
@@ -80,6 +107,34 @@ function PlanForm() {
 }
 
 export default PlanForm;
+
+//////////////////////////////////////////////
+
+{
+  // const setPlan = (e) => {
+  //   const { name, value, checked } = e.target;
+  //   console.log(name, value, checked);
+  //   dispatch(updateRegisterPlanAsync(planUpdate, e, plan));
+  // };
+  /* <CustomChecboxplan
+type="checkbox"
+name="currency"
+value="ron"
+small
+label="Ron"
+setPlan={setPlan}
+/>
+<CustomChecboxplan
+type="checkbox"
+name="currency"
+value="euro"
+small
+label="Euro"
+setPlan={setPlan}
+/> */
+}
+
+//////////////////////////////////////////////
 
 // import React from "react";
 // import { RegisterFormPart } from "../../FormRegister/FormRegister.style";

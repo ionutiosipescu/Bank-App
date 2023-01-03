@@ -6,12 +6,15 @@ import { useSelector } from "react-redux";
 import { setRegisterUser } from "../../../../state-management/registerUser/registerUser.action";
 import { selectRegisterUser } from "../../../../state-management/registerUser/registerUser.selector";
 import { registerSchemaPersonal } from "../../ValidationSchema/ValidationSchema";
-import { options } from "../../../../components/CustomInputs/CustomRadioInputGroup";
 import CustomInput from "../../../../components/CustomInputs/CustomInput";
 import CustomSelect from "../../../../components/CustomInputs/CustomSelect";
 import RadioButtons from "../../../../components/CustomInputs/CustomRadioInputGroup";
 
 function PersonalForm() {
+  const options = [
+    { key: "Male", value: "male" },
+    { key: "Female", value: "female" },
+  ];
   const dispatch = useDispatch();
   const registerData = useSelector(selectRegisterUser);
   const { firstname, lastname, country, address, age } = registerData; // destructure data from Redux for updating on every keypress

@@ -4,12 +4,11 @@ import { useField } from "formik";
 import { Group, InputRadio, Error } from "../UI/Input/Input.style";
 import "../UI/Input/Input.css";
 import { useSelector } from "react-redux";
-import { selectRegisterUser } from "../../state-management/registerUser/registerUser.selector";
+import { selectPlan } from "../../state-management/registerhelper/registerhelper.selector";
 
-const RadioButtons = ({ label, ...props }) => {
-  const registerData = useSelector(selectRegisterUser);
-  const { gender } = registerData;
+const RadioButtonsPlan = ({ label, ...props }) => {
   const [field, meta] = useField(props);
+  console.log(props.plan);
   return (
     <Group>
       <label>{label}</label>
@@ -24,11 +23,11 @@ const RadioButtons = ({ label, ...props }) => {
                     {...props}
                     onChange={(e) => {
                       field.onChange(e);
-                      props.setData(e);
+                      props.handleRadio(props.index, e);
                     }}
                     id={option.value}
                     value={option.value || ""}
-                    checked={gender === option.value}
+                    checked={props.typeOfPlan === option.value}
                     className={meta.touched && meta.error ? "input-error" : ""}
                   />
                   <label htmlFor={option.value}>{option.key}</label>
@@ -43,4 +42,4 @@ const RadioButtons = ({ label, ...props }) => {
   );
 };
 
-export default RadioButtons;
+export default RadioButtonsPlan;

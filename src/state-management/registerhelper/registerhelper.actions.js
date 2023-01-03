@@ -2,39 +2,43 @@ import { REGISTER_HELPER_TYPES } from "./registerhelper.types";
 import { createAction } from "../../utils/helpers/reducer/reducer.utils";
 import { getLocalStorage } from "../../utils/helpers/localStorage/getLocalStorage";
 
+// SetStep
 export const setStep = (step) => {
   return createAction(REGISTER_HELPER_TYPES.SET_STEP, step);
 };
 
-export const setPlanRon = (planToUpdate, e) => {
-  const { name, value } = e.target;
-  return { ...planToUpdate, [name]: value };
+// ShowPlans
+
+export const setShowPlans = (prevPlans, index) => {
+  const newPlans = [...prevPlans];
+  newPlans[index].showPlans = !newPlans[index].showPlans;
+  return createAction(REGISTER_HELPER_TYPES.SHOW_PLANS, newPlans);
+  // if true return
+  // if false
+  // remove from userData Redux
+  // typeOfPlan = ""
 };
 
-export const setObjectPlan = (planToUpdate, e) => {
-  const plan = setPlanRon(planToUpdate, e);
-  return createAction(REGISTER_HELPER_TYPES.SET_PLAN, plan);
+// SetTypeOfPlan Add
+
+// SetTypeOfPlan Remove
+
+// SetTypeOfPlan Controler
+
+export const setTypeOfPlan = (prevPlans, index, e) => {
+  const newPlans = [...prevPlans];
+  if (prevPlans[index].showPlans) {
+    newPlans[index].typeOfPlan = e.target.value;
+    return createAction(REGISTER_HELPER_TYPES.SET_TYPE_OF_PLAN, newPlans);
+  } else if (!prevPlans[index].showPlans) {
+    newPlans[index].typeOfPlan = "";
+    return createAction(REGISTER_HELPER_TYPES.SET_TYPE_OF_PLAN, newPlans);
+  }
+  // after update object with typeOfPlan -> add object to userData Redux Array
 };
 
-// nu il mai folosesc il pastrez ca ex
+// // InitPlan
 
-// export const fetchLocalStorageSuccess = (registerLocalStorage) =>
-//   createAction(
-//     REGISTER_HELPER_TYPES.FETCH_REGISTER_SUCCESS,
-//     registerLocalStorage
-//   );
-
-// export const fetchLocalStorageFailed = (error) => {
-//   createAction(REGISTER_HELPER_TYPES.FETCH_REGISTER_FAILED, error);
-// };
-
-// export const fetchRegisterLocalStorageAsync = () => {
-//   return async (dispatch) => {
-//     try {
-//       const userProfileData = await getLocalStorage("persist:root");
-//       dispatch(fetchLocalStorageSuccess(userProfileData));
-//     } catch (error) {
-//       dispatch(fetchLocalStorageFailed(error));
-//     }
-//   };
+// export const initArrPlans = (currencyArrData) => {
+//   return createAction(REGISTER_HELPER_TYPES.INIT_PLAN, currencyArrData);
 // };
