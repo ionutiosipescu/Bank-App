@@ -7,6 +7,8 @@ import { selectRegisterUser } from "../../../../state-management/registerUser/re
 import { setRegisterUser } from "../../../../state-management/registerUser/registerUser.action";
 import CustomInput from "../../../../components/CustomInputs/CustomInput";
 import { registerSchemaAccount } from "../../ValidationSchema/ValidationSchema";
+import NextBtn from "../../../../components/StepButtons/NextBtn";
+import PrevBtn from "../../../../components/StepButtons/PrevBtn";
 
 function AccountForm() {
   const dispatch = useDispatch();
@@ -17,11 +19,11 @@ function AccountForm() {
   };
 
   const handleSubmit = (values) => {
-    console.log(values);
-    console.log(registerData);
+    // console.log(values);
+    // console.log(registerData);
   };
   useEffect(() => {
-    console.log(registerData);
+    // console.log(registerData);
   }, [registerData]);
 
   return (
@@ -75,7 +77,9 @@ function AccountForm() {
               setData={setData}
             />
           </RegisterFormPart>
-          <button type="submit">submit</button>
+          {/* <button type="submit">submit</button> */}
+          <NextBtn type="submit" />
+          <PrevBtn />
         </Form>
       </Formik>
     </>

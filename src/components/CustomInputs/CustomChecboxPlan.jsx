@@ -11,7 +11,6 @@ import { FieldInputProps } from "formik";
 const CustomChecboxplan = ({ label, ...props }) => {
   // fiedl , meta, helpers
   const [field, meta] = useField(props);
-  console.log(meta);
   return (
     <>
       <Group>

@@ -14,6 +14,8 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { setStep } from "../../../state-management/registerhelper/registerhelper.actions";
 import { selectStep } from "../../../state-management/registerhelper/registerhelper.selector";
+import NextBtn from "../../../components/StepButtons/NextBtn";
+import PrevBtn from "../../../components/StepButtons/PrevBtn";
 
 function FormRegister() {
   const dispatch = useDispatch();
@@ -75,33 +77,10 @@ function FormRegister() {
       <RegitsterFormContainer>
         <RegisterFormWrapper>
           <Step />
-          {/* <form action="" className="register_form">
-            <div className="form-container">
-              <div className="header">
-                <h1>{FormTitles[page]}</h1>
-              </div>
-              <div className="body">{PageDisplay()}</div> */}
           <div className="footer">
-            <button
-              disabled={step == 0}
-              onClick={(e) => {
-                e.preventDefault();
-
-                dispatch(setStep(step - 1));
-              }}
-            >
-              Prev
-            </button>
-            <button
-              onClick={() => {
-                dispatch(setStep(step + 1));
-              }}
-            >
-              Next
-            </button>
+            {/* <PrevBtn />
+            <NextBtn /> */}
           </div>
-          {/* </div>
-          </form> */}
         </RegisterFormWrapper>
       </RegitsterFormContainer>
     </>

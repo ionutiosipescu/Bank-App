@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { RegisterFormPart } from "../../FormRegister/FormRegister.style";
-import { Formik, Form } from "formik";
+import { Formik, Form, useFormikContext, ErrorMessage } from "formik";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { setRegisterUser } from "../../../../state-management/registerUser/registerUser.action";
@@ -9,8 +9,14 @@ import { registerSchemaPersonal } from "../../ValidationSchema/ValidationSchema"
 import CustomInput from "../../../../components/CustomInputs/CustomInput";
 import CustomSelect from "../../../../components/CustomInputs/CustomSelect";
 import RadioButtons from "../../../../components/CustomInputs/CustomRadioInputGroup";
+import NextBtn from "../../../../components/StepButtons/NextBtn";
+import PrevBtn from "../../../../components/StepButtons/PrevBtn";
+import { selectStep } from "../../../../state-management/registerhelper/registerhelper.selector";
+import { setStep } from "../../../../state-management/registerhelper/registerhelper.actions";
+import SubmitBtn from "../../../../components/StepButtons/SubmitBtn";
 
 function PersonalForm() {
+  const step = useSelector(selectStep);
   const options = [
     { key: "Male", value: "male" },
     { key: "Female", value: "female" },
@@ -23,13 +29,13 @@ function PersonalForm() {
     dispatch(setRegisterUser(registerData, e));
   };
 
-  const handleSubmit = (values) => {
-    console.log(values);
-    console.log(registerData);
+  const handleSubmit = () => {
+    dispatch(setStep(step + 1));
   };
-  useEffect(() => {
-    console.log(registerData);
-  }, [registerData]);
+
+  // useEffect(() => {
+  // console.log(registerData);
+  // }, [registerData]);
 
   return (
     <>
@@ -38,7 +44,7 @@ function PersonalForm() {
         validationSchema={registerSchemaPersonal}
         onSubmit={handleSubmit}
       >
-        <Form className="personal-form">
+        <Form>
           <RegisterFormPart>
             <CustomInput
               label="Firstname"
@@ -102,7 +108,8 @@ function PersonalForm() {
               value={age || ""}
             />
           </RegisterFormPart>
-          <button type="submit">submit</button>
+          <NextBtn />
+          <PrevBtn />
         </Form>
       </Formik>
     </>

@@ -4,7 +4,7 @@ import { Fragment } from "react";
 
 function ConfirmForm({ values }) {
   const { userData } = values;
-  console.log(userData.userDataObj.userProfile);
+  // console.log(userData.userDataObj.userProfile);
   const arrDataForm = userData.userDataObj.userPlan;
   return (
     <div>

@@ -34,7 +34,7 @@ function PlanForm() {
   const RegisterHelperObject = useSelector(selectRegisterHelperObject);
 
   const handleSubmit = () => {
-    console.log("sami bag pl");
+    // console.log("sami bag pl");
   };
 
   const handleBox = (index) => {

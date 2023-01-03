@@ -23,7 +23,7 @@ function FormLogIn() {
 
   const onSubmit = (values, actions) => {
     // setIsSubmitting(true);
-    console.log(loginData);
+    // console.log(loginData);
     // axios
     //   .post("http://localhost:8080/bank/auth/signup", loginData)
     //   .then((res) => console.log(res.data));
