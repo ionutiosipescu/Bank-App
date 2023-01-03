@@ -4,7 +4,6 @@ import "../UI/Input/Input.css";
 
 const CustomCheckbox = ({ label, ...props }) => {
   const [field, meta, helpers] = useField(props);
-  console.log(field, meta, helpers);
   return (
     <>
       <Checkbox>

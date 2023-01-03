@@ -11,6 +11,7 @@ import { FieldInputProps } from "formik";
 const CustomChecboxplan = ({ label, ...props }) => {
   // fiedl , meta, helpers
   const [field, meta] = useField(props);
+  console.log(meta);
   return (
     <>
       <Group>
@@ -20,12 +21,12 @@ const CustomChecboxplan = ({ label, ...props }) => {
           {...props}
           onChange={(e) => {
             field.onChange(e);
-            props.handleBox(props.index, e);
+            props.handleBox(props.index);
             // props.setPlan(e);
           }}
           className={meta.touched && meta.error ? "input-error" : ""}
         />
-        {meta.touched && meta.error && <Error>{meta.error}</Error>}
+        {<Error>{meta.error}</Error>}
       </Group>
     </>
   );

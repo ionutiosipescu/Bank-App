@@ -7,38 +7,23 @@ export const setStep = (step) => {
   return createAction(REGISTER_HELPER_TYPES.SET_STEP, step);
 };
 
-// ShowPlans
-
+// ShowPlans - Toggle(true-flase)
 export const setShowPlans = (prevPlans, index) => {
   const newPlans = [...prevPlans];
   newPlans[index].showPlans = !newPlans[index].showPlans;
-  return createAction(REGISTER_HELPER_TYPES.SHOW_PLANS, newPlans);
-  // if true return
-  // if false
-  // remove from userData Redux
-  // typeOfPlan = ""
+  return createAction(REGISTER_HELPER_TYPES.SET_PLAN_DATA, newPlans);
 };
 
 // SetTypeOfPlan Add
-
-// SetTypeOfPlan Remove
-
-// SetTypeOfPlan Controler
-
-export const setTypeOfPlan = (prevPlans, index, e) => {
+export const setTypeOfPlanAdd = (prevPlans, index, e) => {
   const newPlans = [...prevPlans];
-  if (prevPlans[index].showPlans) {
-    newPlans[index].typeOfPlan = e.target.value;
-    return createAction(REGISTER_HELPER_TYPES.SET_TYPE_OF_PLAN, newPlans);
-  } else if (!prevPlans[index].showPlans) {
-    newPlans[index].typeOfPlan = "";
-    return createAction(REGISTER_HELPER_TYPES.SET_TYPE_OF_PLAN, newPlans);
-  }
-  // after update object with typeOfPlan -> add object to userData Redux Array
+  newPlans[index].typeOfPlan = e.target.value;
+  return createAction(REGISTER_HELPER_TYPES.SET_PLAN_DATA, newPlans);
 };
 
-// // InitPlan
-
-// export const initArrPlans = (currencyArrData) => {
-//   return createAction(REGISTER_HELPER_TYPES.INIT_PLAN, currencyArrData);
-// };
+// SetTypeOfPlan Remove
+export const setTypeOfPlanRemove = (prevPlans, index) => {
+  const newPlans = [...prevPlans];
+  newPlans[index].typeOfPlan = "";
+  return createAction(REGISTER_HELPER_TYPES.SET_PLAN_DATA, newPlans);
+};

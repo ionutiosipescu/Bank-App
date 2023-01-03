@@ -60,6 +60,19 @@ export const registerSchemaAccount = yup.object().shape({
     .required("Required"),
 });
 
+export const registerSchemaPlan = yup.object().shape({
+  showPlans: yup.boolean().oneOf([true], "At least one plan is required"),
+});
+
 // export const registerSchemaPlan = yup.object().shape({
-//   currency:
+//   planData: yup
+//     .array()
+//     .of(
+//       yup.object().shape({
+//         showPlans: yup.boolean().required(),
+//       })
+//     )
+//     .test("at-least-one-plan", "At least one plan is required", (value) =>
+//       value.some((plan) => plan.showPlans)
+//     ),
 // });

@@ -4,6 +4,8 @@ import { setObjectPlan } from "../registerhelper/registerhelper.actions";
 import { useState } from "react";
 import { setTypeOfPlan } from "../registerhelper/registerhelper.actions";
 import { setShowPlans } from "../registerhelper/registerhelper.actions";
+import { setTypeOfPlanAdd } from "../registerhelper/registerhelper.actions";
+import { setTypeOfPlanRemove } from "../registerhelper/registerhelper.actions";
 
 // User Profile
 const updateRegisterUser = (register, e) => {
@@ -16,7 +18,9 @@ export const setRegisterUser = (register, e) => {
   return createAction(REGISTER_ACTION_TYPES.SET_REGISTER_USER, user);
 };
 
-// User Plan ADD
+// UserPlan
+
+// User Plan Add
 
 export const setRegisterPlanAdd = (userDataArrPlan, prevPlans, index) => {
   const newArrPlan = [...userDataArrPlan, { ...prevPlans[index] }];
@@ -43,59 +47,28 @@ export const updateRegisterPlanAsync = (
   e
 ) => {
   return async (dispatch) => {
-    dispatch(setTypeOfPlan(prevPlans, index, e));
+    // update typeOfPlan in registerPlanData
+    dispatch(setTypeOfPlanAdd(prevPlans, index, e));
+    // update UserPlan in Redux with currentPlan from registerPlanData
     dispatch(setRegisterPlanAdd(userDataArrPlan, prevPlans, index));
   };
 };
 
 // Async Checkbox Plan
-
 export const updateRegisterPlanCheckboxAsync = (
   userDataArrPlan,
   prevPlans,
-  index,
-  e
+  index
 ) => {
   return async (dispatch) => {
+    // update showPlans in registerPlanData
     dispatch(setShowPlans(prevPlans, index));
     if (prevPlans[index].showPlans) return;
     if (!prevPlans[index].showPlans) {
+      // update typeOfPlan in registerPlanData
+      dispatch(setTypeOfPlanRemove(prevPlans, index));
+      // update UserPlan in Redux with currentPlan from registerPlanData
       dispatch(setRegisterPlanRemove(userDataArrPlan, prevPlans, index));
-      dispatch(setTypeOfPlan(prevPlans, index, e));
     }
   };
 };
-
-// // User Plan Update
-
-// // User Plan ADD
-
-// export const setRegisterPlanAdd = (previousArrPlan, plan) => {
-//   const newArrPlan = [...previousArrPlan, { ...plan }];
-//   return createAction(REGISTER_ACTION_TYPES.SET_REGISTER_PLAN_ADD, newArrPlan);
-// };
-
-// // User Plan Remove
-
-// export const setRegisterPlanRemove = (previousArrPlan, plan) => {
-//   const newArrPlan = [...previousArrPlan].filter(
-//     (prevArrPlan) => prevArrPlan.currency !== plan.currency
-//   );
-//   return createAction(
-//     REGISTER_ACTION_TYPES.SET_REGISTER_PLAN_REMOVE,
-//     newArrPlan
-//   );
-// };
-
-// export const updateRegisterPlanAsync = (chosenPlan, e, ArrPlan) => {
-//   return async (dispatch) => {
-//     const { checked } = e.target;
-//     const planUpdated = await dispatch(setObjectPlan(chosenPlan, e));
-//     const payloadPlan = await planUpdated.payload;
-//     if (checked) {
-//       dispatch(setRegisterPlanAdd(ArrPlan, payloadPlan));
-//     } else if (!checked) {
-//       dispatch(setRegisterPlanRemove(ArrPlan, payloadPlan));
-//     }
-//   };
-// };

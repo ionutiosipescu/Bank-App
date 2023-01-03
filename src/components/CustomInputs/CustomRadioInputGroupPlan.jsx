@@ -8,7 +8,6 @@ import { selectPlan } from "../../state-management/registerhelper/registerhelper
 
 const RadioButtonsPlan = ({ label, ...props }) => {
   const [field, meta] = useField(props);
-  console.log(props.plan);
   return (
     <Group>
       <label>{label}</label>

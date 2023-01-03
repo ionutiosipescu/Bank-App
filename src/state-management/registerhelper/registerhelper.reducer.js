@@ -26,11 +26,7 @@ export const registerHelperReducer = (state = INITIAL_STATE, action = {}) => {
   switch (type) {
     case REGISTER_HELPER_TYPES.SET_STEP:
       return { ...state, step: payload };
-    case REGISTER_HELPER_TYPES.INIT_PLAN:
-      return { ...state, planData: [...payload] };
-    case REGISTER_HELPER_TYPES.SHOW_PLANS:
-      return { ...state, planData: [...payload] };
-    case REGISTER_HELPER_TYPES.SET_TYPE_OF_PLAN:
+    case REGISTER_HELPER_TYPES.SET_PLAN_DATA:
       return { ...state, planData: [...payload] };
     default:
       return state;
