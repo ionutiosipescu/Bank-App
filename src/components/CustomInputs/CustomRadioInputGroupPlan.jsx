@@ -36,7 +36,7 @@ const RadioButtonsPlan = ({ label, ...props }) => {
           }}
         </Field>
       </div>
-      {meta.touched && meta.error && <Error>{meta.error}</Error>}
+      {/* {meta.touched && meta.error && <Error>{meta.error}</Error>} */}
     </Group>
   );
 };

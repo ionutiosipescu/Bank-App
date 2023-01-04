@@ -18,69 +18,12 @@ import NextBtn from "../../../components/StepButtons/NextBtn";
 import PrevBtn from "../../../components/StepButtons/PrevBtn";
 
 function FormRegister() {
-  const dispatch = useDispatch();
-  const step = useSelector(selectStep);
-  //   const date = new Date();
-  //   const [checkedRo, setCheckedRo] = useState("");
-  //   const [checkedEur, setCheckedEur] = useState("");
-  //   const [page, setPage] = useState(0);
-  //   const [userData, setUserData] = useState({
-  //     userDataObj: {
-  //       userProfile: {
-  //         lastName: "",
-  //         firstName: "",
-  //         email: "",
-  //         city: "",
-  //         number: "",
-  //         displayName: "",
-  //         mobile: "",
-  //         birthDate: "",
-  //         gender: "",
-  //         password: "",
-  //         confirmPassword: "",
-  //         createdAt: "",
-  //       },
-  //       userPlan: [],
-  //     },
-  //   });
-
-  //   const values = {
-  //     userData,
-  //     setUserData,
-  //     checkedRo,
-  //     checkedEur,
-  //     setCheckedRo,
-  //     setCheckedEur,
-  //   };
-
-  //   const FormTitles = ["Personal", "Account", "Plan", "Confirmed"];
-
-  //   const PageDisplay = () => {
-  //     if (page === 0) {
-  //       return <PersonalForm values={values} />;
-  //     } else if (page === 1) {
-  //       return <AccountForm values={values} />;
-  //     } else if (page === 2) {
-  //       return <PlanForm values={values} />;
-  //     } else {
-  //       return <ConfirmForm values={values} />;
-  //     }
-  //   };
-
-  //   const handleSubmit = () => {
-  //     console.log(userData);
-  //   };
-
   return (
     <>
-      <h1>Register</h1>
+      {/* <h1>Register</h1> */}
       <RegitsterFormContainer>
         <RegisterFormWrapper>
           <Step />
-          <div className="footer">
-            {/* <PrevBtn />
-            <NextBtn /> */}
-          </div>
         </RegisterFormWrapper>
       </RegitsterFormContainer>
     </>

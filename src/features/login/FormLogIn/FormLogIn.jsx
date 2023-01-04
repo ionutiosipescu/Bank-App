@@ -13,6 +13,7 @@ import { debounce } from "debounce";
 import { selectStep } from "../../../state-management/registerhelper/registerhelper.selector";
 import { setStep } from "../../../state-management/registerhelper/registerhelper.actions";
 import axios from "axios";
+import { removePersistedState } from "../../../utils/helpers/removeLocalStorage/removeLocalStorage";
 
 function FormLogIn() {
   const dispatch = useDispatch();
@@ -40,6 +41,13 @@ function FormLogIn() {
   //     return;
   //   }
   // }, [isSubmitting]);
+
+  // remove localstorage in progress
+  useEffect(() => {
+    if (window.location.pathname === "/login") {
+      removePersistedState();
+    }
+  }, []);
 
   const initialObject = {
     username: "",

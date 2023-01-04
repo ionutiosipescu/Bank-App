@@ -22,3 +22,9 @@ export const CheckboxContainer = styled.div`
   width: 100%;
   margin-bottom: 20px;
 `;
+export const FooterControlPages = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;

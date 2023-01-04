@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { RegisterFormPart } from "../../FormRegister/FormRegister.style";
-import { Formik, Form, useFormikContext, ErrorMessage } from "formik";
+import { Formik, Form } from "formik";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { setRegisterUser } from "../../../../state-management/registerUser/registerUser.action";
@@ -9,11 +9,10 @@ import { registerSchemaPersonal } from "../../ValidationSchema/ValidationSchema"
 import CustomInput from "../../../../components/CustomInputs/CustomInput";
 import CustomSelect from "../../../../components/CustomInputs/CustomSelect";
 import RadioButtons from "../../../../components/CustomInputs/CustomRadioInputGroup";
-import NextBtn from "../../../../components/StepButtons/NextBtn";
-import PrevBtn from "../../../../components/StepButtons/PrevBtn";
 import { selectStep } from "../../../../state-management/registerhelper/registerhelper.selector";
 import { setStep } from "../../../../state-management/registerhelper/registerhelper.actions";
-import SubmitBtn from "../../../../components/StepButtons/SubmitBtn";
+import FooterControl from "../../FooterControl/FooterControl";
+import handleSubmit from "../../../../utils/helpers/register/HandleSubmit";
 
 function PersonalForm() {
   const step = useSelector(selectStep);
@@ -29,20 +28,12 @@ function PersonalForm() {
     dispatch(setRegisterUser(registerData, e));
   };
 
-  const handleSubmit = () => {
-    dispatch(setStep(step + 1));
-  };
-
-  // useEffect(() => {
-  // console.log(registerData);
-  // }, [registerData]);
-
   return (
     <>
       <Formik
         initialValues={{ ...registerData }}
         validationSchema={registerSchemaPersonal}
-        onSubmit={handleSubmit}
+        onSubmit={() => handleSubmit(dispatch, setStep, step)}
       >
         <Form>
           <RegisterFormPart>
@@ -108,8 +99,7 @@ function PersonalForm() {
               value={age || ""}
             />
           </RegisterFormPart>
-          <NextBtn />
-          <PrevBtn />
+          <FooterControl />
         </Form>
       </Formik>
     </>

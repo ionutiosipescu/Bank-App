@@ -9,8 +9,13 @@ import CustomInput from "../../../../components/CustomInputs/CustomInput";
 import { registerSchemaAccount } from "../../ValidationSchema/ValidationSchema";
 import NextBtn from "../../../../components/StepButtons/NextBtn";
 import PrevBtn from "../../../../components/StepButtons/PrevBtn";
+import FooterControl from "../../FooterControl/FooterControl";
+import handleSubmit from "../../../../utils/helpers/register/HandleSubmit";
+import { selectStep } from "../../../../state-management/registerhelper/registerhelper.selector";
+import { setStep } from "../../../../state-management/registerhelper/registerhelper.actions";
 
 function AccountForm() {
+  const step = useSelector(selectStep);
   const dispatch = useDispatch();
   const registerData = useSelector(selectRegisterUser);
 
@@ -18,20 +23,12 @@ function AccountForm() {
     dispatch(setRegisterUser(registerData, e));
   };
 
-  const handleSubmit = (values) => {
-    // console.log(values);
-    // console.log(registerData);
-  };
-  useEffect(() => {
-    // console.log(registerData);
-  }, [registerData]);
-
   return (
     <>
       <Formik
         initialValues={{ ...registerData }}
         validationSchema={registerSchemaAccount}
-        onSubmit={handleSubmit}
+        onSubmit={() => handleSubmit(dispatch, setStep, step)}
       >
         <Form className="personal-form">
           <CustomInput
@@ -77,9 +74,7 @@ function AccountForm() {
               setData={setData}
             />
           </RegisterFormPart>
-          {/* <button type="submit">submit</button> */}
-          <NextBtn type="submit" />
-          <PrevBtn />
+          <FooterControl />
         </Form>
       </Formik>
     </>

@@ -61,18 +61,12 @@ export const registerSchemaAccount = yup.object().shape({
 });
 
 export const registerSchemaPlan = yup.object().shape({
-  showPlans: yup.boolean().oneOf([true], "At least one plan is required"),
+  userPlan: yup.array().nullable().min(1, "At least one item is required"),
 });
 
-// export const registerSchemaPlan = yup.object().shape({
-//   planData: yup
-//     .array()
-//     .of(
-//       yup.object().shape({
-//         showPlans: yup.boolean().required(),
-//       })
-//     )
-//     .test("at-least-one-plan", "At least one plan is required", (value) =>
-//       value.some((plan) => plan.showPlans)
-//     ),
-// });
+export const registerShemaConfirmation = yup.object().shape({
+  acceptedTos: yup
+    .boolean()
+    .oneOf([true], "Please accept the terms of service")
+    .required("Required"),
+});
