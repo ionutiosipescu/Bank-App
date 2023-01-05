@@ -11,6 +11,7 @@ export const RegisterContainer = styled.div`
   justify-content: center;
   background: var(--gray-light);
   font-weight: 600;
+  overflow-x: hidden;
   @media ${device.laptop} {
     padding: 50px 200px;
   }

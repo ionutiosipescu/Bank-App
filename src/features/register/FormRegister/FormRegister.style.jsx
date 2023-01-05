@@ -14,7 +14,9 @@ export const RegisterFormPart = styled.div`
 `;
 
 // lv3
-export const FormContainer = styled.form``;
+export const FormContainer = styled.form`
+  height: 100%;
+`;
 
 // lv4
 export const RegisterFormWrapper = styled.div`
@@ -26,6 +28,7 @@ export const RegisterFormWrapper = styled.div`
 // lv5
 export const RegitsterFormContainer = styled.div`
   width: 100%;
+  height: 100%;
 `;
 export const CheckboxContainer = styled.div`
   display: flex;
