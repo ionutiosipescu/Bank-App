@@ -14,22 +14,19 @@ export const RegisterFormPart = styled.div`
 `;
 
 // lv3
-export const FormContainer = styled.form`
-  height: 100%;
-`;
-
-// lv4
-export const RegisterFormWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-`;
+// export const RegisterFormWrapper = styled.div`
+//   width: 100%;
+//   height: 100%;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   flex-direction: column;
+// `;
 // lv5
-export const RegitsterFormContainer = styled.div`
-  width: 100%;
-  height: 100%;
-`;
+// export const RegitsterFormContainer = styled.div`
+//   width: 100%;
+//   height: 100%;
+// `;
 export const CheckboxContainer = styled.div`
   display: flex;
   justify-content: space-between;
@@ -42,4 +39,10 @@ export const FooterControlPages = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  align-self: center;
+  margin-top: 30px;
+  gap: 20px;
+  @media ${device.mobileL} {
+    flex-direction: row;
+  }
 `;

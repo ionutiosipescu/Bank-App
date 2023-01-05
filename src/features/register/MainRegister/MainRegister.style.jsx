@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { device } from "../../../utils/breakpoints/breakpoints";
 
-// lv6
+// lv3
 export const RegisterContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -10,11 +10,8 @@ export const RegisterContainer = styled.div`
   width: 100%;
   height: 100%;
   padding: 20px;
-  @media ${device.mobileS} {
-    padding: 30px;
-  }
 `;
-// lv7
+// lv4
 export const RegisterWrapper = styled.div`
   width: 100%;
   height: 100%;
@@ -25,4 +22,8 @@ export const RegisterWrapper = styled.div`
   border-radius: 30px;
   overflow: hidden;
   box-shadow: 13px 12px 41px 14px rgba(0, 0, 0, 0.32);
+  @media ${device.laptop} {
+    width: auto;
+    height: 100%;
+  }
 `;

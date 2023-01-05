@@ -1,11 +1,14 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { selectStep } from "../../state-management/registerhelper/registerhelper.selector";
+import Button from "../UI/NewButton/Button.component";
 
 const NextBtn = () => {
   const step = useSelector(selectStep);
   return (
-    <button type="submit">{step === 3 ? "Create Account" : "Next"}</button>
+    <Button size="md" type="submit" typeclass="primary">
+      {step === 3 ? "Create Account" : "Next"}
+    </Button>
   );
 };
 

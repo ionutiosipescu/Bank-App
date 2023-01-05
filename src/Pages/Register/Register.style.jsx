@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { device } from "../../utils/breakpoints/breakpoints";
 
-// lv8
+// lv5
 export const RegisterContainer = styled.div`
-  height: 100vh;
+  height: auto;
   width: 100vw;
   padding: 10px;
   display: flex;
@@ -12,6 +12,10 @@ export const RegisterContainer = styled.div`
   background: var(--gray-light);
   font-weight: 600;
   overflow-x: hidden;
+  @media ${device.mobileL} {
+    padding: 20px;
+    height: 100vh;
+  }
   @media ${device.laptop} {
     padding: 50px 200px;
   }

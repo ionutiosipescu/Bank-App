@@ -8,11 +8,11 @@ import Step from "../Step/Step";
 function FormRegister() {
   return (
     <>
-      <RegitsterFormContainer>
-        <RegisterFormWrapper>
-          <Step />
-        </RegisterFormWrapper>
-      </RegitsterFormContainer>
+      {/* <RegitsterFormContainer> */}
+      {/* <RegisterFormWrapper> */}
+      <Step />
+      {/* </RegisterFormWrapper> */}
+      {/* </RegitsterFormContainer> */}
     </>
   );
 }

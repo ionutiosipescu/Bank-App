@@ -21,3 +21,6 @@ select.input-error {
 .checkbox-plan {
   text-align: center;
 }
+.radio-personal {
+  width: 200px;
+}

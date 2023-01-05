@@ -13,6 +13,7 @@ import FooterControl from "../../FooterControl/FooterControl";
 import handleSubmit from "../../../../utils/helpers/register/HandleSubmit";
 import { selectStep } from "../../../../state-management/registerhelper/registerhelper.selector";
 import { setStep } from "../../../../state-management/registerhelper/registerhelper.actions";
+import "../../../../components/UI/Input/Input.css";
 
 function AccountForm() {
   const step = useSelector(selectStep);
@@ -37,6 +38,7 @@ function AccountForm() {
             type="email"
             placeholder="Enter your email"
             setData={setData}
+            small
           />
           <RegisterFormPart>
             <CustomInput
@@ -44,7 +46,7 @@ function AccountForm() {
               name="displayName"
               type="text"
               small
-              placeholder=""
+              placeholder="Enter your display name"
               setData={setData}
             />
             <CustomInput

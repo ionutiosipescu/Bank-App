@@ -11,7 +11,7 @@ const RadioButtons = ({ label, ...props }) => {
   const { gender } = registerData;
   const [field, meta] = useField(props);
   return (
-    <Group>
+    <Group className="radio-personal">
       <label>{label}</label>
       <div className="radio-container">
         <Field name={props.name}>
@@ -29,7 +29,7 @@ const RadioButtons = ({ label, ...props }) => {
                     id={option.value}
                     value={option.value || ""}
                     checked={gender === option.value}
-                    className={meta.touched && meta.error ? "input-error" : ""}
+                    className={meta.touched && meta.error ? "input-error " : ""}
                   />
                   <label htmlFor={option.value}>{option.key}</label>
                 </React.Fragment>

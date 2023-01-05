@@ -14,8 +14,8 @@ export const Group = styled.div`
 
 // lv1
 export const InputForm = styled.input`
-  height: 30px;
-  width: ${(props) => (props.small ? "150px" : "310px")};
+  height: 35px;
+  width: ${(props) => (props.small ? "200px" : "310px")};
   border: 1px solid var(--purple);
   border-radius: 30px;
   padding: 0 12px 0 10px;
@@ -27,8 +27,8 @@ export const InputForm = styled.input`
 `;
 export const InputRadio = styled.input``;
 export const InputSelect = styled.select`
-  height: 30px;
-  width: ${(props) => (props.small ? "150px" : "310px")};
+  height: 35px;
+  width: ${(props) => (props.small ? "200px" : "310px")};
   border: 1px solid var(--purple);
   border-radius: 30px;
   padding: 0 12px 0 10px;
