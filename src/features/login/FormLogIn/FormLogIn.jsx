@@ -14,6 +14,7 @@ import { selectStep } from "../../../state-management/registerhelper/registerhel
 import { setStep } from "../../../state-management/registerhelper/registerhelper.actions";
 import axios from "axios";
 import { resetLocalStorage } from "../../../state-management/store";
+import Button from "../../../components/UI/Button/Button";
 
 function FormLogIn() {
   const [hasBeenRefreshed, setHasBeenRefreshed] = useState(false);
@@ -43,15 +44,7 @@ function FormLogIn() {
   //     return;
   //   }
   // }, [isSubmitting])
-  // useEffect(() => {
-  //   resetStore();
-  // }, []);
 
-  // useEffect(() => {
-  //   resetLocalStorage();
-  // }, []);
-
-  // remove localstorage in progress
   useEffect(() => {
     if (localStorage.getItem("persist:root") !== null) {
       localStorage.removeItem("persist:root");
@@ -93,9 +86,7 @@ function FormLogIn() {
           placeholder="Enter your password"
           setData={setData}
         />
-        <CustomCheckbox type="checkbox" name="acceptedTos" />
-
-        <button type="submit">Submit</button>
+        <Button type="submit">Submit</Button>
       </Form>
     </Formik>
   );
