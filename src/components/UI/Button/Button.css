@@ -9,6 +9,7 @@
   color: var(--purple);
   transition: 0.3s;
   margin: 10px 0 10px 0;
+  cursor: pointer;
 }
 
 /* Size */
@@ -27,6 +28,7 @@
 
 .btn-100 {
   width: 100%;
+  font-size: 1rem;
 }
 
 .btn-fit {
@@ -59,3 +61,5 @@
   border: 1px solid var(--blue);
   color: var(--white);
 }
+
+

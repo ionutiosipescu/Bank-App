@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import DatePicker from "react-datepicker";
 
+// lv1
 export const Group = styled.div`
   position: relative;
   display: flex;
@@ -11,6 +12,7 @@ export const Group = styled.div`
   }
 `;
 
+// lv1
 export const InputForm = styled.input`
   height: 30px;
   width: ${(props) => (props.small ? "150px" : "310px")};

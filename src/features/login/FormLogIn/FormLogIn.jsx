@@ -14,37 +14,39 @@ import { selectStep } from "../../../state-management/registerhelper/registerhel
 import { setStep } from "../../../state-management/registerhelper/registerhelper.actions";
 import axios from "axios";
 import { resetLocalStorage } from "../../../state-management/store";
-import Button from "../../../components/UI/Button/Button";
+import Button from "../../../components/UI/NewButton/Button.component";
+import { useNavigate } from "react-router-dom";
 
 function FormLogIn() {
-  const [hasBeenRefreshed, setHasBeenRefreshed] = useState(false);
-
   const dispatch = useDispatch();
   const loginData = useSelector(selectLoginUser);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const navigate = useNavigate();
 
-  // const [isSubmitting, setIsSubmitting] = useState(false);
-  // const navigate = useNavigate();
-
+  // axios request -> response true - > change isSubmitting status
   const onSubmit = (values, actions) => {
-    // setIsSubmitting(true);
+    setIsSubmitting(true);
     // console.log(loginData);
     // axios
     //   .post("http://localhost:8080/bank/auth/signup", loginData)
     //   .then((res) => console.log(res.data));
   };
 
+  // send data to Redux userProfile
   const setData = debounce((e) => {
     dispatch(setLogInUser(loginData, e));
   }, 500);
 
-  // useEffect(() => {
-  //   if (isSubmitting) {
-  //     navigate("/dashboard");
-  //   } else {
-  //     return;
-  //   }
-  // }, [isSubmitting])
+  // check isSubmitting status -> redirect to dashboard
+  useEffect(() => {
+    if (isSubmitting) {
+      navigate("/dashboard");
+    } else {
+      return;
+    }
+  }, [isSubmitting]);
 
+  // restore localStorage
   useEffect(() => {
     if (localStorage.getItem("persist:root") !== null) {
       localStorage.removeItem("persist:root");
@@ -86,7 +88,9 @@ function FormLogIn() {
           placeholder="Enter your password"
           setData={setData}
         />
-        <Button type="submit">Submit</Button>
+        <Button size="100" typeclass="secondary" type="submit">
+          Log In
+        </Button>
       </Form>
     </Formik>
   );
