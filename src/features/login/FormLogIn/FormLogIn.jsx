@@ -13,9 +13,11 @@ import { debounce } from "debounce";
 import { selectStep } from "../../../state-management/registerhelper/registerhelper.selector";
 import { setStep } from "../../../state-management/registerhelper/registerhelper.actions";
 import axios from "axios";
-import { removePersistedState } from "../../../utils/helpers/removeLocalStorage/removeLocalStorage";
+import { resetLocalStorage } from "../../../state-management/store";
 
 function FormLogIn() {
+  const [hasBeenRefreshed, setHasBeenRefreshed] = useState(false);
+
   const dispatch = useDispatch();
   const loginData = useSelector(selectLoginUser);
 
@@ -40,12 +42,20 @@ function FormLogIn() {
   //   } else {
   //     return;
   //   }
-  // }, [isSubmitting]);
+  // }, [isSubmitting])
+  // useEffect(() => {
+  //   resetStore();
+  // }, []);
+
+  // useEffect(() => {
+  //   resetLocalStorage();
+  // }, []);
 
   // remove localstorage in progress
   useEffect(() => {
-    if (window.location.pathname === "/login") {
-      removePersistedState();
+    if (localStorage.getItem("persist:root") !== null) {
+      localStorage.removeItem("persist:root");
+      window.location.reload();
     }
   }, []);
 
