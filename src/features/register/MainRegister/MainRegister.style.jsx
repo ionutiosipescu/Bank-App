@@ -10,6 +10,7 @@ export const RegisterContainer = styled.div`
   width: 100%;
   height: 100%;
   padding: 20px;
+  min-height: 650px;
 `;
 // lv4
 export const RegisterWrapper = styled.div`

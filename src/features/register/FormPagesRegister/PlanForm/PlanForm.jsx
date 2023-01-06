@@ -13,42 +13,49 @@ import FooterControl from "../../FooterControl/FooterControl";
 import { selectStep } from "../../../../state-management/registerhelper/registerhelper.selector";
 import { setStep } from "../../../../state-management/registerhelper/registerhelper.actions";
 import { ErrorMessage } from "formik";
+import { setRegisterUserObject } from "../../../../state-management/registerUser/registerUser.action";
+import { selectRegisterUser } from "../../../../state-management/registerhelper/registerhelper.selector";
+import { setRegisterObjectEsentials } from "../../../../state-management/registerUser/registerUser.action";
+import "./PlanForm.css";
 
 function PlanForm() {
   const step = useSelector(selectStep);
   const options = [
-    { key: "Standard", value: "standard" },
-    { key: "Premium", value: "premium" },
-    { key: "Vip", value: "vip" },
+    { key: "standard", value: "standard" },
+    { key: "premium", value: "premium" },
+    { key: "vip", value: "vip" },
   ];
   const dispatch = useDispatch();
   const planData = useSelector(selectPlan);
   const userPlan = useSelector(selectRegisterPlan);
+  const registerHelper = useSelector(selectRegisterUser);
 
   const handleBox = (index) => {
     dispatch(updateRegisterPlanCheckboxAsync(userPlan, planData, index));
   };
 
-  const handleRadio = (index, e) => {
+  const handleradio = (index, e) => {
     dispatch(updateRegisterPlanAsync(userPlan, planData, index, e));
   };
 
   return (
     <>
       <Formik
-        validationSchema={registerSchemaPlan}
         initialValues={{ userPlan }}
         validateOnBlur={false}
         validateOnChange={true}
         onSubmit={(values, actions) => {
+          console.log(values);
           if (userPlan.length === 0) {
             actions.setFieldError("userPlan", "At least one item is required");
           } else {
+            dispatch(setRegisterObjectEsentials(registerHelper));
+            dispatch(setRegisterUserObject(registerHelper));
             dispatch(setStep(step + 1));
           }
         }}
       >
-        <Form className="personal-form">
+        <Form className="plan-form">
           {planData.map((plan, index) => {
             return (
               <div key={index}>
@@ -71,7 +78,7 @@ function PlanForm() {
                       label="Type Of Plan"
                       name={plan.namePlan}
                       options={options}
-                      handleRadio={handleRadio}
+                      handleradio={handleradio}
                       index={index}
                       plan={plan}
                       typeOfPlan={plan.typeOfPlan}
@@ -81,7 +88,11 @@ function PlanForm() {
               </div>
             );
           })}
-          <ErrorMessage name="userPlan" />
+          <ErrorMessage
+            className="plan-error"
+            component="div"
+            name="userPlan"
+          />
           <FooterControl />
         </Form>
       </Formik>

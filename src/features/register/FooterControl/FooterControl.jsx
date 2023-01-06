@@ -6,8 +6,8 @@ import PrevBtn from "../../../components/StepButtons/PrevBtn";
 function FooterControl() {
   return (
     <FooterControlPages>
-      <NextBtn />
       <PrevBtn />
+      <NextBtn />
     </FooterControlPages>
   );
 }

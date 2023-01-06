@@ -43,12 +43,24 @@ export const InputSelect = styled.select`
   }
 `;
 
-export const InputDate = styled(DatePicker)`
+// export const InputDate = styled(DatePicker)`
+//   height: 30px;
+//   width: ${(props) => (props.small ? "150px" : "310px")};
+//   border: 1px solid var(--purple);
+//   border-radius: 30px;
+//   padding: 0 12px 0 10px;
+//   &:focus {
+//     outline: none;
+//     border: 2px solid var(--blue);
+//   }
+// `;
+export const InputDateTest = styled.input`
   height: 30px;
-  width: ${(props) => (props.small ? "150px" : "310px")};
+  width: ${(props) => (props.small ? "200px" : "310px")};
   border: 1px solid var(--purple);
   border-radius: 30px;
   padding: 0 12px 0 10px;
+  cursor: pointer;
   &:focus {
     outline: none;
     border: 2px solid var(--blue);
@@ -75,3 +87,41 @@ export const Error = styled.div`
   position: absolute;
   bottom: -10px;
 `;
+
+// export const InputCheckbox = styled.input``;
+
+// export const CheckboxPlan = styled.div`
+//   display: inline-block;
+//   width: 100%;
+//   height: 2rem;
+//   border-radius: 1rem;
+//   background-color: #ccc;
+//   cursor: pointer;
+//   text-align: center;
+// `;
+
+// export const InputCheckbox = styled.input`
+//   display: none;
+
+//   + ${CheckboxPlan}:before {
+//     content: "";
+//     display: inline-block;
+//     width: 2rem;
+//     height: 2rem;
+//     border-radius: 1rem;
+//     background-color: #fff;
+//     box-shadow: 0 0 0 2px #ccc;
+//     vertical-align: top;
+//     margin-top: -0.5rem;
+//     transition: all 0.2s;
+//   }
+
+//   &:checked + ${CheckboxPlan}:before {
+//     background-color: #333;
+//     box-shadow: 0 0 0 2px #333;
+//   }
+
+//   &:hover + ${CheckboxPlan} {
+//     opacity: 0.8;
+//   }
+// `;

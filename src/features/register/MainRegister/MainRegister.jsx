@@ -15,7 +15,8 @@ function MainRegister() {
         <FormRegister />
         {step === 4 ? <SuccesLink /> : <FooterRegister />}
       </RegisterContainer>
-      <HeroRegister />
+      {step === 2 ? <></> : <HeroRegister />}
+      {/* <HeroRegister /> */}
     </RegisterWrapper>
   );
 }

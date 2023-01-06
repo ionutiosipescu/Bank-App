@@ -3,8 +3,10 @@ import { RegisterFormPart } from "../../FormRegister/FormRegister.style";
 import { Formik, Form } from "formik";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { setRegisterUser } from "../../../../state-management/registerUser/registerUser.action";
-import { selectRegisterUser } from "../../../../state-management/registerUser/registerUser.selector";
+import { setRegisterUser } from "../../../../state-management/registerhelper/registerhelper.actions";
+import { selectRegisterUser } from "../../../../state-management/registerhelper/registerhelper.selector";
+// import { setRegisterUser } from "../../../../state-management/registerUser/registerUser.action";
+// import { selectRegisterUser } from "../../../../state-management/registerUser/registerUser.selector";
 import { registerSchemaPersonal } from "../../ValidationSchema/ValidationSchema";
 import CustomInput from "../../../../components/CustomInputs/CustomInput";
 import CustomSelect from "../../../../components/CustomInputs/CustomSelect";
@@ -12,7 +14,8 @@ import RadioButtons from "../../../../components/CustomInputs/CustomRadioInputGr
 import { selectStep } from "../../../../state-management/registerhelper/registerhelper.selector";
 import { setStep } from "../../../../state-management/registerhelper/registerhelper.actions";
 import FooterControl from "../../FooterControl/FooterControl";
-import handleSubmit from "../../../../utils/helpers/register/HandleSubmit";
+import { handleSubmit } from "../../../../utils/helpers/register/HandleSubmit";
+import DatePickerField from "../../../../components/CustomInputs/CustomDatePicker";
 
 function PersonalForm() {
   const step = useSelector(selectStep);
@@ -22,7 +25,7 @@ function PersonalForm() {
   ];
   const dispatch = useDispatch();
   const registerData = useSelector(selectRegisterUser);
-  const { firstname, lastname, country, address, age } = registerData; // destructure data from Redux for updating on every keypress
+  const { firstname, lastname, country, address, date } = registerData; // destructure data from Redux for updating on every keypress
 
   const setData = (e) => {
     dispatch(setRegisterUser(registerData, e));
@@ -89,7 +92,16 @@ function PersonalForm() {
               options={options}
               setData={setData}
             />
-            <CustomInput
+            <DatePickerField
+              label="Date"
+              name="date"
+              setData={setData}
+              small
+              // value={date || ""}
+              // placeholder="Enter a date"
+              // setData={setData}
+            />
+            {/* <CustomInput
               label="Age"
               name="age"
               type="number"
@@ -97,7 +109,7 @@ function PersonalForm() {
               placeholder="Enter your age"
               setData={setData}
               value={age || ""}
-            />
+            /> */}
           </RegisterFormPart>
           <FooterControl />
         </Form>

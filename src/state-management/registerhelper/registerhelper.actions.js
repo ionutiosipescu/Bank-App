@@ -27,3 +27,14 @@ export const setTypeOfPlanRemove = (prevPlans, index) => {
   newPlans[index].typeOfPlan = "";
   return createAction(REGISTER_HELPER_TYPES.SET_PLAN_DATA, newPlans);
 };
+
+// User Profile
+const updateRegisterUser = (register, e) => {
+  const { name, value } = e.target;
+  return { ...register, [name]: value };
+};
+
+export const setRegisterUser = (register, e) => {
+  const user = updateRegisterUser(register, e);
+  return createAction(REGISTER_HELPER_TYPES.SET_USER_DATA, user);
+};

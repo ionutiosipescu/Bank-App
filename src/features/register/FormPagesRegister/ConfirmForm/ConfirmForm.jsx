@@ -2,31 +2,45 @@ import React from "react";
 import "./ConfirmForm.css";
 import { Fragment } from "react";
 import { selectRegisterPlan } from "../../../../state-management/registerUser/registerUser.selector";
-import { selectRegisterUser } from "../../../../state-management/registerUser/registerUser.selector";
+// import { selectRegisterUser } from "../../../../state-management/registerUser/registerUser.selector";
+import { selectRegisterUser } from "../../../../state-management/registerhelper/registerhelper.selector";
 import FooterControl from "../../FooterControl/FooterControl";
 import { Form, Formik } from "formik";
-import handleSubmit from "../../../../utils/helpers/register/HandleSubmit";
+// import { handleSubmit } from "../../../../utils/helpers/register/HandleSubmit";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { selectStep } from "../../../../state-management/registerhelper/registerhelper.selector";
 import { setStep } from "../../../../state-management/registerhelper/registerhelper.actions";
 import CustomCheckbox from "../../../../components/CustomInputs/CustomCheckbox";
 import { registerShemaConfirmation } from "../../ValidationSchema/ValidationSchema";
+import { selectRegisterData } from "../../../../state-management/registerUser/registerUser.selector";
+import { fetchRegisterData } from "../../../../state-management/registerUser/registerUser.action";
 
 function ConfirmForm() {
   const dispatch = useDispatch();
   const step = useSelector(selectStep);
   const RegisterUser = useSelector(selectRegisterUser);
   const RegisterPlan = useSelector(selectRegisterPlan);
+  const RegisterData = useSelector(selectRegisterData);
   const initialObject = {
     acceptedTos: false,
+  };
+
+  const handleSubmit = () => {
+    dispatch(
+      fetchRegisterData(
+        "http://localhost:8080/bank/auth/signup",
+        RegisterData,
+        step
+      )
+    );
   };
   return (
     <>
       <Formik
         initialValues={{ ...initialObject }}
         validationSchema={registerShemaConfirmation}
-        onSubmit={() => handleSubmit(dispatch, setStep, step)}
+        onSubmit={handleSubmit}
       >
         <Form className="personal-form">
           <h1>Confirm Form</h1>

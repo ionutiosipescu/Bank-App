@@ -1,5 +1,11 @@
 import { useField } from "formik";
-import { Group, InputForm, Error } from "../UI/Input/Input.style";
+import {
+  Group,
+  InputForm,
+  Error,
+  CheckboxPlan,
+  InputCheckbox,
+} from "../UI/Input/Input.style";
 import "../UI/Input/Input.css";
 import { useSelector } from "react-redux";
 import { selectPlan } from "../../state-management/registerhelper/registerhelper.selector";
@@ -13,9 +19,9 @@ const CustomChecboxplan = ({ label, ...props }) => {
   const [field, meta] = useField(props);
   return (
     <>
-      <Group>
-        <label className="checkbox-plan">{label}</label>
-        <InputForm
+      {/* <Group> */}
+      <label>
+        <input
           {...field}
           {...props}
           onChange={(e) => {
@@ -23,10 +29,14 @@ const CustomChecboxplan = ({ label, ...props }) => {
             props.handleBox(props.index);
             // props.setPlan(e);
           }}
-          className={meta.touched && meta.error ? "input-error" : ""}
+          className={`checkbox ${
+            meta.touched && meta.error ? "input-error" : ""
+          }`}
         />
-        {/* {meta.touched && meta.error && <Error>{meta.error}</Error>} */}
-      </Group>
+        <span className="checkbox-custom">{label}</span>
+      </label>
+      {/* {meta.touched && meta.error && <Error>{meta.error}</Error>} */}
+      {/* </Group> */}
     </>
   );
 };
