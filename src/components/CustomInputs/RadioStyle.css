@@ -1,0 +1,35 @@
+.checkbox-radio-group label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .checkbox-radio-group input[type='radio'] {
+    margin-right: 10px;
+    display: none;
+  }
+  
+  .checkbox-radio-group input[type='radio'] + .radio-label {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 4px;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .checkbox-radio-group input[type='radio']:checked + .radio-label {
+    background-color: #5d5d5d;
+  }
+  
+  .checkbox-radio-group input[type='radio'] + .radio-label.standard {
+    background-color: #00b8d4;
+  }
+  
+  .checkbox-radio-group input[type='radio'] + .radio-label.premium {
+    background-color: #0052cc;
+  }
+  
+  .checkbox-radio-group input[type='radio'] + .radio-label.vip {
+    background-color: #b71c1c;
+  }

@@ -23,7 +23,13 @@ export const setRegisterUser = (register, e) => {
 // User Plan Add
 
 export const setRegisterPlanAdd = (userDataArrPlan, prevPlans, index) => {
-  const newArrPlan = [...userDataArrPlan, { ...prevPlans[index] }];
+  const { typeOfPlan, currency, currentBallance } = prevPlans[index];
+  const cleanPlan = {
+    typeOfPlan: typeOfPlan,
+    currency: currency,
+    currentBallance: currentBallance,
+  };
+  const newArrPlan = [...userDataArrPlan, { ...cleanPlan }];
   return createAction(REGISTER_ACTION_TYPES.SET_REGISTER_PLAN_ADD, newArrPlan);
 };
 
@@ -39,6 +45,19 @@ export const setRegisterPlanRemove = (userDataArrPlan, prevPlans, index) => {
   );
 };
 
+// User Remove Duplicates
+
+export const setRegisterPlanRemoveDuplicates = (
+  userDataArrPlan,
+  prevPlans,
+  index
+) => {
+  const newArrPlan = [...userDataArrPlan].filter(
+    (prevArrPlan) => prevArrPlan.currency !== prevPlans[index].currency
+  );
+  return newArrPlan;
+};
+
 // Async Radio Plan
 export const updateRegisterPlanAsync = (
   userDataArrPlan,
@@ -47,10 +66,31 @@ export const updateRegisterPlanAsync = (
   e
 ) => {
   return async (dispatch) => {
-    // update typeOfPlan in registerPlanData
-    dispatch(setTypeOfPlanAdd(prevPlans, index, e));
-    // update UserPlan in Redux with currentPlan from registerPlanData
-    dispatch(setRegisterPlanAdd(userDataArrPlan, prevPlans, index));
+    const indicator = prevPlans[index].currency;
+    const validator = userDataArrPlan.some((el) => el.currency === indicator);
+
+    // if plan(ron or euro) exist in Redux
+    // provide an empty arr
+    // setTypeOfPlan in Redux Helper
+    // add only ONE last updated plan in Redux
+
+    if (validator) {
+      const newUserDataArrPlan = await setRegisterPlanRemoveDuplicates(
+        userDataArrPlan,
+        prevPlans,
+        index
+      );
+
+      // update typeOfPlan in registerPlanData in registerhelper.reducer
+      dispatch(setTypeOfPlanAdd(prevPlans, index, e));
+      // update UserPlan in Redux with currentPlan from registerPlanData
+      dispatch(setRegisterPlanAdd(newUserDataArrPlan, prevPlans, index));
+    } else {
+      // update typeOfPlan in registerPlanData in registerhelper.reducer
+      dispatch(setTypeOfPlanAdd(prevPlans, index, e));
+      // update UserPlan in Redux with currentPlan from registerPlanData
+      dispatch(setRegisterPlanAdd(userDataArrPlan, prevPlans, index));
+    }
   };
 };
 

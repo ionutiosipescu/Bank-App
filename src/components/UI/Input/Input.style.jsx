@@ -25,7 +25,11 @@ export const InputForm = styled.input`
     border: 2px solid var(--blue);
   }
 `;
-export const InputRadio = styled.input``;
+export const InputRadio = styled.input`
+  /* position: absolute;
+  opacity: 0;
+  cursor: pointer; */
+`;
 export const InputSelect = styled.select`
   height: 35px;
   width: ${(props) => (props.small ? "200px" : "310px")};

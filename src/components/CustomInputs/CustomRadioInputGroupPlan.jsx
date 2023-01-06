@@ -30,6 +30,10 @@ const RadioButtonsPlan = ({ label, ...props }) => {
                     className={meta.touched && meta.error ? "input-error" : ""}
                   />
                   <label htmlFor={option.value}>{option.key}</label>
+                  {/* <label className={`radio-label ${option.value}`}>
+                    <div className="icon"></div>
+                    <span>{option.value}</span>
+                  </label> */}
                 </React.Fragment>
               );
             });

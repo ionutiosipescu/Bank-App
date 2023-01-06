@@ -7,21 +7,21 @@ export const setStep = (step) => {
   return createAction(REGISTER_HELPER_TYPES.SET_STEP, step);
 };
 
-// ShowPlans - Toggle(true-flase)
+// ShowPlans - Toggle(true-flase) in registerhelper.reducer
 export const setShowPlans = (prevPlans, index) => {
   const newPlans = [...prevPlans];
   newPlans[index].showPlans = !newPlans[index].showPlans;
   return createAction(REGISTER_HELPER_TYPES.SET_PLAN_DATA, newPlans);
 };
 
-// SetTypeOfPlan Add
+// SetTypeOfPlan Add in registerhelper.reducer
 export const setTypeOfPlanAdd = (prevPlans, index, e) => {
   const newPlans = [...prevPlans];
   newPlans[index].typeOfPlan = e.target.value;
   return createAction(REGISTER_HELPER_TYPES.SET_PLAN_DATA, newPlans);
 };
 
-// SetTypeOfPlan Remove
+// SetTypeOfPlan Remove in registerhelper.reducer
 export const setTypeOfPlanRemove = (prevPlans, index) => {
   const newPlans = [...prevPlans];
   newPlans[index].typeOfPlan = "";

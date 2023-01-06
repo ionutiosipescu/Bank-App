@@ -54,7 +54,7 @@ function PlanForm() {
               <div key={index}>
                 <CustomChecboxplan
                   key={plan.currency}
-                  name="userPlan"
+                  name={plan.namePlan}
                   value={plan.showPlans}
                   label={plan.namePlan}
                   checked={plan.showPlans}
@@ -69,7 +69,7 @@ function PlanForm() {
                     <RadioButtonsPlan
                       type="radio"
                       label="Type Of Plan"
-                      name="userPlan"
+                      name={plan.namePlan}
                       options={options}
                       handleRadio={handleRadio}
                       index={index}
