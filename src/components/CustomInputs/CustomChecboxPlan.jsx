@@ -33,7 +33,42 @@ const CustomChecboxplan = ({ label, ...props }) => {
             meta.touched && meta.error ? "input-error" : ""
           }`}
         />
-        <span className="checkbox-custom">{label}</span>
+        <span className="checkbox-custom">
+          {label}
+          <div className="info-plans">
+            <div className="info">
+              <h4>Standard</h4>
+              <ul>
+                <li>Less comision for transfers</li>
+                <li>Easy to use</li>
+                <li>Metal Card</li>
+                <li>Smart Pay with App</li>
+              </ul>
+            </div>
+            <div className="info">
+              <h4>Premium</h4>
+              <ul>
+                <li>Less comision for transfers</li>
+                <li>Easy to use</li>
+                <li>Metal Card</li>
+                <li>Smart Pay with App</li>
+              </ul>
+            </div>
+            <div className="info">
+              <h4>Vip</h4>
+              <ul>
+                <li>Less comision for transfers</li>
+                <li>Easy to use</li>
+                <li>Metal Card</li>
+                <li>Smart Pay with App</li>
+              </ul>
+            </div>
+          </div>
+          <div className="info-message">
+            <p>Chose your plan today !</p>
+            <div class="arrow-down"></div>
+          </div>
+        </span>
       </label>
       {/* {meta.touched && meta.error && <Error>{meta.error}</Error>} */}
       {/* </Group> */}

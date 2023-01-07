@@ -20,7 +20,7 @@ const INITIAL_STATE = {
       currency: "ron",
       namePlan: "Ron",
       currentBallance: "",
-      showPlans: true,
+      showPlans: false,
     },
     {
       typeOfPlan: "",

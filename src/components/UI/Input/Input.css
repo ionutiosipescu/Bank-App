@@ -35,6 +35,7 @@ select.input-error {
   margin-bottom: 50px;
   justify-content: center;
   align-items: center;
+
 }
 
 @media only screen and (min-width: 1024px) {
@@ -50,7 +51,8 @@ select.input-error {
 }
 /* Checked Style */
 .plan-form .radio-label.selected {
-  border: 2px solid #2196f3;
+  border: 2px solid var(--blue);
+  box-shadow: 0 15px 30px rgba(84, 197, 235, 0.6), 0 10px 10px rgba(84, 197, 235, 0.2);
 }
 /* Card Style */
 .plan-form .radio-label {
@@ -70,6 +72,8 @@ select.input-error {
   box-sizing: border-box;
   border-radius: 25px;
   overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+
 }
 /* //////////// */
 .plancard-header {
@@ -259,6 +263,9 @@ color: var(--white)
 .checkbox {
   display: none;
 }
+.checkbox-custom .info-plans, .checkbox-custom .info-message {
+display: none;
+}
 
 .checkbox-custom {
   margin-bottom: 50px;
@@ -287,6 +294,49 @@ color: var(--white)
 
 @media only screen and (min-width: 1024px) {
   .checkbox-custom {
-    width: 200px;
+    height: auto;
+    min-height: 15rem;
+    transition: all 0.5s;
+  }
+  .checkbox-custom .info-plans{
+    display: flex;
+    margin: 30px 50px;
+    gap: 50px;
+    }
+    .checkbox-custom .info-message {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+      flex-direction: column;
+      align-items: center;
+    }
+    .info{
+      width: 100%;
+    }
+    .info li {
+      list-style-type: none;  
+      border-bottom: 1px solid;
+    }
+    .info ul {
+      padding: 0;  
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    .arrow-down {
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 10px solid var(--white);
+      margin-left: 10px;
+    }
+  .checkbox:checked + .checkbox-custom .info-plans, .checkbox:checked + .checkbox-custom .info-message{
+    display: none;
+  }
+  .checkbox:checked + .checkbox-custom {
+    height: 2rem;
+    min-height: 2rem;
   }
 }

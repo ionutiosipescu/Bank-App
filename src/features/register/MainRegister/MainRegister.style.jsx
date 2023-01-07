@@ -11,6 +11,9 @@ export const RegisterContainer = styled.div`
   height: 100%;
   padding: 20px;
   min-height: 650px;
+  @media ${device.laptop} {
+    padding: 50px 120px;
+  }
 `;
 // lv4
 export const RegisterWrapper = styled.div`
@@ -25,6 +28,6 @@ export const RegisterWrapper = styled.div`
   box-shadow: 13px 12px 41px 14px rgba(0, 0, 0, 0.32);
   @media ${device.laptop} {
     width: auto;
-    height: 100%;
+    /* height: 100%; */
   }
 `;
