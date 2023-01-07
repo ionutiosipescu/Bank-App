@@ -71,4 +71,8 @@ export const registerShemaConfirmation = yup.object().shape({
     .boolean()
     .oneOf([true], "Please accept the terms of service")
     .required("Required"),
+  acceptedPlan: yup
+    .boolean()
+    .oneOf([true], "Please accept the terms of service")
+    .required("Required"),
 });

@@ -8,6 +8,7 @@ export const RegisterFormPart = styled.div`
   align-items: flex-end;
   gap: 30px;
   flex-direction: column;
+  margin-bottom: 25px;
   @media ${device.mobileL} {
     flex-direction: row;
   }

@@ -1,3 +1,54 @@
 .box {
-    display: flex;
+  display: flex;
+}
+
+.confirm-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: auto;
+  height: 100%;
+  margin-top: 20px;
+}
+.confirm-form h1 {
+  align-self: center;
+  margin-bottom: 35px;
+}
+.confirm-box ul,
+.confirm-box li {
+  list-style: none;
+}
+
+.confirm-details {
+  gap: 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+@media only screen and (min-width: 768px) {
+  .confirm-details {
+    flex-direction: row;
+    gap: 130px;
+  }
+}
+.confirm-box {
+  width: 100%;
+}
+
+.confirm-box ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.confirm-box li {
+  margin: 0.5rem 0;
+  width: 100%;
+  border-bottom: 1px solid #000;
+}
+
+.confirm-details li {
+  color: #000;
 }

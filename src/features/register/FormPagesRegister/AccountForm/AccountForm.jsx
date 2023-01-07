@@ -34,14 +34,16 @@ function AccountForm() {
         onSubmit={() => handleSubmit(dispatch, setStep, step)}
       >
         <Form className="personal-form">
-          <CustomInput
-            label="Email"
-            name="email"
-            type="email"
-            placeholder="Enter your email"
-            setData={setData}
-            small
-          />
+          <RegisterFormPart>
+            <CustomInput
+              label="Email"
+              name="email"
+              type="email"
+              placeholder="Enter your email"
+              setData={setData}
+            />
+          </RegisterFormPart>
+
           <RegisterFormPart>
             <CustomInput
               label="Display Name"

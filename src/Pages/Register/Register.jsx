@@ -12,6 +12,9 @@ function Register() {
     case 2:
       RegisterStyle = RegisterContainerPlan;
       break;
+    case 3:
+      RegisterStyle = RegisterContainerPlan;
+      break;
     default:
       RegisterStyle = RegisterContainer;
   }

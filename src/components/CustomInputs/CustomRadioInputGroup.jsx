@@ -14,7 +14,7 @@ const RadioButtons = ({ label, ...props }) => {
   return (
     <Group className="radio-personal">
       <label>{label}</label>
-      <div className="radio-container">
+      <div className="radio-container-basic">
         <Field name={props.name}>
           {({ field }) => {
             return props.options.map((option) => {

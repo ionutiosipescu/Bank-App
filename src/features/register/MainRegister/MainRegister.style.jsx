@@ -2,7 +2,17 @@ import styled from "styled-components";
 import { device } from "../../../utils/breakpoints/breakpoints";
 
 // lv3
-export const RegisterContainer = styled.div`
+export const MainRegisterContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  min-height: 650px;
+`;
+export const MainRegisterContainerPlan = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -16,7 +26,7 @@ export const RegisterContainer = styled.div`
   }
 `;
 // lv4
-export const RegisterWrapper = styled.div`
+export const MainRegisterWrapper = styled.div`
   width: 100%;
   height: 100%;
   display: flex;

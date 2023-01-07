@@ -92,24 +92,7 @@ function PersonalForm() {
               options={options}
               setData={setData}
             />
-            <DatePickerField
-              label="Date"
-              name="date"
-              setData={setData}
-              small
-              // value={date || ""}
-              // placeholder="Enter a date"
-              // setData={setData}
-            />
-            {/* <CustomInput
-              label="Age"
-              name="age"
-              type="number"
-              small
-              placeholder="Enter your age"
-              setData={setData}
-              value={age || ""}
-            /> */}
+            <DatePickerField label="Date" name="date" setData={setData} small />
           </RegisterFormPart>
           <FooterControl />
         </Form>

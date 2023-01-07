@@ -21,6 +21,9 @@ export const SuccesLinkBtn = styled.div`
   background-color: var(--purple);
   padding: 30px;
   border-radius: 0 20px 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 export const SuccesLinkTitle = styled.div`
   padding: 30px 0 30px 30px;
