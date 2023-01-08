@@ -16,7 +16,7 @@ export const HomeContainer = styled.div`
   height: 100%;
   margin-left: 250px;
   padding: 10px 0px 30px 30px;
-  @media (max-width: 1024px) {
+  @media (max-width: 1050px) {
     width: calc(100% - 65px);
     margin-left: 65px;
   }

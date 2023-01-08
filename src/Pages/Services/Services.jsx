@@ -1,8 +1,8 @@
 import React from "react";
 import { ButtonWrapper, ServicesWrapper } from "./Services.style";
-import Button from "./../../components/UI/Button/Button";
 import { TopContainer } from "./../Cards/Cards.style";
-import { SettingsContainer } from "./../Settings/Settings.style";
+
+import Button from "./../../components/UI/Button/Button";
 
 function Services() {
   return (
@@ -44,6 +44,7 @@ function Services() {
           onClick={""}
         />
       </ButtonWrapper>
+      <TopContainer></TopContainer>
       <TopContainer></TopContainer>
     </ServicesWrapper>
   );

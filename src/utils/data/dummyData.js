@@ -1,5 +1,9 @@
 import avatar from "../../assets/images/avatar.png";
 
+const date = new Date();
+
+export const euroRate = 4.98;
+
 export const accounts = [
   {
     owner: "Alex Aandonesei",
@@ -21,6 +25,88 @@ export const accounts = [
       { label: "Investments", amount: 50122, id: 123435567 },
       { label: "Healthcare", amount: 50122, id: 123435567 },
       { label: "Investments", amount: 50122, id: 123435567 },
+    ],
+    transfers: [
+      {
+        type: 1,
+        label: "exchange",
+        from: "EUR",
+        to: "RON",
+        rate: 4.98,
+        amount: 1000,
+        date: date.toLocaleDateString(),
+        id: 123435567,
+      },
+      {
+        type: 1,
+        label: "exchange",
+        from: "RON",
+        to: "EUR",
+        rate: 4.98,
+        amount: 300,
+        date: date.toLocaleDateString(),
+        id: 123435567,
+      },
+      {
+        type: 1,
+        label: "exchange",
+        from: "EUR",
+        to: "RON",
+        rate: 4.98,
+        amount: 100,
+        date: date.toLocaleDateString(),
+        id: 123435567,
+      },
+      {
+        type: 1,
+        label: "exchange",
+        from: "RON",
+        to: "EUR",
+        rate: 4.98,
+        amount: 10,
+        date: date.toLocaleDateString(),
+        id: 123435567,
+      },
+      {
+        type: 1,
+        label: "exchange",
+        from: "EUR",
+        to: "RON",
+        rate: 4.98,
+        amount: 1333,
+        date: date.toLocaleDateString(),
+        id: 123435567,
+      },
+      {
+        type: 1,
+        label: "exchange",
+        from: "EUR",
+        to: "RON",
+        rate: 4.98,
+        amount: 100,
+        date: date.toLocaleDateString(),
+        id: 123435567,
+      },
+      {
+        type: 1,
+        label: "exchange",
+        from: "RON",
+        to: "EUR",
+        rate: 4.98,
+        amount: 10,
+        date: date.toLocaleDateString(),
+        id: 123435567,
+      },
+      {
+        type: 1,
+        label: "exchange",
+        from: "EUR",
+        to: "RON",
+        rate: 4.98,
+        amount: 1333,
+        date: date.toLocaleDateString(),
+        id: 123435567,
+      },
     ],
   },
   {

@@ -1,11 +1,13 @@
 import React from "react";
-import { Icon } from "../ProfileComponent/ProfileComponent.style";
-import { CardHeader } from "../TopCard/TopCard.style";
-import Button from "../UI/Button/Button";
-import { ServiceCard } from "./../UI/Card/Card.style";
+import { Icon } from "../../../components/ProfileComponent/ProfileComponent.style";
+import { CardHeader } from "../../../components/TopCard/TopCard.style";
+import Button from "../../../components/UI/Button/Button";
+import { ServiceCard } from "../../../components/UI/Card/Card.style";
 import { ListContainer, ListItem } from "./SavingsListCard.style";
 
-import { accounts } from "../../utils/data/dummyData";
+import { BsCashStack } from "react-icons/bs";
+
+import { accounts } from "../../../utils/data/dummyData";
 
 const data = accounts[0].savings;
 
@@ -19,7 +21,9 @@ function SavingsListCard() {
         {data.map((saving, id) => (
           <ListItem key={id}>
             <div>
-              <Icon></Icon>
+              <Icon>
+                <BsCashStack />
+              </Icon>
               <h3>{saving.label}</h3>
             </div>
             <div>

@@ -13,7 +13,7 @@ export const SideBarWrapper = styled.div`
   box-shadow: 0px 0px 25px -8px rgba(21, 20, 47, 0.73);
   background-color: var(--white);
   transition: 0.3s;
-  @media (max-width: 1024px) {
+  @media (max-width: 1050px) {
     padding: 5px;
     width: ${(props) => (props.active ? "300px" : "65px")};
   }

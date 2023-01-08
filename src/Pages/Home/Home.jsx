@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { HomeContainer, HomeWrapper } from "./Home.style";
 
@@ -14,13 +14,45 @@ import Loans from "../Loans/Loans";
 import Exchange from "../Exchange/Exchange";
 import Transfers from "./../Transfers/Transfers";
 import Deposit from "../Deposit/Deposit";
+import NewTransfer from "../NewTransfer/NewTransfer";
 
 function Home() {
-  const [active, setActive] = useState(true);
+  // Variable to set the active state of the Sidebar
+  const [active, setActive] = useState("");
+  // Variable to store the viewport width
+  const [viewportWidth, setViewportWidth] = useState(0);
 
+  // Create a function to update the viewport width state
+  const updateViewportWidth = () => {
+    setViewportWidth(window.innerWidth);
+  };
+
+  // Update the viewport width state when the component is first rendered
+  useEffect(() => {
+    updateViewportWidth();
+  }, []);
+
+  // Bind the updateViewportWidth function to the resize event on the window object
+  useEffect(() => {
+    window.addEventListener("resize", updateViewportWidth);
+    return () => {
+      window.removeEventListener("resize", updateViewportWidth);
+    };
+  }, []);
+
+  // Update the active state of the Sidebar so that it updates based on the width so that on desktop it's true and on moblie/tablet is set to false as default on resize
+  useEffect(() => {
+    setActive(viewportWidth >= 1050 ? true : false);
+    return () => {
+      setActive(true);
+    };
+  }, [viewportWidth]);
+
+  // Handle click event to minimize the Sidebar on mobile/tablet
   const handleActive = () => {
     setActive(!active);
   };
+
   return (
     <HomeWrapper>
       <SideBar active={active} handleActive={handleActive} />
@@ -37,6 +69,7 @@ function Home() {
           <Route path="/exchange" element={<Exchange />} />
           <Route path="/transfers" element={<Transfers />} />
           <Route path="/deposit" element={<Deposit />} />
+          <Route path="/newtransfer" element={<NewTransfer />} />
         </Routes>
       </HomeContainer>
     </HomeWrapper>

@@ -5,7 +5,7 @@ export const ServicesWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: calc(100vh - 100px);
+  height: fit-content;
 `;
 
 export const ButtonWrapper = styled.div`
