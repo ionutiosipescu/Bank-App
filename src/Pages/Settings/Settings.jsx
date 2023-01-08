@@ -20,7 +20,10 @@ function Settings() {
           <h2>Preference</h2>
           <SettingsSection>
             <RadioButton label="Notification" defaultMode={true} />
-            <DropDown label="Language" />
+            <DropDown
+              label="Language"
+              items={["English", "Romanian", "French"]}
+            />
             <RadioButton label="Dark Mode" defaultMode={false} />
           </SettingsSection>
         </PreferenceContainer>

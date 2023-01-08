@@ -4,7 +4,7 @@ import { CardBody } from "../TopCard/TopCard.style";
 import { CardContainer, CardHeader } from "../UI/Card/Card.style";
 
 import { outcomeData as chartData } from "../../utils/data/dummyData";
-import { LegendItem, OutcomeBody } from "./OutcomeCard.style";
+import { ChartWrapper, LegendItem, OutcomeBody } from "./OutcomeCard.style";
 import { BsCircleFill } from "react-icons/bs";
 
 function OutcomeChart() {
@@ -14,7 +14,9 @@ function OutcomeChart() {
         <h3>Outcome Categories</h3>
       </CardHeader>
       <CardBody>
-        <DoughnutChart chartData={chartData} />
+        <ChartWrapper>
+          <DoughnutChart chartData={chartData} />
+        </ChartWrapper>
         <OutcomeBody>
           <h3 style={{ marginBottom: "20px" }}>Legend</h3>
           {chartData.map((item) => (

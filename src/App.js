@@ -6,15 +6,13 @@ import ProtectedRoutes from "./ProtectedRoutes";
 
 function App() {
   return (
-    <div>
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route element={<ProtectedRoutes />}>
-          <Route path="/*" element={<Home />} />
-        </Route>
-      </Routes>
-    </div>
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route element={<ProtectedRoutes />}>
+        <Route path="/*" element={<Home />} />
+      </Route>
+    </Routes>
   );
 }
 

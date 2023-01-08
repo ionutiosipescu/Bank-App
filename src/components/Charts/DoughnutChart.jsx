@@ -28,6 +28,7 @@ function DoughnutChart({ primary, chartData }) {
         plugins: { legend: false },
         responsive: true,
         update: true,
+        maintainAspectRatio: false,
       }}
     />
   );

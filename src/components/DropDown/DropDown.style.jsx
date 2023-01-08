@@ -3,12 +3,12 @@ import styled from "styled-components";
 export const DropDownContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 225px;
-  height: 180px;
+  width: max-content;
+  height: 120px;
   cursor: default;
   & > p {
     opacity: 0.8;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
   }
 `;
 

@@ -8,10 +8,8 @@ import {
 
 import { MdArrowDropDown, MdArrowDropUp } from "react-icons/md";
 
-const languages = ["English", "Romanian", "French"];
-
-function DropDown({ label }) {
-  const [selected, setSelected] = useState(languages[0]);
+function DropDown({ label, items }) {
+  const [selected, setSelected] = useState(items[0]);
   const [active, setActive] = useState(false);
 
   const handleDropDown = () => {
@@ -26,15 +24,16 @@ function DropDown({ label }) {
           {selected}
           {active ? <MdArrowDropUp size={40} /> : <MdArrowDropDown size={40} />}
         </DropDownHeader>
-        {languages.map((language, index) => (
+        {items.map((item, index) => (
           <DropDownItem
             key={index}
-            onClick={(e) => {
-              setSelected(language);
+            onClick={() => {
+              setSelected(item);
               setActive(false);
             }}
+            style={selected === item ? { display: "none" } : { display: "" }}
           >
-            {language}
+            {item}
           </DropDownItem>
         ))}
       </DropDownSelector>

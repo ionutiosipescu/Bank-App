@@ -1,8 +1,8 @@
 import React from "react";
-import Button from "../UI/Button/Button";
-import { ServiceInputsCard } from "../UI/Card/Card.style";
-import Input from "../UI/Input/Input";
-import { InputContainer } from "./SavingsInputCard.style";
+import Button from "../../../components/UI/Button/Button";
+import { ServiceInputsCard } from "../../../components/UI/Card/Card.style";
+import Input from "../../../components/UI/Input/Input";
+import { InputCardSection, InputContainer } from "./SavingsInputCard.style";
 
 function SavingsInputCard() {
   return (
