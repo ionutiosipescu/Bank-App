@@ -77,12 +77,12 @@ export const setRegisterUserObject = (registerHelper) => {
 };
 
 // Async User Profile
-export const fetchRegisterData = (url, registerData, step) => {
+export const fetchRegisterData = (url, registerData) => {
   return async (dispatch) => {
     try {
       axios.post(url, registerData).then((res) => console.log(res.data));
       // console.log(url, registerData);
-      dispatch(setStep(step + 1));
+      // dispatch(setStep(step + 1));
     } catch (error) {
       console.log(error);
     }

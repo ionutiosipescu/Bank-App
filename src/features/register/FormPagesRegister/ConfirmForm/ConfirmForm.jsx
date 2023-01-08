@@ -54,11 +54,7 @@ function ConfirmForm() {
   const handleSubmit = () => {
     console.log(RegisterData);
     dispatch(
-      fetchRegisterData(
-        "http://localhost:8080/bank/auth/signup",
-        RegisterData,
-        step
-      )
+      fetchRegisterData("http://localhost:8080/bank/auth/signup", RegisterData)
     );
   };
   return (
