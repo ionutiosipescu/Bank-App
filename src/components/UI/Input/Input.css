@@ -11,8 +11,8 @@ select.input-error {
   margin-bottom: 10px;
 }
 .date-picker:focus {
-    outline: none;
-    border: 2px solid var(--blue);
+  outline: none;
+  border: 2px solid var(--blue);
 }
 .radio-personal {
   width: 200px;
@@ -29,31 +29,58 @@ select.input-error {
 /* //////////////////////// */
 
 /* container */
+/* hide default radio */
+.plan-form input[type="radio"] {
+  display: none;
+}
 .radio-container {
   display: flex;
   flex-direction: column;
   margin-bottom: 50px;
   justify-content: center;
   align-items: center;
-
 }
 
 @media only screen and (min-width: 1024px) {
   .radio-container {
     flex-direction: row;
-
+    gap: 20px;
   }
 }
+/* Plan Form Page Style */
 .plan-form {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
-/* Checked Style */
+/* Radio Selected Style */
 .plan-form .radio-label.selected {
   border: 2px solid var(--blue);
-  box-shadow: 0 15px 30px rgba(84, 197, 235, 0.6), 0 10px 10px rgba(84, 197, 235, 0.2);
+  box-shadow: 0 15px 30px rgba(84, 197, 235, 0.6),
+    0 10px 10px rgba(84, 197, 235, 0.2);
+  background-color: var(--blue);
 }
+.plan-form .radio-label.selected .plancard-header h4,
+.plan-form .radio-label.selected .plancard-header h1,
+.plan-form .radio-label.selected .plancard-header .price-tag,
+.plan-form .radio-label.selected .plancard-body li span {
+  color: var(--white);
+}
+.plan-form .radio-label.selected .plancard-body li {
+  color: var(--white);
+  border-bottom: 1px solid var(--white);
+}
+
+.plan-form .radio-label.selected .plancard-footer {
+  border: 1px solid var(--white);
+  background: var(--white);
+  color: var(--gray-dark);
+}
+.plan-form .radio-label.selected .plancard-footer:hover {
+  background: var(--blue);
+  color: var(--white);
+}
+
 /* Card Style */
 .plan-form .radio-label {
   position: relative;
@@ -61,11 +88,11 @@ select.input-error {
   align-items: center;
   justify-content: space-between;
   display: flex;
-  width: 230px;
-  height: 180px;
+  width: 260px;
+  height: auto;
   margin: 10px;
   padding: 20px;
-  border: 1px solid #ccc;
+  /* border: 1px solid #ccc; */
   border-radius: 4px;
   font-size: 14px;
   cursor: pointer;
@@ -73,50 +100,98 @@ select.input-error {
   border-radius: 25px;
   overflow: hidden;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-
 }
 /* //////////// */
+/* Header */
 .plancard-header {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  z-index: 2;
 }
 
-.plancard-header > h1 {
+.plancard-header > h4 {
   font-size: 1rem;
+  color: var(--blue);
+  margin-top: 20px;
+  margin-bottom: 0px;
 }
 
+.plancard-header .plancard-price {
+  margin-right: 5px;
+  font-size: 15px;
+  font-weight: 300;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.plancard-header > h1 {
+  margin: 0;
+}
+.plancard-header .price-tag {
+  margin: 0 2px 16px 0;
+}
+.plancard-price h1:after {
+  content: "/mo";
+  margin-left: 5px;
+  font-size: 15px;
+  font-weight: 300;
+}
+/* Body */
 .plancard-body {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   width: 100%;
   z-index: 2;
-  height: 35px;
+  margin-bottom: 20px;
 }
-
-.plancard-footer {
+.plancard-body ul {
+  list-style-type: none;
+  padding: 0;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  text-align: center;
+}
+.plancard-body li {
   width: 100%;
-  z-index: 2;
-  justify-content: space-between;
+  color: var(--gray-dark);
+  border-bottom: 1px solid var(--gray-dark);
+  padding-bottom: 8px;
 }
-
-/* .plancard-footer > div {
-  margin-right: 30px;
-} */
-
-.plancard-footer h6 {
-  margin-bottom: 8px;
+.plancard-body li:last-child {
+  border: none;
 }
-.plancard-footer h5 {
-  margin: 0;
+.plancard-body li span {
+  color: black;
+}
+/* Footer */
+.plancard-footer {
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  border: 1px solid var(--blue);
+  background: var(--blue);
+  color: var(--white);
+  transition: 0.3s;
+  margin: 10px 0 10px 0;
+  cursor: pointer;
+  padding: 18px;
+}
+.plancard-footer:hover {
+  background: var(--white);
+  color: var(--blue);
 }
 
 /* Style components */
 
-.circle {
+/* .circle {
   position: absolute;
   width: 20px;
   height: 20px;
@@ -158,113 +233,38 @@ select.input-error {
 .pill-two {
   transform: translate(70px, 76px);
   opacity: 0.5;
-}
-
+} */
 
 /* //////////// */
 
 /* Dinamic Background */
-.plan-form .radio-label.standard {
+/* .plan-form .radio-label.standard {
   background-color: var(--purple);
-color: var(--white)
+  color: var(--white);
 }
 
 .plan-form .radio-label.premium {
   background-color: var(--green);
-color: var(--white)
+  color: var(--white);
 }
 
 .plan-form .radio-label.vip {
   background-color: var(--yellow);
-color: var(--white)
-}
-/* hide default radio */
-.plan-form input[type='radio'] {
-  display: none;
-}
-/* .plan-form input[type='radio']:checked + .radio-label {
-  border-color: #2196f3;
-} */
-
-/* Checked Style */
-/* .plan-form input[type='radio']:checked + .radio-label .icon {
-  background-color: #2196f3;
-} */
-
-
-/* Dinamic Background icon*/
-/* .plan-form input[type='radio'] + .radio-label .icon.standard::before {
-  background-color: #00b8d4;
+  color: var(--white);
 }
 
-.plan-form input[type='radio'] + .radio-label .icon.premium::before {
-  background-color: #0052cc;
-}
-
-.plan-form input[type='radio'] + .radio-label .icon.vip::before {
-  background-color: #b71c1c;
-} */
-
-/* title */
 .plan-form .radio-label .info .title {
   font-size: 18px;
   font-weight: bold;
-}
-
-/* .plan-form .radio-label .info {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
 } */
-
-/* .plan-form .radio-label .info .description {
-  font-size: 14px;
-}
-
-.plan-form .radio-label .info .price {
-  font-size: 24px;
-  font-weight: bold;
-}
- */
-
-/* .plan-form .radio-label .icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50px;
-  height: 50px;
-  margin-right: 10px;
-  background-color: #ccc;
-  border-radius: 50%;
-} */
-
-/* .plan-form .radio-label .icon::before {
-  content: '';
-  display: block;
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  background-color: white;
-} */
-
-/* .plan-form .radio-label .icon::before {
-  content: '';
-  display: block;
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  background-color: white;
-} */
-
-
-
+/* ///////////////////////// */
 /* checkbox */
 .checkbox {
   display: none;
 }
-.checkbox-custom .info-plans, .checkbox-custom .info-message {
-display: none;
+.checkbox-custom .info-plans,
+.checkbox-custom .info-message {
+  display: none;
 }
 
 .checkbox-custom {
@@ -298,41 +298,42 @@ display: none;
     min-height: 15rem;
     transition: all 0.5s;
   }
-  .checkbox-custom .info-plans{
+  .checkbox-custom .info-plans {
     display: flex;
     margin: 30px 50px;
     gap: 50px;
-    }
-    .checkbox-custom .info-message {
-      display: flex;
-      justify-content: center;
-      margin: 20px 0;
-      flex-direction: column;
-      align-items: center;
-    }
-    .info{
-      width: 100%;
-    }
-    .info li {
-      list-style-type: none;  
-      border-bottom: 1px solid;
-    }
-    .info ul {
-      padding: 0;  
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-    }
-    .arrow-down {
-      width: 0;
-      height: 0;
-      border-left: 10px solid transparent;
-      border-right: 10px solid transparent;
-      border-top: 10px solid var(--white);
-      margin-left: 10px;
-    }
-  .checkbox:checked + .checkbox-custom .info-plans, .checkbox:checked + .checkbox-custom .info-message{
+  }
+  .checkbox-custom .info-message {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    flex-direction: column;
+    align-items: center;
+  }
+  .info {
+    width: 100%;
+  }
+  .info li {
+    list-style-type: none;
+    border-bottom: 1px solid;
+  }
+  .info ul {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .arrow-down {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid var(--white);
+    margin-left: 10px;
+  }
+  .checkbox:checked + .checkbox-custom .info-plans,
+  .checkbox:checked + .checkbox-custom .info-message {
     display: none;
   }
   .checkbox:checked + .checkbox-custom {

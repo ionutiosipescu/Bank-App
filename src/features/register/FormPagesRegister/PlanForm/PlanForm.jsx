@@ -17,24 +17,23 @@ import { setRegisterUserObject } from "../../../../state-management/registerUser
 import { selectRegisterUser } from "../../../../state-management/registerhelper/registerhelper.selector";
 import { setRegisterObjectEsentials } from "../../../../state-management/registerUser/registerUser.action";
 import "./PlanForm.css";
+import { selectPlanObject } from "../../../../state-management/registerhelper/registerhelper.selector";
 
 function PlanForm() {
   const step = useSelector(selectStep);
   const options = [
-    { key: "standard", value: "standard" },
-    { key: "premium", value: "premium" },
-    { key: "vip", value: "vip" },
+    { key: "standard", value: "standard", price: "0", planName: "STANDARD" },
+    { key: "premium", value: "premium", price: "89", planName: "PREMIUM" },
+    { key: "vip", value: "vip", price: "199", planName: "VIP" },
   ];
   const dispatch = useDispatch();
   const planData = useSelector(selectPlan);
+  const plan = useSelector(selectPlanObject);
   const userPlan = useSelector(selectRegisterPlan);
   const registerHelper = useSelector(selectRegisterUser);
+  const index = 0;
 
-  const handleBox = (index) => {
-    dispatch(updateRegisterPlanCheckboxAsync(userPlan, planData, index));
-  };
-
-  const handleradio = (index, e) => {
+  const handleradio = (e) => {
     dispatch(updateRegisterPlanAsync(userPlan, planData, index, e));
   };
 
@@ -56,38 +55,23 @@ function PlanForm() {
         }}
       >
         <Form className="plan-form">
-          {planData.map((plan, index) => {
-            return (
-              <div key={index}>
-                <CustomChecboxplan
-                  key={plan.currency}
-                  name={plan.namePlan}
-                  value={plan.showPlans}
-                  label={plan.namePlan}
-                  checked={plan.showPlans}
-                  plan={plan}
-                  small
-                  type="checkbox"
-                  handleBox={handleBox}
-                  index={index}
-                />
-                {plan.showPlans && (
-                  <div>
-                    <RadioButtonsPlan
-                      type="radio"
-                      label="Type Of Plan"
-                      name={plan.namePlan}
-                      options={options}
-                      handleradio={handleradio}
-                      index={index}
-                      plan={plan}
-                      typeOfPlan={plan.typeOfPlan}
-                    />
-                  </div>
-                )}
-              </div>
-            );
-          })}
+          <div className="header-plan-form">
+            <h1>Princing Page</h1>
+            <p>
+              To get started, you will need to choose a plan for your need. you
+              can opt in for the monthly of annual options and go with one for
+              the three listed below
+            </p>
+          </div>
+          <RadioButtonsPlan
+            type="radio"
+            label="Type Of Plan"
+            name={plan.namePlan}
+            options={options}
+            handleradio={handleradio}
+            plan={plan}
+            typeOfPlan={plan.typeOfPlan}
+          />
           <ErrorMessage
             className="plan-error"
             component="div"

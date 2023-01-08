@@ -9,16 +9,7 @@ import { setTypeOfPlanRemove } from "../registerhelper/registerhelper.actions";
 import { test } from "../../utils/services/registerRequestPost";
 import { setStep } from "../registerhelper/registerhelper.actions";
 import axios from "axios";
-// User Profile
-// const updateRegisterUser = (register, e) => {
-//   const { name, value } = e.target;
-//   return { ...register, [name]: value };
-// };
 
-// export const setRegisterUser = (register, e) => {
-//   const user = updateRegisterUser(register, e);
-//   return createAction(REGISTER_ACTION_TYPES.SET_REGISTER_USER, user);
-// };
 export const setRegisterObjectEsentials = (registerHelperEsentials) => {
   const { displayName, password, email } = registerHelperEsentials;
   const cleanEsentials = {
@@ -43,17 +34,6 @@ export const setRegisterUserObject = (registerHelper) => {
     mobile,
     confirmPassword,
   } = registerHelper;
-  // const options = {
-  //   year: "numeric",
-  //   month: "2-digit",
-  //   day: "2-digit",
-  //   timeZone: "UTC",
-  // };
-  // const createdAt = new Date();
-  // const formattedDate = createdAt
-  //   .toLocaleDateString("en-US", options)
-  //   .replace(/\//g, "-");
-  // const createdAt = new Date().toLocaleDateString();
   const createdAt = new Date();
 
   const year = createdAt.toLocaleString("default", { year: "numeric" });
@@ -77,12 +57,12 @@ export const setRegisterUserObject = (registerHelper) => {
 };
 
 // Async User Profile
-export const fetchRegisterData = (url, registerData) => {
+export const fetchRegisterData = (url, registerData, step) => {
   return async (dispatch) => {
     try {
       axios.post(url, registerData).then((res) => console.log(res.data));
       // console.log(url, registerData);
-      // dispatch(setStep(step + 1));
+      dispatch(setStep(step + 1));
     } catch (error) {
       console.log(error);
     }
@@ -95,17 +75,7 @@ export const fetchRegisterData = (url, registerData) => {
 
 export const setRegisterPlanAdd = (userDataArrPlan, prevPlans, index) => {
   const { typeOfPlan, currency, currentBallance } = prevPlans[index];
-  // const options = {
-  //   day: "2-digit",
-  //   month: "2-digit",
-  //   year: "numeric",
-  //   timeZone: "UTC",
-  // };
-  // const createdAt = new Date();
-  // const formattedDate = createdAt
-  //   .toLocaleDateString("en-US", options)
-  //   .replace(/\//g, "-");
-  // const createdAt = new Date().toLocaleDateString();
+
   const createdAt = new Date();
 
   const year = createdAt.toLocaleString("default", { year: "numeric" });
@@ -161,25 +131,6 @@ export const updateRegisterPlanAsync = (
       await dispatch(setTypeOfPlanAdd(prevPlans, index, e));
       // update UserPlan in Redux with currentPlan from registerPlanData
       await dispatch(setRegisterPlanAdd(userDataArrPlan, prevPlans, index));
-    }
-  };
-};
-
-// Async Checkbox Plan
-export const updateRegisterPlanCheckboxAsync = (
-  userDataArrPlan,
-  prevPlans,
-  index
-) => {
-  return async (dispatch) => {
-    // update showPlans in registerPlanData
-    dispatch(setShowPlans(prevPlans, index));
-    if (prevPlans[index].showPlans) return;
-    if (!prevPlans[index].showPlans) {
-      // update typeOfPlan in registerPlanData
-      dispatch(setTypeOfPlanRemove(prevPlans, index));
-      // update UserPlan in Redux with currentPlan from registerPlanData
-      dispatch(setRegisterPlanRemove(userDataArrPlan, prevPlans, index));
     }
   };
 };

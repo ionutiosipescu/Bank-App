@@ -23,29 +23,34 @@
 .confirm-details {
   gap: 20px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   flex-direction: column;
+  align-items: center;
+  width: 100%;
+  text-align: center;
 }
 @media only screen and (min-width: 768px) {
   .confirm-details {
     flex-direction: row;
     gap: 130px;
+    width: 100%;
+    text-align: unset;
   }
 }
 .confirm-box {
-  width: 100%;
+  width: 205px;
 }
 
 .confirm-box ul {
   display: flex;
-  flex-wrap: wrap;
   list-style: none;
   margin: 0;
   padding: 0;
+  flex-direction: column;
 }
 .confirm-box li {
   margin: 0.5rem 0;
-  width: 100%;
+  width: auto;
   border-bottom: 1px solid #000;
 }
 

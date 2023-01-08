@@ -5,12 +5,12 @@ import { Group, InputRadio, Error } from "../UI/Input/Input.style";
 import "../UI/Input/Input.css";
 import { useSelector } from "react-redux";
 import { selectPlan } from "../../state-management/registerhelper/registerhelper.selector";
+import Button from "../UI/NewButton/Button.component";
 
 const RadioButtonsPlan = ({ label, ...props }) => {
   const [field, meta] = useField(props);
   return (
     <Group>
-      {/* <label>{label}</label> */}
       <div className="radio-container">
         <Field name={props.name}>
           {({ field }) => {
@@ -27,7 +27,7 @@ const RadioButtonsPlan = ({ label, ...props }) => {
                     {...props}
                     onChange={(e) => {
                       field.onChange(e);
-                      props.handleradio(props.index, e);
+                      props.handleradio(e);
                     }}
                     id={option.value}
                     value={option.value || ""}
@@ -35,35 +35,29 @@ const RadioButtonsPlan = ({ label, ...props }) => {
                     className={meta.touched && meta.error ? "input-error" : ""}
                   />
                   <div className="plancard-header">
-                    {/* <h2>My Balance</h2> */}
-                    <h1>{option.value}</h1>
+                    <h4>{option.planName}</h4>
+                    <div className="plancard-price">
+                      <div className="price-tag">ron</div>
+                      <h1>{option.price}</h1>
+                    </div>
                   </div>
                   <div className="plancard-body">
-                    <h4>xxxxxxxx</h4>
+                    <ul>
+                      <li>
+                        <span>1</span> Project
+                      </li>
+                      <li>
+                        <span>5</span> Team Members
+                      </li>
+                      <li>
+                        <span>55</span> Personal COntacts
+                      </li>
+                      <li>
+                        <span>5.000</span> Messages
+                      </li>
+                    </ul>
                   </div>
-                  <div className="plancard-footer">
-                    <div className="holder">
-                      <h6>Card Holder</h6>
-                      <h5>Iosipescu Ionut</h5>
-                    </div>
-                    <div className="valid">
-                      <h6>Valid Until</h6>
-                      <h5>01/10/2026</h5>
-                    </div>
-                  </div>
-                  <div className="circle circle-one"></div>
-                  <div className="circle circle-two"></div>
-                  <div className="pill pill-one"></div>
-                  <div className="pill pill-two"></div>
-                  {/* <div className="icon" />
-                  <div className="info" />
-                  <div className="title">{option.value}</div> */}
-                  {/* <div className="description">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  </div> */}
-                  {/* <div className="price">$9.99/month</div> */}
-
-                  {/* <label htmlFor={option.value}>{option.key}</label> */}
+                  <div className="plancard-footer">GET STARTED</div>
                 </label>
               );
             });

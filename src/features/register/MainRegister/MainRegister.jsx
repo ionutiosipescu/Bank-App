@@ -15,12 +15,12 @@ function MainRegister() {
   const step = useSelector(selectStep);
   let MainRegisterStyle;
   switch (step) {
-    case 2:
-      MainRegisterStyle = MainRegisterContainerPlan;
-      break;
-    case 3:
-      MainRegisterStyle = MainRegisterContainerPlan;
-      break;
+    // case 2:
+    //   MainRegisterStyle = MainRegisterContainerPlan;
+    //   break;
+    // case 3:
+    //   MainRegisterStyle = MainRegisterContainerPlan;
+    //   break;
     default:
       MainRegisterStyle = MainRegisterContainer;
   }
@@ -30,7 +30,7 @@ function MainRegister() {
         <FormRegister />
         {step === 4 ? <SuccesLink /> : <FooterRegister />}
       </MainRegisterStyle>
-      {step === 2 || step === 3 ? <></> : <HeroRegister />}
+      {step === 2 ? <></> : <HeroRegister />}
     </MainRegisterWrapper>
   );
 }
