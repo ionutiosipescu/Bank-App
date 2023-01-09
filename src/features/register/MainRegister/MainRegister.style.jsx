@@ -41,3 +41,6 @@ export const MainRegisterWrapper = styled.div`
     /* height: 100%; */
   }
 `;
+export const HeroBox = styled.div`
+  height: 100%;
+`;

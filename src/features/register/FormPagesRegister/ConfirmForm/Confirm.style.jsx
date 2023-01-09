@@ -3,7 +3,7 @@ import { device } from "../../../../utils/breakpoints/breakpoints";
 
 export const ConfirmFormPart = styled.div`
   width: 100%;
-  margin-top: 35px;
+  margin-top: 10px;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;

@@ -6,6 +6,7 @@ import {
   MainRegisterWrapper,
   MainRegisterContainer,
   MainRegisterContainerPlan,
+  HeroBox,
 } from "./MainRegister.style";
 import { useSelector } from "react-redux";
 import { selectStep } from "../../../state-management/registerhelper/registerhelper.selector";
