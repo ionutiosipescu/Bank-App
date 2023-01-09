@@ -5,17 +5,14 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { selectRegisterUser } from "../../../../state-management/registerhelper/registerhelper.selector";
 import { setRegisterUser } from "../../../../state-management/registerhelper/registerhelper.actions";
-// import { selectRegisterUser } from "../../../../state-management/registerUser/registerUser.selector";
-// import { setRegisterUser } from "../../../../state-management/registerUser/registerUser.action";
 import CustomInput from "../../../../components/CustomInputs/CustomInput";
 import { registerSchemaAccount } from "../../ValidationSchema/ValidationSchema";
-import NextBtn from "../../../../components/StepButtons/NextBtn";
-import PrevBtn from "../../../../components/StepButtons/PrevBtn";
 import FooterControl from "../../FooterControl/FooterControl";
 import { handleSubmit } from "../../../../utils/helpers/register/HandleSubmit";
 import { selectStep } from "../../../../state-management/registerhelper/registerhelper.selector";
 import { setStep } from "../../../../state-management/registerhelper/registerhelper.actions";
 import "../../../../components/UI/Input/Input.css";
+import { FormContainerAccount } from "./AccountForm.style";
 
 function AccountForm() {
   const step = useSelector(selectStep);
@@ -33,7 +30,7 @@ function AccountForm() {
         validationSchema={registerSchemaAccount}
         onSubmit={() => handleSubmit(dispatch, setStep, step)}
       >
-        <Form className="personal-form">
+        <FormContainerAccount>
           <RegisterFormPart>
             <CustomInput
               label="Email"
@@ -81,7 +78,7 @@ function AccountForm() {
             />
           </RegisterFormPart>
           <FooterControl />
-        </Form>
+        </FormContainerAccount>
       </Formik>
     </>
   );

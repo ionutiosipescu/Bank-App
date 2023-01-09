@@ -31,3 +31,9 @@ export const LogInContainer = styled.div`
     padding: 2rem;
   }
 `;
+export const Logo = styled.img`
+  width: 150px;
+`;
+export const LogoText = styled.p`
+  color: var(--gray);
+`;

@@ -58,7 +58,7 @@ select.input-error {
   border: 2px solid var(--blue);
   box-shadow: 0 15px 30px rgba(84, 197, 235, 0.6),
     0 10px 10px rgba(84, 197, 235, 0.2);
-  background-color: var(--blue);
+  background-color: var(--purple);
 }
 .plan-form .radio-label.selected .plancard-header h4,
 .plan-form .radio-label.selected .plancard-header h1,
@@ -74,10 +74,10 @@ select.input-error {
 .plan-form .radio-label.selected .plancard-footer {
   border: 1px solid var(--white);
   background: var(--white);
-  color: var(--gray-dark);
+  color: var(--purple);
 }
 .plan-form .radio-label.selected .plancard-footer:hover {
-  background: var(--blue);
+  background: var(--purple);
   color: var(--white);
 }
 

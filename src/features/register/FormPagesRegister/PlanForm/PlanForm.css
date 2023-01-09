@@ -21,8 +21,6 @@
 .header-plan-form h1 {
   margin: 0;
 }
-@media only screen and (min-width: 1024px) {
-  .header-plan-form {
-    padding: 0 90px;
-  }
+.plan-form p {
+  padding: 0 15%;
 }

@@ -5,8 +5,6 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { setRegisterUser } from "../../../../state-management/registerhelper/registerhelper.actions";
 import { selectRegisterUser } from "../../../../state-management/registerhelper/registerhelper.selector";
-// import { setRegisterUser } from "../../../../state-management/registerUser/registerUser.action";
-// import { selectRegisterUser } from "../../../../state-management/registerUser/registerUser.selector";
 import { registerSchemaPersonal } from "../../ValidationSchema/ValidationSchema";
 import CustomInput from "../../../../components/CustomInputs/CustomInput";
 import CustomSelect from "../../../../components/CustomInputs/CustomSelect";
@@ -16,6 +14,7 @@ import { setStep } from "../../../../state-management/registerhelper/registerhel
 import FooterControl from "../../FooterControl/FooterControl";
 import { handleSubmit } from "../../../../utils/helpers/register/HandleSubmit";
 import DatePickerField from "../../../../components/CustomInputs/CustomDatePicker";
+import { FormContainerPersonal } from "./PersonalForm.style";
 
 function PersonalForm() {
   const step = useSelector(selectStep);
@@ -38,7 +37,7 @@ function PersonalForm() {
         validationSchema={registerSchemaPersonal}
         onSubmit={() => handleSubmit(dispatch, setStep, step)}
       >
-        <Form className="new-form">
+        <FormContainerPersonal>
           <RegisterFormPart>
             <CustomInput
               label="Firstname"
@@ -95,7 +94,7 @@ function PersonalForm() {
             <DatePickerField label="Date" name="date" setData={setData} small />
           </RegisterFormPart>
           <FooterControl />
-        </Form>
+        </FormContainerPersonal>
       </Formik>
     </>
   );

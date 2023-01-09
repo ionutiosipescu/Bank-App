@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { setStep } from "../../state-management/registerhelper/registerhelper.actions";
 import { selectStep } from "../../state-management/registerhelper/registerhelper.selector";
-import "./StepButtons.css";
 import Button from "../UI/NewButton/Button.component";
 
 function PrevBtn() {
@@ -12,7 +11,7 @@ function PrevBtn() {
   return (
     <Button
       size="md"
-      typeclass={`primary ${step === 0 ? "hideBtn" : ""}`}
+      typeclass="primary"
       onClick={() => {
         dispatch(setStep(step - 1));
       }}

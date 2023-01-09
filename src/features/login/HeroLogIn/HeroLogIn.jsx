@@ -1,13 +1,14 @@
 import React from "react";
 import illustration from "../../../assets/images/login-hero.webp";
+import { HeroCard, HeroArt } from "./HeroLogin.style";
 
 const HeroLogIn = () => {
   return (
-    <div className="hero">
-      <div className="hero_art">
+    <HeroCard>
+      <HeroArt>
         <img src={illustration} alt="" />
-      </div>
-    </div>
+      </HeroArt>
+    </HeroCard>
   );
 };
 

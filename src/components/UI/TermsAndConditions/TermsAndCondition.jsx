@@ -1,14 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Checkbox } from "../Input/Input.style";
 
 function TermsAndCondition() {
   return (
-    <div className="checkbox">
+    <Checkbox>
       <input type="checkbox" />
       <p>
         Yes, I agree with the <Link>Terms and Services</Link>
       </p>
-    </div>
+    </Checkbox>
   );
 }
 

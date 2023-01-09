@@ -16,6 +16,7 @@ import axios from "axios";
 import { resetLocalStorage } from "../../../state-management/store";
 import Button from "../../../components/UI/NewButton/Button.component";
 import { useNavigate } from "react-router-dom";
+import { FormContainerLogin } from "./FormLogin.style";
 
 function FormLogIn() {
   const dispatch = useDispatch();
@@ -66,7 +67,7 @@ function FormLogIn() {
       validationSchema={advancedSchema}
       onSubmit={onSubmit}
     >
-      <Form className="form">
+      <FormContainerLogin>
         <CustomInput
           label="Username"
           name="username"
@@ -91,7 +92,7 @@ function FormLogIn() {
         <Button size="100" typeclass="secondary" type="submit">
           Log In
         </Button>
-      </Form>
+      </FormContainerLogin>
     </Formik>
   );
 }
