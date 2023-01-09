@@ -15,8 +15,8 @@ export const registerReducer = (state = INITIAL_STATE, action) => {
       return { ...state, userDetail: { ...payload } };
     case REGISTER_ACTION_TYPES.SET_REGISTER_PLAN_ADD:
       return { ...state, account: [...payload] };
-    case REGISTER_ACTION_TYPES.SET_REGISTER_PLAN_REMOVE:
-      return { ...state, account: [...payload] };
+    // case REGISTER_ACTION_TYPES.SET_REGISTER_PLAN_REMOVE:
+    //   return { ...state, account: [...payload] };
     default:
       return state;
   }

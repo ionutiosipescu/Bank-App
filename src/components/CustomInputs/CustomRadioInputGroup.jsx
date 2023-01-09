@@ -1,7 +1,7 @@
 import React from "react";
 import { Field } from "formik";
 import { useField } from "formik";
-import { Group, InputRadio, Error } from "../UI/Input/Input.style";
+import { Group, InputRadio, Error, GroupRadio } from "../UI/Input/Input.style";
 import "../UI/Input/Input.css";
 import { useSelector } from "react-redux";
 import { selectRegisterUser } from "../../state-management/registerhelper/registerhelper.selector";
@@ -12,9 +12,9 @@ const RadioButtons = ({ label, ...props }) => {
   const { gender } = registerData;
   const [field, meta] = useField(props);
   return (
-    <Group className="radio-personal">
+    <GroupRadio>
       <label>{label}</label>
-      <div className="radio-container-basic">
+      <div>
         <Field name={props.name}>
           {({ field }) => {
             return props.options.map((option) => {
@@ -40,7 +40,7 @@ const RadioButtons = ({ label, ...props }) => {
         </Field>
       </div>
       {meta.touched && meta.error && <Error>{meta.error}</Error>}
-    </Group>
+    </GroupRadio>
   );
 };
 

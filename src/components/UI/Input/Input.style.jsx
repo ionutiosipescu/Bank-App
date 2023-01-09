@@ -1,56 +1,66 @@
 import styled from "styled-components";
 import DatePicker from "react-datepicker";
+import { device } from "../../../utils/breakpoints/breakpoints";
+import { css } from "styled-components";
 
-// lv1
 export const Group = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
   margin: 0 10px 10px 0;
-  /* width: 100%; */
   label {
     margin-bottom: 10px;
   }
 `;
 
+export const GroupRadio = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 0 10px 10px 0;
+  width: 200px;
+  label {
+    margin-bottom: 10px;
+  }
+`;
+
+export const RadioPlanContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 50px;
+  justify-content: center;
+  align-items: center;
+  @media ${device.laptop} {
+    flex-direction: row;
+    gap: 20px;
+  }
+`;
+
+// shared style
+const InputStyle = css`
+  height: 35px;
+  border: 1px solid var(--purple);
+  border-radius: 30px;
+  padding: 0 12px 0 10px;
+  &:focus {
+    outline: none;
+    border: 2px solid var(--blue);
+  }
+`;
+
 // lv1
 export const InputForm = styled.input`
-  height: 35px;
+  ${InputStyle}
   width: ${(props) => (props.small ? "200px" : "100%")};
-  border: 1px solid var(--purple);
-  border-radius: 30px;
-  padding: 0 12px 0 10px;
-  /* margin-bottom: 10px; */
-  &:focus {
-    outline: none;
-    border: 2px solid var(--blue);
-  }
 `;
-export const InputRadio = styled.input``;
+
 export const InputSelect = styled.select`
-  height: 35px;
+  ${InputStyle}
   width: ${(props) => (props.small ? "200px" : "310px")};
-  border: 1px solid var(--purple);
-  border-radius: 30px;
-  padding: 0 12px 0 10px;
   margin-bottom: 10px;
-  &:focus {
-    outline: none;
-    border: 2px solid var(--blue);
-  }
 `;
-export const InputDateTest = styled.input`
-  height: 30px;
-  width: ${(props) => (props.small ? "200px" : "310px")};
-  border: 1px solid var(--purple);
-  border-radius: 30px;
-  padding: 0 12px 0 10px;
-  cursor: pointer;
-  &:focus {
-    outline: none;
-    border: 2px solid var(--blue);
-  }
-`;
+
+export const InputRadio = styled.input``;
 
 export const Checkbox = styled.div`
   position: relative;

@@ -10,6 +10,7 @@ import { test } from "../../utils/services/registerRequestPost";
 import { setStep } from "../registerhelper/registerhelper.actions";
 import axios from "axios";
 
+// Name must be changed to setRegisterObjectAditionals
 export const setRegisterObjectEsentials = (registerHelperEsentials) => {
   const { displayName, password, email } = registerHelperEsentials;
   const cleanEsentials = {
@@ -73,7 +74,7 @@ export const fetchRegisterData = (url, registerData, step) => {
 
 // User Plan Add
 
-export const setRegisterPlanAdd = (userDataArrPlan, prevPlans, index) => {
+const setRegisterPlanAdd = (userDataArrPlan, prevPlans, index) => {
   const { typeOfPlan, currency, currentBallance } = prevPlans[index];
 
   const createdAt = new Date();
@@ -95,19 +96,7 @@ export const setRegisterPlanAdd = (userDataArrPlan, prevPlans, index) => {
   return createAction(REGISTER_ACTION_TYPES.SET_REGISTER_PLAN_ADD, newArrPlan);
 };
 
-// User Plan Remove
-
-export const setRegisterPlanRemove = (userDataArrPlan, prevPlans, index) => {
-  const newArrPlan = [...userDataArrPlan].filter(
-    (prevArrPlan) => prevArrPlan.currency !== prevPlans[index].currency
-  );
-  return createAction(
-    REGISTER_ACTION_TYPES.SET_REGISTER_PLAN_REMOVE,
-    newArrPlan
-  );
-};
-
-// Async Radio Plan
+// Async User Plan
 export const updateRegisterPlanAsync = (
   userDataArrPlan,
   prevPlans,
@@ -134,3 +123,15 @@ export const updateRegisterPlanAsync = (
     }
   };
 };
+
+// // User Plan Remove
+
+// export const setRegisterPlanRemove = (userDataArrPlan, prevPlans, index) => {
+//   const newArrPlan = [...userDataArrPlan].filter(
+//     (prevArrPlan) => prevArrPlan.currency !== prevPlans[index].currency
+//   );
+//   return createAction(
+//     REGISTER_ACTION_TYPES.SET_REGISTER_PLAN_REMOVE,
+//     newArrPlan
+//   );
+// };

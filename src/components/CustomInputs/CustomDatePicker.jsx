@@ -1,10 +1,9 @@
 import {
   Group,
   GroupDate,
-  InputForm,
   InputDate,
   Error,
-  InputDateTest,
+  InputForm,
 } from "../UI/Input/Input.style";
 import "../UI/Input/Input.css";
 import { useField, useFormikContext } from "formik";
@@ -19,7 +18,7 @@ const DatePickerField = ({ label, ...props }) => {
     <>
       <Group>
         <label>{label}</label>
-        <InputDateTest
+        <InputForm
           {...field}
           {...props}
           className={meta.touched && meta.error ? "input-error" : ""}

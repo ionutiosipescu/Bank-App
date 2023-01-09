@@ -7,14 +7,14 @@ export const setStep = (step) => {
   return createAction(REGISTER_HELPER_TYPES.SET_STEP, step);
 };
 
-// SetTypeOfPlan Add in registerhelper.reducer
+// Set planData -> typeOfPlan
 export const setTypeOfPlanAdd = (prevPlans, index, e) => {
   const newPlans = [...prevPlans];
   newPlans[index].typeOfPlan = e.target.value;
   return createAction(REGISTER_HELPER_TYPES.SET_PLAN_DATA, newPlans);
 };
 
-// User Profile
+// Set userProfile
 const updateRegisterUser = (register, e) => {
   const { name, value } = e.target;
   return { ...register, [name]: value };

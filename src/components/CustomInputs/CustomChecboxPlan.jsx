@@ -70,8 +70,6 @@ const CustomChecboxplan = ({ label, ...props }) => {
           </div>
         </span>
       </label>
-      {/* {meta.touched && meta.error && <Error>{meta.error}</Error>} */}
-      {/* </Group> */}
     </>
   );
 };

@@ -1,5 +1,4 @@
 import React from "react";
-import "./Register.css";
 import MainRegister from "../../features/register/MainRegister/MainRegister";
 import { RegisterContainer, RegisterContainerPlan } from "./Register.style";
 import { useSelector } from "react-redux";

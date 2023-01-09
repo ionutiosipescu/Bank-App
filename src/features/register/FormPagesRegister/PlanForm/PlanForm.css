@@ -1,15 +1,19 @@
-.containerplan {
-  display: flex;
+.plan-form p {
+  padding: 0 15%;
 }
-.plan-error {
+/* .containerplan {
+  display: flex;
+} */
+/* .plan-error {
   border-color: #fc8181;
   color: #fc8181;
   font-size: 1rem;
   margin-top: 0.25rem;
   bottom: -10px;
   align-self: center;
-}
-.header-plan-form {
+} */
+
+/* .header-plan-form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,7 +24,4 @@
 }
 .header-plan-form h1 {
   margin: 0;
-}
-.plan-form p {
-  padding: 0 15%;
-}
+} */
