@@ -113,7 +113,7 @@ select.input-error {
 
 .plancard-header > h4 {
   font-size: 1rem;
-  color: var(--blue);
+  color: var(--purple);
   margin-top: 20px;
   margin-bottom: 0px;
 }
@@ -177,7 +177,7 @@ select.input-error {
   align-items: center;
   border-radius: 50px;
   border: 1px solid var(--blue);
-  background: var(--blue);
+  background: var(--purple);
   color: var(--white);
   transition: 0.3s;
   margin: 10px 0 10px 0;
