@@ -1,41 +1,43 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { RegisterFormPart } from "../../FormRegister/FormRegister.style";
-import { Formik, Form } from "formik";
+import { Formik } from "formik";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { setRegisterUser } from "../../../../state-management/registerUser/registerUser.action";
-import { selectRegisterUser } from "../../../../state-management/registerUser/registerUser.selector";
+import { setRegisterUser } from "../../../../state-management/registerhelper/registerhelper.actions";
+import { selectRegisterUser } from "../../../../state-management/registerhelper/registerhelper.selector";
 import { registerSchemaPersonal } from "../../ValidationSchema/ValidationSchema";
-import { options } from "../../../../components/CustomInputs/CustomRadioInputGroup";
 import CustomInput from "../../../../components/CustomInputs/CustomInput";
 import CustomSelect from "../../../../components/CustomInputs/CustomSelect";
 import RadioButtons from "../../../../components/CustomInputs/CustomRadioInputGroup";
+import { selectStep } from "../../../../state-management/registerhelper/registerhelper.selector";
+import { setStep } from "../../../../state-management/registerhelper/registerhelper.actions";
+import FooterControl from "../../FooterControl/FooterControl";
+import DatePickerField from "../../../../components/CustomInputs/CustomDatePicker";
+import { FormContainerPersonal } from "./PersonalForm.style";
+import { handleSubmit } from "../../../../utils/helpers/helperFunctions/HandleSubmit";
 
 function PersonalForm() {
+  const step = useSelector(selectStep);
+  const options = [
+    { key: "Male", value: "male" },
+    { key: "Female", value: "female" },
+  ];
   const dispatch = useDispatch();
   const registerData = useSelector(selectRegisterUser);
-  const { firstname, lastname, country, address, age } = registerData; // destructure data from Redux for updating on every keypress
+  const { firstname, lastname, country, address } = registerData; // destructure data from Redux for updating on every keypress
 
   const setData = (e) => {
     dispatch(setRegisterUser(registerData, e));
   };
-
-  const handleSubmit = (values) => {
-    console.log(values);
-    console.log(registerData);
-  };
-  useEffect(() => {
-    console.log(registerData);
-  }, [registerData]);
 
   return (
     <>
       <Formik
         initialValues={{ ...registerData }}
         validationSchema={registerSchemaPersonal}
-        onSubmit={handleSubmit}
+        onSubmit={() => handleSubmit(dispatch, setStep, step)}
       >
-        <Form className="personal-form">
+        <FormContainerPersonal>
           <RegisterFormPart>
             <CustomInput
               label="Firstname"
@@ -89,18 +91,10 @@ function PersonalForm() {
               options={options}
               setData={setData}
             />
-            <CustomInput
-              label="Age"
-              name="age"
-              type="number"
-              small
-              placeholder="Enter your age"
-              setData={setData}
-              value={age || ""}
-            />
+            <DatePickerField label="Date" name="date" setData={setData} small />
           </RegisterFormPart>
-          <button type="submit">submit</button>
-        </Form>
+          <FooterControl />
+        </FormContainerPersonal>
       </Formik>
     </>
   );

@@ -1,31 +1,75 @@
 import { useField } from "formik";
-import { Group, InputForm, Error } from "../UI/Input/Input.style";
+import {
+  Group,
+  InputForm,
+  Error,
+  CheckboxPlan,
+  InputCheckbox,
+} from "../UI/Input/Input.style";
 import "../UI/Input/Input.css";
 import { useSelector } from "react-redux";
 import { selectPlan } from "../../state-management/registerhelper/registerhelper.selector";
 import { selectRegisterPlan } from "../../state-management/registerUser/registerUser.selector";
+import { FieldHookConfig } from "formik";
+import { Type } from "@sinclair/typebox";
+import { FieldInputProps } from "formik";
 
 const CustomChecboxplan = ({ label, ...props }) => {
-  const plan = useSelector(selectRegisterPlan);
   // fiedl , meta, helpers
-  const [field, meta, helpers] = useField(props);
-  console.log(meta);
+  const [field, meta] = useField(props);
   return (
     <>
-      <Group>
-        <label className="checkbox-plan">{label}</label>
-        <InputForm
+      {/* <Group> */}
+      <label>
+        <input
           {...field}
           {...props}
           onChange={(e) => {
             field.onChange(e);
-            props.setPlan(e);
+            props.handleBox(props.index);
+            // props.setPlan(e);
           }}
-          checked={plan.some((el) => el.currency === field.value)}
-          className={meta.touched && meta.error ? "input-error" : ""}
+          className={`checkbox ${
+            meta.touched && meta.error ? "input-error" : ""
+          }`}
         />
-        {meta.touched && meta.error && <Error>{meta.error}</Error>}
-      </Group>
+        <span className="checkbox-custom">
+          {label}
+          <div className="info-plans">
+            <div className="info">
+              <h4>Standard</h4>
+              <ul>
+                <li>Less comision for transfers</li>
+                <li>Easy to use</li>
+                <li>Metal Card</li>
+                <li>Smart Pay with App</li>
+              </ul>
+            </div>
+            <div className="info">
+              <h4>Premium</h4>
+              <ul>
+                <li>Less comision for transfers</li>
+                <li>Easy to use</li>
+                <li>Metal Card</li>
+                <li>Smart Pay with App</li>
+              </ul>
+            </div>
+            <div className="info">
+              <h4>Vip</h4>
+              <ul>
+                <li>Less comision for transfers</li>
+                <li>Easy to use</li>
+                <li>Metal Card</li>
+                <li>Smart Pay with App</li>
+              </ul>
+            </div>
+          </div>
+          <div className="info-message">
+            <p>Chose your plan today !</p>
+            <div class="arrow-down"></div>
+          </div>
+        </span>
+      </label>
     </>
   );
 };

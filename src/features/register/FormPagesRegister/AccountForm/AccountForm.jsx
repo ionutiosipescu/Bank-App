@@ -1,14 +1,21 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { RegisterFormPart } from "../../FormRegister/FormRegister.style";
-import { Formik, Form } from "formik";
+import { Formik } from "formik";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { selectRegisterUser } from "../../../../state-management/registerUser/registerUser.selector";
-import { setRegisterUser } from "../../../../state-management/registerUser/registerUser.action";
+import { selectRegisterUser } from "../../../../state-management/registerhelper/registerhelper.selector";
+import { setRegisterUser } from "../../../../state-management/registerhelper/registerhelper.actions";
 import CustomInput from "../../../../components/CustomInputs/CustomInput";
 import { registerSchemaAccount } from "../../ValidationSchema/ValidationSchema";
+import FooterControl from "../../FooterControl/FooterControl";
+import { selectStep } from "../../../../state-management/registerhelper/registerhelper.selector";
+import { setStep } from "../../../../state-management/registerhelper/registerhelper.actions";
+import "../../../../components/UI/Input/Input.css";
+import { FormContainerAccount } from "./AccountForm.style";
+import { handleSubmit } from "../../../../utils/helpers/helperFunctions/HandleSubmit";
 
 function AccountForm() {
+  const step = useSelector(selectStep);
   const dispatch = useDispatch();
   const registerData = useSelector(selectRegisterUser);
 
@@ -16,36 +23,31 @@ function AccountForm() {
     dispatch(setRegisterUser(registerData, e));
   };
 
-  const handleSubmit = (values) => {
-    console.log(values);
-    console.log(registerData);
-  };
-  useEffect(() => {
-    console.log(registerData);
-  }, [registerData]);
-
   return (
     <>
       <Formik
         initialValues={{ ...registerData }}
         validationSchema={registerSchemaAccount}
-        onSubmit={handleSubmit}
+        onSubmit={() => handleSubmit(dispatch, setStep, step)}
       >
-        <Form className="personal-form">
-          <CustomInput
-            label="Email"
-            name="email"
-            type="email"
-            placeholder="Enter your email"
-            setData={setData}
-          />
+        <FormContainerAccount>
+          <RegisterFormPart>
+            <CustomInput
+              label="Email"
+              name="email"
+              type="email"
+              placeholder="Enter your email"
+              setData={setData}
+            />
+          </RegisterFormPart>
+
           <RegisterFormPart>
             <CustomInput
               label="Display Name"
               name="displayName"
               type="text"
               small
-              placeholder=""
+              placeholder="Enter your display name"
               setData={setData}
             />
             <CustomInput
@@ -75,55 +77,11 @@ function AccountForm() {
               setData={setData}
             />
           </RegisterFormPart>
-          <button type="submit">submit</button>
-        </Form>
+          <FooterControl />
+        </FormContainerAccount>
       </Formik>
     </>
   );
 }
 
 export default AccountForm;
-
-//  <Input
-//     type="email"
-//     label="Email"
-//     value={email || ""}
-//     name="email"
-//     onChange={handleChange}
-//   />
-//   <RegisterFormPart>
-//     <Input
-//       onChange={handleChange}
-//       type="text"
-//       label="Username"
-//       small
-//       value={displayName || ""}
-//       name="displayName"
-//     />
-//     <Input
-//       onChange={handleChange}
-//       type="text"
-//       label="Mobile Number"
-//       small
-//       value={mobile || ""}
-//       name="mobile"
-//     />
-//   </RegisterFormPart>
-//   <RegisterFormPart>
-//     <Input
-//       onChange={handleChange}
-//       type="password"
-//       label="Password"
-//       small
-//       value={password || ""}
-//       name="password"
-//     />
-//     <Input
-//       onChange={handleChange}
-//       type="password"
-//       label="Confirm Password"
-//       small
-//       value={confirmPassword || ""}
-//       name="confirmPassword"
-//     />
-//   </RegisterFormPart>

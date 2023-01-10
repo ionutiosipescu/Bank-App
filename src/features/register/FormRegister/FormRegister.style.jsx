@@ -1,26 +1,35 @@
 import styled from "styled-components";
+import { device } from "../../../utils/breakpoints/breakpoints";
 
+// lv2
 export const RegisterFormPart = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   gap: 30px;
-`;
-export const RegitsterFormContainer = styled.form`
-  display: flex;
   flex-direction: column;
-  align-items: center;
-  width: 65%;
+  margin-bottom: 25px;
+  @media ${device.mobileL} {
+    flex-direction: row;
+  }
 `;
-export const RegisterFormWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-`;
+
 export const CheckboxContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 80%;
+`;
+
+export const FooterControlPages = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  margin-top: 30px;
+  gap: 20px;
+  @media ${device.mobileL} {
+    flex-direction: row;
+  }
 `;

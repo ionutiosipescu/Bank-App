@@ -1,3 +1,27 @@
-.containerplan {
-    display: flex;
+.plan-form p {
+  padding: 0 15%;
 }
+/* .containerplan {
+  display: flex;
+} */
+/* .plan-error {
+  border-color: #fc8181;
+  color: #fc8181;
+  font-size: 1rem;
+  margin-top: 0.25rem;
+  bottom: -10px;
+  align-self: center;
+} */
+
+/* .header-plan-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0;
+  margin: 0 0 29px;
+}
+.header-plan-form h1 {
+  margin: 0;
+} */

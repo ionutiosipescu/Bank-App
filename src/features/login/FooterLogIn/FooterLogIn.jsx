@@ -1,14 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FooterContainerLogin, FooterBoxLogin } from "./FooterLogin.style";
 
 function FooterLogIn() {
   return (
-    <div className="footer">
-      <div className="register">
+    <FooterContainerLogin>
+      <FooterBoxLogin>
         <h5>Don't have an account?</h5>
         <Link to="/register">Sign Up</Link>
-      </div>
-    </div>
+      </FooterBoxLogin>
+    </FooterContainerLogin>
   );
 }
 

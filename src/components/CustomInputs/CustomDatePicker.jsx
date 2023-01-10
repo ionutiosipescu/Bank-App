@@ -1,14 +1,15 @@
 import {
   Group,
   GroupDate,
-  InputForm,
   InputDate,
   Error,
+  InputForm,
 } from "../UI/Input/Input.style";
-import "../../../components/UI/Input/Input.css";
+import "../UI/Input/Input.css";
 import { useField, useFormikContext } from "formik";
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
+import { Field } from "formik";
 
 const DatePickerField = ({ label, ...props }) => {
   const { setFieldValue } = useFormikContext();
@@ -17,15 +18,20 @@ const DatePickerField = ({ label, ...props }) => {
     <>
       <Group>
         <label>{label}</label>
-        <InputDate
+        <InputForm
           {...field}
           {...props}
           className={meta.touched && meta.error ? "input-error" : ""}
-          selected={(field.value && new Date(field.value)) || null}
-          onChange={(val) => {
-            setFieldValue(field.name, val);
-          }}
+          type="date"
           popperPlacement="bottom"
+          // selected={(field.value && new Date(field.value)) || null}
+          // onChange={(val) => {
+          //   setFieldValue(field.name, val);
+          // }}
+          onChange={(e) => {
+            field.onChange(e);
+            props.setData(e);
+          }}
         />
         {meta.touched && meta.error && <Error>{meta.error}</Error>}
       </Group>
