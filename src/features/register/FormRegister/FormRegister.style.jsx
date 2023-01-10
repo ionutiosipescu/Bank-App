@@ -14,20 +14,6 @@ export const RegisterFormPart = styled.div`
   }
 `;
 
-// lv3
-// export const RegisterFormWrapper = styled.div`
-//   width: 100%;
-//   height: 100%;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   flex-direction: column;
-// `;
-// lv5
-// export const RegitsterFormContainer = styled.div`
-//   width: 100%;
-//   height: 100%;
-// `;
 export const CheckboxContainer = styled.div`
   display: flex;
   justify-content: space-between;
@@ -35,6 +21,7 @@ export const CheckboxContainer = styled.div`
   width: 100%;
   margin-bottom: 20px;
 `;
+
 export const FooterControlPages = styled.div`
   display: flex;
   flex-direction: column;

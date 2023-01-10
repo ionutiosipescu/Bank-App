@@ -1,6 +1,6 @@
 import React from "react";
 import { RegisterFormPart } from "../../FormRegister/FormRegister.style";
-import { Formik, Form } from "formik";
+import { Formik } from "formik";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { setRegisterUser } from "../../../../state-management/registerhelper/registerhelper.actions";
@@ -12,9 +12,9 @@ import RadioButtons from "../../../../components/CustomInputs/CustomRadioInputGr
 import { selectStep } from "../../../../state-management/registerhelper/registerhelper.selector";
 import { setStep } from "../../../../state-management/registerhelper/registerhelper.actions";
 import FooterControl from "../../FooterControl/FooterControl";
-import { handleSubmit } from "../../../../utils/helpers/register/HandleSubmit";
 import DatePickerField from "../../../../components/CustomInputs/CustomDatePicker";
 import { FormContainerPersonal } from "./PersonalForm.style";
+import { handleSubmit } from "../../../../utils/helpers/helperFunctions/HandleSubmit";
 
 function PersonalForm() {
   const step = useSelector(selectStep);
@@ -24,7 +24,7 @@ function PersonalForm() {
   ];
   const dispatch = useDispatch();
   const registerData = useSelector(selectRegisterUser);
-  const { firstname, lastname, country, address, date } = registerData; // destructure data from Redux for updating on every keypress
+  const { firstname, lastname, country, address } = registerData; // destructure data from Redux for updating on every keypress
 
   const setData = (e) => {
     dispatch(setRegisterUser(registerData, e));

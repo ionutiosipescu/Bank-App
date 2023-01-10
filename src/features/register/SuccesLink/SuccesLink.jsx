@@ -4,7 +4,6 @@ import {
   SuccesLinkContainer,
   SuccesLinkBtn,
   SuccesLinkTitle,
-  SuccesLinkBox,
 } from "./SuccesLink.style";
 
 function SuccesLink() {

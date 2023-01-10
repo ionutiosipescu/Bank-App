@@ -1,6 +1,5 @@
 import { REGISTER_HELPER_TYPES } from "./registerhelper.types";
 import { createAction } from "../../utils/helpers/reducer/reducer.utils";
-import { getLocalStorage } from "../../utils/helpers/localStorage/getLocalStorage";
 
 // SetStep
 export const setStep = (step) => {

@@ -1,26 +1,20 @@
 import { REGISTER_ACTION_TYPES } from "./registerUser.types";
 import { createAction } from "../../utils/helpers/reducer/reducer.utils";
-import { setObjectPlan } from "../registerhelper/registerhelper.actions";
-import { useState } from "react";
-import { setTypeOfPlan } from "../registerhelper/registerhelper.actions";
-import { setShowPlans } from "../registerhelper/registerhelper.actions";
 import { setTypeOfPlanAdd } from "../registerhelper/registerhelper.actions";
-import { setTypeOfPlanRemove } from "../registerhelper/registerhelper.actions";
-import { test } from "../../utils/services/registerRequestPost";
 import { setStep } from "../registerhelper/registerhelper.actions";
 import axios from "axios";
+import { getLocalDate } from "../../utils/helpers/helperFunctions/date";
 
-// Name must be changed to setRegisterObjectAditionals
-export const setRegisterObjectEsentials = (registerHelperEsentials) => {
-  const { displayName, password, email } = registerHelperEsentials;
-  const cleanEsentials = {
+export const setRegisterObjectAditionals = (registerHelperAditionals) => {
+  const { displayName, password, email } = registerHelperAditionals;
+  const cleanAditionals = {
     username: displayName,
     password: password,
     email: email,
   };
   return createAction(
-    REGISTER_ACTION_TYPES.SET_REGISTER_ESENTIALS,
-    cleanEsentials
+    REGISTER_ACTION_TYPES.SET_REGISTER_ADITIONALS,
+    cleanAditionals
   );
 };
 
@@ -35,13 +29,7 @@ export const setRegisterUserObject = (registerHelper) => {
     mobile,
     confirmPassword,
   } = registerHelper;
-  const createdAt = new Date();
-
-  const year = createdAt.toLocaleString("default", { year: "numeric" });
-  const month = createdAt.toLocaleString("default", { month: "2-digit" });
-  const day = createdAt.toLocaleString("default", { day: "2-digit" });
-
-  const formattedDate = year + "-" + month + "-" + day;
+  const formattedDate = getLocalDate();
 
   const cleanProfile = {
     first_name: firstname,
@@ -58,17 +46,16 @@ export const setRegisterUserObject = (registerHelper) => {
 };
 
 // Async User Profile
-export const fetchRegisterData = (url, registerData, step) => {
-  return async (dispatch) => {
-    try {
-      axios.post(url, registerData).then((res) => console.log(res.data));
-      // console.log(url, registerData);
-      dispatch(setStep(step + 1));
-    } catch (error) {
-      console.log(error);
-    }
-  };
-};
+// export const fetchRegisterData = (url, registerData, step) => {
+//   return async (dispatch) => {
+//     try {
+//       axios.post(url, registerData).then((res) => console.log(res.data));
+//       dispatch(setStep(step + 1));
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+// };
 
 // UserPlan
 
@@ -76,14 +63,7 @@ export const fetchRegisterData = (url, registerData, step) => {
 
 const setRegisterPlanAdd = (userDataArrPlan, prevPlans, index) => {
   const { typeOfPlan, currency, currentBallance } = prevPlans[index];
-
-  const createdAt = new Date();
-
-  const year = createdAt.toLocaleString("default", { year: "numeric" });
-  const month = createdAt.toLocaleString("default", { month: "2-digit" });
-  const day = createdAt.toLocaleString("default", { day: "2-digit" });
-
-  const formattedDate = year + "-" + month + "-" + day;
+  const formattedDate = getLocalDate();
 
   const cleanPlan = {
     type_of_plan: typeOfPlan,
@@ -123,15 +103,3 @@ export const updateRegisterPlanAsync = (
     }
   };
 };
-
-// // User Plan Remove
-
-// export const setRegisterPlanRemove = (userDataArrPlan, prevPlans, index) => {
-//   const newArrPlan = [...userDataArrPlan].filter(
-//     (prevArrPlan) => prevArrPlan.currency !== prevPlans[index].currency
-//   );
-//   return createAction(
-//     REGISTER_ACTION_TYPES.SET_REGISTER_PLAN_REMOVE,
-//     newArrPlan
-//   );
-// };

@@ -23,13 +23,6 @@ export const registerSchemaPersonal = yup.object().shape({
     .max(50, "Address is too long")
     .matches(/\d/, { message: "Invalid Address" }) // /\d/ require at least 1 number
     .required("Required"),
-  // age: yup
-  //   .number()
-  //   .positive()
-  //   .integer()
-  //   .min(18, "You are not old enough")
-  //   .max(100, "Invalid age")
-  //   .required("Required"),
   date: yup.date().required("Required").nullable(),
   gender: yup.string().required("Required"),
 });
@@ -60,11 +53,6 @@ export const registerSchemaAccount = yup.object().shape({
     .oneOf([yup.ref("password"), null], "Passwords must match")
     .required("Required"),
 });
-
-// I used this validation schema for plan but is not working
-// export const registerSchemaPlan = yup.object().shape({
-//   userPlan: yup.array().nullable().min(1, "At least one item is required"),
-// });
 
 export const registerShemaConfirmation = yup.object().shape({
   acceptedTos: yup

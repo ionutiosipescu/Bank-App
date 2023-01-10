@@ -11,7 +11,7 @@ import { selectStep } from "../../../../state-management/registerhelper/register
 import { setStep } from "../../../../state-management/registerhelper/registerhelper.actions";
 import { setRegisterUserObject } from "../../../../state-management/registerUser/registerUser.action";
 import { selectRegisterUser } from "../../../../state-management/registerhelper/registerhelper.selector";
-import { setRegisterObjectEsentials } from "../../../../state-management/registerUser/registerUser.action";
+import { setRegisterObjectAditionals } from "../../../../state-management/registerUser/registerUser.action";
 import "./PlanForm.css";
 import { selectPlanObject } from "../../../../state-management/registerhelper/registerhelper.selector";
 import { options } from "../../../../utils/data/plancardregisterData";
@@ -42,7 +42,7 @@ function PlanForm() {
           if (userPlan.length === 0) {
             actions.setFieldError("userPlan", "At least one item is required");
           } else {
-            dispatch(setRegisterObjectEsentials(registerHelper));
+            dispatch(setRegisterObjectAditionals(registerHelper));
             dispatch(setRegisterUserObject(registerHelper));
             dispatch(setStep(step + 1));
           }
