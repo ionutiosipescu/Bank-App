@@ -34,6 +34,38 @@ export const InputForm = styled.input`
         ? "width: 300px; height: 40px;"
         : "width: 310px; height: 40px;"};
   }
+  @media (max-width: 1400px) {
+    ${(props) =>
+      props.small
+        ? "width: 150px; height: 40px;"
+        : props.large
+        ? "width: 250px; height: 40px;"
+        : "width: 310px; height: 40px;"};
+  }
+  @media (max-width: 1250px) {
+    ${(props) =>
+      props.small
+        ? "width: 150px; height: 40px;"
+        : props.large
+        ? "width: 200px; height: 40px;"
+        : "width: 310px; height: 40px;"};
+  }
+  @media (max-width: 880px) {
+    ${(props) =>
+      props.small
+        ? "width: 150px; height: 40px;"
+        : props.large
+        ? "width: 300px; height: 40px;"
+        : "width: 310px; height: 40px;"};
+  }
+  @media (max-width: 530px) {
+    ${(props) =>
+      props.small
+        ? "width: 150px; height: 40px;"
+        : props.large
+        ? "width: 100%; height: 40px;"
+        : "width: 310px; height: 40px;"};
+  }
 `;
 export const InputRadio = styled.input``;
 export const InputSelect = styled.select`

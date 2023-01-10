@@ -7,19 +7,12 @@ export const InputContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 70%;
-  /* & > div {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    height: 80%;
-  } */
-  @media (max-width: 1440px) {
+  height: 80%;
+  @media (max-width: 1439px) {
     flex-direction: row;
-    width: fit-content;
-    & > div {
-      /* flex-direction: row; */
-    }
+  }
+  @media (max-width: 880px) {
+    flex-direction: column;
   }
 `;
 

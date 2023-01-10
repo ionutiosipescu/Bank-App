@@ -20,4 +20,7 @@ export const HomeContainer = styled.div`
     width: calc(100% - 65px);
     margin-left: 65px;
   }
+  @media (max-width: 880px) {
+    padding: 10px 0px 10px 10px;
+  }
 `;

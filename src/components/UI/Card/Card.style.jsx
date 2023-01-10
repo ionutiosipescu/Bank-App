@@ -101,7 +101,7 @@ export const ServiceCard = styled.div`
   @media (max-width: 1515px) {
     width: 63%;
   }
-  @media (max-width: 1400px) {
+  @media (max-width: 1439px) {
     width: 100%;
   }
 `;
@@ -118,18 +118,36 @@ export const ServiceInputsCard = styled.div`
   padding: 30px 40px;
   background-color: var(--white);
   box-shadow: 0px 0px 15px -8px rgba(21, 20, 47, 0.73);
+  & > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 90%;
+  }
   @media (max-width: 1515px) {
     width: 33%;
-    & div {
-      scale: 95%;
-    }
   }
-  @media (max-width: 1400px) {
+  @media (max-width: 1439px) {
     width: 100%;
     height: 40vh;
     align-items: flex-start;
     margin-bottom: 30px;
+    & > div {
+      margin-top: 40px;
+      align-items: flex-end;
+    }
   }
-  @media (max-width: 1050px) {
+  @media (max-width: 880px) {
+    height: 70vh;
+    & > div {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+    }
   } ;
 `;

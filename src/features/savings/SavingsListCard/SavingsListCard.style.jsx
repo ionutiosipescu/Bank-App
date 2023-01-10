@@ -12,6 +12,11 @@ export const ListContainer = styled.div`
   & > div:nth-child(even) {
     background-color: var(--gray-light);
   }
+  @media (max-width: 1600px) {
+    & h3 {
+      font-size: 1rem;
+    }
+  }
 `;
 
 export const ListItem = styled.div`
@@ -39,5 +44,21 @@ export const ListItem = styled.div`
   }
   & > h3:nth-child(3) {
     color: var(--purple);
+  }
+  @media (max-width: 680px) {
+    & > div:first-of-type > div:first-of-type {
+      display: none;
+    }
+  }
+  @media (max-width: 630px) {
+    flex-direction: column;
+  }
+`;
+
+export const LabelContainer = styled.h3``;
+export const AmountContainer = styled.h3``;
+export const IdContainer = styled.h3`
+  @media (max-width: 800px) {
+    display: none;
   }
 `;

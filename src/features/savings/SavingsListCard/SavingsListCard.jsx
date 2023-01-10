@@ -3,7 +3,13 @@ import { Icon } from "../../../components/ProfileComponent/ProfileComponent.styl
 import { CardHeader } from "../../../components/TopCard/TopCard.style";
 import Button from "../../../components/UI/Button/Button";
 import { ServiceCard } from "../../../components/UI/Card/Card.style";
-import { ListContainer, ListItem } from "./SavingsListCard.style";
+import {
+  ListContainer,
+  ListItem,
+  LabelContainer,
+  AmountContainer,
+  IdContainer,
+} from "./SavingsListCard.style";
 
 import { BsCashStack } from "react-icons/bs";
 
@@ -24,11 +30,11 @@ function SavingsListCard() {
               <Icon>
                 <BsCashStack />
               </Icon>
-              <h3>{saving.label}</h3>
+              <LabelContainer>{saving.label}</LabelContainer>
+              <AmountContainer>{saving.amount}</AmountContainer>
             </div>
             <div>
-              <h3>{saving.amount}</h3>
-              <h3>ID {saving.id}</h3>
+              <IdContainer>ID {saving.id}</IdContainer>
             </div>
             <div>
               <Button label="Top-Up" size="sm" primary={true} />
