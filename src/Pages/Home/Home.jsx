@@ -6,7 +6,7 @@ import SideBar from "../../layouts/SideBar/SideBar";
 import Dashboard from "./../Dashboard/Dashboard";
 import Cards from "../Cards/Cards";
 import NavBar from "./../../layouts/NavBar/NavBar";
-import Settings from "../../Pages/Settings/Settings";
+import Settings from "../../pages/Settings/Settings";
 import Profile from "./../Profile/Profile";
 import Services from "./../Services/Services";
 import Savings from "./../Savings/Savings";

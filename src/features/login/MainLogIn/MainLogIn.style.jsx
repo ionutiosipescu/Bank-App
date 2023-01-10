@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import { device } from "../../../utils/breakpoints/breakpoints";
 
 export const LogInWrapper = styled.div`
-  width: 70vw;
+  width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -10,13 +11,29 @@ export const LogInWrapper = styled.div`
   border-radius: 30px;
   overflow: hidden;
   box-shadow: 13px 12px 41px 14px rgba(0, 0, 0, 0.32);
+  @media ${device.laptop} {
+    width: 70vw;
+  }
 `;
 export const LogInContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  width: 50%;
+  width: 100%;
   height: 60%;
-  padding: 2rem;
+  padding: 1rem;
+  p {
+    text-align: center;
+  }
+  @media ${device.laptop} {
+    width: 60%;
+    padding: 2rem;
+  }
+`;
+export const Logo = styled.img`
+  width: 150px;
+`;
+export const LogoText = styled.p`
+  color: var(--gray);
 `;

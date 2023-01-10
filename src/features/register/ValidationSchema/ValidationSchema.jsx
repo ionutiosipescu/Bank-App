@@ -23,13 +23,7 @@ export const registerSchemaPersonal = yup.object().shape({
     .max(50, "Address is too long")
     .matches(/\d/, { message: "Invalid Address" }) // /\d/ require at least 1 number
     .required("Required"),
-  age: yup
-    .number()
-    .positive()
-    .integer()
-    .min(18, "You are not old enough")
-    .max(100, "Invalid age")
-    .required("Required"),
+  date: yup.date().required("Required").nullable(),
   gender: yup.string().required("Required"),
 });
 
@@ -60,6 +54,13 @@ export const registerSchemaAccount = yup.object().shape({
     .required("Required"),
 });
 
-// export const registerSchemaPlan = yup.object().shape({
-//   currency:
-// });
+export const registerShemaConfirmation = yup.object().shape({
+  acceptedTos: yup
+    .boolean()
+    .oneOf([true], "Please accept the terms of service")
+    .required("Required"),
+  acceptedPlan: yup
+    .boolean()
+    .oneOf([true], "Please accept the terms of service")
+    .required("Required"),
+});

@@ -4,6 +4,7 @@ import AccountForm from "../FormPagesRegister/AccountForm/AccountForm";
 import ConfirmForm from "../FormPagesRegister/ConfirmForm/ConfirmForm";
 import PersonalForm from "../FormPagesRegister/PersonalForm/PersonalForm";
 import PlanForm from "../FormPagesRegister/PlanForm/PlanForm";
+import SuccesPage from "../FormPagesRegister/SuccesPage/SuccesPage";
 
 function Step() {
   const step = useSelector(selectStep);
@@ -18,9 +19,12 @@ function Step() {
     case 2:
       stepContent = <PlanForm />;
       break;
-    // case 3:
-    //   stepContent = <ConfirmForm />;
-    //   break;
+    case 3:
+      stepContent = <ConfirmForm />;
+      break;
+    case 4:
+      stepContent = <SuccesPage />;
+      break;
     default:
       break;
   }

@@ -12,6 +12,7 @@ const CustomPassword = ({ label, ...props }) => {
         <InputForm
           {...field}
           {...props}
+          meta={meta}
           onChange={(e) => {
             field.onChange(e);
             props.setData(e);

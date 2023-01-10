@@ -13,33 +13,47 @@ import { debounce } from "debounce";
 import { selectStep } from "../../../state-management/registerhelper/registerhelper.selector";
 import { setStep } from "../../../state-management/registerhelper/registerhelper.actions";
 import axios from "axios";
+import { resetLocalStorage } from "../../../state-management/store";
+import Button from "../../../components/UI/NewButton/Button.component";
+import { useNavigate } from "react-router-dom";
+import { FormContainerLogin } from "./FormLogin.style";
 
 function FormLogIn() {
   const dispatch = useDispatch();
   const loginData = useSelector(selectLoginUser);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const navigate = useNavigate();
 
-  // const [isSubmitting, setIsSubmitting] = useState(false);
-  // const navigate = useNavigate();
-
+  // axios request -> response true - > change isSubmitting status
   const onSubmit = (values, actions) => {
-    // setIsSubmitting(true);
-    console.log(loginData);
+    setIsSubmitting(true);
+    // console.log(loginData);
     // axios
     //   .post("http://localhost:8080/bank/auth/signup", loginData)
     //   .then((res) => console.log(res.data));
   };
 
+  // send data to Redux userProfile
   const setData = debounce((e) => {
     dispatch(setLogInUser(loginData, e));
   }, 500);
 
-  // useEffect(() => {
-  //   if (isSubmitting) {
-  //     navigate("/dashboard");
-  //   } else {
-  //     return;
-  //   }
-  // }, [isSubmitting]);
+  // check isSubmitting status -> redirect to dashboard
+  useEffect(() => {
+    if (isSubmitting) {
+      navigate("/dashboard");
+    } else {
+      return;
+    }
+  }, [isSubmitting]);
+
+  // restore localStorage
+  useEffect(() => {
+    if (localStorage.getItem("persist:root") !== null) {
+      localStorage.removeItem("persist:root");
+      window.location.reload();
+    }
+  }, []);
 
   const initialObject = {
     username: "",
@@ -53,7 +67,7 @@ function FormLogIn() {
       validationSchema={advancedSchema}
       onSubmit={onSubmit}
     >
-      <Form className="form">
+      <FormContainerLogin>
         <CustomInput
           label="Username"
           name="username"
@@ -75,10 +89,10 @@ function FormLogIn() {
           placeholder="Enter your password"
           setData={setData}
         />
-        <CustomCheckbox type="checkbox" name="acceptedTos" />
-
-        <button type="submit">Submit</button>
-      </Form>
+        <Button size="100" typeclass="secondary" type="submit">
+          Log In
+        </Button>
+      </FormContainerLogin>
     </Formik>
   );
 }

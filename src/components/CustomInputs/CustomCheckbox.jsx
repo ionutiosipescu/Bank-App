@@ -4,7 +4,6 @@ import "../UI/Input/Input.css";
 
 const CustomCheckbox = ({ label, ...props }) => {
   const [field, meta, helpers] = useField(props);
-  console.log(field, meta, helpers);
   return (
     <>
       <Checkbox>
@@ -13,7 +12,7 @@ const CustomCheckbox = ({ label, ...props }) => {
           {...props}
           className={meta.touched && meta.error ? "input-error" : ""}
         />
-        <span>I accept the terms of service</span>
+        <span>{label}</span>
         {meta.touched && meta.error && <Error>{meta.error}</Error>}
       </Checkbox>
     </>

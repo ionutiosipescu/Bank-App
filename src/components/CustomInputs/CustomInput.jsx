@@ -5,7 +5,6 @@ import "../UI/Input/Input.css";
 const CustomInput = ({ label, ...props }) => {
   // fiedl , meta, helpers
   const [field, meta] = useField(props);
-
   return (
     <>
       <Group>

@@ -1,24 +1,20 @@
 import React from "react";
 import { Field } from "formik";
 import { useField } from "formik";
-import { Group, InputRadio, Error } from "../UI/Input/Input.style";
+import { Group, InputRadio, Error, GroupRadio } from "../UI/Input/Input.style";
 import "../UI/Input/Input.css";
 import { useSelector } from "react-redux";
-import { selectRegisterUser } from "../../state-management/registerUser/registerUser.selector";
-
-export const options = [
-  { key: "Male", value: "male" },
-  { key: "Female", value: "female" },
-];
+import { selectRegisterUser } from "../../state-management/registerhelper/registerhelper.selector";
+// import { selectRegisterUser } from "../../state-management/registerUser/registerUser.selector";
 
 const RadioButtons = ({ label, ...props }) => {
   const registerData = useSelector(selectRegisterUser);
   const { gender } = registerData;
   const [field, meta] = useField(props);
   return (
-    <Group>
+    <GroupRadio>
       <label>{label}</label>
-      <div className="radio-container">
+      <div>
         <Field name={props.name}>
           {({ field }) => {
             return props.options.map((option) => {
@@ -34,7 +30,7 @@ const RadioButtons = ({ label, ...props }) => {
                     id={option.value}
                     value={option.value || ""}
                     checked={gender === option.value}
-                    className={meta.touched && meta.error ? "input-error" : ""}
+                    className={meta.touched && meta.error ? "input-error " : ""}
                   />
                   <label htmlFor={option.value}>{option.key}</label>
                 </React.Fragment>
@@ -44,7 +40,7 @@ const RadioButtons = ({ label, ...props }) => {
         </Field>
       </div>
       {meta.touched && meta.error && <Error>{meta.error}</Error>}
-    </Group>
+    </GroupRadio>
   );
 };
 

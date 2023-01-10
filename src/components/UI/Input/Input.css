@@ -1,23 +1,154 @@
+/* ///////// Error Style Inputs ///////// */
+
 input.input-error,
 select.input-error {
   border-color: #fc8181;
 }
-.date-picker {
-  height: 30px;
-  width: 150px;
-  border: 1px solid var(--purple);
-  border-radius: 30px;
-  padding: 0 12px 0 10px;
-  margin-bottom: 10px;
+
+/* ///////// Plan Page Card Style ///////// */
+
+.plan-form input[type="radio"] {
+  display: none;
 }
-.date-picker:focus {
-    outline: none;
-    border: 2px solid var(--blue);
-}
-.radio-container {
-  gap: 10px;
+/* Plan Form Page Style */
+.plan-form {
   display: flex;
+  flex-direction: column;
+  width: 100%;
 }
-.checkbox-plan {
+/* Radio Selected Style */
+.plan-form .radio-label.selected {
+  border: 2px solid var(--blue);
+  box-shadow: 0 15px 30px rgba(84, 197, 235, 0.6),
+    0 10px 10px rgba(84, 197, 235, 0.2);
+  background-color: var(--purple);
+}
+.plan-form .radio-label.selected .plancard-header h4,
+.plan-form .radio-label.selected .plancard-header h1,
+.plan-form .radio-label.selected .plancard-header .price-tag,
+.plan-form .radio-label.selected .plancard-body li span {
+  color: var(--white);
+}
+.plan-form .radio-label.selected .plancard-body li {
+  color: var(--white);
+  border-bottom: 1px solid var(--white);
+}
+
+.plan-form .radio-label.selected .plancard-footer {
+  border: 1px solid var(--white);
+  background: var(--white);
+  color: var(--purple);
+}
+.plan-form .radio-label.selected .plancard-footer:hover {
+  background: var(--purple);
+  color: var(--white);
+}
+
+/* Card Style */
+.plan-form .radio-label {
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+  width: 260px;
+  height: auto;
+  margin: 10px;
+  padding: 20px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  box-sizing: border-box;
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+/* Header */
+.plancard-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.plancard-header > h4 {
+  font-size: 1rem;
+  color: var(--purple);
+  margin-top: 20px;
+  margin-bottom: 0px;
+}
+
+.plancard-header .plancard-price {
+  margin-right: 5px;
+  font-size: 15px;
+  font-weight: 300;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.plancard-header > h1 {
+  margin: 0;
+}
+.plancard-header .price-tag {
+  margin: 0 2px 16px 0;
+}
+.plancard-price h1:after {
+  content: "/mo";
+  margin-left: 5px;
+  font-size: 15px;
+  font-weight: 300;
+}
+
+/* Body */
+.plancard-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  z-index: 2;
+  margin-bottom: 20px;
+}
+.plancard-body ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
   text-align: center;
+}
+.plancard-body li {
+  width: 100%;
+  color: var(--gray-dark);
+  border-bottom: 1px solid var(--gray-dark);
+  padding-bottom: 8px;
+}
+.plancard-body li:last-child {
+  border: none;
+}
+.plancard-body li span {
+  color: black;
+}
+
+/* Footer */
+.plancard-footer {
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  border: 1px solid var(--blue);
+  background: var(--purple);
+  color: var(--white);
+  transition: 0.3s;
+  margin: 10px 0 10px 0;
+  cursor: pointer;
+  padding: 18px;
+}
+.plancard-footer:hover {
+  background: var(--white);
+  color: var(--blue);
 }
