@@ -14,23 +14,23 @@ import SuccesLink from "../SuccesLink/SuccesLink";
 
 function MainRegister() {
   const step = useSelector(selectStep);
-  let MainRegisterStyle;
-  switch (step) {
-    // case 2:
-    //   MainRegisterStyle = MainRegisterContainerPlan;
-    //   break;
-    // case 3:
-    //   MainRegisterStyle = MainRegisterContainerPlan;
-    //   break;
-    default:
-      MainRegisterStyle = MainRegisterContainer;
-  }
+  // let MainRegisterStyle;
+  // switch (step) {
+  //   // case 2:
+  //   //   MainRegisterStyle = MainRegisterContainerPlan;
+  //   //   break;
+  //   // case 3:
+  //   //   MainRegisterStyle = MainRegisterContainerPlan;
+  //   //   break;
+  //   default:
+  //     MainRegisterStyle = MainRegisterContainer;
+  // }
   return (
     <MainRegisterWrapper>
-      <MainRegisterStyle>
+      <MainRegisterContainer>
         <FormRegister />
         {step === 4 ? <SuccesLink /> : <FooterRegister />}
-      </MainRegisterStyle>
+      </MainRegisterContainer>
       {step === 2 ? <></> : <HeroRegister />}
     </MainRegisterWrapper>
   );

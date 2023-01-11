@@ -85,6 +85,7 @@ function PersonalForm() {
           </RegisterFormPart>
           <RegisterFormPart>
             <RadioButtons
+              radio
               type="radio"
               label="Gender"
               name="gender"

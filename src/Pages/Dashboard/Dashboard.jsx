@@ -12,8 +12,14 @@ import { accounts } from "../../utils/data/dummyData";
 import TopCard from "../../components/TopCard/TopCard";
 import OverviewCard from "./../../components/OverviewCard/OverviewCard";
 import OutcomeChart from "../../components/OutcomeCard/OutcomeCard";
+import { useSelector } from "react-redux";
+import { selectCurrentUser } from "../../state-management/Dashboard/userData/userData.selector";
+import { selectUserAccount } from "../../state-management/Dashboard/userData/userData.selector";
 
 function Dashboard() {
+  const userData = useSelector(selectCurrentUser);
+  const account = useSelector(selectUserAccount);
+  console.log(account);
   return (
     <DashboardContainer>
       <TopContainer>

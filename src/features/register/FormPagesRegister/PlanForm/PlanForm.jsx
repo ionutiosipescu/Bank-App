@@ -16,7 +16,7 @@ import "./PlanForm.css";
 import { selectPlanObject } from "../../../../state-management/registerhelper/registerhelper.selector";
 import { options } from "../../../../utils/data/plancardregisterData";
 import HeaderPlan from "./HeaderPlan/HeaderPlan";
-import { ErrorPlan } from "./PlanForm.style";
+import { ErrorMsg } from "../../../../components/Errors/Auth/ErrorMsg.style";
 
 function PlanForm() {
   const dispatch = useDispatch();
@@ -59,7 +59,7 @@ function PlanForm() {
             plan={plan}
             typeOfPlan={plan.typeOfPlan}
           />
-          <ErrorPlan component="div" name="userPlan" />
+          <ErrorMsg component="div" name="userPlan" />
           <FooterControl />
         </Form>
       </Formik>

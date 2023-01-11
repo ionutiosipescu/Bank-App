@@ -17,20 +17,23 @@ import { resetLocalStorage } from "../../../state-management/store";
 import Button from "../../../components/UI/NewButton/Button.component";
 import { useNavigate } from "react-router-dom";
 import { FormContainerLogin } from "./FormLogin.style";
+import { fetchLoginData } from "../../../state-management/loginUser/loginUser.service";
+import { ErrorMsg } from "../../../components/Errors/Auth/ErrorMsg.style";
+import { selectIsSubmiting } from "../../../state-management/loginUser/loginUser.selector";
+import { selectErrorMessage } from "../../../state-management/loginUser/loginUser.selector";
 
 function FormLogIn() {
   const dispatch = useDispatch();
+  const errorMsg = useSelector(selectErrorMessage);
   const loginData = useSelector(selectLoginUser);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const isSubmitting = useSelector(selectIsSubmiting);
   const navigate = useNavigate();
 
   // axios request -> response true - > change isSubmitting status
   const onSubmit = (values, actions) => {
-    setIsSubmitting(true);
-    // console.log(loginData);
-    // axios
-    //   .post("http://localhost:8080/bank/auth/signup", loginData)
-    //   .then((res) => console.log(res.data));
+    dispatch(
+      fetchLoginData("http://localhost:8080/bank/auth/signin", loginData)
+    );
   };
 
   // send data to Redux userProfile
@@ -58,7 +61,6 @@ function FormLogIn() {
   const initialObject = {
     username: "",
     password: "",
-    email: "",
     acceptedTos: false,
   };
   return (
@@ -75,13 +77,6 @@ function FormLogIn() {
           placeholder="Enter your username"
           setData={setData}
         />
-        <CustomInput
-          label="Email"
-          name="email"
-          type="email"
-          placeholder="Enter your email"
-          setData={setData}
-        />
         <CustomPassword
           label="Password"
           name="password"
@@ -89,6 +84,7 @@ function FormLogIn() {
           placeholder="Enter your password"
           setData={setData}
         />
+        {errorMsg ? <ErrorMsg>{errorMsg}</ErrorMsg> : <></>}
         <Button size="100" typeclass="secondary" type="submit">
           Log In
         </Button>

@@ -23,3 +23,14 @@ export const setRegisterUser = (register, e) => {
   const user = updateRegisterUser(register, e);
   return createAction(REGISTER_HELPER_TYPES.SET_USER_DATA, user);
 };
+
+// Error Message
+export const setErrorMessage = (errorMessage) => {
+  return createAction(REGISTER_HELPER_TYPES.SET_ERROR_MESSAGE, errorMessage);
+};
+
+// Error
+export const setError = () => {
+  const error = "Request has been failed";
+  return createAction(REGISTER_HELPER_TYPES.SET_REQUEST_FAILED, error);
+};

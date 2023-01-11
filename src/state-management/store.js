@@ -4,6 +4,7 @@ import { rootReducer } from "./root-reducer";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import thunk from "redux-thunk";
+import { createTransform } from "redux-persist";
 
 // if development run logger
 // if production dont run logger
@@ -15,7 +16,7 @@ const middleWares = [
 const persistConfig = {
   key: "root",
   storage,
-  blacklist: ["login"],
+  blacklist: ["login", "registerErrors"],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

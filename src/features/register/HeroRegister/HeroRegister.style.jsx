@@ -11,7 +11,7 @@ export const HeroCard = styled.div`
 
   img {
     width: auto;
-    height: 100%;
+    height: 710px;
     background: var(--purple);
     margin-right: 85px;
   }
@@ -19,22 +19,22 @@ export const HeroCard = styled.div`
     display: flex;
   }
 `;
-// Confirm Page
-export const HeroCardConfirm = styled.div`
-  display: none;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  height: 850px;
-  background: var(--purple);
+// // Confirm Page
+// export const HeroCardConfirm = styled.div`
+//   display: none;
+//   align-items: center;
+//   justify-content: center;
+//   overflow: hidden;
+//   height: 690px;
+//   background: var(--purple);
 
-  img {
-    width: auto;
-    height: 55%;
-    background: var(--purple);
-    margin-right: 85px;
-  }
-  @media ${device.laptopL} {
-    display: flex;
-  }
-`;
+//   img {
+//     width: auto;
+//     height: 55%;
+//     background: var(--purple);
+//     margin-right: 85px;
+//   }
+//   @media ${device.laptopL} {
+//     display: flex;
+//   }
+// `;

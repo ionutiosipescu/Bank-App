@@ -4,16 +4,16 @@ function PlanCardBody({ ...props }) {
   const { option } = props;
   const details = option.details;
   return (
-    <div className="plancard-body">
+    <div className="plancard-body" key={option.key}>
       <ul>
-        {details.map((detail) => {
+        {details.map((detail, index) => {
           return (
-            <>
+            <React.Fragment key={index}>
               <li>
                 <span>{detail.nr}</span>
                 {detail.name}
               </li>
-            </>
+            </React.Fragment>
           );
         })}
       </ul>
