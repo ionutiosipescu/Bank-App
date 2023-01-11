@@ -12,7 +12,7 @@ const RadioButtons = ({ label, ...props }) => {
   const { gender } = registerData;
   const [field, meta] = useField(props);
   return (
-    <GroupRadio>
+    <GroupRadio radio>
       <label>{label}</label>
       <div>
         <Field name={props.name}>

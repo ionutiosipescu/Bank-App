@@ -20,8 +20,13 @@ import {
 import { upperCaseFirstInitial } from "../../../../utils/helpers/helperFunctions/upperCaseFirstInitial";
 import { generateRandomKey } from "../../../../utils/helpers/helperFunctions/randomKey";
 import { fetchRegisterData } from "../../../../state-management/registerUser/registerUser.service";
+import { selectError } from "../../../../state-management/registerhelper/registerhelper.selector";
+import { selectErrorMessage } from "../../../../state-management/registerhelper/registerhelper.selector";
+import { ErrorMsg } from "../../../../components/Errors/Auth/ErrorMsg.style";
 
 function ConfirmForm() {
+  const error = useSelector(selectError);
+  const errorMsg = useSelector(selectErrorMessage);
   const dispatch = useDispatch();
   const step = useSelector(selectStep);
   const RegisterData = useSelector(selectRegisterData);
@@ -41,6 +46,7 @@ function ConfirmForm() {
 
   const handleSubmit = () => {
     console.log(RegisterData);
+    console.log(errorMsg);
     dispatch(
       fetchRegisterData(
         "http://localhost:8080/bank/auth/signup",
@@ -49,6 +55,7 @@ function ConfirmForm() {
       )
     );
   };
+
   return (
     <>
       <Formik
@@ -107,6 +114,8 @@ function ConfirmForm() {
               name="acceptedPlan"
             />
           </ConfirmFormPart>
+          {errorMsg ? <ErrorMsg>{errorMsg}</ErrorMsg> : <></>}
+          {error ? <ErrorMsg>{error}</ErrorMsg> : <></>}
           <FooterControl />
         </FormContainerConfirm>
       </Formik>

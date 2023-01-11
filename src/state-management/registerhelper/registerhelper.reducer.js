@@ -6,7 +6,7 @@ const INITIAL_STATE = {
     lastname: "",
     country: "",
     address: "",
-    date: null,
+    date: "",
     gender: "",
     email: "",
     displayName: "",

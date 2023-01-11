@@ -21,6 +21,7 @@ export const GroupRadio = styled.div`
   width: 200px;
   label {
     margin-bottom: 10px;
+    margin-right: 10px;
   }
   @media (max-width: 1680px) {
     ${(props) =>
@@ -28,7 +29,9 @@ export const GroupRadio = styled.div`
         ? "width: 150px; height: 40px;"
         : props.large
         ? "width: 300px; height: 40px;"
-        : "width: 310px; height: 40px;"};
+        : props.radio
+        ? "width: 200px; height: auto"
+        : "width: 300px; height: 40px;"}
   }
 `;
 

@@ -4,8 +4,9 @@ const INITIAL_STATE = {
   LoginData: {
     username: "",
     password: "",
-    email: "",
   },
+  isSubmiting: false,
+  errorMsg: "",
 };
 
 export const loginReducer = (state = INITIAL_STATE, action) => {
@@ -14,6 +15,10 @@ export const loginReducer = (state = INITIAL_STATE, action) => {
   switch (type) {
     case LOGIN_ACTION_TYPES.SET_LOGIN_USER:
       return { ...state, LoginData: { ...payload } };
+    case LOGIN_ACTION_TYPES.SET_IS_SUBMITING:
+      return { ...state, isSubmiting: payload };
+    case LOGIN_ACTION_TYPES.SET_ERROR_MESSAGE:
+      return { ...state, errorMsg: payload };
     default:
       return state;
   }

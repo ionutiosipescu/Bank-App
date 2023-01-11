@@ -54,6 +54,7 @@ export const registerSchemaAccount = yup.object().shape({
     .required("Required"),
 });
 
+// Confiramation Form
 export const registerShemaConfirmation = yup.object().shape({
   acceptedTos: yup
     .boolean()

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { device } from "../../../../utils/breakpoints/breakpoints";
 import { Form } from "formik";
+import { ErrorMessage } from "formik";
 
 export const ConfirmFormPart = styled.div`
   width: 100%;

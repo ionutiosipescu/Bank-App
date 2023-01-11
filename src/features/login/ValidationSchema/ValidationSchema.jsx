@@ -13,5 +13,4 @@ export const advancedSchema = yup.object().shape({
     .min(5)
     .matches(passwordRules, { message: "Please create a stronger password" })
     .required("Required"),
-  email: yup.string().email("Please enter a valid email").required("Required"),
 });

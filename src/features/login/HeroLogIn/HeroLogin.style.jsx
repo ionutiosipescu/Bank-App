@@ -6,7 +6,7 @@ export const HeroCard = styled.div`
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  height: 650px;
+  height: 100%;
   width: 70%;
   background: var(--purple);
   img {
