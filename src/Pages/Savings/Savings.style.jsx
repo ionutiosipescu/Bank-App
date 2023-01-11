@@ -6,7 +6,7 @@ export const SavingsWrapper = styled.div`
   align-items: center;
   width: 100%;
   height: fit-content;
-  padding: 30px 40px 0 30px;
+  padding: 20px 20px 0 0;
   & > div:last-child {
     margin-left: 30px;
   }

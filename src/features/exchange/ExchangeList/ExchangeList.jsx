@@ -4,13 +4,17 @@ import {
   ServiceCard,
 } from "../../../components/UI/Card/Card.style";
 import {
+  AmountContainer,
+  LabelContainer,
   ListContainer,
   ListItem,
 } from "../../savings/SavingsListCard/SavingsListCard.style";
+import { DateContainer, RateContainer } from "./ExchangeList.style";
+
+import Button from "../../../components/UI/Button/Button";
 
 import { accounts } from "../../../utils/data/dummyData";
 
-import Button from "../../../components/UI/Button/Button";
 const currentAccount = accounts[0].transfers;
 
 function ExchangeList() {
@@ -22,12 +26,12 @@ function ExchangeList() {
       <ListContainer>
         {currentAccount.map((transfer, index) => (
           <ListItem key={index}>
-            <h3>
+            <LabelContainer>
               {transfer.from} to {transfer.to}
-            </h3>
-            <h3>Rate: {transfer.rate}</h3>
-            <h3>Transfered: {transfer.amount}</h3>
-            <h3>{transfer.date}</h3>
+            </LabelContainer>
+            <RateContainer>Rate: {transfer.rate}</RateContainer>
+            <AmountContainer>Transfered: {transfer.amount}</AmountContainer>
+            <DateContainer>{transfer.date}</DateContainer>
             <Button label="Repeat" size="sm" primary={true} />
           </ListItem>
         ))}

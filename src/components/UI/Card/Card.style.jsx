@@ -125,6 +125,7 @@ export const ServiceInputsCard = styled.div`
     align-items: center;
     width: 100%;
     height: 90%;
+    margin-top: 100px;
   }
   @media (max-width: 1515px) {
     width: 33%;
@@ -149,5 +150,9 @@ export const ServiceInputsCard = styled.div`
       width: 100%;
       height: 100%;
     }
-  } ;
+  }
+
+  @media (max-width: 420px) {
+    height: 80vh;
+  }
 `;

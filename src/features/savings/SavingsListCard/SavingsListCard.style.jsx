@@ -17,6 +17,11 @@ export const ListContainer = styled.div`
       font-size: 1rem;
     }
   }
+  @media (max-width: 670px) {
+    & h3 {
+      font-size: 1.2rem;
+    }
+  }
 `;
 
 export const ListItem = styled.div`
@@ -39,24 +44,22 @@ export const ListItem = styled.div`
   & > div > a {
     margin-left: 10px;
   }
-  & > h3:nth-child(1) {
-    color: var(--green);
-  }
-  & > h3:nth-child(3) {
-    color: var(--purple);
-  }
-  @media (max-width: 680px) {
+  @media (max-width: 700px) {
     & > div:first-of-type > div:first-of-type {
       display: none;
     }
   }
-  @media (max-width: 630px) {
+  @media (max-width: 670px) {
     flex-direction: column;
   }
 `;
 
-export const LabelContainer = styled.h3``;
-export const AmountContainer = styled.h3``;
+export const LabelContainer = styled.h3`
+  color: var(--green);
+`;
+export const AmountContainer = styled.h3`
+  color: var(--purple);
+`;
 export const IdContainer = styled.h3`
   @media (max-width: 800px) {
     display: none;

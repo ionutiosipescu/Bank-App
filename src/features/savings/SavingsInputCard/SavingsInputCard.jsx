@@ -12,7 +12,7 @@ function SavingsInputCard() {
         <InputContainer>
           <Input label="Saving Purpose" type="text" large />
           <Input label="Saving Target" type="text" large />
-          <Input label="First Top-up" type="number" large min="0" />
+          <Input label="First Top-up" type="number" large />
         </InputContainer>
         <Button label="Add Saving" size="md" primary={true} />
       </div>

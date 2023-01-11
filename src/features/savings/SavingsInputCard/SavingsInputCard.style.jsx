@@ -7,7 +7,7 @@ export const InputContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 80%;
+  height: 60%;
   @media (max-width: 1439px) {
     flex-direction: row;
   }
