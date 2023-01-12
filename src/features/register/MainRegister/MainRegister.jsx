@@ -9,7 +9,7 @@ import {
   HeroBox,
 } from "./MainRegister.style";
 import { useSelector } from "react-redux";
-import { selectStep } from "../../../state-management/registerhelper/registerhelper.selector";
+import { selectStep } from "../../../state-management/Auth/registerhelper/registerhelper.selector";
 import SuccesLink from "../SuccesLink/SuccesLink";
 
 function MainRegister() {

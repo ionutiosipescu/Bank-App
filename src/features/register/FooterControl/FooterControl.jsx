@@ -3,7 +3,7 @@ import { FooterControlPages } from "../FormRegister/FormRegister.style";
 import NextBtn from "../../../components/StepButtons/NextBtn";
 import PrevBtn from "../../../components/StepButtons/PrevBtn";
 import { useSelector } from "react-redux";
-import { selectStep } from "../../../state-management/registerhelper/registerhelper.selector";
+import { selectStep } from "../../../state-management/Auth/registerhelper/registerhelper.selector";
 
 function FooterControl() {
   const step = useSelector(selectStep);

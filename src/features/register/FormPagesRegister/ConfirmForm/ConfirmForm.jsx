@@ -1,15 +1,13 @@
 import React from "react";
 import { Fragment } from "react";
-import { selectRegisterPlan } from "../../../../state-management/registerUser/registerUser.selector";
-import { selectRegisterUser } from "../../../../state-management/registerhelper/registerhelper.selector";
+// import { selectRegisterPlan } from "../../../../state-management/registerUser/registerUser.selector";
+// import { selectRegisterUser } from "../../../../state-management/registerhelper/registerhelper.selector";
 import FooterControl from "../../FooterControl/FooterControl";
 import { Form, Formik } from "formik";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { selectStep } from "../../../../state-management/registerhelper/registerhelper.selector";
 import CustomCheckbox from "../../../../components/CustomInputs/CustomCheckbox";
 import { registerShemaConfirmation } from "../../ValidationSchema/ValidationSchema";
-import { selectRegisterData } from "../../../../state-management/registerUser/registerUser.selector";
 import { RegisterFormPart } from "../../FormRegister/FormRegister.style";
 import {
   ConfirmFormPart,
@@ -19,13 +17,13 @@ import {
 } from "./Confirm.style";
 import { upperCaseFirstInitial } from "../../../../utils/helpers/helperFunctions/upperCaseFirstInitial";
 import { generateRandomKey } from "../../../../utils/helpers/helperFunctions/randomKey";
-import { fetchRegisterData } from "../../../../state-management/registerUser/registerUser.service";
-import { selectError } from "../../../../state-management/registerhelper/registerhelper.selector";
-import { selectErrorMessage } from "../../../../state-management/registerhelper/registerhelper.selector";
 import { ErrorMsg } from "../../../../components/Errors/Auth/ErrorMsg.style";
+import { selectStep } from "../../../../state-management/Auth/registerhelper/registerhelper.selector";
+import { selectRegisterData } from "../../../../state-management/Auth/registerUser/registerUser.selector";
+import { fetchRegisterData } from "../../../../state-management/Auth/registerUser/registerUser.service";
+import { selectErrorMessage } from "../../../../state-management/Auth/registerhelper/registerhelper.selector";
 
 function ConfirmForm() {
-  const error = useSelector(selectError);
   const errorMsg = useSelector(selectErrorMessage);
   const dispatch = useDispatch();
   const step = useSelector(selectStep);
@@ -115,7 +113,6 @@ function ConfirmForm() {
             />
           </ConfirmFormPart>
           {errorMsg ? <ErrorMsg>{errorMsg}</ErrorMsg> : <></>}
-          {error ? <ErrorMsg>{error}</ErrorMsg> : <></>}
           <FooterControl />
         </FormContainerConfirm>
       </Formik>

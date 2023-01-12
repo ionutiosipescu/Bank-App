@@ -3,16 +3,16 @@ import { RegisterFormPart } from "../../FormRegister/FormRegister.style";
 import { Formik } from "formik";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { selectRegisterUser } from "../../../../state-management/registerhelper/registerhelper.selector";
-import { setRegisterUser } from "../../../../state-management/registerhelper/registerhelper.actions";
 import CustomInput from "../../../../components/CustomInputs/CustomInput";
 import { registerSchemaAccount } from "../../ValidationSchema/ValidationSchema";
 import FooterControl from "../../FooterControl/FooterControl";
-import { selectStep } from "../../../../state-management/registerhelper/registerhelper.selector";
-import { setStep } from "../../../../state-management/registerhelper/registerhelper.actions";
 import "../../../../components/UI/Input/Input.css";
 import { FormContainerAccount } from "./AccountForm.style";
 import { handleSubmit } from "../../../../utils/helpers/helperFunctions/HandleSubmit";
+import { selectRegisterUser } from "../../../../state-management/Auth/registerhelper/registerhelper.selector";
+import { setRegisterUser } from "../../../../state-management/Auth/registerhelper/registerhelper.actions";
+import { selectStep } from "../../../../state-management/Auth/registerhelper/registerhelper.selector";
+import { setStep } from "../../../../state-management/Auth/registerhelper/registerhelper.actions";
 
 function AccountForm() {
   const step = useSelector(selectStep);

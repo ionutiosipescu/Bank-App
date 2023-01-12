@@ -3,18 +3,18 @@ import { RegisterFormPart } from "../../FormRegister/FormRegister.style";
 import { Formik } from "formik";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { setRegisterUser } from "../../../../state-management/registerhelper/registerhelper.actions";
-import { selectRegisterUser } from "../../../../state-management/registerhelper/registerhelper.selector";
 import { registerSchemaPersonal } from "../../ValidationSchema/ValidationSchema";
 import CustomInput from "../../../../components/CustomInputs/CustomInput";
 import CustomSelect from "../../../../components/CustomInputs/CustomSelect";
 import RadioButtons from "../../../../components/CustomInputs/CustomRadioInputGroup";
-import { selectStep } from "../../../../state-management/registerhelper/registerhelper.selector";
-import { setStep } from "../../../../state-management/registerhelper/registerhelper.actions";
 import FooterControl from "../../FooterControl/FooterControl";
 import DatePickerField from "../../../../components/CustomInputs/CustomDatePicker";
 import { FormContainerPersonal } from "./PersonalForm.style";
 import { handleSubmit } from "../../../../utils/helpers/helperFunctions/HandleSubmit";
+import { selectRegisterUser } from "../../../../state-management/Auth/registerhelper/registerhelper.selector";
+import { setRegisterUser } from "../../../../state-management/Auth/registerhelper/registerhelper.actions";
+import { selectStep } from "../../../../state-management/Auth/registerhelper/registerhelper.selector";
+import { setStep } from "../../../../state-management/Auth/registerhelper/registerhelper.actions";
 
 function PersonalForm() {
   const step = useSelector(selectStep);

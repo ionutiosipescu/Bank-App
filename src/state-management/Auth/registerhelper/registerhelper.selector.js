@@ -7,5 +7,3 @@ export const selectPlanObject = (state) => state.registerHelper.planData[0];
 export const selectRegisterUser = (state) => state.registerHelper.userProfile;
 
 export const selectErrorMessage = (state) => state.registerErrors.errorMsg;
-
-export const selectError = (state) => state.registerErrors.error;

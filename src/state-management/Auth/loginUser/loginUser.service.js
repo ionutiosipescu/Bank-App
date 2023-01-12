@@ -25,13 +25,12 @@ export const fetchLoginData = (url, registerData) => {
         }
       );
       if (!data) return;
-      if (data === "ceva") {
-        dispatch(setErrorMessage(data));
-      }
       dispatch(setCurrentUser(data));
       dispatch(setIsSubmiting());
     } catch (error) {
-      console.log(error);
+      const errMsg = error.response.data.message;
+      dispatch(setErrorMessage(errMsg));
+      console.log(error.response.data.message);
     }
   };
 };

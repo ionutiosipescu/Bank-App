@@ -2,7 +2,7 @@ import React from "react";
 import illustration from "../../../assets/images/register.webp";
 import { HeroCard } from "./HeroRegister.style";
 import { useSelector } from "react-redux";
-import { selectStep } from "../../../state-management/registerhelper/registerhelper.selector";
+import { selectStep } from "../../../state-management/Auth/registerhelper/registerhelper.selector";
 
 function HeroRegister() {
   const step = useSelector(selectStep);
