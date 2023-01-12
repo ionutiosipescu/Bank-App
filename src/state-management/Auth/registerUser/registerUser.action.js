@@ -45,18 +45,6 @@ export const setRegisterUserObject = (registerHelper) => {
   return createAction(REGISTER_ACTION_TYPES.SET_REGISTER_USER, cleanProfile);
 };
 
-// Async User Profile
-// export const fetchRegisterData = (url, registerData, step) => {
-//   return async (dispatch) => {
-//     try {
-//       axios.post(url, registerData).then((res) => console.log(res.data));
-//       dispatch(setStep(step + 1));
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   };
-// };
-
 // UserPlan
 
 // User Plan Add

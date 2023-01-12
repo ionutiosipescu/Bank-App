@@ -21,10 +21,10 @@ import { ErrorMsg } from "../../../../components/Errors/Auth/ErrorMsg.style";
 import { selectStep } from "../../../../state-management/Auth/registerhelper/registerhelper.selector";
 import { selectRegisterData } from "../../../../state-management/Auth/registerUser/registerUser.selector";
 import { fetchRegisterData } from "../../../../state-management/Auth/registerUser/registerUser.service";
-import { selectErrorMessage } from "../../../../state-management/Auth/registerhelper/registerhelper.selector";
+import { selectRegisterFailed } from "../../../../state-management/Auth/registerhelper/registerhelper.selector";
 
 function ConfirmForm() {
-  const errorMsg = useSelector(selectErrorMessage);
+  const errorMsg = useSelector(selectRegisterFailed);
   const dispatch = useDispatch();
   const step = useSelector(selectStep);
   const RegisterData = useSelector(selectRegisterData);
