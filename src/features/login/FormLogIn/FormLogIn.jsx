@@ -7,8 +7,9 @@ import CustomInput from "../../../components/CustomInputs/CustomInput";
 import CustomCheckbox from "../../../components/CustomInputs/CustomCheckbox";
 import CustomPassword from "../../../components/CustomInputs/CustomPassword";
 import { useSelector, useDispatch } from "react-redux";
-import { selectLoginUser } from "../../../state-management/loginUser/loginUser.selector";
-import { setLogInUser } from "../../../state-management/loginUser/loginUser.action";
+import { selectLoginUser } from "../../../state-management/Auth/loginUser/loginUser.selector";
+// import { setLogInUser } from "../../../state-management/Auth/loginUser/loginUser.action";
+import { setLogInUser } from "../../../state-management/Auth/loginUser/loginUser.action";
 import { debounce } from "debounce";
 import { selectStep } from "../../../state-management/registerhelper/registerhelper.selector";
 import { setStep } from "../../../state-management/registerhelper/registerhelper.actions";
@@ -17,10 +18,10 @@ import { resetLocalStorage } from "../../../state-management/store";
 import Button from "../../../components/UI/NewButton/Button.component";
 import { useNavigate } from "react-router-dom";
 import { FormContainerLogin } from "./FormLogin.style";
-import { fetchLoginData } from "../../../state-management/loginUser/loginUser.service";
+import { fetchLoginData } from "../../../state-management/Auth/loginUser/loginUser.service";
 import { ErrorMsg } from "../../../components/Errors/Auth/ErrorMsg.style";
-import { selectIsSubmiting } from "../../../state-management/loginUser/loginUser.selector";
-import { selectErrorMessage } from "../../../state-management/loginUser/loginUser.selector";
+import { selectIsSubmiting } from "../../../state-management/Auth/loginUser/loginUser.selector";
+import { selectErrorMessage } from "../../../state-management/Auth/loginUser/loginUser.selector";
 
 function FormLogIn() {
   const dispatch = useDispatch();

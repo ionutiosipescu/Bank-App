@@ -1,5 +1,6 @@
 import axios from "axios";
-import { setCurrentUser } from "../Dashboard/userData/userData.action";
+// import { setCurrentUser } from "../Dashboard/userData/userData.action";
+import { setCurrentUser } from "../../Dashboard/userData/userData.action";
 import { setIsSubmiting } from "./loginUser.action";
 import { setErrorMessage } from "./loginUser.action";
 
