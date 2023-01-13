@@ -2,6 +2,9 @@ import axios from "axios";
 import { REGISTER_HELPER_TYPES } from "./registerhelper.types";
 import { createAction } from "../../../utils/helpers/reducer/reducer.utils";
 import { setStep } from "./registerhelper.actions";
+import { v4 as uuidv4 } from "uuid";
+import emailjs from "emailjs-com";
+import { fetchEmailVerification } from "./registerhelper.actions";
 
 export const postRegisterStart = () =>
   createAction(REGISTER_HELPER_TYPES.POST_REGISTER_START);
@@ -12,6 +15,11 @@ export const postRegisterSuccess = () =>
 export const postRegisterFailed = (error) =>
   createAction(REGISTER_HELPER_TYPES.POST_REGISTER_FAILED, error);
 
+export const generateEmailCode = () => {
+  const code = uuidv4();
+  return createAction(REGISTER_HELPER_TYPES.GENERATE_EMAIL_CODE, code);
+};
+
 // Async User Profile
 export const fetchRegisterData = (url, registerData, step) => {
   return async (dispatch) => {
@@ -21,12 +29,14 @@ export const fetchRegisterData = (url, registerData, step) => {
       const response = await axios.post(url, registerData);
       //   Guard Clouse
       if (!response.data) return;
+      // Generate Email Verification Code
+      await dispatch(generateEmailCode());
+      // Send Email
+      await fetchEmailVerification();
       //   Increment Page
       await dispatch(setStep(step + 1));
       //   Update Status Request after 2 seconds
-      setTimeout(() => {
-        dispatch(postRegisterSuccess());
-      }, 2000);
+      dispatch(postRegisterSuccess());
     } catch (error) {
       if (!error) return;
       const errMsg = error?.response?.data?.message;

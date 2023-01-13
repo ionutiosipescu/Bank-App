@@ -7,12 +7,14 @@ import { useSelector } from "react-redux";
 import Spinner from "../../../../components/Spinner/Spinner";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { selectEmailCode } from "../../../../state-management/Auth/registerhelper/registerhelper.selector";
 
 function SuccesPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [seconds, setSeconds] = useState(10);
   const isLoading = useSelector(selectIsLoading);
+  const EmailCode = useSelector(selectEmailCode);
+  const [seconds, setSeconds] = useState(10);
   const [width, setWidth] = useState(window.innerWidth);
   const [height, setHeight] = useState(window.innerHeight);
 
@@ -45,6 +47,8 @@ function SuccesPage() {
 
   //   return () => clearInterval(intervalId);
   // }, [seconds]);
+
+  console.log(EmailCode);
 
   return (
     <React.Fragment>

@@ -25,6 +25,7 @@ const INITIAL_STATE = {
   step: 0,
   isLoading: false,
   error: "",
+  emailCode: "",
 };
 
 export const registerHelperReducer = (state = INITIAL_STATE, action = {}) => {
@@ -44,6 +45,8 @@ export const registerHelperReducer = (state = INITIAL_STATE, action = {}) => {
       return { ...state, isLoading: false };
     case REGISTER_HELPER_TYPES.POST_REGISTER_FAILED:
       return { ...state, isLoading: false, error: payload };
+    case REGISTER_HELPER_TYPES.GENERATE_EMAIL_CODE:
+      return { ...state, emailCode: payload };
     default:
       return state;
   }

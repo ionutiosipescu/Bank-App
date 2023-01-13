@@ -9,3 +9,5 @@ export const selectRegisterUser = (state) => state.registerHelper.userProfile;
 export const selectRegisterFailed = (state) => state.registerHelper.error;
 
 export const selectIsLoading = (state) => state.registerHelper.isLoading;
+
+export const selectEmailCode = (state) => state.registerHelper.emailCode;

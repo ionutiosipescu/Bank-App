@@ -13,7 +13,7 @@ function SuccesLink() {
         <h5>You can now Log In to your Account</h5>
       </SuccesLinkTitle>
       <SuccesLinkBtn>
-        <Link to="/login">Log In Page</Link>
+        <Link to="/">Log In Page</Link>
       </SuccesLinkBtn>
     </SuccesLinkContainer>
   );
