@@ -15,6 +15,7 @@ import Exchange from "../Exchange/Exchange";
 import Transfers from "./../Transfers/Transfers";
 import Deposit from "../Deposit/Deposit";
 import NewTransfer from "../NewTransfer/NewTransfer";
+import ServicesControler from "../ServicesControler/ServicesControler";
 
 function Home() {
   // Variable to set the active state of the Sidebar
@@ -59,17 +60,17 @@ function Home() {
       <HomeContainer active={active}>
         <NavBar />
         <Routes>
-          <Route path="/dashboard" title="Dashboard" element={<Dashboard />} />
-          <Route path="/cards" element={<Cards />} />
-          <Route path="/settings" element={<Settings />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/savings" element={<Savings />} />
-          <Route path="/loans" element={<Loans />} />
-          <Route path="/exchange" element={<Exchange />} />
-          <Route path="/transfers" element={<Transfers />} />
-          <Route path="/deposit" element={<Deposit />} />
-          <Route path="/newtransfer" element={<NewTransfer />} />
+          <Route path="dashboard" title="Dashboard" element={<Dashboard />} />
+          <Route path="cards" element={<Cards />} />
+          <Route path="settings" element={<Settings />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="services/*" element={<ServicesControler />} />
+          {/* <Route path="savings" element={<Savings />} />
+          <Route path="loans" element={<Loans />} />
+          <Route path="exchange" element={<Exchange />} />
+          <Route path="transfers" element={<Transfers />} />
+          <Route path="deposit" element={<Deposit />} />
+          <Route path="newtransfer" element={<NewTransfer />} /> */}
         </Routes>
       </HomeContainer>
     </HomeWrapper>

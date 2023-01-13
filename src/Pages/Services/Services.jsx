@@ -9,35 +9,35 @@ function Services() {
     <ServicesWrapper>
       <ButtonWrapper>
         <Button
-          to={"/savings"}
+          to={"savings"}
           label="Savings"
           size="xl"
           primary={true}
           onClick={""}
         />
         <Button
-          to={"/exchange"}
+          to={"exchange"}
           label="Exchange"
           size="xl"
           primary={true}
           onClick={""}
         />
         <Button
-          to={"/loans"}
+          to={"loans"}
           label="Loans"
           size="xl"
           primary={true}
           onClick={""}
         />
         <Button
-          to={"/transfers"}
+          to={"transfers"}
           label="Transfers"
           size="xl"
           primary={true}
           onClick={""}
         />
         <Button
-          to={"/deposit"}
+          to={"deposit"}
           label="Deposit"
           size="xl"
           primary={true}
