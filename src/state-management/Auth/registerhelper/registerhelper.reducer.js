@@ -1,5 +1,4 @@
 import { REGISTER_HELPER_TYPES } from "./registerhelper.types";
-import { REGISTER_ACTION_TYPES } from "../registerUser/registerUser.types";
 
 const INITIAL_STATE = {
   userProfile: {
@@ -30,6 +29,7 @@ const INITIAL_STATE = {
 
 export const registerHelperReducer = (state = INITIAL_STATE, action = {}) => {
   const { type, payload } = action;
+  console.log(type, payload);
 
   switch (type) {
     case REGISTER_HELPER_TYPES.SET_STEP:
@@ -38,11 +38,11 @@ export const registerHelperReducer = (state = INITIAL_STATE, action = {}) => {
       return { ...state, planData: [...payload] };
     case REGISTER_HELPER_TYPES.SET_USER_DATA:
       return { ...state, userProfile: { ...payload } };
-    case REGISTER_ACTION_TYPES.POST_REGISTER_START:
+    case REGISTER_HELPER_TYPES.POST_REGISTER_START:
       return { ...state, isLoading: true };
-    case REGISTER_ACTION_TYPES.POST_REGISTER_SUCCESS:
+    case REGISTER_HELPER_TYPES.POST_REGISTER_SUCCESS:
       return { ...state, isLoading: false };
-    case REGISTER_ACTION_TYPES.POST_REGISTER_FAILED:
+    case REGISTER_HELPER_TYPES.POST_REGISTER_FAILED:
       return { ...state, isLoading: false, error: payload };
     default:
       return state;

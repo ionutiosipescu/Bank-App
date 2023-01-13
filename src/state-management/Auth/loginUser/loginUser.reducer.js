@@ -15,10 +15,12 @@ export const loginReducer = (state = INITIAL_STATE, action) => {
   switch (type) {
     case LOGIN_ACTION_TYPES.SET_LOGIN_USER:
       return { ...state, LoginData: { ...payload } };
-    case LOGIN_ACTION_TYPES.SET_IS_SUBMITING:
-      return { ...state, isSubmiting: payload };
-    case LOGIN_ACTION_TYPES.SET_ERROR_MESSAGE:
-      return { ...state, errorMsg: payload };
+    case LOGIN_ACTION_TYPES.POST_LOGIN_START:
+      return { ...state, isSubmiting: true };
+    case LOGIN_ACTION_TYPES.POST_LOGIN_SUCCESS:
+      return { ...state, isSubmiting: false };
+    case LOGIN_ACTION_TYPES.POST_LOGIN_FAILED:
+      return { ...state, isSubmiting: false, errorMsg: payload };
     default:
       return state;
   }

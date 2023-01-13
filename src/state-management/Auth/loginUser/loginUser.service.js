@@ -1,8 +1,16 @@
 import axios from "axios";
-// import { setCurrentUser } from "../Dashboard/userData/userData.action";
 import { setCurrentUser } from "../../Dashboard/userData/userData.action";
-import { setIsSubmiting } from "./loginUser.action";
-import { setErrorMessage } from "./loginUser.action";
+import { createAction } from "../../../utils/helpers/reducer/reducer.utils";
+import { LOGIN_ACTION_TYPES } from "./loginUser.types";
+
+export const postLoginStart = () =>
+  createAction(LOGIN_ACTION_TYPES.POST_LOGIN_START);
+
+export const postLoginSuccess = () =>
+  createAction(LOGIN_ACTION_TYPES.POST_LOGIN_SUCCESS);
+
+export const postLoginFailed = (error) =>
+  createAction(LOGIN_ACTION_TYPES.POST_LOGIN_FAILED, error);
 
 // Async User Login
 export const fetchLoginData = (url, registerData) => {
@@ -14,6 +22,7 @@ export const fetchLoginData = (url, registerData) => {
       } = await axios.post(url, registerData);
       console.log(tokenType, accessToken, id);
 
+      await dispatch(postLoginStart());
       // Use the token type and access token in the second request
       const { data } = await axios.post(
         `http://localhost:8080/user/${id}`,
@@ -25,12 +34,20 @@ export const fetchLoginData = (url, registerData) => {
         }
       );
       if (!data) return;
-      dispatch(setCurrentUser(data));
-      dispatch(setIsSubmiting());
+      await dispatch(setCurrentUser(data));
+      await dispatch(postLoginSuccess());
     } catch (error) {
-      const errMsg = error.response.data.message;
-      dispatch(setErrorMessage(errMsg));
-      console.log(error.response.data.message);
+      if (!error) return;
+      const errMsg = error?.response?.data?.message;
+      //   If error response from Backend exist, then set the error
+      if (errMsg) {
+        dispatch(postLoginFailed(errMsg));
+      } else {
+        // If error response from Backend doesnt exist, set errServer
+        const errServer =
+          "Server is currently unavailable please try again later";
+        dispatch(postLoginFailed(errServer));
+      }
     }
   };
 };

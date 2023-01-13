@@ -12,13 +12,13 @@ export const setLogInUser = (loginData, e) => {
   return createAction(LOGIN_ACTION_TYPES.SET_LOGIN_USER, loginUserData);
 };
 
-// Set isSubmiting (Toogle)
-export const setIsSubmiting = () => {
-  const isSubmiting = true;
-  return createAction(LOGIN_ACTION_TYPES.SET_IS_SUBMITING, isSubmiting);
-};
+// // Set isSubmiting (Toogle)
+// export const setIsSubmiting = () => {
+//   const isSubmiting = true;
+//   return createAction(LOGIN_ACTION_TYPES.SET_IS_SUBMITING, isSubmiting);
+// };
 
-// Error Message
-export const setErrorMessage = (errorMessage) => {
-  return createAction(LOGIN_ACTION_TYPES.SET_ERROR_MESSAGE, errorMessage);
-};
+// // Error Message
+// export const setErrorMessage = (errorMessage) => {
+//   return createAction(LOGIN_ACTION_TYPES.SET_ERROR_MESSAGE, errorMessage);
+// };

@@ -20,8 +20,8 @@ import { generateRandomKey } from "../../../../utils/helpers/helperFunctions/ran
 import { ErrorMsg } from "../../../../components/Errors/Auth/ErrorMsg.style";
 import { selectStep } from "../../../../state-management/Auth/registerhelper/registerhelper.selector";
 import { selectRegisterData } from "../../../../state-management/Auth/registerUser/registerUser.selector";
-import { fetchRegisterData } from "../../../../state-management/Auth/registerUser/registerUser.service";
 import { selectRegisterFailed } from "../../../../state-management/Auth/registerhelper/registerhelper.selector";
+import { fetchRegisterData } from "../../../../state-management/Auth/registerhelper/registerhelper.service";
 
 function ConfirmForm() {
   const errorMsg = useSelector(selectRegisterFailed);
