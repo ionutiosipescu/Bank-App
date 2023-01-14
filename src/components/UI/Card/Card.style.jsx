@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { withRouter } from "storybook-addon-react-router-v6";
 
 export const CardContainer = styled.div`
   position: relative;
@@ -91,7 +92,8 @@ export const CardHeader = styled.div`
 export const ServiceCard = styled.div`
   display: flex;
   flex-direction: column;
-  width: 58%;
+  align-items: center;
+  width: calc(60% - 20px);
   height: 85vh;
   aspect-ratio: 5/4;
   border-radius: 40px;
@@ -104,6 +106,16 @@ export const ServiceCard = styled.div`
   @media (max-width: 1439px) {
     width: 100%;
   }
+  @media (max-width: 800px) {
+    padding: 30px 10px;
+    & > div:first-of-type {
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  @media (max-width: 400px) {
+    height: 110vh;
+  }
 `;
 
 export const ServiceInputsCard = styled.div`
@@ -111,7 +123,7 @@ export const ServiceInputsCard = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  width: 38%;
+  width: calc(40% - 20px);
   height: 85vh;
   aspect-ratio: 3/4;
   border-radius: 40px;
@@ -132,7 +144,7 @@ export const ServiceInputsCard = styled.div`
   }
   @media (max-width: 1439px) {
     width: 100%;
-    height: 40vh;
+    height: 35vh;
     align-items: flex-start;
     margin-bottom: 30px;
     & > div {
@@ -141,7 +153,7 @@ export const ServiceInputsCard = styled.div`
     }
   }
   @media (max-width: 880px) {
-    height: 70vh;
+    height: 60vh;
     & > div {
       display: flex;
       flex-direction: column;
@@ -152,7 +164,7 @@ export const ServiceInputsCard = styled.div`
     }
   }
 
-  @media (max-width: 420px) {
+  @media (max-width: 460px) {
     height: 80vh;
   }
 `;

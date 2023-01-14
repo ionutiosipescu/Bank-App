@@ -8,7 +8,7 @@ export const ListContainer = styled.div`
   justify-content: start;
   width: 100%;
   height: 100%;
-  padding: 10px;
+  padding: 5px;
   & > div:nth-child(even) {
     background-color: var(--gray-light);
   }
@@ -47,6 +47,9 @@ export const ListItem = styled.div`
   @media (max-width: 700px) {
     & > div:first-of-type > div:first-of-type {
       display: none;
+    }
+    & > div > h3 {
+      margin-left: 0px;
     }
   }
   @media (max-width: 670px) {
