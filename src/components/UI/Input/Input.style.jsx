@@ -2,8 +2,9 @@ import styled from "styled-components";
 import DatePicker from "react-datepicker";
 import { device } from "../../../utils/breakpoints/breakpoints";
 import { css } from "styled-components";
+import ReCAPTCHA from "react-google-recaptcha";
 
-export const Group = styled.div`
+const StyledGroup = css`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -12,6 +13,20 @@ export const Group = styled.div`
     margin-bottom: 10px;
   }
 `;
+
+export const Group = styled.div`
+  ${StyledGroup}
+  label:after {
+    content: "*";
+    color: red;
+  }
+`;
+export const ReCaptchaGroup = styled.div`
+  ${StyledGroup}
+  margin-top: 20px;
+`;
+
+export const StyledReCAPTCHA = styled(ReCAPTCHA)``;
 
 export const GroupRadio = styled.div`
   position: relative;
@@ -34,7 +49,13 @@ export const GroupRadio = styled.div`
         : "width: 300px; height: 40px;"}
   }
 `;
-
+export const RadioLabel = styled.label`
+  margin-bottom: 10px;
+  :after {
+    content: "*";
+    color: red;
+  }
+`;
 export const RadioPlanContainer = styled.div`
   display: flex;
   flex-direction: column;

@@ -6,11 +6,12 @@ const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$/;
 export const advancedSchema = yup.object().shape({
   username: yup
     .string()
-    .min(3, "Username must be at least 3 characters long")
+    .min(3, "Username minimum is 3 characters long")
     .required("Required"),
   password: yup
     .string()
     .min(5)
-    .matches(passwordRules, { message: "Please create a stronger password" })
+    .matches(passwordRules, { message: "Password does not match" })
     .required("Required"),
+  recaptcha: yup.string().required("Please complete the reCAPTCHA"),
 });

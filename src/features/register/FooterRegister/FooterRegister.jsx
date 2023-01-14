@@ -6,7 +6,7 @@ function FooterRegister() {
   return (
     <FooterContainer>
       <h5>Already have an account?</h5>
-      <Link to="/login">Go back to Log In</Link>
+      <Link to="/">Go back to Log In</Link>
     </FooterContainer>
   );
 }

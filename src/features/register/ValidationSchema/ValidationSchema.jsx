@@ -32,8 +32,12 @@ const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$/;
 const phoneSchema = yup
   .string()
   .phone("RO", undefined, "Invalid Phone Number")
+  .min(9, "Phone Number must be 10 characters")
+  .max(11, "Invalid number")
   .required();
 
+const emailRules = /^[a-zA-Z0-9._%+-]+@(yahoo|gmail)\.com$/;
+// only yahoo and gmail ex format: @yahoo.com or @gmail.com
 // Account Form
 export const registerSchemaAccount = yup.object().shape({
   displayName: yup
@@ -41,7 +45,11 @@ export const registerSchemaAccount = yup.object().shape({
     .min(2, "Display name must be at least 2 characters long")
     .max(120, "Display name is too long")
     .required("Required"),
-  email: yup.string().email("Please enter a valid email").required("Required"),
+  email: yup
+    .string()
+    .email()
+    .matches(emailRules, { message: "Invalid email" })
+    .required("Required"),
   mobile: phoneSchema,
   password: yup
     .string()
