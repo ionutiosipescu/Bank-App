@@ -1,11 +1,4 @@
 import React, { useEffect, useState } from "react";
-// import Input from "../../../components/UI/Input/Input";
-// import { Link } from "react-router-dom";
-// import CustomCheckbox from "../../../components/CustomInputs/CustomCheckbox";
-// import { selectStep } from "../../../state-management/registerhelper/registerhelper.selector";
-// import { setStep } from "../../../state-management/registerhelper/registerhelper.actions";
-// import axios from "axios";
-// import { resetLocalStorage } from "../../../state-management/store";
 import { Formik } from "formik";
 import { advancedSchema } from "../ValidationSchema/ValidationSchema";
 import CustomInput from "../../../components/CustomInputs/CustomInput";
@@ -86,7 +79,7 @@ function FormLogIn() {
           placeholder="Enter your password"
           setData={setData}
         />
-        <CustomreCaptcha name="recaptcha" sitekey={siteKey} />
+        {/* <CustomreCaptcha name="recaptcha" sitekey={siteKey} /> */}
         {errorMsg ? <ErrorMsg>{errorMsg}</ErrorMsg> : <></>}
         <Button size="100" typeclass="secondary" type="submit">
           Log In

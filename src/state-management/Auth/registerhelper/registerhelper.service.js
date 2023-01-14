@@ -30,9 +30,9 @@ export const fetchRegisterData = (url, registerData, step) => {
       //   Guard Clouse
       if (!response.data) return;
       // Generate Email Verification Code
-      await dispatch(generateEmailCode());
+      // await dispatch(generateEmailCode());
       // Send Email
-      await fetchEmailVerification();
+      // await fetchEmailVerification();
       //   Increment Page
       await dispatch(setStep(step + 1));
       //   Update Status Request after 2 seconds
