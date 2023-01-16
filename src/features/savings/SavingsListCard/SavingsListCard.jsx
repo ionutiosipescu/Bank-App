@@ -31,11 +31,13 @@ function SavingsListCard() {
                 <BsCashStack />
               </Icon>
               <LabelContainer>{saving.label}</LabelContainer>
+              <AmountContainer>
+                <p>Saved:</p> {saving.amount}
+              </AmountContainer>
             </div>
-            <AmountContainer>Saved: {saving.amount}</AmountContainer>
-            <div>
-              <IdContainer>ID {saving.id}</IdContainer>
-            </div>
+            {/* <div> */}
+            {/* <IdContainer>ID {saving.id}</IdContainer> */}
+            {/* </div> */}
             <div>
               <Button label="Top-Up" size="sm" primary={true} />
               <Button label="Withdraw" size="sm" />

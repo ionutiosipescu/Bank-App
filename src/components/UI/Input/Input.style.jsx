@@ -8,7 +8,7 @@ export const Group = styled.div`
   display: flex;
   flex-direction: column;
   margin: 0 10px 10px 0;
-  /* width: ${(props) => (props.small ? "200px" : "100%")}; */
+  width: ${(props) => (props.small ? "200px" : "100%")};
   label {
     margin-bottom: 10px;
   }
@@ -60,8 +60,8 @@ const InputStyle = css`
 // lv1
 export const InputForm = styled.input`
   ${InputStyle}
-  width: ${(props) => (props.small ? "200px" : "100%")};
-  /* width: 100%; */
+  /* width: ${(props) => (props.small ? "200px" : "100%")}; */
+  width: 100%;
 `;
 
 export const InputSelect = styled.select`

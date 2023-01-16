@@ -9,7 +9,11 @@ import {
   ListContainer,
   ListItem,
 } from "../../savings/SavingsListCard/SavingsListCard.style";
-import { DateContainer, RateContainer } from "./ExchangeList.style";
+import {
+  DateContainer,
+  ListItemSection,
+  RateContainer,
+} from "./ExchangeList.style";
 
 import Button from "../../../components/UI/Button/Button";
 
@@ -26,12 +30,16 @@ function ExchangeList() {
       <ListContainer>
         {currentAccount.map((transfer, index) => (
           <ListItem key={index}>
-            <LabelContainer>
-              {transfer.from} to {transfer.to}
-            </LabelContainer>
-            <RateContainer>Rate: {transfer.rate}</RateContainer>
-            <AmountContainer>Transfered: {transfer.amount}</AmountContainer>
-            <DateContainer>{transfer.date}</DateContainer>
+            <ListItemSection>
+              <LabelContainer>
+                {transfer.from} to {transfer.to}
+              </LabelContainer>
+              <RateContainer>Rate: {transfer.rate}</RateContainer>
+              <AmountContainer>
+                <p>Transfered:</p> {transfer.amount}
+              </AmountContainer>
+              <DateContainer>{transfer.date}</DateContainer>
+            </ListItemSection>
             <Button label="Repeat" size="sm" primary={true} />
           </ListItem>
         ))}

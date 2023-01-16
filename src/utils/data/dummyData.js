@@ -18,13 +18,13 @@ export const accounts = [
     address: "Aleea Minunilor 2, Bucuresti",
     savings: [
       { label: "Healthcare", amount: 50122, id: 123 },
-      { label: "Investments", amount: 50122, id: 127 },
+      { label: "Investment", amount: 5012, id: 127 },
       { label: "Healthcare", amount: 50122, id: 123 },
-      { label: "Investments", amount: 50122, id: 127 },
+      { label: "Investment", amount: 4232, id: 127 },
       { label: "Healthcare", amount: 50122, id: 123 },
-      { label: "Investments", amount: 50122, id: 127 },
-      { label: "Healthcare", amount: 50122, id: 123 },
-      { label: "Investments", amount: 50122, id: 127 },
+      { label: "Investment", amount: 345, id: 127 },
+      { label: "Healthcare", amount: 23434, id: 123 },
+      { label: "Investment", amount: 522, id: 127 },
     ],
     transfers: [
       {

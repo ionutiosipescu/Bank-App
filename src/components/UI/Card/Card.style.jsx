@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { withRouter } from "storybook-addon-react-router-v6";
 
 export const CardContainer = styled.div`
   position: relative;
@@ -123,7 +122,7 @@ export const ServiceInputsCard = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  width: calc(40% - 20px);
+  width: calc(40vw - 20px);
   height: 85vh;
   aspect-ratio: 3/4;
   border-radius: 40px;
