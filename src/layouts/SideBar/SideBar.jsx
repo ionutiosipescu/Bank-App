@@ -35,7 +35,7 @@ function SideBar({ active, handleActive }) {
   return (
     <SideBarWrapper active={active}>
       <ChevronWrapper>
-        <TiPlus size={25} onClick={handleActive} />
+        <TiPlus size={20} onClick={handleActive} />
       </ChevronWrapper>
       <BtnContainer>
         <LogoContainer active={active}>

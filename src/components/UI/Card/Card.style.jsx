@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "../../../utils/breakpoints/breakpoints";
 
 export const CardContainer = styled.div`
   position: relative;
@@ -121,9 +122,6 @@ export const ServiceInputsCard = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  width: calc(40vw - 20px);
-  height: 85vh;
   aspect-ratio: 3/4;
   border-radius: 40px;
   padding: 30px 40px;
@@ -136,23 +134,22 @@ export const ServiceInputsCard = styled.div`
     align-items: center;
     width: 100%;
     height: 90%;
-    margin-top: 100px;
+    margin-top: 50px;
   }
-  @media (max-width: 1515px) {
-    width: 33%;
-  }
-  @media (max-width: 1439px) {
+  /* Media */
+  @media (${device.mobileS}) {
     width: 100%;
-    height: 35vh;
-    align-items: flex-start;
+    height: 80vh;
+    align-items: center;
     margin-bottom: 30px;
-    & > div {
-      margin-top: 40px;
-      align-items: flex-end;
-    }
   }
-  @media (max-width: 880px) {
-    height: 60vh;
+  @media (${device.mobileL}) {
+    ${(props) =>
+      props.type === "exchange"
+        ? "height: 90vh;"
+        : props.type === "savings"
+        ? "height: 80vh;"
+        : "height: 90vh;"}
     & > div {
       display: flex;
       flex-direction: column;
@@ -162,8 +159,41 @@ export const ServiceInputsCard = styled.div`
       height: 100%;
     }
   }
-
-  @media (max-width: 460px) {
-    height: 80vh;
+  @media (${device.tablet}) {
+    ${(props) =>
+      props.type === "exchange"
+        ? "height: 70vh;"
+        : props.type === "savings"
+        ? "height: 60vh;"
+        : "height: 90vh;"}
+  }
+  @media (${device.laptop}) {
+    width: 100%;
+    height: 70vh;
+    align-items: flex-start;
+    & > a:last-of-type {
+      align-self: flex-end;
+    }
+  }
+  @media (${device.laptopL}) {
+    width: 33%;
+    height: 85vh;
+    margin-bottom: 0;
+    align-items: center;
+    & > a:last-of-type {
+      align-self: center;
+    }
+    & > div {
+      margin-top: 100px;
+    }
+  }
+  @media (${device.desktop}) {
+    width: calc(40% - 20px);
+    height: 85vh;
+    margin-bottom: 0;
+    align-items: center;
+    & > a:last-of-type {
+      align-self: center;
+    }
   }
 `;

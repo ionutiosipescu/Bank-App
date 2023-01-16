@@ -9,8 +9,21 @@ export const Group = styled.div`
   flex-direction: column;
   margin: 0 10px 10px 0;
   width: ${(props) => (props.small ? "200px" : "100%")};
-  label {
-    margin-bottom: 10px;
+  /* label {
+    ${(props) =>
+    props.large ? " margin-bottom: 20px;" : " margin-bottom: 10px;"};
+  } */
+  @media (${device.mobileS}) {
+    label {
+      ${(props) =>
+        props.large ? " margin-bottom: 10px;" : " margin-bottom: 10px;"};
+    }
+  }
+  @media (${device.laptop}) {
+    label {
+      ${(props) =>
+        props.large ? " margin-bottom: 20px;" : " margin-bottom: 10px;"};
+    }
   }
 `;
 
@@ -23,14 +36,14 @@ export const GroupRadio = styled.div`
   label {
     margin-bottom: 10px;
   }
-  @media (max-width: 1680px) {
+  /* @media (max-width: 1680px) {
     ${(props) =>
-      props.small
-        ? "width: 150px; height: 40px;"
-        : props.large
-        ? "width: 300px; height: 40px;"
-        : "width: 310px; height: 40px;"};
-  }
+    props.small
+      ? "width: 150px; height: 40px;"
+      : props.large
+      ? "width: 300px; height: 40px;"
+      : "width: 310px; height: 40px;"};
+  } */
 `;
 
 export const RadioPlanContainer = styled.div`
@@ -62,6 +75,20 @@ export const InputForm = styled.input`
   ${InputStyle}
   /* width: ${(props) => (props.small ? "200px" : "100%")}; */
   width: 100%;
+  ${(props) =>
+    props.large ? "height: 60px; padding-left: 20px; font-size: 1.1rem;" : ""}
+  @media (${device.mobileS}) {
+    ${(props) =>
+      props.large ? "height: 40px; padding-left: 20px; font-size: 1.1rem;" : ""}
+  }
+  @media (${device.mobileL}) {
+    ${(props) =>
+      props.large ? "height: 50px; padding-left: 20px; font-size: 1.1rem;" : ""}
+  }
+  @media (${device.laptop}) {
+    ${(props) =>
+      props.large ? "height: 60px; padding-left: 20px; font-size: 1.1rem;" : ""}
+  }
 `;
 
 export const InputSelect = styled.select`

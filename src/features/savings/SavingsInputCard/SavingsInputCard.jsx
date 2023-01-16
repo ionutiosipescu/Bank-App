@@ -10,13 +10,13 @@ import {
 
 function SavingsInputCard() {
   return (
-    <ServiceInputsCard>
+    <ServiceInputsCard type="savings">
       <h2>New Saving</h2>
       <InputWrapper>
         <InputContainer>
-          <Input label="Saving Purpose" type="text" />
-          <Input label="Saving Target" type="text" />
-          <Input label="First Top-up" type="number" />
+          <Input label="Saving Purpose" type="text" large />
+          <Input label="Saving Target" type="text" large />
+          <Input label="First Top-up" type="number" large />
         </InputContainer>
         <Button label="Add Saving" size="md" primary={true} />
       </InputWrapper>

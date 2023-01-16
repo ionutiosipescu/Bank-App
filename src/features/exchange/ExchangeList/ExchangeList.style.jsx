@@ -5,14 +5,16 @@ export const ListItemSection = styled.div`
   display: flex;
   justify-content: space-evenly !important;
   align-items: center;
-  @media (${device.tablet}) {
-    width: calc(100% - 500px);
-  }
+  /* Media  */
   @media (${device.mobileS}) {
     width: 100%;
     & > * {
       margin: 0px !important;
     }
+  }
+  @media (${device.tablet}) {
+    width: calc(100% - 150px) !important;
+    justify-content: space-between !important;
   }
 `;
 

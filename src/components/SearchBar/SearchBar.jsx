@@ -3,11 +3,11 @@ import { SearchBarContainer, SearchInput } from "./SearchBar.style";
 
 import { BiSearch } from "react-icons/bi";
 
-function SearchBar() {
+function SearchBar({ active, onClick }) {
   return (
-    <SearchBarContainer>
-      <BiSearch size={20} style={{ marginRight: "10px" }} />
-      <SearchInput type="text" placeholder="Search here..." />
+    <SearchBarContainer active={active}>
+      <BiSearch size={20} onClick={onClick} />
+      <SearchInput type="text" placeholder="Search here..." active={active} />
     </SearchBarContainer>
   );
 }

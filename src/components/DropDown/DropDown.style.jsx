@@ -1,20 +1,44 @@
 import styled from "styled-components";
+import { device } from "../../utils/breakpoints/breakpoints";
 
 export const DropDownContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: max-content;
-  height: 120px;
   cursor: default;
   & > p {
     opacity: 0.8;
-    /* margin-bottom: 10px; */
+    margin-bottom: 20px;
+  }
+  @media (${device.mobileS}) {
+    width: 100%;
+    height: 120px;
+    & > p {
+      opacity: 0.8;
+      margin-bottom: 10px;
+    }
+  }
+  @media (${device.laptop}) {
+    width: max-content;
+    & > p {
+      margin-bottom: 20px;
+    }
+  }
+  @media (${device.laptopL}) {
+    width: 100%;
+    & > p {
+      margin-bottom: 20px;
+    }
+  }
+  @media (${device.desktop}) {
+    width: max-content;
+    & > p {
+      margin-bottom: 20px;
+    }
   }
 `;
 
 export const DropDownSelector = styled.div`
   display: flex;
-
   ${(props) =>
     props.active
       ? "flex-direction: column; align-items: flex-start; border-radius: 30px; padding: 10px 25px 15px 25px;"
@@ -23,8 +47,6 @@ export const DropDownSelector = styled.div`
   justify-content: space-between;
   font-weight: 600;
   width: 100%;
-  margin-top: 20px;
-
   border: 1px solid var(--gray-dark);
 `;
 

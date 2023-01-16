@@ -12,7 +12,7 @@ export const ChevronWrapper = styled.div`
 
 export const SideBarWrapper = styled.div`
   position: fixed;
-  z-index: 10;
+  z-index: 11;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -35,7 +35,7 @@ export const SideBarWrapper = styled.div`
     ${(props) =>
       props.active
         ? "height: 100%; width: 300px;"
-        : "height: 50px; width: 50px; top: 5px; left: 8px; border: 1px solid var(--purple); border-radius: 40px; justify-content: center; align-items: center; margin-top: 10px;"};
+        : "height: 40px; width: 40px; top: 20px; left: 15px; border: 1px solid var(--purple); border-radius: 40px; justify-content: center; align-items: center;"};
     ${ChevronWrapper} {
       ${(props) => (props.active ? "display: none;" : "display: flex;")}
     }
