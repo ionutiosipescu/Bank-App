@@ -8,8 +8,22 @@ export const Group = styled.div`
   display: flex;
   flex-direction: column;
   margin: 0 10px 10px 0;
-  label {
-    margin-bottom: 10px;
+  width: ${(props) => (props.small ? "200px" : "100%")};
+  /* label {
+    ${(props) =>
+    props.large ? " margin-bottom: 20px;" : " margin-bottom: 10px;"};
+  } */
+  @media (${device.mobileS}) {
+    label {
+      ${(props) =>
+        props.large ? " margin-bottom: 10px;" : " margin-bottom: 10px;"};
+    }
+  }
+  @media (${device.laptop}) {
+    label {
+      ${(props) =>
+        props.large ? " margin-bottom: 20px;" : " margin-bottom: 10px;"};
+    }
   }
 `;
 
@@ -62,25 +76,21 @@ const InputStyle = css`
 // lv1
 export const InputForm = styled.input`
   ${InputStyle}
-  width: ${(props) => (props.small ? "200px" : "100%")};
-  ${(props) => (props.large ? "width: 300px; height: 40px;" : "")}
-  @media (max-width: 1400px) {
-    ${(props) => (props.large ? "width: 250px; height: 40px;" : "")}
+  /* width: ${(props) => (props.small ? "200px" : "100%")}; */
+  width: 100%;
+  ${(props) =>
+    props.large ? "height: 60px; padding-left: 20px; font-size: 1.1rem;" : ""}
+  @media (${device.mobileS}) {
+    ${(props) =>
+      props.large ? "height: 40px; padding-left: 20px; font-size: 1.1rem;" : ""}
   }
-  @media (max-width: 1250px) {
-    ${(props) => (props.large ? "width: 200px; height: 40px;" : "")}
+  @media (${device.mobileL}) {
+    ${(props) =>
+      props.large ? "height: 50px; padding-left: 20px; font-size: 1.1rem;" : ""}
   }
-  @media (max-width: 880px) {
-    ${(props) => (props.large ? "width: 300px; height: 40px;" : "")}
-  }
-  @media (max-width: 530px) {
-    ${(props) => (props.large ? "width: 250px; height: 40px;" : "")}
-  }
-  @media (max-width: 400px) {
-    ${(props) => (props.large ? "width: 200px; height: 40px;" : "")}
-  }
-  @media (max-width: 360px) {
-    ${(props) => (props.large ? "width: 100%; height: 40px;" : "")}
+  @media (${device.laptop}) {
+    ${(props) =>
+      props.large ? "height: 60px; padding-left: 20px; font-size: 1.1rem;" : ""}
   }
 `;
 

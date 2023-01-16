@@ -1,18 +1,23 @@
 import React, { useState } from "react";
-import { BtnContainer, LogoContainer, SideBarWrapper } from "./SideBar.style";
+import {
+  BtnContainer,
+  ChevronWrapper,
+  LogoContainer,
+  SideBarWrapper,
+} from "./SideBar.style";
 
 import NavBtn from "../../components/UI/NavBtn/NavBtn";
-import Button from "../../components/UI/Button/Button";
 
 import {
-  // BsArrowLeftRight,
   BsCreditCard,
   BsHouseDoor,
   BsPersonXFill,
   BsTools,
 } from "react-icons/bs";
 import { SiWebmoney } from "react-icons/si";
-import { TiChevronLeft, TiChevronRight } from "react-icons/ti";
+import { TiChevronLeft, TiChevronRight, TiPlus } from "react-icons/ti";
+
+import Button from "./../../components/UI/Button/Button";
 
 const pages = [
   {
@@ -29,25 +34,21 @@ function SideBar({ active, handleActive }) {
 
   return (
     <SideBarWrapper active={active}>
+      <ChevronWrapper>
+        <TiPlus size={20} onClick={handleActive} />
+      </ChevronWrapper>
       <BtnContainer>
-        <LogoContainer active={active} style={{ color: "var(--purple)" }}>
+        <LogoContainer active={active}>
           {active ? (
             <div>
               <h1>BankName</h1>
-              <TiChevronLeft
-                size={25}
-                onClick={handleActive}
-                style={{ cursor: "pointer" }}
-              />
+              <TiChevronLeft size={25} onClick={handleActive} />
             </div>
           ) : (
             <>
+              {" "}
               <SiWebmoney size={50} color={"var(--purple)"} />
-              <TiChevronRight
-                size={25}
-                onClick={handleActive}
-                style={{ cursor: "pointer" }}
-              />
+              <TiChevronRight size={25} onClick={handleActive} />
             </>
           )}
         </LogoContainer>

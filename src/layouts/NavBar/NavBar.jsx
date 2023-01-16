@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Button from "../../components/UI/Button/Button";
 import {
@@ -15,10 +15,15 @@ import { accounts } from "../../utils/data/dummyData";
 import { Link } from "react-router-dom";
 
 function NavBar() {
+  const [active, setActive] = useState(false);
+
+  const handleActive = () => {
+    setActive(!active);
+  };
   return (
     <NavBarContainer>
-      <SearchBar />
-      <NavBarSection>
+      <SearchBar active={active} onClick={handleActive} />
+      <NavBarSection active={active}>
         <Button to="/settings">
           <RiSettingsLine size={22} />
         </Button>

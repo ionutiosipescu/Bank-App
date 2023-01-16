@@ -21,6 +21,11 @@ export const HomeContainer = styled.div`
     margin-left: 65px;
   }
   @media (max-width: 880px) {
-    padding: 10px 0px 10px 10px;
+    padding: 10px 15px 10px 10px;
+  }
+  @media (max-width: 460px) {
+    width: 100%;
+    padding: 10px 15px 0px 5px;
+    margin: 0;
   }
 `;

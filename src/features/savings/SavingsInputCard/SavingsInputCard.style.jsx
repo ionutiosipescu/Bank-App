@@ -6,14 +6,30 @@ export const InputContainer = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  height: 60%;
+  width: 80%;
+  height: 70%;
   @media (max-width: 1439px) {
     flex-direction: row;
+    align-self: flex-start;
+    width: 100%;
+    & > * {
+      width: 30%;
+    }
   }
   @media (max-width: 880px) {
     flex-direction: column;
+    & > * {
+      width: 90%;
+    }
   }
+`;
+
+export const InputWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: calc(100% - 20px);
+  width: 100%;
 `;
 
 export const InputCardSection = styled.div`

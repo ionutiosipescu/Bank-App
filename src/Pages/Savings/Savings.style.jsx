@@ -17,6 +17,6 @@ export const SavingsWrapper = styled.div`
     }
   }
   @media (max-width: 880px) {
-    padding: 20px 20px 0 10px;
+    padding: 20px 0px 0 10px;
   } ;
 `;
