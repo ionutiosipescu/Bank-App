@@ -13,6 +13,7 @@ import avatar from "../../assets/images/avatar.png";
 
 import { accounts } from "../../utils/data/dummyData";
 import { Link } from "react-router-dom";
+import LinkButton from "../../components/UI/LinkButton/LinkButton";
 
 function NavBar() {
   const [active, setActive] = useState(false);
@@ -24,12 +25,12 @@ function NavBar() {
     <NavBarContainer>
       <SearchBar active={active} onClick={handleActive} />
       <NavBarSection active={active}>
-        <Button to="/settings">
+        <LinkButton to="/settings" size="round">
           <RiSettingsLine size={22} />
-        </Button>
-        <Button to="">
+        </LinkButton>
+        <LinkButton to="" size="round">
           <RiNotification4Line size={22} />
-        </Button>
+        </LinkButton>
         <ProfileContainer as={Link} to="/profile">
           <img src={avatar} alt="" />
           <h2>{accounts[0].owner}</h2>

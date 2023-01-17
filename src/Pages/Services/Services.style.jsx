@@ -11,7 +11,7 @@ export const ServicesWrapper = styled.div`
 export const ButtonWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  width: calc(100% - 60px);
   height: fit-content;
+  width: calc(100% - 60px);
   margin: 10px 30px 0 0;
 `;

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { withRouter } from "storybook-addon-react-router-v6";
 import { device } from "../../utils/breakpoints/breakpoints";
 
 export const NavBarContainer = styled.div`
