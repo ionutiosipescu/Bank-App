@@ -18,6 +18,7 @@ import { SiWebmoney } from "react-icons/si";
 import { TiChevronLeft, TiChevronRight, TiPlus } from "react-icons/ti";
 
 import Button from "./../../components/UI/Button/Button";
+import LinkButton from "./../../components/UI/LinkButton/LinkButton";
 
 const pages = [
   {
@@ -56,20 +57,22 @@ function SideBar({ active, handleActive }) {
           <NavBtn
             to={page.link}
             label={active ? page.label : ""}
+            size="round"
             active={active}
             onClick={() => setSelected(index)}
             selected={selected === index ? true : false}
+            key={index}
           >
             {page.icon}
           </NavBtn>
         ))}
       </BtnContainer>
       {active ? (
-        <Button label="Log Out" to="/login" size="100" primary={true} />
+        <LinkButton label="Log Out" to="/login" size="100" primary={true} />
       ) : (
-        <Button to="/login" primary={true}>
+        <LinkButton to="/login" primary={true}>
           <BsPersonXFill size={22} />
-        </Button>
+        </LinkButton>
       )}
     </SideBarWrapper>
   );

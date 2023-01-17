@@ -1,52 +1,24 @@
 import React from "react";
 import { ButtonWrapper, ServicesWrapper } from "./ServicesNavigation.style";
-import { TopContainer } from "./../Cards/Cards.style";
+import LinkButton from "../../components/UI/LinkButton/LinkButton";
 
-import Button from "./../../components/UI/Button/Button";
 import { Outlet } from "react-router";
+import { services } from "../../utils/data/servicesData";
 
 function ServicesNavigation() {
   return (
     <ServicesWrapper>
       <ButtonWrapper>
-        <Button
-          to={"savings"}
-          label="Savings"
-          size="xl"
-          primary={true}
-          onClick={""}
-        />
-        <Button
-          to={"exchange"}
-          label="Exchange"
-          size="xl"
-          primary={true}
-          onClick={""}
-        />
-        <Button
-          to={"loans"}
-          label="Loans"
-          size="xl"
-          primary={true}
-          onClick={""}
-        />
-        <Button
-          to={"transfers"}
-          label="Transfers"
-          size="xl"
-          primary={true}
-          onClick={""}
-        />
-        <Button
-          to={"deposit"}
-          label="Deposit"
-          size="xl"
-          primary={true}
-          onClick={""}
-        />
+        {services.map((service, index) => (
+          <LinkButton
+            to={service.path}
+            label={service.label}
+            size="xl"
+            primary
+            key={index}
+          />
+        ))}
       </ButtonWrapper>
-      {/* <TopContainer></TopContainer>
-      <TopContainer></TopContainer> */}
       <Outlet />
     </ServicesWrapper>
   );

@@ -1,11 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { PropTypes } from "prop-types";
 import { Btn } from "./Button.style";
 
-function Button({ label, to, size, primary, handleClick, children }) {
+function Button({ label, size, primary, handleClick, children }) {
   return (
-    <Btn as={Link} to={to} size={size} onClick={handleClick} primary={primary}>
+    <Btn size={size} onClick={handleClick} primary={primary}>
       {label}
       {children}
     </Btn>

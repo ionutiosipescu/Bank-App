@@ -25,7 +25,7 @@ export const HomeContainer = styled.div`
   }
   @media (max-width: 460px) {
     width: 100%;
-    padding: 10px 15px 0px 5px;
+    padding: 10px 10px 0px 5px;
     margin: 0;
   }
 `;

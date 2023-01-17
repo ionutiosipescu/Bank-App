@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { sizeBtn } from "../../../utils/componentSizes/buttonSizes";
 
-export const Btn = styled.div`
+export const Btn = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,20 +11,19 @@ export const Btn = styled.div`
   margin-bottom: 10px;
   border-radius: 50px;
   box-shadow: 0px 0px 12px -8px rgba(21, 20, 47, 0.8);
+  cursor: pointer;
   ${(props) =>
     props.size === "sm"
-      ? "width: 100px; height: 30px; font-size: 0.8rem;"
+      ? sizeBtn.sm
       : props.size === "md"
-      ? "width: 150px; height: 40px;"
+      ? sizeBtn.md
       : props.size === "lg"
-      ? "width: 200px; height: 40px;"
+      ? sizeBtn.lg
       : props.size === "xl"
-      ? "width: 230px; height: 50px;"
-      : props.size === "100"
-      ? "width: 100%; height: 40px;"
-      : props.size === "fit"
-      ? "width: fit-content; height: 30px;"
-      : "width: 40px; height: 40px;"};
+      ? sizeBtn.xl
+      : props.size === "round"
+      ? sizeBtn.round
+      : sizeBtn.fullWidth};
   ${(props) =>
     props.primary
       ? "background: var(--purple); color: var(--white);"
