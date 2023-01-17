@@ -7,12 +7,14 @@ import { useSelector } from "react-redux";
 import Spinner from "../../../../components/Spinner/Spinner";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { selectEmailCode } from "../../../../state-management/Auth/registerhelper/registerhelper.selector";
 
 function SuccesPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [seconds, setSeconds] = useState(10);
   const isLoading = useSelector(selectIsLoading);
+  const EmailCode = useSelector(selectEmailCode);
+  const [seconds, setSeconds] = useState(10);
   const [width, setWidth] = useState(window.innerWidth);
   const [height, setHeight] = useState(window.innerHeight);
 
@@ -29,22 +31,24 @@ function SuccesPage() {
   }, []);
 
   // After 10 seconds redirect the user
-  useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      navigate("/login");
-    }, 10000);
+  // useEffect(() => {
+  //   const timeoutId = setTimeout(() => {
+  //     navigate("/");
+  //   }, 10000);
 
-    return () => clearTimeout(timeoutId);
-  }, []);
+  //   return () => clearTimeout(timeoutId);
+  // }, []);
 
   // Decrement after each second the second variable
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setSeconds(seconds - 1);
-    }, 1000);
+  // useEffect(() => {
+  //   const intervalId = setInterval(() => {
+  //     setSeconds(seconds - 1);
+  //   }, 1000);
 
-    return () => clearInterval(intervalId);
-  }, [seconds]);
+  //   return () => clearInterval(intervalId);
+  // }, [seconds]);
+
+  console.log(EmailCode);
 
   return (
     <React.Fragment>

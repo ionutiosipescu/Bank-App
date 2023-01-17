@@ -7,7 +7,7 @@ import ProtectedRoutes from "./ProtectedRoutes";
 function App() {
   return (
     <Routes>
-      <Route path="/login" element={<Login />} />
+      <Route index path="/" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route element={<ProtectedRoutes />}>
         <Route path="/*" element={<Home />} />

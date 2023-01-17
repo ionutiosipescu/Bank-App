@@ -21,12 +21,12 @@ import Button from "./../../components/UI/Button/Button";
 
 const pages = [
   {
-    link: "/dashboard",
+    link: "dashboard",
     label: "Dashboard",
     icon: <BsHouseDoor size={22} />,
   },
-  { link: "/cards", label: "Cards", icon: <BsCreditCard size={22} /> },
-  { link: "/services", label: "Services", icon: <BsTools size={22} /> },
+  { link: "cards", label: "Cards", icon: <BsCreditCard size={22} /> },
+  { link: "services", label: "Services", icon: <BsTools size={22} /> },
 ];
 
 function SideBar({ active, handleActive }) {

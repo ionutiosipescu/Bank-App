@@ -1,7 +1,13 @@
 import React from "react";
 import { Field } from "formik";
 import { useField } from "formik";
-import { Group, InputRadio, Error, GroupRadio } from "../UI/Input/Input.style";
+import {
+  Group,
+  InputRadio,
+  Error,
+  GroupRadio,
+  RadioLabel,
+} from "../UI/Input/Input.style";
 import "../UI/Input/Input.css";
 import { useSelector } from "react-redux";
 import { selectRegisterUser } from "../../state-management/Auth/registerhelper/registerhelper.selector";
@@ -12,7 +18,7 @@ const RadioButtons = ({ label, ...props }) => {
   const [field, meta] = useField(props);
   return (
     <GroupRadio radio>
-      <label>{label}</label>
+      <RadioLabel>{label}</RadioLabel>
       <div>
         <Field name={props.name}>
           {({ field }) => {

@@ -1,11 +1,4 @@
 import React, { useEffect, useState } from "react";
-// import Input from "../../../components/UI/Input/Input";
-// import { Link } from "react-router-dom";
-// import CustomCheckbox from "../../../components/CustomInputs/CustomCheckbox";
-// import { selectStep } from "../../../state-management/registerhelper/registerhelper.selector";
-// import { setStep } from "../../../state-management/registerhelper/registerhelper.actions";
-// import axios from "axios";
-// import { resetLocalStorage } from "../../../state-management/store";
 import { Formik } from "formik";
 import { advancedSchema } from "../ValidationSchema/ValidationSchema";
 import CustomInput from "../../../components/CustomInputs/CustomInput";
@@ -21,6 +14,7 @@ import { fetchLoginData } from "../../../state-management/Auth/loginUser/loginUs
 import { selectLoginUser } from "../../../state-management/Auth/loginUser/loginUser.selector";
 import { selectIsSubmiting } from "../../../state-management/Auth/loginUser/loginUser.selector";
 import { selectErrorMessage } from "../../../state-management/Auth/loginUser/loginUser.selector";
+import CustomreCaptcha from "../../../components/CustomInputs/CustomreCaptcha";
 
 function FormLogIn() {
   const dispatch = useDispatch();
@@ -28,6 +22,7 @@ function FormLogIn() {
   const loginData = useSelector(selectLoginUser);
   const isSubmitting = useSelector(selectIsSubmiting);
   const navigate = useNavigate();
+  const siteKey = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
 
   // axios request -> response true - > change isSubmitting status
   const onSubmit = (values, actions) => {
@@ -61,7 +56,7 @@ function FormLogIn() {
   const initialObject = {
     username: "",
     password: "",
-    acceptedTos: false,
+    recaptcha: "",
   };
   return (
     <Formik
@@ -84,6 +79,7 @@ function FormLogIn() {
           placeholder="Enter your password"
           setData={setData}
         />
+        {/* <CustomreCaptcha name="recaptcha" sitekey={siteKey} /> */}
         {errorMsg ? <ErrorMsg>{errorMsg}</ErrorMsg> : <></>}
         <Button size="100" typeclass="secondary" type="submit">
           Log In

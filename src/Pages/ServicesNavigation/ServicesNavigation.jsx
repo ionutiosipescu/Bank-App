@@ -1,10 +1,14 @@
 import React from "react";
-import { ButtonWrapper, ServicesWrapper } from "./Services.style";
+import {
+  ButtonWrapper,
+  ServicesWrapper,
+} from "../../pages/Services/Services.style";
 import { TopContainer } from "./../Cards/Cards.style";
 
 import Button from "./../../components/UI/Button/Button";
+import { Outlet } from "react-router";
 
-function Services() {
+function ServicesNavigation() {
   return (
     <ServicesWrapper>
       <ButtonWrapper>
@@ -44,10 +48,11 @@ function Services() {
           onClick={""}
         />
       </ButtonWrapper>
-      <TopContainer></TopContainer>
-      <TopContainer></TopContainer>
+      {/* <TopContainer></TopContainer>
+      <TopContainer></TopContainer> */}
+      <Outlet />
     </ServicesWrapper>
   );
 }
 
-export default Services;
+export default ServicesNavigation;
