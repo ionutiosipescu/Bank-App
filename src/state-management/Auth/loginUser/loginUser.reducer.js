@@ -2,7 +2,7 @@ import { LOGIN_ACTION_TYPES } from "./loginUser.types";
 
 const INITIAL_STATE = {
   LoginData: {
-    username: "",
+    email: "",
     password: "",
   },
   isSubmiting: false,
