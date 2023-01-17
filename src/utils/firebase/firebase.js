@@ -32,24 +32,6 @@ import {
 //   return await createUserWithEmailAndPassword(auth, email, password);
 // };
 
-// export const signOutUser = async () => await signOut(auth);
-
-// export const onAuthStateChangedListener = (callback) => {
-//   return onAuthStateChanged(auth, callback);
-// };
-
-// export const sendVerificationCode = async (phoneNumber, appVerifier) => {
-//   try {
-//     return await phoneProvider.verifyPhoneNumber(
-//       phoneNumber,
-//       appVerifier,
-//       true
-//     );
-//   } catch (error) {
-//     throw error;
-//   }
-// };
-
 // SMS
 
 const firebaseConfig = {
