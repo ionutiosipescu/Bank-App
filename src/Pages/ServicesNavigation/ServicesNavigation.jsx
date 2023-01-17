@@ -1,8 +1,5 @@
 import React from "react";
-import {
-  ButtonWrapper,
-  ServicesWrapper,
-} from "../../pages/Services/Services.style";
+import { ButtonWrapper, ServicesWrapper } from "./ServicesNavigation.style";
 import { TopContainer } from "./../Cards/Cards.style";
 
 import Button from "./../../components/UI/Button/Button";

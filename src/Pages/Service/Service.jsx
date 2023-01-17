@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
 import Savings from "../Savings/Savings";
 import Exchange from "../Exchange/Exchange";
-import Services from "../Services/Services";
 
 function Service() {
   const { service } = useParams();

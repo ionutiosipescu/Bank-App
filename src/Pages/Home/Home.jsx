@@ -8,7 +8,6 @@ import Cards from "../Cards/Cards";
 import NavBar from "./../../layouts/NavBar/NavBar";
 import Settings from "../../pages/Settings/Settings";
 import Profile from "./../Profile/Profile";
-import Services from "./../Services/Services";
 import Savings from "./../Savings/Savings";
 import Loans from "../Loans/Loans";
 import Exchange from "../Exchange/Exchange";

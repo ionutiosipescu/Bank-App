@@ -25,6 +25,10 @@ export const accounts = [
       { label: "Investment", amount: 345, id: 127 },
       { label: "Healthcare", amount: 23434, id: 123 },
       { label: "Investment", amount: 522, id: 127 },
+      { label: "Investment", amount: 345, id: 127 },
+      { label: "Healthcare", amount: 23434, id: 123 },
+      { label: "Investment", amount: 522, id: 127 },
+      { label: "Investment", amount: 522, id: 127 },
     ],
     transfers: [
       {
