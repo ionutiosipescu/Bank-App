@@ -13,53 +13,73 @@ import {
   FormContainerDeposits,
   BtnContainerControler,
   BtnContainerSubmitControler,
+  FormContainerInputs,
 } from "./DepositControlerCard.style";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { selectDepositAction } from "../../../state-management/Dashboard/services/helpers/depositsHelper/deposits.selector";
+import { selectDepositForm } from "../../../state-management/Dashboard/services/helpers/depositsHelper/deposits.selector";
+import { setDepositAction } from "../../../state-management/Dashboard/services/helpers/depositsHelper/depositsHelper.action";
+import { setDepositForm } from "../../../state-management/Dashboard/services/helpers/depositsHelper/depositsHelper.action";
+import { debounce } from "debounce";
+import { depositSchema } from "../ValidationSchema/ValidationSchemaDeposit";
+import DatePickerField from "../../../components/CustomInputs/CustomDatePicker";
 
 function DepositsControlerCard() {
+  const dispatch = useDispatch();
+  const depositAction = useSelector(selectDepositAction);
+  const depositFormData = useSelector(selectDepositForm);
+
+  const setData = debounce((e) => {
+    dispatch(setDepositForm(depositFormData, e));
+  }, 500);
+
+  const onSubmit = () => {
+    console.log(depositFormData);
+  };
+
   return (
     <ServiceInputsCardDeposit>
       <CardHeader>
-        <h2>Deposit</h2>
+        <h2>Acount Actions</h2>
       </CardHeader>
-      <Formik>
+      <Formik
+        validationSchema={depositSchema}
+        initialValues={{ ...depositFormData }}
+        onSubmit={onSubmit}
+      >
         <FormContainerDeposits>
           <BtnContainerControler>
             <Button label="Deposit" size="xl" primary={true} />
-            <Button label="Windraw" size="xl" primary={true} />
+            <Button label="Windraw" size="xl" />
           </BtnContainerControler>
-          <div>
+          <FormContainerInputs>
             <CustomInput
               label="Card Number"
               name="card_number"
               type="number"
               placeholder="Enter your Card Number"
-              // setData={setData}
-              // value={serie || ""}
+              setData={setData}
             />
             <CustomInput
               label="Card Name"
               name="card_name"
-              type="number"
+              type="text"
               placeholder="Enter your Card Name"
-              // setData={setData}
-              // value={serie || ""}
+              setData={setData}
             />
             <RegisterFormPart>
-              <CustomInput
+              <DatePickerField
                 label="Expiration Date"
                 name="exp_date"
-                type="number"
-                placeholder="Enter your Expiration Date"
-                // setData={setData}
-                // value={serie || ""}
+                setData={setData}
               />
               <CustomInput
                 label="Card CVC"
                 name="cvc"
                 type="number"
                 placeholder="Enter your Card CVC"
-                // setData={setData}
-                // value={serie || ""}
+                setData={setData}
               />
             </RegisterFormPart>
             <CustomInput
@@ -67,12 +87,11 @@ function DepositsControlerCard() {
               name="amount"
               type="number"
               placeholder="Enter your Amount"
-              // setData={setData}
-              // value={serie || ""}
+              setData={setData}
             />
-          </div>
+          </FormContainerInputs>
           <BtnContainerSubmitControler>
-            <Button label="Deposit" size="xl" primary={true} />
+            <Button label="Action" size="xl" primary={true} type="submit" />
           </BtnContainerSubmitControler>
         </FormContainerDeposits>
       </Formik>

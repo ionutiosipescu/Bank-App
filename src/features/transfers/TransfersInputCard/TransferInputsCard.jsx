@@ -11,7 +11,7 @@ import {
 import Button from "./../../../components/UI/Button/Button";
 import Input from "./../../../components/UI/Input/Input";
 import { useSelector } from "react-redux";
-import { selectTransferHelper } from "./../../../state-management/Dashboard/services/transfersHelper/transferHelper.selector";
+import { selectTransferHelper } from "../../../state-management/Dashboard/services/helpers/transfersHelper/transferHelper.selector";
 
 function TransferInputsCard() {
   const selectedAccount = useSelector(selectTransferHelper);

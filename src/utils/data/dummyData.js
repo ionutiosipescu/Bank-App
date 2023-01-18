@@ -287,7 +287,7 @@ export const deposits = [
     amount: 33240,
     date: date.toLocaleDateString(),
     id: 123435567,
-    status_request: "Completed",
+    status_request: "Pending",
   },
 ];
 
