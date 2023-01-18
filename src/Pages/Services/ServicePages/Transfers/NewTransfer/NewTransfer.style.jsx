@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { device } from "../../utils/breakpoints/breakpoints";
+import { device } from "../../../../../utils/breakpoints/breakpoints";
 
 export const TransferWrapper = styled.div`
   display: flex;

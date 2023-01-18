@@ -1,9 +1,9 @@
 import React from "react";
 import { BsCashStack } from "react-icons/bs";
-import { CardHeader } from "../../components/TopCard/TopCard.style";
-import Button from "../../components/UI/Button/Button";
-import { ServiceViewCard } from "../../components/UI/Card/Card.style";
-import { ListItemSection } from "../../features/exchange/ExchangeList/ExchangeList.style";
+import { CardHeader } from "../../../../../components/TopCard/TopCard.style";
+import Button from "../../../../../components/UI/Button/Button";
+import { ServiceViewCard } from "../../../../../components/UI/Card/Card.style";
+import { ListItemSection } from "../../../../../features/exchange/ExchangeList/ExchangeList.style";
 import {
   AmountContainer,
   IdContainer,
@@ -11,15 +11,15 @@ import {
   ListContainer,
   ListIcon,
   ListItem,
-} from "../../features/savings/SavingsListCard/SavingsListCard.style";
-import { NewContainer } from "../Cards/Cards.style";
+} from "../../../../../features/savings/SavingsListCard/SavingsListCard.style";
+import { NewContainer } from "../../../../Cards/Cards.style";
 
-import { accounts } from "../../utils/data/dummyData";
-import LinkButton from "../../components/UI/LinkButton/LinkButton";
+import { accounts } from "../../../../../utils/data/dummyData";
+import LinkButton from "../../../../../components/UI/LinkButton/LinkButton";
 
 const data = accounts[0].savings;
 
-function TransfersView({ dataServices }) {
+function HisotryViewLoans({ dataServices }) {
   console.log(dataServices);
   return (
     <>
@@ -51,4 +51,4 @@ function TransfersView({ dataServices }) {
   );
 }
 
-export default TransfersView;
+export default HisotryViewLoans;

@@ -1,17 +1,17 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Service from "../Service/Service";
+// import Service from "../Service/Service";
 import ServicesNavigation from "../ServicesNavigation/ServicesNavigation";
 import ServiceHome from "../ServiceHome/ServiceHome";
-import Savings from "../Savings/Savings";
-import Exchange from "../Exchange/Exchange";
-import TransfersView from "../TransfersView/TransfersView";
-import Transfers from "../Transfers/Transfers";
-import NewTransfer from "../NewTransfer/NewTransfer";
-import Loan from "../Loan/Loan";
-import TransferViewControler from "../TransferViewControler/TransferViewControler";
-import LoansViewControler from "../LoansViewControler/LoansViewControler";
-import Deposit from "../Deposit/Deposit";
+import Savings from "../ServicePages/Savings/Savings";
+import Exchange from "../ServicePages/Exchange/Exchange";
+// import TransfersView from "../TransfersView/TransfersView";
+// import Transfers from "../Transfers/Transfers";
+// import NewTransfer from "../NewTransfer/NewTransfer";
+// import Loan from "../Loan/Loan";
+import TransferViewControler from "../ServicePages/Transfers/TransferViewControler/TransferViewControler";
+import LoansViewControler from "../ServicePages/Loan/LoansViewControler/LoansViewControler";
+import Deposit from "../ServicePages/Deposit/Deposit";
 
 function ServicesControler() {
   return (

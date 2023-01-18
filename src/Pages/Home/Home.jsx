@@ -8,13 +8,13 @@ import Cards from "../Cards/Cards";
 import NavBar from "./../../layouts/NavBar/NavBar";
 import Settings from "../../pages/Settings/Settings";
 import Profile from "./../Profile/Profile";
-import Savings from "./../Savings/Savings";
-import Loans from "../NewLoan/NewLoan";
-import Exchange from "../Exchange/Exchange";
-import Transfers from "./../Transfers/Transfers";
-import Deposit from "../Deposit/Deposit";
-import NewTransfer from "../NewTransfer/NewTransfer";
-import ServicesControler from "../ServicesControler/ServicesControler";
+// import Savings from "./../Savings/Savings";
+// import Loans from "../NewLoan/NewLoan";
+// import Exchange from "../Exchange/Exchange";
+// import Transfers from "./../Transfers/Transfers";
+// import Deposit from "../Deposit/Deposit";
+import NewTransfer from "../Services/ServicePages/Transfers/NewTransfer/NewTransfer";
+import ServicesControler from "../Services/ServicesControler/ServicesControler";
 
 function Home() {
   // Variable to set the active state of the Sidebar
