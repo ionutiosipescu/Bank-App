@@ -24,7 +24,7 @@ const currentAccount = accounts[0].transfers;
 function ExchangeList() {
   return (
     <ServiceCard>
-      <CardHeader style={{ height: "10%" }}>
+      <CardHeader>
         <h2>Exchanges</h2>
       </CardHeader>
       <ListContainer>
@@ -32,15 +32,13 @@ function ExchangeList() {
           <ListItem key={index}>
             <ListItemSection>
               <LabelContainer>
-                {transfer.from} to {transfer.to}
+                {transfer.from} &#8594; {transfer.to}
               </LabelContainer>
               <RateContainer>Rate: {transfer.rate}</RateContainer>
-              <AmountContainer>
-                <p>Transfered:</p> {transfer.amount}
-              </AmountContainer>
+              <AmountContainer>Sum: {transfer.amount}</AmountContainer>
               <DateContainer>{transfer.date}</DateContainer>
             </ListItemSection>
-            <Button label="Repeat" size="sm" primary={true} />
+            <Button label="Repeat" size="md" primary={true} />
           </ListItem>
         ))}
       </ListContainer>

@@ -1,21 +1,17 @@
 import styled from "styled-components";
+import { device } from "../../utils/breakpoints/breakpoints";
 
 export const TransferWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  height: 100vh;
+  height: calc(100vh - 100px);
   width: 100%;
-  padding: 30px 30px 30px 0;
-`;
-
-export const TransferBody = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-`;
-
-export const TransferInputWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin-top: 30px;
+  @media (${device.mobileS}) {
+    flex-direction: column-reverse;
+    padding: 10px 5px 0 10px;
+  }
+  @media (${device.laptopL}) {
+    flex-direction: row;
+    padding: 30px 30px 0px 10px;
+  }
 `;

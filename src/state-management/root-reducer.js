@@ -5,6 +5,7 @@ import { loginReducer } from "./Auth/loginUser/loginUser.reducer";
 import { registerHelperReducer } from "./Auth/registerhelper/registerhelper.reducer";
 import { userDataReducer } from "./Dashboard/userData/userData.reducer";
 import { loansDataReducer } from "./Dashboard/services/loans/loans.reducer";
+import { transferHelperReducer } from "./Dashboard/services/transfersHelper/transferHelper.reducer";
 
 export const rootReducer = combineReducers({
   login: loginReducer,
@@ -12,4 +13,5 @@ export const rootReducer = combineReducers({
   registerHelper: registerHelperReducer,
   currentUser: userDataReducer,
   loansDataStorage: loansDataReducer,
+  transferHelper: transferHelperReducer,
 });

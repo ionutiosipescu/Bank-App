@@ -11,7 +11,7 @@ export const Btn = styled.button`
   margin-bottom: 10px;
   border-radius: 50px;
   box-shadow: 0px 0px 12px -8px rgba(21, 20, 47, 0.8);
-  cursor: pointer;
+
   ${(props) =>
     props.size === "sm"
       ? sizeBtn.sm
@@ -28,6 +28,8 @@ export const Btn = styled.button`
     props.primary
       ? "background: var(--purple); color: var(--white);"
       : "background: var(--white); color: var(--purple);"}
+  ${(props) =>
+    props.disabled ? "opacity: 0.5; cursor: default;" : "cursor: pointer;"}
   &:hover {
     scale: 1.08;
     ${(props) =>

@@ -1,6 +1,24 @@
 import styled from "styled-components";
 import { device } from "../../../utils/breakpoints/breakpoints";
 
+export const ExchangeInputContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  margin: 50px 0;
+  /* Media queries */
+  @media (${device.mobileS}) {
+    margin: 10px 0 0 0;
+    height: 85%;
+  }
+  @media (${device.desktop}) {
+    height: 60%;
+  }
+`;
+
 export const InfoSection = styled.div`
   display: flex;
   justify-content: space-around;
@@ -26,14 +44,5 @@ export const InfoSection = styled.div`
     flex-direction: row;
     height: 200px;
     margin-bottom: 20px;
-  }
-`;
-
-export const ExchangeInputContainer = styled.div`
-  height: fit-content !important;
-  margin: 50px 0 100px 0 !important;
-  /* Media queries */
-  @media (${device.mobileS}) {
-    margin: 10px 0 0 0 !important;
   }
 `;

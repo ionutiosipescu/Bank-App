@@ -70,6 +70,7 @@ function Home() {
           <Route path="transfers" element={<Transfers />} />
           <Route path="deposit" element={<Deposit />} />
           <Route path="newtransfer" element={<NewTransfer />} /> */}
+          <Route path="newtransfer" element={<NewTransfer />} />
         </Routes>
       </HomeContainer>
     </HomeWrapper>

@@ -16,6 +16,7 @@ function ServicesNavigation() {
             size="xl"
             primary
             key={index}
+            git
           />
         ))}
       </ButtonWrapper>
