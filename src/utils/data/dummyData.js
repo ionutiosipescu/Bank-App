@@ -251,6 +251,37 @@ const outcomeDataRaw = [
   { id: 5, item: "Utils", amount: 812, color: "#ff4a55" },
 ];
 
+export const deposits = [
+  {
+    status: "windraw",
+    amount: 1000,
+    date: date.toLocaleDateString(),
+    id: 123435567,
+    status_request: "Completed",
+  },
+  {
+    status: "deposit",
+    amount: 30540,
+    date: date.toLocaleDateString(),
+    id: 123435567,
+    status_request: "Canceled",
+  },
+  {
+    status: "windraw",
+    amount: 300,
+    date: date.toLocaleDateString(),
+    id: 123435567,
+    status_request: "Completed",
+  },
+  {
+    status: "windraw",
+    amount: 33240,
+    date: date.toLocaleDateString(),
+    id: 123435567,
+    status_request: "Completed",
+  },
+];
+
 function calculatePercentages(objects) {
   // Calculate the sum of all the amount properties
   const sum = objects.reduce((acc, obj) => acc + obj.amount, 0);

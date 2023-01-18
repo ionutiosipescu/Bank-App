@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { deviceMax } from "../../../utils/breakpoints/breakpoints";
 import { device } from "../../../utils/breakpoints/breakpoints";
+import { css } from "styled-components";
 
 export const ListContainer = styled.div`
   display: flex;
@@ -94,4 +95,39 @@ export const IdContainer = styled.h3`
   @media (max-width: 800px) {
     display: none;
   }
+`;
+
+const LabelListStyle = css`
+  font-family: "Heebo", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.025rem;
+  font-style: normal;
+  border-radius: 1.25rem;
+  padding: 0.35rem 0.75rem;
+  box-shadow: 0px 1px 3px 1px rgba(51, 51, 51, 0.43);
+  width: 100px;
+  text-align: center;
+`;
+
+export const LabelListCompleted = styled.label`
+  ${LabelListStyle}
+  color: var(--green);
+  background-color: var(--green-light);
+`;
+
+export const LabelListCanceled = styled.label`
+  ${LabelListStyle}
+  color: var(--red);
+  background-color: var(--red-light);
+`;
+
+export const LabelListPending = styled.label`
+  ${LabelListStyle}
+  color: var(--gray-dark);
+  background-color: var(--gray-light);
+`;
+
+export const IdList = styled.p`
+  color: var(--purple);
 `;

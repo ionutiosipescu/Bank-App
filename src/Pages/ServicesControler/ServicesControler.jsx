@@ -10,7 +10,6 @@ function ServicesControler() {
     <Routes>
       <Route path="/" element={<ServicesNavigation />}>
         <Route index element={<ServiceHome />} />
-        {/* <Route path="savings" element={<Savings />}></Route> */}
         <Route path=":service" element={<Service />} />
       </Route>
     </Routes>
@@ -18,15 +17,3 @@ function ServicesControler() {
 }
 
 export default ServicesControler;
-
-// trebuie refacut ServicesControler dupa modelul de jos
-{
-  /* <Routes>
-<Route path="/" element={<Navigation />}>
-  <Route index element={<Home />} />
-  <Route path="shop/*" element={<Shop />} />
-  <Route path="auth" element={<Authentication />} />
-  <Route path="checkout" element={<Checkout />} />
-</Route>
-</Routes> */
-}
