@@ -90,6 +90,18 @@ export const CardHeader = styled.div`
   }
 `;
 
+export const ServiceViewCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: calc(100% - 60px);
+  height: 85vh;
+  border-radius: 40px;
+  padding: 30px 20px;
+  background-color: var(--white);
+  box-shadow: 0px 0px 15px -8px rgba(21, 20, 47, 0.73);
+`;
+
 export const ServiceCard = styled.div`
   display: flex;
   flex-direction: column;
