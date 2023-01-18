@@ -175,3 +175,141 @@ export const ServiceInputsCard = styled.div`
     }
   }
 `;
+
+// refactor please separate div style!
+export const ServiceInputsCardLoans = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  aspect-ratio: 3/4;
+  border-radius: 40px;
+  padding: 30px 40px;
+  background-color: var(--white);
+  box-shadow: 0px 0px 15px -8px rgba(21, 20, 47, 0.73);
+  /* Media */
+  @media (${device.mobileS}) {
+    width: 100%;
+    height: 80vh;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  @media (${device.mobileL}) {
+    ${(props) =>
+      props.type === "exchange"
+        ? "height: 90vh;"
+        : props.type === "savings"
+        ? "height: 80vh;"
+        : "height: 90vh;"}
+    & > div {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  @media (${device.tablet}) {
+    ${(props) =>
+      props.type === "exchange"
+        ? "height: 70vh;"
+        : props.type === "savings"
+        ? "height: 60vh;"
+        : "height: 90vh;"}
+  }
+  @media (${device.laptop}) {
+    width: 100%;
+    height: 70vh;
+    align-items: flex-start;
+    & > a:last-of-type {
+      align-self: flex-end;
+    }
+  }
+  @media (${device.laptopL}) {
+    width: 33%;
+    height: 85vh;
+    margin-bottom: 0;
+    align-items: center;
+    & > a:last-of-type {
+      align-self: center;
+    }
+  }
+  @media (${device.desktop}) {
+    width: calc(40% - 20px);
+    height: 85vh;
+    margin-bottom: 0;
+    align-items: center;
+    & > a:last-of-type {
+      align-self: center;
+    }
+  }
+`;
+
+// refactor also here please separate div style!
+export const ServiceInputsCardDeposit = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  aspect-ratio: 3/4;
+  border-radius: 40px;
+  padding: 30px 40px;
+  background-color: var(--white);
+  box-shadow: 0px 0px 15px -8px rgba(21, 20, 47, 0.73);
+  /* Media */
+  @media (${device.mobileS}) {
+    width: 100%;
+    height: 80vh;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  @media (${device.mobileL}) {
+    ${(props) =>
+      props.type === "exchange"
+        ? "height: 90vh;"
+        : props.type === "savings"
+        ? "height: 80vh;"
+        : "height: 90vh;"}
+    & > div {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: center;
+      width: 100%;
+      height: auto;
+    }
+  }
+  @media (${device.tablet}) {
+    ${(props) =>
+      props.type === "exchange"
+        ? "height: 70vh;"
+        : props.type === "savings"
+        ? "height: 60vh;"
+        : "height: 90vh;"}
+  }
+  @media (${device.laptop}) {
+    width: 100%;
+    height: 70vh;
+    align-items: flex-start;
+    & > a:last-of-type {
+      align-self: flex-end;
+    }
+  }
+  @media (${device.laptopL}) {
+    width: 33%;
+    height: 85vh;
+    margin-bottom: 0;
+    align-items: center;
+    & > a:last-of-type {
+      align-self: center;
+    }
+  }
+  @media (${device.desktop}) {
+    width: calc(40% - 20px);
+    height: 85vh;
+    margin-bottom: 0;
+    align-items: center;
+    & > a:last-of-type {
+      align-self: center;
+    }
+  }
+`;

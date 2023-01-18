@@ -84,7 +84,7 @@ export const RadioPlanContainer = styled.div`
 
 // shared style
 const InputStyle = css`
-  height: 35px;
+  height: ${(props) => (props.tall ? "60px" : "35px")};
   border: 1px solid var(--purple);
   border-radius: 30px;
   padding: 0 12px 0 10px;
@@ -117,7 +117,7 @@ export const InputForm = styled.input`
 
 export const InputSelect = styled.select`
   ${InputStyle}
-  width: ${(props) => (props.small ? "200px" : "310px")};
+  width: ${(props) => (props.small ? "200px" : "100%")};
   margin-bottom: 10px;
 `;
 

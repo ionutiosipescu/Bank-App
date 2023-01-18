@@ -35,6 +35,15 @@ export const InputWrapper = styled.div`
   margin: 50px 0;
 `;
 
+export const InputWrapperLoans = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: calc(100% - 20px);
+  width: 100%;
+  margin-top: 0px;
+`;
+
 export const InputCardSection = styled.div`
   display: flex;
   flex-direction: column;

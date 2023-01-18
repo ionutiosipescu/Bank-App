@@ -9,7 +9,7 @@ import NavBar from "./../../layouts/NavBar/NavBar";
 import Settings from "../../pages/Settings/Settings";
 import Profile from "./../Profile/Profile";
 import Savings from "./../Savings/Savings";
-import Loans from "../Loans/Loans";
+import Loans from "../NewLoan/NewLoan";
 import Exchange from "../Exchange/Exchange";
 import Transfers from "./../Transfers/Transfers";
 import Deposit from "../Deposit/Deposit";

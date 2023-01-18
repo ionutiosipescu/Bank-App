@@ -22,6 +22,13 @@ function PersonalForm() {
     { key: "Male", value: "male" },
     { key: "Female", value: "female" },
   ];
+  const countries = [
+    { key: "", value: "Select a country" },
+    { key: "romania", value: "Romania" },
+    { key: "italia", value: "Italia" },
+    { key: "spania", value: "Spania" },
+    { key: "germania", value: "Germania" },
+  ];
   const dispatch = useDispatch();
   const registerData = useSelector(selectRegisterUser);
   const { firstname, lastname, country, address } = registerData; // destructure data from Redux for updating on every keypress
@@ -67,11 +74,11 @@ function PersonalForm() {
               setData={setData}
               value={country || ""}
             >
-              <option value="">Select a country</option>
-              <option value="romania">Romania</option>
-              <option value="italia">Italia</option>
-              <option value="spania">Spania</option>
-              <option value="germania">Germania</option>
+              {countries.map((option, index) => (
+                <option value={option.key} key={index}>
+                  {option.value}
+                </option>
+              ))}
             </CustomSelect>
             <CustomInput
               label="Address"

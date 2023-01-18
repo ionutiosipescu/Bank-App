@@ -3,8 +3,9 @@ import { useParams } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
 import Savings from "../Savings/Savings";
 import Exchange from "../Exchange/Exchange";
-import Loans from "../Loans/Loans";
+import Loans from "../NewLoan/NewLoan";
 import TransfersView from "../TransfersView/TransfersView";
+import Deposit from "../Deposit/Deposit";
 
 function Service() {
   const { service } = useParams();
@@ -23,6 +24,7 @@ function Service() {
         break;
       case "deposit":
         setCurrentPage(<TransfersView />);
+        setCurrentPage(<Deposit />);
         break;
       default:
         setCurrentPage(<></>);

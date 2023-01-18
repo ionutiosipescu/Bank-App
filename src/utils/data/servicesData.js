@@ -25,5 +25,5 @@ export const services = [
     path: "deposit",
     icon: <BsArrowBarDown size={iconSize} />,
   },
-  { label: "Loans", path: "loans", icon: <BsCoin size={iconSize} /> },
+  { label: "Loans", path: "loan", icon: <BsCoin size={iconSize} /> },
 ];

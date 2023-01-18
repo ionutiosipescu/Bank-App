@@ -7,9 +7,11 @@ import Savings from "../Savings/Savings";
 import Exchange from "../Exchange/Exchange";
 import TransfersView from "../TransfersView/TransfersView";
 import Transfers from "../Transfers/Transfers";
-import Loans from "../Loans/Loans";
 import NewTransfer from "../NewTransfer/NewTransfer";
+import Loan from "../Loan/Loan";
 import TransferViewControler from "../TransferViewControler/TransferViewControler";
+import LoansViewControler from "../LoansViewControler/LoansViewControler";
+import Deposit from "../Deposit/Deposit";
 
 function ServicesControler() {
   return (
@@ -18,8 +20,9 @@ function ServicesControler() {
         <Route index element={<ServiceHome />} />
         <Route path="savings" element={<Savings />}></Route>
         <Route path="exchange" element={<Exchange />}></Route>
-        <Route path="loans" element={<Loans />}></Route>
+        <Route path="deposit" element={<Deposit />}></Route>
         <Route path="transfers/*" element={<TransferViewControler />}></Route>
+        <Route path="loan/*" element={<LoansViewControler />}></Route>
         {/* <Route path="serviceview/*" element={<TransfersView />}></Route> */}
         {/* <Route path=":service" element={<Service />} /> */}
       </Route>
@@ -28,15 +31,3 @@ function ServicesControler() {
 }
 
 export default ServicesControler;
-
-// trebuie refacut ServicesControler dupa modelul de jos
-{
-  /* <Routes>
-<Route path="/" element={<Navigation />}>
-  <Route index element={<Home />} />
-  <Route path="shop/*" element={<Shop />} />
-  <Route path="auth" element={<Authentication />} />
-  <Route path="checkout" element={<Checkout />} />
-</Route>
-</Routes> */
-}

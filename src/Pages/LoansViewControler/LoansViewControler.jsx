@@ -1,18 +1,18 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import TransfersView from "../TransfersView/TransfersView";
-import Loans from "../NewLoan/NewLoan";
 import NewTransfer from "../NewTransfer/NewTransfer";
 import Transfers from "../Transfers/Transfers";
 import NewLoan from "../NewLoan/NewLoan";
+import Loan from "../Loan/Loan";
 
-function TransferViewControler() {
+function LoansViewControler() {
   return (
     <Routes>
-      <Route index element={<Transfers />} />
-      <Route path="newtransfer" element={<NewTransfer />}></Route>
+      <Route index element={<Loan />} />
+      <Route path="newloan" element={<NewLoan />}></Route>
     </Routes>
   );
 }
 
-export default TransferViewControler;
+export default LoansViewControler;

@@ -15,7 +15,7 @@ export const transfersArr = {
   path: "newtransfer",
 };
 export const loansArr = {
-  path: "loansnested",
+  path: "newloan",
 };
 
 export const accounts = [
@@ -258,6 +258,37 @@ const outcomeDataRaw = [
   { id: 3, item: "Subcribtions", amount: 610, color: "#ffb74a" },
   { id: 4, item: "Tax", amount: 2912, color: "#00a389" },
   { id: 5, item: "Utils", amount: 812, color: "#ff4a55" },
+];
+
+export const deposits = [
+  {
+    status: "windraw",
+    amount: 1000,
+    date: date.toLocaleDateString(),
+    id: 123435567,
+    status_request: "Completed",
+  },
+  {
+    status: "deposit",
+    amount: 30540,
+    date: date.toLocaleDateString(),
+    id: 123435567,
+    status_request: "Canceled",
+  },
+  {
+    status: "windraw",
+    amount: 300,
+    date: date.toLocaleDateString(),
+    id: 123435567,
+    status_request: "Completed",
+  },
+  {
+    status: "windraw",
+    amount: 33240,
+    date: date.toLocaleDateString(),
+    id: 123435567,
+    status_request: "Completed",
+  },
 ];
 
 function calculatePercentages(objects) {
