@@ -1,4 +1,11 @@
-import avatar from "../../assets/images/avatar.png";
+// import avatar from "../../assets/images/avatar.png";
+const avatar_1 = "https://source.unsplash.com/random/profile";
+const avatar_2 = "https://source.unsplash.com/random/yellow";
+const avatar_3 = "https://source.unsplash.com/random/green";
+const avatar_4 = "https://source.unsplash.com/random/blue";
+const avatar_5 = "https://source.unsplash.com/random/red";
+const avatar_6 = "https://source.unsplash.com/random/flower";
+const avatar_7 = "https://source.unsplash.com/random/city";
 
 const date = new Date();
 
@@ -8,7 +15,7 @@ export const accounts = [
   {
     owner: "Alex Aandonesei",
     email: "alexaandonesei@email.com",
-    image: avatar,
+    image: avatar_1,
     pin: 1111,
     balance: "€ 12,345.67",
     validity: "09/26",
@@ -24,11 +31,6 @@ export const accounts = [
       { label: "Healthcare", amount: 50122, id: 123 },
       { label: "Investment", amount: 345, id: 127 },
       { label: "Healthcare", amount: 23434, id: 123 },
-      { label: "Investment", amount: 522, id: 127 },
-      { label: "Investment", amount: 345, id: 127 },
-      { label: "Healthcare", amount: 23434, id: 123 },
-      { label: "Investment", amount: 522, id: 127 },
-      { label: "Investment", amount: 522, id: 127 },
     ],
     transfers: [
       {
@@ -116,7 +118,7 @@ export const accounts = [
   {
     owner: "Radu Stan",
     email: "radu@email.com",
-    image: avatar,
+    image: avatar_2,
     pin: 3333,
     balance: "$ 2,334.71",
     validity: "04/26",
@@ -128,7 +130,7 @@ export const accounts = [
   {
     owner: "Ionut Iosipescu",
     email: "ionut@email.com",
-    image: avatar,
+    image: avatar_3,
     pin: 2222,
     balance: "$ 345.67",
     validity: "09/25",
@@ -140,7 +142,7 @@ export const accounts = [
   {
     owner: "Andrei Iulian",
     email: "andrei@email.com",
-    image: avatar,
+    image: avatar_4,
     pin: 2222,
     balance: "$ 345.67",
     validity: "09/25",
@@ -152,7 +154,7 @@ export const accounts = [
   {
     owner: "Mihai Popovici",
     email: "mihai@email.com",
-    image: avatar,
+    image: avatar_5,
     pin: 2222,
     balance: "$ 345.67",
     validity: "09/25",
@@ -164,7 +166,7 @@ export const accounts = [
   {
     owner: "Alexandra Cosmina",
     email: "alexandra@email.com",
-    image: avatar,
+    image: avatar_6,
     pin: 2222,
     balance: "$ 345.67",
     validity: "09/25",
@@ -176,7 +178,7 @@ export const accounts = [
   {
     owner: "Iulia Adriana",
     email: "alexandra@email.com",
-    image: avatar,
+    image: avatar_7,
     pin: 2222,
     balance: "$ 345.67",
     validity: "09/25",
@@ -188,7 +190,7 @@ export const accounts = [
   {
     owner: "Ecaterina Mercedesa",
     email: "alexandra@email.com",
-    image: avatar,
+    image: avatar_1,
     pin: 2222,
     balance: "$ 345.67",
     validity: "09/25",

@@ -67,8 +67,9 @@ export const CardContainer = styled.div`
 export const CardHeader = styled.div`
   display: flex;
   width: 100%;
+  height: fit-content;
   z-index: 2;
-  margin-bottom: 20px;
+  margin: 0 0 0 20px;
   ${(props) =>
     props.flex === "row"
       ? "flex-direction: row; align-items: center;"
@@ -95,7 +96,6 @@ export const ServiceCard = styled.div`
   align-items: center;
   width: calc(60% - 20px);
   height: 85vh;
-  aspect-ratio: 5/4;
   border-radius: 40px;
   padding: 30px 40px;
   background-color: var(--white);
@@ -114,7 +114,7 @@ export const ServiceCard = styled.div`
     }
   }
   @media (max-width: 400px) {
-    height: 110vh;
+    height: fit-content;
   }
 `;
 
@@ -122,54 +122,23 @@ export const ServiceInputsCard = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  aspect-ratio: 3/4;
   border-radius: 40px;
-  padding: 30px 40px;
   background-color: var(--white);
   box-shadow: 0px 0px 15px -8px rgba(21, 20, 47, 0.73);
-  & > div {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 90%;
-    margin-top: 50px;
-  }
   /* Media */
   @media (${device.mobileS}) {
     width: 100%;
-    height: 80vh;
+    height: fit-content;
     align-items: center;
     margin-bottom: 30px;
+    padding: 20px 20px;
   }
-  @media (${device.mobileL}) {
-    ${(props) =>
-      props.type === "exchange"
-        ? "height: 90vh;"
-        : props.type === "savings"
-        ? "height: 80vh;"
-        : "height: 90vh;"}
-    & > div {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-      width: 100%;
-      height: 100%;
-    }
-  }
+
   @media (${device.tablet}) {
-    ${(props) =>
-      props.type === "exchange"
-        ? "height: 70vh;"
-        : props.type === "savings"
-        ? "height: 60vh;"
-        : "height: 90vh;"}
+    padding: 30px 40px;
   }
   @media (${device.laptop}) {
     width: 100%;
-    height: 70vh;
     align-items: flex-start;
     & > a:last-of-type {
       align-self: flex-end;
@@ -182,9 +151,6 @@ export const ServiceInputsCard = styled.div`
     align-items: center;
     & > a:last-of-type {
       align-self: center;
-    }
-    & > div {
-      margin-top: 100px;
     }
   }
   @media (${device.desktop}) {

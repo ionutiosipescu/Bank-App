@@ -18,7 +18,7 @@ function SavingsInputCard() {
           <Input label="Saving Target" type="text" large />
           <Input label="First Top-up" type="number" large />
         </InputContainer>
-        <Button label="Add Saving" size="md" primary={true} />
+        <Button label="Add Saving" size="xl" primary={true} />
       </InputWrapper>
     </ServiceInputsCard>
   );

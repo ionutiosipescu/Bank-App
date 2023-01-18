@@ -46,12 +46,12 @@ function FormLogIn() {
   }, [isSubmitting]);
 
   // restore localStorage
-  useEffect(() => {
-    if (localStorage.getItem("persist:root") !== null) {
-      localStorage.removeItem("persist:root");
-      window.location.reload();
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (localStorage.getItem("persist:root") !== null) {
+  //     localStorage.removeItem("persist:root");
+  //     window.location.reload();
+  //   }
+  // }, []);
 
   const initialObject = {
     username: "",

@@ -9,11 +9,13 @@ import {
   LabelContainer,
   AmountContainer,
   IdContainer,
+  ListIcon,
 } from "./SavingsListCard.style";
 
 import { BsCashStack } from "react-icons/bs";
 
 import { accounts } from "../../../utils/data/dummyData";
+import { ListItemSection } from "../../exchange/ExchangeList/ExchangeList.style";
 
 const data = accounts[0].savings;
 
@@ -26,22 +28,16 @@ function SavingsListCard() {
       <ListContainer>
         {data.map((saving, id) => (
           <ListItem key={id}>
-            <div>
-              <Icon>
+            <ListItemSection>
+              <ListIcon>
                 <BsCashStack />
-              </Icon>
+              </ListIcon>
               <LabelContainer>{saving.label}</LabelContainer>
-              <AmountContainer>
-                <p>Saved:</p> {saving.amount}
-              </AmountContainer>
-            </div>
-            {/* <div> */}
-            {/* <IdContainer>ID {saving.id}</IdContainer> */}
-            {/* </div> */}
-            <div>
-              <Button label="Top-Up" size="sm" primary={true} />
-              <Button label="Withdraw" size="sm" />
-            </div>
+              <AmountContainer>Sum: {saving.amount}</AmountContainer>
+              <IdContainer>ID {saving.id}</IdContainer>
+            </ListItemSection>
+            <Button label="Top-Up" size="sm" primary={true} />
+            <Button label="Withdraw" size="sm" />
           </ListItem>
         ))}
       </ListContainer>

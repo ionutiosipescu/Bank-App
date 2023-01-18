@@ -13,7 +13,7 @@ export const NavBtnContainer = styled.div`
     transition: 0.3s;
   }
   & * {
-    opacity: 1 !important;
+    opacity: 1;
   }`
       : ""}
 `;
