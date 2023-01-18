@@ -15,13 +15,17 @@ import {
 import { NewContainer } from "../Cards/Cards.style";
 
 import { accounts } from "../../utils/data/dummyData";
+import LinkButton from "../../components/UI/LinkButton/LinkButton";
 
 const data = accounts[0].savings;
 
-function TransfersView() {
+function TransfersView({ dataServices }) {
+  console.log(dataServices);
   return (
     <>
-      <NewContainer />
+      <NewContainer>
+        <LinkButton to={dataServices.path}>new Transfer</LinkButton>
+      </NewContainer>
       <ServiceViewCard>
         <CardHeader style={{ height: "10%" }}>
           <h2>Savings</h2>

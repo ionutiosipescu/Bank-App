@@ -11,6 +11,13 @@ const date = new Date();
 
 export const euroRate = 4.98;
 
+export const transfersArr = {
+  path: "newtransfer",
+};
+export const loansArr = {
+  path: "loansnested",
+};
+
 export const accounts = [
   {
     owner: "Alex Aandonesei",

@@ -64,12 +64,6 @@ function Home() {
           <Route path="settings" element={<Settings />} />
           <Route path="profile" element={<Profile />} />
           <Route path="services/*" element={<ServicesControler />} />
-          {/* <Route path="savings" element={<Savings />} />
-          <Route path="loans" element={<Loans />} />
-          <Route path="exchange" element={<Exchange />} />
-          <Route path="transfers" element={<Transfers />} />
-          <Route path="deposit" element={<Deposit />} />
-          <Route path="newtransfer" element={<NewTransfer />} /> */}
           <Route path="newtransfer" element={<NewTransfer />} />
         </Routes>
       </HomeContainer>
