@@ -17,9 +17,11 @@ export const depositHelperReducer = (state = INITIAL_STATE, action) => {
 
   switch (type) {
     case DEPOSITS_HELPER_TYPES.SET_DEPOSIT_ACTION:
-      return { ...state, depositsAction: payload };
+      return { ...state, depositAction: payload };
     case DEPOSITS_HELPER_TYPES.SET_DEPOSIT_FORM:
       return { ...state, depositObj: { ...payload } };
+    case DEPOSITS_HELPER_TYPES.SET_DEPOSIT_ARR:
+      return { ...state, depositArr: [...payload] };
     default:
       return state;
   }

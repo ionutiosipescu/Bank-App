@@ -23,27 +23,28 @@ import LabelAction from "../../../components/UI/LabelAction/LabelAction";
 
 import Button from "../../../components/UI/Button/Button";
 
-import { deposits } from "../../../utils/data/dummyData";
+// import { deposits } from "../../../utils/data/dummyData";
+import { useSelector } from "react-redux";
+import { selectDepositArr } from "../../../state-management/Dashboard/services/helpers/depositsHelper/deposits.selector";
 
 function DepositsListCard() {
+  const depositHistory = useSelector(selectDepositArr);
   return (
     <ServiceCard>
       <CardHeader style={{ height: "10%" }}>
         <h2>List Actions</h2>
       </CardHeader>
       <ListContainer>
-        {deposits.map((transfer, index) => (
+        {depositHistory.map((transfer, index) => (
           <ListItem key={index}>
             <ListItemSection>
-              <LabelAction action={transfer.status}>
-                {transfer.status}
+              <LabelAction action={transfer.action}>
+                {transfer.action}
               </LabelAction>
               <IdList> #{transfer.id}</IdList>
               <AmountContainer>{transfer.amount}</AmountContainer>
-              <DateContainer>{transfer.date}</DateContainer>
-              <LabelList status={transfer.status_request}>
-                {transfer.status_request}
-              </LabelList>
+              <DateContainer>{transfer.created_at}</DateContainer>
+              <LabelList status={transfer.status}>{transfer.status}</LabelList>
             </ListItemSection>
             <Button label="Repeat" size="sm" primary={true} />
           </ListItem>

@@ -24,18 +24,25 @@ import { setDepositForm } from "../../../state-management/Dashboard/services/hel
 import { debounce } from "debounce";
 import { depositSchema } from "../ValidationSchema/ValidationSchemaDeposit";
 import DatePickerField from "../../../components/CustomInputs/CustomDatePicker";
+import { setDepositArr } from "../../../state-management/Dashboard/services/helpers/depositsHelper/depositsHelper.action";
+import { selectDepositArr } from "../../../state-management/Dashboard/services/helpers/depositsHelper/deposits.selector";
 
 function DepositsControlerCard() {
   const dispatch = useDispatch();
   const depositAction = useSelector(selectDepositAction);
   const depositFormData = useSelector(selectDepositForm);
+  const depositArr = useSelector(selectDepositArr);
 
   const setData = debounce((e) => {
     dispatch(setDepositForm(depositFormData, e));
   }, 500);
 
   const onSubmit = () => {
-    console.log(depositFormData);
+    dispatch(setDepositArr(depositAction, depositFormData, depositArr));
+  };
+
+  const handleDepositAction = (type) => {
+    dispatch(setDepositAction(type));
   };
 
   return (
@@ -50,8 +57,19 @@ function DepositsControlerCard() {
       >
         <FormContainerDeposits>
           <BtnContainerControler>
-            <Button label="Deposit" size="xl" primary={true} />
-            <Button label="Windraw" size="xl" />
+            <Button
+              label="Deposit"
+              size="xl"
+              primary={true}
+              type="button"
+              onClick={() => handleDepositAction("Deposit")}
+            />
+            <Button
+              label="Windraw"
+              size="xl"
+              type="button"
+              onClick={() => handleDepositAction("Windraw")}
+            />
           </BtnContainerControler>
           <FormContainerInputs>
             <CustomInput
