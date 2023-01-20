@@ -21,7 +21,6 @@ export const fetchLoginData = (url, registerData) => {
         data: { tokenType, accessToken, id },
       } = await axios.post(url, registerData);
       console.log(tokenType, accessToken, id);
-
       await dispatch(postLoginStart());
       // Use the token type and access token in the second request
       const { data } = await axios.post(
@@ -34,6 +33,7 @@ export const fetchLoginData = (url, registerData) => {
         }
       );
       if (!data) return;
+      console.log(data);
       await dispatch(setCurrentUser(data));
       await dispatch(postLoginSuccess());
     } catch (error) {

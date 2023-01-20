@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Form } from "formik";
 
 export const InputContainer = styled.div`
   display: flex;
@@ -50,4 +51,21 @@ export const InputCardSection = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+`;
+
+export const SavingFormContainer = styled(Form)`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 85%;
+  margin: 50px 0;
+`;
+export const SavingInputsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 40px;
+  margin-top: 50px;
 `;

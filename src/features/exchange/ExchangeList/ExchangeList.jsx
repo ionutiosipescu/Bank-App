@@ -14,26 +14,22 @@ import {
   ListItemSection,
   RateContainer,
 } from "./ExchangeList.style";
-
 import Button from "../../../components/UI/Button/Button";
-
-import { accounts } from "../../../utils/data/dummyData";
-
-const currentAccount = accounts[0].transfers;
+import { useSelector } from "react-redux";
+import { selectExchangeArr } from "../../../state-management/Dashboard/services/helpers/exchangeHelper/exchangeHelper.selector";
 
 function ExchangeList() {
+  const exchangeArr = useSelector(selectExchangeArr);
   return (
     <ServiceCard>
       <CardHeader>
         <h2>Exchanges</h2>
       </CardHeader>
       <ListContainer>
-        {currentAccount.map((transfer, index) => (
+        {exchangeArr.map((transfer, index) => (
           <ListItem key={index}>
             <ListItemSection>
-              <LabelContainer>
-                {transfer.from} &#8594; {transfer.to}
-              </LabelContainer>
+              <LabelContainer>{transfer.detail}</LabelContainer>
               <RateContainer>Rate: {transfer.rate}</RateContainer>
               <AmountContainer>Sum: {transfer.amount}</AmountContainer>
               <DateContainer>{transfer.date}</DateContainer>

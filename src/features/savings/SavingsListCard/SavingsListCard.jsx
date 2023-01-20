@@ -16,24 +16,26 @@ import { BsCashStack } from "react-icons/bs";
 
 import { accounts } from "../../../utils/data/dummyData";
 import { ListItemSection } from "../../exchange/ExchangeList/ExchangeList.style";
-
+import { useSelector } from "react-redux";
+import { selectSavingArr } from "../../../state-management/Dashboard/services/helpers/savingsHelper/savingsHelper.selector";
 const data = accounts[0].savings;
 
 function SavingsListCard() {
+  const savingData = useSelector(selectSavingArr);
   return (
     <ServiceCard>
       <CardHeader style={{ height: "10%" }}>
         <h2>Savings</h2>
       </CardHeader>
       <ListContainer>
-        {data.map((saving, id) => (
+        {savingData.map((saving, id) => (
           <ListItem key={id}>
             <ListItemSection>
               <ListIcon>
                 <BsCashStack />
               </ListIcon>
-              <LabelContainer>{saving.label}</LabelContainer>
-              <AmountContainer>Sum: {saving.amount}</AmountContainer>
+              <LabelContainer>{saving.details}</LabelContainer>
+              <AmountContainer>Sum: {saving.transfer}</AmountContainer>
               <IdContainer>ID {saving.id}</IdContainer>
             </ListItemSection>
             <Button label="Top-Up" size="sm" primary={true} />
