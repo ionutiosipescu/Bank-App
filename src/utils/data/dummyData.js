@@ -9,8 +9,6 @@ const avatar_7 = "https://source.unsplash.com/random/city";
 
 const date = new Date();
 
-export const euroRate = 5.23;
-
 export const transfersArr = {
   path: "newtransfer",
 };
@@ -308,5 +306,5 @@ export const outcomeData = calculatePercentages(outcomeDataRaw);
 
 export const exchangeRates = {
   eur: 1,
-  ron: 4.936653,
+  ron: 5.23,
 };

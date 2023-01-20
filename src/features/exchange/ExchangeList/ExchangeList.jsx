@@ -19,6 +19,7 @@ import { useSelector } from "react-redux";
 import { selectExchangeArr } from "../../../state-management/Dashboard/services/helpers/exchangeHelper/exchangeHelper.selector";
 
 function ExchangeList() {
+  // transfer.amountToObj = amount converted
   const exchangeArr = useSelector(selectExchangeArr);
   return (
     <ServiceCard>

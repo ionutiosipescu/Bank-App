@@ -4,6 +4,7 @@ const INITIAL_STATE = {
   exchangeData: {
     amount: "",
     currency: "ron",
+    amountToObj: "",
   },
   exchangeArr: [],
 };

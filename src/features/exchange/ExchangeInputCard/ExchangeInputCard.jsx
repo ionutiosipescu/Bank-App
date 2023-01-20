@@ -18,6 +18,7 @@ import { ErrorMsg } from "../../../components/Errors/Auth/ErrorMsg.style";
 import { selectExchangeArr } from "../../../state-management/Dashboard/services/helpers/exchangeHelper/exchangeHelper.selector";
 import { fetchExchangeData } from "../../../state-management/Dashboard/services/helpers/exchangeHelper/exchangeHelper.action";
 import { selectCurrentUser } from "../../../state-management/Dashboard/userData/userData.selector";
+import { setExchangeAmountTo } from "../../../state-management/Dashboard/services/helpers/exchangeHelper/exchangeHelper.action";
 
 function ExchangeInputCard() {
   const dispatch = useDispatch();
@@ -49,10 +50,7 @@ function ExchangeInputCard() {
   };
 
   useEffect(() => {
-    // nu functioneaza ambele functii, doar cea care sta mai aproape de useEffect
-    // cauza este ca ambele functii modifica multiple valori
     handleAmount1Change(amount1);
-    handleAmount2Change(amount2);
   }, [currency1, currency2]);
 
   function format(number) {
@@ -70,21 +68,6 @@ function ExchangeInputCard() {
     setCurrency1(currency1);
   }
 
-  function handleAmount2Change(amount2) {
-    setAmount1(format((amount2 * rates[currency1]) / rates[currency2]));
-    setAmount2(amount2);
-  }
-
-  function handleCurrency2Change(currency2) {
-    currency2 === "eur" ? setCurrency1("ron") : setCurrency1("eur");
-    setAmount1(format((amount2 * rates[currency1]) / rates[currency2]));
-    setCurrency2(currency2);
-  }
-
-  // const handleSubmit = () => {
-  //   console.log(excangeData);
-  // };
-
   return (
     <ServiceInputsCard type="exchange">
       <h2>New Exchange</h2>
@@ -98,6 +81,7 @@ function ExchangeInputCard() {
               setErrorMsg("Invalid Amount");
             } else {
               setErrorMsg("");
+              dispatch(setExchangeAmountTo(excangeData, amount2));
               dispatch(
                 fetchExchangeData(excangeData, exchangeArr, currentUser)
               );
@@ -121,13 +105,17 @@ function ExchangeInputCard() {
             {/* <InfoSection> */}
             {/* <DropDown label="To" items={["EUR", "RON"]} />
               <Input label="Amount" type="number" min="0" large /> */}
-            <CurrencyInput
+            {/* <CurrencyInput
               onAmountChange={handleAmount2Change}
               onCurrencyChange={handleCurrency2Change}
               currencies={Object.keys(rates)}
               amount={amount2}
               currency={currency2}
-            />
+            /> */}
+            <div>
+              <div>{amount2}</div>
+              <div>{currency2}</div>
+            </div>
             {errorMsg ? <ErrorMsg>{errorMsg}</ErrorMsg> : <></>}
             {/* </InfoSection> */}
             <Button label="Exchange" size="xl" primary={true} type="submit" />

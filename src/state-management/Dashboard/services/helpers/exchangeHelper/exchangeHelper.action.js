@@ -13,6 +13,14 @@ export const setExchangeAmount = (exchangeData, e) => {
   return createAction(EXCHANGE_HELPER_TYPES.SET_EXCHANGE_DATA, exchangeAmount);
 };
 
+export const setExchangeAmountTo = (exchangeData, amountTo) => {
+  const updateExchangeAmount = { ...exchangeData, amountToObj: amountTo };
+  return createAction(
+    EXCHANGE_HELPER_TYPES.SET_EXCHANGE_DATA,
+    updateExchangeAmount
+  );
+};
+
 const setExchangeData = (obj) => {
   const { amount } = obj;
   const date = getLocalDate();
