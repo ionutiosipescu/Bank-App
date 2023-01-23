@@ -16,6 +16,32 @@ select.input-error {
   flex-direction: column;
   width: 100%;
 }
+/* //////////////////////////////////  */
+.box-exchange {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--purple);
+  transition: 0.3s;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 50px;
+  box-shadow: 0px 0px 12px -8px rgba(21, 20, 47, 0.8);
+  width: 150px;
+  height: 40px;
+}
+.box-exchange:hover {
+  scale: 1.08;
+  background: var(--purple-dark);
+  color: var(--white);
+}
+.box-exchange.selected {
+  background: var(--purple-dark);
+  color: var(--white);
+}
+/* //////////////////////////////////  */
+
 /* Radio Selected Style */
 .plan-form .radio-label.selected {
   border: 2px solid var(--blue);

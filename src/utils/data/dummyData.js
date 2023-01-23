@@ -308,3 +308,11 @@ export const exchangeRates = {
   eur: 1,
   ron: 5.23,
 };
+
+export const exchangeRadioBtns = [
+  {
+    key: "deposit",
+    value: "Deposit",
+  },
+  { key: "windraw", value: "Windraw" },
+];

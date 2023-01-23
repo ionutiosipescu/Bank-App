@@ -2,10 +2,13 @@ import { DEPOSITS_HELPER_TYPES } from "./depositsHelper.types";
 import { createAction } from "../../../../../utils/helpers/reducer/reducer.utils";
 import { getLocalDate } from "../../../../../utils/helpers/helperFunctions/date";
 import { generateRandomNumber } from "../../../../../utils/helpers/helperFunctions/randomNumber";
-
+import { LowercaseString } from "../../../../../utils/helpers/helperFunctions/lowercase";
+import { findObjectByString } from "../../../../../utils/helpers/helperFunctions/findObject";
+import axios from "axios";
 // Update Deposit Action
-export const setDepositAction = (deposit) => {
-  return createAction(DEPOSITS_HELPER_TYPES.SET_DEPOSIT_ACTION, deposit);
+
+export const setDepositAction = (e) => {
+  return createAction(DEPOSITS_HELPER_TYPES.SET_DEPOSIT_ACTION, e.target.value);
 };
 
 // update Deposit Obj
@@ -19,9 +22,15 @@ export const setDepositForm = (depositData, e) => {
   return createAction(DEPOSITS_HELPER_TYPES.SET_DEPOSIT_FORM, depositDataObj);
 };
 
+// update Deposit Account
+export const setDepositAccount = (depositData, string) => {
+  const depositDataObj = { ...depositData, account: string };
+  return createAction(DEPOSITS_HELPER_TYPES.SET_DEPOSIT_FORM, depositDataObj);
+};
+
 // Update Deposit Arr
 
-export const setDepositArr = (action, obj, arr) => {
+export const setDepositArr = (obj, action, arr) => {
   const { amount } = obj;
   const formattedDate = getLocalDate();
   const idDeposit = generateRandomNumber(6).toString();
@@ -35,4 +44,44 @@ export const setDepositArr = (action, obj, arr) => {
   // console.log(newObj);
   const newDepositArr = [...arr, { ...newObj }];
   return createAction(DEPOSITS_HELPER_TYPES.SET_DEPOSIT_ARR, newDepositArr);
+};
+
+// Set Data for Request
+export const setDepositData = async (obj, action) => {
+  const { amount } = obj;
+  const date = getLocalDate();
+  const formatedAction = LowercaseString(action);
+  const depositData = {
+    date: date,
+    details: "",
+    transfer: amount,
+    status: formatedAction,
+  };
+  console.log(depositData);
+  return depositData;
+};
+
+// Find Account ID
+export const setExchangeId = async (obj, currentUserData) => {
+  let { account } = obj;
+  const userAccountArr = currentUserData.account;
+  const stringCompare = "currency";
+  const object = findObjectByString(account, userAccountArr, stringCompare);
+  return object.id;
+};
+
+// Async Deposit
+export const fetchDepositData = (obj, action, arr, currentUserData) => {
+  return async (dispatch) => {
+    try {
+      await dispatch(setDepositArr(obj, action, arr));
+      const depositData = await setDepositData(obj, action);
+      const id = await setExchangeId(obj, currentUserData);
+      // await axios
+      //   .post(`http://localhost:8080/deposit/new/${id}`, depositData)
+      //   .then((res) => console.log(res));
+    } catch (error) {
+      console.log(error);
+    }
+  };
 };

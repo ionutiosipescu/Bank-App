@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ServiceInputsCardDeposit } from "../../../components/UI/Card/Card.style";
 import { ExchangeInputContainer } from "../../exchange/ExchangeInputCard/ExchangeInputCard.style";
 import { InfoSection } from "../../exchange/ExchangeInputCard/ExchangeInputCard.style";
@@ -14,6 +14,7 @@ import {
   BtnContainerControler,
   BtnContainerSubmitControler,
   FormContainerInputs,
+  SelectAccountToggle,
 } from "./DepositControlerCard.style";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
@@ -26,25 +27,48 @@ import { depositSchema } from "../ValidationSchema/ValidationSchemaDeposit";
 import DatePickerField from "../../../components/CustomInputs/CustomDatePicker";
 import { setDepositArr } from "../../../state-management/Dashboard/services/helpers/depositsHelper/depositsHelper.action";
 import { selectDepositArr } from "../../../state-management/Dashboard/services/helpers/depositsHelper/deposits.selector";
+import RadioButtonsExchange from "../../../components/CustomInputs/CustomRadioInputGroupExchange";
+import { exchangeRadioBtns } from "../../../utils/data/dummyData";
+import { ErrorMsg } from "../../../components/Errors/Auth/ErrorMsg.style";
+import RadioButton from "../../../components/RadioButton/RadioButton";
+import { setDepositAccount } from "../../../state-management/Dashboard/services/helpers/depositsHelper/depositsHelper.action";
+import { fetchDepositData } from "../../../state-management/Dashboard/services/helpers/depositsHelper/depositsHelper.action";
+import { selectCurrentUser } from "../../../state-management/Dashboard/userData/userData.selector";
 
 function DepositsControlerCard() {
   const dispatch = useDispatch();
   const depositAction = useSelector(selectDepositAction);
   const depositFormData = useSelector(selectDepositForm);
   const depositArr = useSelector(selectDepositArr);
+  const currentUserData = useSelector(selectCurrentUser);
+  console.log(depositAction, depositFormData, depositArr, currentUserData);
 
   const setData = debounce((e) => {
     dispatch(setDepositForm(depositFormData, e));
   }, 500);
 
   const onSubmit = () => {
-    dispatch(setDepositArr(depositAction, depositFormData, depositArr));
+    dispatch(
+      fetchDepositData(
+        depositFormData,
+        depositAction,
+        depositArr,
+        currentUserData
+      )
+    );
+  };
+  const setDataToggle = (account) => {
+    dispatch(setDepositAccount(depositFormData, account));
   };
 
-  const handleDepositAction = (type) => {
-    dispatch(setDepositAction(type));
-  };
+  // const handleDepositAction = (type) => {
+  //   dispatch(setDepositAction(type));
+  // };
 
+  const setDataRadio = (e) => {
+    // console.log(depositAction, e.target.value);
+    dispatch(setDepositAction(e));
+  };
   return (
     <ServiceInputsCardDeposit>
       <CardHeader>
@@ -52,23 +76,19 @@ function DepositsControlerCard() {
       </CardHeader>
       <Formik
         validationSchema={depositSchema}
+        validateOnBlur={false}
+        validateOnChange={true}
         initialValues={{ ...depositFormData }}
         onSubmit={onSubmit}
       >
         <FormContainerDeposits>
-          <BtnContainerControler>
-            <Button
-              label="Deposit"
-              size="xl"
-              primary={true}
-              type="button"
-              onClick={() => handleDepositAction("Deposit")}
-            />
-            <Button
-              label="Windraw"
-              size="xl"
-              type="button"
-              onClick={() => handleDepositAction("Windraw")}
+          <BtnContainerControler className="plan-form">
+            <RadioButtonsExchange
+              type="radio"
+              name="actions"
+              options={exchangeRadioBtns}
+              depositAction={depositAction}
+              setDataRadio={setDataRadio}
             />
           </BtnContainerControler>
           <FormContainerInputs>
@@ -107,6 +127,15 @@ function DepositsControlerCard() {
               placeholder="Enter your Amount"
               setData={setData}
             />
+            <SelectAccountToggle>
+              <span>Select your account: </span>
+              <RadioButton
+                firstText="euro"
+                secondText="ron"
+                name="account"
+                setDataToggle={setDataToggle}
+              />
+            </SelectAccountToggle>
           </FormContainerInputs>
           <BtnContainerSubmitControler>
             <Button label="Action" size="xl" primary={true} type="submit" />

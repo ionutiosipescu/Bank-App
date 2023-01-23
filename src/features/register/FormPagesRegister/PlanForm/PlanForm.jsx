@@ -48,7 +48,7 @@ function PlanForm() {
           }
         }}
       >
-        <Form className="plan-form">
+        <Form>
           <HeaderPlan />
           <RadioButtonsPlan
             type="radio"

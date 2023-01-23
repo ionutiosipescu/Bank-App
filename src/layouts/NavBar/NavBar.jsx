@@ -14,6 +14,7 @@ import avatar from "../../assets/images/avatar.png";
 import { accounts } from "../../utils/data/dummyData";
 import { Link } from "react-router-dom";
 import LinkButton from "../../components/UI/LinkButton/LinkButton";
+import Toggle from "../../components/UI/Toggle/Toggle";
 
 function NavBar() {
   const [active, setActive] = useState(false);
@@ -25,6 +26,7 @@ function NavBar() {
     <NavBarContainer>
       <SearchBar active={active} onClick={handleActive} />
       <NavBarSection active={active}>
+        <Toggle />
         <LinkButton to="/settings" size="round">
           <RiSettingsLine size={22} />
         </LinkButton>
