@@ -22,7 +22,7 @@ function Dashboard() {
   const isSubmiting = useSelector(selectIsSubmiting);
   const userData = useSelector(selectCurrentUser);
   const account = useSelector(selectUserAccount);
-  console.log(account);
+  // console.log(account);
   return (
     <React.Fragment>
       {isSubmiting ? (
@@ -43,7 +43,7 @@ function Dashboard() {
               amount="$5,542.23"
               percent="+0.5"
               size="sm"
-              primary={true}
+              primary="primary"
             />
             <TopCard
               label="Outcome"

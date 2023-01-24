@@ -23,7 +23,8 @@ export const NavBarSection = styled.div`
     margin-left: 12px;
   }
   @media (${device.mobileS}) {
-    ${(props) => (props.active ? "display: none;" : "display: flex")}
+    ${(props) =>
+      props.active === "active" ? "display: none;" : "display: flex"}
     & > * {
       margin-left: 22px;
     }

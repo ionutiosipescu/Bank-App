@@ -20,7 +20,7 @@ function ExchangeInputCard() {
         <Input label="Amount" type="number" large />
         <Input label="Saving Purpose" type="text" large />
       </InputContainer>
-      <Button label="Add Saving" size="md" primary={true} />
+      <Button label="Add Saving" size="md" primary="primary" />
     </ServiceInputsCard>
   );
 }

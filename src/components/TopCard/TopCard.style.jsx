@@ -17,7 +17,7 @@ export const CardIcon = styled.div`
   height: 50px;
   border-radius: 50%;
   background-color: ${(props) =>
-    props.primary ? "var(--purple)" : "var(--blue)"};
+    props.primary === "primary" ? "var(--purple)" : "var(--blue)"};
 `;
 
 export const CardFeature = styled.div`

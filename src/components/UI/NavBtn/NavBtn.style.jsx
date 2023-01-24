@@ -26,5 +26,7 @@ export const Label = styled.h2`
     opacity: 1;
   }
   ${(props) =>
-    props.active ? "display: block; margin-left: 20px;" : "display: none;"}
+    props.active === "active"
+      ? "display: block; margin-left: 20px;"
+      : "display: none;"}
 `;

@@ -16,7 +16,7 @@ function TopCard({ amount, percent, label, primary, size }) {
     <CardContainer size={size}>
       <CardHeader>
         <CardIcon primary={primary}>
-          {primary ? (
+          {primary === "primary" ? (
             <TbTransferIn size={25} color="white" />
           ) : (
             <TbTransferOut size={25} color="white" />
@@ -24,7 +24,7 @@ function TopCard({ amount, percent, label, primary, size }) {
         </CardIcon>
         <div>
           <h4>{label}</h4>
-          <h3>{primary ? `+${amount}` : `-${amount}`}</h3>
+          <h3>{primary === "primary" ? `+${amount}` : `-${amount}`}</h3>
         </div>
         <CardFeature>
           {percent > 0 ? (
@@ -53,7 +53,7 @@ TopCard.propTypes = {
   size: PropTypes.oneOf(["sm", "md", "fit"]),
   percent: PropTypes.string,
   label: PropTypes.string,
-  primary: PropTypes.bool,
+  primary: PropTypes.oneOf(["primary", "secondary"]),
 };
 
 export default TopCard;

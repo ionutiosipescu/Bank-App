@@ -15,7 +15,7 @@ export const RadioContainer = styled.div`
 export const RadioPill = styled.div`
   display: flex;
   ${(props) =>
-    props.active === true
+    props.active === "active"
       ? "flex-direction: row; background-color: var(--purple);"
       : "flex-direction: row-reverse; background-color: var(--gray-dark);"}
   justify-content: space-between;
@@ -29,7 +29,7 @@ export const RadioPill = styled.div`
   color: var(--white);
   & p {
     ${(props) =>
-      props.active === true ? "margin-left: 25px;" : "margin-right: 25px;"}
+      props.active === "active" ? "margin-left: 25px;" : "margin-right: 25px;"}
     font-weight: 600;
   }
 `;

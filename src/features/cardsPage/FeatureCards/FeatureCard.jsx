@@ -17,7 +17,7 @@ function FeatureCards({ type }) {
             : "Need money elsewhere? Withdraw money here!"}
         </p>
       </div>
-      <Button>{type === "deposit" ? <BsArrowUp /> : <BsArrowDown />}</Button>
+      <Button size="round">{type === "deposit" ? <BsArrowUp /> : <BsArrowDown />}</Button>
     </FeatureCard>
   );
 }

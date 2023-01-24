@@ -152,7 +152,12 @@ function UserProfileForm() {
         </RegisterFormWrapper>
         <CheckboxContainer>
           <TermsAndCondition />
-          <Button label="Register" to="/dashboard" size="lg" primary={true} />
+          <Button
+            label="Register"
+            to="/dashboard"
+            size="lg"
+            primary="primary"
+          />
         </CheckboxContainer>
       </RegitsterFormContainer>
     </>

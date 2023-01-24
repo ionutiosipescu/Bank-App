@@ -56,7 +56,7 @@ function SideBar({ active, handleActive }) {
         {pages.map((page, index) => (
           <NavBtn
             to={page.link}
-            label={active ? page.label : ""}
+            label={active === "active" ? page.label : ""}
             size="round"
             active={active}
             onClick={() => setSelected(index)}
@@ -67,10 +67,10 @@ function SideBar({ active, handleActive }) {
           </NavBtn>
         ))}
       </BtnContainer>
-      {active ? (
-        <LinkButton label="Log Out" to="/login" size="100" primary={true} />
+      {active === "active" ? (
+        <LinkButton label="Log Out" to="/login" size="100" primary="primary" />
       ) : (
-        <LinkButton to="/login" primary={true}>
+        <LinkButton to="/login" primary="primary">
           <BsPersonXFill size={22} />
         </LinkButton>
       )}

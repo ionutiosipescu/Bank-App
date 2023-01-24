@@ -33,7 +33,7 @@ function BalanceCard({ balance, color, name, valid, cardNum, size, onClick }) {
 
 BalanceCard.propTypes = {
   balance: PropTypes.string,
-  color: PropTypes.oneOf(["purple", "green"]),
+  color: PropTypes.oneOf(["purple", "yellow"]),
   size: PropTypes.oneOf(["sm", "md", "fit"]),
   name: PropTypes.string,
   valid: PropTypes.string,

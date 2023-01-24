@@ -14,14 +14,14 @@ function RadioButton({
 
   const handleRadio = () => {
     setToggleState(toggleState === secondText ? firstText : secondText);
-    setActive(!active);
+    setActive(active === "active" ? "notActive" : "active");
   };
 
   return (
     <RadioContainer active={active}>
       {/* <p>{label} </p> */}
       <RadioPill active={active}>
-        <p>{active ? firstText : secondText} </p>
+        <p>{active === "active" ? firstText : secondText} </p>
         <RadioCircle
           onClick={(e) => {
             handleRadio();

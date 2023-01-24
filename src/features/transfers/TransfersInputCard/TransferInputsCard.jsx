@@ -43,7 +43,7 @@ function TransferInputsCard() {
             </Form>
           </Formik>
         </TransferInputWrapper>
-        <Button label="Send" size="xl" primary={true} />
+        <Button label="Send" size="xl" primary="primary" />
       </TransferBody>
     </ServiceCard>
   );

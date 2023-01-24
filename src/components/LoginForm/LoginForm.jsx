@@ -21,7 +21,7 @@ function LoginForm() {
           </div>
           <Link>Forgot Password?</Link>
         </div>
-        <Button to="/dashboard" label="Log In" size="100" primary="true" />
+        <Button to="/dashboard" label="Log In" size="100" primary="primary" />
       </form>
       <div className="footer">
         <div className="register">

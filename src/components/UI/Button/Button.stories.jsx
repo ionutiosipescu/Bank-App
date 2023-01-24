@@ -11,13 +11,13 @@ const Template = (args) => <Button {...args} />;
 export const Primary = Template.bind({});
 Primary.args = {
   label: "Click me",
-  primary: true,
+  primary: "primary",
   size: "sm",
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
   label: "Click me",
-  primary: false,
+  primary: "secondary",
   size: "sm",
 };

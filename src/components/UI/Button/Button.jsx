@@ -15,7 +15,7 @@ Button.propTypes = {
   label: PropTypes.string,
   to: PropTypes.string,
   size: PropTypes.oneOf(["sm", "md", "lg", "xl", "round", "fullWidth"]),
-  primary: PropTypes.bool,
+  primary: PropTypes.oneOf(["primary", "secondary"]),
   handleClick: PropTypes.func,
 };
 

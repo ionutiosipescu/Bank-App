@@ -18,7 +18,9 @@ export const SearchBarContainer = styled.div`
     padding: 0;
     border: 1px solid var(--purple);
     ${(props) =>
-      props.active ? "position: absolute; width: 70%;" : "width: 40px;"}
+      props.active === "active"
+        ? "position: absolute; width: 70%;"
+        : "width: 40px;"}
   }
   @media (${device.tablet}) {
     position: relative;
@@ -42,7 +44,8 @@ export const SearchInput = styled.input`
   width: 80%;
   font-size: 1.2rem;
   @media (${device.mobileS}) {
-    ${(props) => (props.active ? "display: block;" : "display: none;")}
+    ${(props) =>
+      props.active === "active" ? "display: block;" : "display: none;"}
   }
   @media (${device.tablet}) {
     display: block;

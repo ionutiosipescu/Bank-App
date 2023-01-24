@@ -13,7 +13,7 @@ Income.args = {
   size: "sm",
   amount: "6,345.23",
   percent: "-1.2",
-  primary: true,
+  primary: "primary",
 };
 
 export const Outcome = Template.bind({});
@@ -22,5 +22,5 @@ Outcome.args = {
   size: "sm",
   amount: "1,543.67",
   percent: "+2.8",
-  primary: false,
+  primary: "secondary",
 };

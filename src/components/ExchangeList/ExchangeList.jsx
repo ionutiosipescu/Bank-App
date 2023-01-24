@@ -28,7 +28,7 @@ function ExchangeList() {
             <h3>Rate: {transfer.rate}</h3>
             <h3>Transfered: {transfer.amount}</h3>
             <h3>{transfer.date}</h3>
-            <Button label="Repeat" size="sm" primary={true} />
+            <Button label="Repeat" size="sm" primary="primary" />
           </ListItem>
         ))}
       </ListContainer>

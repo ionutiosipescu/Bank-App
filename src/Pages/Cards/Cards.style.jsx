@@ -76,3 +76,15 @@ export const FeatureContainer = styled.div`
   width: 100%;
   height: 50%;
 `;
+
+export const BottomContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 50vh;
+  width: calc(100% - 60px);
+  margin: 30px 30px 20px 0;
+  padding: 30px;
+  border-radius: 40px;
+  background-color: var(--white);
+  box-shadow: 0px 0px 15px -8px rgba(21, 20, 47, 0.73);
+`

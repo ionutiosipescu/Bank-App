@@ -29,7 +29,7 @@ function Carousel({ items, itemsNumber }) {
         handleClick={handlePrevClick}
         disabled={currentIndex === 0 ? true : false}
         size="round"
-        primary={true}
+        primary="primary"
       >
         &#8592;
       </Button>
@@ -46,7 +46,7 @@ function Carousel({ items, itemsNumber }) {
         handleClick={handleNextClick}
         disabled={currentIndex + 3 >= items.length ? true : false}
         size="round"
-        primary={true}
+        primary="primary"
       >
         &#8594;
       </Button>

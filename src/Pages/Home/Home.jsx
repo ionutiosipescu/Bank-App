@@ -18,7 +18,7 @@ import ServicesControler from "../Services/ServicesControler/ServicesControler";
 
 function Home() {
   // Variable to set the active state of the Sidebar
-  const [active, setActive] = useState("");
+  const [active, setActive] = useState("active");
   // Variable to store the viewport width
   const [viewportWidth, setViewportWidth] = useState(0);
 
@@ -42,15 +42,15 @@ function Home() {
 
   // Update the active state of the Sidebar so that it updates based on the width so that on desktop it's true and on moblie/tablet is set to false as default on resize
   useEffect(() => {
-    setActive(viewportWidth >= 1050 ? true : false);
+    setActive(viewportWidth >= 1050 ? "active" : "notActive");
     return () => {
-      setActive(true);
+      setActive("active");
     };
   }, [viewportWidth]);
 
   // Handle click event to minimize the Sidebar on mobile/tablet
   const handleActive = () => {
-    setActive(!active);
+    setActive(active === "active" ? "notActive" : "active");
   };
 
   return (

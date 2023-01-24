@@ -35,7 +35,7 @@ function ExchangeList() {
               <AmountContainer>Sum: {transfer.amount}</AmountContainer>
               <DateContainer>{transfer.date}</DateContainer>
             </ListItemSection>
-            <Button label="Repeat" size="md" primary={true} />
+            <Button label="Repeat" size="md" primary="primary" />
           </ListItem>
         ))}
       </ListContainer>

@@ -72,7 +72,12 @@ function SavingsInputCard() {
               tall
             />
           </SavingInputsContainer>
-          <Button label="Add Saving" size="xl" primary={true} type="submit" />
+          <Button
+            label="Add Saving"
+            size="xl"
+            primary="primary"
+            type="submit"
+          />
         </SavingFormContainer>
       </Formik>
     </ServiceInputsCard>

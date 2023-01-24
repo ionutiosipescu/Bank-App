@@ -29,18 +29,19 @@ export const SideBarWrapper = styled.div`
   }
   @media (max-width: 1050px) {
     padding: 5px;
-    width: ${(props) => (props.active ? "300px" : "65px")};
+    width: ${(props) => (props.active === "active" ? "300px" : "65px")};
   }
-  @media (max-width: 460px) {
+  @media (max-width: 1050px) {
     ${(props) =>
-      props.active
+      props.active === "active"
         ? "height: 100%; width: 300px;"
         : "height: 40px; width: 40px; top: 20px; left: 15px; border: 1px solid var(--purple); border-radius: 40px; justify-content: center; align-items: center;"};
     ${ChevronWrapper} {
-      ${(props) => (props.active ? "display: none;" : "display: flex;")}
+      ${(props) =>
+        props.active === "active" ? "display: none;" : "display: flex;"}
     }
     & > :not(${ChevronWrapper}) {
-      ${(props) => (props.active ? "" : "display: none;")}
+      ${(props) => (props.active === "active" ? "" : "display: none;")}
     }
   }
 `;
@@ -53,7 +54,7 @@ export const LogoContainer = styled.div`
     cursor: pointer;
   }
   ${(props) =>
-    props.active
+    props.active === "active"
       ? "flex-direction: row; margin: 0 0 100px 0px; height: 50px;"
       : "flex-direction: column; margin: 0 0 50px 0; height: 100px;"}
   justify-content: space-between;

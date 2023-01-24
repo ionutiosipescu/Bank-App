@@ -17,16 +17,16 @@ import LinkButton from "../../components/UI/LinkButton/LinkButton";
 import Toggle from "../../components/UI/Toggle/Toggle";
 
 function NavBar() {
-  const [active, setActive] = useState(false);
+  const [active, setActive] = useState("notActive");
 
   const handleActive = () => {
-    setActive(!active);
+    setActive(active === "active" ? "notActive" : "active");
   };
   return (
     <NavBarContainer>
       <SearchBar active={active} onClick={handleActive} />
       <NavBarSection active={active}>
-        <Toggle />
+        {/* <Toggle /> */}
         <LinkButton to="/settings" size="round">
           <RiSettingsLine size={22} />
         </LinkButton>

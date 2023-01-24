@@ -10,10 +10,12 @@ import { MdArrowDropDown, MdArrowDropUp } from "react-icons/md";
 
 function DropDown({ label, items }) {
   const [selected, setSelected] = useState(items[0]);
-  const [active, setActive] = useState(false);
+  const [active, setActive] = useState("active");
 
   const handleDropDown = () => {
-    setActive(!active);
+    if (active === "active") {
+      setActive("notActive");
+    } else setActive("'active'");
   };
 
   return (
@@ -22,14 +24,18 @@ function DropDown({ label, items }) {
       <DropDownSelector active={active}>
         <DropDownHeader onClick={handleDropDown}>
           {selected}
-          {active ? <MdArrowDropUp size={40} /> : <MdArrowDropDown size={40} />}
+          {active === "active" ? (
+            <MdArrowDropUp size={40} />
+          ) : (
+            <MdArrowDropDown size={40} />
+          )}
         </DropDownHeader>
         {items.map((item, index) => (
           <DropDownItem
             key={index}
             onClick={() => {
               setSelected(item);
-              setActive(false);
+              setActive(active === "active" ? "notActive" : "active");
             }}
             style={selected === item ? { display: "none" } : { display: "" }}
           >

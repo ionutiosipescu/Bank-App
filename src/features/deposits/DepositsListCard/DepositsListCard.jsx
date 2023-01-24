@@ -46,7 +46,7 @@ function DepositsListCard() {
               <DateContainer>{transfer.created_at}</DateContainer>
               <LabelList status={transfer.status}>{transfer.status}</LabelList>
             </ListItemSection>
-            <Button label="Repeat" size="sm" primary={true} />
+            <Button label="Repeat" size="sm" primary="primary" />
           </ListItem>
         ))}
       </ListContainer>

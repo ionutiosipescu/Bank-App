@@ -8,7 +8,9 @@ function BarChart({ primary, chartData }) {
 
   useEffect(() => {
     setUserData(
-      chartData.map((data) => (primary ? data.thisWeek : data.lastWeek))
+      chartData.map((data) =>
+        primary === "primary" ? data.thisWeek : data.lastWeek
+      )
     );
 
     return () => {
@@ -22,7 +24,7 @@ function BarChart({ primary, chartData }) {
       {
         fill: "origin",
         data: userData,
-        backgroundColor: primary ? "#6160dc" : "#54c5eb",
+        backgroundColor: primary === "primary" ? "#6160dc" : "#54c5eb",
       },
     ],
   };

@@ -4,10 +4,12 @@ import { Line } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
 
 function AreaChart({ primary, chartData }) {
-  const backgroundColor = primary ? "#6160dc50" : "#54c5eb50";
-  const borderColor = primary ? "#6160dc" : "#54c5eb";
+  const backgroundColor = primary === "primary" ? "#6160dc50" : "#54c5eb50";
+  const borderColor = primary === "primary" ? "#6160dc" : "#54c5eb";
 
-  const data = chartData.map((data) => (primary ? data.income : data.outcome));
+  const data = chartData.map((data) =>
+    primary === "primary" ? data.income : data.outcome
+  );
 
   const [userData, setUserData] = useState({
     data: {

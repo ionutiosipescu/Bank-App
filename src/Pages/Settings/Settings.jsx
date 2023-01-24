@@ -43,7 +43,7 @@ function Settings() {
           </RowSettingsSection>
         </AccountContainer>
       </SectionContainer>
-      <Button label="Save Settings" size="xl" primary={true} />
+      <Button label="Save Settings" size="xl" primary="primary" />
     </SettingsContainer>
   );
 }

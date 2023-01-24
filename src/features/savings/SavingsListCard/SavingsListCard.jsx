@@ -38,7 +38,7 @@ function SavingsListCard() {
               <AmountContainer>Sum: {saving.transfer}</AmountContainer>
               <IdContainer>ID {saving.id}</IdContainer>
             </ListItemSection>
-            <Button label="Top-Up" size="sm" primary={true} />
+            <Button label="Top-Up" size="sm" primary="primary" />
             <Button label="Withdraw" size="sm" />
           </ListItem>
         ))}

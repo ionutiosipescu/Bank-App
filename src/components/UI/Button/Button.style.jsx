@@ -25,7 +25,7 @@ export const Btn = styled.button`
       ? sizeBtn.round
       : sizeBtn.fullWidth};
   ${(props) =>
-    props.primary
+    props.primary === "primary"
       ? "background: var(--purple); color: var(--white);"
       : "background: var(--white); color: var(--purple);"}
   ${(props) =>
@@ -33,7 +33,7 @@ export const Btn = styled.button`
   &:hover {
     scale: 1.08;
     ${(props) =>
-      props.primary
+      props.primary === "primary"
         ? "background: var(--purple-dark); color: var(--white);"
         : "background: var(--purple-light); color: var(--white); border: 1px solid var(--purple-dark);"}
   }

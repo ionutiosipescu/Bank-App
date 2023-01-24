@@ -14,7 +14,7 @@ function ServicesNavigation() {
             to={service.path}
             label={service.label}
             size="xl"
-            primary
+            primary="primary"
             key={index}
             git
           />

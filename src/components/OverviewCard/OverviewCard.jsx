@@ -8,22 +8,26 @@ import { dailyBalanceData as chartData } from "../../utils/data/dummyData";
 import { Item } from "./OverviewCard.style";
 
 function OverviewCard() {
-  const [primary, setPrimary] = useState(true);
+  const [primary, setPrimary] = useState("secondary");
 
   return (
     <CardContainer size="md">
       <CardHeader flex="row">
         <h3>Overview</h3>
         <div>
-          <Item onClick={() => setPrimary(true)}>
+          <Item onClick={() => setPrimary("primary")}>
             <BsRecordCircleFill
-              color={`${primary ? "var(--purple)" : "var(--gray-dark)"}`}
+              color={`${
+                primary === "primary" ? "var(--purple)" : "var(--gray-dark)"
+              }`}
             />
             <p>This Week</p>
           </Item>
-          <Item onClick={() => setPrimary(false)}>
+          <Item onClick={() => setPrimary("secondary")}>
             <BsRecordCircleFill
-              color={`${primary ? "var(--gray-dark)" : "var(--blue)"}`}
+              color={`${
+                primary === "primary" ? "var(--gray-dark)" : "var(--blue)"
+              }`}
             />
             <p>Last Week</p>
           </Item>
