@@ -19,21 +19,30 @@ import { Form, Formik } from "formik";
 import CustomInput from "../../../components/CustomInputs/CustomInput";
 import CustomPassword from "../../../components/CustomInputs/CustomPassword";
 import { transferSchema } from "../ValidationSchema/ValidationSchema";
+import { fetchTransferData } from "../../../state-management/Dashboard/services/helpers/transfersHelper/transferHelper.action";
+import { selectCurrentUser } from "../../../state-management/Dashboard/userData/userData.selector";
+import RadioButton from "../../../components/RadioButton/RadioButton";
+import { setTransformAccount } from "../../../state-management/Dashboard/services/helpers/transfersHelper/transferHelper.action";
 
 function TransferInputsCard() {
   const dispatch = useDispatch();
   const transferForm = useSelector(selectTransferForm);
   const selectedAccount = useSelector(selectTransferHelper);
+  const currentUser = useSelector(selectCurrentUser);
   // const { image, owner, email } = selectedAccount;
   const { email, name, details, transfer } = transferForm;
-  console.log(transferForm);
+  // console.log(transferForm);
 
   const setData = (e) => {
     dispatch(setTransferForm(transferForm, e));
   };
 
   const handleSubmit = () => {
-    console.log(transferForm);
+    dispatch(fetchTransferData(transferForm, currentUser));
+  };
+
+  const setDataToggle = (account) => {
+    dispatch(setTransformAccount(transferForm, account));
   };
 
   return (
@@ -85,6 +94,14 @@ function TransferInputsCard() {
                   type="text"
                   placeholder="Enter your transfer details"
                   setData={setData}
+                />
+              </TransferInputSection>
+              <TransferInputSection>
+                <RadioButton
+                  firstText="euro"
+                  secondText="ron"
+                  name="account"
+                  setDataToggle={setDataToggle}
                 />
               </TransferInputSection>
               <Button label="Send" size="xl" primary={true} type="submit" />
