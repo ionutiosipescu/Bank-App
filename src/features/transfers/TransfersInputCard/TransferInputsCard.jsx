@@ -23,10 +23,12 @@ import { fetchTransferData } from "../../../state-management/Dashboard/services/
 import { selectCurrentUser } from "../../../state-management/Dashboard/userData/userData.selector";
 import RadioButton from "../../../components/RadioButton/RadioButton";
 import { setTransformAccount } from "../../../state-management/Dashboard/services/helpers/transfersHelper/transferHelper.action";
+import { selectTransferArr } from "../../../state-management/Dashboard/services/helpers/transfersHelper/transferHelper.selector";
 
 function TransferInputsCard() {
   const dispatch = useDispatch();
   const transferForm = useSelector(selectTransferForm);
+  const transferArr = useSelector(selectTransferArr);
   const selectedAccount = useSelector(selectTransferHelper);
   const currentUser = useSelector(selectCurrentUser);
   // const { image, owner, email } = selectedAccount;
@@ -38,7 +40,9 @@ function TransferInputsCard() {
   };
 
   const handleSubmit = () => {
-    dispatch(fetchTransferData(transferForm, currentUser));
+    dispatch(
+      fetchTransferData(transferForm, currentUser, selectedAccount, transferArr)
+    );
   };
 
   const setDataToggle = (account) => {
