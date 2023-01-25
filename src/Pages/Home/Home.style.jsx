@@ -13,7 +13,7 @@ export const HomeContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  /* height: 100%; */
   @media (${device.mobileS}) {
     width: 100%;
     margin: 0;
@@ -21,7 +21,6 @@ export const HomeContainer = styled.div`
   }
   @media (${device.laptopL}) {
     width: calc(100% - 250px);
-    height: 100vh;
     margin-left: 250px;
     padding: 10px 0px 30px 30px;
   }
