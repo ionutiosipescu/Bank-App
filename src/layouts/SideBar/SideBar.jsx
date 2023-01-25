@@ -68,9 +68,9 @@ function SideBar({ active, handleActive }) {
         ))}
       </BtnContainer>
       {active === "active" ? (
-        <LinkButton label="Log Out" to="/login" size="100" primary="primary" />
+        <LinkButton label="Log Out" to="/" size="100" primary="primary" />
       ) : (
-        <LinkButton to="/login" primary="primary">
+        <LinkButton to="/" primary="primary">
           <BsPersonXFill size={22} />
         </LinkButton>
       )}

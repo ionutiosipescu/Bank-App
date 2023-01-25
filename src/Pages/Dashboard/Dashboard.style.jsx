@@ -1,13 +1,15 @@
 import styled from "styled-components";
+import { device } from "./../../utils/breakpoints/breakpoints";
 
 export const DashboardContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: start;
   width: 100%;
-  height: 100vh;
-  @media (max-width: 1024px) {
-    /* flex-direction: row; */
+  @media (${device.mobileS}) {
+    flex-direction: column;
+  }
+  @media (${device.laptop}) {
+    flex-direction: column;
+    justify-content: start;
   }
 `;
 
@@ -16,8 +18,11 @@ export const TopContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  @media (max-width: 1024px) {
-    /* flex-direction: column; */
+  @media (${device.mobileS}) {
+    flex-direction: column;
+  }
+  @media (${device.tablet}) {
+    flex-direction: row;
   }
 `;
 
@@ -26,7 +31,10 @@ export const BottomContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  @media (max-width: 1024px) {
-    /* flex-direction: column; */
+  @media (${device.mobileS}) {
+    flex-direction: column;
+  }
+  @media (${device.laptop}) {
+    flex-direction: row;
   }
 `;

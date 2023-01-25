@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "./../../utils/breakpoints/breakpoints";
 
 export const HomeWrapper = styled.div`
   display: flex;
@@ -12,20 +13,16 @@ export const HomeContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: calc(100% - 250px);
   height: 100%;
-  margin-left: 250px;
-  padding: 10px 0px 30px 30px;
-  @media (max-width: 1050px) {
-    width: calc(100% - 65px);
-    margin-left: 65px;
-  }
-  @media (max-width: 880px) {
-    padding: 10px 15px 10px 10px;
-  }
-  @media (max-width: 460px) {
+  @media (${device.mobileS}) {
     width: 100%;
-    padding: 10px 10px 0px 5px;
     margin: 0;
+    padding: 10px 0px 0px 10px;
+  }
+  @media (${device.laptopL}) {
+    width: calc(100% - 250px);
+    height: 100vh;
+    margin-left: 250px;
+    padding: 10px 0px 30px 30px;
   }
 `;

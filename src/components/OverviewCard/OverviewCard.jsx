@@ -8,7 +8,7 @@ import { dailyBalanceData as chartData } from "../../utils/data/dummyData";
 import { Item } from "./OverviewCard.style";
 
 function OverviewCard() {
-  const [primary, setPrimary] = useState("secondary");
+  const [primary, setPrimary] = useState("primary");
 
   return (
     <CardContainer size="md">
