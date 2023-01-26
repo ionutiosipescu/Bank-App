@@ -25,9 +25,21 @@ import {
   UserContainerTransfer,
   ListItemSectionTransfer,
 } from "./HistoryViewTransfers.style";
+import { useEffect } from "react";
+import { getTransferArr } from "../../../../../state-management/Dashboard/services/helpers/transfersHelper/transferHelper.action";
+import { useDispatch } from "react-redux";
+import { selectCurrentUser } from "../../../../../state-management/Dashboard/userData/userData.selector";
+import { selectTransferForm } from "../../../../../state-management/Dashboard/services/helpers/transfersHelper/transferHelper.selector";
 
 function HisotryViewTransfers({ dataServices }) {
+  const dispatch = useDispatch();
+  const transferForm = useSelector(selectTransferForm);
+  const currentUser = useSelector(selectCurrentUser);
   const transferArr = useSelector(selectTransferArr);
+
+  useEffect(() => {
+    dispatch(getTransferArr(transferForm, currentUser));
+  }, []);
   return (
     <>
       <NewContainer>

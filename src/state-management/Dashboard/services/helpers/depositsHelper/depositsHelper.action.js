@@ -54,7 +54,7 @@ export const setDepositData = async (obj, action) => {
   const depositData = {
     date: date,
     details: "",
-    transfer: amount,
+    balance: amount,
     status: formatedAction,
   };
   console.log(depositData);
@@ -62,12 +62,30 @@ export const setDepositData = async (obj, action) => {
 };
 
 // Find Account ID
-export const setExchangeId = async (obj, currentUserData) => {
+export const setDepositId = async (obj, currentUserData) => {
   let { account } = obj;
   const userAccountArr = currentUserData.account;
   const stringCompare = "currency";
   const object = findObjectByString(account, userAccountArr, stringCompare);
   return object.id;
+};
+
+// Get Arr
+export const getDepositArrDb = (obj, currentUserData) => {
+  return async (dispatch) => {
+    const id = await setDepositId(obj, currentUserData);
+    const { data } = await axios.get(
+      `http://localhost:8080/accounts/?id=${id}`
+    );
+    console.log(data);
+    await dispatch(setDepositArrDb(data));
+  };
+};
+
+// Set Arr from DB
+
+export const setDepositArrDb = (depositArr) => {
+  return createAction(DEPOSITS_HELPER_TYPES.SET_DEPOSIT_ARR, depositArr);
 };
 
 // Async Deposit
@@ -76,10 +94,14 @@ export const fetchDepositData = (obj, action, arr, currentUserData) => {
     try {
       await dispatch(setDepositArr(obj, action, arr));
       const depositData = await setDepositData(obj, action);
-      const id = await setExchangeId(obj, currentUserData);
-      // await axios
-      //   .post(`http://localhost:8080/deposit/new/${id}`, depositData)
-      //   .then((res) => console.log(res));
+      const id = await setDepositId(obj, currentUserData);
+      console.log(depositData, id);
+      await axios
+        .post(
+          `http://localhost:8080/accounts/deposit/balance/?id=${id}`,
+          depositData
+        )
+        .then((res) => console.log(res));
     } catch (error) {
       console.log(error);
     }

@@ -88,7 +88,7 @@ function TransferInputsCard() {
                   label="Amount"
                   large
                   type="number"
-                  placeholder="Enter your phone number"
+                  placeholder="Enter your transfer amount"
                   setData={setData}
                 />
                 <CustomInput

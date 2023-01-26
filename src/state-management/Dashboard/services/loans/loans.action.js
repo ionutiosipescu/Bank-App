@@ -22,7 +22,7 @@ export const setLoansArr = (loanObject, arr) => {
 };
 
 // update object request
-export const setLoanData = (loanObject) => {
+export const setLoanData = async (loanObject) => {
   const { income, loan_amount, loan_purpose, loan_years } = loanObject;
   const loanDataRequest = {
     date: getLocalDate(),
@@ -36,7 +36,7 @@ export const setLoanData = (loanObject) => {
 };
 
 // find id account ron
-export const setExchangeId = async (currentUserData) => {
+export const setLoansId = async (currentUserData) => {
   const account = "ron";
   const stringCompare = "currency";
   const userAccountArr = currentUserData.account;
@@ -45,16 +45,32 @@ export const setExchangeId = async (currentUserData) => {
   return object.id;
 };
 
+// Get Arr from Db
+export const getLoansArrDb = (currentUserData) => {
+  return async (dispatch) => {
+    const id = await setLoansId(currentUserData);
+    const { data } = await axios.get(`http://localhost:8080/loans/?id=${id}`);
+    console.log(data);
+    await dispatch(setLoansArrDb(data));
+  };
+};
+
+// Set Arr from DB
+
+export const setLoansArrDb = (loansArr) => {
+  return createAction(LOANS_DATA_TYPES.SET_LOANS_ARR, loansArr);
+};
+
 // Async Loan
 export const fetchLoanData = (loanObject, arr, currentUserData) => {
   return async (dispatch) => {
     await dispatch(setLoansArr(loanObject, arr));
     try {
-      const loandData = await dispatch(setLoanData(loanObject));
-      const id = await dispatch(setExchangeId(currentUserData));
-      // await axios
-      //   .post(`http://localhost:8080/loans/loan${id}`, loandData)
-      //   .then((res) => console.log(res));
+      const loandData = await setLoanData(loanObject);
+      const id = await setLoansId(currentUserData);
+      await axios
+        .post(`http://localhost:8080/loans/loan/?id=${id}`, loandData)
+        .then((res) => console.log(res));
     } catch (error) {
       console.log(error);
     }

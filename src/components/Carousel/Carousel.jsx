@@ -37,7 +37,10 @@ function Carousel({ items, itemsNumber }) {
       {itemsToShow.map((item, index) => (
         <UserContainer
           key={index}
-          onClick={() => dispatch(fetchTransferAccount(item))}
+          onClick={() => {
+            console.log(item);
+            dispatch(fetchTransferAccount(item));
+          }}
         >
           <img src={item.image} alt={item.owner} />
           <h4>{item.owner.split(" ")[0]}</h4>

@@ -44,6 +44,7 @@ export const setTransferArr = (transferData, accountSelected, arr) => {
 
 // Update selected Account
 export const setAddTransferAccount = (account) => {
+  console.log(account);
   return createAction(TRANSFER_HELPER_TYPES.SET_ADD_TRANSFER, account);
 };
 
@@ -55,6 +56,7 @@ export const setChangeAccountForm = (account) => {
     name: owner,
     details: "",
     transfer: "",
+    account: "ron",
   };
   return createAction(
     TRANSFER_HELPER_TYPES.SET_TRANSFER_FORM,
@@ -64,6 +66,7 @@ export const setChangeAccountForm = (account) => {
 
 // Async Selecting Account and Update the Inputs
 export const fetchTransferAccount = (account) => {
+  console.log(account);
   return async (dispatch) => {
     try {
       await dispatch(setAddTransferAccount(account));
@@ -76,6 +79,7 @@ export const fetchTransferAccount = (account) => {
 
 export const setTransferData = async (transferData) => {
   const { transfer, details } = transferData;
+  console.log(transferData);
   const transferDataRequest = {
     transfer: transfer,
     details: details,
@@ -86,13 +90,33 @@ export const setTransferData = async (transferData) => {
 };
 
 // Find Account ID
-export const setExchangeId = async (obj, currentUserData) => {
+export const setTransferId = async (obj, currentUserData) => {
   let { account } = obj;
+  console.log(account);
   const userAccountArr = currentUserData.account;
   const stringCompare = "currency";
   const object = findObjectByString(account, userAccountArr, stringCompare);
+  console.log(object.id);
   return object.id;
 };
+
+// Get Arr
+export const getTransferArr = (obj, currentUserData) => {
+  return async (dispatch) => {
+    const id = await setTransferId(obj, currentUserData);
+    await axios
+      .get(`http://localhost:8080/transfers/?id=${id}`)
+      .then((res) => console.log(res));
+
+    // await dispatch(setExchangeArrDb(data));
+  };
+};
+
+// Set Arr from DB
+
+// export const setTransferArrDb = (transferArr) => {
+//   return createAction(TRANSFER_HELPER_TYPES.SET_TRANSFER_ARR, transferArr);
+// };
 
 // Async Transfer Data
 export const fetchTransferData = (
@@ -105,10 +129,13 @@ export const fetchTransferData = (
     await dispatch(setTransferArr(transferData, selectedAccount, arr));
     try {
       const transferDataRequest = await setTransferData(transferData);
-      const id = await setExchangeId(transferData, currentUserData);
-      //     await axios
-      // .post(`http://localhost:8080/transfers/transfer/${id}`, transferDataRequest)
-      // .then((res) => console.log(res));
+      const id = await setTransferId(transferData, currentUserData);
+      await axios
+        .post(
+          `http://localhost:8080/transfers/transfer/?id=${id}&email=${transferData.email}`,
+          transferDataRequest
+        )
+        .then((res) => console.log(res));
     } catch (err) {
       console.log(err);
     }

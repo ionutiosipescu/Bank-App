@@ -16,10 +16,22 @@ import { NewContainer } from "../../../../Cards/Cards.style";
 
 import { accounts } from "../../../../../utils/data/dummyData";
 import LinkButton from "../../../../../components/UI/LinkButton/LinkButton";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { selectCurrentUser } from "../../../../../state-management/Dashboard/userData/userData.selector";
+import { getLoansArrDb } from "../../../../../state-management/Dashboard/services/loans/loans.action";
+import { useEffect } from "react";
 
 const data = accounts[0].savings;
 
 function HisotryViewLoans({ dataServices }) {
+  const dispatch = useDispatch();
+  const currentUser = useSelector(selectCurrentUser);
+
+  useEffect(() => {
+    dispatch(getLoansArrDb(currentUser));
+  }, []);
+
   console.log(dataServices);
   return (
     <>
