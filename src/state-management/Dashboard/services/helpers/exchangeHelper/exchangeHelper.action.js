@@ -1,6 +1,7 @@
 import { createAction } from "../../../../../utils/helpers/reducer/reducer.utils";
 import { getLocalDate } from "../../../../../utils/helpers/helperFunctions/date";
 import { EXCHANGE_HELPER_TYPES } from "./excahngeHelper.types";
+import { findObjectByString } from "../../../../../utils/helpers/helperFunctions/findObject";
 import axios from "axios";
 
 export const updateExhangeAmount = (exchangeData, e) => {
@@ -34,15 +35,28 @@ const setExchangeData = (obj) => {
 
 export const setExchangeId = (obj, currentUserData) => {
   const { currency } = obj;
-  let id;
-  switch (currency) {
-    case "ron":
-      return currentUserData.account[1].id.toString();
-    case "eur":
-      return currentUserData.account[0].id.toString();
-    default:
-      return id;
-  }
+  const stringCompare = "currency";
+  const userAccountArr = currentUserData.account;
+  const object = findObjectByString(currency, userAccountArr, stringCompare);
+  return object.id;
+};
+
+// Get Arr
+export const getExchangeArr = (obj, currentUserData) => {
+  return async (dispatch) => {
+    const id = await setExchangeId(obj, currentUserData);
+    const { data } = await axios.get(
+      `http://localhost:8080/exchanges/?id=${id}`
+    );
+    console.log(data);
+    await dispatch(setExchangeArrDb(data));
+  };
+};
+
+// Set Arr from DB
+
+export const setExchangeArrDb = (exchangeArr) => {
+  return createAction(EXCHANGE_HELPER_TYPES.SET_EXCHANGE_ARR, exchangeArr);
 };
 
 export const setExchangeArr = (obj, arr) => {
@@ -64,7 +78,6 @@ export const fetchExchangeData = (obj, arr, currentUserData) => {
     try {
       const exchangeData = await setExchangeData(obj);
       const id = await setExchangeId(obj, currentUserData);
-      console.log(exchangeData, id);
       await axios
         .post(`http://localhost:8080/exchanges/exchange?id=${id}`, exchangeData)
         .then((res) => console.log(res));

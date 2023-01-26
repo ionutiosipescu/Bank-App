@@ -14,6 +14,8 @@ import { FormContainerLoans, BtnContainerLoan } from "./LoansFormCard.style";
 import Button from "../../../components/UI/Button/Button";
 import { setLoansArr } from "../../../state-management/Dashboard/services/loans/loans.action";
 import { selectLoansArr } from "../../../state-management/Dashboard/services/loans/loans.selector";
+import { fetchLoanData } from "../../../state-management/Dashboard/services/loans/loans.action";
+import { selectCurrentUser } from "../../../state-management/Dashboard/userData/userData.selector";
 
 function LoansFormCard() {
   const employeeOptions = [
@@ -52,6 +54,7 @@ function LoansFormCard() {
   const dispatch = useDispatch();
   const loansArr = useSelector(selectLoansArr);
   const loansData = useSelector(selectLoansData);
+  const currentUser = useSelector(selectCurrentUser);
   const {
     serie,
     loan_amount,
@@ -64,7 +67,7 @@ function LoansFormCard() {
   } = loansData; // destructure data from Redux for updating on every keypress
   // send data to Redux userProfile
   const onSubmit = (e) => {
-    dispatch(setLoansArr(loansData, loansArr));
+    dispatch(fetchLoanData(loansData, loansArr, currentUser));
   };
   const setData = (e) => {
     dispatch(setLoansData(loansData, e));

@@ -38,7 +38,7 @@ function HisotryViewTransfers({ dataServices }) {
           <h2>Transfers</h2>
         </CardHeader>
         <ListContainer>
-          {transferArr.map((transfer, index) => (
+          {transferArr?.map((transfer, index) => (
             <ListItem key={index}>
               <ListItemSectionTransfer>
                 <UserContainerTransfer>

@@ -21,6 +21,12 @@ import { selectExchangeArr } from "../../../state-management/Dashboard/services/
 function ExchangeList() {
   // transfer.amountToObj = amount converted
   const exchangeArr = useSelector(selectExchangeArr);
+
+  const setExchangeArr = (currency) => {
+    const string =
+      currency === "RonToEuro" ? `RON \u{2194} EURO` : `EURO \u{2194} RON`;
+    return string;
+  };
   return (
     <ServiceCard>
       <CardHeader>
@@ -30,9 +36,11 @@ function ExchangeList() {
         {exchangeArr.map((transfer, index) => (
           <ListItem key={index}>
             <ListItemSection>
-              <LabelContainer>{transfer.detail}</LabelContainer>
-              <RateContainer>Rate: {transfer.rate}</RateContainer>
-              <AmountContainer>Sum: {transfer.amount}</AmountContainer>
+              <LabelContainer>
+                {setExchangeArr(transfer.type_exchange)}
+              </LabelContainer>
+              <RateContainer>Rate: 5.23</RateContainer>
+              <AmountContainer>Sum: {transfer.exchange}</AmountContainer>
               <DateContainer>{transfer.date}</DateContainer>
             </ListItemSection>
             <Button label="Repeat" size="md" primary={true} />
