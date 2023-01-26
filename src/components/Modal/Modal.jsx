@@ -17,11 +17,7 @@ function Modal({ children, handleClick, opened, ...props }) {
   }, []);
 
   return (
-    <ModalWrapper
-      opened={opened}
-      onClick={handleClick}
-      onKeyDown={handleKeyDown}
-    >
+    <ModalWrapper opened={opened} onKeyDown={handleKeyDown}>
       <ModalCard>
         <ModalContainer>
           {children}
