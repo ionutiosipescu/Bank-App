@@ -16,7 +16,8 @@ export const TopContainer = styled.div`
 export const NewContainer = styled.div`
   display: flex;
   align-items: center;
-  height: 25vh;
+  justify-content: space-between;
+  /* height: 25vh; */
   width: calc(100% - 60px);
   margin: 30px 30px 20px 0;
   padding: 30px;
@@ -87,4 +88,4 @@ export const BottomContainer = styled.div`
   border-radius: 40px;
   background-color: var(--white);
   box-shadow: 0px 0px 15px -8px rgba(21, 20, 47, 0.73);
-`
+`;
