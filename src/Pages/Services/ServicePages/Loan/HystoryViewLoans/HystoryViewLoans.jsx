@@ -23,6 +23,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { selectCurrentUser } from "../../../../../state-management/Dashboard/userData/userData.selector";
 import { getLoansArrDb } from "../../../../../state-management/Dashboard/services/loans/loans.action";
+import { selectLoansArr } from "../../../../../state-management/Dashboard/services/loans/loans.selector";
 
 const data = accounts[0].savings;
 
@@ -68,6 +69,7 @@ function HisotryViewLoans({ dataServices }) {
   // console.log(dataServices);
   const dispatch = useDispatch();
   const currentUser = useSelector(selectCurrentUser);
+  const loansArr = useSelector(selectLoansArr);
 
   useEffect(() => {
     dispatch(getLoansArrDb(currentUser));
@@ -77,12 +79,12 @@ function HisotryViewLoans({ dataServices }) {
   return (
     <>
       <NewContainer>
-        {loans.map((loan) => (
+        {loansArr?.map((loan) => (
           <ProgressCard
             key={loan.id}
             title={loan.details}
-            amount={loan.amount}
-            paid={loan.paid}
+            amount={loan.loan}
+            paid="0"
             handleClick={() => handleModalOpen(loan.id)}
           />
         ))}
