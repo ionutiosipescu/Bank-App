@@ -63,8 +63,40 @@ export const GroupRadio = styled.div`
         : "width: 300px; height: 40px;"}
   }
 `;
+export const GroupRadioRegister = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 0 10px 10px 0;
+  width: 100%;
+  label {
+    /* margin-bottom: 10px;
+    margin-right: 10px; */
+    width: 100%;
+  }
+  @media (max-width: 1680px) {
+    ${(props) =>
+      props.small
+        ? "width: 150px; height: 40px;"
+        : props.large
+        ? "width: 300px; height: 40px;"
+        : props.radio
+        ? "width: 200px; height: auto"
+        : "width: 300px; height: 40px;"}
+  }
+`;
+
+export const GroupRadioOption = styled.div`
+  display: flex;
+  width: 200px;
+  justify-content: flex-start;
+  align-items: center;
+  input {
+    margin-right: 15px;
+  }
+`;
 export const RadioLabel = styled.label`
-  margin-bottom: 10px;
+  margin-bottom: 25px;
   :after {
     content: "*";
     color: red;
@@ -97,21 +129,29 @@ const InputStyle = css`
 // lv1
 export const InputForm = styled.input`
   ${InputStyle}
-  /* width: ${(props) => (props.small ? "200px" : "100%")}; */
-  width: 100%;
+  width: ${(props) => (props.small ? "200px" : "100%")};
+
   ${(props) =>
-    props.large ? "height: 60px; padding-left: 20px; font-size: 1.1rem;" : ""}
+    props.large
+      ? "height: 60px; padding-left: 20px; font-size: 1.1rem; width: 100%;"
+      : ""}
   @media (${device.mobileS}) {
     ${(props) =>
-      props.large ? "height: 40px; padding-left: 20px; font-size: 1.1rem;" : ""}
+      props.large
+        ? "height: 40px; padding-left: 20px; font-size: 1.1rem; width: 100%;"
+        : ""}
   }
   @media (${device.mobileL}) {
     ${(props) =>
-      props.large ? "height: 50px; padding-left: 20px; font-size: 1.1rem;" : ""}
+      props.large
+        ? "height: 50px; padding-left: 20px; font-size: 1.1rem; width: 100%;"
+        : ""}
   }
   @media (${device.laptop}) {
     ${(props) =>
-      props.large ? "height: 60px; padding-left: 20px; font-size: 1.1rem;" : ""}
+      props.large
+        ? "height: 60px; padding-left: 20px; font-size: 1.1rem; width: 100%;"
+        : ""}
   }
 `;
 

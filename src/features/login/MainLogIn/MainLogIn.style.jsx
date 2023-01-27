@@ -35,5 +35,5 @@ export const Logo = styled.img`
   width: 150px;
 `;
 export const LogoText = styled.p`
-  color: var(--gray);
+  color: var(--gray-dark);
 `;

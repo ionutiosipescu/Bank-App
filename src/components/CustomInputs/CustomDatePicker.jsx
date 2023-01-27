@@ -24,10 +24,6 @@ const DatePickerField = ({ label, ...props }) => {
           className={meta.touched && meta.error ? "input-error" : ""}
           type="date"
           popperPlacement="bottom"
-          // selected={(field.value && new Date(field.value)) || null}
-          // onChange={(val) => {
-          //   setFieldValue(field.name, val);
-          // }}
           onChange={(e) => {
             field.onChange(e);
             props.setData(e);

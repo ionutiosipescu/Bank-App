@@ -7,6 +7,8 @@ import {
   Error,
   GroupRadio,
   RadioLabel,
+  GroupRadioOption,
+  GroupRadioRegister,
 } from "../UI/Input/Input.style";
 import "../UI/Input/Input.css";
 import { useSelector } from "react-redux";
@@ -17,9 +19,9 @@ const RadioButtons = ({ label, ...props }) => {
   const { gender } = registerData;
   const [field, meta] = useField(props);
   return (
-    <GroupRadio radio>
+    <GroupRadioRegister radio>
       <RadioLabel>{label}</RadioLabel>
-      <div>
+      <GroupRadioOption>
         <Field name={props.name}>
           {({ field }) => {
             return props.options.map((option) => {
@@ -43,9 +45,9 @@ const RadioButtons = ({ label, ...props }) => {
             });
           }}
         </Field>
-      </div>
+      </GroupRadioOption>
       {meta.touched && meta.error && <Error>{meta.error}</Error>}
-    </GroupRadio>
+    </GroupRadioRegister>
   );
 };
 
