@@ -11,16 +11,35 @@ import {
   ListContainer,
   ListIcon,
   ListItem,
+  IdList,
 } from "../../../../../features/savings/SavingsListCard/SavingsListCard.style";
 import { NewContainer } from "../../../../Cards/Cards.style";
 
 import { accounts } from "../../../../../utils/data/dummyData";
 import LinkButton from "../../../../../components/UI/LinkButton/LinkButton";
-
-const data = accounts[0].savings;
+import { useSelector } from "react-redux";
+import { selectTransferArr } from "../../../../../state-management/Dashboard/services/helpers/transfersHelper/transferHelper.selector";
+import { DateContainer } from "../../../../../features/exchange/ExchangeList/ExchangeList.style";
+import LabelList from "../../../../../components/UI/LabelList/LabelList";
+import {
+  UserContainerTransfer,
+  ListItemSectionTransfer,
+} from "./HistoryViewTransfers.style";
+import { useEffect } from "react";
+import { getTransferArr } from "../../../../../state-management/Dashboard/services/helpers/transfersHelper/transferHelper.action";
+import { useDispatch } from "react-redux";
+import { selectCurrentUser } from "../../../../../state-management/Dashboard/userData/userData.selector";
+import { selectTransferForm } from "../../../../../state-management/Dashboard/services/helpers/transfersHelper/transferHelper.selector";
 
 function HisotryViewTransfers({ dataServices }) {
-  console.log(dataServices);
+  const dispatch = useDispatch();
+  const transferForm = useSelector(selectTransferForm);
+  const currentUser = useSelector(selectCurrentUser);
+  const transferArr = useSelector(selectTransferArr);
+
+  useEffect(() => {
+    dispatch(getTransferArr(transferForm, currentUser));
+  }, []);
   return (
     <>
       <NewContainer>
@@ -28,21 +47,23 @@ function HisotryViewTransfers({ dataServices }) {
       </NewContainer>
       <ServiceViewCard>
         <CardHeader style={{ height: "10%" }}>
-          <h2>Savings</h2>
+          <h2>Transfers</h2>
         </CardHeader>
         <ListContainer>
-          {data.map((saving, id) => (
-            <ListItem key={id}>
-              <ListItemSection>
-                <ListIcon>
-                  <BsCashStack />
-                </ListIcon>
-                <LabelContainer>{saving.label}</LabelContainer>
-                <AmountContainer>Sum: {saving.amount}</AmountContainer>
-                <IdContainer>ID {saving.id}</IdContainer>
-              </ListItemSection>
-              <Button label="Top-Up" size="sm" primary="primary" />
-              <Button label="Withdraw" size="sm" />
+          {transferArr?.map((transfer, index) => (
+            <ListItem key={index}>
+              <ListItemSectionTransfer>
+                <UserContainerTransfer>
+                  <img src={transfer.image} alt="poza" />
+                </UserContainerTransfer>
+                <h3>{transfer.reciever}</h3>
+                <IdList> #{transfer.id}</IdList>
+                <AmountContainer>${transfer.amount}</AmountContainer>
+                <DateContainer>{transfer.date}</DateContainer>
+                <LabelList status={transfer.status}>
+                  {transfer.status}
+                </LabelList>
+              </ListItemSectionTransfer>
             </ListItem>
           ))}
         </ListContainer>

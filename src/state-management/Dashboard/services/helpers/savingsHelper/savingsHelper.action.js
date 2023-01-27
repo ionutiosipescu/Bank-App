@@ -2,6 +2,7 @@ import { SAVINGS_HELPER_TYPES } from "./savingsHelper.types";
 import { createAction } from "../../../../../utils/helpers/reducer/reducer.utils";
 import { getLocalDate } from "../../../../../utils/helpers/helperFunctions/date";
 import { generateRandomNumber } from "../../../../../utils/helpers/helperFunctions/randomNumber";
+import { findObjectByString } from "../../../../../utils/helpers/helperFunctions/findObject";
 import axios from "axios";
 
 // Update Saving Action
@@ -35,21 +36,48 @@ export const setSavingArr = (obj, arr) => {
   return createAction(SAVINGS_HELPER_TYPES.SET_SAVINGS_ARR, newSavingArr);
 };
 
-export const setSavingData = (obj) => {
+export const setSavingData = async (obj) => {
   const date = getLocalDate();
   const savingData = {
     ...obj,
     date: date,
     status: "deposit",
   };
-  return createAction(SAVINGS_HELPER_TYPES.SET_SAVINGS_DATA, savingData);
+  return savingData;
 };
 
-// Async Saving
-export const fetchSavingData = (obj, arr, savingData, id) => {
+export const setSavingsId = async (currentUserData) => {
+  const account = "ron";
+  const stringCompare = "currency";
+  const userAccountArr = currentUserData.account;
+  const object = findObjectByString(account, userAccountArr, stringCompare);
+  console.log(object.id);
+  return object.id;
+};
+
+// Get Arr
+export const getSavingArr = (currentUserData) => {
+  return async (dispatch) => {
+    const id = await setSavingsId(currentUserData);
+    console.log(id);
+    const { data } = await axios.get(`http://localhost:8080/savings/?id=${id}`);
+    await dispatch(setSavingArrDb(data));
+  };
+};
+
+// Set Arr from DB
+
+export const setSavingArrDb = (savingArr) => {
+  return createAction(SAVINGS_HELPER_TYPES.SET_SAVINGS_ARR, savingArr);
+};
+
+// Async Saving Post
+export const fetchSavingData = (obj, arr, currentUserData) => {
   return async (dispatch) => {
     await dispatch(setSavingArr(obj, arr));
-    await dispatch(setSavingData(obj));
+    const savingData = await setSavingData(obj);
+    const id = await setSavingsId(currentUserData);
+    console.log(savingData);
     try {
       await axios
         .post(`http://localhost:8080/savings/new/?id=${id}`, savingData)

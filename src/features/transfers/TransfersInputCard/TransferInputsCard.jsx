@@ -16,12 +16,38 @@ import { selectTransferHelper } from "../../../state-management/Dashboard/servic
 import { selectTransferForm } from "../../../state-management/Dashboard/services/helpers/transfersHelper/transferHelper.selector";
 import { setTransferForm } from "../../../state-management/Dashboard/services/helpers/transfersHelper/transferHelper.action";
 import { Form, Formik } from "formik";
+import CustomInput from "../../../components/CustomInputs/CustomInput";
+import CustomPassword from "../../../components/CustomInputs/CustomPassword";
+import { transferSchema } from "../ValidationSchema/ValidationSchema";
+import { fetchTransferData } from "../../../state-management/Dashboard/services/helpers/transfersHelper/transferHelper.action";
+import { selectCurrentUser } from "../../../state-management/Dashboard/userData/userData.selector";
+import RadioButton from "../../../components/RadioButton/RadioButton";
+import { setTransformAccount } from "../../../state-management/Dashboard/services/helpers/transfersHelper/transferHelper.action";
+import { selectTransferArr } from "../../../state-management/Dashboard/services/helpers/transfersHelper/transferHelper.selector";
 
 function TransferInputsCard() {
   const dispatch = useDispatch();
   const transferForm = useSelector(selectTransferForm);
+  const transferArr = useSelector(selectTransferArr);
   const selectedAccount = useSelector(selectTransferHelper);
-  const { image, owner, email } = selectedAccount;
+  const currentUser = useSelector(selectCurrentUser);
+  // const { image, owner, email } = selectedAccount;
+  const { email, name, details, transfer } = transferForm;
+  // console.log(transferForm);
+
+  const setData = (e) => {
+    dispatch(setTransferForm(transferForm, e));
+  };
+
+  const handleSubmit = () => {
+    dispatch(
+      fetchTransferData(transferForm, currentUser, selectedAccount, transferArr)
+    );
+  };
+
+  const setDataToggle = (account) => {
+    dispatch(setTransformAccount(transferForm, account));
+  };
 
   return (
     <ServiceCard>
@@ -30,20 +56,62 @@ function TransferInputsCard() {
       </CardHeader>
       <TransferBody>
         <TransferInputWrapper>
-          <Formik>
+          <Formik
+            initialValues={{ ...transferForm }}
+            onSubmit={handleSubmit}
+            validationSchema={transferSchema}
+          >
             <Form>
               <TransferInputSection>
-                <Input label="Recipient Name" large value={owner} />
-                <Input label="Recipient Email" large value={email} />
+                <CustomInput
+                  name="name"
+                  label="Recipient Name"
+                  large
+                  type="text"
+                  placeholder="Enter your username"
+                  setData={setData}
+                  value={name || ""}
+                />
+                <CustomInput
+                  name="email"
+                  label="Email"
+                  large
+                  type="email"
+                  placeholder="Enter your email"
+                  setData={setData}
+                  value={email || ""}
+                />
               </TransferInputSection>
               <TransferInputSection>
-                <Input label="Amount" large />
-                <Input label="Message" large />
+                <CustomInput
+                  name="transfer"
+                  label="Amount"
+                  large
+                  type="number"
+                  placeholder="Enter your transfer amount"
+                  setData={setData}
+                />
+                <CustomInput
+                  name="details"
+                  label="Message"
+                  large
+                  type="text"
+                  placeholder="Enter your transfer details"
+                  setData={setData}
+                />
               </TransferInputSection>
+              <TransferInputSection>
+                <RadioButton
+                  firstText="euro"
+                  secondText="ron"
+                  name="account"
+                  setDataToggle={setDataToggle}
+                />
+              </TransferInputSection>
+              <Button label="Send" size="xl" primary={true} type="submit" />
             </Form>
           </Formik>
         </TransferInputWrapper>
-        <Button label="Send" size="xl" primary="primary" />
       </TransferBody>
     </ServiceCard>
   );

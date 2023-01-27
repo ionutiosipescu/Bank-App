@@ -8,7 +8,8 @@ import {
   UsersWrapper,
 } from "./Carousel.style";
 import { useDispatch } from "react-redux";
-import { setAddTransferAccount } from "../../state-management/Dashboard/services/helpers/transfersHelper/transferHelper.action";
+// import { setAddTransferAccount } from "../../state-management/Dashboard/services/helpers/transfersHelper/transferHelper.action";
+import { fetchTransferAccount } from "../../state-management/Dashboard/services/helpers/transfersHelper/transferHelper.action";
 
 function Carousel({ items, itemsNumber }) {
   const dispatch = useDispatch();
@@ -36,7 +37,10 @@ function Carousel({ items, itemsNumber }) {
       {itemsToShow.map((item, index) => (
         <UserContainer
           key={index}
-          onClick={() => dispatch(setAddTransferAccount(item))}
+          onClick={() => {
+            console.log(item);
+            dispatch(fetchTransferAccount(item));
+          }}
         >
           <img src={item.image} alt={item.owner} />
           <h4>{item.owner.split(" ")[0]}</h4>

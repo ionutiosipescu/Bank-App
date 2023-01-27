@@ -42,7 +42,7 @@ function SavingsInputCard() {
   };
 
   const onSubmit = () => {
-    // dispatch(fetchSavingData(savingFromData, savingArr, savingData, id));
+    dispatch(fetchSavingData(savingFromData, savingArr, currentUserData));
   };
 
   return (

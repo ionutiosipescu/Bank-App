@@ -19,6 +19,10 @@ import LinkButton from "../../../../../components/UI/LinkButton/LinkButton";
 import ProgressCard from "../../../../../components/ProgressCard/ProgressCard";
 import Modal from "../../../../../components/Modal/Modal";
 import LoanPayCard from "../../../../../components/LoanPayCard/LoanPayCard";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { selectCurrentUser } from "../../../../../state-management/Dashboard/userData/userData.selector";
+import { getLoansArrDb } from "../../../../../state-management/Dashboard/services/loans/loans.action";
 
 const data = accounts[0].savings;
 
@@ -62,6 +66,14 @@ function HisotryViewLoans({ dataServices }) {
 
   console.log(modalData);
   // console.log(dataServices);
+  const dispatch = useDispatch();
+  const currentUser = useSelector(selectCurrentUser);
+
+  useEffect(() => {
+    dispatch(getLoansArrDb(currentUser));
+  }, []);
+
+  console.log(dataServices);
   return (
     <>
       <NewContainer>
@@ -86,7 +98,7 @@ function HisotryViewLoans({ dataServices }) {
           <h2>Savings</h2>
         </CardHeader>
         <ListContainer>
-          {data.map((saving, id) => (
+          {data?.map((saving, id) => (
             <ListItem key={id}>
               <ListItemSection>
                 <ListIcon>
