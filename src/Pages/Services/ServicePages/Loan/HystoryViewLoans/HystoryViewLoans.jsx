@@ -43,7 +43,7 @@ function HisotryViewLoans({ dataServices }) {
           <h2>Savings</h2>
         </CardHeader>
         <ListContainer>
-          {data.map((saving, id) => (
+          {data?.map((saving, id) => (
             <ListItem key={id}>
               <ListItemSection>
                 <ListIcon>
