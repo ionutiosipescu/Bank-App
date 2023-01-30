@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const NewCardWrapper = styled.div`
+export const EditCardWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -11,4 +11,13 @@ export const NewCardWrapper = styled.div`
   & > div:last-child {
     margin-left: 30px;
   }
+`;
+
+export const EditControler = styled.div`
+  gap: 50px;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 30px;
 `;

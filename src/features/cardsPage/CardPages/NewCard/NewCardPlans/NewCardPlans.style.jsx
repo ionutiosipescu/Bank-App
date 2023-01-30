@@ -1,12 +1,17 @@
 import styled from "styled-components";
-import { Form } from "formik";
+import Button from "../../../../../components/UI/Button/Button";
 
-export const NewCardFormContainer = styled.div`
-  width: 70%;
+export const CardPlansContainer = styled.div`
   height: 100%;
+  width: 90%;
+  & > h2 {
+    margin-bottom: 40px;
+    padding: 20px 0 0;
+  }
 `;
 
-export const FormContainer = styled(Form)`
+export const FormContainerCard = styled.div`
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -17,7 +22,6 @@ export const FormContainer = styled(Form)`
     margin-bottom: 50px;
   }
 `;
-
 export const RowNewCardSection = styled.div`
   display: flex;
   flex-direction: row;
@@ -26,4 +30,8 @@ export const RowNewCardSection = styled.div`
   @media (max-width: 1440px) {
     justify-content: space-between;
   }
+`;
+
+export const ButtonNewCard = styled(Button)`
+  font-size: 18px;
 `;

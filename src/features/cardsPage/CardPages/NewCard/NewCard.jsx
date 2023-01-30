@@ -1,12 +1,12 @@
 import React from "react";
 import { NewCardWrapper } from "./NewCard.style";
-import NewCardForm from "./NewCardForm/NewCardForm";
 import NewCardAvailable from "./NewCardAvailable/NewCardAvailable";
+import NewCardPlans from "./NewCardPlans/NewCardPlans";
 
 function NewCard() {
   return (
     <NewCardWrapper>
-      <NewCardForm />
+      <NewCardPlans />
       <NewCardAvailable />
     </NewCardWrapper>
   );

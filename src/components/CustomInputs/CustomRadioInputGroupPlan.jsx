@@ -15,7 +15,7 @@ import PlanCardFooter from "../PlanCardRegister/PlanCardFooter";
 const RadioButtonsPlan = ({ label, ...props }) => {
   const [field, meta] = useField(props);
   return (
-    <RadioPlanContainer>
+    <RadioPlanContainer size={props.size}>
       <Field name={props.name}>
         {({ field }) => {
           return props.options.map((option) => {

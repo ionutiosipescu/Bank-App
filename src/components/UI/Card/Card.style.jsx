@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { device } from "../../../utils/breakpoints/breakpoints";
 
 export const CardContainer = styled.div`
+  z-index: 1;
   /* ${(props) => console.log(props)} */
   min-height: 215px;
   min-width: 345px;

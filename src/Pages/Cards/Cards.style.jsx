@@ -89,3 +89,7 @@ export const BottomContainer = styled.div`
   background-color: var(--white);
   box-shadow: 0px 0px 15px -8px rgba(21, 20, 47, 0.73);
 `;
+
+export const ManageAccount = styled.div`
+  display: flex;
+`;

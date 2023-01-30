@@ -7,6 +7,7 @@ import {
   LeftWrapper,
   RightWrapper,
   TopContainer,
+  ManageAccount,
 } from "./Cards.style";
 
 import { accounts } from "../../utils/data/dummyData";
@@ -17,6 +18,8 @@ import FeatureCard from "../../features/cardsPage/FeatureCards/FeatureCard";
 import CardInfo from "../../features/cardsPage/CardInfo/CardInfo";
 import SmallDropdown from "./../../features/cardsPage/Dropdown/Dropdown";
 import NewCard from "../../features/cardsPage/CardPages/NewCard/NewCard";
+import EditCard from "../../features/cardsPage/CardPages/EditCard/EditCard";
+import EditController from "../../features/cardsPage/CardPages/EditCard/EditController/EditController";
 
 const data = accounts[0];
 const data_2 = accounts[1];
@@ -36,10 +39,10 @@ function Cards() {
         setSelectedComponent(<NewCard />);
         break;
       case "Edit Account":
-        setSelectedComponent(<h1>Edit Account</h1>);
+        setSelectedComponent(<EditCard />);
         break;
       default:
-        setSelectedComponent(<h1>Accounts</h1>);
+        setSelectedComponent(<NewCard />);
     }
   }, [selectedOption]);
 
@@ -86,10 +89,13 @@ function Cards() {
         </RightWrapper>
       </TopContainer>
       <BottomContainer>
-        <SmallDropdown
-          selectedOption={selectedOption}
-          setSelectedOption={setSelectedOption}
-        />
+        <ManageAccount>
+          <SmallDropdown
+            selectedOption={selectedOption}
+            setSelectedOption={setSelectedOption}
+          />
+          {selectedOption === "Edit Account" && <EditController />}
+        </ManageAccount>
         {selectedComponent}
       </BottomContainer>
     </>

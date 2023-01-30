@@ -20,6 +20,7 @@ export const HomeContainer = styled.div`
     padding: 10px 0px 0px 10px;
   }
   @media (${device.laptopL}) {
+    height: 100%;
     width: calc(100% - 250px);
     margin-left: 250px;
     padding: 10px 0px 30px 30px;

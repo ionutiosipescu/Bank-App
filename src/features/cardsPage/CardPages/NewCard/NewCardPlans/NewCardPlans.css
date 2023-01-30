@@ -1,85 +1,55 @@
-/* ///////// Error Style Inputs ///////// */
-
-input.input-error,
-select.input-error {
-  border-color: #fc8181;
-}
-
-/* ///////// Plan Page Card Style ///////// */
-
-/* //////////////////////////////////  */
-.box-exchange {
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid var(--purple);
-  transition: 0.3s;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  border-radius: 50px;
-  box-shadow: 0px 0px 12px -8px rgba(21, 20, 47, 0.8);
-  width: 150px;
-  height: 40px;
-}
-.box-exchange:hover {
-  scale: 1.08;
-  background: var(--purple-dark);
-  color: var(--white);
-}
-.box-exchange.selected {
-  background: var(--purple-dark);
-  color: var(--white);
-}
-/* //////////////////////////////////  */
-
-.plan-form input[type="radio"] {
+.card-form input[type="radio"] {
   display: none;
 }
 /* Plan Form Page Style */
-.plan-form {
+.card-form {
   display: flex;
   flex-direction: column;
   width: 100%;
+  height: auto;
 }
 /* //////////////////////////////////  */
 
 /* Radio Selected Style */
-.plan-form .radio-label.selected {
+.card-form .radio-label.selected {
   border: 2px solid var(--blue);
   box-shadow: 0 15px 30px rgba(84, 197, 235, 0.6),
     0 10px 10px rgba(84, 197, 235, 0.2);
   background-color: var(--purple);
 }
-.plan-form .radio-label.selected .plancard-header h4,
-.plan-form .radio-label.selected .plancard-header h1,
-.plan-form .radio-label.selected .plancard-header .price-tag,
-.plan-form .radio-label.selected .plancard-body li span {
+.card-form .radio-label.selected .plancard-header h4,
+.card-form .radio-label.selected .plancard-header h1,
+.card-form .radio-label.selected .plancard-header .price-tag,
+.card-form .radio-label.selected .plancard-body li span {
   color: var(--white);
 }
-.plan-form .radio-label.selected .plancard-body li {
+.card-form .radio-label.selected .plancard-body li {
   color: var(--white);
   border-bottom: 1px solid var(--white);
 }
 
-.plan-form .radio-label.selected .plancard-footer {
+.card-form .radio-label.selected .plancard-footer {
   border: 1px solid var(--white);
   background: var(--white);
   color: var(--purple);
 }
-.plan-form .radio-label.selected .plancard-footer:hover {
+.card-form .radio-label.selected .plancard-footer:hover {
   background: var(--purple);
   color: var(--white);
 }
 
 /* Card Style */
-.plan-form .radio-label {
+.card-form .radio-label {
+  transition: transform 0.3s ease-in-out;
+  transform: scale(1);
+  gap: 40px;
   position: relative;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   display: flex;
-  width: 260px;
+  width: 290px;
+  min-height: 630px;
   height: auto;
   margin: 10px;
   padding: 20px;
@@ -92,8 +62,12 @@ select.input-error {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
+.card-form .radio-label:hover {
+  transform: scale(1.02);
+}
+
 /* Header */
-.plan-form .plancard-header {
+.card-form .plancard-header {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -101,36 +75,36 @@ select.input-error {
   width: 100%;
 }
 
-.plan-form .plancard-header > h4 {
-  font-size: 1rem;
+.card-form .plancard-header > h4 {
+  font-size: 1.5rem;
   color: var(--purple);
   margin-top: 20px;
   margin-bottom: 0px;
 }
 
-.plan-form .plancard-header .plancard-price {
+.card-form .plancard-header .plancard-price {
   margin-right: 5px;
-  font-size: 15px;
+  font-size: 30px;
   font-weight: 300;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.plan-form .plancard-header > h1 {
+.card-form .plancard-header > h1 {
   margin: 0;
 }
-.plan-form .plancard-header .price-tag {
+.card-form .plancard-header .price-tag {
   margin: 0 2px 16px 0;
 }
-.plan-form .plancard-price h1:after {
+.card-form .plancard-price h1:after {
   content: "/mo";
   margin-left: 5px;
-  font-size: 15px;
+  font-size: 25px;
   font-weight: 300;
 }
 
 /* Body */
-.plan-form .plancard-body {
+.card-form .plancard-body {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -138,7 +112,8 @@ select.input-error {
   z-index: 2;
   margin-bottom: 20px;
 }
-.plan-form .plancard-body ul {
+.card-form .plancard-body ul {
+  font-size: 18px;
   list-style-type: none;
   padding: 0;
   display: flex;
@@ -148,21 +123,22 @@ select.input-error {
   gap: 20px;
   text-align: center;
 }
-.plan-form .plancard-body li {
+.card-form .plancard-body li {
   width: 100%;
   color: var(--gray-dark);
   border-bottom: 1px solid var(--gray-dark);
   padding-bottom: 8px;
 }
-.plan-form .plancard-body li:last-child {
+.card-form .plancard-body li:last-child {
   border: none;
 }
-.plan-form .plancard-body li span {
+.card-form .plancard-body li span {
   color: black;
 }
 
 /* Footer */
-.plan-form .plancard-footer {
+.card-form .plancard-footer {
+  font-size: 18px;
   height: 30px;
   display: flex;
   justify-content: center;
@@ -176,7 +152,7 @@ select.input-error {
   cursor: pointer;
   padding: 18px;
 }
-.plan-form .plancard-footer:hover {
+.card-form .plancard-footer:hover {
   background: var(--white);
   color: var(--blue);
 }

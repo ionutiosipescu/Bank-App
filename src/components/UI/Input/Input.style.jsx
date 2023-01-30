@@ -105,8 +105,9 @@ export const RadioLabel = styled.label`
 export const RadioPlanContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 50px;
-  justify-content: center;
+  margin-bottom: ${(props) => (props.size === "card" ? "0" : "50px")};
+  justify-content: ${(props) =>
+    props.size === "card" ? "space-between" : "center"};
   align-items: center;
   @media ${device.laptop} {
     flex-direction: row;

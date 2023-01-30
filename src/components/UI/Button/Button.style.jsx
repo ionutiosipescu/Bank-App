@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { sizeBtn } from "../../../utils/componentSizes/buttonSizes";
 
 export const Btn = styled.button`
+  z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;

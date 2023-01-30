@@ -9,9 +9,22 @@ import {
 } from "./NewCardAvailable.style";
 import BalanceCard from "../../../../../components/BalanceCard/BalanceCard";
 import { accounts } from "../../../../../utils/data/dummyData";
+import Button from "../../../../../components/UI/Button/Button";
+import { ButtonsContainer } from "./NewCardAvailable.style";
+import { useState } from "react";
 
 function NewCardAvailable() {
   const data = accounts[0];
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const itemsToShow = accounts.slice(currentIndex, currentIndex + 3);
+
+  const handlePrevClick = () => {
+    setCurrentIndex(currentIndex - 1);
+  };
+
+  const handleNextClick = () => {
+    setCurrentIndex(currentIndex + 1);
+  };
 
   return (
     <NewCardAvailableContainer>
@@ -24,6 +37,25 @@ function NewCardAvailable() {
         cardNum={data.cardNumber}
         valid={data.validity}
       />
+      {/* Buttons */}
+      <ButtonsContainer>
+        <Button
+          handleClick={handlePrevClick}
+          disabled={currentIndex === 0 ? true : false}
+          size="round"
+          primary="primary"
+        >
+          &#8592;
+        </Button>
+        <Button
+          handleClick={handleNextClick}
+          disabled={currentIndex + 3 >= accounts.length ? true : false}
+          size="round"
+          primary="primary"
+        >
+          &#8594;
+        </Button>
+      </ButtonsContainer>
       {/* currency */}
       <CurrencyBox>Euro</CurrencyBox>
       {/* Advantajes Card */}
