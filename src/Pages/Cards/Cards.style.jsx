@@ -81,7 +81,7 @@ export const FeatureContainer = styled.div`
 export const BottomContainer = styled.div`
   display: flex;
   flex-direction: column;
-  height: 50vh;
+  height: auto;
   width: calc(100% - 60px);
   margin: 30px 30px 20px 0;
   padding: 30px;

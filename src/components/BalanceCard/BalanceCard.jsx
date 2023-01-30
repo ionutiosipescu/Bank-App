@@ -6,14 +6,14 @@ import { CardBody, CardFooter, Circle, Pill } from "./BalanceCard.style";
 function BalanceCard({ balance, color, name, valid, cardNum, size, onClick }) {
   return (
     <CardContainer color={color} size={size} onClick={onClick}>
-      <CardHeader>
+      <CardHeader size={size}>
         <h3>My Balance</h3>
         <h1>{balance}</h1>
       </CardHeader>
-      <CardBody>
+      <CardBody size={size}>
         <h2>{cardNum}</h2>
       </CardBody>
-      <CardFooter>
+      <CardFooter size={size}>
         <div>
           <h4>Card Holder</h4>
           <h3>{name}</h3>
@@ -23,10 +23,10 @@ function BalanceCard({ balance, color, name, valid, cardNum, size, onClick }) {
           <h3>{valid}</h3>
         </div>
       </CardFooter>
-      <Circle one />
-      <Circle two />
-      <Pill one color={color} />
-      <Pill two color={color} />
+      <Circle one size={size} />
+      <Circle two size={size} />
+      <Pill one color={color} size={size} />
+      <Pill two color={color} size={size} />
     </CardContainer>
   );
 }

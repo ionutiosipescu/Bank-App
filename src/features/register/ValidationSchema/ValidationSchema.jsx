@@ -38,6 +38,7 @@ const phoneSchema = yup
 
 const emailRules = /^[a-zA-Z0-9._%+-]+@(yahoo|gmail)\.com$/;
 // only yahoo and gmail ex format: @yahoo.com or @gmail.com
+
 // Account Form
 export const registerSchemaAccount = yup.object().shape({
   displayName: yup

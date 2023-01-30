@@ -6,6 +6,9 @@ export const CardBody = styled.div`
   align-items: center;
   width: 100%;
   z-index: 2;
+  h2 {
+    font-size: ${(props) => (props.size === "fit" ? "20px" : "unset")};
+  }
 `;
 
 export const CardFooter = styled.div`
@@ -18,13 +21,22 @@ export const CardFooter = styled.div`
   & > h3 {
     margin-bottom: 8px;
   }
+  h3 {
+    font-size: ${(props) => (props.size === "fit" ? "15px" : "unset")};
+  }
+  h4 {
+    font-size: ${(props) => (props.size === "fit" ? "12px" : "unset")};
+  }
 `;
 
 export const Circle = styled.div`
+  ${(props) => console.log(props)}
   position: absolute;
   top: 10%;
-  width: 60px;
-  height: 60px;
+  ${(props) =>
+    props.size === "fit"
+      ? "width: 30px; height: 30px;"
+      : "width: 60px; height: 60px;"};
   border-radius: 50%;
   opacity: 0.4;
   background-color: var(--white);
@@ -33,7 +45,7 @@ export const Circle = styled.div`
 
 export const Pill = styled.div`
   position: absolute;
-  width: 90px;
+  width: ${(props) => (props.size === "fit" ? "60px" : "90px")};
   height: 300px;
   border-radius: 50px;
   ${(props) =>

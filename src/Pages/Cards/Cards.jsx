@@ -16,6 +16,7 @@ import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 import FeatureCard from "../../features/cardsPage/FeatureCards/FeatureCard";
 import CardInfo from "../../features/cardsPage/CardInfo/CardInfo";
 import SmallDropdown from "./../../features/cardsPage/Dropdown/Dropdown";
+import NewCard from "../../features/cardsPage/CardPages/NewCard/NewCard";
 
 const data = accounts[0];
 const data_2 = accounts[1];
@@ -31,14 +32,11 @@ function Cards() {
 
   useEffect(() => {
     switch (selectedOption) {
-      case "Accounts":
-        setSelectedComponent(<h1>Accounts</h1>);
-        break;
       case "New Account":
-        setSelectedComponent(<h1>New Account</h1>);
+        setSelectedComponent(<NewCard />);
         break;
-      case "Delete Account":
-        setSelectedComponent(<h1>Delete Account</h1>);
+      case "Edit Account":
+        setSelectedComponent(<h1>Edit Account</h1>);
         break;
       default:
         setSelectedComponent(<h1>Accounts</h1>);

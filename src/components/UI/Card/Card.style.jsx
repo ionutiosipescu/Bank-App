@@ -2,6 +2,9 @@ import styled from "styled-components";
 import { device } from "../../../utils/breakpoints/breakpoints";
 
 export const CardContainer = styled.div`
+  /* ${(props) => console.log(props)} */
+  min-height: 215px;
+  min-width: 345px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -23,43 +26,43 @@ export const CardContainer = styled.div`
       ? "var(--white)"
       : "var(--text)"};
   ${(props) =>
-    props.size == "sm"
+    props.size === "sm"
       ? "width: 33vw; aspect-ratio: 8/5;"
-      : props.size == "md"
+      : props.size === "md"
       ? "width: 50vw; aspect-ratio: 16/9;"
-      : props.size == "lg"
-      ? "width: 100%; height: 100%;"
-      : "width: fit-content; height: fit-content;"};
+      : props.size === "fit"
+      ? "width: fit-content; height: fit-content; margin: 0;"
+      : "width: 100%; height: 100%;"};
   @media (max-width: 1680px) {
     ${(props) =>
-      props.size == "sm"
+      props.size === "sm"
         ? "width: 33vw; aspect-ratio: 3/2;"
-        : props.size == "md"
+        : props.size === "md"
         ? "width: 50vw; aspect-ratio: 3/2;"
-        : props.size == "lg"
-        ? "width: 100%; height: 100%;"
-        : "width: fit-content; height: fit-content;"};
+        : props.size === "fit"
+        ? "width: fit-content; height: fit-content;"
+        : "width: 100%; height: 100%;"};
     margin: 25px 30px 15px 0;
   }
   @media (max-width: 1440px) {
     ${(props) =>
-      props.size == "sm"
+      props.size === "sm"
         ? "width: 33vw; aspect-ratio: 4/3;"
-        : props.size == "md"
+        : props.size === "md"
         ? "width: 50vw; aspect-ratio: 8/5;"
-        : props.size == "lg"
-        ? "width: 100%; height: 100%;"
-        : "width: fit-content; height: fit-content;"};
+        : props.size === "fit"
+        ? "width: fit-content; height: fit-content;"
+        : "width: 100%; height: 100%;"};
   }
   @media (max-width: 1024px) {
     ${(props) =>
-      props.size == "sm"
+      props.size === "sm"
         ? "width: 95vw; aspect-ratio: 4/3;"
-        : props.size == "md"
+        : props.size === "md"
         ? "width: 95vw; aspect-ratio: 8/7;"
-        : props.size == "lg"
-        ? "width: 100%; height: 100%;"
-        : "width: fit-content; height: fit-content;"};
+        : props.size === "fit"
+        ? "width: fit-content; height: fit-content;"
+        : "width: 100%; height: 100%;"};
     margin: 15px 10px 15px 0;
   }
 `;
@@ -69,7 +72,10 @@ export const CardHeader = styled.div`
   width: 100%;
   height: fit-content;
   z-index: 2;
-  margin: 0 0 0 20px;
+  margin: ${(props) => (props.size === "fit" ? "0" : "0 0 0 20px")};
+  h1 {
+    font-size: ${(props) => (props.size === "fit" ? "25px" : "48px")};
+  }
   ${(props) =>
     props.flex === "row"
       ? "flex-direction: row; align-items: center;"
