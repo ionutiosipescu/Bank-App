@@ -48,7 +48,7 @@ export const ProgressBar = styled.div`
 
 export const ProgressBarInterior = styled.div`
   height: 100%;
-  width: ${(props) => (props.current / props.target) * 100}%;
+  width: ${(props) => (props.paid / props.amount) * 100}%;
   background-color: var(--green);
   border-radius: 15px;
 `;

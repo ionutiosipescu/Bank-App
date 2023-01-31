@@ -1,3 +1,4 @@
+import { collapseTextChangeRangesAcrossMultipleVersions } from "typescript";
 import { LOANS_DATA_TYPES } from "./loans.types";
 
 const INITIAL_STATE = {
@@ -12,16 +13,19 @@ const INITIAL_STATE = {
     marital_status: "",
   },
   loansArr: [],
+  loansHistory: [],
 };
 
 export const loansDataReducer = (state = INITIAL_STATE, action) => {
   const { type, payload } = action;
-
+  console.log(payload);
   switch (type) {
     case LOANS_DATA_TYPES.SET_LOANS:
       return { ...state, loansData: { ...payload } };
     case LOANS_DATA_TYPES.SET_LOANS_ARR:
       return { ...state, loansArr: [...payload] };
+    case LOANS_DATA_TYPES.SET_LOANS_ARR_HISTORY:
+      return { ...state, loansHistory: [...payload] };
     default:
       return state;
   }

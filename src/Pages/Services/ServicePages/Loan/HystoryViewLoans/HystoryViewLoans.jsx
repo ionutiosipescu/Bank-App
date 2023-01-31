@@ -24,36 +24,15 @@ import { useDispatch } from "react-redux";
 import { selectCurrentUser } from "../../../../../state-management/Dashboard/userData/userData.selector";
 import { getLoansArrDb } from "../../../../../state-management/Dashboard/services/loans/loans.action";
 import { selectLoansArr } from "../../../../../state-management/Dashboard/services/loans/loans.selector";
+import { selectHistoryLoans } from "../../../../../state-management/Dashboard/services/loans/loans.selector";
 
 const data = accounts[0].savings;
 
-// const loans = [
-//   {
-//     id: 23,
-//     date: "2021-11-22",
-//     amount: 7000,
-//     paid: 6320,
-//     details: "Car",
-//   },
-//   {
-//     id: 24,
-//     date: "2020-04-12",
-//     amount: 150000,
-//     paid: 96278,
-//     details: "House",
-//   },
-//   {
-//     id: 25,
-//     date: "2023-01-02",
-//     amount: 2000,
-//     paid: 100,
-//     details: "Personal",
-//   },
-// ];
-
 function HisotryViewLoans({ dataServices }) {
+  const historyArr = useSelector(selectHistoryLoans);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalData, setModalData] = useState(null);
+  const [totalPaid, setTotalPaid] = useState("");
 
   const handleModalOpen = (id) => {
     setModalOpen(true);
@@ -74,8 +53,8 @@ function HisotryViewLoans({ dataServices }) {
   useEffect(() => {
     dispatch(getLoansArrDb(currentUser));
   }, []);
+  console.log(loansArr);
 
-  console.log(dataServices);
   return (
     <>
       <NewContainer>
@@ -100,15 +79,15 @@ function HisotryViewLoans({ dataServices }) {
           <h2>Savings</h2>
         </CardHeader>
         <ListContainer>
-          {data?.map((saving, id) => (
+          {historyArr?.map((history_loan, id) => (
             <ListItem key={id}>
               <ListItemSection>
                 <ListIcon>
                   <BsCashStack />
                 </ListIcon>
-                <LabelContainer>{saving.label}</LabelContainer>
-                <AmountContainer>Sum: {saving.amount}</AmountContainer>
-                <IdContainer>ID {saving.id}</IdContainer>
+                <LabelContainer>{history_loan.details}</LabelContainer>
+                <AmountContainer>Sum: {history_loan.rate}</AmountContainer>
+                <IdContainer>ID {history_loan.id}</IdContainer>
               </ListItemSection>
               <Button label="Top-Up" size="sm" primary="primary" />
               <Button label="Withdraw" size="sm" />

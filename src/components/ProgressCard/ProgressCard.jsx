@@ -12,8 +12,8 @@ import { upperCaseFirst } from "../../utils/helpers/helperFunctions/upperCaseFir
 
 const ProgressCard = ({ ...props }) => {
   const { title, handleClick, amount, paid } = props;
-  const [target, setTarget] = useState(amount);
-  const [current, setCurrent] = useState(paid);
+  // const [target, setTarget] = useState(amount);
+  // const [current, setCurrent] = useState(paid);
 
   return (
     <ProgressCardContainer>
@@ -35,17 +35,17 @@ const ProgressCard = ({ ...props }) => {
           <div style={{ display: "flex", flexDirection: "column" }}>
             <h3>You payed:</h3>
             <h3>
-              {current} / {target}
+              {paid} / {amount}
             </h3>
           </div>
           {/* <div style={{ display: "flex" }}>
             <h3>Left:</h3>
-            <h3>{target - current}</h3>
+            <h3>{amount - paid}</h3>
           </div> */}
         </InfoSection>
       </InfoContainer>
       <ProgressBar>
-        <ProgressBarInterior current={current} target={target} />
+        <ProgressBarInterior paid={paid} amount={amount} />
       </ProgressBar>
       <h3>You are almost there!</h3>
       <Button
