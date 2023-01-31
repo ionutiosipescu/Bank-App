@@ -9,6 +9,10 @@ const INITIAL_STATE = {
     acceptAddress: false,
     typeOfPlan: null,
   },
+  cardEdit: {
+    typeOfPlan: null,
+    errorMsg: "",
+  },
 };
 
 export const cardReducer = (state = INITIAL_STATE, action = {}) => {
@@ -17,6 +21,10 @@ export const cardReducer = (state = INITIAL_STATE, action = {}) => {
   switch (type) {
     case CARD_TYPES.SET_CARD:
       return { ...state, cardDetails: { ...payload } };
+    case CARD_TYPES.SET_CARD_EDIT:
+      return { ...state, cardEdit: { ...payload } };
+    case CARD_TYPES.SET_CARD_EDIT_ERROR:
+      return { ...state, cardEdit: { ...payload } };
     default:
       return state;
   }

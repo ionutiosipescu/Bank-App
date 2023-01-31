@@ -56,8 +56,6 @@ function NewCardPlans() {
         validateOnBlur={false}
         validateOnChange={true}
         validationSchema={cardSchema}
-        // onSubmit={(values, actions) => {
-        // }}
         onSubmit={handleSubmit}
       >
         <Form className="card-form">

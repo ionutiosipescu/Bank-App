@@ -11,23 +11,14 @@ import {
 import { useSelector } from "react-redux";
 import { selectStep } from "../../../state-management/Auth/registerhelper/registerhelper.selector";
 import SuccesLink from "../SuccesLink/SuccesLink";
+import MultiStepProgressBar from "../../../components/MultiStepProgressBar/MultiStepProgressBar";
 
 function MainRegister() {
   const step = useSelector(selectStep);
-  // let MainRegisterStyle;
-  // switch (step) {
-  //   // case 2:
-  //   //   MainRegisterStyle = MainRegisterContainerPlan;
-  //   //   break;
-  //   // case 3:
-  //   //   MainRegisterStyle = MainRegisterContainerPlan;
-  //   //   break;
-  //   default:
-  //     MainRegisterStyle = MainRegisterContainer;
-  // }
   return (
     <MainRegisterWrapper>
       <MainRegisterContainer>
+        <MultiStepProgressBar />
         <FormRegister />
         {step === 4 ? <SuccesLink /> : <FooterRegister />}
       </MainRegisterContainer>

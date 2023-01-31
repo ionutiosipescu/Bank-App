@@ -5,32 +5,30 @@ import { Formik, Form } from "formik";
 import { useSelector } from "react-redux";
 import { selectPlanObject } from "../../../../../state-management/Auth/registerhelper/registerhelper.selector";
 import { options } from "../../../../../utils/data/plancardregisterData";
+import { useDispatch } from "react-redux";
+import { setCardPlanEdit } from "../../../../../state-management/Dashboard/cards/cards.action";
+import { selectCardEdit } from "../../../../../state-management/Dashboard/cards/cards.selector";
+import { ErrorMsg } from "../../../../../components/Errors/Auth/ErrorMsg.style";
+import { useState } from "react";
+import { asyncCardPlanEdit } from "../../../../../state-management/Dashboard/cards/cards.action";
+import { TitleBox, EditCardError } from "./EditCardForm.style";
 
 function EditCardForm() {
+  const dispatch = useDispatch();
+  const cardEdit = useSelector(selectCardEdit);
+  const { errorMsg } = cardEdit;
   const plan = useSelector(selectPlanObject);
-
   const handleradio = (e) => {
-    // dispatch(updateRegisterPlanAsync(userPlan, planData, index, e));
-    console.log(e);
+    dispatch(asyncCardPlanEdit(cardEdit, e));
   };
+
   return (
     <CardPlansContainer>
-      <h2>Chouse your new Plan</h2>
-      <Formik
-      // initialValues={{ userPlan }}
-      // validateOnBlur={false}
-      // validateOnChange={true}
-      // onSubmit={(values, actions) => {
-      // console.log(values);
-      //   if (userPlan.length === 0) {
-      //     actions.setFieldError("userPlan", "At least one item is required");
-      //   } else {
-      //     dispatch(setRegisterObjectAditionals(registerHelper));
-      //     dispatch(setRegisterUserObject(registerHelper));
-      //     dispatch(setStep(step + 1));
-      //   }
-      // }}
-      >
+      <TitleBox>
+        <h2>Chouse your new Plan</h2>
+        {errorMsg ? <EditCardError>{errorMsg}</EditCardError> : <></>}
+      </TitleBox>
+      <Formik initialValues={{ ...cardEdit }}>
         <Form className="card-form">
           <RadioButtonsPlan
             size="card"
