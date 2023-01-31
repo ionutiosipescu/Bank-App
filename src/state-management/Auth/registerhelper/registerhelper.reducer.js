@@ -30,7 +30,6 @@ const INITIAL_STATE = {
 
 export const registerHelperReducer = (state = INITIAL_STATE, action = {}) => {
   const { type, payload } = action;
-  console.log(type, payload);
 
   switch (type) {
     case REGISTER_HELPER_TYPES.SET_STEP:

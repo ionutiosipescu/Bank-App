@@ -4,7 +4,6 @@ import { Formik, Form } from "formik";
 import { options } from "../../../../../utils/data/plancardregisterData";
 import { ErrorMsg } from "../../../../../components/Errors/Auth/ErrorMsg.style";
 import { selectPlanObject } from "../../../../../state-management/Auth/registerhelper/registerhelper.selector";
-import { useSelector } from "react-redux";
 import { CardPlansContainer } from "./NewCardPlans.style";
 import "./NewCardPlans.css";
 import { FormContainerCard } from "./NewCardPlans.style";
@@ -13,30 +12,48 @@ import CustomCheckbox from "../../../../../components/CustomInputs/CustomCheckbo
 import CustomInput from "../../../../../components/CustomInputs/CustomInput";
 import Button from "../../../../../components/UI/Button/Button";
 import { ButtonNewCard } from "./NewCardPlans.style";
+import { useSelector } from "react-redux";
+import { selectCard } from "../../../../../state-management/Dashboard/cards/cards.selector";
+import { cardSchema } from "../../../ValidationSchema/ValidationSchema";
+import { useDispatch } from "react-redux";
+import { setCard } from "../../../../../state-management/Dashboard/cards/cards.action";
+
 function NewCardPlans() {
+  const dispatch = useDispatch();
+  const card = useSelector(selectCard);
   const plan = useSelector(selectPlanObject);
 
   const handleradio = (e) => {
     // dispatch(updateRegisterPlanAsync(userPlan, planData, index, e));
     console.log(e);
   };
+
+  const setData = (e) => {
+    dispatch(setCard(card, e));
+  };
+
+  const handleSubmit = () => {
+    console.log(card);
+  };
   return (
     <CardPlansContainer>
       <h2>Chouse your new Plan</h2>
       <Formik
-      // initialValues={{ userPlan }}
-      // validateOnBlur={false}
-      // validateOnChange={true}
-      // onSubmit={(values, actions) => {
-      // console.log(values);
-      //   if (userPlan.length === 0) {
-      //     actions.setFieldError("userPlan", "At least one item is required");
-      //   } else {
-      //     dispatch(setRegisterObjectAditionals(registerHelper));
-      //     dispatch(setRegisterUserObject(registerHelper));
-      //     dispatch(setStep(step + 1));
-      //   }
-      // }}
+        initialValues={{ ...card }}
+        validateOnBlur={false}
+        validateOnChange={true}
+        validationSchema={cardSchema}
+        // onSubmit={(values, actions) => {
+        // console.log(values);
+        //   if (userPlan.length === 0) {
+        //     actions.setFieldError("userPlan", "At least one item is required");
+        //   } else {
+        //     dispatch(setRegisterObjectAditionals(registerHelper));
+        //     dispatch(setRegisterUserObject(registerHelper));
+        //     dispatch(setStep(step + 1));
+        //   }
+        // }}
+        onSubmit={handleSubmit}
       >
         <Form className="card-form">
           <RadioButtonsPlan
@@ -58,6 +75,7 @@ function NewCardPlans() {
                 type="text"
                 placeholder="Enter your address"
                 large
+                setData={setData}
               />
               <CustomInput
                 label="Postal Code"
@@ -65,6 +83,7 @@ function NewCardPlans() {
                 type="number"
                 placeholder="Enter your postal code"
                 large
+                setData={setData}
               />
             </RowNewCardSection>
             <RowNewCardSection>
@@ -74,6 +93,7 @@ function NewCardPlans() {
                 type="text"
                 placeholder="Enter your city"
                 large
+                setData={setData}
               />
               <CustomInput
                 label="Phone Number"
@@ -81,12 +101,14 @@ function NewCardPlans() {
                 type="number"
                 placeholder="Enter your phone number"
                 large
+                setData={setData}
               />
             </RowNewCardSection>
             <CustomCheckbox
               label="I confirm the address details"
               type="checkbox"
               name="acceptAddress"
+              setData={setData}
             />
           </FormContainerCard>
           <ErrorMsg component="div" name="userPlan" />

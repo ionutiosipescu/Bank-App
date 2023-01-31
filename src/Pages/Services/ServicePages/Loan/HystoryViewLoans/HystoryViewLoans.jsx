@@ -27,29 +27,29 @@ import { selectLoansArr } from "../../../../../state-management/Dashboard/servic
 
 const data = accounts[0].savings;
 
-const loans = [
-  {
-    id: 23,
-    date: "2021-11-22",
-    amount: 7000,
-    paid: 6320,
-    details: "Car",
-  },
-  {
-    id: 24,
-    date: "2020-04-12",
-    amount: 150000,
-    paid: 96278,
-    details: "House",
-  },
-  {
-    id: 25,
-    date: "2023-01-02",
-    amount: 2000,
-    paid: 100,
-    details: "Personal",
-  },
-];
+// const loans = [
+//   {
+//     id: 23,
+//     date: "2021-11-22",
+//     amount: 7000,
+//     paid: 6320,
+//     details: "Car",
+//   },
+//   {
+//     id: 24,
+//     date: "2020-04-12",
+//     amount: 150000,
+//     paid: 96278,
+//     details: "House",
+//   },
+//   {
+//     id: 25,
+//     date: "2023-01-02",
+//     amount: 2000,
+//     paid: 100,
+//     details: "Personal",
+//   },
+// ];
 
 function HisotryViewLoans({ dataServices }) {
   const [modalOpen, setModalOpen] = useState(false);
@@ -57,7 +57,7 @@ function HisotryViewLoans({ dataServices }) {
 
   const handleModalOpen = (id) => {
     setModalOpen(true);
-    setModalData(loans.find((loan) => loan.id === id));
+    setModalData(loansArr.find((loan) => loan.id === id));
   };
 
   const handleModalClose = () => {
@@ -84,7 +84,7 @@ function HisotryViewLoans({ dataServices }) {
             key={loan.id}
             title={loan.details}
             amount={loan.loan}
-            paid="0"
+            paid={loan.total_paid}
             handleClick={() => handleModalOpen(loan.id)}
           />
         ))}

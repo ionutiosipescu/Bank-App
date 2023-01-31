@@ -9,6 +9,7 @@ import { transferHelperReducer } from "./Dashboard/services/helpers/transfersHel
 import { depositHelperReducer } from "./Dashboard/services/helpers/depositsHelper/depositsHelper.reducer";
 import { savingHelperReducer } from "./Dashboard/services/helpers/savingsHelper/savingsHelper.reducer";
 import { exchangeHelperReducer } from "./Dashboard/services/helpers/exchangeHelper/exchangeHelper.reducer";
+import { cardReducer } from "./Dashboard/cards/cards.reducer";
 
 export const rootReducer = combineReducers({
   login: loginReducer,
@@ -20,4 +21,5 @@ export const rootReducer = combineReducers({
   depositHelper: depositHelperReducer,
   savingHelper: savingHelperReducer,
   exchangeHelper: exchangeHelperReducer,
+  cardState: cardReducer,
 });
