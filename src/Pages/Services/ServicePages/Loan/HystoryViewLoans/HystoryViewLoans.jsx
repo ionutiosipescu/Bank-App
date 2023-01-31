@@ -58,9 +58,9 @@ function HisotryViewLoans({ dataServices }) {
   return (
     <>
       <NewContainer>
-        {loansArr?.map((loan) => (
+        {loansArr?.map((loan, index) => (
           <ProgressCard
-            key={loan.id}
+            key={index}
             title={loan.details}
             amount={loan.loan}
             paid={loan.total_paid}

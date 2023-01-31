@@ -18,7 +18,6 @@ const INITIAL_STATE = {
 
 export const loansDataReducer = (state = INITIAL_STATE, action) => {
   const { type, payload } = action;
-  console.log(payload);
   switch (type) {
     case LOANS_DATA_TYPES.SET_LOANS:
       return { ...state, loansData: { ...payload } };

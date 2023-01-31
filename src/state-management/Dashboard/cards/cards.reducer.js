@@ -7,6 +7,7 @@ const INITIAL_STATE = {
     city: "",
     phone: "",
     acceptAddress: false,
+    typeOfPlan: null,
   },
 };
 

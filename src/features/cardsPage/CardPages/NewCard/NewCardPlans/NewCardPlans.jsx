@@ -17,24 +17,37 @@ import { selectCard } from "../../../../../state-management/Dashboard/cards/card
 import { cardSchema } from "../../../ValidationSchema/ValidationSchema";
 import { useDispatch } from "react-redux";
 import { setCard } from "../../../../../state-management/Dashboard/cards/cards.action";
+import { setCardToggle } from "../../../../../state-management/Dashboard/cards/cards.action";
+import { setCardPlan } from "../../../../../state-management/Dashboard/cards/cards.action";
+import { useState } from "react";
 
 function NewCardPlans() {
+  const [errorMsg, setErrorMessage] = useState("");
   const dispatch = useDispatch();
   const card = useSelector(selectCard);
   const plan = useSelector(selectPlanObject);
 
   const handleradio = (e) => {
-    // dispatch(updateRegisterPlanAsync(userPlan, planData, index, e));
-    console.log(e);
+    dispatch(setCardPlan(card, e));
   };
 
   const setData = (e) => {
     dispatch(setCard(card, e));
   };
 
-  const handleSubmit = () => {
-    console.log(card);
+  const setCardCheckbox = (e) => {
+    dispatch(setCardToggle(card, e));
   };
+
+  const handleSubmit = () => {
+    if (card.typeOfPlan) {
+      setErrorMessage("");
+      console.log(card);
+    } else {
+      setErrorMessage("Chouse at least one plan");
+    }
+  };
+
   return (
     <CardPlansContainer>
       <h2>Chouse your new Plan</h2>
@@ -44,14 +57,6 @@ function NewCardPlans() {
         validateOnChange={true}
         validationSchema={cardSchema}
         // onSubmit={(values, actions) => {
-        // console.log(values);
-        //   if (userPlan.length === 0) {
-        //     actions.setFieldError("userPlan", "At least one item is required");
-        //   } else {
-        //     dispatch(setRegisterObjectAditionals(registerHelper));
-        //     dispatch(setRegisterUserObject(registerHelper));
-        //     dispatch(setStep(step + 1));
-        //   }
         // }}
         onSubmit={handleSubmit}
       >
@@ -108,10 +113,10 @@ function NewCardPlans() {
               label="I confirm the address details"
               type="checkbox"
               name="acceptAddress"
-              setData={setData}
+              setCardCheckbox={setCardCheckbox}
             />
           </FormContainerCard>
-          <ErrorMsg component="div" name="userPlan" />
+          {errorMsg ? <ErrorMsg>{errorMsg}</ErrorMsg> : <></>}
           <ButtonNewCard
             label="Create New Account"
             size="xl"

@@ -17,6 +17,7 @@ import { selectRegisterPlan } from "../../../../state-management/Auth/registerUs
 import { updateRegisterPlanAsync } from "../../../../state-management/Auth/registerUser/registerUser.action";
 import { setRegisterUserObject } from "../../../../state-management/Auth/registerUser/registerUser.action";
 import { setRegisterObjectAditionals } from "../../../../state-management/Auth/registerUser/registerUser.action";
+import e from "cors";
 
 function PlanForm() {
   const dispatch = useDispatch();
@@ -29,6 +30,7 @@ function PlanForm() {
 
   const handleradio = (e) => {
     dispatch(updateRegisterPlanAsync(userPlan, planData, index, e));
+    console.log(userPlan, planData, index, e);
   };
 
   return (

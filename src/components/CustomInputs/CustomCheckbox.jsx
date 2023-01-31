@@ -10,6 +10,10 @@ const CustomCheckbox = ({ label, ...props }) => {
         <InputForm
           {...field}
           {...props}
+          onChange={(e) => {
+            field.onChange(e);
+            props.setCardCheckbox(e);
+          }}
           className={meta.touched && meta.error ? "input-error" : ""}
         />
         <span>{label}</span>

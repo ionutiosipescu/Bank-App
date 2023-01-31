@@ -30,7 +30,6 @@ export const CardFooter = styled.div`
 `;
 
 export const Circle = styled.div`
-  ${(props) => console.log(props)}
   position: absolute;
   top: 10%;
   ${(props) =>

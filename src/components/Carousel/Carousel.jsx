@@ -38,7 +38,6 @@ function Carousel({ items, itemsNumber }) {
         <UserContainer
           key={index}
           onClick={() => {
-            console.log(item);
             dispatch(fetchTransferAccount(item));
           }}
         >

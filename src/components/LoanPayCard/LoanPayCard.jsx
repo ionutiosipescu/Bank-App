@@ -6,12 +6,14 @@ import { useDispatch } from "react-redux";
 import { fetchPayLoanAsync } from "../../state-management/Dashboard/services/loans/loans.action";
 import { useSelector } from "react-redux";
 import { selectLoansArr } from "../../state-management/Dashboard/services/loans/loans.selector";
+import { selectHistoryLoans } from "../../state-management/Dashboard/services/loans/loans.selector";
 
 function LoanPayCard({ data, ...props }) {
+  const historyLoansArr = useSelector(selectHistoryLoans);
   const loansArr = useSelector(selectLoansArr);
   const dispatch = useDispatch();
   const handleSubmit = () => {
-    dispatch(fetchPayLoanAsync(data, loansArr));
+    dispatch(fetchPayLoanAsync(data, loansArr, historyLoansArr));
     // console.log(data);
   };
 

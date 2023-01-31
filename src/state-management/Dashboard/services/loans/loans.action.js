@@ -41,7 +41,6 @@ export const setLoansId = async (currentUserData) => {
   const stringCompare = "currency";
   const userAccountArr = currentUserData.account;
   const object = findObjectByString(account, userAccountArr, stringCompare);
-  console.log(object.id);
   return object.id;
 };
 
@@ -50,7 +49,8 @@ export const getLoansArrDb = (currentUserData) => {
   return async (dispatch) => {
     const id = await setLoansId(currentUserData);
     const { data } = await axios.get(`http://localhost:8080/loans/?id=${id}`);
-    dispatch(setLoansArrDb(data));
+    await dispatch(setLoansArrDb(data.listAllLoans));
+    await dispatch(updateHistoryLoans(data.listAllPays));
   };
 };
 
@@ -86,35 +86,49 @@ const setPayLoan = async (data) => {
   return dataUpdated;
 };
 
-//Update HistoryArrLoans
+// Update HistoryArrLoans
 export const updateHistoryLoans = (history) => {
-  const historyArr = history.data;
-  return createAction(LOANS_DATA_TYPES.SET_LOANS_ARR_HISTORY, historyArr);
+  return createAction(LOANS_DATA_TYPES.SET_LOANS_ARR_HISTORY, history);
+};
+
+// Update HistoryArrLoans when pay
+export const updateHistoryLoansPay = (dataHistory, historyLoansArr) => {
+  const history = dataHistory.data;
+  console.log(history, historyLoansArr);
+  return createAction(LOANS_DATA_TYPES.SET_LOANS_ARR_HISTORY, history);
 };
 
 // Update Loans totalPay
 export const setLoansTotalPay = (data, arr) => {
-  const newArr = arr.map((loan) => {
-    if (loan.id === data.id) {
-      return { ...data, total_paid: data.total_paid + data.rate };
+  // const newArr = arr.filter((loan) => loan.id !== data.id);
+  // const updateArr = [
+  //   ...newArr,
+  //   { ...data, total_paid: data.total_paid + data.rate },
+  // ];
+  console.log(data, arr);
+  const updateArr = arr.map((item) => {
+    if (item.id === data.id) {
+      item.total_paid = item.total_paid + item.rate;
     }
-    return data;
+    return item;
   });
-  return createAction(LOANS_DATA_TYPES.SET_LOANS_ARR, newArr);
+  console.log(updateArr);
+  return createAction(LOANS_DATA_TYPES.SET_LOANS_ARR, updateArr);
 };
 
 // Async Pay Loan
-export const fetchPayLoanAsync = (data, arr) => {
+export const fetchPayLoanAsync = (data, arr, historyLoansArr) => {
   return async (dispatch) => {
     const { account_id, id } = data;
+    await dispatch(setLoansTotalPay(data, arr));
     try {
       const dataPayLoan = await setPayLoan(data);
-      const history = await axios.post(
+      console.log(dataPayLoan, account_id, id);
+      const dataHistory = await axios.post(
         `http://localhost:8080/loans/pay?id=${id}&account_id=${account_id}`,
         dataPayLoan
       );
-      await dispatch(updateHistoryLoans(history));
-      await dispatch(setLoansTotalPay(data, arr));
+      await dispatch(updateHistoryLoansPay(dataHistory, historyLoansArr));
     } catch (error) {
       console.log(error);
     }

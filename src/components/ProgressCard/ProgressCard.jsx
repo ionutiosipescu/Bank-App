@@ -17,7 +17,7 @@ const ProgressCard = ({ ...props }) => {
 
   return (
     <ProgressCardContainer>
-      <h2>{upperCaseFirst(title)}</h2>
+      <h2>{title}</h2>
       <InfoContainer>
         <InfoSection>
           <ProgressCardIllustration
