@@ -6,9 +6,6 @@ export const CardBody = styled.div`
   align-items: center;
   width: 100%;
   z-index: 2;
-  h2 {
-    font-size: ${(props) => (props.size === "fit" ? "20px" : "unset")};
-  }
 `;
 
 export const CardFooter = styled.div`
