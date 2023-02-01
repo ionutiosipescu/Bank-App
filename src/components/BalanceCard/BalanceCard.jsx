@@ -3,12 +3,15 @@ import { PropTypes } from "prop-types";
 import { CardContainer, CardHeader } from "../UI/Card/Card.style";
 import { CardBody, CardFooter, Circle, Pill } from "./BalanceCard.style";
 
-function BalanceCard({ balance, color, name, valid, cardNum, size, onClick }) {
+function BalanceCard({ ...props }) {
+  const { balance, color, name, valid, cardNum, size, onClick, currency } =
+    props;
   return (
     <CardContainer color={color} size={size} onClick={onClick}>
       <CardHeader size={size}>
         <h3>My Balance</h3>
         <h1>{balance}</h1>
+        <span>{currency}</span>
       </CardHeader>
       <CardBody size={size}>
         <h2>{cardNum}</h2>

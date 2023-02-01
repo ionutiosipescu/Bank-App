@@ -12,7 +12,7 @@ import {
 
 import { accounts } from "../../utils/data/dummyData";
 import Button from "../../components/UI/Button/Button";
-
+import { generateRandomNumber } from "../../utils/helpers/helperFunctions/randomNumber";
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 import FeatureCard from "../../features/cardsPage/FeatureCards/FeatureCard";
 import CardInfo from "../../features/cardsPage/CardInfo/CardInfo";
@@ -20,6 +20,10 @@ import SmallDropdown from "./../../features/cardsPage/Dropdown/Dropdown";
 import NewCard from "../../features/cardsPage/CardPages/NewCard/NewCard";
 import EditCard from "../../features/cardsPage/CardPages/EditCard/EditCard";
 import EditController from "../../features/cardsPage/CardPages/EditCard/EditController/EditController";
+import { useSelector } from "react-redux";
+import { selectUserAccount } from "../../state-management/Dashboard/userData/userData.selector";
+import { selectUserDetail } from "../../state-management/Dashboard/userData/userData.selector";
+import { cardValidityGenerator } from "../../utils/helpers/helperFunctions/cardValidityGenerator";
 
 const data = accounts[0];
 const data_2 = accounts[1];
@@ -28,6 +32,9 @@ function Cards() {
   const [clicked, setClicked] = useState(true);
   const [selectedOption, setSelectedOption] = useState("New Account");
   const [selectedComponent, setSelectedComponent] = useState(<h1>Accounts</h1>);
+  const accountsArr = useSelector(selectUserAccount);
+  const currentAccount = useSelector(selectUserDetail);
+  const { first_name, last_name } = currentAccount;
 
   const handleCardChange = () => {
     setClicked(!clicked);
@@ -61,7 +68,19 @@ function Cards() {
             <BsArrowLeft />
           </Button>
           <CardsContainer clicked={clicked}>
-            <BalanceCard
+            {accountsArr.map((account, index) => (
+              <BalanceCard
+                key={index}
+                balance={`${account.balance}`}
+                currency={account.currency}
+                color="yellow"
+                size="sm"
+                name={`${first_name} ${last_name}`}
+                cardNum={generateRandomNumber(16)}
+                valid={cardValidityGenerator(account.created_at)}
+              />
+            ))}
+            {/* <BalanceCard
               balance={data.balance}
               color="purple"
               size="sm"
@@ -76,7 +95,7 @@ function Cards() {
               name={data_2.owner}
               cardNum={data_2.cardNumber}
               valid={data_2.validity}
-            />
+            /> */}
           </CardsContainer>
           <Button handleClick={handleCardChange} size="round">
             <BsArrowRight />
