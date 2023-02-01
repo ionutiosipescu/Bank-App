@@ -24,6 +24,7 @@ import { useSelector } from "react-redux";
 import { selectUserAccount } from "../../state-management/Dashboard/userData/userData.selector";
 import { selectUserDetail } from "../../state-management/Dashboard/userData/userData.selector";
 import { cardValidityGenerator } from "../../utils/helpers/helperFunctions/cardValidityGenerator";
+import CarouselCards from "../../components/CarouselCards/CarouselCards";
 
 const data = accounts[0];
 const data_2 = accounts[1];
@@ -53,34 +54,18 @@ function Cards() {
     }
   }, [selectedOption]);
 
-  let dateString = "2023-02-01";
-  let date = new Date(dateString);
-  date.setFullYear(date.getFullYear() + 6);
-  let sixYearsLater = date.toISOString().split("T")[0];
-  console.log(dateString);
-  console.log(sixYearsLater);
-
   return (
     <>
       <TopContainer>
         <LeftWrapper>
-          <Button handleClick={handleCardChange} size="round">
+          {/* <Button handleClick={handleCardChange} size="round">
             <BsArrowLeft />
-          </Button>
-          <CardsContainer clicked={clicked}>
-            {accountsArr.map((account, index) => (
-              <BalanceCard
-                key={index}
-                balance={`${account.balance}`}
-                currency={account.currency}
-                color="yellow"
-                size="sm"
-                name={`${first_name} ${last_name}`}
-                cardNum={generateRandomNumber(16)}
-                valid={cardValidityGenerator(account.created_at)}
-              />
-            ))}
-            {/* <BalanceCard
+          </Button> */}
+          <CarouselCards />
+          {/* <CardsContainer clicked={clicked}>
+            
+          </CardsContainer> */}
+          {/* <BalanceCard
               balance={data.balance}
               color="purple"
               size="sm"
@@ -96,10 +81,9 @@ function Cards() {
               cardNum={data_2.cardNumber}
               valid={data_2.validity}
             /> */}
-          </CardsContainer>
-          <Button handleClick={handleCardChange} size="round">
+          {/* <Button handleClick={handleCardChange} size="round">
             <BsArrowRight />
-          </Button>
+          </Button> */}
         </LeftWrapper>
         <RightWrapper>
           <FeatureContainer>

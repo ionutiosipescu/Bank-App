@@ -58,3 +58,8 @@ export const setErrorMsg = (cardEdit) => {
   const cardUpdated = { ...cardEdit, errorMsg: errormsg };
   return createAction(CARD_TYPES.SET_CARD_EDIT_ERROR, cardUpdated);
 };
+
+// update CurrentAccount
+export const setCurrentCardAccount = (card) => {
+  return createAction(CARD_TYPES.SET_CARD_CURRENT, card);
+};

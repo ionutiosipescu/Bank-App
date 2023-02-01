@@ -40,7 +40,8 @@ export const LeftWrapper = styled.div`
 export const CardsContainer = styled.div`
   height: 100%;
   width: calc(100% - 90px);
-  & > div {
+
+  /* & > div {
     position: absolute;
     scale: 60%;
     font-size: 1.4rem;
@@ -49,16 +50,16 @@ export const CardsContainer = styled.div`
       font-size: 2.6rem;
     }
     ${(props) =>
-      props.clicked
-        ? "transform: translate(-130px, -10px); z-index: 1;"
-        : "transform: translate(-170px, -50px); z-index: 2;"};
+    props.clicked
+      ? "transform: translate(-130px, -10px); z-index: 1;"
+      : "transform: translate(-170px, -50px); z-index: 2;"};
   }
   & > div:last-child {
     ${(props) =>
-      props.clicked
-        ? "transform: translate(-170px, -50px); z-index: 2;"
-        : "transform: translate(-130px, -10px); z-index: 1;"};
-  }
+    props.clicked
+      ? "transform: translate(-170px, -50px); z-index: 2;"
+      : "transform: translate(-130px, -10px); z-index: 1;"};
+  } */
   @media (max-width: 1680px) {
   }
 `;

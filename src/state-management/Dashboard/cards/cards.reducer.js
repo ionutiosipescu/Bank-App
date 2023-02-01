@@ -13,7 +13,6 @@ const INITIAL_STATE = {
     typeOfPlan: null,
     errorMsg: "",
   },
-  cardInfoArr: [],
   currentCardInfo: {},
 };
 
@@ -27,6 +26,8 @@ export const cardReducer = (state = INITIAL_STATE, action = {}) => {
       return { ...state, cardEdit: { ...payload } };
     case CARD_TYPES.SET_CARD_EDIT_ERROR:
       return { ...state, cardEdit: { ...payload } };
+    case CARD_TYPES.SET_CARD_CURRENT:
+      return { ...state, currentCardInfo: { ...payload } };
     default:
       return state;
   }
