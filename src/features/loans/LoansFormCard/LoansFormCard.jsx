@@ -83,9 +83,8 @@ function LoansFormCard() {
     marital_status,
   } = loansData; // destructure data from Redux for updating on every keypress
   // send data to Redux userProfile
-  const onSubmit = (e) => {
-    dispatch(fetchLoanData(loansData, loansArr, currentUser));
-  };
+
+  // const onSubmit = (e) => {};
   const setData = (e) => {
     dispatch(setLoansData(loansData, e));
   };
@@ -104,7 +103,7 @@ function LoansFormCard() {
         onSubmit={(isValid) => {
           if (isValid) {
             setModalOpen(true);
-            onSubmit();
+            dispatch(fetchLoanData(loansData, loansArr, currentUser));
           }
         }}
       >
