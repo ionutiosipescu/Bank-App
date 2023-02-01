@@ -24,7 +24,7 @@ export const accounts = [
     pin: 1111,
     balance: "€ 12,345.67",
     validity: "09/26",
-    cardNumber: "1413 8975 8374",
+    cardNumber: "1413 8975 8374 6379",
     plan: 1,
     phoneNumber: "+4071236556",
     address: "Aleea Minunilor 2, Bucuresti",

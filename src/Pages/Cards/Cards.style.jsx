@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const TopContainer = styled.div`
   display: flex;
+  justify-content: center;
   align-items: center;
   height: 50vh;
   width: calc(100% - 60px);

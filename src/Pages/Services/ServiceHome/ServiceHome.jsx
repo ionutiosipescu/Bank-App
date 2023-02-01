@@ -4,10 +4,10 @@ import { Outlet } from "react-router";
 
 function ServiceHome() {
   return (
-    <div>
+    <>
       <ServiceHomePresentation />
       <Outlet />
-    </div>
+    </>
   );
 }
 
