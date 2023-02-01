@@ -20,11 +20,11 @@ function ServiceHomePresentation() {
             alt=""
           />
           <HeaderArt>
-            <h1>
+            <h2>
               Here you will find all of your services just one click away!
-            </h1>
+            </h2>
             <br />
-            <h1>It's never been easier!</h1>
+            <h2>It's never been easier!</h2>
           </HeaderArt>
         </HeaderContainer>
       </PresentationTopCard>

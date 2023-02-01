@@ -46,6 +46,13 @@ function Cards() {
     }
   }, [selectedOption]);
 
+  let dateString = "2023-02-01";
+  let date = new Date(dateString);
+  date.setFullYear(date.getFullYear() + 6);
+  let sixYearsLater = date.toISOString().split("T")[0];
+  console.log(dateString);
+  console.log(sixYearsLater);
+
   return (
     <>
       <TopContainer>

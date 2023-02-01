@@ -15,9 +15,9 @@ export const PresentationTopCard = styled.div`
   justify-content: space-between;
   align-items: center;
   overflow: hidden;
-  height: 30vh;
+  height: 25vh;
+  padding-left: 5%;
   width: calc(100% - 60px);
-  padding: 30px;
   margin: 30px 30px 20px 0;
   border-radius: 40px;
   background-color: var(--white);
@@ -25,21 +25,27 @@ export const PresentationTopCard = styled.div`
 `;
 
 export const HeaderArt = styled.span`
-  padding: 2% 5% 2% 10%;
+  height: 100%;
+  width: 75%;
+  padding: 2% 5% 2% 20%;
   background-color: var(--green);
   background: linear-gradient(
     90deg,
-    var(--purple-dark) 0%,
-    var(--purple) 35%,
+    var(--purple-dark) 20%,
+    var(--purple) 45%,
     var(--purple-light) 100%
   );
-  clip-path: polygon(13% 0, 100% 0%, 89% 100%, 0% 100%);
+  clip-path: polygon(23% 0, 100% 0%, 100% 100%, 0% 100%);
   color: var(--white);
+  & h2 {
+    font-size: 2rem;
+    font-weight: 700;
+  }
 `;
 
 export const HeaderContainer = styled.div`
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
   height: 100%;
