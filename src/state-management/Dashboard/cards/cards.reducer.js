@@ -13,6 +13,8 @@ const INITIAL_STATE = {
     typeOfPlan: null,
     errorMsg: "",
   },
+  cardInfoArr: [],
+  currentCardInfo: {},
 };
 
 export const cardReducer = (state = INITIAL_STATE, action = {}) => {
