@@ -67,11 +67,28 @@ export const fetchLoanData = (loanObject, arr, currentUserData) => {
     try {
       const loandData = await setLoanData(loanObject);
       const id = await setLoansId(currentUserData);
+      console.log(loandData, id);
       const { data } = await axios.post(
         `http://localhost:8080/loans/check/?id=${id}`,
         loandData
       );
-      console.log(data);
+      console.log(loandData, id, data);
+      await dispatch(setCheckData(data));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+// Save Check data
+export const setCheckData = (data) => {
+  return createAction(LOANS_DATA_TYPES.SET_LOANS_CHECK_DATA, data);
+};
+
+export const fetchLoanCreate = (currentUserData, data) => {
+  return async (dispatch) => {
+    try {
+      const id = await setLoansId(currentUserData);
       await axios
         .post(`http://localhost:8080/loans/loan/?id=${id}`, data)
         .then((res) => console.log(res));
