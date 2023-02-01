@@ -42,7 +42,7 @@ function Cards() {
         setSelectedComponent(<EditCard />);
         break;
       default:
-        setSelectedComponent(<NewCard />);
+        setSelectedComponent(<EditCard />);
     }
   }, [selectedOption]);
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { ServiceCard } from "../../../components/UI/Card/Card.style";
 import { CardHeader } from "../../../components/UI/Card/Card.style";
 import { Formik, Form } from "formik";
@@ -16,8 +16,25 @@ import { setLoansArr } from "../../../state-management/Dashboard/services/loans/
 import { selectLoansArr } from "../../../state-management/Dashboard/services/loans/loans.selector";
 import { fetchLoanData } from "../../../state-management/Dashboard/services/loans/loans.action";
 import { selectCurrentUser } from "../../../state-management/Dashboard/userData/userData.selector";
+import Modal from "../../../components/Modal/Modal";
+import LoanModal from "../LoanModal/LoanModal";
 
 function LoansFormCard() {
+  // Modal State
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const handleModalOpen = (id) => {
+    if (loansData) {
+      setModalOpen(true);
+    } else setModalOpen(false);
+  };
+
+  const handleModalClose = () => {
+    setModalOpen(false);
+  };
+
+  //////////////////////
+
   const employeeOptions = [
     { key: "", value: "Select a employe status" },
     { key: "business", value: "Business" },
@@ -84,7 +101,12 @@ function LoansFormCard() {
       <Formik
         initialValues={{ ...loansData }}
         validationSchema={loansSchema}
-        onSubmit={onSubmit}
+        onSubmit={(isValid) => {
+          if (isValid) {
+            setModalOpen(true);
+            onSubmit();
+          }
+        }}
       >
         <FormContainerLoans>
           <RegisterFormPart>
@@ -188,10 +210,18 @@ function LoansFormCard() {
             </CustomSelect>
           </RegisterFormPart>
           <BtnContainerLoan>
-            <Button size={"xl"} type="submit" label="Request Loan" />
+            <Button
+              size={"xl"}
+              type="submit"
+              label="Request Loan"
+              // handleClick={handleModalOpen}
+            />
           </BtnContainerLoan>
         </FormContainerLoans>
       </Formik>
+      <Modal opened={modalOpen} handleClick={handleModalClose}>
+        <LoanModal approved="no" handleClick={handleModalClose} />
+      </Modal>
     </ServiceCard>
   );
 }
