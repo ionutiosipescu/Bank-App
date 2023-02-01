@@ -5,6 +5,19 @@ import { setStep } from "./registerhelper.actions";
 import { v4 as uuidv4 } from "uuid";
 import emailjs from "emailjs-com";
 import { fetchEmailVerification } from "./registerhelper.actions";
+import { createAuthUserWithEmailAndPassword } from "../../../utils/firebase/firebase";
+import { sendEmailVerification } from "firebase/auth";
+
+const email = "ionutiosipescu@yahoo.com";
+const password = "Texas@123";
+export const signup = async () => {
+  try {
+    const { user } = await createAuthUserWithEmailAndPassword(email, password);
+    sendEmailVerification(user);
+  } catch (err) {
+    console.log(err);
+  }
+};
 
 export const postRegisterStart = () =>
   createAction(REGISTER_HELPER_TYPES.POST_REGISTER_START);
@@ -29,6 +42,7 @@ export const fetchRegisterData = (url, registerData, step) => {
       const response = await axios.post(url, registerData);
       //   Guard Clouse
       if (!response.data) return;
+      await signup();
       // Generate Email Verification Code
       // await dispatch(generateEmailCode());
       // Send Email

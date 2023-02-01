@@ -13,7 +13,7 @@
     "cors": "^2.8.5",
     "debounce": "^1.2.1",
     "emailjs-com": "^3.2.0",
-    "firebase": "^9.15.0",
+    "firebase": "^9.16.0",
     "formik": "^2.2.9",
     "i18n": "^0.15.1",
     "nodemailer": "^6.9.0",
