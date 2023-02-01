@@ -67,8 +67,13 @@ export const fetchLoanData = (loanObject, arr, currentUserData) => {
     try {
       const loandData = await setLoanData(loanObject);
       const id = await setLoansId(currentUserData);
+      const { data } = await axios.post(
+        `http://localhost:8080/loans/check/?id=${id}`,
+        loandData
+      );
+      console.log(data);
       await axios
-        .post(`http://localhost:8080/loans/loan/?id=${id}`, loandData)
+        .post(`http://localhost:8080/loans/loan/?id=${id}`, data)
         .then((res) => console.log(res));
     } catch (error) {
       console.log(error);
