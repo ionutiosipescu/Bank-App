@@ -69,7 +69,7 @@ export const fetchLoanData = (loanObject, arr, currentUserData) => {
       const id = await setLoansId(currentUserData);
       console.log(loandData, id);
       const { data } = await axios.post(
-        `http://localhost:8080/loans/check/?id=${id}`,
+        `http://localhost:8080/loans/check?id=${id}`,
         loandData
       );
       console.log(loandData, id, data);
