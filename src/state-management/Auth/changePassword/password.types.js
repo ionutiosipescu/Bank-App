@@ -1,0 +1,3 @@
+export const CHANGE_PASSWORD_TYPES = {
+  SET_PASSWORD: "SET_PASSWORD",
+};
