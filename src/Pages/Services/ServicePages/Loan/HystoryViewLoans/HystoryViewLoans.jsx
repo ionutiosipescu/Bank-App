@@ -61,8 +61,8 @@ function HisotryViewLoans({ dataServices }) {
         {loansArr?.map((loan, index) => (
           <ProgressCard
             key={index}
-            title={loan.loan_purpose}
-            amount={loan.loan_amount}
+            title={loan.details}
+            amount={loan.loan}
             paid={loan.total_paid}
             handleClick={() => handleModalOpen(loan.id)}
           />
