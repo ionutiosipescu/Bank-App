@@ -30,7 +30,7 @@ function CardInfo() {
         </div>
         <div>
           <h3>Currency</h3>
-          <h4>{currency.toUpperCase()}</h4>
+          <h4>{currency}</h4>
         </div>
       </InfoContainer>
     </Container>
