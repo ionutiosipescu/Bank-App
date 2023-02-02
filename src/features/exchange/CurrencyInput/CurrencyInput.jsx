@@ -21,7 +21,7 @@ function CurrencyInput(props) {
         name="amount"
         value={props.amount}
         onChange={(ev) => {
-          props.onAmountChange(ev.target.value);
+          props.onAmountChange(ev.target.value.toLocaleLowerCase());
           props.setData(ev);
         }}
       />
@@ -29,13 +29,13 @@ function CurrencyInput(props) {
         name="currency"
         value={props.currency}
         onChange={(ev) => {
-          props.onCurrencyChange(ev.target.value);
+          props.onCurrencyChange(ev.target.value.toLocaleLowerCase());
           props.setData(ev);
         }}
       >
         {props.currencies.map((currency, index) => (
           <option key={index} value={currency}>
-            {currency}
+            {currency.toUpperCase()}
           </option>
         ))}
       </CurrencySelect>

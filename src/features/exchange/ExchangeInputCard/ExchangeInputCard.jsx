@@ -1,9 +1,16 @@
 import React from "react";
 import Button from "../../../components/UI/Button/Button";
-import { ServiceInputsCard } from "../../../components/UI/Card/Card.style";
+import {
+  CornerArt,
+  ServiceInputsCard,
+} from "../../../components/UI/Card/Card.style";
 import Input from "../../../components/UI/Input/Input";
 import DropDown from "../../../components/DropDown/DropDown";
-import { ExchangeInputContainer, InfoSection } from "./ExchangeInputCard.style";
+import {
+  ExchangeInputContainer,
+  FormExchange,
+  InfoSection,
+} from "./ExchangeInputCard.style";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import CurrencyInput from "../CurrencyInput/CurrencyInput";
@@ -28,7 +35,7 @@ function ExchangeInputCard() {
   const [amount1, setAmount1] = useState(1);
   const [amount2, setAmount2] = useState(1);
   const [currency1, setCurrency1] = useState("ron");
-  const [currency2, setCurrency2] = useState("eur");
+  const [currency2, setCurrency2] = useState("euro");
   const [rates, setRates] = useState([]);
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -63,7 +70,7 @@ function ExchangeInputCard() {
   }
 
   function handleCurrency1Change(currency1) {
-    currency1 === "ron" ? setCurrency2("eur") : setCurrency2("ron");
+    currency1 === "ron" ? setCurrency2("euro") : setCurrency2("ron");
     setAmount2(format((amount1 * rates[currency2]) / rates[currency1]));
     setCurrency1(currency1);
   }
@@ -89,9 +96,9 @@ function ExchangeInputCard() {
             }
           }}
         >
-          <Form>
+          <FormExchange>
             {/* <InfoSection> */}
-            {/* <DropDown label="From" items={["EUR", "RON"]} />
+            {/* <DropDown label="From" items={["euro", "RON"]} />
               <Input label="Amount" type="number" min="0" large /> */}
             <CurrencyInput
               onAmountChange={handleAmount1Change}
@@ -103,7 +110,7 @@ function ExchangeInputCard() {
             />
             {/* </InfoSection> */}
             {/* <InfoSection> */}
-            {/* <DropDown label="To" items={["EUR", "RON"]} />
+            {/* <DropDown label="To" items={["euro", "RON"]} />
               <Input label="Amount" type="number" min="0" large /> */}
             {/* <CurrencyInput
               onAmountChange={handleAmount2Change}
@@ -124,7 +131,8 @@ function ExchangeInputCard() {
               primary="primary"
               type="submit"
             />
-          </Form>
+            <CornerArt bottom right />
+          </FormExchange>
         </Formik>
       </ExchangeInputContainer>
     </ServiceInputsCard>

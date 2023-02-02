@@ -32,7 +32,9 @@ export const InfoSection = styled.div`
 `;
 
 export const ProgressCardIllustration = styled.img`
-  width: 100%;
+  width: 80%;
+  max-width: 140px;
+  border-radius: 50px;
   /* height: 150px; */
 `;
 

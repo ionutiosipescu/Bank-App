@@ -6,12 +6,14 @@ import { css } from "styled-components";
 export const ListContainer = styled.div`
   display: flex;
   flex-direction: column;
-  overflow: scroll;
+  overflow: auto;
   align-items: flex-start;
   justify-content: start;
   width: 100%;
-  height: 100%;
+  height: 90%;
   padding: 5px;
+  /* border: 2px solid var(--gray); */
+  border-radius: 10px;
   & > div:nth-child(even) {
     background-color: var(--gray-light);
   }
@@ -22,9 +24,10 @@ export const ListItem = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  height: 100px;
+  min-height: 80px;
   padding: 0 15px;
-  border-bottom: 1px solid var(--gray-dark);
+  /* border-bottom: 1px solid var(--gray-dark); */
+  border-radius: 10px;
   @media (${device.mobileS}) {
     flex-direction: column;
     & > button {
@@ -54,6 +57,7 @@ export const ListIcon = styled.div`
 `;
 
 export const LabelContainer = styled.h3`
+  text-align: left;
   color: var(--green);
 `;
 export const AmountContainer = styled.h3`

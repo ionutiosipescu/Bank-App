@@ -305,7 +305,7 @@ function calculatePercentages(objects) {
 export const outcomeData = calculatePercentages(outcomeDataRaw);
 
 export const exchangeRates = {
-  eur: 1,
+  euro: 1,
   ron: 5.23,
 };
 

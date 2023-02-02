@@ -18,11 +18,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: var(--text);
-  background-color: var(--gray-light);
+  background-color: none;
 }
 *::-webkit-scrollbar {
   width: 12px;
-  background-color: var(--gray-light);
+  background-color: none;
 }
 
 *::-webkit-scrollbar-thumb {
@@ -47,6 +47,7 @@ code {
   --purple-dark: #5151bb;
   --blue: #54c5eb;
   --yellow: #ffb74a;
+  --green-dark: #007c67;
   --green: #00a389;
   --green-light: #00a38920;
   --red: #ff4a55;

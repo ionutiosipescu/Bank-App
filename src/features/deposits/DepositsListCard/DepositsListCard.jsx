@@ -31,7 +31,7 @@ function DepositsListCard() {
   const depositHistory = useSelector(selectDepositArr);
   return (
     <ServiceCard>
-      <CardHeader style={{ height: "10%" }}>
+      <CardHeader>
         <h2>List Actions</h2>
       </CardHeader>
       <ListContainer>
@@ -42,7 +42,7 @@ function DepositsListCard() {
                 {transfer.action}
               </LabelAction>
               <IdList> #{transfer.id}</IdList>
-              <AmountContainer>{transfer.amount}</AmountContainer>
+              <AmountContainer>Amount: {transfer.amount}</AmountContainer>
               <DateContainer>{transfer.created_at}</DateContainer>
               <LabelList status={transfer.status}>{transfer.status}</LabelList>
             </ListItemSection>

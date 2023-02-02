@@ -1,22 +1,13 @@
 import styled from "styled-components";
 import { device } from "../../../utils/breakpoints/breakpoints";
+import { Form } from "formik";
 
 export const ExchangeInputContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   align-items: center;
   width: 100%;
-
-  margin: 50px 0;
-  /* Media queries */
-  @media (${device.mobileS}) {
-    margin: 10px 0 0 0;
-    height: 85%;
-  }
-  @media (${device.desktop}) {
-    height: 60%;
-  }
+  height: 70%;
+  margin-bottom: 20%;
 `;
 
 export const InfoSection = styled.div`
@@ -34,4 +25,14 @@ export const InfoSection = styled.div`
     font-weight: 600;
     font-size: 1.2rem;
   }
+`;
+
+export const FormExchange = styled(Form)`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin-left: calc((100% - 70%) / 2);
+  width: 70%;
+  height: 100%;
 `;

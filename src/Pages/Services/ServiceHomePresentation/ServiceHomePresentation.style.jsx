@@ -58,35 +58,57 @@ export const ChartsWrapper = styled.div`
   display: flex;
   width: calc(100% - 30px);
   height: 100%;
-  & img {
-    width: 50%;
+  & > div {
+    padding: 0;
   }
 `;
 
 export const PresentationInfo = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  & span {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 50%;
-    background-color: var(--purple);
-    background: linear-gradient(
-      90deg,
-      var(--purple-dark) 20%,
-      var(--purple) 45%,
-      var(--purple-light) 100%
-    );
-    clip-path: polygon(
-      0 10%,
-      75% 27%,
-      73% 0,
-      100% 50%,
-      72% 100%,
-      77% 77%,
-      0 88%
-    );
+  justify-content: space-around;
+  height: 100%;
+  width: 100%;
+  padding: 30px;
+  background-color: ${(props) => `var(--${props.color})`};
+  color: ${(props) =>
+    props.color === "red-light" ||
+    props.color === "yellow" ||
+    props.color === "green-light"
+      ? "var(--text)"
+      : "var(--white)"};
+  & img {
+    width: 50%;
   }
+`;
+
+///////////////////////////////////////////////////////
+
+export const PresentationArtContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 100%;
+  & img {
+    width: 100%;
+  }
+`;
+
+export const PresentationArt = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 1/1;
+  /* padding: 40px; */
+  margin-right: 30px;
+  /* background-color: var(--green);
+  background: linear-gradient(
+    110deg,
+    var(--purple-dark) 20%,
+    var(--purple) 45%,
+    var(--purple-light) 100%
+  );
+  clip-path: circle(50% at 50% 50%); */
 `;

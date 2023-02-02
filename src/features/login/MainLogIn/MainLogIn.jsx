@@ -21,7 +21,7 @@ function MainLogIn() {
         <FooterLogIn />
         <PasswordRedirect />
       </LogInContainer>
-      <HeroLogIn />
+      <HeroLogIn type="login" />
     </LogInWrapper>
   );
 }
