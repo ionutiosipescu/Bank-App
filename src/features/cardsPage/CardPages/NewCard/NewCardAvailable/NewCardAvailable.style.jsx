@@ -12,8 +12,8 @@ const rotBGimg = keyframes`
 
 export const NewCardAvailableContainer = styled.div`
   position: relative;
-  place-content: center;
-  place-items: center;
+  /* place-content: center; */
+  /* place-items: center; */
   overflow: hidden;
   border: 1px solid black;
   border-radius: 30px;
@@ -44,7 +44,7 @@ export const NewCardAvailableContainer = styled.div`
     position: absolute;
     background: #fff;
     inset: 5px;
-    border-radius: 15px;
+    border-radius: 25px;
   }
 `;
 

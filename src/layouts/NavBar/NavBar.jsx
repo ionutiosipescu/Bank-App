@@ -41,7 +41,7 @@ function NavBar() {
         <LinkButton to="/settings" size="round">
           <RiSettingsLine size={22} />
         </LinkButton>
-        <LinkButton to="" size="round">
+        <LinkButton to="/dashboard" size="round">
           <RiNotification4Line size={22} />
         </LinkButton>
         <ProfileContainer as={Link} to="/profile">

@@ -16,7 +16,9 @@ import {
 import { generateRandomNumber } from "../../utils/helpers/helperFunctions/randomNumber";
 import { cardValidityGenerator } from "./../../utils/helpers/helperFunctions/cardValidityGenerator";
 
-function CarouselCards() {
+function CarouselCards(props) {
+  const { size } = props;
+
   const dispatch = useDispatch();
   const accountsArr = useSelector(selectUserAccount);
   const currentAccount = useSelector(selectUserDetail);
@@ -40,7 +42,7 @@ function CarouselCards() {
   }, [currentIndex]);
 
   return (
-    <CarouselContainer>
+    <CarouselContainer size={size}>
       <Button
         handleClick={handlePrevClick}
         size="round"
@@ -48,7 +50,7 @@ function CarouselCards() {
       >
         <BsArrowLeft />
       </Button>
-      <CardsContainer>
+      <CardsContainer size={size}>
         {itemsToShow.map((account, index) => (
           <BalanceCard
             key={index}
@@ -59,6 +61,7 @@ function CarouselCards() {
               4
             )} ${generateRandomNumber(4)} ${generateRandomNumber(4)}`}
             valid={cardValidityGenerator(account.created_at)}
+            scale={size}
           />
         ))}
       </CardsContainer>

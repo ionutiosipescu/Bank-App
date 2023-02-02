@@ -11,9 +11,11 @@ export const CardContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  border-radius: 40px;
+  ${(props) =>
+    props.scale === "sm"
+      ? "border-radius: 12px; padding: 10px; "
+      : "border-radius: 40px; padding: 30px;"}
   margin: 15px 30px 15px 0;
-  padding: 30px;
   overflow: hidden;
   box-shadow: 0px 0px 15px -8px rgba(21, 20, 47, 0.73);
   background-color: ${(props) =>

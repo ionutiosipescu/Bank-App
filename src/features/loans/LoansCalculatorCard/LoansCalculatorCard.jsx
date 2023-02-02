@@ -7,6 +7,10 @@ import {
 import Input from "../../../components/UI/Input/Input";
 import Button from "../../../components/UI/Button/Button";
 import { useState } from "react";
+import {
+  LoanAmountContainer,
+  LoanElementContainer,
+} from "./LoansCalculatorCard.style";
 
 function LoansCalculatorCard() {
   const [loanAmount, setLoanAmount] = useState(1000);
@@ -49,8 +53,8 @@ function LoansCalculatorCard() {
       <h2>Loans Calculator</h2>
       <InputWrapperLoans>
         <InputContainer>
-          <div>
-            <label>Loan Amount:</label>
+          <LoanElementContainer>
+            <label>Amount:</label>
             <input
               type="range"
               min="1000"
@@ -59,8 +63,8 @@ function LoansCalculatorCard() {
               onChange={handleLoanAmountChange}
             />
             <span>{loanAmount}</span>
-          </div>
-          <div>
+          </LoanElementContainer>
+          <LoanElementContainer>
             <label>Years:</label>
             <input
               type="range"
@@ -70,21 +74,21 @@ function LoansCalculatorCard() {
               onChange={handleYearsChange}
             />
             <span>{years}</span>
-          </div>
-          <div>
-            <label>Monthly Payment:</label>
+          </LoanElementContainer>
+          <LoanElementContainer>
+            <label>Payment:</label>
             <span>{monthlyPayment}</span>
-          </div>
-          <div>
+          </LoanElementContainer>
+          <LoanElementContainer>
             <label>Total Payment:</label>
             <span>{totalPayment}</span>
-          </div>
-          <div>
+          </LoanElementContainer>
+          <LoanElementContainer>
             <label>Commission:</label>
             <span>{commission}</span>
-          </div>
+          </LoanElementContainer>
         </InputContainer>
-        <Button size={"xl"} type="submit" label="Request Loan" />
+        {/* <Button size={"xl"} type="submit" label="Request Loan" /> */}
       </InputWrapperLoans>
     </ServiceInputsCardLoans>
   );

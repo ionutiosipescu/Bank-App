@@ -19,12 +19,30 @@ function Settings() {
         <PreferenceContainer>
           <h2>Preference</h2>
           <SettingsSection>
-            <RadioButton label="Notification" defaultMode={true} />
+            <span>
+              <p>Night Mode</p>
+              <br />
+              <RadioButton
+                label="Notification"
+                defaultMode={true}
+                firstText="On"
+                secondText="Off"
+              />
+            </span>
             <DropDown
               label="Language"
               items={["English", "Romanian", "French"]}
             />
-            <RadioButton label="Dark Mode" defaultMode={false} />
+            <span>
+              <p>Notifications</p>
+              <br />
+              <RadioButton
+                label="Dark Mode"
+                defaultMode={false}
+                firstText="On"
+                secondText="Off"
+              />
+            </span>
           </SettingsSection>
         </PreferenceContainer>
         <AccountContainer>

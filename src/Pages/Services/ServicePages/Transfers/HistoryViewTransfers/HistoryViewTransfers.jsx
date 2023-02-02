@@ -24,12 +24,16 @@ import LabelList from "../../../../../components/UI/LabelList/LabelList";
 import {
   UserContainerTransfer,
   ListItemSectionTransfer,
+  RecentUserContainer,
+  NewTransferCard,
 } from "./HistoryViewTransfers.style";
 import { useEffect } from "react";
 import { getTransferArr } from "../../../../../state-management/Dashboard/services/helpers/transfersHelper/transferHelper.action";
 import { useDispatch } from "react-redux";
 import { selectCurrentUser } from "../../../../../state-management/Dashboard/userData/userData.selector";
 import { selectTransferForm } from "../../../../../state-management/Dashboard/services/helpers/transfersHelper/transferHelper.selector";
+import UserCard from "../../../../../components/UserCard/UserCard";
+import { NewLoanCardContainer } from "../../../../../features/loans/NewLoanCard/NewLoanCard.style";
 
 function HisotryViewTransfers({ dataServices }) {
   const dispatch = useDispatch();
@@ -43,7 +47,27 @@ function HisotryViewTransfers({ dataServices }) {
   return (
     <>
       <NewContainer>
-        <LinkButton to={dataServices.path}>new Transfer</LinkButton>
+        <RecentUserContainer>
+          {accounts.slice(0, 3).map((account, index) => (
+            <UserCard
+              key={index}
+              name={account.owner}
+              email={account.email}
+              phone={account.phoneNumber}
+              image={account.image}
+              to="/dashboard"
+            />
+          ))}
+          <NewTransferCard>
+            <img
+              src="https://paysend.com/images/how-long-does-it-take-to-transfer-money-1200.png"
+              alt=""
+            />
+            <LinkButton to={dataServices.path} primary="primary" size="md">
+              New Transfer
+            </LinkButton>
+          </NewTransferCard>
+        </RecentUserContainer>
       </NewContainer>
       <ServiceViewCard>
         <CardHeader style={{ height: "10%" }}>

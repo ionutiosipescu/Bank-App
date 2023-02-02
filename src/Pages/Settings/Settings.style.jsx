@@ -58,6 +58,9 @@ export const SettingsSection = styled.div`
   justify-content: space-between;
   height: 100%;
   margin: 0px 30px;
+  & > span > p {
+    opacity: 0.8;
+  }
   @media (max-width: 1440px) {
     flex-direction: row;
     margin: 0;

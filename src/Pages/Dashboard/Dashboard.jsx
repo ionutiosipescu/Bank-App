@@ -66,7 +66,7 @@ function Dashboard() {
                   balance={`${userData.account[0].balance}`}
                   currency={userData.account[0].currency}
                   name={`${userData.userDetail.first_name} ${userData.userDetail.last_name}`}
-                  cardNum={`${generateRandomNumber(4)}`}
+                  cardNum={`${generateRandomNumber(16)}`}
                   valid={cardValidityGenerator(userData.userDetail.created_at)}
                 />
               )}

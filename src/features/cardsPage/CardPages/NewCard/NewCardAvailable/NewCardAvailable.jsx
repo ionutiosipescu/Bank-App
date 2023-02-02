@@ -12,6 +12,7 @@ import { accounts } from "../../../../../utils/data/dummyData";
 import Button from "../../../../../components/UI/Button/Button";
 import { ButtonsContainer } from "./NewCardAvailable.style";
 import { useState } from "react";
+import CarouselCards from "../../../../../components/CarouselCards/CarouselCards";
 
 function NewCardAvailable() {
   const data = accounts[0];
@@ -29,16 +30,9 @@ function NewCardAvailable() {
   return (
     <NewCardAvailableContainer>
       <Title>Available Accounts</Title>
-      <BalanceCard
-        balance="0"
-        currency="ron"
-        size="fit"
-        name={data.owner}
-        cardNum={data.cardNumber}
-        valid={data.validity}
-      />
+      <CarouselCards size="sm" />
       {/* Buttons */}
-      <ButtonsContainer>
+      {/* <ButtonsContainer>
         <Button
           handleClick={handlePrevClick}
           disabled={currentIndex === 0 ? true : false}
@@ -55,7 +49,7 @@ function NewCardAvailable() {
         >
           &#8594;
         </Button>
-      </ButtonsContainer>
+      </ButtonsContainer> */}
       {/* currency */}
       <CurrencyBox>Euro</CurrencyBox>
       {/* Advantajes Card */}

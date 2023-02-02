@@ -9,7 +9,7 @@ export const PlanContainer = styled.div`
   width: 90%;
   height: 95%;
   margin: 10px 0 0 40px;
-  padding: 20px;
+  padding: 30px;
   border-radius: 20px;
   background: rgb(97, 96, 220);
   background: linear-gradient(
@@ -48,4 +48,11 @@ export const Bubble = styled.div`
   background-color: var(--white);
 
   z-index: 1;
+`;
+
+export const PlanHeader = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
 `;

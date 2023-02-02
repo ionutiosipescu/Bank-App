@@ -4,15 +4,32 @@ import { CardContainer, CardHeader } from "../UI/Card/Card.style";
 import { CardBody, CardFooter, Circle, Pill } from "./BalanceCard.style";
 
 function BalanceCard({ ...props }) {
-  const { balance, color, name, valid, cardNum, size, onClick, currency } =
-    props;
+  const {
+    balance,
+    color,
+    name,
+    valid,
+    cardNum,
+    size,
+    onClick,
+    currency,
+    scale,
+  } = props;
+
+  let number = parseFloat(balance);
+  let newBalance = number.toFixed(0);
 
   return (
-    <CardContainer currency={currency} size={size} onClick={onClick}>
+    <CardContainer
+      currency={currency}
+      size={size}
+      onClick={onClick}
+      scale={scale}
+    >
       <CardHeader size={size}>
         <h2>Balance</h2>
         <h1>
-          {balance.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}
+          {newBalance.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}
           {`${currency}`.toUpperCase()}
         </h1>
         <span>{}</span>

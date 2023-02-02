@@ -5,7 +5,7 @@ export const EditCardWrapper = styled.div`
   justify-content: space-between;
   align-items: flex-start;
   width: 100%;
-  height: fit-content;
+  height: 100%;
   padding: 20px 20px 0 0;
   gap: 100px;
   & > div:last-child {

@@ -18,7 +18,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: var(--text);
-  background-color: none;
+  background-color: var(--gray-light);
 }
 *::-webkit-scrollbar {
   width: 12px;
@@ -46,6 +46,7 @@ code {
   --purple-light: #8989f0;
   --purple-dark: #5151bb;
   --blue: #54c5eb;
+  --blue-light: #54c5eb88;
   --yellow: #ffb74a;
   --green-dark: #007c67;
   --green: #00a389;
@@ -69,4 +70,13 @@ code {
   --gray-light: #22242c;
   --white: #2f2f3d;
   --text: #e8ebff;
+}
+
+
+input[type="range"] {
+  -webkit-appearance: none;
+  background-color: var(--gray);
+  height: 10px;
+  width: 45%;
+  border-radius: 10px;
 }

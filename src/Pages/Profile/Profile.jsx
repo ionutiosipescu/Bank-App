@@ -14,6 +14,7 @@ import { useSelector } from "react-redux";
 function Profile() {
   const userData = useSelector(selectCurrentUser);
   const { first_name, last_name, address, mobile } = userData.userDetail;
+  const { type_of_plan } = userData.account[0];
 
   return (
     <>
@@ -25,15 +26,16 @@ function Profile() {
           phoneNumber={mobile}
         />
         <PlanContainer>
-          <PlanCard />
+          <PlanCard plan={type_of_plan} />
         </PlanContainer>
       </TopContainer>
       <SettingsContainer>
         <UsersWrapper>
           <h2>Recent Users</h2>
           <UsersContainer>
-            {accounts.map((account) => (
+            {accounts.map((account, index) => (
               <UserCard
+                key={index}
                 name={account.owner}
                 email={account.email}
                 phone={account.phoneNumber}

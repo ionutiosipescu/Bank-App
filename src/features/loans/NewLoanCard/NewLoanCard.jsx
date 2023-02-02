@@ -6,12 +6,16 @@ function NewLoanCard() {
   return (
     <NewLoanCardContainer>
       <img
-        src="https://media.giphy.com/avatars/MyLeadGlobal/sC88PbGv7lq6.gif"
+        src="https://cdn.dribbble.com/users/1484145/screenshots/14190768/bank_loan_4x.png"
         alt=""
       />
-      <h2>Want a new Loan?</h2>
-      <h2>Request one here!</h2>
-      <LinkButton label="Request Loan" primary="primary" />
+      <span>
+        <LinkButton
+          label="Request Loan"
+          primary="primary"
+          to="/services/loan/newloan"
+        />
+      </span>
     </NewLoanCardContainer>
   );
 }

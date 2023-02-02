@@ -1,26 +1,29 @@
 import React from "react";
-import { Bubble, PlanContainer, PlanSection } from "./PlanCard.style";
+import {
+  Bubble,
+  PlanContainer,
+  PlanHeader,
+  PlanSection,
+} from "./PlanCard.style";
 
 import Button from "./../UI/Button/Button";
 
-import { plans } from "../../utils/data/dummyData";
+function PlanCard(props) {
+  const { plan } = props;
 
-const plan = plans[0];
-
-function PlanCard() {
   return (
     <PlanContainer>
       <PlanSection>
-        <div>
+        <PlanHeader>
           <h4>Your Plan</h4>
-          <h2>{plan.name}</h2>
-        </div>
+          <h2>{plan.toUpperCase()}</h2>
+        </PlanHeader>
         <ul>
           <li>
-            <h3>Card limit - € {plan.cardLimit}</h3>
+            <h3>Card limit - € 150,000</h3>
           </li>
           <li>
-            <h3>Loan limit - € {plan.loanLimit}</h3>
+            <h3>Loan limit - € 100,000</h3>
           </li>
         </ul>
         <p>

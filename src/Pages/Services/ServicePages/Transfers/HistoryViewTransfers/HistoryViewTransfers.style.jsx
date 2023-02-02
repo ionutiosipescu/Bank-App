@@ -15,6 +15,33 @@ export const UserContainerTransfer = styled.div`
   }
 `;
 
+export const NewTransferCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 20%;
+  height: 100%;
+  border-radius: 20px;
+  padding-bottom: 10px;
+  box-shadow: 0px 0px 20px -9px rgba(21, 20, 47, 0.73);
+  overflow: hidden;
+  & img {
+    width: 100%;
+  }
+`;
+
+export const RecentUserContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 25vh;
+  & > * {
+    height: 100%;
+  }
+`;
+
 export const ListItemSectionTransfer = styled.div`
   display: flex;
   justify-content: space-between;
