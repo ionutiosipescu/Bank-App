@@ -5,9 +5,14 @@ import {
   ChartsWrapper,
   HeaderArt,
   HeaderContainer,
+  PresentationInfo,
   PresentationPageWrapper,
   PresentationTopCard,
 } from "./ServiceHomePresentation.style";
+import {
+  CardContainer,
+  CardCornerArt,
+} from ".././../../components/UI/Card/Card.style";
 import { Icon } from "./../../../components/ProfileComponent/ProfileComponent.style";
 
 function ServiceHomePresentation() {
@@ -29,8 +34,26 @@ function ServiceHomePresentation() {
         </HeaderContainer>
       </PresentationTopCard>
       <ChartsWrapper>
-        <OutcomeChart />
-        <OverviewCard />
+        <CardContainer size="md">
+          <CardCornerArt />
+          <PresentationInfo>
+            <span>
+              <h2>Transfer money in seconds!</h2>
+            </span>
+            <img
+              src="https://nairarecharge.com/asset/images/gifme.gif"
+              alt=""
+            />
+          </PresentationInfo>
+        </CardContainer>
+        <CardContainer size="md">
+          <PresentationInfo>
+            <img
+              src="https://nairarecharge.com/asset/images/gifme.gif"
+              alt=""
+            />
+          </PresentationInfo>
+        </CardContainer>
       </ChartsWrapper>
     </PresentationPageWrapper>
   );

@@ -58,4 +58,35 @@ export const ChartsWrapper = styled.div`
   display: flex;
   width: calc(100% - 30px);
   height: 100%;
+  & img {
+    width: 50%;
+  }
+`;
+
+export const PresentationInfo = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  & span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    background-color: var(--purple);
+    background: linear-gradient(
+      90deg,
+      var(--purple-dark) 20%,
+      var(--purple) 45%,
+      var(--purple-light) 100%
+    );
+    clip-path: polygon(
+      0 10%,
+      75% 27%,
+      73% 0,
+      100% 50%,
+      72% 100%,
+      77% 77%,
+      0 88%
+    );
+  }
 `;

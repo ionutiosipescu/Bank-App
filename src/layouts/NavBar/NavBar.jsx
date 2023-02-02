@@ -18,16 +18,21 @@ import Toggle from "../../components/UI/Toggle/Toggle";
 
 import { useSelector } from "react-redux";
 import { selectCurrentUser } from "../../state-management/Dashboard/userData/userData.selector";
+import { selectIsSubmiting } from "../../state-management/Auth/loginUser/loginUser.selector";
+import Spinner from "../../components/Spinner/Spinner";
 
 function NavBar() {
   const userData = useSelector(selectCurrentUser);
-  const { first_name, last_name } = userData.userDetail;
+  // const { first_name = "", last_name = "" } = userData.userDetail;
+
+  const isSubmiting = useSelector(selectIsSubmiting);
 
   const [active, setActive] = useState("notActive");
 
   const handleActive = () => {
     setActive(active === "active" ? "notActive" : "active");
   };
+
   return (
     <NavBarContainer>
       <SearchBar active={active} onClick={handleActive} />
@@ -40,8 +45,14 @@ function NavBar() {
           <RiNotification4Line size={22} />
         </LinkButton>
         <ProfileContainer as={Link} to="/profile">
-          <img src={avatar} alt="" />
-          <h2>{`${first_name} ${last_name}`}</h2>
+          {isSubmiting && userData ? (
+            <Spinner />
+          ) : (
+            <>
+              <img src={avatar} alt="" />
+              <h2>{`${userData.userDetail.first_name} ${userData.userDetail.last_name}`}</h2>
+            </>
+          )}
         </ProfileContainer>
       </NavBarSection>
     </NavBarContainer>

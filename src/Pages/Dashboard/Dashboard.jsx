@@ -33,62 +33,64 @@ function Dashboard() {
   const userData = useSelector(selectCurrentUser);
   const account = useSelector(selectUserAccount);
 
-  const { first_name, last_name, created_at } = userData.userDetail;
+  // const {
+  //   first_name = "",
+  //   last_name = "",
+  //   created_at = "",
+  // } = userData.userDetail;
 
-  console.log(currentCardAccount, "currentAccount");
-  console.log(userData, "userData");
-  console.log(created_at);
+  // console.log(currentCardAccount, "currentAccount");
+  // console.log(userData, "userData");
+  // console.log(created_at);
 
   return (
     <React.Fragment>
       {isSubmiting ? (
         <Spinner />
       ) : (
-        <DashboardContainer>
-          <TopContainer>
-            {currentCardAccount.length < 1 ? (
-              <BalanceCard
-                size="sm"
-                balance={`${currentCardAccount.balance}`}
-                currency={currentCardAccount.currency}
-                name={`${first_name} ${last_name}`}
-                cardNum={`${generateRandomNumber(4)} ${generateRandomNumber(
-                  4
-                )} ${generateRandomNumber(4)} ${generateRandomNumber(4)}`}
-                valid={cardValidityGenerator(currentCardAccount.created_at)}
-              />
-            ) : (
-              <BalanceCard
-                size="sm"
-                balance={`${userData.account[0].balance}`}
-                currency={userData.account[0].currency}
-                name={`${first_name} ${last_name}`}
-                cardNum={`${generateRandomNumber(4)} ${generateRandomNumber(
-                  4
-                )} ${generateRandomNumber(4)} ${generateRandomNumber(4)}`}
-                valid={cardValidityGenerator(created_at)}
-              />
-            )}
+        <>
+          <DashboardContainer>
+            <TopContainer>
+              {currentCardAccount.length < 1 ? (
+                <BalanceCard
+                  size="sm"
+                  balance={`${currentCardAccount.balance}`}
+                  currency={currentCardAccount.currency}
+                  name={`${userData.userDetail.first_name} ${userData.userDetail.last_name}`}
+                  cardNum={`${generateRandomNumber(16)}`}
+                  valid={cardValidityGenerator(currentCardAccount.created_at)}
+                />
+              ) : (
+                <BalanceCard
+                  size="sm"
+                  balance={`${userData.account[0].balance}`}
+                  currency={userData.account[0].currency}
+                  name={`${userData.userDetail.first_name} ${userData.userDetail.last_name}`}
+                  cardNum={`${generateRandomNumber(4)}`}
+                  valid={cardValidityGenerator(userData.userDetail.created_at)}
+                />
+              )}
 
-            <TopCard
-              label="Income"
-              amount="$5,542.23"
-              percent="+0.5"
-              size="sm"
-              primary="primary"
-            />
-            <TopCard
-              label="Outcome"
-              amount="$1,215.37"
-              percent="-0.2"
-              size="sm"
-            />
-          </TopContainer>
-          <BottomContainer>
-            <OverviewCard />
-            <OutcomeChart />
-          </BottomContainer>
-        </DashboardContainer>
+              <TopCard
+                label="Income"
+                amount="$5,542.23"
+                percent="+0.5"
+                size="sm"
+                primary="primary"
+              />
+              <TopCard
+                label="Outcome"
+                amount="$1,215.37"
+                percent="-0.2"
+                size="sm"
+              />
+            </TopContainer>
+            <BottomContainer>
+              <OverviewCard />
+              <OutcomeChart />
+            </BottomContainer>
+          </DashboardContainer>
+        </>
       )}
     </React.Fragment>
   );

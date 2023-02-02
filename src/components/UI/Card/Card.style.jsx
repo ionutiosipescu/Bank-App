@@ -324,3 +324,10 @@ export const ServiceInputsCardDeposit = styled.div`
     }
   }
 `;
+
+export const CardCornerArt = styled.span`
+  position: absolute;
+  background-color: var(--purple);
+  width: 100px;
+  height: 100px;
+`;
