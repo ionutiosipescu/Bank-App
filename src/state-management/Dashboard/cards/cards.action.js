@@ -1,5 +1,7 @@
 import { CARD_TYPES } from "./cards.types";
 import { createAction } from "../../../utils/helpers/reducer/reducer.utils";
+import axios from "axios";
+import { findObjectByString } from "../../../utils/helpers/helperFunctions/findObject";
 
 const updateCard = (card, e) => {
   const { name, value } = e.target;
@@ -62,4 +64,29 @@ export const setErrorMsg = (cardEdit) => {
 // update CurrentAccount
 export const setCurrentCardAccount = (card) => {
   return createAction(CARD_TYPES.SET_CARD_CURRENT, card);
+};
+
+export const setCardArr = (cardArr) => {
+  return createAction(CARD_TYPES.SET_CARD_ARR, cardArr);
+};
+
+// find id account ron
+export const setCardId = async (currentUserData) => {
+  const account = "ron";
+  const stringCompare = "currency";
+  const userAccountArr = currentUserData.account;
+  const object = findObjectByString(account, userAccountArr, stringCompare);
+  return object.id;
+};
+
+// Get Card Account Arr
+export const fetchGetCardAccountArr = (currentUserData) => {
+  return async (dispatch) => {
+    const { id } = currentUserData;
+    const { data } = await axios.get(
+      `http://localhost:8080/accounts/?id=${id}`
+    );
+    console.log(data, id);
+    await dispatch(setCardArr(data));
+  };
 };

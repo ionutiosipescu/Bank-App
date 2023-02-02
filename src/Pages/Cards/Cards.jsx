@@ -25,17 +25,26 @@ import { selectUserAccount } from "../../state-management/Dashboard/userData/use
 import { selectUserDetail } from "../../state-management/Dashboard/userData/userData.selector";
 import { cardValidityGenerator } from "../../utils/helpers/helperFunctions/cardValidityGenerator";
 import CarouselCards from "../../components/CarouselCards/CarouselCards";
+import { useDispatch } from "react-redux";
+import { fetchGetCardAccountArr } from "../../state-management/Dashboard/cards/cards.action";
+import { selectCurrentUser } from "../../state-management/Dashboard/userData/userData.selector";
 
 const data = accounts[0];
 const data_2 = accounts[1];
 
 function Cards() {
+  const dispatch = useDispatch();
   const [clicked, setClicked] = useState(true);
+  const currentUser = useSelector(selectCurrentUser);
   const [selectedOption, setSelectedOption] = useState("New Account");
   const [selectedComponent, setSelectedComponent] = useState(<h1>Accounts</h1>);
   const accountsArr = useSelector(selectUserAccount);
   const currentAccount = useSelector(selectUserDetail);
   const { first_name, last_name } = currentAccount;
+
+  useEffect(() => {
+    dispatch(fetchGetCardAccountArr(currentUser));
+  }, []);
 
   const handleCardChange = () => {
     setClicked(!clicked);
