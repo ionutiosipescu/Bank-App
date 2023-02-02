@@ -3,7 +3,10 @@ import { BsCashStack } from "react-icons/bs";
 import { CardHeader } from "../../../../../components/TopCard/TopCard.style";
 import Button from "../../../../../components/UI/Button/Button";
 import { ServiceViewCard } from "../../../../../components/UI/Card/Card.style";
-import { ListItemSection } from "../../../../../features/exchange/ExchangeList/ExchangeList.style";
+import {
+  ListItemSection,
+  RateContainer,
+} from "../../../../../features/exchange/ExchangeList/ExchangeList.style";
 import {
   AmountContainer,
   IdContainer,
@@ -25,6 +28,7 @@ import { selectCurrentUser } from "../../../../../state-management/Dashboard/use
 import { getLoansArrDb } from "../../../../../state-management/Dashboard/services/loans/loans.action";
 import { selectLoansArr } from "../../../../../state-management/Dashboard/services/loans/loans.selector";
 import { selectHistoryLoans } from "../../../../../state-management/Dashboard/services/loans/loans.selector";
+import NewLoanCard from "../../../../../features/loans/NewLoanCard/NewLoanCard";
 
 const data = accounts[0].savings;
 
@@ -67,16 +71,11 @@ function HisotryViewLoans({ dataServices }) {
             handleClick={() => handleModalOpen(loan.id)}
           />
         ))}
-        <LinkButton
-          label="New Loan"
-          primary="primary"
-          size="md"
-          to={dataServices.path}
-        />
+        <NewLoanCard />
       </NewContainer>
       <ServiceViewCard>
-        <CardHeader style={{ height: "10%" }}>
-          <h2>Savings</h2>
+        <CardHeader>
+          <h1>Loans</h1>
         </CardHeader>
         <ListContainer>
           {historyArr?.map((history_loan, id) => (
@@ -85,12 +84,17 @@ function HisotryViewLoans({ dataServices }) {
                 <ListIcon>
                   <BsCashStack />
                 </ListIcon>
-                <LabelContainer>{history_loan.details}</LabelContainer>
-                <AmountContainer>Sum: {history_loan.rate}</AmountContainer>
-                <IdContainer>ID {history_loan.id}</IdContainer>
+                <LabelContainer>
+                  Loan:{" "}
+                  {history_loan.details.charAt(0).toUpperCase() +
+                    history_loan.details.slice(1)}
+                </LabelContainer>
+                <AmountContainer>
+                  Payment: {history_loan.rate} RON
+                </AmountContainer>
+                <IdContainer>#{history_loan.id}</IdContainer>
               </ListItemSection>
-              <Button label="Top-Up" size="sm" primary="primary" />
-              <Button label="Withdraw" size="sm" />
+              <Button size="md" primary="primary" label="Repeat" />
             </ListItem>
           ))}
         </ListContainer>

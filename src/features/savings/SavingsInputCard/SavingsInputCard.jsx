@@ -1,6 +1,9 @@
 import React from "react";
 import Button from "../../../components/UI/Button/Button";
-import { ServiceInputsCard } from "../../../components/UI/Card/Card.style";
+import {
+  CornerArt,
+  ServiceInputsCard,
+} from "../../../components/UI/Card/Card.style";
 import Input from "../../../components/UI/Input/Input";
 import {
   InputCardSection,
@@ -80,6 +83,7 @@ function SavingsInputCard() {
           />
         </SavingFormContainer>
       </Formik>
+      <CornerArt bottom right />
     </ServiceInputsCard>
   );
 }

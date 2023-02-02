@@ -20,7 +20,7 @@ export const NewContainer = styled.div`
   justify-content: space-between;
   /* height: 25vh; */
   width: calc(100% - 60px);
-  margin: 30px 30px 20px 0;
+  margin: 30px 30px 30px 0px;
   padding: 30px;
   border-radius: 40px;
   background-color: var(--white);

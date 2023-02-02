@@ -7,15 +7,15 @@ export const ListItemSection = styled.div`
   align-items: center;
   /* Media  */
   @media (${device.mobileS}) {
-    width: 100%;
+    width: 85%;
     & > * {
       margin: 0px;
     }
   }
-  @media (${device.tablet}) {
+  /* @media (${device.tablet}) {
     width: calc(100% - 250px);
     justify-content: space-between;
-  }
+  } */
 `;
 
 export const RateContainer = styled.h3`

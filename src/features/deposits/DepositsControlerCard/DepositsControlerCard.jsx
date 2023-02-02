@@ -138,7 +138,7 @@ function DepositsControlerCard() {
             </SelectAccountToggle>
           </FormContainerInputs>
           <BtnContainerSubmitControler>
-            <Button label="Action" size="xl" primary="primary" type="submit" />
+            <Button label="Accept" size="xl" primary="primary" type="submit" />
           </BtnContainerSubmitControler>
         </FormContainerDeposits>
       </Formik>

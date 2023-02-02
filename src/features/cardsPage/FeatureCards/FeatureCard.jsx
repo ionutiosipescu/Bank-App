@@ -1,9 +1,8 @@
 import React from "react";
 import { FeatureCard } from "./FeatureCard.style";
 
-import Button from "../../../components/UI/Button/Button";
-
 import { BsArrowUp, BsArrowDown } from "react-icons/bs";
+import LinkButton from "./../../../components/UI/LinkButton/LinkButton";
 
 function FeatureCards({ type }) {
   return (
@@ -17,7 +16,9 @@ function FeatureCards({ type }) {
             : "Need money elsewhere? Withdraw money here!"}
         </p>
       </div>
-      <Button size="round">{type === "deposit" ? <BsArrowUp /> : <BsArrowDown />}</Button>
+      <LinkButton to="/services/deposit" size="round">
+        {type === "deposit" ? <BsArrowUp /> : <BsArrowDown />}
+      </LinkButton>
     </FeatureCard>
   );
 }

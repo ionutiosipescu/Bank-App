@@ -104,11 +104,13 @@ export const CardHeader = styled.div`
 export const ServiceViewCard = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   width: calc(100% - 60px);
+  margin: 10px 30px 30px 0px;
   height: 85vh;
   border-radius: 40px;
-  padding: 30px 20px;
+  padding: 30px 50px;
   background-color: var(--white);
   box-shadow: 0px 0px 15px -8px rgba(21, 20, 47, 0.73);
 `;
@@ -116,6 +118,7 @@ export const ServiceViewCard = styled.div`
 export const ServiceCard = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   width: calc(60% - 20px);
   height: 75vh;
@@ -145,6 +148,8 @@ export const ServiceInputsCard = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
+  overflow: hidden;
   border-radius: 40px;
   background-color: var(--white);
   box-shadow: 0px 0px 15px -8px rgba(21, 20, 47, 0.73);
@@ -325,9 +330,29 @@ export const ServiceInputsCardDeposit = styled.div`
   }
 `;
 
-export const CardCornerArt = styled.span`
+export const CornerArt = styled.span`
   position: absolute;
   background-color: var(--purple);
-  width: 100px;
-  height: 100px;
+  background: linear-gradient(
+    120deg,
+    var(--purple-dark) 20%,
+    var(--purple) 45%,
+    var(--purple-light) 100%
+  );
+  ${(props) => (props.top ? "top: 0;" : "")}
+  ${(props) => (props.bottom ? "bottom: 0;" : "")}
+  ${(props) => (props.right ? "right: 0;" : "")}
+  ${(props) => (props.left ? "left: 0;" : "")}
+  width: 20%;
+  height: 20%;
+  ${(props) =>
+    props.top && props.left
+      ? "clip-path: polygon(0 0, 0% 100%, 100% 0);"
+      : props.bottom && props.right
+      ? "clip-path: polygon(100% 100%, 0% 100%, 100% 0);"
+      : props.top && props.right
+      ? "clip-path: polygon(100% 0, 100% 100%, 0 0);"
+      : props.bottom && props.left
+      ? "clip-path: polygon(0 100%, 100% 100%, 0 0);"
+      : ""};
 `;
