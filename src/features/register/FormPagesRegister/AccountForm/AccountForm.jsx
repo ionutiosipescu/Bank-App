@@ -38,6 +38,7 @@ function AccountForm() {
               type="email"
               placeholder="Enter your email"
               setData={setData}
+              tall
             />
           </RegisterFormPart>
 
@@ -46,7 +47,7 @@ function AccountForm() {
               label="Display Name"
               name="displayName"
               type="text"
-              small
+              tall
               placeholder="Enter your display name"
               setData={setData}
             />
@@ -54,7 +55,7 @@ function AccountForm() {
               label="Phone number"
               name="mobile"
               type="number"
-              small
+              tall
               placeholder="Enter your phone number"
               setData={setData}
             />
@@ -64,7 +65,7 @@ function AccountForm() {
               label="Password"
               name="password"
               type="password"
-              small
+              tall
               placeholder="Enter your password"
               setData={setData}
             />
@@ -72,7 +73,7 @@ function AccountForm() {
               label="ConfirmPassword"
               name="confirmPassword"
               type="password"
-              small
+              tall
               placeholder="Enter your password"
               setData={setData}
             />

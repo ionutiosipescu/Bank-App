@@ -50,7 +50,7 @@ function PersonalForm() {
               label="Firstname"
               name="firstname"
               type="text"
-              small
+              tall
               placeholder="Enter your firstname"
               setData={setData}
               value={firstname || ""}
@@ -59,7 +59,7 @@ function PersonalForm() {
               label="Lastname"
               name="lastname"
               type="text"
-              small
+              tall
               placeholder="Enter your lastname"
               setData={setData}
               value={lastname || ""}
@@ -70,7 +70,7 @@ function PersonalForm() {
               label="Country"
               name="country"
               placeholder="Select a country"
-              small
+              tall
               setData={setData}
               value={country || ""}
             >
@@ -84,7 +84,7 @@ function PersonalForm() {
               label="Address"
               name="address"
               type="text"
-              small
+              tall
               placeholder="Enter your address"
               setData={setData}
               value={address || ""}
@@ -99,7 +99,7 @@ function PersonalForm() {
               options={options}
               setData={setData}
             />
-            <DatePickerField label="Date" name="date" setData={setData} small />
+            <DatePickerField label="Date" name="date" setData={setData} tall />
           </RegisterFormPart>
           <FooterControl />
         </FormContainerPersonal>

@@ -6,7 +6,7 @@ export const FormContainerAccount = styled(Form)`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  width: auto;
+  width: 90%;
   height: 100%;
   margin-top: 20px;
 `;
