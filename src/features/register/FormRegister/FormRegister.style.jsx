@@ -3,6 +3,7 @@ import { device } from "../../../utils/breakpoints/breakpoints";
 
 // lv2
 export const RegisterFormPart = styled.div`
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;

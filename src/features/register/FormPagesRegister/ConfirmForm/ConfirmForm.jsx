@@ -53,6 +53,9 @@ function ConfirmForm() {
       )
     );
   };
+  const setCardCheckbox = (e) => {
+    console.log(e);
+  };
 
   return (
     <>
@@ -105,11 +108,13 @@ function ConfirmForm() {
               label="I accept the terms and conditions"
               type="checkbox"
               name="acceptedTos"
+              setCardCheckbox={setCardCheckbox}
             />
             <CustomCheckbox
               label="I confirm the presented details"
               type="checkbox"
               name="acceptedPlan"
+              setCardCheckbox={setCardCheckbox}
             />
           </ConfirmFormPart>
           {errorMsg ? <ErrorMsg>{errorMsg}</ErrorMsg> : <></>}

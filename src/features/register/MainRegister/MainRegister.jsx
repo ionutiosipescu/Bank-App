@@ -18,7 +18,7 @@ function MainRegister() {
   return (
     <MainRegisterWrapper>
       <MainRegisterContainer>
-        <MultiStepProgressBar />
+        {step === 4 ? <></> : <MultiStepProgressBar />}
         <FormRegister />
         {step === 4 ? <SuccesLink /> : <FooterRegister />}
       </MainRegisterContainer>
