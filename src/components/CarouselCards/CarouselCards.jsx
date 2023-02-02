@@ -1,17 +1,20 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
+
+import { CardsContainer, CarouselContainer } from "./CarouselCards.style";
+
+import BalanceCard from "../BalanceCard/BalanceCard";
+import Button from "../UI/Button/Button";
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
+
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrentCardAccount } from "../../state-management/Dashboard/cards/cards.action";
 import {
   selectUserAccount,
   selectUserDetail,
 } from "../../state-management/Dashboard/userData/userData.selector";
+
 import { generateRandomNumber } from "../../utils/helpers/helperFunctions/randomNumber";
-import BalanceCard from "../BalanceCard/BalanceCard";
-import Button from "../UI/Button/Button";
 import { cardValidityGenerator } from "./../../utils/helpers/helperFunctions/cardValidityGenerator";
-import { CarouselContainer } from "./CarouselCards.style";
 
 function CarouselCards() {
   const dispatch = useDispatch();
@@ -45,20 +48,20 @@ function CarouselCards() {
       >
         <BsArrowLeft />
       </Button>
-      <div>
+      <CardsContainer>
         {itemsToShow.map((account, index) => (
           <BalanceCard
             key={index}
             balance={`${account.balance}`}
             currency={account.currency}
-            color="yellow"
-            size="sm"
             name={`${first_name} ${last_name}`}
-            cardNum={`${generateRandomNumber(16)}`}
+            cardNum={`${generateRandomNumber(4)} ${generateRandomNumber(
+              4
+            )} ${generateRandomNumber(4)} ${generateRandomNumber(4)}`}
             valid={cardValidityGenerator(account.created_at)}
           />
         ))}
-      </div>
+      </CardsContainer>
       <Button
         handleClick={handleNextClick}
         size="round"

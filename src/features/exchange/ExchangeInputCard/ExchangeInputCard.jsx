@@ -112,13 +112,18 @@ function ExchangeInputCard() {
               amount={amount2}
               currency={currency2}
             /> */}
-            <div>
+            <InfoSection>
               <div>{amount2}</div>
-              <div>{currency2}</div>
-            </div>
+              <div>{currency2.toUpperCase()}</div>
+            </InfoSection>
             {errorMsg ? <ErrorMsg>{errorMsg}</ErrorMsg> : <></>}
             {/* </InfoSection> */}
-            <Button label="Exchange" size="xl" primary={true} type="submit" />
+            <Button
+              label="Exchange"
+              size="fullWidth"
+              primary="primary"
+              type="submit"
+            />
           </Form>
         </Formik>
       </ExchangeInputContainer>

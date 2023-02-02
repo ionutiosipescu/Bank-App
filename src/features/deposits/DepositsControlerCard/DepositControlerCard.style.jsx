@@ -10,7 +10,7 @@ export const FormContainerDeposits = styled(Form)`
 export const BtnContainerControler = styled.div`
   display: flex;
   justify-content: space-between;
-  margin: 30px 0;
+  margin: 20px 0;
 
   input[type="radio"] {
     display: none;
@@ -18,7 +18,7 @@ export const BtnContainerControler = styled.div`
 `;
 
 export const BtnContainerSubmitControler = styled.div`
-  margin-top: 50px;
+  margin-top: 20px;
   display: flex;
   justify-content: center;
 `;
@@ -26,7 +26,7 @@ export const BtnContainerSubmitControler = styled.div`
 export const FormContainerInputs = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
 `;
 export const BtnBoxExchange = styled.div`
   cursor: pointer;

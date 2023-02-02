@@ -4,5 +4,5 @@ export const sizeBtn = {
   lg: "width: 200px; height: 40px",
   xl: "width: 230px; height: 50px",
   round: "width: 40px; height: 40px;",
-  fullWidth: "width: 100%; height: 40px;",
+  fullWidth: "width: 100%; height: 50px;",
 };

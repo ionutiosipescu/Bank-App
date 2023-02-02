@@ -16,7 +16,13 @@ import { Link } from "react-router-dom";
 import LinkButton from "../../components/UI/LinkButton/LinkButton";
 import Toggle from "../../components/UI/Toggle/Toggle";
 
+import { useSelector } from "react-redux";
+import { selectCurrentUser } from "../../state-management/Dashboard/userData/userData.selector";
+
 function NavBar() {
+  const userData = useSelector(selectCurrentUser);
+  const { first_name, last_name } = userData.userDetail;
+
   const [active, setActive] = useState("notActive");
 
   const handleActive = () => {
@@ -35,7 +41,7 @@ function NavBar() {
         </LinkButton>
         <ProfileContainer as={Link} to="/profile">
           <img src={avatar} alt="" />
-          <h2>{accounts[0].owner}</h2>
+          <h2>{`${first_name} ${last_name}`}</h2>
         </ProfileContainer>
       </NavBarSection>
     </NavBarContainer>

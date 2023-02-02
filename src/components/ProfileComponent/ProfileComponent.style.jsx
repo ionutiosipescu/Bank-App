@@ -32,10 +32,11 @@ export const ProfileInfo = styled.div`
 
 export const InfoSection = styled.div`
   display: flex;
-  flex-direction: row !important;
+  width: 30%;
+  flex-direction: row;
   /* max-width: 30%; */
   & > div:last-of-type {
-    /* margin-left: 30px; */
+    margin-left: 1rem;
     /* max-width: 50%; */
   }
   & h4 {
@@ -45,7 +46,7 @@ export const InfoSection = styled.div`
   & p {
     font-size: 1.2rem;
     font-weight: 600;
-    margin-top: 20px;
+    margin-top: 10px;
   }
 `;
 

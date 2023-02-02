@@ -2,6 +2,7 @@ import React from "react";
 import {
   CardHeader,
   ServiceCard,
+  ServiceInputsCard,
 } from "../../../components/UI/Card/Card.style";
 import {
   AmountContainer,

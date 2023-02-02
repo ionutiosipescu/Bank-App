@@ -7,7 +7,7 @@ export const PlanContainer = styled.div`
   position: relative;
   overflow: hidden;
   width: 90%;
-  aspect-ratio: 8/7;
+  height: 95%;
   margin: 10px 0 0 40px;
   padding: 20px;
   border-radius: 20px;

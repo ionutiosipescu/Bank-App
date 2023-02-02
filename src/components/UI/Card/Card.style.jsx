@@ -3,8 +3,9 @@ import { device } from "../../../utils/breakpoints/breakpoints";
 
 export const CardContainer = styled.div`
   z-index: 1;
-  min-height: 215px;
-  min-width: 345px;
+  width: 13vw;
+  aspect-ratio: 8/5;
+  /* height: 40vh; */
   position: relative;
   display: flex;
   flex-direction: column;
@@ -20,9 +21,13 @@ export const CardContainer = styled.div`
       ? "var(--purple)"
       : props.color == "yellow"
       ? "var(--yellow)"
+      : props.currency === "ron"
+      ? "var(--purple)"
+      : props.currency === "euro"
+      ? "var(--blue)"
       : "var(--white)"};
   color: ${(props) =>
-    props.color == "purple" || props.color == "yellow"
+    props.currency == "ron" || props.currency == "euro"
       ? "var(--white)"
       : "var(--text)"};
   ${(props) =>
@@ -33,38 +38,38 @@ export const CardContainer = styled.div`
       : props.size === "fit"
       ? "width: fit-content; height: fit-content; margin: 0;"
       : "width: 100%; height: 100%;"};
-  @media (max-width: 1680px) {
+  /* @media (max-width: 1680px) {
     ${(props) =>
-      props.size === "sm"
-        ? "width: 33vw; aspect-ratio: 3/2;"
-        : props.size === "md"
-        ? "width: 50vw; aspect-ratio: 3/2;"
-        : props.size === "fit"
-        ? "width: fit-content; height: fit-content;"
-        : "width: 100%; height: 100%;"};
+    props.size === "sm"
+      ? "width: 33vw; aspect-ratio: 3/2;"
+      : props.size === "md"
+      ? "width: 50vw; aspect-ratio: 3/2;"
+      : props.size === "fit"
+      ? "width: fit-content; height: fit-content;"
+      : "width: 100%; height: 100%;"};
     margin: 25px 30px 15px 0;
   }
   @media (max-width: 1440px) {
     ${(props) =>
-      props.size === "sm"
-        ? "width: 33vw; aspect-ratio: 4/3;"
-        : props.size === "md"
-        ? "width: 50vw; aspect-ratio: 8/5;"
-        : props.size === "fit"
-        ? "width: fit-content; height: fit-content;"
-        : "width: 100%; height: 100%;"};
+    props.size === "sm"
+      ? "width: 33vw; aspect-ratio: 4/3;"
+      : props.size === "md"
+      ? "width: 50vw; aspect-ratio: 8/5;"
+      : props.size === "fit"
+      ? "width: fit-content; height: fit-content;"
+      : "width: 100%; height: 100%;"};
   }
   @media (max-width: 1024px) {
     ${(props) =>
-      props.size === "sm"
-        ? "width: 95vw; aspect-ratio: 4/3;"
-        : props.size === "md"
-        ? "width: 95vw; aspect-ratio: 8/7;"
-        : props.size === "fit"
-        ? "width: fit-content; height: fit-content;"
-        : "width: 100%; height: 100%;"};
+    props.size === "sm"
+      ? "width: 95vw; aspect-ratio: 4/3;"
+      : props.size === "md"
+      ? "width: 95vw; aspect-ratio: 8/7;"
+      : props.size === "fit"
+      ? "width: fit-content; height: fit-content;"
+      : "width: 100%; height: 100%;"};
     margin: 15px 10px 15px 0;
-  }
+  } */
 `;
 
 export const CardHeader = styled.div`
@@ -74,7 +79,7 @@ export const CardHeader = styled.div`
   z-index: 2;
   margin: ${(props) => (props.size === "fit" ? "0" : "0 0 0 20px")};
   h1 {
-    font-size: ${(props) => (props.size === "fit" ? "25px" : "48px")};
+    /* font-size: ${(props) => (props.size === "fit" ? "25px" : "48px")}; */
   }
   ${(props) =>
     props.flex === "row"
@@ -113,7 +118,7 @@ export const ServiceCard = styled.div`
   flex-direction: column;
   align-items: center;
   width: calc(60% - 20px);
-  height: 85vh;
+  height: 75vh;
   border-radius: 40px;
   padding: 30px 40px;
   background-color: var(--white);
@@ -173,7 +178,7 @@ export const ServiceInputsCard = styled.div`
   }
   @media (${device.desktop}) {
     width: calc(40% - 20px);
-    height: 85vh;
+    height: 75vh;
     margin-bottom: 0;
     align-items: center;
     & > a:last-of-type {
@@ -242,7 +247,7 @@ export const ServiceInputsCardLoans = styled.div`
   }
   @media (${device.desktop}) {
     width: calc(40% - 20px);
-    height: 85vh;
+    height: 75vh;
     margin-bottom: 0;
     align-items: center;
     & > a:last-of-type {
@@ -311,7 +316,7 @@ export const ServiceInputsCardDeposit = styled.div`
   }
   @media (${device.desktop}) {
     width: calc(40% - 20px);
-    height: 85vh;
+    height: 75vh;
     margin-bottom: 0;
     align-items: center;
     & > a:last-of-type {

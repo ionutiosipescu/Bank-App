@@ -57,44 +57,19 @@ function Cards() {
   return (
     <>
       <TopContainer>
-        <LeftWrapper>
-          {/* <Button handleClick={handleCardChange} size="round">
-            <BsArrowLeft />
-          </Button> */}
-          <CarouselCards />
-          {/* <CardsContainer clicked={clicked}>
-            
-          </CardsContainer> */}
-          {/* <BalanceCard
-              balance={data.balance}
-              color="purple"
-              size="sm"
-              name={data.owner}
-              cardNum={data.cardNumber}
-              valid={data.validity}
-            />
-            <BalanceCard
-              balance={data_2.balance}
-              color="yellow"
-              size="sm"
-              name={data_2.owner}
-              cardNum={data_2.cardNumber}
-              valid={data_2.validity}
-            /> */}
-          {/* <Button handleClick={handleCardChange} size="round">
-            <BsArrowRight />
-          </Button> */}
-        </LeftWrapper>
+        {/* <LeftWrapper> */}
+        <CarouselCards />
+        {/* </LeftWrapper> */}
         <RightWrapper>
           <FeatureContainer>
             <FeatureCard type="deposit" />
             <FeatureCard type="withdraw" />
           </FeatureContainer>
           <CardInfo
-            name={clicked ? data_2.owner : data.owner}
-            cardNumber={clicked ? data_2.cardNumber : data.cardNumber}
-            valid={clicked ? data_2.validity : data.validity}
-            currency={clicked ? "USD" : "EUR"}
+          // name={clicked ? data_2.owner : data.owner}
+          // cardNumber={clicked ? data_2.cardNumber : data.cardNumber}
+          // valid={clicked ? data_2.validity : data.validity}
+          // currency={clicked ? "USD" : "EUR"}
           />
         </RightWrapper>
       </TopContainer>

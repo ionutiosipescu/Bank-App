@@ -6,12 +6,16 @@ import { CardBody, CardFooter, Circle, Pill } from "./BalanceCard.style";
 function BalanceCard({ ...props }) {
   const { balance, color, name, valid, cardNum, size, onClick, currency } =
     props;
+
   return (
-    <CardContainer color={color} size={size} onClick={onClick}>
+    <CardContainer currency={currency} size={size} onClick={onClick}>
       <CardHeader size={size}>
-        <h3>My Balance</h3>
-        <h1>{balance}</h1>
-        <span>{currency}</span>
+        <h2>Balance</h2>
+        <h1>
+          {balance.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}
+          {`${currency}`.toUpperCase()}
+        </h1>
+        <span>{}</span>
       </CardHeader>
       <CardBody size={size}>
         <h2>{cardNum}</h2>
@@ -28,15 +32,15 @@ function BalanceCard({ ...props }) {
       </CardFooter>
       <Circle one size={size} />
       <Circle two size={size} />
-      <Pill one color={color} size={size} />
-      <Pill two color={color} size={size} />
+      <Pill one currency={currency} size={size} />
+      <Pill two currency={currency} size={size} />
     </CardContainer>
   );
 }
 
 BalanceCard.propTypes = {
   balance: PropTypes.string,
-  color: PropTypes.oneOf(["purple", "yellow"]),
+  color: PropTypes.oneOf(["purple", "blue"]),
   size: PropTypes.oneOf(["sm", "md", "fit"]),
   name: PropTypes.string,
   valid: PropTypes.string,

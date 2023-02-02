@@ -8,17 +8,22 @@ import UserCard from "../../components/UserCard/UserCard";
 import { SettingsContainer } from "../Settings/Settings.style";
 
 import { accounts } from "../../utils/data/dummyData";
+import { selectCurrentUser } from "../../state-management/Dashboard/userData/userData.selector";
+import { useSelector } from "react-redux";
 
 function Profile() {
+  const userData = useSelector(selectCurrentUser);
+  const { first_name, last_name, address, mobile } = userData.userDetail;
+
   return (
     <>
       <TopContainer>
         <ProfileComponent
-          name={accounts[0].owner}
-          address={accounts[0].address}
+          name={`${first_name} ${last_name}`}
+          address={address}
           email={accounts[0].email}
-          phoneNumber={accounts[0].phoneNumber}
-        ></ProfileComponent>
+          phoneNumber={mobile}
+        />
         <PlanContainer>
           <PlanCard />
         </PlanContainer>

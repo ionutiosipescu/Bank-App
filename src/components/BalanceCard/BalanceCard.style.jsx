@@ -47,7 +47,7 @@ export const Pill = styled.div`
   ${(props) =>
     props.one ? "top: 40%; left: 88%" : "top: 60%; left: 79%; opacity: 0.5;"};
   background-color: ${(props) =>
-    props.color == "purple" ? "var(--blue)" : "var(--red)"};
+    props.currency === "ron" ? "var(--blue)" : "var(--purple)"};
 
   /* transform: ${(props) =>
     props.one ? "translate(230px, 70px)" : "translate(170px, 120px)"};

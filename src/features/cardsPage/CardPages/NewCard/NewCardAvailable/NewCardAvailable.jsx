@@ -30,8 +30,8 @@ function NewCardAvailable() {
     <NewCardAvailableContainer>
       <Title>Available Accounts</Title>
       <BalanceCard
-        balance="$0"
-        color="purple"
+        balance="0"
+        currency="ron"
         size="fit"
         name={data.owner}
         cardNum={data.cardNumber}

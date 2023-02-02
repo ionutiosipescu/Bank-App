@@ -13,6 +13,10 @@ export const UserCardContainer = styled.div`
     scale: 110%;
     transition: 0.3s;
   }
+  & img {
+    aspect-ratio: 1/1;
+    object-fit: cover;
+  }
 `;
 
 export const UserCardHeader = styled.div`

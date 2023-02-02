@@ -21,28 +21,17 @@ export const ExchangeInputContainer = styled.div`
 
 export const InfoSection = styled.div`
   display: flex;
-  justify-content: space-around;
-  width: 80%;
-  margin-bottom: 20px;
-  & > div:first-of-type {
-    margin: 0 20px 10px 0;
-  }
-  /* Media queries */
-  @media (${device.mobileS}) {
-    flex-direction: column;
-    margin-bottom: 10px;
-  }
-  @media (${device.laptop}) {
-    flex-direction: row;
-    margin-bottom: 20px;
-  }
-  @media (${device.laptopL}) {
-    flex-direction: column;
-    margin-bottom: 20px;
-  }
-  @media (${device.desktop}) {
-    flex-direction: row;
-    height: 200px;
-    margin-bottom: 20px;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 60px;
+  padding: 0 1.5rem 0 1.5rem;
+  margin: 10px 0 10px 0;
+  border-radius: 30px;
+  border: 2px solid var(--purple);
+  & div {
+    color: var(--text);
+    font-weight: 600;
+    font-size: 1.2rem;
   }
 `;
