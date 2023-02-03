@@ -40,7 +40,7 @@ export const DropDownContainer = styled.div`
 export const DropDownSelector = styled.div`
   display: flex;
   ${(props) =>
-    props.active === "active"
+    props.active
       ? "flex-direction: column; align-items: flex-start; border-radius: 30px; padding: 10px 25px 15px 25px;"
       : "height: 60px; border-radius: 30px; padding: 0px 25px; & > p { display: none; }"}
 
