@@ -159,7 +159,6 @@ export const InputForm = styled.input`
 export const InputSelect = styled.select`
   ${InputStyle}
   width: ${(props) => (props.small ? "200px" : "100%")};
-  margin-bottom: 10px;
 `;
 
 export const InputRadio = styled.input``;

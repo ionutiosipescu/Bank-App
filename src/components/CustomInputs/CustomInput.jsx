@@ -17,7 +17,7 @@ const CustomInput = ({ label, ...props }) => {
             props.setData(e);
           }}
           className={meta.touched && meta.error ? "input-error" : ""}
-          maxLength="25"
+          maxLength="35"
         />
         {meta.touched && meta.error && <Error>{meta.error}</Error>}
       </Group>

@@ -14,9 +14,9 @@ function Deposit() {
   const currentUser = useSelector(selectCurrentUser);
   const depositForm = useSelector(selectDepositForm);
 
-  // useEffect(() => {
-  //   dispatch(getDepositArrDb(depositForm, currentUser));
-  // }, []);
+  useEffect(() => {
+    dispatch(getDepositArrDb(depositForm, currentUser));
+  }, []);
   return (
     <DepositWrapper>
       <DepositsListCard />

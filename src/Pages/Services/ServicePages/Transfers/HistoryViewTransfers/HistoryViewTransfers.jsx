@@ -78,14 +78,14 @@ function HisotryViewTransfers({ dataServices }) {
             <ListItem key={index}>
               <ListItemSectionTransfer>
                 <UserContainerTransfer>
-                  <img src={transfer.image} alt="poza" />
+                  <img src={accounts[0].image} alt="poza" />
                 </UserContainerTransfer>
-                <h3>{transfer.reciever}</h3>
+                <h3>{transfer.details}</h3>
                 <IdList> #{transfer.id}</IdList>
-                <AmountContainer>${transfer.amount}</AmountContainer>
+                <AmountContainer>${transfer.transfer}</AmountContainer>
                 <DateContainer>{transfer.date}</DateContainer>
-                <LabelList status={transfer.status}>
-                  {transfer.status}
+                <LabelList status={transfer.status || "Completed"}>
+                  {transfer.status || "Completed"}
                 </LabelList>
               </ListItemSectionTransfer>
             </ListItem>

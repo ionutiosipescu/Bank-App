@@ -11,7 +11,7 @@ export const HeroCard = styled.div`
 
   img {
     width: auto;
-    height: 850px;
+    height: 875px;
     background: var(--purple);
     margin-right: 85px;
   }

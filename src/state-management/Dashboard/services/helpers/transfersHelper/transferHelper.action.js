@@ -104,19 +104,19 @@ export const setTransferId = async (obj, currentUserData) => {
 export const getTransferArr = (obj, currentUserData) => {
   return async (dispatch) => {
     const id = await setTransferId(obj, currentUserData);
-    await axios
-      .get(`http://localhost:8080/transfers/?id=${id}`)
-      .then((res) => console.log(res));
-
-    // await dispatch(setExchangeArrDb(data));
+    const { data } = await axios.get(
+      `http://localhost:8080/transfers/?id=${id}`
+    );
+    console.log(data);
+    await dispatch(setTransferArrDb(data));
   };
 };
 
 // Set Arr from DB
 
-// export const setTransferArrDb = (transferArr) => {
-//   return createAction(TRANSFER_HELPER_TYPES.SET_TRANSFER_ARR, transferArr);
-// };
+export const setTransferArrDb = (transferArr) => {
+  return createAction(TRANSFER_HELPER_TYPES.SET_TRANSFER_ARR, transferArr);
+};
 
 // Async Transfer Data
 export const fetchTransferData = (

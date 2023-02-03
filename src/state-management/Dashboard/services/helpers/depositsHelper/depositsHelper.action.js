@@ -77,7 +77,7 @@ export const getDepositArrDb = (obj, currentUserData) => {
     const { data } = await axios.get(
       `http://localhost:8080/accounts/?id=${id}`
     );
-    console.log(data);
+    console.log(data, id);
     await dispatch(setDepositArrDb(data));
   };
 };

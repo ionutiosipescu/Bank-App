@@ -25,7 +25,7 @@ function CarouselCards(props) {
   const currentAccount = useSelector(selectUserDetail);
   const { first_name, last_name } = currentAccount;
 
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex = 0, setCurrentIndex] = useState(0);
   const itemsToShow = accountsArr.slice(currentIndex, currentIndex + 1);
 
   const handlePrevClick = () => {
