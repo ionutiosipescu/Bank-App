@@ -13,6 +13,7 @@ import { useSelector } from "react-redux";
 
 function Profile() {
   const userData = useSelector(selectCurrentUser);
+  const { email } = userData;
   const { first_name, last_name, address, mobile } = userData.userDetail;
   const { type_of_plan } = userData.account[0];
 
@@ -22,7 +23,7 @@ function Profile() {
         <ProfileComponent
           name={`${first_name} ${last_name}`}
           address={address}
-          email={accounts[0].email}
+          email={email}
           phoneNumber={mobile}
         />
         <PlanContainer>

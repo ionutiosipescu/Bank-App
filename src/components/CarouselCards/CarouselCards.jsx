@@ -15,26 +15,33 @@ import {
 
 import { generateRandomNumber } from "../../utils/helpers/helperFunctions/randomNumber";
 import { cardValidityGenerator } from "./../../utils/helpers/helperFunctions/cardValidityGenerator";
+import { selectCardArr } from "../../state-management/Dashboard/cards/cards.selector";
 
 function CarouselCards(props) {
   const { size } = props;
 
   const dispatch = useDispatch();
-  const accountsArr = useSelector(selectUserAccount);
+  const accountsArr = useSelector(selectCardArr);
   const currentAccount = useSelector(selectUserDetail);
   const { first_name, last_name } = currentAccount;
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const itemsToShow = accountsArr.slice(currentIndex, currentIndex + 1);
 
-  //   console.log(accountsArr.length);
-
   const handlePrevClick = () => {
-    setCurrentIndex(currentIndex - 1);
+    if (currentIndex === 0) {
+      setCurrentIndex(accountsArr.length - 1);
+    } else {
+      setCurrentIndex(currentIndex - 1);
+    }
   };
 
   const handleNextClick = () => {
-    setCurrentIndex(currentIndex + 1);
+    if (currentIndex === accountsArr.length - 1) {
+      setCurrentIndex(0);
+    } else {
+      setCurrentIndex(currentIndex + 1);
+    }
   };
 
   useEffect(() => {
@@ -43,11 +50,7 @@ function CarouselCards(props) {
 
   return (
     <CarouselContainer size={size}>
-      <Button
-        handleClick={handlePrevClick}
-        size="round"
-        disabled={currentIndex === 0 ? true : false}
-      >
+      <Button handleClick={handlePrevClick} size="round">
         <BsArrowLeft />
       </Button>
       <CardsContainer size={size}>
@@ -65,11 +68,7 @@ function CarouselCards(props) {
           />
         ))}
       </CardsContainer>
-      <Button
-        handleClick={handleNextClick}
-        size="round"
-        disabled={currentIndex + 1 >= accountsArr.length ? true : false}
-      >
+      <Button handleClick={handleNextClick} size="round">
         <BsArrowRight />
       </Button>
     </CarouselContainer>

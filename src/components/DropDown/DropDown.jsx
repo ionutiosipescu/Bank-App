@@ -18,6 +18,10 @@ function DropDown({ label, items }) {
     } else setActive("'active'");
   };
 
+  useEffect(() => {
+    console.log(selected, active);
+  }, [selected, active]);
+
   return (
     <DropDownContainer>
       <p>{label}</p>

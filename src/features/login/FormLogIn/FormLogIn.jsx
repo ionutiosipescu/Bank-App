@@ -31,9 +31,9 @@ function FormLogIn() {
   };
 
   // send data to Redux userProfile
-  const setData = debounce((e) => {
+  const setData = (e) => {
     dispatch(setLogInUser(loginData, e));
-  }, 500);
+  };
 
   // check isSubmitting status -> redirect to dashboard
   useEffect(() => {
