@@ -10,8 +10,8 @@ function PlanCardBody({ ...props }) {
           return (
             <React.Fragment key={index}>
               <li>
-                <span>{detail.nr}</span>
                 {detail.name}
+                <span>{detail.nr}</span>
               </li>
             </React.Fragment>
           );

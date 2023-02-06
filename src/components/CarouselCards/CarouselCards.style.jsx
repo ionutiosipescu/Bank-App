@@ -6,7 +6,9 @@ export const CarouselContainer = styled.div`
     props.size === "sm" ? "width: 95%; font-size: 0.7rem;" : "width: 40%;"}
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: ${(props) =>
+    props.buttonShow === "true" ? "space-between" : "center"};
+  /* justify-content: center; */
 `;
 
 export const CardsContainer = styled.div`

@@ -19,12 +19,10 @@ import { selectCardArr } from "../../state-management/Dashboard/cards/cards.sele
 
 function CarouselCards(props) {
   const { size } = props;
-
   const dispatch = useDispatch();
   const accountsArr = useSelector(selectCardArr);
   const currentAccount = useSelector(selectUserDetail);
   const { first_name, last_name } = currentAccount;
-
   const [currentIndex = 0, setCurrentIndex] = useState(0);
   const itemsToShow = accountsArr.slice(currentIndex, currentIndex + 1);
 
@@ -48,11 +46,23 @@ function CarouselCards(props) {
     dispatch(setCurrentCardAccount(accountsArr[currentIndex]));
   }, [currentIndex]);
 
+  // useEffect(() => {
+  //   console.log(accountsArr);
+  // }, [accountsArr]);
+
   return (
-    <CarouselContainer size={size}>
-      <Button handleClick={handlePrevClick} size="round">
-        <BsArrowLeft />
-      </Button>
+    <CarouselContainer
+      size={size}
+      buttonShow={accountsArr.length >= 2 ? "true" : "false"}
+    >
+      {accountsArr.length >= 2 ? (
+        <Button handleClick={handlePrevClick} size="round">
+          <BsArrowLeft />
+        </Button>
+      ) : (
+        <></>
+      )}
+
       <CardsContainer size={size}>
         {itemsToShow.map((account, index) => (
           <BalanceCard
@@ -68,9 +78,13 @@ function CarouselCards(props) {
           />
         ))}
       </CardsContainer>
-      <Button handleClick={handleNextClick} size="round">
-        <BsArrowRight />
-      </Button>
+      {accountsArr.length >= 2 ? (
+        <Button handleClick={handleNextClick} size="round">
+          <BsArrowRight />
+        </Button>
+      ) : (
+        <></>
+      )}
     </CarouselContainer>
   );
 }

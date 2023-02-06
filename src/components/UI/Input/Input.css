@@ -158,6 +158,7 @@ select.input-error {
   border: none;
 }
 .plan-form .plancard-body li span {
+  margin-left: 10px;
   color: black;
 }
 

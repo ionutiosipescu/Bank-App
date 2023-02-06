@@ -133,6 +133,7 @@
   border: none;
 }
 .card-form .plancard-body li span {
+  margin-left: 10px;
   color: black;
 }
 

@@ -6,10 +6,10 @@ export const options = [
     planName: "STANDARD",
     currency: "ron",
     details: [
-      { nr: "1", name: "Project" },
-      { nr: "5", name: "Team Members" },
-      { nr: "55", name: "Personal Contacts" },
-      { nr: "5.000", name: "Messages" },
+      { nr: "", name: "Basic banking services" },
+      { nr: "", name: "No annual fee" },
+      { nr: "", name: "No minimum balance" },
+      { nr: "$1,000", name: "Debit card limit" },
     ],
   },
   {
@@ -19,10 +19,10 @@ export const options = [
     planName: "PREMIUM",
     currency: "ron",
     details: [
-      { nr: "10", name: "Project" },
-      { nr: "50", name: "Team Members" },
-      { nr: "550", name: "Personal Contacts" },
-      { nr: "10K", name: "Messages" },
+      { nr: "", name: "Wider banking services" },
+      { nr: "", name: "No foreign transaction fee" },
+      { nr: "24/7", name: "concierge service" },
+      { nr: "$10,000", name: "Credit card limit" },
     ],
   },
   {
@@ -32,10 +32,10 @@ export const options = [
     planName: "VIP",
     currency: "ron",
     details: [
-      { nr: "100", name: "Project" },
-      { nr: "500", name: "Team Members" },
-      { nr: "10K", name: "Personal Contacts" },
-      { nr: "500K", name: "Messages" },
+      { nr: "", name: "Exclusive benefits" },
+      { nr: "", name: "Priority customer service" },
+      { nr: "", name: "VIP lounges, events access." },
+      { nr: "$50,000", name: "Credit card limit" },
     ],
   },
 ];
