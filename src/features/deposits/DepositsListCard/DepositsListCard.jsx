@@ -26,6 +26,7 @@ import Button from "../../../components/UI/Button/Button";
 // import { deposits } from "../../../utils/data/dummyData";
 import { useSelector } from "react-redux";
 import { selectDepositArr } from "../../../state-management/Dashboard/services/helpers/depositsHelper/deposits.selector";
+import { upperCaseFirst } from "../../../utils/helpers/helperFunctions/upperCaseFirstInitial";
 
 function DepositsListCard() {
   const depositHistory = useSelector(selectDepositArr);
@@ -38,13 +39,15 @@ function DepositsListCard() {
         {depositHistory.map((transfer, index) => (
           <ListItem key={index}>
             <ListItemSection>
-              <LabelAction action={transfer.action}>
-                {transfer.action}
+              <LabelAction action={upperCaseFirst(transfer?.status)}>
+                {upperCaseFirst(transfer?.status)}
               </LabelAction>
               <IdList> #{transfer.id}</IdList>
-              <AmountContainer>Amount: {transfer.amount}</AmountContainer>
-              <DateContainer>{transfer.created_at}</DateContainer>
-              <LabelList status={transfer.status}>{transfer.status}</LabelList>
+              <AmountContainer>Amount: {transfer.balance}</AmountContainer>
+              <DateContainer>{transfer.date}</DateContainer>
+              <LabelList status={transfer?.id ? "Completed" : "Canceled"}>
+                Completed
+              </LabelList>
             </ListItemSection>
             <Button label="Repeat" size="sm" primary="primary" />
           </ListItem>
