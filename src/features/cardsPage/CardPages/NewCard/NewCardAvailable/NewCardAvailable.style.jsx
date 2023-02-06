@@ -56,13 +56,18 @@ export const Title = styled.h2`
   margin: 10px 0 30px;
 `;
 
-export const CurrencyBox = styled.div`
+export const BoxContainerHeader = styled.div`
+  display: flex;
   z-index: 1;
   padding: 20px 10px;
-  font-size: 30px;
   width: 85%;
-  text-align: start;
+  justify-content: flex-start;
+  gap: 50px;
+  font-size: 30px;
 `;
+
+export const CurrencyBox = styled.div``;
+export const PlanBox = styled.div``;
 
 export const AvailableAccountsContainer = styled.div`
   z-index: 1;

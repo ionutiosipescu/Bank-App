@@ -35,7 +35,7 @@ export const updateCardEdit = (cardUpdated) => {
 // Update Plan in cardEdit
 export const setCardPlanEdit = (cardEdit, e) => {
   const { value } = e.target;
-  const cardUpdated = { ...cardEdit, typeOfPlan: value };
+  const cardUpdated = { ...cardEdit, type_of_plan: value };
   return cardUpdated;
 };
 
@@ -43,20 +43,25 @@ export const setCardPlanEdit = (cardEdit, e) => {
 export const asyncCardPlanEdit = (cardEdit, e) => {
   return async (dispatch) => {
     const updatedCardEdit = await setCardPlanEdit(cardEdit, e);
-    await dispatch(updateCardEdit(updatedCardEdit));
-    await dispatch(setErrorMsg(updatedCardEdit));
+    await dispatch(setCurrentCardEdit(updatedCardEdit));
+    // if (cardEdit.type_of_plan !== updatedCardEdit.type_of_plan) return;
+    // await dispatch(setErrorMsg(updatedCardEdit));
+  };
+};
+
+export const asyncSaveChanges = (cardEdit) => {
+  return async (dispatch) => {
+    if (cardEdit.type_of_plan) {
+      console.log("success");
+    } else {
+      await dispatch(setErrorMsg(cardEdit));
+    }
   };
 };
 
 // update ErrorMsg
 export const setErrorMsg = (cardEdit) => {
-  let errormsg;
-  if (cardEdit.typeOfPlan) {
-    errormsg = "";
-    console.log(cardEdit);
-  } else {
-    errormsg = "Chose at least one plan !";
-  }
+  const errormsg = "Chose at least one plan !";
   const cardUpdated = { ...cardEdit, errorMsg: errormsg };
   return createAction(CARD_TYPES.SET_CARD_EDIT_ERROR, cardUpdated);
 };
@@ -64,6 +69,10 @@ export const setErrorMsg = (cardEdit) => {
 // update CurrentAccount
 export const setCurrentCardAccount = (card) => {
   return createAction(CARD_TYPES.SET_CARD_CURRENT, card);
+};
+// update CurrentAccount
+export const setCurrentCardEdit = (card) => {
+  return createAction(CARD_TYPES.SET_CARD_CURRENT_EDIT, card);
 };
 
 export const setCardArr = (cardArr) => {
@@ -86,7 +95,6 @@ export const fetchGetCardAccountArr = (currentUserData) => {
     const { data } = await axios.get(
       `http://localhost:8080/accounts/?id=${id}`
     );
-    console.log(data, id);
     await dispatch(setCardArr(data));
   };
 };

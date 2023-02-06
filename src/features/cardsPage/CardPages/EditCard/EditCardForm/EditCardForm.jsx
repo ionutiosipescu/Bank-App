@@ -12,13 +12,15 @@ import { ErrorMsg } from "../../../../../components/Errors/Auth/ErrorMsg.style";
 import { useState } from "react";
 import { asyncCardPlanEdit } from "../../../../../state-management/Dashboard/cards/cards.action";
 import { TitleBox, EditCardError } from "./EditCardForm.style";
+import { selectCurrentCardEdit } from "../../../../../state-management/Dashboard/cards/cards.selector";
 
 function EditCardForm() {
   const dispatch = useDispatch();
-  const cardEdit = useSelector(selectCardEdit);
+  const cardEdit = useSelector(selectCurrentCardEdit);
   const { errorMsg } = cardEdit;
   const plan = useSelector(selectPlanObject);
   const handleradio = (e) => {
+    console.log(e.target.value);
     dispatch(asyncCardPlanEdit(cardEdit, e));
   };
 

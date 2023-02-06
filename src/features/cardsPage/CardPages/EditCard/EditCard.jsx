@@ -1,13 +1,13 @@
 import React from "react";
 import { EditCardWrapper, EditControler } from "./EditCard.style";
 import EditCardForm from "./EditCardForm/EditCardForm";
-import NewCardAvailable from "../NewCard/NewCardAvailable/NewCardAvailable";
+import EditCardAvailable from "./EditCardAvailable/EditCardAvailable";
 
 function EditCard() {
   return (
     <EditCardWrapper>
       <EditCardForm />
-      <NewCardAvailable />
+      <EditCardAvailable />
     </EditCardWrapper>
   );
 }

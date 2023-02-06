@@ -13,8 +13,12 @@ import Button from "../../../../../components/UI/Button/Button";
 import { ButtonsContainer } from "./NewCardAvailable.style";
 import { useState } from "react";
 import CarouselCards from "../../../../../components/CarouselCards/CarouselCards";
+import { selectCardArr } from "../../../../../state-management/Dashboard/cards/cards.selector";
+import { useSelector } from "react-redux";
+import filterCards from "../../../../../utils/helpers/helperFunctions/filterAvailableCards";
 
 function NewCardAvailable() {
+  const accountsArr = useSelector(selectCardArr);
   const data = accounts[0];
   const [currentIndex, setCurrentIndex] = useState(0);
   const itemsToShow = accounts.slice(currentIndex, currentIndex + 3);
@@ -30,27 +34,7 @@ function NewCardAvailable() {
   return (
     <NewCardAvailableContainer>
       <Title>Available Accounts</Title>
-      <CarouselCards size="sm" />
-      {/* Buttons */}
-      {/* <ButtonsContainer>
-        <Button
-          handleClick={handlePrevClick}
-          disabled={currentIndex === 0 ? true : false}
-          size="round"
-          primary="primary"
-        >
-          &#8592;
-        </Button>
-        <Button
-          handleClick={handleNextClick}
-          disabled={currentIndex + 3 >= accounts.length ? true : false}
-          size="round"
-          primary="primary"
-        >
-          &#8594;
-        </Button>
-      </ButtonsContainer> */}
-      {/* currency */}
+      <CarouselCards size="sm" cardsArr={filterCards(accountsArr)} />
       <CurrencyBox>Euro</CurrencyBox>
       {/* Advantajes Card */}
       <AvailableAccountsContainer>

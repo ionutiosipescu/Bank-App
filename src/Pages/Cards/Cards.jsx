@@ -28,17 +28,15 @@ import CarouselCards from "../../components/CarouselCards/CarouselCards";
 import { useDispatch } from "react-redux";
 import { fetchGetCardAccountArr } from "../../state-management/Dashboard/cards/cards.action";
 import { selectCurrentUser } from "../../state-management/Dashboard/userData/userData.selector";
-
-const data = accounts[0];
-const data_2 = accounts[1];
+import { selectCardArr } from "../../state-management/Dashboard/cards/cards.selector";
 
 function Cards() {
   const dispatch = useDispatch();
+  const accountsArr = useSelector(selectCardArr);
   const [clicked, setClicked] = useState(true);
   const currentUser = useSelector(selectCurrentUser);
   const [selectedOption, setSelectedOption] = useState("New Account");
   const [selectedComponent, setSelectedComponent] = useState(<h1>Accounts</h1>);
-  const accountsArr = useSelector(selectUserAccount);
   const currentAccount = useSelector(selectUserDetail);
   const { first_name, last_name } = currentAccount;
 
@@ -67,19 +65,14 @@ function Cards() {
     <>
       <TopContainer>
         {/* <LeftWrapper> */}
-        <CarouselCards />
+        <CarouselCards cardsArr={accountsArr} />
         {/* </LeftWrapper> */}
         <RightWrapper>
           <FeatureContainer>
             <FeatureCard type="deposit" />
             <FeatureCard type="withdraw" />
           </FeatureContainer>
-          <CardInfo
-          // name={clicked ? data_2.owner : data.owner}
-          // cardNumber={clicked ? data_2.cardNumber : data.cardNumber}
-          // valid={clicked ? data_2.validity : data.validity}
-          // currency={clicked ? "USD" : "EUR"}
-          />
+          <CardInfo />
         </RightWrapper>
       </TopContainer>
       <BottomContainer>

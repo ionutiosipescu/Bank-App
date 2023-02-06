@@ -5,13 +5,14 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { selectCardEdit } from "../../../../../state-management/Dashboard/cards/cards.selector";
 import { setErrorMsg } from "../../../../../state-management/Dashboard/cards/cards.action";
+import { selectCurrentCardEdit } from "../../../../../state-management/Dashboard/cards/cards.selector";
+import { asyncSaveChanges } from "../../../../../state-management/Dashboard/cards/cards.action";
 
 function EditController() {
   const dispatch = useDispatch();
-  const cardEdit = useSelector(selectCardEdit);
-
+  const cardEdit = useSelector(selectCurrentCardEdit);
   const handleSave = () => {
-    dispatch(setErrorMsg(cardEdit));
+    dispatch(asyncSaveChanges(cardEdit));
   };
 
   // const handleDelete = () => {

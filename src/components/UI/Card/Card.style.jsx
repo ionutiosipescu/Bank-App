@@ -27,6 +27,8 @@ export const CardContainer = styled.div`
       ? "var(--purple)"
       : props.currency === "euro"
       ? "var(--blue)"
+      : props.currency === "none"
+      ? "var(--gray-light)"
       : "var(--white)"};
   color: ${(props) =>
     props.currency == "ron" || props.currency == "euro"

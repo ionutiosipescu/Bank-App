@@ -16,26 +16,28 @@ import {
 import { generateRandomNumber } from "../../utils/helpers/helperFunctions/randomNumber";
 import { cardValidityGenerator } from "./../../utils/helpers/helperFunctions/cardValidityGenerator";
 import { selectCardArr } from "../../state-management/Dashboard/cards/cards.selector";
+import BalanceCardEmpty from "../BalanceCardEmpty/BalanceCardEmpty";
+import { setCurrentCardEdit } from "../../state-management/Dashboard/cards/cards.action";
 
-function CarouselCards(props) {
-  const { size } = props;
+function CarouselCards({ ...props }) {
+  const { size, cardsArr = [], page } = props;
   const dispatch = useDispatch();
-  const accountsArr = useSelector(selectCardArr);
+  // const accountsArr = useSelector(selectCardArr);
   const currentAccount = useSelector(selectUserDetail);
   const { first_name, last_name } = currentAccount;
   const [currentIndex = 0, setCurrentIndex] = useState(0);
-  const itemsToShow = accountsArr.slice(currentIndex, currentIndex + 1);
+  const itemsToShow = cardsArr.slice(currentIndex, currentIndex + 1);
 
   const handlePrevClick = () => {
     if (currentIndex === 0) {
-      setCurrentIndex(accountsArr.length - 1);
+      setCurrentIndex(cardsArr.length - 1);
     } else {
       setCurrentIndex(currentIndex - 1);
     }
   };
 
   const handleNextClick = () => {
-    if (currentIndex === accountsArr.length - 1) {
+    if (currentIndex === cardsArr.length - 1) {
       setCurrentIndex(0);
     } else {
       setCurrentIndex(currentIndex + 1);
@@ -43,7 +45,11 @@ function CarouselCards(props) {
   };
 
   useEffect(() => {
-    dispatch(setCurrentCardAccount(accountsArr[currentIndex]));
+    if (page === "editPage") {
+      dispatch(setCurrentCardEdit(cardsArr[currentIndex]));
+    } else {
+      dispatch(setCurrentCardAccount(cardsArr[currentIndex]));
+    }
   }, [currentIndex]);
 
   // useEffect(() => {
@@ -53,9 +59,9 @@ function CarouselCards(props) {
   return (
     <CarouselContainer
       size={size}
-      buttonShow={accountsArr.length >= 2 ? "true" : "false"}
+      buttonShow={cardsArr.length >= 2 ? "true" : "false"}
     >
-      {accountsArr.length >= 2 ? (
+      {cardsArr.length >= 2 ? (
         <Button handleClick={handlePrevClick} size="round">
           <BsArrowLeft />
         </Button>
@@ -64,21 +70,27 @@ function CarouselCards(props) {
       )}
 
       <CardsContainer size={size}>
-        {itemsToShow.map((account, index) => (
-          <BalanceCard
-            key={index}
-            balance={`${account.balance}`}
-            currency={account.currency}
-            name={`${first_name} ${last_name}`}
-            cardNum={`${generateRandomNumber(4)} ${generateRandomNumber(
-              4
-            )} ${generateRandomNumber(4)} ${generateRandomNumber(4)}`}
-            valid={cardValidityGenerator(account.created_at)}
-            scale={size}
-          />
-        ))}
+        {itemsToShow.length === 0 ? (
+          <BalanceCardEmpty currency={"none"} />
+        ) : (
+          <>
+            {itemsToShow.map((account, index) => (
+              <BalanceCard
+                key={index}
+                balance={`${account.balance}`}
+                currency={account.currency}
+                name={`${first_name} ${last_name}`}
+                cardNum={`${generateRandomNumber(4)} ${generateRandomNumber(
+                  4
+                )} ${generateRandomNumber(4)} ${generateRandomNumber(4)}`}
+                valid={cardValidityGenerator(account.created_at)}
+                scale={size}
+              />
+            ))}
+          </>
+        )}
       </CardsContainer>
-      {accountsArr.length >= 2 ? (
+      {cardsArr.length >= 2 ? (
         <Button handleClick={handleNextClick} size="round">
           <BsArrowRight />
         </Button>

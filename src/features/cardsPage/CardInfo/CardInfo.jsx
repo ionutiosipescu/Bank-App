@@ -16,8 +16,6 @@ function CardInfo() {
   const { first_name, last_name } = currentAccount;
   const { created_at, currency } = currentCardAccount;
 
-  console.log(currentUser);
-
   return (
     <Container>
       <h2>Card Information</h2>
