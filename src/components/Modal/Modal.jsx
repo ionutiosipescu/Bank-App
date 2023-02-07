@@ -21,7 +21,12 @@ function Modal({ children, handleClick, opened, ...props }) {
       <ModalCard>
         <ModalContainer>
           {children}
-          <Button primary="primary" size="round" handleClick={handleClick}>
+          <Button
+            primary="primary"
+            size="round"
+            type="button"
+            onClick={handleClick}
+          >
             X
           </Button>
         </ModalContainer>

@@ -17,7 +17,7 @@ export const CardContainer = styled.div`
       : "border-radius: 40px; padding: 30px;"}
   margin: 15px 30px 15px 0;
   overflow: hidden;
-  box-shadow: 0px 0px 15px -8px rgba(21, 20, 47, 0.73);
+  box-shadow: 0px 0px 20px -5px rgba(21, 20, 47, 0.73);
   background-color: ${(props) =>
     props.color == "purple"
       ? "var(--purple)"
