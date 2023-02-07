@@ -21,10 +21,14 @@ export const setCardToggle = (card, e) => {
 };
 
 // update plan in cardDetails
-export const setCardPlan = (card, e) => {
-  const { value } = e.target;
-  const cardUpdated = { ...card, typeOfPlan: value };
-  return createAction(CARD_TYPES.SET_CARD, cardUpdated);
+export const setCardPlan = (card, e, cardNew) => {
+  return async (dispatch) => {
+    const { value } = e.target;
+    const cardUpdated = { ...card, typeOfPlan: value };
+    const cardNewUpdated = { ...cardNew, typeOfPlan: value };
+    await dispatch(setCurrentCardNew(cardNewUpdated));
+    return createAction(CARD_TYPES.SET_CARD, cardUpdated);
+  };
 };
 
 // Update Plan in cardEdit in Redux
@@ -70,7 +74,11 @@ export const setErrorMsg = (cardEdit) => {
 export const setCurrentCardAccount = (card) => {
   return createAction(CARD_TYPES.SET_CARD_CURRENT, card);
 };
-// update CurrentAccount
+// update CurrentAccount New Page
+export const setCurrentCardNew = (card) => {
+  return createAction(CARD_TYPES.SET_CARD_NEW, card);
+};
+// update CurrentAccount Edit Page
 export const setCurrentCardEdit = (card) => {
   return createAction(CARD_TYPES.SET_CARD_CURRENT_EDIT, card);
 };

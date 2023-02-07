@@ -16,6 +16,9 @@ import { selectCardArr } from "../../../../../state-management/Dashboard/cards/c
 import { useSelector } from "react-redux";
 import { selectCurrentCardEdit } from "../../../../../state-management/Dashboard/cards/cards.selector";
 import { upperCaseFirst } from "../../../../../utils/helpers/helperFunctions/upperCaseFirstInitial";
+import { options } from "../../../../../utils/data/plancardregisterData";
+import { useEffect } from "react";
+import { findObjectByString } from "../../../../../utils/helpers/helperFunctions/findObject";
 
 function EditCardAvailable() {
   const { currency, type_of_plan } = useSelector(selectCurrentCardEdit);
@@ -23,6 +26,7 @@ function EditCardAvailable() {
   const data = accounts[0];
   const [currentIndex, setCurrentIndex] = useState(0);
   const itemsToShow = accounts.slice(currentIndex, currentIndex + 3);
+  const [currentPlan, setCurrentPlan] = useState({});
 
   const handlePrevClick = () => {
     setCurrentIndex(currentIndex - 1);
@@ -31,6 +35,10 @@ function EditCardAvailable() {
   const handleNextClick = () => {
     setCurrentIndex(currentIndex + 1);
   };
+
+  useEffect(() => {
+    setCurrentPlan(findObjectByString(type_of_plan, options, "key"));
+  }, [type_of_plan]);
 
   return (
     <NewCardAvailableContainer>
@@ -43,7 +51,17 @@ function EditCardAvailable() {
       {/* Advantajes Card */}
       <AvailableAccountsContainer>
         <ListContainer>
-          <ListItem>
+          {currentPlan?.details?.map((detail, index) => {
+            return (
+              <React.Fragment key={index}>
+                <ListItem>
+                  {`✔ ${detail.name}`}
+                  <span>{detail.nr}</span>
+                </ListItem>
+              </React.Fragment>
+            );
+          })}
+          {/* <ListItem>
             <span>✔3% Cashback</span>
             <span>for any markets</span>
           </ListItem>
@@ -54,7 +72,7 @@ function EditCardAvailable() {
           <ListItem>
             <span>✔New Card Design</span>
             <span>From 2023</span>
-          </ListItem>
+          </ListItem> */}
         </ListContainer>
       </AvailableAccountsContainer>
     </NewCardAvailableContainer>

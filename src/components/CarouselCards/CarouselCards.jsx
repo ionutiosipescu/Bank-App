@@ -18,6 +18,7 @@ import { cardValidityGenerator } from "./../../utils/helpers/helperFunctions/car
 import { selectCardArr } from "../../state-management/Dashboard/cards/cards.selector";
 import BalanceCardEmpty from "../BalanceCardEmpty/BalanceCardEmpty";
 import { setCurrentCardEdit } from "../../state-management/Dashboard/cards/cards.action";
+import { setCurrentCardNew } from "../../state-management/Dashboard/cards/cards.action";
 
 function CarouselCards({ ...props }) {
   const { size, cardsArr = [], page } = props;
@@ -45,16 +46,28 @@ function CarouselCards({ ...props }) {
   };
 
   useEffect(() => {
-    if (page === "editPage") {
-      dispatch(setCurrentCardEdit(cardsArr[currentIndex]));
-    } else {
-      dispatch(setCurrentCardAccount(cardsArr[currentIndex]));
+    switch (page) {
+      case "editPage":
+        dispatch(setCurrentCardEdit(cardsArr[currentIndex]));
+      case "NewPage":
+        dispatch(setCurrentCardNew(cardsArr[currentIndex]));
+      default:
+        dispatch(setCurrentCardAccount(cardsArr[currentIndex]));
     }
   }, [currentIndex]);
 
   // useEffect(() => {
-  //   console.log(accountsArr);
-  // }, [accountsArr]);
+  //   switch (selectedOption) {
+  //     case "New Account":
+  //       setSelectedComponent(<NewCard />);
+  //       break;
+  //     case "Edit Account":
+  //       setSelectedComponent(<EditCard />);
+  //       break;
+  //     default:
+  //       setSelectedComponent(<EditCard />);
+  //   }
+  // }, [selectedOption]);
 
   return (
     <CarouselContainer

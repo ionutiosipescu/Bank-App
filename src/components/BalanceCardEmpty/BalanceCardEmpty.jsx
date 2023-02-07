@@ -1,6 +1,6 @@
 import React from "react";
 import { PropTypes } from "prop-types";
-import { CardContainer } from "../UI/Card/Card.style";
+import { CardContainer, CardHeader } from "../UI/Card/Card.style";
 import { CardBody, Circle, Pill } from "./BalanceCardEmpty.style";
 
 function BalanceCardEmpty({ ...props }) {

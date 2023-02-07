@@ -14,6 +14,7 @@ export const NewCardAvailableContainer = styled.div`
   position: relative;
   /* place-content: center; */
   /* place-items: center; */
+  min-height: 645px;
   overflow: hidden;
   border: 1px solid black;
   border-radius: 30px;
@@ -68,6 +69,11 @@ export const BoxContainerHeader = styled.div`
 
 export const CurrencyBox = styled.div``;
 export const PlanBox = styled.div``;
+export const EmptyText = styled.h3`
+  z-index: 1;
+  width: 85%;
+  padding: 30px 10px;
+`;
 
 export const AvailableAccountsContainer = styled.div`
   z-index: 1;
@@ -94,6 +100,12 @@ export const ListContainer = styled.ul`
 `;
 
 export const ListItem = styled.li`
+  z-index: 1;
+  display: flex;
+  gap: 15px;
+`;
+
+export const ListItemDefault = styled.li`
   z-index: 1;
   display: flex;
   flex-direction: column;

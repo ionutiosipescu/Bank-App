@@ -20,15 +20,17 @@ import { setCard } from "../../../../../state-management/Dashboard/cards/cards.a
 import { setCardToggle } from "../../../../../state-management/Dashboard/cards/cards.action";
 import { setCardPlan } from "../../../../../state-management/Dashboard/cards/cards.action";
 import { useState } from "react";
+import { selectCurrentCardNew } from "../../../../../state-management/Dashboard/cards/cards.selector";
 
 function NewCardPlans() {
+  const cardNew = useSelector(selectCurrentCardNew);
   const [errorMsg, setErrorMessage] = useState("");
   const dispatch = useDispatch();
   const card = useSelector(selectCard);
   const plan = useSelector(selectPlanObject);
 
   const handleradio = (e) => {
-    dispatch(setCardPlan(card, e));
+    dispatch(setCardPlan(card, e, cardNew));
   };
 
   const setData = (e) => {

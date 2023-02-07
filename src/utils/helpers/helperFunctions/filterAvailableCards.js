@@ -5,11 +5,13 @@ const currencies = [
     currency: "ron",
     balance: 0,
     created_at: getLocalDate(),
+    typeOfPlan: "",
   },
   {
     currency: "euro",
     balance: 0,
     created_at: getLocalDate(),
+    typeOfPlan: "",
   },
 ];
 

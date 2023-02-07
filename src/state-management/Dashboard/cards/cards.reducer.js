@@ -15,6 +15,7 @@ const INITIAL_STATE = {
   },
   currentCardInfo: {},
   currentCardEdit: {},
+  currentCardNew: {},
   cardArr: [],
 };
 
@@ -32,6 +33,8 @@ export const cardReducer = (state = INITIAL_STATE, action = {}) => {
       return { ...state, currentCardInfo: { ...payload } };
     case CARD_TYPES.SET_CARD_CURRENT_EDIT:
       return { ...state, currentCardEdit: { ...payload } };
+    case CARD_TYPES.SET_CARD_NEW:
+      return { ...state, currentCardNew: { ...payload } };
     case CARD_TYPES.SET_CARD_ARR:
       return { ...state, cardArr: [...payload] };
     default:
