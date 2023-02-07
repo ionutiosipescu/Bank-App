@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { CardPlansContainer } from "../../NewCard/NewCardPlans/NewCardPlans.style";
 import RadioButtonsPlan from "../../../../../components/CustomInputs/CustomRadioInputGroupPlan";
 import { Formik, Form } from "formik";
@@ -13,15 +13,17 @@ import { useState } from "react";
 import { asyncCardPlanEdit } from "../../../../../state-management/Dashboard/cards/cards.action";
 import { TitleBox, EditCardError } from "./EditCardForm.style";
 import { selectCurrentCardEdit } from "../../../../../state-management/Dashboard/cards/cards.selector";
+import { selectCardArr } from "../../../../../state-management/Dashboard/cards/cards.selector";
+import { asyncSaveChanges } from "../../../../../state-management/Dashboard/cards/cards.action";
 
 function EditCardForm() {
   const dispatch = useDispatch();
+  const cardArr = useSelector(selectCardArr);
   const cardEdit = useSelector(selectCurrentCardEdit);
   const { errorMsg } = cardEdit;
   const plan = useSelector(selectPlanObject);
   const handleradio = (e) => {
-    console.log(e.target.value);
-    dispatch(asyncCardPlanEdit(cardEdit, e));
+    dispatch(asyncCardPlanEdit(cardEdit, e, cardArr));
   };
 
   return (

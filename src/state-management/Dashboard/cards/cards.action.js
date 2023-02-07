@@ -44,28 +44,34 @@ export const setCardPlanEdit = (cardEdit, e) => {
 };
 
 // async Update Plan in cardEdit
-export const asyncCardPlanEdit = (cardEdit, e) => {
+export const asyncCardPlanEdit = (cardEdit, e, cardArr) => {
   return async (dispatch) => {
     const updatedCardEdit = await setCardPlanEdit(cardEdit, e);
     await dispatch(setCurrentCardEdit(updatedCardEdit));
-    // if (cardEdit.type_of_plan !== updatedCardEdit.type_of_plan) return;
-    // await dispatch(setErrorMsg(updatedCardEdit));
+    await dispatch(asyncSaveChanges(updatedCardEdit, cardArr));
   };
 };
 
-export const asyncSaveChanges = (cardEdit) => {
+export const asyncSaveChanges = (cardEdit, cardArr) => {
+  const errormsg = "Chose at least one plan !";
   return async (dispatch) => {
-    if (cardEdit.type_of_plan) {
-      console.log("success");
+    const currentEditObj = findObjectByString(
+      cardEdit.currency,
+      cardArr,
+      "currency"
+    );
+    console.log(cardEdit, currentEditObj);
+    if (cardEdit.type_of_plan === currentEditObj.type_of_plan) {
+      await dispatch(setErrorMsg(cardEdit, errormsg));
     } else {
-      await dispatch(setErrorMsg(cardEdit));
+      await dispatch(setErrorMsg(cardEdit, ""));
+      console.log("success");
     }
   };
 };
 
 // update ErrorMsg
-export const setErrorMsg = (cardEdit) => {
-  const errormsg = "Chose at least one plan !";
+export const setErrorMsg = (cardEdit, errormsg) => {
   const cardUpdated = { ...cardEdit, errorMsg: errormsg };
   return createAction(CARD_TYPES.SET_CARD_EDIT_ERROR, cardUpdated);
 };

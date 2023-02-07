@@ -7,12 +7,14 @@ import { selectCardEdit } from "../../../../../state-management/Dashboard/cards/
 import { setErrorMsg } from "../../../../../state-management/Dashboard/cards/cards.action";
 import { selectCurrentCardEdit } from "../../../../../state-management/Dashboard/cards/cards.selector";
 import { asyncSaveChanges } from "../../../../../state-management/Dashboard/cards/cards.action";
+import { selectCardArr } from "../../../../../state-management/Dashboard/cards/cards.selector";
 
 function EditController() {
   const dispatch = useDispatch();
   const cardEdit = useSelector(selectCurrentCardEdit);
+  const cardArr = useSelector(selectCardArr);
   const handleSave = () => {
-    dispatch(asyncSaveChanges(cardEdit));
+    dispatch(asyncSaveChanges(cardEdit, cardArr));
   };
 
   // const handleDelete = () => {

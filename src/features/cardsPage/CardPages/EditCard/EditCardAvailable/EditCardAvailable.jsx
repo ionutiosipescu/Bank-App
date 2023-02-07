@@ -61,18 +61,6 @@ function EditCardAvailable() {
               </React.Fragment>
             );
           })}
-          {/* <ListItem>
-            <span>✔3% Cashback</span>
-            <span>for any markets</span>
-          </ListItem>
-          <ListItem>
-            <span>✔Cash without commsion</span>
-            <span>WorldWide</span>
-          </ListItem>
-          <ListItem>
-            <span>✔New Card Design</span>
-            <span>From 2023</span>
-          </ListItem> */}
         </ListContainer>
       </AvailableAccountsContainer>
     </NewCardAvailableContainer>
