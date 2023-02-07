@@ -32,11 +32,11 @@ import NewLoanCard from "../../../../../features/loans/NewLoanCard/NewLoanCard";
 
 const data = accounts[0].savings;
 
-function HisotryViewLoans({ dataServices }) {
+function HisotryViewLoans({ dataServices, ...props }) {
   const historyArr = useSelector(selectHistoryLoans);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalData, setModalData] = useState(null);
-  const [totalPaid, setTotalPaid] = useState("");
+  // const [totalPaid, setTotalPaid] = useState("");
 
   const handleModalOpen = (id) => {
     setModalOpen(true);

@@ -21,7 +21,7 @@ export const options = [
     details: [
       { nr: "", name: "Wider banking services" },
       { nr: "", name: "No foreign transaction fee" },
-      { nr: "24/7", name: "concierge service" },
+      { nr: "24/7", name: "Concierge service" },
       { nr: "$10,000", name: "Credit card limit" },
     ],
   },

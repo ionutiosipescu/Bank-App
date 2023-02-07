@@ -7,17 +7,28 @@ import { selectCardEdit } from "../../../../../state-management/Dashboard/cards/
 import { setErrorMsg } from "../../../../../state-management/Dashboard/cards/cards.action";
 import { selectCurrentCardEdit } from "../../../../../state-management/Dashboard/cards/cards.selector";
 import { asyncSaveChanges } from "../../../../../state-management/Dashboard/cards/cards.action";
+import { useState } from "react";
+import Modal from "../../../../../components/Modal/Modal";
+import CardsModal from "../../../CardsModal/CardsModal";
 
-function EditController() {
-  const dispatch = useDispatch();
-  const cardEdit = useSelector(selectCurrentCardEdit);
-  const handleSave = () => {
-    dispatch(asyncSaveChanges(cardEdit));
+function EditController({ ...props }) {
+  const [type, setType] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const handleModalOpenSave = (id) => {
+    setModalOpen(true);
+    setType("save");
   };
 
-  // const handleDelete = () => {
+  const handleModalOpenDelete = (id) => {
+    setModalOpen(true);
+    setType("delete");
+  };
 
-  // }
+  const handleModalClose = () => {
+    setModalOpen(false);
+  };
+
   return (
     <EditControler>
       <ButtonNewCard
@@ -25,15 +36,18 @@ function EditController() {
         size="xl"
         primary="primary"
         type="button"
-        onClick={handleSave}
+        onClick={handleModalOpenSave}
       />
       <ButtonNewCard
         label="Delete Account"
         size="xl"
         primary="primary"
         type="button"
-        // onClick={handleDelete}
+        onClick={handleModalOpenDelete}
       />
+      <Modal opened={modalOpen} handleClick={handleModalClose}>
+        <CardsModal type={type} />
+      </Modal>
     </EditControler>
   );
 }
