@@ -3,6 +3,13 @@ import { createAction } from "../../../utils/helpers/reducer/reducer.utils";
 import axios from "axios";
 import { findObjectByString } from "../../../utils/helpers/helperFunctions/findObject";
 
+// update CurrentAccount
+export const setCurrentCardAccount = (card) => {
+  return createAction(CARD_TYPES.SET_CARD_CURRENT, card);
+};
+
+// NEW PAGE
+
 const updateCard = (card, e) => {
   const { name, value } = e.target;
   return { ...card, [name]: value };
@@ -30,6 +37,13 @@ export const setCardPlan = (card, e, cardNew) => {
     return createAction(CARD_TYPES.SET_CARD, cardUpdated);
   };
 };
+
+// update CurrentAccount New Page
+export const setCurrentCardNew = (card) => {
+  return createAction(CARD_TYPES.SET_CARD_NEW, card);
+};
+
+// EDIT PAGE
 
 // Update Plan in cardEdit in Redux
 export const updateCardEdit = (cardUpdated) => {
@@ -76,19 +90,12 @@ export const setErrorMsg = (cardEdit, errormsg) => {
   return createAction(CARD_TYPES.SET_CARD_EDIT_ERROR, cardUpdated);
 };
 
-// update CurrentAccount
-export const setCurrentCardAccount = (card) => {
-  return createAction(CARD_TYPES.SET_CARD_CURRENT, card);
-};
-// update CurrentAccount New Page
-export const setCurrentCardNew = (card) => {
-  return createAction(CARD_TYPES.SET_CARD_NEW, card);
-};
 // update CurrentAccount Edit Page
 export const setCurrentCardEdit = (card) => {
   return createAction(CARD_TYPES.SET_CARD_CURRENT_EDIT, card);
 };
 
+// Update Arr Cards from db
 export const setCardArr = (cardArr) => {
   return createAction(CARD_TYPES.SET_CARD_ARR, cardArr);
 };
