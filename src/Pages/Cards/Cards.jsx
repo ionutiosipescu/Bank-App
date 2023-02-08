@@ -19,7 +19,7 @@ import CarouselCards from "../../components/CarouselCards/CarouselCards";
 import Modal from "./../../components/Modal/Modal";
 
 // State
-import { fetchGetCardAccountArr } from "../../state-management/Dashboard/cards/cards.action";
+import { fetchGetCardAccountArr } from "../../state-management/Dashboard/cards/cards.service";
 import { selectCurrentUser } from "../../state-management/Dashboard/userData/userData.selector";
 import { selectCardArr } from "../../state-management/Dashboard/cards/cards.selector";
 import { useSelector } from "react-redux";
