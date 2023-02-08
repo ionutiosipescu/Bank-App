@@ -21,9 +21,14 @@ import { setCardToggle } from "../../../../../state-management/Dashboard/cards/c
 import { setCardPlan } from "../../../../../state-management/Dashboard/cards/cards.action";
 import { useState } from "react";
 import { selectCurrentCardNew } from "../../../../../state-management/Dashboard/cards/cards.selector";
+import { fetchAddNewAccount } from "../../../../../state-management/Dashboard/cards/cards.service";
+import { selectCurrentUser } from "../../../../../state-management/Dashboard/userData/userData.selector";
+import { selectCardArr } from "../../../../../state-management/Dashboard/cards/cards.selector";
 
 function NewCardPlans() {
   const cardNew = useSelector(selectCurrentCardNew);
+  const currentUser = useSelector(selectCurrentUser);
+  const cardArr = useSelector(selectCardArr);
   const [errorMsg, setErrorMessage] = useState("");
   const dispatch = useDispatch();
   const card = useSelector(selectCard);
@@ -44,6 +49,7 @@ function NewCardPlans() {
   const handleSubmit = () => {
     if (card.typeOfPlan) {
       setErrorMessage("");
+      dispatch(fetchAddNewAccount(cardNew, currentUser, cardArr));
       console.log(card);
     } else {
       setErrorMessage("Chouse at least one plan");

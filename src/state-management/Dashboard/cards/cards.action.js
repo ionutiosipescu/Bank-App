@@ -34,8 +34,12 @@ export const setCardPlan = (card, e, cardNew) => {
     const cardUpdated = { ...card, typeOfPlan: value };
     const cardNewUpdated = { ...cardNew, typeOfPlan: value };
     await dispatch(setCurrentCardNew(cardNewUpdated));
-    return createAction(CARD_TYPES.SET_CARD, cardUpdated);
+    await dispatch(setCardDetails(cardUpdated));
   };
+};
+
+export const setCardDetails = (cardUpdated) => {
+  return createAction(CARD_TYPES.SET_CARD, cardUpdated);
 };
 
 // update CurrentAccount New Page
@@ -44,11 +48,6 @@ export const setCurrentCardNew = (card) => {
 };
 
 // EDIT PAGE
-
-// Update Plan in cardEdit in Redux
-export const updateCardEdit = (cardUpdated) => {
-  return createAction(CARD_TYPES.SET_CARD_EDIT, cardUpdated);
-};
 
 // Update Plan in cardEdit
 export const setCardPlanEdit = (cardEdit, e) => {
@@ -100,6 +99,13 @@ export const setCardArr = (cardArr) => {
   return createAction(CARD_TYPES.SET_CARD_ARR, cardArr);
 };
 
+// Add to Arr Cards
+export const setAddCardArr = (cardArr, cardArrObject) => {
+  const cardArrNew = [...cardArr, { ...cardArrObject }];
+  console.log(cardArrNew);
+  return createAction(CARD_TYPES.SET_CARD_ARR, cardArrNew);
+};
+
 // find id account ron
 export const setCardId = async (currentUserData) => {
   const account = "ron";
@@ -107,15 +113,4 @@ export const setCardId = async (currentUserData) => {
   const userAccountArr = currentUserData.account;
   const object = findObjectByString(account, userAccountArr, stringCompare);
   return object.id;
-};
-
-// Get Card Account Arr
-export const fetchGetCardAccountArr = (currentUserData) => {
-  return async (dispatch) => {
-    const { id } = currentUserData;
-    const { data } = await axios.get(
-      `http://localhost:8080/accounts/?id=${id}`
-    );
-    await dispatch(setCardArr(data));
-  };
 };

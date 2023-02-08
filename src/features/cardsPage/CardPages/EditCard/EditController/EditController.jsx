@@ -16,10 +16,17 @@ import CardsModal from "../../../CardsModal/CardsModal";
 function EditController({ ...props }) {
   const [type, setType] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
+  const dispatch = useDispatch();
+  const cardEdit = useSelector(selectCurrentCardEdit);
+  const { errorMsg } = cardEdit;
+  const cardArr = useSelector(selectCardArr);
 
   const handleModalOpenSave = (id) => {
-    setModalOpen(true);
-    setType("save");
+    dispatch(asyncSaveChanges(cardEdit, cardArr));
+    if (errorMsg === "") {
+      setModalOpen(true);
+      setType("save");
+    }
   };
 
   const handleModalOpenDelete = (id) => {

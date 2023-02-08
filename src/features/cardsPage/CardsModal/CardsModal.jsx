@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 // Style
 import {
   AccountInfoContainer,
@@ -16,12 +16,17 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { selectCurrentCardEdit } from "../../../state-management/Dashboard/cards/cards.selector";
 import { options } from "../../../utils/data/plancardregisterData";
+import { fetchEditCardPlan } from "../../../state-management/Dashboard/cards/cards.service";
+import { fetchRemoveCard } from "../../../state-management/Dashboard/cards/cards.service";
+import { selectCardArr } from "../../../state-management/Dashboard/cards/cards.selector";
 
 function CardsModal({ ...props }) {
   const { type } = props;
 
   const dispatch = useDispatch();
   const cardEdit = useSelector(selectCurrentCardEdit);
+  const cardArr = useSelector(selectCardArr);
+  const { id } = cardEdit;
   const accountsArr = [cardEdit];
   const { type_of_plan } = cardEdit;
   const { value, price, planName, currency, details } =
@@ -30,13 +35,17 @@ function CardsModal({ ...props }) {
     ];
 
   const handeSave = () => {
+    dispatch(fetchEditCardPlan(cardEdit, cardArr));
     console.log("SAVE");
   };
   const handeDelete = () => {
-    console.log("DELETE");
+    fetchRemoveCard(cardEdit, cardArr);
+    console.log("DELETE PAge");
   };
 
-  console.log(details.slice(3));
+  useEffect(() => {
+    console.log(type);
+  }, [type]);
 
   return (
     <CardsModalContainer type={type}>
