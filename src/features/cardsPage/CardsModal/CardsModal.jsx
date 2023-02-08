@@ -39,13 +39,13 @@ function CardsModal({ ...props }) {
     console.log("SAVE");
   };
   const handeDelete = () => {
-    fetchRemoveCard(cardEdit, cardArr);
+    dispatch(fetchRemoveCard(cardEdit, cardArr));
     console.log("DELETE PAge");
   };
 
   useEffect(() => {
-    console.log(type);
-  }, [type]);
+    console.log(cardEdit);
+  }, [cardEdit]);
 
   return (
     <CardsModalContainer type={type}>

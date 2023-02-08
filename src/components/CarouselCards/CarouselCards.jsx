@@ -46,6 +46,10 @@ function CarouselCards({ ...props }) {
   };
 
   useEffect(() => {
+    console.log(itemsToShow);
+  }, [itemsToShow]);
+
+  useEffect(() => {
     switch (page) {
       case "editPage":
         dispatch(setCurrentCardEdit(cardsArr[currentIndex]));
@@ -87,7 +91,7 @@ function CarouselCards({ ...props }) {
           <BalanceCardEmpty currency={"none"} />
         ) : (
           <>
-            {itemsToShow.map((account, index) => (
+            {itemsToShow?.map((account, index) => (
               <BalanceCard
                 key={index}
                 balance={`${account.balance}`}
