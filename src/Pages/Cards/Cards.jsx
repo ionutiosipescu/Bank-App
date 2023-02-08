@@ -32,6 +32,8 @@ function Cards() {
   const [selectedOption, setSelectedOption] = useState("New Account");
   const [selectedComponent, setSelectedComponent] = useState(<h1>Accounts</h1>);
 
+  console.log(accountsArr);
+
   useEffect(() => {
     dispatch(fetchGetCardAccountArr(currentUser));
   }, []);
