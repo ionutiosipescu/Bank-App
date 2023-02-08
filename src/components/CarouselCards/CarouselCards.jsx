@@ -21,13 +21,17 @@ import { setCurrentCardEdit } from "../../state-management/Dashboard/cards/cards
 import { setCurrentCardNew } from "../../state-management/Dashboard/cards/cards.action";
 
 function CarouselCards({ ...props }) {
-  const { size, cardsArr = [], page } = props;
+  const { size, cardsArr, page } = props;
   const dispatch = useDispatch();
   // const accountsArr = useSelector(selectCardArr);
   const currentAccount = useSelector(selectUserDetail);
   const { first_name, last_name } = currentAccount;
   const [currentIndex = 0, setCurrentIndex] = useState(0);
   const itemsToShow = cardsArr.slice(currentIndex, currentIndex + 1);
+
+  useEffect(() => {
+    console.log(itemsToShow);
+  }, []);
 
   const handlePrevClick = () => {
     if (currentIndex === 0) {
@@ -44,10 +48,6 @@ function CarouselCards({ ...props }) {
       setCurrentIndex(currentIndex + 1);
     }
   };
-
-  useEffect(() => {
-    console.log(itemsToShow);
-  }, [itemsToShow]);
 
   useEffect(() => {
     switch (page) {
@@ -88,10 +88,10 @@ function CarouselCards({ ...props }) {
 
       <CardsContainer size={size}>
         {itemsToShow.length === 0 ? (
-          <BalanceCardEmpty currency={"none"} scale={size} />
+          <BalanceCardEmpty currency={"none"} />
         ) : (
           <>
-            {itemsToShow?.map((account, index) => (
+            {itemsToShow.map((account, index) => (
               <BalanceCard
                 key={index}
                 balance={`${account.balance}`}
@@ -100,7 +100,7 @@ function CarouselCards({ ...props }) {
                 cardNum={`${generateRandomNumber(4)} ${generateRandomNumber(
                   4
                 )} ${generateRandomNumber(4)} ${generateRandomNumber(4)}`}
-                valid={account.created_at}
+                valid={cardValidityGenerator(account.created_at)}
                 scale={size}
               />
             ))}

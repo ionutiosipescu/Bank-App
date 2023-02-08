@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Container, InfoContainer } from "./CardInfo.style";
 import {
@@ -7,7 +7,10 @@ import {
 } from "./../../../state-management/Dashboard/userData/userData.selector";
 import { generateRandomNumber } from "../../../utils/helpers/helperFunctions/randomNumber";
 import { cardValidityGenerator } from "../../../utils/helpers/helperFunctions/cardValidityGenerator";
-import { selectCurrentCardAccount } from "../../../state-management/Dashboard/cards/cards.selector";
+import {
+  selectCardArr,
+  selectCurrentCardAccount,
+} from "../../../state-management/Dashboard/cards/cards.selector";
 
 function CardInfo() {
   const currentCardAccount = useSelector(selectCurrentCardAccount);
@@ -15,6 +18,18 @@ function CardInfo() {
   const currentUser = useSelector(selectCurrentUser);
   const { first_name, last_name } = currentAccount;
   const { created_at, currency } = currentCardAccount;
+  const accountsArr = useSelector(selectCardArr);
+  console.log(accountsArr, "????????????");
+
+  const [newCurrency, setNewCurrency] = useState("");
+
+  useEffect(() => {
+    setNewCurrency(currency);
+  }, [currency]);
+
+  useEffect(() => {
+    setNewCurrency(accountsArr[0].currency);
+  }, [accountsArr]);
 
   return (
     <Container>
@@ -58,7 +73,7 @@ function CardInfo() {
           </div>
           <div>
             <h3>Currency</h3>
-            <h4>{`${currency}`.toUpperCase()}</h4>
+            <h4>{`${newCurrency}`.toUpperCase()}</h4>
           </div>
         </InfoContainer>
       )}

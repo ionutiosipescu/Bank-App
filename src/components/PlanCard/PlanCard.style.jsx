@@ -1,4 +1,6 @@
+import { constants } from "buffer";
 import styled from "styled-components";
+import { planGradient } from "../../utils/planGradients/planGradients";
 
 export const PlanContainer = styled.div`
   display: flex;
@@ -9,15 +11,16 @@ export const PlanContainer = styled.div`
   width: 90%;
   height: 95%;
   margin: 10px 0 0 40px;
-  padding: 30px;
+  padding: 30px 30px 20px 30px;
   border-radius: 20px;
-  background: rgb(97, 96, 220);
-  background: linear-gradient(
-    180deg,
-    rgba(97, 96, 220, 1) 0%,
-    rgba(84, 197, 235, 1) 100%
-  );
-  color: var(--white);
+  ${(props) =>
+    props.plan === "standard"
+      ? planGradient.standard
+      : props.plan === "premium"
+      ? planGradient.premium
+      : props.plan === "vip"
+      ? planGradient.vip
+      : ""}
   box-shadow: 0px 0px 15px -8px rgba(21, 20, 47, 0.73);
   @media (max-width: 1680px) {
     aspect-ratio: 7/8;
@@ -28,9 +31,21 @@ export const PlanSection = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 80%;
+  height: 100%;
   & > * {
     z-index: 2;
+  }
+`;
+
+export const PlanOptions = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-size: 1.1rem;
+  font-weight: 500;
+  & li {
+    margin-bottom: 5px;
   }
 `;
 

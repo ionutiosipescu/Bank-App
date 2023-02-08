@@ -3,35 +3,48 @@ import {
   Bubble,
   PlanContainer,
   PlanHeader,
+  PlanOptions,
   PlanSection,
 } from "./PlanCard.style";
 
 import Button from "./../UI/Button/Button";
+import { options } from "./../../utils/data/plancardregisterData";
+import { useSelector } from "react-redux";
+import { selectCurrentCardEdit } from "./../../state-management/Dashboard/cards/cards.selector";
 
 function PlanCard(props) {
   const { plan } = props;
 
+  const cardEdit = useSelector(selectCurrentCardEdit);
+  const { type_of_plan } = cardEdit;
+
+  const { value, price, planName, currency, details } =
+    options[
+      type_of_plan === "standard" ? 0 : type_of_plan === "premium" ? 1 : 2
+    ];
+
+  console.log(options);
+
   return (
-    <PlanContainer>
+    <PlanContainer plan={value}>
       <PlanSection>
         <PlanHeader>
           <h4>Your Plan</h4>
-          <h2>{plan.toUpperCase()}</h2>
+          <h2>{planName.toUpperCase()}</h2>
         </PlanHeader>
-        <ul>
-          <li>
-            <h3>Card limit - € 150,000</h3>
-          </li>
-          <li>
-            <h3>Loan limit - € 100,000</h3>
-          </li>
-        </ul>
-        <p>
-          Upgrade Plan to get a greater limit o your card and the ability to
-          apply for bigger loans!
-        </p>
+        <PlanOptions>
+          <ul>
+            {details.map((detail, index) => (
+              <li key={index}>
+                <p>
+                  {detail.name} {detail.nr}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </PlanOptions>
       </PlanSection>
-      <Button label="Upgrade" size="sm" />
+      {/* <Button label="Upgrade" size="sm" /> */}
       <Bubble top />
       <Bubble mid />
       <Bubble />
