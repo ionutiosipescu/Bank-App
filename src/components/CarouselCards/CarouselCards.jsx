@@ -88,7 +88,7 @@ function CarouselCards({ ...props }) {
 
       <CardsContainer size={size}>
         {itemsToShow.length === 0 ? (
-          <BalanceCardEmpty currency={"none"} />
+          <BalanceCardEmpty currency={"none"} scale={size} />
         ) : (
           <>
             {itemsToShow?.map((account, index) => (

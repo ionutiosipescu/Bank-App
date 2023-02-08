@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 // Style
 import {
   AccountInfoContainer,
@@ -19,9 +19,12 @@ import { options } from "../../../utils/data/plancardregisterData";
 import { fetchEditCardPlan } from "../../../state-management/Dashboard/cards/cards.service";
 import { fetchRemoveCard } from "../../../state-management/Dashboard/cards/cards.service";
 import { selectCardArr } from "../../../state-management/Dashboard/cards/cards.selector";
+import StatusMessage from "../../../components/UI/StatusMessage/StatusMessage";
 
 function CardsModal({ ...props }) {
   const { type } = props;
+
+  const [message, setMessage] = useState(false);
 
   const dispatch = useDispatch();
   const cardEdit = useSelector(selectCurrentCardEdit);
@@ -34,13 +37,20 @@ function CardsModal({ ...props }) {
       type_of_plan === "standard" ? 0 : type_of_plan === "premium" ? 1 : 2
     ];
 
+  const handleShow = () => {
+    setMessage(!message);
+  };
+
   const handeSave = () => {
     dispatch(fetchEditCardPlan(cardEdit, cardArr));
     console.log("SAVE");
+    handleShow();
   };
+
   const handeDelete = () => {
     dispatch(fetchRemoveCard(cardEdit, cardArr));
-    console.log("DELETE PAge");
+    console.log("DELETE Page");
+    handleShow();
   };
 
   useEffect(() => {
@@ -73,6 +83,19 @@ function CardsModal({ ...props }) {
           ? `You will be deducted ${price} RON each month starting today`
           : "Your current balance will be transferd to your other account!"}
       </h2>
+      {message ? (
+        <StatusMessage
+          type="success"
+          text={
+            type === "save"
+              ? "your card has been successfully updated!"
+              : "your card has been deleted successfully!"
+          }
+          size="full"
+          show={message}
+          handleShow={handleShow}
+        />
+      ) : null}
       <ButtonNewCard
         label={type === "save" ? "Accept" : "Delete"}
         size="xl"

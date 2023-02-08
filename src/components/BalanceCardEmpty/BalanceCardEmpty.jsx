@@ -20,7 +20,7 @@ function BalanceCardEmpty({ ...props }) {
   let newBalance = number.toFixed(0);
 
   return (
-    <CardContainer currency={currency}>
+    <CardContainer currency={currency} scale={scale}>
       <CardBody>
         <h2>No Cards Available</h2>
       </CardBody>

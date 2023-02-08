@@ -24,6 +24,7 @@ import { selectCurrentCardNew } from "../../../../../state-management/Dashboard/
 import { fetchAddNewAccount } from "../../../../../state-management/Dashboard/cards/cards.service";
 import { selectCurrentUser } from "../../../../../state-management/Dashboard/userData/userData.selector";
 import { selectCardArr } from "../../../../../state-management/Dashboard/cards/cards.selector";
+import StatusMessage from "../../../../../components/UI/StatusMessage/StatusMessage";
 
 function NewCardPlans() {
   const cardNew = useSelector(selectCurrentCardNew);
@@ -33,6 +34,13 @@ function NewCardPlans() {
   const dispatch = useDispatch();
   const card = useSelector(selectCard);
   const plan = useSelector(selectPlanObject);
+
+  // Status
+  const [message, setMessage] = useState(false);
+  const handleShow = () => {
+    setMessage(!message);
+  };
+  ///////////////////////
 
   const handleradio = (e) => {
     dispatch(setCardPlan(card, e, cardNew));
@@ -51,6 +59,8 @@ function NewCardPlans() {
       setErrorMessage("");
       dispatch(fetchAddNewAccount(cardNew, currentUser, cardArr));
       console.log(card);
+      ///////////////
+      handleShow();
     } else {
       setErrorMessage("Chouse at least one plan");
     }
@@ -123,11 +133,22 @@ function NewCardPlans() {
             />
           </FormContainerCard>
           {errorMsg ? <ErrorMsg>{errorMsg}</ErrorMsg> : <></>}
+          {message && (
+            <StatusMessage
+              type="success"
+              text="your account has been created"
+              size="full"
+              show={message}
+              handleShow={handleShow}
+            />
+          )}
+
           <ButtonNewCard
             label="Create New Account"
             size="xl"
             primary="primary"
             type="submit"
+            onSubmit={handleSubmit}
           />
         </Form>
       </Formik>
