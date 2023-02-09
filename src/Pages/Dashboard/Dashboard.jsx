@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import {
   BottomContainer,
@@ -12,7 +12,7 @@ import { accounts } from "../../utils/data/dummyData";
 import TopCard from "../../components/TopCard/TopCard";
 import OverviewCard from "./../../components/OverviewCard/OverviewCard";
 import OutcomeChart from "../../components/OutcomeCard/OutcomeCard";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   selectCurrentUser,
   selectUserDetail,
@@ -23,25 +23,19 @@ import { selectIsSubmiting } from "../../state-management/Auth/loginUser/loginUs
 import { selectCurrentCardAccount } from "../../state-management/Dashboard/cards/cards.selector";
 import { generateRandomNumber } from "../../utils/helpers/helperFunctions/randomNumber";
 import { cardValidityGenerator } from "../../utils/helpers/helperFunctions/cardValidityGenerator";
+import { fetchGetCardAccountArr } from "../../state-management/Dashboard/cards/cards.service";
+import { useEffect } from "react";
+import { setDashboardObjectCard } from "../../state-management/Dashboard/userData/userData.action";
+import { selectCardArr } from "../../state-management/Dashboard/cards/cards.selector";
 
 function Dashboard() {
-  const currentCardAccount = useSelector(selectCurrentCardAccount);
-  // const currentAccount = useSelector(selectCurrentUser);
-  // const { created_at, currency } = currentCardAccount;
-
+  const accountsArr = useSelector(selectCardArr);
   const isSubmiting = useSelector(selectIsSubmiting);
   const userData = useSelector(selectCurrentUser);
-  const account = useSelector(selectUserAccount);
 
-  // const {
-  //   first_name = "",
-  //   last_name = "",
-  //   created_at = "",
-  // } = userData.userDetail;
-
-  // console.log(currentCardAccount, "currentAccount");
-  // console.log(userData, "userData");
-  // console.log(created_at);
+  useEffect(() => {
+    console.log(accountsArr.length === 0);
+  }, [accountsArr]);
 
   return (
     <React.Fragment>
@@ -51,26 +45,18 @@ function Dashboard() {
         <>
           <DashboardContainer>
             <TopContainer>
-              {currentCardAccount.length < 1 ? (
-                <BalanceCard
-                  size="sm"
-                  balance={`${currentCardAccount.balance}`}
-                  currency={currentCardAccount.currency}
-                  name={`${userData.userDetail.first_name} ${userData.userDetail.last_name}`}
-                  cardNum={`${generateRandomNumber(16)}`}
-                  valid={cardValidityGenerator(currentCardAccount.created_at)}
-                />
-              ) : (
-                <BalanceCard
-                  size="sm"
-                  balance={`${userData.account[0].balance}`}
-                  currency={userData.account[0].currency}
-                  name={`${userData.userDetail.first_name} ${userData.userDetail.last_name}`}
-                  cardNum={`${generateRandomNumber(16)}`}
-                  valid={cardValidityGenerator(userData.userDetail.created_at)}
-                />
-              )}
-
+              <BalanceCard
+                size="sm"
+                balance={`${
+                  accountsArr.length === 0
+                    ? userData.account[0].balance
+                    : accountsArr[0].balance
+                }`}
+                currency={userData.account[0].currency}
+                name={`${userData.userDetail.first_name} ${userData.userDetail.last_name}`}
+                cardNum={`${generateRandomNumber(16)}`}
+                valid={cardValidityGenerator(userData.userDetail.created_at)}
+              />
               <TopCard
                 label="Income"
                 amount="$5,542.23"
