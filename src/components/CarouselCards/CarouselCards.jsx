@@ -100,7 +100,7 @@ function CarouselCards({ ...props }) {
                 cardNum={`${generateRandomNumber(4)} ${generateRandomNumber(
                   4
                 )} ${generateRandomNumber(4)} ${generateRandomNumber(4)}`}
-                valid={cardValidityGenerator(account.created_at)}
+                valid={account.created_at}
                 scale={size}
               />
             ))}

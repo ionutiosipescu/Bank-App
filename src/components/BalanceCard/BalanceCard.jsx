@@ -45,7 +45,7 @@ function BalanceCard({ ...props }) {
         </div>
         <div>
           <h4>Valid Until</h4>
-          {/* <h3>{cardValidityGenerator(valid)}</h3> */}
+          <h3>{valid}</h3>
         </div>
       </CardFooter>
       <Circle one size={size} />
