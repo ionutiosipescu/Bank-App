@@ -65,7 +65,7 @@ function CardsModal({ ...props }) {
       <AccountInfoContainer>
         <CarouselCards size="sm" cardsArr={accountsArr} page={"editPage"} />
         <DetailsContainer>
-          <PlanCard>
+          <PlanCard type={type_of_plan}>
             <h2>{`${type_of_plan}`.toUpperCase()}</h2>
             <div>
               {details.slice(0, 3).map((option, index) => (

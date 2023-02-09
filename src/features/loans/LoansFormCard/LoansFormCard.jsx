@@ -209,12 +209,7 @@ function LoansFormCard() {
             </CustomSelect>
           </RegisterFormPart>
           <BtnContainerLoan>
-            <Button
-              size={"xl"}
-              type="submit"
-              label="Request Loan"
-              // handleClick={handleModalOpen}
-            />
+            <Button size={"xl"} type="submit" label="Request Loan" />
           </BtnContainerLoan>
         </FormContainerLoans>
       </Formik>

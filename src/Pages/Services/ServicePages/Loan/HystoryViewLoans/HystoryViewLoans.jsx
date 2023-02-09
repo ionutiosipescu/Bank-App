@@ -67,7 +67,7 @@ function HisotryViewLoans({ dataServices, ...props }) {
             key={index}
             title={loan.details}
             amount={loan.loan}
-            paid={loan.total_paid}
+            paid={Math.round(loan.total_paid)}
             handleClick={() => handleModalOpen(loan.id)}
           />
         ))}
@@ -100,7 +100,7 @@ function HisotryViewLoans({ dataServices, ...props }) {
         </ListContainer>
       </ServiceViewCard>
       <Modal opened={modalOpen} handleClick={handleModalClose}>
-        <LoanPayCard data={modalData} />
+        <LoanPayCard data={modalData} handleModalClose={handleModalClose} />
       </Modal>
     </>
   );

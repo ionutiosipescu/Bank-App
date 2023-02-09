@@ -16,16 +16,21 @@ import { useSelector } from "react-redux";
 import { selectLoansArr } from "../../state-management/Dashboard/services/loans/loans.selector";
 import { selectHistoryLoans } from "../../state-management/Dashboard/services/loans/loans.selector";
 import loanpay from "../../assets/images/loanpay.png";
+import { Type } from "@sinclair/typebox";
 
 function LoanPayCard({ data, ...props }) {
+  const { handleModalClose } = props;
+
   const { details, loan, rate } = data ? data : "";
   const historyLoansArr = useSelector(selectHistoryLoans);
   const loansArr = useSelector(selectLoansArr);
   const dispatch = useDispatch();
   const handleSubmit = () => {
     dispatch(fetchPayLoanAsync(data, loansArr, historyLoansArr));
+    handleModalClose();
   };
   console.log(data);
+
   return (
     <PayContainer>
       <PayLoanContainer>

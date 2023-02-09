@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { planGradient } from "./../../../utils/planGradients/planGradients";
 
 export const CardsModalContainer = styled.div`
   display: flex;
@@ -53,14 +54,14 @@ export const PlanCard = styled.div`
   width: 90%;
   height: 85%;
   border-radius: 10px;
-  /* box-shadow: 0px 0px 20px -5px rgba(21, 20, 47, 0.73); */
-  background: var(--green);
-  background: linear-gradient(
-    130deg,
-    var(--green-light) 1%,
-    var(--green) 60%,
-    var(--green-dark) 100%
-  );
+  ${(props) =>
+    props.type === "standard"
+      ? planGradient.standard
+      : props.type === "premium"
+      ? planGradient.premium
+      : props.type === "vip"
+      ? planGradient.vip
+      : ""}
   padding: 20px;
   & h2 {
     color: var(--white);
@@ -76,6 +77,7 @@ export const PlanCard = styled.div`
       border-bottom: 1px solid var(--gray);
       & span {
         color: var(--yellow);
+        text-shadow: 4px 1px 0px var(--yellow-dark);
       }
     }
     & h3:last-of-type {
