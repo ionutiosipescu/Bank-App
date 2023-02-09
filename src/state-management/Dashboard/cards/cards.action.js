@@ -8,7 +8,7 @@ export const setCurrentCardAccount = (card) => {
   return createAction(CARD_TYPES.SET_CARD_CURRENT, card);
 };
 
-// NEW PAGE
+// & NEW PAGE
 
 const updateCard = (card, e) => {
   const { name, value } = e.target;
@@ -47,7 +47,7 @@ export const setCurrentCardNew = (card) => {
   return createAction(CARD_TYPES.SET_CARD_NEW, card);
 };
 
-// EDIT PAGE
+// & EDIT PAGE
 
 // Update Plan in cardEdit
 export const setCardPlanEdit = (cardEdit, e) => {
@@ -102,7 +102,6 @@ export const setCardArr = (cardArr) => {
 // Add to Arr Cards
 export const setAddCardArr = (cardArr, cardArrObject) => {
   const cardArrNew = [...cardArr, { ...cardArrObject }];
-  console.log(cardArrNew);
   return createAction(CARD_TYPES.SET_CARD_ARR, cardArrNew);
 };
 
