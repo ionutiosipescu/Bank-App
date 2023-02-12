@@ -1,6 +1,9 @@
 import React from "react";
 import { Formik, Form } from "formik";
-import { FormContainerChangePassword } from "./FormChangePassword.style";
+import {
+  FormContainerChangePassword,
+  ButtonChangePassword,
+} from "./FormChangePassword.style";
 import Button from "../../../components/UI/Button/Button";
 import { ErrorMsg } from "../../../components/Errors/Auth/ErrorMsg.style";
 import CustomInput from "../../../components/CustomInputs/CustomInput";
@@ -44,7 +47,9 @@ function FromChangePassword() {
           placeholder="Enter your password"
           setData={setData}
         />
-        <Button type="submit">Change Password</Button>
+        <ButtonChangePassword type="submit">
+          Change Password
+        </ButtonChangePassword>
       </FormContainerChangePassword>
     </Formik>
   );

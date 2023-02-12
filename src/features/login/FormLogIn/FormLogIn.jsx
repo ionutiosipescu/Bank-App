@@ -4,7 +4,6 @@ import { advancedSchema } from "../ValidationSchema/ValidationSchema";
 import CustomInput from "../../../components/CustomInputs/CustomInput";
 import CustomPassword from "../../../components/CustomInputs/CustomPassword";
 import { useSelector, useDispatch } from "react-redux";
-import { debounce } from "debounce";
 import { useNavigate } from "react-router-dom";
 import { FormContainerLogin } from "./FormLogin.style";
 import { ErrorMsg } from "../../../components/Errors/Auth/ErrorMsg.style";
@@ -12,9 +11,8 @@ import { setLogInUser } from "../../../state-management/Auth/loginUser/loginUser
 import { selectLoginUser } from "../../../state-management/Auth/loginUser/loginUser.selector";
 import { selectIsSubmiting } from "../../../state-management/Auth/loginUser/loginUser.selector";
 import { selectErrorMessage } from "../../../state-management/Auth/loginUser/loginUser.selector";
-// import CustomreCaptcha from "../../../components/CustomInputs/CustomreCaptcha";
 import { fetchLoginData } from "../../../state-management/Auth/loginUser/loginUser.service";
-import Button from "../../../components/UI/Button/Button";
+import { ButtonSignIn } from "./FormLogin.style";
 
 function FormLogIn() {
   const dispatch = useDispatch();
@@ -75,9 +73,9 @@ function FormLogIn() {
         />
         {errorMsg ? <ErrorMsg>{errorMsg}</ErrorMsg> : <></>}
 
-        <Button type="button" onClick={onSubmit}>
+        <ButtonSignIn type="button" onClick={onSubmit}>
           Log in
-        </Button>
+        </ButtonSignIn>
       </FormContainerLogin>
     </Formik>
   );

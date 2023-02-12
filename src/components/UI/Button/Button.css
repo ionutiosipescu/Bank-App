@@ -23,7 +23,9 @@
 }
 
 .btn-lg {
-  width: 200px;
+  width: 250px;
+  height: 40px;
+  font-size: 1rem;
 }
 
 .btn-100 {
@@ -61,5 +63,3 @@
   border: 1px solid var(--blue);
   color: var(--white);
 }
-
-

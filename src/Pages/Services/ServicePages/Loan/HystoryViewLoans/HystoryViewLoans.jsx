@@ -94,7 +94,7 @@ function HisotryViewLoans({ dataServices, ...props }) {
                 </AmountContainer>
                 <IdContainer>#{history_loan.id}</IdContainer>
               </ListItemSection>
-              <Button size="md" primary="primary" label="Repeat" />
+              <Button size="md" primary="primary" label="Pay Loan" />
             </ListItem>
           ))}
         </ListContainer>

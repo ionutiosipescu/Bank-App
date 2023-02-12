@@ -57,7 +57,7 @@ const ProgressCard = ({ ...props }) => {
       </ProgressBar>
       <h3>You are almost there!</h3>
       <Button
-        label="Pay"
+        label="Pay Loan"
         size="fullWidth"
         primary="primary"
         handleClick={handleClick}
