@@ -10,11 +10,13 @@ import {
 
 function SmallDropdown(props) {
   const { options, selectedOption, handleChange } = props;
-  const filterObj = useSelector(selectDepositFilter);
 
   return (
     <DropdownContainer>
-      <StyledSelect value={selectedOption} onChange={handleChange}>
+      <StyledSelect
+        value={selectedOption || ""}
+        onChange={(e) => handleChange(e)}
+      >
         {options.map((option) => (
           <StyledOption key={option.value} value={option.value}>
             {option.label}

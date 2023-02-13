@@ -74,12 +74,6 @@ export const setDepositArrDb = (depositArr) => {
   return createAction(DEPOSITS_HELPER_TYPES.SET_DEPOSIT_ARR, depositArr);
 };
 
-export const setFilterDepositList = (string, filter) => {
-  console.log(string, filter);
-  const newObj = { ...filter, account: string };
-  return createAction(DEPOSITS_HELPER_TYPES.SET_DEPOSIT_FILTER, newObj);
-};
-
 export const setDepositArrRepeat = (obj, arr) => {
   const newDepositArr = [
     ...arr,
@@ -98,4 +92,21 @@ export const formatDataRepet = async (obj) => {
     status: status,
   };
   return depositData;
+};
+
+// Selected Option
+
+export const setFilterDepositList = (string, filter) => {
+  const newObj = { ...filter, account: string };
+  return createAction(DEPOSITS_HELPER_TYPES.SET_DEPOSIT_FILTER, newObj);
+};
+export const setSelectedOptionDeposit = (string) => {
+  return createAction(DEPOSITS_HELPER_TYPES.SET_DEPOSIT_OPTION, string);
+};
+export const setSelectedOptionDepositData = (e, filter) => {
+  return async (dispatch) => {
+    const { value } = e.target;
+    await dispatch(setSelectedOptionDeposit(value));
+    await dispatch(setFilterDepositList(value, filter));
+  };
 };

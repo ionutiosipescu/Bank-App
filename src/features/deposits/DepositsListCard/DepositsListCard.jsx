@@ -36,36 +36,20 @@ import SmallDropdown from "../../cardsPage/Dropdown/Dropdown";
 import { options } from "./../../../utils/data/plancardregisterData";
 import { useState } from "react";
 import { useEffect } from "react";
+import { setSelectedOptionDepositData } from "../../../state-management/Dashboard/services/helpers/depositsHelper/depositsHelper.action";
+import { selectDepositOption } from "../../../state-management/Dashboard/services/helpers/depositsHelper/deposits.selector";
 
 function DepositsListCard() {
   const dispatch = useDispatch();
+  const selectedOptionDeposit = useSelector(selectDepositOption);
   const depositHistory = useSelector(selectDepositArr);
   const filterObj = useSelector(selectDepositFilter);
   const currentUser = useSelector(selectCurrentUser);
 
   const options = [
     { value: "ron", label: "ron" },
-    { value: "eur", label: "euro" },
+    { value: "euro", label: "euro" },
   ];
-
-  const [selectedOption, setSelectedOption] = useState(null);
-
-  // useEffect(() => {
-  //   setSelectedOption(filterObj.account === "ron" ? "ron" : "euro");
-  //   console.log(filterObj.account, "for selectedOption");
-  // }, []);
-
-  const handleChangeOption = (e) => {
-    return (
-      setSelectedOption(e.target.value),
-      dispatch(
-        setFilterDepositList(
-          selectedOption === "ron" ? "euro" : "ron",
-          filterObj
-        )
-      )
-    );
-  };
 
   return (
     <ServiceCard>
@@ -73,20 +57,12 @@ function DepositsListCard() {
         <h2>List Actions</h2>
         <SelectAccountToggle>
           <span>Filter: </span>
-          {/* <FilterListToggle
-            firstText="ron"
-            secondText="euro"
-            name="account"
-            setDataToggle={(e) => {
-              return (
-                dispatch(setFilterDepositList(e, filterObj)), console.log(e)
-              );
-            }}
-          /> */}
           <SmallDropdown
             options={options}
-            selectedOption={selectedOption}
-            handleChange={(e) => handleChangeOption(e)}
+            selectedOption={selectedOptionDeposit}
+            handleChange={(e) =>
+              dispatch(setSelectedOptionDepositData(e, filterObj))
+            }
           />
         </SelectAccountToggle>
       </DepositHeaderList>
