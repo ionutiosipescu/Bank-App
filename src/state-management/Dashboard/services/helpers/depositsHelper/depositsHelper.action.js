@@ -75,11 +75,11 @@ export const setDepositArrDb = (depositArr) => {
 };
 
 export const setFilterDepositList = (string, filter) => {
+  console.log(string, filter);
   const newObj = { ...filter, account: string };
   return createAction(DEPOSITS_HELPER_TYPES.SET_DEPOSIT_FILTER, newObj);
 };
 
-// dupa ce functioneaza de mutat
 export const setDepositArrRepeat = (obj, arr) => {
   const newDepositArr = [
     ...arr,

@@ -44,10 +44,17 @@ function FormLogIn() {
     }
   }, [isSubmitting]);
 
+  // // restore localStorage
+  // useEffect(() => {
+  //   persistor.purge();
+  //   dispatch(setResetSingUp());
+  // }, []);
   // restore localStorage
   useEffect(() => {
-    persistor.purge();
-    dispatch(setResetSingUp());
+    if (localStorage.getItem("persist:root") !== null) {
+      localStorage.removeItem("persist:root");
+      window.location.reload();
+    }
   }, []);
 
   return (

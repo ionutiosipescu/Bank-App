@@ -41,7 +41,6 @@ function DepositsControlerCard() {
   const depositFormData = useSelector(selectDepositForm);
   const depositArr = useSelector(selectDepositArr);
   const currentUserData = useSelector(selectCurrentUser);
-  console.log(depositAction, depositFormData, depositArr, currentUserData);
 
   const setData = debounce((e) => {
     dispatch(setDepositForm(depositFormData, e));

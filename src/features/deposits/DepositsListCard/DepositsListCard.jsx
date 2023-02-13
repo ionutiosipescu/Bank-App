@@ -31,6 +31,7 @@ import { setFilterDepositList } from "../../../state-management/Dashboard/servic
 import { selectDepositFilter } from "../../../state-management/Dashboard/services/helpers/depositsHelper/deposits.selector";
 import { fetchRepeatDeposit } from "../../../state-management/Dashboard/services/helpers/depositsHelper/deposit.service";
 import { selectCurrentUser } from "../../../state-management/Dashboard/userData/userData.selector";
+import FilterListToggle from "../components/FilterListToggle";
 
 function DepositsListCard() {
   const dispatch = useDispatch();
@@ -44,18 +45,17 @@ function DepositsListCard() {
         <h2>List Actions</h2>
         <SelectAccountToggle>
           <span>Filter: </span>
-          <RadioButton
-            firstText="euro"
-            secondText="ron"
+          <FilterListToggle
+            firstText="ron"
+            secondText="euro"
             name="account"
-            setDataToggle={(e) => dispatch(setFilterDepositList(e, filterObj))}
+            setDataToggle={""}
           />
         </SelectAccountToggle>
       </DepositHeaderList>
       <ListContainer>
         {depositHistory.map((transfer, index) => (
           <ListItem key={index}>
-            {console.log(transfer?.status)}
             <ListItemSection>
               <LabelAction action={upperCaseFirst(transfer?.status)}>
                 {upperCaseFirst(transfer?.status)}
