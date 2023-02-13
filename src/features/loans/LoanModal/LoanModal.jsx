@@ -29,9 +29,9 @@ function LoanModal({ ...props }) {
 
   console.log(checkedData, "Checked");
 
-  // const handleSubmit = () => {
-  //   dispatch(fetchLoanCreate(currentUser, checkedData));
-  // };
+  const handleSubmit = () => {
+    dispatch(fetchLoanCreate(currentUser, checkedData));
+  };
 
   return (
     <LoanModalContainer>
