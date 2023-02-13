@@ -13,6 +13,8 @@ import { selectIsSubmiting } from "../../../state-management/Auth/loginUser/logi
 import { selectErrorMessage } from "../../../state-management/Auth/loginUser/loginUser.selector";
 import { fetchLoginData } from "../../../state-management/Auth/loginUser/loginUser.service";
 import { ButtonSignIn } from "./FormLogin.style";
+import { persistor } from "../../../state-management/store";
+import { setResetSingUp } from "../../../state-management/Auth/registerhelper/registerhelper.actions";
 
 function FormLogIn() {
   const dispatch = useDispatch();
@@ -44,10 +46,8 @@ function FormLogIn() {
 
   // restore localStorage
   useEffect(() => {
-    if (localStorage.getItem("persist:root") !== null) {
-      localStorage.removeItem("persist:root");
-      window.location.reload();
-    }
+    persistor.purge();
+    dispatch(setResetSingUp());
   }, []);
 
   return (
@@ -72,7 +72,6 @@ function FormLogIn() {
           setData={setData}
         />
         {errorMsg ? <ErrorMsg>{errorMsg}</ErrorMsg> : <></>}
-
         <ButtonSignIn type="button" onClick={onSubmit}>
           Log in
         </ButtonSignIn>

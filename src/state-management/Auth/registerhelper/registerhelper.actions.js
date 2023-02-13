@@ -45,3 +45,20 @@ export const fetchEmailVerification = async () => {
     console.error(error);
   }
 };
+
+export const setResetSingUp = () => {
+  const registerUserData = {
+    firstname: "",
+    lastname: "",
+    country: "",
+    address: "",
+    date: "",
+    gender: "",
+    email: "",
+    displayName: "",
+    mobile: "",
+    password: "",
+    confirmPassword: "",
+  };
+  return createAction(REGISTER_HELPER_TYPES.RESET_SIGNUP, registerUserData);
+};

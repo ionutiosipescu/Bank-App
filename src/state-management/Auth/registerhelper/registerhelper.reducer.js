@@ -46,6 +46,8 @@ export const registerHelperReducer = (state = INITIAL_STATE, action = {}) => {
       return { ...state, isLoading: false, error: payload };
     case REGISTER_HELPER_TYPES.GENERATE_EMAIL_CODE:
       return { ...state, emailCode: payload };
+    case REGISTER_HELPER_TYPES.RESET_SIGNUP:
+      return { ...state, userProfile: { ...payload } };
     default:
       return state;
   }
