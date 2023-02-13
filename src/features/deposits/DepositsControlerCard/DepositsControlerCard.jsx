@@ -32,7 +32,7 @@ import { exchangeRadioBtns } from "../../../utils/data/dummyData";
 import { ErrorMsg } from "../../../components/Errors/Auth/ErrorMsg.style";
 import RadioButton from "../../../components/RadioButton/RadioButton";
 import { setDepositAccount } from "../../../state-management/Dashboard/services/helpers/depositsHelper/depositsHelper.action";
-import { fetchDepositData } from "../../../state-management/Dashboard/services/helpers/depositsHelper/depositsHelper.action";
+import { fetchDepositData } from "../../../state-management/Dashboard/services/helpers/depositsHelper/deposit.service";
 import { selectCurrentUser } from "../../../state-management/Dashboard/userData/userData.selector";
 
 function DepositsControlerCard() {

@@ -4,7 +4,6 @@ import { getLocalDate } from "../../../../../utils/helpers/helperFunctions/date"
 import { generateRandomNumber } from "../../../../../utils/helpers/helperFunctions/randomNumber";
 import { LowercaseString } from "../../../../../utils/helpers/helperFunctions/lowercase";
 import { findObjectByString } from "../../../../../utils/helpers/helperFunctions/findObject";
-import axios from "axios";
 // Update Deposit Action
 
 export const setDepositAction = (e) => {
@@ -33,7 +32,7 @@ export const setDepositAccount = (depositData, string) => {
 export const setDepositArr = (obj, action, arr) => {
   const { amount } = obj;
   const formattedDate = getLocalDate();
-  const idDeposit = generateRandomNumber(6).toString();
+  const idDeposit = generateRandomNumber(3).toString();
   const newObj = {
     balance: amount,
     date: formattedDate,
@@ -70,40 +69,33 @@ export const setDepositId = async (obj, currentUserData) => {
   return object.id;
 };
 
-// Get Arr
-export const getDepositArrDb = (obj, currentUserData) => {
-  return async (dispatch) => {
-    const id = await setDepositId(obj, currentUserData);
-    const { data } = await axios.get(
-      `http://localhost:8080/accounts/deposit/balance/?id=${id}`
-    );
-    console.log(data, id);
-    await dispatch(setDepositArrDb(data));
-  };
-};
-
 // Set Arr from DB
-
 export const setDepositArrDb = (depositArr) => {
   return createAction(DEPOSITS_HELPER_TYPES.SET_DEPOSIT_ARR, depositArr);
 };
 
-// Async Deposit
-export const fetchDepositData = (obj, action, arr, currentUserData) => {
-  return async (dispatch) => {
-    try {
-      const depositData = await setDepositData(obj, action);
-      const id = await setDepositId(obj, currentUserData);
-      console.log(depositData, id);
-      await axios
-        .post(
-          `http://localhost:8080/accounts/deposit/balance/?id=${id}`,
-          depositData
-        )
-        .then((res) => console.log(res));
-      await dispatch(setDepositArr(obj, action, arr));
-    } catch (error) {
-      console.log(error);
-    }
+export const setFilterDepositList = (string, filter) => {
+  const newObj = { ...filter, account: string };
+  return createAction(DEPOSITS_HELPER_TYPES.SET_DEPOSIT_FILTER, newObj);
+};
+
+// dupa ce functioneaza de mutat
+export const setDepositArrRepeat = (obj, arr) => {
+  const newDepositArr = [
+    ...arr,
+    { ...obj, id: generateRandomNumber(3).toString() },
+  ];
+  return createAction(DEPOSITS_HELPER_TYPES.SET_DEPOSIT_ARR, newDepositArr);
+};
+
+// format data for repeat Button
+export const formatDataRepet = async (obj) => {
+  const { date, balance, status } = obj;
+  const depositData = {
+    date: date,
+    details: "",
+    balance: balance,
+    status: status,
   };
+  return depositData;
 };
