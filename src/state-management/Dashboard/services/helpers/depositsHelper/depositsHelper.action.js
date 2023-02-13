@@ -35,11 +35,11 @@ export const setDepositArr = (obj, action, arr) => {
   const formattedDate = getLocalDate();
   const idDeposit = generateRandomNumber(6).toString();
   const newObj = {
-    amount: amount,
-    action: action,
-    created_at: formattedDate,
+    balance: amount,
+    date: formattedDate,
     id: idDeposit,
-    status: "Completed",
+    details: "",
+    status: action,
   };
   // console.log(newObj);
   const newDepositArr = [...arr, { ...newObj }];
@@ -92,7 +92,6 @@ export const setDepositArrDb = (depositArr) => {
 export const fetchDepositData = (obj, action, arr, currentUserData) => {
   return async (dispatch) => {
     try {
-      await dispatch(setDepositArr(obj, action, arr));
       const depositData = await setDepositData(obj, action);
       const id = await setDepositId(obj, currentUserData);
       console.log(depositData, id);
@@ -102,6 +101,7 @@ export const fetchDepositData = (obj, action, arr, currentUserData) => {
           depositData
         )
         .then((res) => console.log(res));
+      await dispatch(setDepositArr(obj, action, arr));
     } catch (error) {
       console.log(error);
     }

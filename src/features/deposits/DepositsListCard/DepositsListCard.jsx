@@ -38,6 +38,7 @@ function DepositsListCard() {
       <ListContainer>
         {depositHistory.map((transfer, index) => (
           <ListItem key={index}>
+            {console.log(transfer?.status)}
             <ListItemSection>
               <LabelAction action={upperCaseFirst(transfer?.status)}>
                 {upperCaseFirst(transfer?.status)}
