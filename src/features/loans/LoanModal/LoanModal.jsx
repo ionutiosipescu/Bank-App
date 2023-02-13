@@ -18,9 +18,9 @@ function LoanModal({ approved, ...props }) {
   return (
     <LoanModalContainer>
       <h1>
-        {approved === "yes"
+        {checkedData
           ? "Congrats! Your loan was approved!"
-          : "Wua wua wuaaaa, too bad, you are poor and nobody loves you!"}{" "}
+          : "Wua wua wuaaaa, too bad, you are poor and nobody loves you!"}
       </h1>
       <Button
         size="xl"
