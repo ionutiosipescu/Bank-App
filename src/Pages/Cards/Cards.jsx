@@ -29,10 +29,9 @@ function Cards() {
   const dispatch = useDispatch();
   const accountsArr = useSelector(selectCardArr);
   const currentUser = useSelector(selectCurrentUser);
+
   const [selectedOption, setSelectedOption] = useState("New Account");
   const [selectedComponent, setSelectedComponent] = useState(<h1>Accounts</h1>);
-
-  console.log(accountsArr);
 
   useEffect(() => {
     dispatch(fetchGetCardAccountArr(currentUser));
@@ -51,6 +50,11 @@ function Cards() {
     }
   }, [selectedOption]);
 
+  const options = [
+    { value: "New Account", label: "New Account" },
+    { value: "Edit Account", label: "Edit Account" },
+  ];
+
   return (
     <>
       <TopContainer>
@@ -67,7 +71,8 @@ function Cards() {
         <ManageAccount>
           <SmallDropdown
             selectedOption={selectedOption}
-            setSelectedOption={setSelectedOption}
+            options={options}
+            handleChange={(e) => setSelectedOption(e.target.value)}
           />
           {selectedOption === "Edit Account" && <EditController />}
         </ManageAccount>

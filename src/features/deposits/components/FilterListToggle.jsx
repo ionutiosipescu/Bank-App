@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import {
   RadioCircle,
   RadioContainer,
   RadioPill,
 } from "../../../components/RadioButton/RadioButton.style";
+import { selectDepositFilter } from "../../../state-management/Dashboard/services/helpers/depositsHelper/deposits.selector";
 
 function FilterListToggle({
   label,
@@ -13,15 +15,21 @@ function FilterListToggle({
   checked,
   ...props
 }) {
-  const [active, setActive] = useState(defaultMode);
-  const [toggleState, setToggleState] = useState("ron");
+  const filterObj = useSelector(selectDepositFilter);
+  const [active, setActive] = useState("");
+  const [toggleState, setToggleState] = useState(
+    filterObj.account || firstText
+  );
+
   const handleRadio = () => {
     setToggleState(toggleState === firstText ? secondText : firstText);
-    setActive(active === "active" ? "" : "active");
+    setActive(toggleState === "ron" ? "active" : "");
   };
+
   useEffect(() => {
-    console.log(toggleState);
-  }, [toggleState]);
+    setToggleState(filterObj.account);
+    setActive(toggleState === "ron" ? "" : "active");
+  }, []);
 
   return (
     <RadioContainer active={active}>
@@ -31,7 +39,7 @@ function FilterListToggle({
         <RadioCircle
           onClick={(e) => {
             handleRadio();
-            props.setDataToggle(toggleState === "ron" ? "euro" : "");
+            props.setDataToggle(toggleState === "ron" ? "euro" : "ron");
           }}
           name={props.name}
         />

@@ -32,6 +32,10 @@ import { selectDepositFilter } from "../../../state-management/Dashboard/service
 import { fetchRepeatDeposit } from "../../../state-management/Dashboard/services/helpers/depositsHelper/deposit.service";
 import { selectCurrentUser } from "../../../state-management/Dashboard/userData/userData.selector";
 import FilterListToggle from "../components/FilterListToggle";
+import SmallDropdown from "../../cardsPage/Dropdown/Dropdown";
+import { options } from "./../../../utils/data/plancardregisterData";
+import { useState } from "react";
+import { useEffect } from "react";
 
 function DepositsListCard() {
   const dispatch = useDispatch();
@@ -39,17 +43,50 @@ function DepositsListCard() {
   const filterObj = useSelector(selectDepositFilter);
   const currentUser = useSelector(selectCurrentUser);
 
+  const options = [
+    { value: "ron", label: "ron" },
+    { value: "eur", label: "euro" },
+  ];
+
+  const [selectedOption, setSelectedOption] = useState(null);
+
+  // useEffect(() => {
+  //   setSelectedOption(filterObj.account === "ron" ? "ron" : "euro");
+  //   console.log(filterObj.account, "for selectedOption");
+  // }, []);
+
+  const handleChangeOption = (e) => {
+    return (
+      setSelectedOption(e.target.value),
+      dispatch(
+        setFilterDepositList(
+          selectedOption === "ron" ? "euro" : "ron",
+          filterObj
+        )
+      )
+    );
+  };
+
   return (
     <ServiceCard>
       <DepositHeaderList>
         <h2>List Actions</h2>
         <SelectAccountToggle>
           <span>Filter: </span>
-          <FilterListToggle
+          {/* <FilterListToggle
             firstText="ron"
             secondText="euro"
             name="account"
-            setDataToggle={""}
+            setDataToggle={(e) => {
+              return (
+                dispatch(setFilterDepositList(e, filterObj)), console.log(e)
+              );
+            }}
+          /> */}
+          <SmallDropdown
+            options={options}
+            selectedOption={selectedOption}
+            handleChange={(e) => handleChangeOption(e)}
           />
         </SelectAccountToggle>
       </DepositHeaderList>

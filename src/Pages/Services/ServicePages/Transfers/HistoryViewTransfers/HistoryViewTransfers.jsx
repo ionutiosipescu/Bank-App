@@ -34,6 +34,7 @@ import { selectCurrentUser } from "../../../../../state-management/Dashboard/use
 import { selectTransferForm } from "../../../../../state-management/Dashboard/services/helpers/transfersHelper/transferHelper.selector";
 import UserCard from "../../../../../components/UserCard/UserCard";
 import { NewLoanCardContainer } from "../../../../../features/loans/NewLoanCard/NewLoanCard.style";
+import TransferDetails from "../../../../../components/Test/Test";
 
 function HisotryViewTransfers({ dataServices }) {
   const dispatch = useDispatch();
@@ -74,7 +75,7 @@ function HisotryViewTransfers({ dataServices }) {
           <h2>Transfers</h2>
         </CardHeader>
         <ListContainer>
-          {transferArr?.map((transfer, index) => (
+          {/* {transferArr?.map((transfer, index) => (
             <ListItem key={index}>
               <ListItemSectionTransfer>
                 <UserContainerTransfer>
@@ -89,7 +90,8 @@ function HisotryViewTransfers({ dataServices }) {
                 </LabelList>
               </ListItemSectionTransfer>
             </ListItem>
-          ))}
+          ))} */}
+          <TransferDetails />
         </ListContainer>
       </ServiceViewCard>
     </>
