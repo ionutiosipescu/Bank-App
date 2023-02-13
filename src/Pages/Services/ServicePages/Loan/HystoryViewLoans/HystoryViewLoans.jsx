@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { BsCashStack } from "react-icons/bs";
+// Style
 import { CardHeader } from "../../../../../components/TopCard/TopCard.style";
-import Button from "../../../../../components/UI/Button/Button";
 import { ServiceViewCard } from "../../../../../components/UI/Card/Card.style";
-import {
-  ListItemSection,
-  RateContainer,
-} from "../../../../../features/exchange/ExchangeList/ExchangeList.style";
+import { ListItemSection } from "../../../../../features/exchange/ExchangeList/ExchangeList.style";
+import { NewContainer } from "../../../../Cards/Cards.style";
 import {
   AmountContainer,
   IdContainer,
@@ -15,22 +12,22 @@ import {
   ListIcon,
   ListItem,
 } from "../../../../../features/savings/SavingsListCard/SavingsListCard.style";
-import { NewContainer } from "../../../../Cards/Cards.style";
 
-import { accounts } from "../../../../../utils/data/dummyData";
-import LinkButton from "../../../../../components/UI/LinkButton/LinkButton";
+// Components
+import { BsCashStack } from "react-icons/bs";
+import Button from "../../../../../components/UI/Button/Button";
+import NewLoanCard from "../../../../../features/loans/NewLoanCard/NewLoanCard";
 import ProgressCard from "../../../../../components/ProgressCard/ProgressCard";
-import Modal from "../../../../../components/Modal/Modal";
 import LoanPayCard from "../../../../../components/LoanPayCard/LoanPayCard";
+import Modal from "../../../../../components/Modal/Modal";
+
+// State/Redux
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { selectCurrentUser } from "../../../../../state-management/Dashboard/userData/userData.selector";
 import { getLoansArrDb } from "../../../../../state-management/Dashboard/services/loans/loans.action";
 import { selectLoansArr } from "../../../../../state-management/Dashboard/services/loans/loans.selector";
 import { selectHistoryLoans } from "../../../../../state-management/Dashboard/services/loans/loans.selector";
-import NewLoanCard from "../../../../../features/loans/NewLoanCard/NewLoanCard";
-
-const data = accounts[0].savings;
 
 function HisotryViewLoans({ dataServices, ...props }) {
   const historyArr = useSelector(selectHistoryLoans);

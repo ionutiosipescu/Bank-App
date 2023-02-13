@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+// Style
 import { RadioCircle, RadioContainer, RadioPill } from "./RadioButton.style";
-import { selectDepositFilter } from "../../state-management/Dashboard/services/helpers/depositsHelper/deposits.selector";
-import { useSelector } from "react-redux";
 
 function RadioButton({
   label,

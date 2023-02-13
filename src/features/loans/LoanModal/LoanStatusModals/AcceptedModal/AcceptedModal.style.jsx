@@ -8,7 +8,7 @@ export const MidContainer = styled.div`
   height: 50%;
   & img {
     margin-left: 10%;
-    height: 100%;
+    height: 110%;
   }
 `;
 

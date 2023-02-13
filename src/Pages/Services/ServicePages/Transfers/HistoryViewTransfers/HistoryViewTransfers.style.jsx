@@ -18,17 +18,16 @@ export const UserContainerTransfer = styled.div`
 export const NewTransferCard = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   width: 20%;
   height: 100%;
   border-radius: 20px;
-  padding-bottom: 10px;
   box-shadow: 0px 0px 20px -9px rgba(21, 20, 47, 0.73);
   overflow: hidden;
-  & img {
-    width: 100%;
-  }
+  background-image: url(https://paysend.com/images/how-long-does-it-take-to-transfer-money-1200.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 `;
 
 export const RecentUserContainer = styled.div`

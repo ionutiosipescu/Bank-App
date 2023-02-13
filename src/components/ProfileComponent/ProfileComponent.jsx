@@ -11,6 +11,7 @@ import {
 import { RiMailLine, RiMapPinLine, RiPhoneLine } from "react-icons/ri";
 
 import avatar from "../../assets/images/avatar.png";
+import LinkButton from "../UI/LinkButton/LinkButton";
 
 function ProfileComponent({ image, name, address, email, phoneNumber }) {
   return (
@@ -21,7 +22,7 @@ function ProfileComponent({ image, name, address, email, phoneNumber }) {
         </div>
         <div>
           <h2>{name}</h2>
-          <Button label="Edit Profile" size="sm" to="/settings" />
+          <LinkButton label="Edit Profile" size="md" to="/settings" />
         </div>
       </ProfileContainer>
       <ProfileInfo>

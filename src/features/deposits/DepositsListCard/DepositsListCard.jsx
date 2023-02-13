@@ -1,41 +1,32 @@
 import React from "react";
-import {
-  CardHeader,
-  ServiceCard,
-} from "../../../components/UI/Card/Card.style";
-import {
-  AmountContainer,
-  LabelContainer,
-  ListContainer,
-  ListItem,
-  LabelListCompleted,
-  LabelListCanceled,
-  LabelListPending,
-  IdList,
-} from "../../savings/SavingsListCard/SavingsListCard.style";
+// Style
+import { ServiceCard } from "../../../components/UI/Card/Card.style";
+import { SelectAccountToggle } from "../DepositsControlerCard/DepositControlerCard.style";
+import { DepositHeaderList } from "./DepositsListCard.style";
 import {
   DateContainer,
   ListItemSection,
-  RateContainer,
 } from "../../exchange/ExchangeList/ExchangeList.style";
-import LabelList from "../../../components/UI/LabelList/LabelList";
-import LabelAction from "../../../components/UI/LabelAction/LabelAction";
+import {
+  AmountContainer,
+  ListContainer,
+  ListItem,
+  IdList,
+} from "../../savings/SavingsListCard/SavingsListCard.style";
+
+// Components
 import Button from "../../../components/UI/Button/Button";
+import SmallDropdown from "../../cardsPage/Dropdown/Dropdown";
+import LabelAction from "../../../components/UI/LabelAction/LabelAction";
+import LabelList from "../../../components/UI/LabelList/LabelList";
+
+// State/Redux
 import { useDispatch, useSelector } from "react-redux";
 import { selectDepositArr } from "../../../state-management/Dashboard/services/helpers/depositsHelper/deposits.selector";
 import { upperCaseFirst } from "../../../utils/helpers/helperFunctions/upperCaseFirstInitial";
-import { SelectAccountToggle } from "../DepositsControlerCard/DepositControlerCard.style";
-import RadioButton from "../../../components/RadioButton/RadioButton";
-import { DepositHeaderList } from "./DepositsListCard.style";
-import { setFilterDepositList } from "../../../state-management/Dashboard/services/helpers/depositsHelper/depositsHelper.action";
 import { selectDepositFilter } from "../../../state-management/Dashboard/services/helpers/depositsHelper/deposits.selector";
 import { fetchRepeatDeposit } from "../../../state-management/Dashboard/services/helpers/depositsHelper/deposit.service";
 import { selectCurrentUser } from "../../../state-management/Dashboard/userData/userData.selector";
-import FilterListToggle from "../components/FilterListToggle";
-import SmallDropdown from "../../cardsPage/Dropdown/Dropdown";
-import { options } from "./../../../utils/data/plancardregisterData";
-import { useState } from "react";
-import { useEffect } from "react";
 import { setSelectedOptionDepositData } from "../../../state-management/Dashboard/services/helpers/depositsHelper/depositsHelper.action";
 import { selectDepositOption } from "../../../state-management/Dashboard/services/helpers/depositsHelper/deposits.selector";
 

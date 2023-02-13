@@ -1,4 +1,5 @@
 import React from "react";
+// Style
 import {
   Bubble,
   PlanContainer,
@@ -7,18 +8,19 @@ import {
   PlanSection,
 } from "./PlanCard.style";
 
-import Button from "./../UI/Button/Button";
-import { options } from "./../../utils/data/plancardregisterData";
+// Components
+import LinkButton from "../UI/LinkButton/LinkButton";
+
+// State/Redux
 import { useSelector } from "react-redux";
 import { selectCurrentCardEdit } from "./../../state-management/Dashboard/cards/cards.selector";
+import { options } from "./../../utils/data/plancardregisterData";
 
 function PlanCard(props) {
-  const { plan } = props;
-
   const cardEdit = useSelector(selectCurrentCardEdit);
   const { type_of_plan } = cardEdit;
 
-  const { value, price, planName, currency, details } =
+  const { value, planName, details } =
     options[
       type_of_plan === "standard" ? 0 : type_of_plan === "premium" ? 1 : 2
     ];
@@ -44,7 +46,7 @@ function PlanCard(props) {
           </ul>
         </PlanOptions>
       </PlanSection>
-      {/* <Button label="Upgrade" size="sm" /> */}
+      {/* <LinkButton label="Upgrade" to="/cards" size="md" primary="primary" /> */}
       <Bubble top />
       <Bubble mid />
       <Bubble />

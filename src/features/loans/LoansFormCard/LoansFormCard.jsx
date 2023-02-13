@@ -1,7 +1,18 @@
 import React, { useState } from "react";
-import { ServiceCard } from "../../../components/UI/Card/Card.style";
-import { CardHeader } from "../../../components/UI/Card/Card.style";
+// Style
+import {
+  ServiceCard,
+  CardHeader,
+} from "../../../components/UI/Card/Card.style";
+import { RegisterFormPart } from "../../register/FormRegister/FormRegister.style";
+import { FormContainerLoans, BtnContainerLoan } from "./LoansFormCard.style";
+// Components
+import Button from "../../../components/UI/Button/Button";
+import LoanModal from "../LoanModal/LoanModal";
+import Modal from "../../../components/Modal/Modal";
 import { Formik, Form } from "formik";
+
+// State/Redux
 import CustomInput from "../../../components/CustomInputs/CustomInput";
 import CustomSelect from "../../../components/CustomInputs/CustomSelect";
 import { useDispatch } from "react-redux";
@@ -9,15 +20,10 @@ import { useSelector } from "react-redux";
 import { selectLoansData } from "../../../state-management/Dashboard/services/loans/loans.selector";
 import { setLoansData } from "../../../state-management/Dashboard/services/loans/loans.action";
 import { loansSchema } from "../ValidationSchema/ValidationSchema";
-import { RegisterFormPart } from "../../register/FormRegister/FormRegister.style";
-import { FormContainerLoans, BtnContainerLoan } from "./LoansFormCard.style";
-import Button from "../../../components/UI/Button/Button";
 import { setLoansArr } from "../../../state-management/Dashboard/services/loans/loans.action";
 import { selectLoansArr } from "../../../state-management/Dashboard/services/loans/loans.selector";
 import { fetchLoanData } from "../../../state-management/Dashboard/services/loans/loans.action";
 import { selectCurrentUser } from "../../../state-management/Dashboard/userData/userData.selector";
-import Modal from "../../../components/Modal/Modal";
-import LoanModal from "../LoanModal/LoanModal";
 
 function LoansFormCard() {
   // Modal State
@@ -214,7 +220,7 @@ function LoansFormCard() {
         </FormContainerLoans>
       </Formik>
       <Modal opened={modalOpen} handleClick={handleModalClose}>
-        <LoanModal approved="no" handleClick={handleModalClose} />
+        <LoanModal handleClick={handleModalClose} />
       </Modal>
     </ServiceCard>
   );

@@ -1,7 +1,4 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
-import { useSelector } from "react-redux";
-import { selectDepositFilter } from "../../../state-management/Dashboard/services/helpers/depositsHelper/deposits.selector";
+import React from "react";
 import {
   DropdownContainer,
   StyledOption,

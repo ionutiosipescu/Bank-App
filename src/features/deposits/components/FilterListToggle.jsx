@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+// Style
 import {
   RadioCircle,
   RadioContainer,
   RadioPill,
 } from "../../../components/RadioButton/RadioButton.style";
+// State / Redux
+import { useSelector } from "react-redux";
 import { selectDepositFilter } from "../../../state-management/Dashboard/services/helpers/depositsHelper/deposits.selector";
 
 function FilterListToggle({

@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import Button from "../../../../../components/UI/Button/Button";
-import { fetchLoanCreate } from "../../../../../state-management/Dashboard/services/loans/loans.action";
-import {
-  selectCheckedData,
-  selectLoansArr,
-} from "../../../../../state-management/Dashboard/services/loans/loans.selector";
-import { selectCurrentUser } from "../../../../../state-management/Dashboard/userData/userData.selector";
+// Style
+import { DeclinedContainer } from "./DeclinedModal.style";
 import {
   ButtonsContainer,
   DetailPill,
@@ -15,7 +9,17 @@ import {
   InputContainer,
   MidContainer,
 } from "./AcceptedModal.style";
-import { DeclinedContainer } from "./DeclinedModal.style";
+// Components
+import Button from "../../../../../components/UI/Button/Button";
+
+// State / Redux
+import { useDispatch, useSelector } from "react-redux";
+import { fetchLoanCreate } from "../../../../../state-management/Dashboard/services/loans/loans.action";
+import {
+  selectCheckedData,
+  selectLoansArr,
+} from "../../../../../state-management/Dashboard/services/loans/loans.selector";
+import { selectCurrentUser } from "../../../../../state-management/Dashboard/userData/userData.selector";
 
 function LoanStatusModal({ ...props }) {
   const { handleClick } = props;
@@ -50,7 +54,9 @@ function LoanStatusModal({ ...props }) {
     <>
       <h1>
         {approved === "approved"
-          ? `Your ${details[0].toUpperCase() + details.slice(1)} loan was
+          ? `Your ${
+              `${details}`.charAt(0).toUpperCase() + `${details}`.slice(1)
+            } loan was
         accepted!`
           : approved === "salary"
           ? `Unfortunately your loan was not accepted.`
@@ -158,7 +164,7 @@ function LoanStatusModal({ ...props }) {
         <Button
           size="md"
           primary="primary"
-          label="Refuse"
+          label="Close"
           type="button"
           onClick={handleClick}
         />

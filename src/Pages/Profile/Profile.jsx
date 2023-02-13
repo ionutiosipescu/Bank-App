@@ -1,15 +1,20 @@
 import React from "react";
-import ProfileComponent from "../../components/ProfileComponent/ProfileComponent";
-import { TopContainer } from "../Cards/Cards.style";
+// Style
 import { PlanContainer, UsersContainer, UsersWrapper } from "./Profile.style";
-
-import PlanCard from "../../components/PlanCard/PlanCard";
-import UserCard from "../../components/UserCard/UserCard";
+import { TopContainer } from "../Cards/Cards.style";
 import { SettingsContainer } from "../Settings/Settings.style";
 
-import { accounts } from "../../utils/data/dummyData";
-import { selectCurrentUser } from "../../state-management/Dashboard/userData/userData.selector";
+// Components
+import ProfileComponent from "../../components/ProfileComponent/ProfileComponent";
+import PlanCard from "../../components/PlanCard/PlanCard";
+import UserCard from "../../components/UserCard/UserCard";
+
+// State/Redux
 import { useSelector } from "react-redux";
+import { selectCurrentUser } from "../../state-management/Dashboard/userData/userData.selector";
+
+// !Dummy Data
+import { accounts } from "../../utils/data/dummyData";
 
 function Profile() {
   const userData = useSelector(selectCurrentUser);
