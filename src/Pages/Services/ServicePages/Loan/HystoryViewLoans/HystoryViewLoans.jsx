@@ -94,7 +94,12 @@ function HisotryViewLoans({ dataServices, ...props }) {
                 </AmountContainer>
                 <IdContainer>#{history_loan.id}</IdContainer>
               </ListItemSection>
-              <Button size="md" primary="primary" label="Pay Loan" />
+              <Button
+                size="md"
+                primary="primary"
+                label="Pay Loan"
+                onClick={() => handleModalOpen(history_loan.id)}
+              />
             </ListItem>
           ))}
         </ListContainer>

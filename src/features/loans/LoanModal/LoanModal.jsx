@@ -35,7 +35,21 @@ function LoanModal({ ...props }) {
 
   return (
     <LoanModalContainer>
-      <LoanStatusModal handleClick={handleClick} />
+      <h1>
+        {checkedData
+          ? "Congrats! Your loan was approved!"
+          : "Wua wua wuaaaa, too bad, you are poor and nobody loves you!"}
+      </h1>
+      <Button
+        size="xl"
+        primary="primary"
+        label="Continue"
+        type="button"
+        onClick={() => {
+          props.handleClick();
+          handleSubmit();
+        }}
+      />
     </LoanModalContainer>
   );
 }
