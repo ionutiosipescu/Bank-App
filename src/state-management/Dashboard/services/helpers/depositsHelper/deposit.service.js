@@ -21,18 +21,23 @@ export const getDepositArrDb = (obj, currentUserData) => {
 };
 
 // Async Deposit POST
-export const fetchDepositData = (obj, action, arr, currentUserData) => {
+export const fetchDepositData = (depositDataReducer, currentUserData) => {
   return async (dispatch) => {
+    const { depositObj, selectedOption } = depositDataReducer;
     try {
-      const depositData = await setDepositData(obj, action);
-      const id = await setDepositId(obj, currentUserData);
+      const depositData = await setDepositData(depositDataReducer);
+      const id = await setDepositId(depositObj, currentUserData);
       await axios
         .post(
           `http://localhost:8080/accounts/deposit/balance/?id=${id}`,
           depositData
         )
         .then((res) => console.log(res));
-      await dispatch(setDepositArr(obj, action, arr));
+      if (depositObj?.account === selectedOption?.account) {
+        await dispatch(setDepositArr(depositDataReducer));
+      } else {
+        return;
+      }
     } catch (error) {
       console.log(error);
     }

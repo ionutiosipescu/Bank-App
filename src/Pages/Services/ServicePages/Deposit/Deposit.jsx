@@ -8,13 +8,12 @@ import { selectCurrentUser } from "../../../../state-management/Dashboard/userDa
 import { selectDepositForm } from "../../../../state-management/Dashboard/services/helpers/depositsHelper/deposits.selector";
 import { getDepositArrDb } from "../../../../state-management/Dashboard/services/helpers/depositsHelper/deposit.service";
 import { useEffect } from "react";
-import { selectDepositFilter } from "../../../../state-management/Dashboard/services/helpers/depositsHelper/deposits.selector";
+import { selectDepositOption } from "../../../../state-management/Dashboard/services/helpers/depositsHelper/deposits.selector";
 
 function Deposit() {
   const dispatch = useDispatch();
   const currentUser = useSelector(selectCurrentUser);
-  const depositForm = useSelector(selectDepositForm);
-  const filterObj = useSelector(selectDepositFilter);
+  const filterObj = useSelector(selectDepositOption);
 
   useEffect(() => {
     dispatch(getDepositArrDb(filterObj, currentUser));
