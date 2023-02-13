@@ -6,7 +6,7 @@ import Button from "../UI/NewButton/Button.component";
 const NextBtn = () => {
   const step = useSelector(selectStep);
   return (
-    <Button size="md" type="submit" typeclass="primary">
+    <Button size="lg" type="submit" typeclass="primary">
       {step === 3 ? "Create Account" : "Next"}
     </Button>
   );

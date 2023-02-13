@@ -10,7 +10,7 @@ function PrevBtn() {
   const step = useSelector(selectStep);
   return (
     <Button
-      size="md"
+      size="lg"
       typeclass="primary"
       onClick={() => {
         dispatch(setStep(step - 1));

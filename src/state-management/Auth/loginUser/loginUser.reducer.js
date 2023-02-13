@@ -21,6 +21,8 @@ export const loginReducer = (state = INITIAL_STATE, action) => {
       return { ...state, isSubmiting: false };
     case LOGIN_ACTION_TYPES.POST_LOGIN_FAILED:
       return { ...state, isSubmiting: false, errorMsg: payload };
+    case LOGIN_ACTION_TYPES.RESET_SIGNUP:
+      return { ...state, LoginData: { ...payload } };
     default:
       return state;
   }

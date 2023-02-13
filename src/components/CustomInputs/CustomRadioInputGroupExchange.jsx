@@ -20,7 +20,6 @@ const RadioButtonsExchange = ({ label, ...props }) => {
       <Field name={props.name}>
         {({ field }) => {
           return props.options.map((option) => {
-            console.log(option);
             return (
               <React.Fragment key={option.key}>
                 <label>
