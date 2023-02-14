@@ -46,7 +46,7 @@ function Profile() {
                 email={account.email}
                 phone={account.phoneNumber}
                 image={account.image}
-                to="/dashboard"
+                to="/services/transfers/newtransfer"
               />
             ))}
           </UsersContainer>

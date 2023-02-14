@@ -10,7 +10,7 @@ import {
 } from "../../features/loans/LoanModal/LoanStatusModals/AcceptedModal/AcceptedModal.style";
 
 // Components
-import loanpay from "../../assets/images/loanpay.png";
+import loanpay from "../../assets/images/loanpay-2.png";
 import Button from "../UI/Button/Button";
 
 // State/Redux
@@ -60,9 +60,11 @@ function LoanPayCard({ data, ...props }) {
       <p>
         Please confirm your monthly loan payment of {""}
         <BoldDetailLoan>{rate}</BoldDetailLoan> for the principal amount of {""}
-        <BoldDetailLoan>{loan}</BoldDetailLoan>. By confirming, you are agreeing
-        to make this payment on the due date each month until the loan is fully
-        paid off.
+        <BoldDetailLoan>{loan}</BoldDetailLoan>.
+        <br />
+        <br />
+        By confirming, you are agreeing to make this payment on the due date
+        each month until the loan is fully paid off.
       </p>
       <ButtonsContainer>
         <Button

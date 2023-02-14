@@ -1,14 +1,23 @@
 import styled from "styled-components";
 
+export const LoanModalWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 50vw;
+  height: 60vh;
+`;
+
 export const MidContainer = styled.div`
   display: flex;
   /* justify-content: space-between; */
+  /* margin-top: 20px; */
   align-items: center;
   width: 100%;
   height: 50%;
   & img {
     margin-left: 10%;
-    height: 110%;
+    height: 100%;
   }
 `;
 
@@ -37,9 +46,9 @@ export const DetailPill = styled.div`
   color: var(--text);
   ${(props) =>
     props.type === "text"
-      ? "width: 200px; background-color: var(--yellow);"
+      ? "width: 200px; background-color: var(--gray);"
       : props.type === "number"
-      ? "width: fit-content; background-color: var(--green);"
+      ? "width: fit-content; background-color: var(--gray);"
       : "width: fit-content; background-color: var(--red-light);"}
 `;
 

@@ -5,8 +5,8 @@ export const PayContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 100%;
-  height: 100%;
+  width: 45vw;
+  height: 65vh;
   & p {
     font-size: 18px;
   }

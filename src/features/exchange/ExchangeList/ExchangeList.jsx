@@ -20,6 +20,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectExchangeArr } from "../../../state-management/Dashboard/services/helpers/exchangeHelper/exchangeHelper.selector";
 import { fetchExchangeRepeat } from "../../../state-management/Dashboard/services/helpers/exchangeHelper/exchangeHelper.action";
 import { selectCurrentUser } from "../../../state-management/Dashboard/userData/userData.selector";
+import Modal from "./../../../components/Modal/Modal";
+import { useState } from "react";
+import ConfirmActionModal from "../../../components/ConfirmActionModal/ConfirmActionModal";
 
 function ExchangeList() {
   const dispatch = useDispatch();
@@ -29,6 +32,23 @@ function ExchangeList() {
     const string =
       currency === "RonToEuro" ? `RON \u{2194} EURO` : `EURO \u{2194} RON`;
     return string;
+  };
+
+  const handleRepeat = () => {
+    dispatch(fetchExchangeRepeat(modalData, exchangeArr, currentUser));
+    setModalOpen(false);
+  };
+
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalData, setModalData] = useState(exchangeArr[0]);
+
+  const handleModalOpen = (id) => {
+    setModalOpen(true);
+    setModalData(exchangeArr.find((transfer) => transfer.id === id));
+  };
+
+  const handleModalClose = () => {
+    setModalOpen(false);
   };
 
   return (
@@ -51,15 +71,23 @@ function ExchangeList() {
               label="Repeat"
               size="sm"
               primary="primary"
-              onClick={() =>
-                dispatch(
-                  fetchExchangeRepeat(transfer, exchangeArr, currentUser)
-                )
-              }
+              onClick={() => handleModalOpen(transfer.id)}
             />
           </ListItem>
         ))}
       </ListContainer>
+      <Modal opened={modalOpen} handleClick={handleModalClose}>
+        <ConfirmActionModal
+          action="repeat"
+          type="exchange"
+          text={modalData.type_exchange}
+          amount={modalData.exchange}
+          incaceva={modalData.receiver}
+          data={modalData}
+          feature="5.23"
+          handleClick={handleRepeat}
+        />
+      </Modal>
     </ServiceCard>
   );
 }

@@ -5,8 +5,8 @@ export const CardsModalContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 100%;
-  height: 100%;
+  width: 50vw;
+  height: 67vh;
   & > h1 {
     ${(props) => (props.type === "delete" ? "color: var(--red);" : "")}
   }
@@ -76,8 +76,11 @@ export const PlanCard = styled.div`
       color: var(--gray-light);
       border-bottom: 1px solid var(--gray);
       & span {
-        color: var(--yellow);
-        text-shadow: 4px 1px 0px var(--yellow-dark);
+        color: var(--white);
+        /* background-color: var(--green); */
+        /* padding: 2px; */
+        /* border-radius: 10px; */
+        /* text-shadow: 4px 1px 0px var(--yellow-dark); */
       }
     }
     & h3:last-of-type {

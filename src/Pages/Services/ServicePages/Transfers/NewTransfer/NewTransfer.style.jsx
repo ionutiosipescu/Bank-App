@@ -4,7 +4,6 @@ import { device } from "../../../../../utils/breakpoints/breakpoints";
 export const TransferWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  height: calc(100vh - 100px);
   width: 100%;
   @media (${device.mobileS}) {
     flex-direction: column-reverse;

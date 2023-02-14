@@ -15,10 +15,11 @@ export const ModalWrapper = styled.div`
 `;
 
 export const ModalCard = styled.div`
-  width: 50vw;
-  height: 70vh;
+  /* width: 50vw; */
+  /* height: 70vh; */
   border-radius: 30px;
   background-color: var(--white);
+  overflow: hidden;
 `;
 
 export const ModalContainer = styled.div`
@@ -32,6 +33,6 @@ export const ModalContainer = styled.div`
   & > button {
     position: absolute;
     top: 1%;
-    left: 94%;
+    left: 92%;
   }
 `;

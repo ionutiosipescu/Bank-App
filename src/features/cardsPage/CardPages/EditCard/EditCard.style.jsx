@@ -18,6 +18,6 @@ export const EditControler = styled.div`
   display: flex;
   justify-content: end;
   align-items: center;
-  width: 100%;
+  width: 30%;
   margin-bottom: 30px;
 `;

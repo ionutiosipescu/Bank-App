@@ -64,4 +64,5 @@ export const BottomContainer = styled.div`
 
 export const ManageAccount = styled.div`
   display: flex;
+  justify-content: space-between;
 `;

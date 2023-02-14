@@ -7,6 +7,7 @@ import {
   DetailsContainer,
   DetailSection,
   InputContainer,
+  LoanModalWrapper,
   MidContainer,
 } from "./AcceptedModal.style";
 // Components
@@ -20,6 +21,7 @@ import {
   selectLoansArr,
 } from "../../../../../state-management/Dashboard/services/loans/loans.selector";
 import { selectCurrentUser } from "../../../../../state-management/Dashboard/userData/userData.selector";
+import { PayContainer } from "../../../../../components/LoanPayCard/LoanPayCard.style";
 
 function LoanStatusModal({ ...props }) {
   const { handleClick } = props;
@@ -51,7 +53,7 @@ function LoanStatusModal({ ...props }) {
   };
 
   return (
-    <>
+    <LoanModalWrapper>
       <h1>
         {approved === "approved"
           ? `Your ${
@@ -148,7 +150,6 @@ function LoanStatusModal({ ...props }) {
           </MidContainer>
         </>
       )}
-
       <ButtonsContainer>
         <Button
           size="md"
@@ -169,7 +170,7 @@ function LoanStatusModal({ ...props }) {
           onClick={handleClick}
         />
       </ButtonsContainer>
-    </>
+    </LoanModalWrapper>
   );
 }
 

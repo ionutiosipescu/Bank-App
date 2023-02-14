@@ -13,7 +13,7 @@ select.input-error {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid var(--purple);
+  border: 1px solid var(--green-light);
   transition: 0.3s;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -24,12 +24,18 @@ select.input-error {
 }
 .box-exchange:hover {
   scale: 1.08;
-  background: var(--purple-dark);
+  background: var(--green);
   color: var(--white);
 }
 .box-exchange.selected {
-  background: var(--purple-dark);
+  background: var(--green-dark);
   color: var(--white);
+  border: 1px solid var(--green-dark);
+}
+.box-exchange.selected:hover {
+  background: var(--green);
+  color: var(--white);
+  border: 1px solid var(--green);
 }
 /* //////////////////////////////////  */
 
