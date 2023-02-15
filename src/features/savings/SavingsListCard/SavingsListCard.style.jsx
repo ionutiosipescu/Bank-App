@@ -28,6 +28,9 @@ export const ListItem = styled.div`
   padding: 0 15px;
   /* border-bottom: 1px solid var(--gray-dark); */
   border-radius: 10px;
+  & > a {
+    margin-left: 16px;
+  }
   @media (${device.mobileS}) {
     flex-direction: column;
     & > button {
