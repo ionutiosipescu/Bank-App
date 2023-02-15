@@ -27,7 +27,6 @@ import { upperCaseFirst } from "../../../utils/helpers/helperFunctions/upperCase
 import { selectDepositFilter } from "../../../state-management/Dashboard/services/helpers/depositsHelper/deposits.selector";
 import { fetchRepeatDeposit } from "../../../state-management/Dashboard/services/helpers/depositsHelper/deposit.service";
 import { selectCurrentUser } from "../../../state-management/Dashboard/userData/userData.selector";
-import SmallDropdown from "../../cardsPage/Dropdown/Dropdown";
 import { options } from "./../../../utils/data/plancardregisterData";
 import { useState } from "react";
 import { useEffect } from "react";
