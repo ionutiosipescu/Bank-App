@@ -1,0 +1,3 @@
+export const SETTINGS_TYPES = {
+  SET_SETTINGS: "SET_SETTINGS",
+};

@@ -11,6 +11,7 @@ import { savingHelperReducer } from "./Dashboard/services/helpers/savingsHelper/
 import { exchangeHelperReducer } from "./Dashboard/services/helpers/exchangeHelper/exchangeHelper.reducer";
 import { cardReducer } from "./Dashboard/cards/cards.reducer";
 import { changePasswordReducer } from "./Auth/changePassword/password.reducer";
+import { settingsReducer } from "./Dashboard/settings/settings.reducer";
 
 export const rootReducer = combineReducers({
   login: loginReducer,
@@ -24,4 +25,5 @@ export const rootReducer = combineReducers({
   exchangeHelper: exchangeHelperReducer,
   cardState: cardReducer,
   registerChangePassword: changePasswordReducer,
+  settingsState: settingsReducer,
 });
