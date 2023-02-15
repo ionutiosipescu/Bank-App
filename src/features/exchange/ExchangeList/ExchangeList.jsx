@@ -25,6 +25,9 @@ import SmallDropdown from "../../cardsPage/Dropdown/Dropdown";
 import { DepositHeaderList } from "../../deposits/DepositsListCard/DepositsListCard.style";
 import { selectExchangeOption } from "../../../state-management/Dashboard/services/helpers/exchangeHelper/exchangeHelper.selector";
 import { setSelectedOptionExchange } from "../../../state-management/Dashboard/services/helpers/exchangeHelper/exchangeHelper.action";
+import Modal from "../../../components/Modal/Modal";
+import ConfirmActionModal from "../../../components/ConfirmActionModal/ConfirmActionModal";
+import { useState } from "react";
 
 function ExchangeList() {
   const dispatch = useDispatch();
@@ -35,6 +38,23 @@ function ExchangeList() {
     const string =
       currency === "RonToEuro" ? `RON \u{2194} EURO` : `EURO \u{2194} RON`;
     return string;
+  };
+
+  const handleRepeat = () => {
+    dispatch(fetchExchangeRepeat(modalData, exchangeArr, currentUser));
+    setModalOpen(false);
+  };
+
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalData, setModalData] = useState("");
+
+  const handleModalOpen = (id) => {
+    setModalOpen(true);
+    setModalData(exchangeArr.find((transfer) => transfer.id === id));
+  };
+
+  const handleModalClose = () => {
+    setModalOpen(false);
   };
 
   const options = [
@@ -72,15 +92,24 @@ function ExchangeList() {
               label="Repeat"
               size="sm"
               primary="primary"
-              onClick={() =>
-                dispatch(
-                  fetchExchangeRepeat(transfer, exchangeArr, currentUser)
-                )
-              }
+              onClick={() => handleModalOpen(transfer.id)}
             />
           </ListItem>
         ))}
       </ListContainer>
+      <Modal opened={modalOpen} handleClick={handleModalClose}>
+        <ConfirmActionModal
+          action="repeat"
+          type="exchange"
+          text={modalData.type_exchange}
+          amount={modalData.exchange}
+          data={modalData}
+          feature="5.23"
+          featureText="Rate"
+          handleClick={handleRepeat}
+          handleModalClose={handleModalClose}
+        />
+      </Modal>
     </ServiceCard>
   );
 }

@@ -32,6 +32,8 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { setSelectedOptionDeposit } from "../../../state-management/Dashboard/services/helpers/depositsHelper/depositsHelper.action";
 import { selectDepositOption } from "../../../state-management/Dashboard/services/helpers/depositsHelper/deposits.selector";
+import Modal from "../../../components/Modal/Modal";
+import ConfirmActionModal from "../../../components/ConfirmActionModal/ConfirmActionModal";
 
 function DepositsListCard() {
   const dispatch = useDispatch();
@@ -43,6 +45,31 @@ function DepositsListCard() {
     { value: "ron", label: "ron" },
     { value: "euro", label: "euro" },
   ];
+
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalData, setModalData] = useState("");
+
+  const handleRepeat = () => {
+    dispatch(
+      fetchRepeatDeposit(
+        modalData,
+        selectedOptionDeposit,
+        depositHistory,
+        currentUser
+      )
+    );
+    setModalOpen(false);
+  };
+
+  const handleModalOpen = (id) => {
+    setModalOpen(true);
+    setModalData(depositHistory.find((transfer) => transfer.id === id));
+  };
+
+  console.log(modalData);
+  const handleModalClose = () => {
+    setModalOpen(false);
+  };
 
   return (
     <ServiceCard>
@@ -77,20 +104,21 @@ function DepositsListCard() {
               label="Repeat"
               size="sm"
               primary="primary"
-              onClick={() =>
-                dispatch(
-                  fetchRepeatDeposit(
-                    transfer,
-                    selectedOptionDeposit,
-                    depositHistory,
-                    currentUser
-                  )
-                )
-              }
+              onClick={() => handleModalOpen(transfer.id)}
             />
           </ListItem>
         ))}
       </ListContainer>
+      <Modal opened={modalOpen} handleClick={handleModalClose}>
+        <ConfirmActionModal
+          action="repeat"
+          type={modalData.status}
+          amount={modalData.balance}
+          data={modalData}
+          handleClick={handleRepeat}
+          handleModalClose={handleModalClose}
+        />
+      </Modal>
     </ServiceCard>
   );
 }
