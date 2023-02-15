@@ -33,6 +33,6 @@ export const ModalContainer = styled.div`
   & > button {
     position: absolute;
     top: 1%;
-    left: 92%;
+    left: 93%;
   }
 `;

@@ -40,7 +40,7 @@ function ExchangeList() {
   };
 
   const [modalOpen, setModalOpen] = useState(false);
-  const [modalData, setModalData] = useState(exchangeArr[0]);
+  const [modalData, setModalData] = useState("");
 
   const handleModalOpen = (id) => {
     setModalOpen(true);
@@ -82,10 +82,11 @@ function ExchangeList() {
           type="exchange"
           text={modalData.type_exchange}
           amount={modalData.exchange}
-          incaceva={modalData.receiver}
           data={modalData}
           feature="5.23"
+          featureText="Rate"
           handleClick={handleRepeat}
+          handleModalClose={handleModalClose}
         />
       </Modal>
     </ServiceCard>

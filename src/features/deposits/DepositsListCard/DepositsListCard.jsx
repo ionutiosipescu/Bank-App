@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 // Style
 import { ServiceCard } from "../../../components/UI/Card/Card.style";
 import { SelectAccountToggle } from "../DepositsControlerCard/DepositControlerCard.style";
@@ -29,6 +29,8 @@ import { fetchRepeatDeposit } from "../../../state-management/Dashboard/services
 import { selectCurrentUser } from "../../../state-management/Dashboard/userData/userData.selector";
 import { setSelectedOptionDepositData } from "../../../state-management/Dashboard/services/helpers/depositsHelper/depositsHelper.action";
 import { selectDepositOption } from "../../../state-management/Dashboard/services/helpers/depositsHelper/deposits.selector";
+import Modal from "./../../../components/Modal/Modal";
+import ConfirmActionModal from "./../../../components/ConfirmActionModal/ConfirmActionModal";
 
 function DepositsListCard() {
   const dispatch = useDispatch();
@@ -41,6 +43,26 @@ function DepositsListCard() {
     { value: "ron", label: "ron" },
     { value: "euro", label: "euro" },
   ];
+
+  const handleRepeat = () => {
+    dispatch(
+      fetchRepeatDeposit(modalData, filterObj, depositHistory, currentUser)
+    );
+    setModalOpen(false);
+  };
+
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalData, setModalData] = useState("");
+
+  const handleModalOpen = (id) => {
+    setModalOpen(true);
+    setModalData(depositHistory.find((transfer) => transfer.id === id));
+  };
+
+  console.log(modalData);
+  const handleModalClose = () => {
+    setModalOpen(false);
+  };
 
   return (
     <ServiceCard>
@@ -75,20 +97,21 @@ function DepositsListCard() {
               label="Repeat"
               size="sm"
               primary="primary"
-              onClick={() =>
-                dispatch(
-                  fetchRepeatDeposit(
-                    transfer,
-                    filterObj,
-                    depositHistory,
-                    currentUser
-                  )
-                )
-              }
+              onClick={() => handleModalOpen(transfer.id)}
             />
           </ListItem>
         ))}
       </ListContainer>
+      <Modal opened={modalOpen} handleClick={handleModalClose}>
+        <ConfirmActionModal
+          action="repeat"
+          type={modalData.status}
+          amount={modalData.balance}
+          data={modalData}
+          handleClick={handleRepeat}
+          handleModalClose={handleModalClose}
+        />
+      </Modal>
     </ServiceCard>
   );
 }
