@@ -24,8 +24,7 @@ export const resetForm = () => {
 };
 
 // Generate Obj for Request
-export const setObjSettings = async (settingsData, userDetail) => {
-  const newObj = { ...userDetail, ...settingsData };
-  console.log(newObj);
-  return newObj;
+export const setObjSettings = async (settingsData, userData) => {
+  const { userDetail } = userData;
+  return { ...userDetail, ...settingsData };
 };

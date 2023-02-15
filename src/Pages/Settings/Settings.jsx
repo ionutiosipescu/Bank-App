@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import DropDown from "../../components/DropDown/DropDown";
 import RadioButton from "../../components/RadioButton/RadioButton";
 import Button from "../../components/UI/Button/Button";
@@ -22,22 +22,28 @@ import {
   resetForm,
 } from "../../state-management/Dashboard/settings/settings.action";
 import { fetchSettingsData } from "../../state-management/Dashboard/settings/settings.service";
-import { selectUserDetail } from "../../state-management/Dashboard/userData/userData.selector";
+import { selectCurrentUser } from "../../state-management/Dashboard/userData/userData.selector";
+import Auth from "../../components/Auth/Auth";
+import { useState } from "react";
 
 function Settings() {
   const dispatch = useDispatch();
-  const userDetail = useSelector(selectUserDetail);
+  const userData = useSelector(selectCurrentUser);
   const settingsData = useSelector(selectSettingsData);
   const { first_name, last_name, address, mobile } = settingsData;
+  const [showAuth, setShowAuth] = useState(false);
+
   const setData = (e) => {
     dispatch(setSettingsForm(settingsData, e));
   };
 
-  const onSubmit = () => {
-    console.log(settingsData);
-    dispatch(fetchSettingsData(settingsData, userDetail));
-    // dispatch(resetForm());
-  };
+  useEffect(() => {
+    setShowAuth(false);
+  }, []);
+  // const onSubmit = () => {
+  //   dispatch(fetchSettingsData(settingsData, userData));
+  //   // dispatch(resetForm());
+  // };
 
   return (
     <SettingsContainer>
@@ -75,7 +81,13 @@ function Settings() {
           <Formik
             validationSchema={settingsSchema}
             initialValues={{ ...settingsData }}
-            onSubmit={onSubmit}
+            onSubmit={(isValid) => {
+              if (isValid) {
+                setShowAuth(true);
+              } else {
+                setShowAuth(false);
+              }
+            }}
           >
             <Form>
               <RowSettingsSection>
@@ -119,13 +131,14 @@ function Settings() {
                 />
               </RowSettingsSection>
               <Button
-                label="Save Settings"
+                label="Verify Data"
                 size="xl"
                 primary="primary"
                 type="submit"
               />
             </Form>
           </Formik>
+          {showAuth ? <Auth data={settingsData} /> : <></>}
         </AccountContainer>
       </SectionContainer>
     </SettingsContainer>
