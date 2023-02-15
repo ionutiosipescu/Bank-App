@@ -20,9 +20,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectExchangeArr } from "../../../state-management/Dashboard/services/helpers/exchangeHelper/exchangeHelper.selector";
 import { fetchExchangeRepeat } from "../../../state-management/Dashboard/services/helpers/exchangeHelper/exchangeHelper.action";
 import { selectCurrentUser } from "../../../state-management/Dashboard/userData/userData.selector";
+import { SelectAccountToggle } from "../../deposits/DepositsControlerCard/DepositControlerCard.style";
+import SmallDropdown from "../../cardsPage/Dropdown/Dropdown";
+import { DepositHeaderList } from "../../deposits/DepositsListCard/DepositsListCard.style";
+import { selectExchangeOption } from "../../../state-management/Dashboard/services/helpers/exchangeHelper/exchangeHelper.selector";
+import { setSelectedOptionExchange } from "../../../state-management/Dashboard/services/helpers/exchangeHelper/exchangeHelper.action";
 
 function ExchangeList() {
   const dispatch = useDispatch();
+  const selectedOptionExchange = useSelector(selectExchangeOption);
   const exchangeArr = useSelector(selectExchangeArr);
   const currentUser = useSelector(selectCurrentUser);
   const setExchangeArr = (currency) => {
@@ -31,11 +37,26 @@ function ExchangeList() {
     return string;
   };
 
+  const options = [
+    { value: "ron", label: `RON \u{2194} EURO` },
+    { value: "euro", label: `EURO \u{2194} RON` },
+  ];
+
   return (
     <ServiceCard>
-      <CardHeader>
+      <DepositHeaderList>
         <h2>Exchanges</h2>
-      </CardHeader>
+        <SelectAccountToggle>
+          <span>Filter: </span>
+          <SmallDropdown
+            options={options}
+            selectedOption={selectedOptionExchange?.account}
+            handleChange={(e) =>
+              dispatch(setSelectedOptionExchange(e, selectedOptionExchange))
+            }
+          />
+        </SelectAccountToggle>
+      </DepositHeaderList>
       <ListContainer>
         {exchangeArr.map((transfer, index) => (
           <ListItem key={index}>

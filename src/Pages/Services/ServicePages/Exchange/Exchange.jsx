@@ -8,15 +8,16 @@ import { useEffect } from "react";
 import { selectCurrentUser } from "../../../../state-management/Dashboard/userData/userData.selector";
 import { selectExchangeData } from "../../../../state-management/Dashboard/services/helpers/exchangeHelper/exchangeHelper.selector";
 import { getExchangeArr } from "../../../../state-management/Dashboard/services/helpers/exchangeHelper/exchangeHelper.action";
+import { selectExchangeOption } from "../../../../state-management/Dashboard/services/helpers/exchangeHelper/exchangeHelper.selector";
 
 function Exchange() {
-  const exchangeObj = useSelector(selectExchangeData);
+  const selectedOptionExchange = useSelector(selectExchangeOption);
   const currentUser = useSelector(selectCurrentUser);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getExchangeArr(exchangeObj, currentUser));
-  }, []);
+    dispatch(getExchangeArr(selectedOptionExchange, currentUser));
+  }, [selectedOptionExchange]);
   return (
     <ExchangeWrapper>
       <ExchangeList />
