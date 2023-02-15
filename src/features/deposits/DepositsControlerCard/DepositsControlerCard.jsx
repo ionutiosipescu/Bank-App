@@ -34,31 +34,31 @@ import RadioButton from "../../../components/RadioButton/RadioButton";
 import { setDepositAccount } from "../../../state-management/Dashboard/services/helpers/depositsHelper/depositsHelper.action";
 import { fetchDepositData } from "../../../state-management/Dashboard/services/helpers/depositsHelper/deposit.service";
 import { selectCurrentUser } from "../../../state-management/Dashboard/userData/userData.selector";
+import { selectDeposit } from "../../../state-management/Dashboard/services/helpers/depositsHelper/deposits.selector";
+import SmallDropdown from "../../cardsPage/Dropdown/Dropdown";
 
 function DepositsControlerCard() {
+  const options = [
+    { value: "ron", label: "ron" },
+    { value: "euro", label: "euro" },
+  ];
   const dispatch = useDispatch();
   const depositAction = useSelector(selectDepositAction);
   const depositFormData = useSelector(selectDepositForm);
   const depositArr = useSelector(selectDepositArr);
   const currentUserData = useSelector(selectCurrentUser);
+  const depositDataReducer = useSelector(selectDeposit);
 
   const setData = debounce((e) => {
     dispatch(setDepositForm(depositFormData, e));
   }, 500);
 
   const onSubmit = () => {
-    dispatch(
-      fetchDepositData(
-        depositFormData,
-        depositAction,
-        depositArr,
-        currentUserData
-      )
-    );
+    dispatch(fetchDepositData(depositDataReducer, currentUserData));
   };
-  const setDataToggle = (account) => {
-    dispatch(setDepositAccount(depositFormData, account));
-  };
+  // const setDataToggle = (account) => {
+  //   dispatch(setDepositAccount(depositFormData, account));
+  // };
 
   // const handleDepositAction = (type) => {
   //   dispatch(setDepositAction(type));
@@ -128,11 +128,18 @@ function DepositsControlerCard() {
             />
             <SelectAccountToggle>
               <span>Select your account: </span>
-              <RadioButton
+              {/* <RadioButton
                 firstText="euro"
                 secondText="ron"
                 name="account"
                 setDataToggle={setDataToggle}
+              /> */}
+              <SmallDropdown
+                options={options}
+                selectedOption={depositDataReducer.depositObj.account}
+                handleChange={(e) =>
+                  dispatch(setDepositAccount(depositDataReducer.depositObj, e))
+                }
               />
             </SelectAccountToggle>
           </FormContainerInputs>

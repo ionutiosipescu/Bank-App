@@ -22,15 +22,17 @@ export const setDepositForm = (depositData, e) => {
 };
 
 // update Deposit Account
-export const setDepositAccount = (depositData, string) => {
-  const depositDataObj = { ...depositData, account: string };
+export const setDepositAccount = (depositData, e) => {
+  const { value } = e.target;
+  const depositDataObj = { ...depositData, account: value };
   return createAction(DEPOSITS_HELPER_TYPES.SET_DEPOSIT_FORM, depositDataObj);
 };
 
 // Update Deposit Arr
 
-export const setDepositArr = (obj, action, arr) => {
-  const { amount } = obj;
+export const setDepositArr = (data) => {
+  const { depositObj, depositAction, depositArr, selectedOption } = data;
+  const { amount } = depositObj;
   const formattedDate = getLocalDate();
   const idDeposit = generateRandomNumber(3).toString();
   const newObj = {
@@ -38,31 +40,31 @@ export const setDepositArr = (obj, action, arr) => {
     date: formattedDate,
     id: idDeposit,
     details: "",
-    status: action,
+    status: depositAction,
   };
-  // console.log(newObj);
-  const newDepositArr = [...arr, { ...newObj }];
+  const newDepositArr = [...depositArr, { ...newObj }];
   return createAction(DEPOSITS_HELPER_TYPES.SET_DEPOSIT_ARR, newDepositArr);
 };
 
 // Set Data for Request
-export const setDepositData = async (obj, action) => {
-  const { amount } = obj;
+export const setDepositData = async (data) => {
+  const { depositObj, depositAction } = data;
+  const { amount } = depositObj;
   const date = getLocalDate();
-  const formatedAction = LowercaseString(action);
+  const formatedAction = LowercaseString(depositAction);
   const depositData = {
     date: date,
     details: "",
     balance: amount,
     status: formatedAction,
   };
-  console.log(depositData);
   return depositData;
 };
 
 // Find Account ID
-export const setDepositId = async (obj, currentUserData) => {
-  let { account } = obj;
+export const setDepositId = async (data, currentUserData) => {
+  const { account } = data;
+  console.log(account);
   const userAccountArr = currentUserData.account;
   const stringCompare = "currency";
   const object = findObjectByString(account, userAccountArr, stringCompare);
@@ -96,17 +98,8 @@ export const formatDataRepet = async (obj) => {
 
 // Selected Option
 
-export const setFilterDepositList = (string, filter) => {
-  const newObj = { ...filter, account: string };
-  return createAction(DEPOSITS_HELPER_TYPES.SET_DEPOSIT_FILTER, newObj);
-};
-export const setSelectedOptionDeposit = (string) => {
-  return createAction(DEPOSITS_HELPER_TYPES.SET_DEPOSIT_OPTION, string);
-};
-export const setSelectedOptionDepositData = (e, filter) => {
-  return async (dispatch) => {
-    const { value } = e.target;
-    await dispatch(setSelectedOptionDeposit(value));
-    await dispatch(setFilterDepositList(value, filter));
-  };
+export const setSelectedOptionDeposit = (e, filter) => {
+  const { value } = e.target;
+  const newObj = { ...filter, account: value };
+  return createAction(DEPOSITS_HELPER_TYPES.SET_DEPOSIT_OPTION, newObj);
 };

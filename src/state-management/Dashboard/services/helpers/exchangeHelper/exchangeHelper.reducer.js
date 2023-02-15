@@ -7,6 +7,9 @@ const INITIAL_STATE = {
     amountToObj: "",
   },
   exchangeArr: [],
+  selectedOption: {
+    account: "ron",
+  },
 };
 
 export const exchangeHelperReducer = (state = INITIAL_STATE, action) => {
@@ -17,6 +20,8 @@ export const exchangeHelperReducer = (state = INITIAL_STATE, action) => {
       return { ...state, exchangeData: { ...payload } };
     case EXCHANGE_HELPER_TYPES.SET_EXCHANGE_ARR:
       return { ...state, exchangeArr: [...payload] };
+    case EXCHANGE_HELPER_TYPES.SET_EXCHANGE_OPTION:
+      return { ...state, selectedOption: { ...payload } };
     default:
       return state;
   }

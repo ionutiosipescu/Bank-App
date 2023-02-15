@@ -35,10 +35,10 @@ const setExchangeData = async (obj) => {
 };
 
 export const setExchangeId = (obj, currentUserData) => {
-  const { currency } = obj;
+  const { account } = obj;
   const stringCompare = "currency";
   const userAccountArr = currentUserData.account;
-  const object = findObjectByString(currency, userAccountArr, stringCompare);
+  const object = findObjectByString(account, userAccountArr, stringCompare);
   return object.id;
 };
 
@@ -132,4 +132,12 @@ export const fetchExchangeRepeat = (obj, arr, currentUserData) => {
       console.log(error);
     }
   };
+};
+
+// Selected Option
+
+export const setSelectedOptionExchange = (e, filter) => {
+  const { value } = e.target;
+  const newObj = { ...filter, account: value };
+  return createAction(EXCHANGE_HELPER_TYPES.SET_EXCHANGE_OPTION, newObj);
 };

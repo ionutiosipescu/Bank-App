@@ -10,11 +10,10 @@ const INITIAL_STATE = {
     amount: "",
     account: "ron",
   },
-  filterAccount: {
+  depositArr: [],
+  selectedOption: {
     account: "ron",
   },
-  depositArr: [],
-  selectedOption: "",
 };
 
 export const depositHelperReducer = (state = INITIAL_STATE, action) => {
@@ -27,10 +26,8 @@ export const depositHelperReducer = (state = INITIAL_STATE, action) => {
       return { ...state, depositObj: { ...payload } };
     case DEPOSITS_HELPER_TYPES.SET_DEPOSIT_ARR:
       return { ...state, depositArr: [...payload] };
-    case DEPOSITS_HELPER_TYPES.SET_DEPOSIT_FILTER:
-      return { ...state, filterAccount: { ...payload } };
     case DEPOSITS_HELPER_TYPES.SET_DEPOSIT_OPTION:
-      return { ...state, selectedOption: payload };
+      return { ...state, selectedOption: { ...payload } };
     default:
       return state;
   }

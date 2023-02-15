@@ -27,14 +27,17 @@ import { upperCaseFirst } from "../../../utils/helpers/helperFunctions/upperCase
 import { selectDepositFilter } from "../../../state-management/Dashboard/services/helpers/depositsHelper/deposits.selector";
 import { fetchRepeatDeposit } from "../../../state-management/Dashboard/services/helpers/depositsHelper/deposit.service";
 import { selectCurrentUser } from "../../../state-management/Dashboard/userData/userData.selector";
-import { setSelectedOptionDepositData } from "../../../state-management/Dashboard/services/helpers/depositsHelper/depositsHelper.action";
+import SmallDropdown from "../../cardsPage/Dropdown/Dropdown";
+import { options } from "./../../../utils/data/plancardregisterData";
+import { useState } from "react";
+import { useEffect } from "react";
+import { setSelectedOptionDeposit } from "../../../state-management/Dashboard/services/helpers/depositsHelper/depositsHelper.action";
 import { selectDepositOption } from "../../../state-management/Dashboard/services/helpers/depositsHelper/deposits.selector";
 
 function DepositsListCard() {
   const dispatch = useDispatch();
   const selectedOptionDeposit = useSelector(selectDepositOption);
   const depositHistory = useSelector(selectDepositArr);
-  const filterObj = useSelector(selectDepositFilter);
   const currentUser = useSelector(selectCurrentUser);
 
   const options = [
@@ -50,15 +53,15 @@ function DepositsListCard() {
           <span>Filter: </span>
           <SmallDropdown
             options={options}
-            selectedOption={selectedOptionDeposit}
+            selectedOption={selectedOptionDeposit.account}
             handleChange={(e) =>
-              dispatch(setSelectedOptionDepositData(e, filterObj))
+              dispatch(setSelectedOptionDeposit(e, selectedOptionDeposit))
             }
           />
         </SelectAccountToggle>
       </DepositHeaderList>
       <ListContainer>
-        {depositHistory.map((transfer, index) => (
+        {depositHistory?.map((transfer, index) => (
           <ListItem key={index}>
             <ListItemSection>
               <LabelAction action={upperCaseFirst(transfer?.status)}>
@@ -79,7 +82,7 @@ function DepositsListCard() {
                 dispatch(
                   fetchRepeatDeposit(
                     transfer,
-                    filterObj,
+                    selectedOptionDeposit,
                     depositHistory,
                     currentUser
                   )

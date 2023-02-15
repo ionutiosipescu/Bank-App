@@ -30,6 +30,7 @@ import { setExchangeAmountTo } from "../../../state-management/Dashboard/service
 function ExchangeInputCard() {
   const dispatch = useDispatch();
   const excangeData = useSelector(selectExchangeData);
+  const { currency } = excangeData;
   const exchangeArr = useSelector(selectExchangeArr);
   const currentUser = useSelector(selectCurrentUser);
   const [amount1, setAmount1] = useState(1);

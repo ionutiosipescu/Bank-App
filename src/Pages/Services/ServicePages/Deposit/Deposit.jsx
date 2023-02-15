@@ -12,12 +12,13 @@ import { useDispatch } from "react-redux";
 import { selectCurrentUser } from "../../../../state-management/Dashboard/userData/userData.selector";
 import { selectDepositForm } from "../../../../state-management/Dashboard/services/helpers/depositsHelper/deposits.selector";
 import { getDepositArrDb } from "../../../../state-management/Dashboard/services/helpers/depositsHelper/deposit.service";
-import { selectDepositFilter } from "../../../../state-management/Dashboard/services/helpers/depositsHelper/deposits.selector";
+import { useEffect } from "react";
+import { selectDepositOption } from "../../../../state-management/Dashboard/services/helpers/depositsHelper/deposits.selector";
 
 function Deposit() {
   const dispatch = useDispatch();
   const currentUser = useSelector(selectCurrentUser);
-  const filterObj = useSelector(selectDepositFilter);
+  const filterObj = useSelector(selectDepositOption);
 
   useEffect(() => {
     dispatch(getDepositArrDb(filterObj, currentUser));
