@@ -7,6 +7,10 @@ const INITIAL_STATE = {
     first_name: "",
     last_name: "",
   },
+  auth: {
+    username: "",
+    password: "",
+  },
 };
 
 export const settingsReducer = (state = INITIAL_STATE, action) => {
@@ -15,6 +19,9 @@ export const settingsReducer = (state = INITIAL_STATE, action) => {
   switch (type) {
     case SETTINGS_TYPES.SET_SETTINGS:
       return { ...state, settingsData: { ...payload } };
+    case SETTINGS_TYPES.SET_AUTH:
+      return { ...state, auth: { ...payload } };
+
     default:
       return state;
   }

@@ -6,9 +6,9 @@ const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$/;
 export const AuthSchema = yup.object().shape({
   username: yup
     .string()
+    .required("Required")
     .min(2, "Display name must be at least 2 characters long")
-    .max(120, "Display name is too long")
-    .required("Required"),
+    .max(120, "Display name is too long"),
   password: yup
     .string()
     .min(5)

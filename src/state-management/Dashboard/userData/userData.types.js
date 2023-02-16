@@ -1,4 +1,3 @@
 export const USER_DATA_TYPES = {
   SET_CURRENT_USER: "SET_CURRENT_USER",
-  SET_AUTH: "SET_AUTH",
 };

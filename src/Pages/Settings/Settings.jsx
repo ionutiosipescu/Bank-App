@@ -25,25 +25,20 @@ import { fetchSettingsData } from "../../state-management/Dashboard/settings/set
 import { selectCurrentUser } from "../../state-management/Dashboard/userData/userData.selector";
 import Auth from "../../components/Auth/Auth";
 import { useState } from "react";
+import CustomInputSettings from "../../components/CustomInputs/CustomInputSettings";
+import { setValidateForm } from "../../state-management/Dashboard/settings/settings.action";
+import { selectValidateForm } from "../../state-management/Dashboard/settings/settings.selector";
 
 function Settings() {
   const dispatch = useDispatch();
-  const userData = useSelector(selectCurrentUser);
   const settingsData = useSelector(selectSettingsData);
   const { first_name, last_name, address, mobile } = settingsData;
   const [showAuth, setShowAuth] = useState(false);
 
   const setData = (e) => {
+    console.log(e.target.value);
     dispatch(setSettingsForm(settingsData, e));
   };
-
-  useEffect(() => {
-    setShowAuth(false);
-  }, []);
-  // const onSubmit = () => {
-  //   dispatch(fetchSettingsData(settingsData, userData));
-  //   // dispatch(resetForm());
-  // };
 
   return (
     <SettingsContainer>
@@ -91,7 +86,7 @@ function Settings() {
           >
             <Form>
               <RowSettingsSection>
-                <CustomInput
+                <CustomInputSettings
                   label="Firstname"
                   name="first_name"
                   type="text"
@@ -100,7 +95,7 @@ function Settings() {
                   setData={setData}
                   value={first_name || ""}
                 />
-                <CustomInput
+                <CustomInputSettings
                   label="Lastname"
                   name="last_name"
                   type="text"
@@ -111,7 +106,7 @@ function Settings() {
                 />
               </RowSettingsSection>
               <RowSettingsSection>
-                <CustomInput
+                <CustomInputSettings
                   label="Phone number"
                   name="mobile"
                   type="number"
@@ -120,7 +115,7 @@ function Settings() {
                   setData={setData}
                   value={mobile || ""}
                 />
-                <CustomInput
+                <CustomInputSettings
                   label="Address"
                   name="address"
                   type="text"
@@ -138,7 +133,7 @@ function Settings() {
               />
             </Form>
           </Formik>
-          {showAuth ? <Auth data={settingsData} /> : <></>}
+          {showAuth ? <Auth /> : <></>}
         </AccountContainer>
       </SectionContainer>
     </SettingsContainer>
@@ -146,21 +141,3 @@ function Settings() {
 }
 
 export default Settings;
-
-//  mobile, address, first_name, last_name
-
-{
-  /* <h2>Account</h2>
-<RowSettingsSection>
-  <Input label="Username" large />
-  <Input label="Phone" large />
-</RowSettingsSection>
-<RowSettingsSection>
-  <Input label="Email" large />
-  <Input label="Password" large />
-</RowSettingsSection>
-<RowSettingsSection>
-  <Input label="Address" placeholder="City" large />
-  <Input placeholder="Number, Suite, etc ..." large />
-</RowSettingsSection> */
-}

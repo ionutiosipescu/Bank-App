@@ -5,23 +5,25 @@ import CustomInput from "../CustomInputs/CustomInput";
 import Button from "../UI/Button/Button";
 import { AuthSchema } from "./ValidationSchema/ValidationSchema";
 import { useSelector, useDispatch } from "react-redux";
-import { selectAuth } from "../../state-management/Dashboard/userData/userData.selector";
-import { setAuthForm } from "../../state-management/Dashboard/userData/userData.action";
-import { fetchAuthData } from "../../state-management/Dashboard/userData/userData.service";
+import { selectAuth } from "../../state-management/Dashboard/settings/settings.selector";
+import { setAuthForm } from "../../state-management/Dashboard/settings/settings.action";
 import { selectCurrentUser } from "../../state-management/Dashboard/userData/userData.selector";
+import { selectSettingsData } from "../../state-management/Dashboard/settings/settings.selector";
+import { fetchAuthData } from "../../state-management/Dashboard/settings/settings.service";
 
-function Auth({ ...props }) {
+function Auth() {
   const dispatch = useDispatch();
-  const { data } = props;
   const userData = useSelector(selectCurrentUser);
+  const settingsData = useSelector(selectSettingsData);
   const authData = useSelector(selectAuth);
+  const { username, password } = authData;
 
   const setData = (e) => {
     dispatch(setAuthForm(authData, e));
   };
 
   const onSubmit = () => {
-    dispatch(fetchAuthData(data, userData, authData));
+    dispatch(fetchAuthData(settingsData, userData, authData));
   };
 
   return (
@@ -39,7 +41,7 @@ function Auth({ ...props }) {
             tall
             placeholder="Enter your display name"
             setData={setData}
-            //   value={username || ""}
+            value={username || ""}
           />
           <CustomInput
             label="Password"
@@ -48,7 +50,7 @@ function Auth({ ...props }) {
             tall
             placeholder="Enter your password"
             setData={setData}
-            //   value={password || ""}
+            value={password || ""}
           />
         </RowSettingsSection>
         <Button
