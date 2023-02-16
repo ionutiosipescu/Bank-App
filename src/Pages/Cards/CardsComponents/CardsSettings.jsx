@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchGetCardAccountArr } from "../../../state-management/Dashboard/cards/cards.service";
 import { selectCurrentUser } from "../../../state-management/Dashboard/userData/userData.selector";
 
-function BottomComponent() {
+function CardsSettings() {
   const dispatch = useDispatch();
 
   const currentUser = useSelector(selectCurrentUser);
@@ -58,4 +58,4 @@ function BottomComponent() {
   );
 }
 
-export default BottomComponent;
+export default CardsSettings;

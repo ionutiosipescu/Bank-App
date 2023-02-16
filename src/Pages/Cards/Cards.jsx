@@ -1,12 +1,12 @@
 import React from "react";
-import TopComponent from "./CardsComponents/TopComponent";
-import BottomComponent from "./CardsComponents/BottomComponent";
+import CardsInfo from "./CardsComponents/CardsInfo";
+import CardsSettings from "./CardsComponents/CardsSettings";
 
 function Cards() {
   return (
     <>
-      <TopComponent />
-      <BottomComponent />
+      <CardsInfo />
+      <CardsSettings />
     </>
   );
 }
