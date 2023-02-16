@@ -57,3 +57,9 @@ export const ListItemSectionTransfer = styled.div`
     justify-content: space-between;
   }
 `;
+
+export const ButtonsTransferBox = styled.div`
+  margin-left: 20px;
+  display: flex;
+  gap: 15px;
+`;

@@ -103,6 +103,7 @@ export const setTransferId = async (obj, currentUserData) => {
 export const getTransferArr = (obj, currentUserData) => {
   return async (dispatch) => {
     const id = await setTransferId(obj, currentUserData);
+    console.log(id);
     // if (!id) return;
     const { data } = await axios.get(
       `http://localhost:8080/transfers/?id=${id}`
@@ -130,7 +131,7 @@ export const fetchTransferData = (
     try {
       const transferDataRequest = await setTransferData(transferData);
       const id = await setTransferId(transferData, currentUserData);
-      console.log(id);
+      console.log(id, transferDataRequest);
       await axios
         .post(
           `http://localhost:8080/transfers/transfer/?id=${id}&email=${transferData.email}`,
@@ -143,8 +144,32 @@ export const fetchTransferData = (
   };
 };
 
+// // Async Repeat Transfer Data
+// ca sa fac un repeat din cate am inteles trebuie sa :
+// ma autentific ca sa obtin un obiect cu username si parola
+// sa le folosesc in primul request http://localhost:8080/bank/auth/signin
+// dupa care primes token si il trimit la http://localhost:8080/user/${id} ca sa obtin emailul recieverului
+// si in felul asta pot sa repet un transfer care va fi necesar un al 3-lea request dupa ce obtin emailul, trebuie sa folosesc id si cateva date din acel transfer
+// aceasi problema va si si la details
+// export const fetchRepeatTransferData = (repeatObj) => {
+//   return async (dispatch) => {
+//     try {
+//     } catch (err) {
+//       console.log(err);
+//     }
+//   };
+// };
+
 // Set Detail Transfer
 
 export const setDetailTransfer = (obj) => {
   return createAction(TRANSFER_HELPER_TYPES.SET_DETAIL_TRANSFER, obj);
+};
+
+// Selected Option
+
+export const setSelectedOptionTransfer = (e, filter) => {
+  const { value } = e.target;
+  const newObj = { ...filter, account: value };
+  return createAction(TRANSFER_HELPER_TYPES.SET_TRANSFER_OPTION, newObj);
 };

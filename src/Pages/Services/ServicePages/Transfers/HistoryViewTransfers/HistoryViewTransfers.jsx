@@ -15,37 +15,39 @@ import {
   ListItemSectionTransfer,
   RecentUserContainer,
   NewTransferCard,
+  ButtonsTransferBox,
 } from "./HistoryViewTransfers.style";
 
 // Components
 import LinkButton from "../../../../../components/UI/LinkButton/LinkButton";
 import LabelList from "../../../../../components/UI/LabelList/LabelList";
 import UserCard from "../../../../../components/UserCard/UserCard";
-
+import Button from "../../../../../components/UI/Button/Button";
+import { selectOptionTransfer } from "../../../../../state-management/Dashboard/services/helpers/transfersHelper/transferHelper.selector";
+import { setSelectedOptionTransfer } from "../../../../../state-management/Dashboard/services/helpers/transfersHelper/transferHelper.action";
+import SmallDropdown from "../../../../../features/cardsPage/Dropdown/Dropdown";
+import { SelectAccountToggle } from "../../../../../features/deposits/DepositsControlerCard/DepositControlerCard.style";
 // State/Redux
 
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { selectTransferArr } from "../../../../../state-management/Dashboard/services/helpers/transfersHelper/transferHelper.selector";
-import { getTransferArr } from "../../../../../state-management/Dashboard/services/helpers/transfersHelper/transferHelper.action";
-import { selectCurrentUser } from "../../../../../state-management/Dashboard/userData/userData.selector";
-import { selectTransferForm } from "../../../../../state-management/Dashboard/services/helpers/transfersHelper/transferHelper.selector";
 import { setDetailTransfer } from "../../../../../state-management/Dashboard/services/helpers/transfersHelper/transferHelper.action";
 
 // !Dummy Data &  Test Component
-import TransferDetails from "../../../../../components/Test/Test";
 import { accounts } from "../../../../../utils/data/dummyData";
 import Fallback from "../../../../../components/Fallback/Fallback";
 
 function HisotryViewTransfers({ dataServices }) {
   const dispatch = useDispatch();
-  const transferForm = useSelector(selectTransferForm);
-  const currentUser = useSelector(selectCurrentUser);
+  const transferOption = useSelector(selectOptionTransfer);
   const transferArr = useSelector(selectTransferArr);
 
-  useEffect(() => {
-    dispatch(getTransferArr(transferForm, currentUser));
-  }, []);
+  const options = [
+    { value: "ron", label: "ron" },
+    { value: "euro", label: "euro" },
+  ];
+
   return (
     <>
       <NewContainer>
@@ -74,6 +76,16 @@ function HisotryViewTransfers({ dataServices }) {
       <ServiceViewCard>
         <CardHeader style={{ height: "10%" }}>
           <h2>Transfers</h2>
+          <SelectAccountToggle>
+            <span>Filter: </span>
+            <SmallDropdown
+              options={options}
+              selectedOption={transferOption?.account}
+              handleChange={(e) =>
+                dispatch(setSelectedOptionTransfer(e, transferOption))
+              }
+            />
+          </SelectAccountToggle>
         </CardHeader>
         <ListContainer>
           {transferArr.length > 0 ? (
@@ -92,13 +104,21 @@ function HisotryViewTransfers({ dataServices }) {
                       {transfer.status || "Completed"}
                     </LabelList>
                   </ListItemSectionTransfer>
-                  <LinkButton
-                    size="sm"
-                    label="Details"
-                    primary="primary"
-                    to="/services/transfers/transferdetails"
-                    handleClick={() => dispatch(setDetailTransfer(transfer))}
-                  />
+                  <ButtonsTransferBox>
+                    <LinkButton
+                      size="sm"
+                      label="Details"
+                      primary="primary"
+                      to="/services/transfers/transferdetails"
+                      handleClick={() => dispatch(setDetailTransfer(transfer))}
+                    />
+                    <Button
+                      label="Repeat"
+                      size="sm"
+                      primary="primary"
+                      onClick={() => console.log(transfer)}
+                    />
+                  </ButtonsTransferBox>
                 </ListItem>
               ))}
             </>

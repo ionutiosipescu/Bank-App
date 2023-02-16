@@ -11,6 +11,9 @@ const INITIAL_STATE = {
   },
   transferArr: [],
   detailTransfer: {},
+  selectedOption: {
+    account: "ron",
+  },
 };
 
 export const transferHelperReducer = (state = INITIAL_STATE, action) => {
@@ -25,6 +28,8 @@ export const transferHelperReducer = (state = INITIAL_STATE, action) => {
       return { ...state, transferArr: [...payload] };
     case TRANSFER_HELPER_TYPES.SET_DETAIL_TRANSFER:
       return { ...state, detailTransfer: { ...payload } };
+    case TRANSFER_HELPER_TYPES.SET_TRANSFER_OPTION:
+      return { ...state, selectedOption: { ...payload } };
     default:
       return state;
   }
