@@ -10,6 +10,7 @@ const INITIAL_STATE = {
     account: "ron",
   },
   transferArr: [],
+  detailTransfer: {},
 };
 
 export const transferHelperReducer = (state = INITIAL_STATE, action) => {
@@ -22,6 +23,8 @@ export const transferHelperReducer = (state = INITIAL_STATE, action) => {
       return { ...state, transferForm: { ...payload } };
     case TRANSFER_HELPER_TYPES.SET_TRANSFER_ARR:
       return { ...state, transferArr: [...payload] };
+    case TRANSFER_HELPER_TYPES.SET_DETAIL_TRANSFER:
+      return { ...state, detailTransfer: { ...payload } };
     default:
       return state;
   }

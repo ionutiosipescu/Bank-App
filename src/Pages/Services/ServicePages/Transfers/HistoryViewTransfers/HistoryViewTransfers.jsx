@@ -30,6 +30,8 @@ import { selectTransferArr } from "../../../../../state-management/Dashboard/ser
 import { getTransferArr } from "../../../../../state-management/Dashboard/services/helpers/transfersHelper/transferHelper.action";
 import { selectCurrentUser } from "../../../../../state-management/Dashboard/userData/userData.selector";
 import { selectTransferForm } from "../../../../../state-management/Dashboard/services/helpers/transfersHelper/transferHelper.selector";
+import { setDetailTransfer } from "../../../../../state-management/Dashboard/services/helpers/transfersHelper/transferHelper.action";
+// import { selectDetailTransfer } from "../../../../../state-management/Dashboard/services/helpers/transfersHelper/transferHelper.selector";
 
 // !Dummy Data &  Test Component
 import TransferDetails from "../../../../../components/Test/Test";
@@ -41,12 +43,6 @@ function HisotryViewTransfers({ dataServices }) {
   const transferForm = useSelector(selectTransferForm);
   const currentUser = useSelector(selectCurrentUser);
   const transferArr = useSelector(selectTransferArr);
-
-  const [transferData, setTransferData] = useState("");
-
-  const handleTransferdetails = (id) => {
-    setTransferData(transferArr.find((transfer) => transfer.id === id));
-  };
 
   useEffect(() => {
     dispatch(getTransferArr(transferForm, currentUser));
@@ -102,7 +98,7 @@ function HisotryViewTransfers({ dataServices }) {
                     label="Details"
                     primary="primary"
                     to="/services/transfers/transferdetails"
-                    onClick={() => handleTransferdetails(transfer.id)}
+                    handleClick={() => dispatch(setDetailTransfer(transfer))}
                   />
                 </ListItem>
               ))}

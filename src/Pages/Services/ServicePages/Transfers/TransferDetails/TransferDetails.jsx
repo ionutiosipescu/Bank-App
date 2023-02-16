@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Header,
   TransferDetailsCard,
@@ -12,8 +12,12 @@ import {
 } from "./TransferDetails.style";
 import Button from "./../../../../../components/UI/Button/Button";
 import avatar from "./../../../../../assets/images/avatar-2.png";
+import { useSelector } from "react-redux";
+import { selectDetailTransfer } from "../../../../../state-management/Dashboard/services/helpers/transfersHelper/transferHelper.selector";
 
 function TransferDetails() {
+  const detailTransfer = useSelector(selectDetailTransfer);
+
   return (
     <TransferDetailsCard>
       <Header>

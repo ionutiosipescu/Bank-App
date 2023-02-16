@@ -142,3 +142,9 @@ export const fetchTransferData = (
     }
   };
 };
+
+// Set Detail Transfer
+
+export const setDetailTransfer = (obj) => {
+  return createAction(TRANSFER_HELPER_TYPES.SET_DETAIL_TRANSFER, obj);
+};
