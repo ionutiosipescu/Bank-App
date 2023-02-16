@@ -35,6 +35,11 @@ export const settingsReducer = (state = INITIAL_STATE, action) => {
         errorMsg: payload,
         showMessage: true,
       };
+    case SETTINGS_TYPES.RESET_SHOW_MSG:
+      return {
+        ...state,
+        showMessage: false,
+      };
     default:
       return state;
   }

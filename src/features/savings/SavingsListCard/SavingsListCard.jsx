@@ -10,6 +10,7 @@ import {
   AmountContainer,
   IdContainer,
   ListIcon,
+  ButtonsControlerBox,
 } from "./SavingsListCard.style";
 
 import { BsCashStack } from "react-icons/bs";
@@ -45,8 +46,10 @@ function SavingsListCard() {
                   <AmountContainer>Sum: {saving.transfer}</AmountContainer>
                   <IdContainer>ID {saving.id}</IdContainer>
                 </ListItemSection>
-                {/* <Button label="Top-Up" size="sm" primary="primary" /> */}
-                <Button label="Withdraw" size="sm" primary="primary" />
+                <ButtonsControlerBox>
+                  <Button label="Top-Up" size="sm" primary="primary" />
+                  <Button label="Withdraw" size="sm" primary="primary" />
+                </ButtonsControlerBox>
               </ListItem>
             ))}
           </>

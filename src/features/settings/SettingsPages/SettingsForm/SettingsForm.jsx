@@ -16,6 +16,8 @@ import { AccountContainer } from "../../../../pages/Settings/Settings.style";
 import Auth from "../../../../components/Auth/Auth";
 import { SettingsFormWrapper } from "../../../../pages/Settings/Settings.style";
 import StatusMessage from "../../../../components/UI/StatusMessage/StatusMessage";
+import { setResetShowMsg } from "../../../../state-management/Dashboard/settings/settings.action";
+import { useEffect } from "react";
 
 function SettingsForm() {
   const dispatch = useDispatch();
@@ -26,6 +28,11 @@ function SettingsForm() {
   const setData = (e) => {
     dispatch(setSettingsForm(settingsData, e));
   };
+
+  useEffect(() => {
+    dispatch(setResetShowMsg());
+  }, []);
+
   return (
     <SettingsFormWrapper>
       <TitleSettings>Edit Your Account</TitleSettings>
