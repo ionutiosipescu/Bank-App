@@ -8,7 +8,6 @@ const phoneSchema = yup
   .max(11, "Invalid number")
   .required();
 
-// Personal Form
 export const settingsSchema = yup.object().shape({
   first_name: yup
     .string()

@@ -91,12 +91,11 @@ export const setTransferData = async (transferData) => {
 
 // Find Account ID
 export const setTransferId = async (obj, currentUserData) => {
-  let { account } = obj;
-  console.log(account);
+  const { account } = obj;
   const userAccountArr = currentUserData.account;
   const stringCompare = "currency";
+  console.log(account, userAccountArr, stringCompare);
   const object = findObjectByString(account, userAccountArr, stringCompare);
-  console.log(object.id);
   return object.id;
 };
 
@@ -104,6 +103,7 @@ export const setTransferId = async (obj, currentUserData) => {
 export const getTransferArr = (obj, currentUserData) => {
   return async (dispatch) => {
     const id = await setTransferId(obj, currentUserData);
+    // if (!id) return;
     const { data } = await axios.get(
       `http://localhost:8080/transfers/?id=${id}`
     );
@@ -130,6 +130,7 @@ export const fetchTransferData = (
     try {
       const transferDataRequest = await setTransferData(transferData);
       const id = await setTransferId(transferData, currentUserData);
+      console.log(id);
       await axios
         .post(
           `http://localhost:8080/transfers/transfer/?id=${id}&email=${transferData.email}`,

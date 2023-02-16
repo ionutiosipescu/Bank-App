@@ -80,3 +80,9 @@ export const IdContainer = styled.h3`
 export const IdList = styled.p`
   color: var(--purple);
 `;
+
+export const ButtonsControlerBox = styled.div`
+  display: flex;
+  gap: 20px;
+  margin-left: 20px;
+`;

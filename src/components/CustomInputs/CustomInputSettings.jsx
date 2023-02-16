@@ -1,10 +1,14 @@
 import { useField } from "formik";
 import { Group, InputForm, Error } from "../UI/Input/Input.style";
 import "../UI/Input/Input.css";
+import { settingsSchema } from "../../features/settings/ValidationSchema/ValidationSchema";
+import { useFormikContext } from "formik";
+import { useEffect } from "react";
 
-const CustomInput = ({ label, ...props }) => {
+const CustomInputSettings = ({ label, ...props }) => {
   // fiedl , meta, helpers
-  const [field, meta, helpers] = useField(props);
+  const [field, meta] = useField(props);
+
   return (
     <>
       <Group>
@@ -24,4 +28,4 @@ const CustomInput = ({ label, ...props }) => {
     </>
   );
 };
-export default CustomInput;
+export default CustomInputSettings;

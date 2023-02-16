@@ -83,6 +83,7 @@ export const filterRemoveArr = async (currentEditCard, cardArr) => {
 export const fetchRemoveCard = (currentEditCard, cardArr) => {
   const { id } = currentEditCard;
   return async (dispatch) => {
+    console.log(id);
     await axios.delete(`http://localhost:8080/accounts/delete?id=${id}`);
     const newArr = await filterRemoveArr(currentEditCard, cardArr);
     await dispatch(setCardArr(newArr));

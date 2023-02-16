@@ -12,13 +12,16 @@ import SmallDropdown from "../../../features/cardsPage/Dropdown/Dropdown";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchGetCardAccountArr } from "../../../state-management/Dashboard/cards/cards.service";
 import { selectCurrentUser } from "../../../state-management/Dashboard/userData/userData.selector";
+import { selectCardOption } from "../../../state-management/Dashboard/cards/cards.selector";
+import { setSelectedCardOption } from "../../../state-management/Dashboard/cards/cards.action";
 
 function BottomComponent() {
   const dispatch = useDispatch();
 
   const currentUser = useSelector(selectCurrentUser);
 
-  const [selectedOption, setSelectedOption] = useState("New Account");
+  // const [selectedOption, setSelectedOption] = useState("New Account");
+  const selectedOption = useSelector(selectCardOption);
   const [selectedComponent, setSelectedComponent] = useState(<h1>Accounts</h1>);
 
   useEffect(() => {
@@ -49,7 +52,7 @@ function BottomComponent() {
         <SmallDropdown
           selectedOption={selectedOption}
           options={options}
-          handleChange={(e) => setSelectedOption(e.target.value)}
+          handleChange={(e) => dispatch(setSelectedCardOption(e.target.value))}
         />
         {selectedOption === "Edit Account" && <EditController />}
       </ManageAccount>

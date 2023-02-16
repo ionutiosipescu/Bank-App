@@ -25,9 +25,13 @@ import SmallDropdown from "../../cardsPage/Dropdown/Dropdown";
 import { DepositHeaderList } from "../../deposits/DepositsListCard/DepositsListCard.style";
 import { selectExchangeOption } from "../../../state-management/Dashboard/services/helpers/exchangeHelper/exchangeHelper.selector";
 import { setSelectedOptionExchange } from "../../../state-management/Dashboard/services/helpers/exchangeHelper/exchangeHelper.action";
+<<<<<<< HEAD
 import Modal from "../../../components/Modal/Modal";
 import ConfirmActionModal from "../../../components/ConfirmActionModal/ConfirmActionModal";
 import { useState } from "react";
+=======
+import Fallback from "../../../components/Fallback/Fallback";
+>>>>>>> branch-ionut
 
 function ExchangeList() {
   const dispatch = useDispatch();
@@ -78,6 +82,7 @@ function ExchangeList() {
         </SelectAccountToggle>
       </DepositHeaderList>
       <ListContainer>
+<<<<<<< HEAD
         {exchangeArr.map((transfer, index) => (
           <ListItem key={index}>
             <ListItemSection>
@@ -96,6 +101,38 @@ function ExchangeList() {
             />
           </ListItem>
         ))}
+=======
+        {exchangeArr.length > 0 ? (
+          <>
+            {exchangeArr.map((transfer, index) => (
+              <ListItem key={index}>
+                <ListItemSection>
+                  <LabelContainer>
+                    {setExchangeArr(transfer.type_exchange)}
+                  </LabelContainer>
+                  <RateContainer>Rate: 5.23</RateContainer>
+                  <AmountContainer>Sum: {transfer.exchange}</AmountContainer>
+                  <DateContainer>{transfer.date}</DateContainer>
+                </ListItemSection>
+                <Button
+                  label="Repeat"
+                  size="sm"
+                  primary="primary"
+                  onClick={() =>
+                    dispatch(
+                      fetchExchangeRepeat(transfer, exchangeArr, currentUser)
+                    )
+                  }
+                />
+              </ListItem>
+            ))}
+          </>
+        ) : (
+          <Fallback
+            text={`No Exchange to display. Start by making your first exchange to track your finances. Click the "Exchange" button to record it.`}
+          />
+        )}
+>>>>>>> branch-ionut
       </ListContainer>
       <Modal opened={modalOpen} handleClick={handleModalClose}>
         <ConfirmActionModal

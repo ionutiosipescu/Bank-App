@@ -4,3 +4,4 @@ export const selectCurrentCardAccount = (state) =>
 export const selectCurrentCardNew = (state) => state.cardState.currentCardNew;
 export const selectCurrentCardEdit = (state) => state.cardState.currentCardEdit;
 export const selectCardArr = (state) => state.cardState.cardArr;
+export const selectCardOption = (state) => state.cardState.selectedOption;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Icon } from "../../../components/ProfileComponent/ProfileComponent.style";
 import { CardHeader } from "../../../components/TopCard/TopCard.style";
 import Button from "../../../components/UI/Button/Button";
@@ -10,6 +10,7 @@ import {
   AmountContainer,
   IdContainer,
   ListIcon,
+  ButtonsControlerBox,
 } from "./SavingsListCard.style";
 
 import { BsCashStack } from "react-icons/bs";
@@ -18,16 +19,21 @@ import { accounts } from "../../../utils/data/dummyData";
 import { ListItemSection } from "../../exchange/ExchangeList/ExchangeList.style";
 import { useDispatch, useSelector } from "react-redux";
 import { selectSavingArr } from "../../../state-management/Dashboard/services/helpers/savingsHelper/savingsHelper.selector";
+<<<<<<< HEAD
 import Modal from "../../../components/Modal/Modal";
 import { useState } from "react";
 import { selectCurrentUser } from "../../../state-management/Dashboard/userData/userData.selector";
 import { fetchSavingData } from "../../../state-management/Dashboard/services/helpers/savingsHelper/savingsHelper.action";
 import ConfirmActionModal from "../../../components/ConfirmActionModal/ConfirmActionModal";
+=======
+import Fallback from "../../../components/Fallback/Fallback";
+>>>>>>> branch-ionut
 const data = accounts[0].savings;
 
 function SavingsListCard() {
   const savingData = useSelector(selectSavingArr);
 
+<<<<<<< HEAD
   const [modalOpen, setModalOpen] = useState(false);
   const [modalData, setModalData] = useState("");
 
@@ -45,31 +51,41 @@ function SavingsListCard() {
   };
 
   console.log(modalData);
+=======
+  useEffect(() => {
+    console.log(savingData);
+  }, [savingData]);
+>>>>>>> branch-ionut
   return (
     <ServiceCard>
       <CardHeader style={{ height: "10%" }}>
         <h2>Savings</h2>
       </CardHeader>
       <ListContainer>
-        {savingData.map((saving, id) => (
-          <ListItem key={id}>
-            <ListItemSection>
-              <ListIcon>
-                <BsCashStack />
-              </ListIcon>
-              <LabelContainer>{saving.details}</LabelContainer>
-              <AmountContainer>Sum: {saving.transfer}</AmountContainer>
-              <IdContainer>ID {saving.id}</IdContainer>
-            </ListItemSection>
-            {/* <Button label="Top-Up" size="sm" primary="primary" /> */}
-            <Button
-              label="Repeat"
-              size="sm"
-              primary="primary"
-              onClick={() => handleModalOpen(saving.id)}
-            />
-          </ListItem>
-        ))}
+        {savingData.length > 0 ? (
+          <>
+            {savingData.map((saving, id) => (
+              <ListItem key={id}>
+                <ListItemSection>
+                  <ListIcon>
+                    <BsCashStack />
+                  </ListIcon>
+                  <LabelContainer>{saving.details}</LabelContainer>
+                  <AmountContainer>Sum: {saving.transfer}</AmountContainer>
+                  <IdContainer>ID {saving.id}</IdContainer>
+                </ListItemSection>
+                <ButtonsControlerBox>
+                  <Button label="Top-Up" size="sm" primary="primary" />
+                  <Button label="Withdraw" size="sm" primary="primary" />
+                </ButtonsControlerBox>
+              </ListItem>
+            ))}
+          </>
+        ) : (
+          <Fallback
+            text={`No Saving to display. Start by making your first saving to track your finances. Click the "New Saving" button to record it.`}
+          />
+        )}
       </ListContainer>
       <Modal opened={modalOpen} handleClick={handleModalClose}>
         <ConfirmActionModal
