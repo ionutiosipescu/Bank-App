@@ -113,3 +113,9 @@ export const setCardId = async (currentUserData) => {
   const object = findObjectByString(account, userAccountArr, stringCompare);
   return object.id;
 };
+
+// SelectedOption
+
+export const setSelectedCardOption = (option) => {
+  return createAction(CARD_TYPES.SET_CARD_OPTION, option);
+};

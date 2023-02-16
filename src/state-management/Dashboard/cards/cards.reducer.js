@@ -13,6 +13,7 @@ const INITIAL_STATE = {
   currentCardEdit: {},
   currentCardNew: {},
   cardArr: [],
+  selectedOption: "New Account",
 };
 
 export const cardReducer = (state = INITIAL_STATE, action = {}) => {
@@ -31,6 +32,8 @@ export const cardReducer = (state = INITIAL_STATE, action = {}) => {
       return { ...state, currentCardNew: { ...payload } };
     case CARD_TYPES.SET_CARD_ARR:
       return { ...state, cardArr: [...payload] };
+    case CARD_TYPES.SET_CARD_OPTION:
+      return { ...state, selectedOption: payload };
     default:
       return state;
   }
