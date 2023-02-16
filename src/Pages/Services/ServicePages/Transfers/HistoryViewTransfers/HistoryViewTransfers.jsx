@@ -31,7 +31,6 @@ import { getTransferArr } from "../../../../../state-management/Dashboard/servic
 import { selectCurrentUser } from "../../../../../state-management/Dashboard/userData/userData.selector";
 import { selectTransferForm } from "../../../../../state-management/Dashboard/services/helpers/transfersHelper/transferHelper.selector";
 import { setDetailTransfer } from "../../../../../state-management/Dashboard/services/helpers/transfersHelper/transferHelper.action";
-// import { selectDetailTransfer } from "../../../../../state-management/Dashboard/services/helpers/transfersHelper/transferHelper.selector";
 
 // !Dummy Data &  Test Component
 import TransferDetails from "../../../../../components/Test/Test";

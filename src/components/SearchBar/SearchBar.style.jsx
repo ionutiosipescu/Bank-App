@@ -4,7 +4,7 @@ import { device } from "../../utils/breakpoints/breakpoints";
 export const SearchBarContainer = styled.div`
   display: flex;
   align-items: center;
-  height: 50px;
+  height: auto;
   width: 600px;
   border-radius: 50px;
   padding: 0px 20px;
@@ -51,4 +51,9 @@ export const SearchInput = styled.input`
     display: block;
     margin-left: 10px;
   }
+`;
+
+export const IconInputBox = styled.div`
+  display: flex;
+  align-items: center;
 `;
