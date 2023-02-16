@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Form } from "formik";
 
 export const SettingsContainer = styled.div`
   display: flex;
@@ -6,7 +7,7 @@ export const SettingsContainer = styled.div`
   align-items: flex-end;
   justify-content: space-between;
   width: calc(100% - 60px);
-  height: calc(100vh - 142px);
+  height: 100%;
   border-radius: 50px;
   margin: 20px 30px 20px 0px;
   padding: 50px;
@@ -72,7 +73,9 @@ export const AccountContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
-  width: 70%;
+  min-height: 650px;
+  width: 100%;
+  gap: 115px;
   padding-bottom: 30px;
   @media (max-width: 1440px) {
     width: 90%;
@@ -83,6 +86,7 @@ export const AccountContainer = styled.div`
 `;
 
 export const RowSettingsSection = styled.div`
+  gap: 10px;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -90,4 +94,20 @@ export const RowSettingsSection = styled.div`
   @media (max-width: 1440px) {
     justify-content: space-between;
   }
+`;
+
+export const FormCustomSettings = styled(Form)`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+`;
+
+export const TitleSettings = styled.h2`
+  margin: 0;
+`;
+
+export const SettingsFormWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 `;

@@ -3,6 +3,15 @@ import { SETTINGS_TYPES } from "./settings.types";
 import { setObjSettings } from "./settings.action";
 import axios from "axios";
 
+export const requestSettingsStart = () =>
+  createAction(SETTINGS_TYPES.REQUEST_SETTINGS_START);
+
+export const requestSettingsSuccess = () =>
+  createAction(SETTINGS_TYPES.REQUEST_SETTINGS_SUCCESS);
+
+export const requestSettingsFailed = (error) =>
+  createAction(SETTINGS_TYPES.REQUEST_SETTINGS_FAILED, error);
+
 export const fetchAuthData = (dataObj, userData, authData) => {
   return async (dispatch) => {
     console.log(dataObj, userData, authData);
@@ -13,6 +22,7 @@ export const fetchAuthData = (dataObj, userData, authData) => {
         data: { tokenType, accessToken, id },
       } = await axios.post(`http://localhost:8080/bank/auth/signin`, authData);
       console.log(tokenType, accessToken, id);
+      await dispatch(requestSettingsStart());
 
       // second request get data
       await axios
@@ -22,8 +32,12 @@ export const fetchAuthData = (dataObj, userData, authData) => {
           },
         })
         .then((res) => console.log(res));
+      await dispatch(requestSettingsSuccess());
     } catch (err) {
       console.log(err);
+      const errServer =
+        "Server is currently unavailable please try again later";
+      dispatch(requestSettingsFailed(errServer));
     }
   };
 };
