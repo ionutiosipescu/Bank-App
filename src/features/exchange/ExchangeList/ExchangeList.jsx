@@ -25,6 +25,7 @@ import SmallDropdown from "../../cardsPage/Dropdown/Dropdown";
 import { DepositHeaderList } from "../../deposits/DepositsListCard/DepositsListCard.style";
 import { selectExchangeOption } from "../../../state-management/Dashboard/services/helpers/exchangeHelper/exchangeHelper.selector";
 import { setSelectedOptionExchange } from "../../../state-management/Dashboard/services/helpers/exchangeHelper/exchangeHelper.action";
+import Fallback from "../../../components/Fallback/Fallback";
 
 function ExchangeList() {
   const dispatch = useDispatch();
@@ -58,28 +59,36 @@ function ExchangeList() {
         </SelectAccountToggle>
       </DepositHeaderList>
       <ListContainer>
-        {exchangeArr.map((transfer, index) => (
-          <ListItem key={index}>
-            <ListItemSection>
-              <LabelContainer>
-                {setExchangeArr(transfer.type_exchange)}
-              </LabelContainer>
-              <RateContainer>Rate: 5.23</RateContainer>
-              <AmountContainer>Sum: {transfer.exchange}</AmountContainer>
-              <DateContainer>{transfer.date}</DateContainer>
-            </ListItemSection>
-            <Button
-              label="Repeat"
-              size="sm"
-              primary="primary"
-              onClick={() =>
-                dispatch(
-                  fetchExchangeRepeat(transfer, exchangeArr, currentUser)
-                )
-              }
-            />
-          </ListItem>
-        ))}
+        {exchangeArr.length > 0 ? (
+          <>
+            {exchangeArr.map((transfer, index) => (
+              <ListItem key={index}>
+                <ListItemSection>
+                  <LabelContainer>
+                    {setExchangeArr(transfer.type_exchange)}
+                  </LabelContainer>
+                  <RateContainer>Rate: 5.23</RateContainer>
+                  <AmountContainer>Sum: {transfer.exchange}</AmountContainer>
+                  <DateContainer>{transfer.date}</DateContainer>
+                </ListItemSection>
+                <Button
+                  label="Repeat"
+                  size="sm"
+                  primary="primary"
+                  onClick={() =>
+                    dispatch(
+                      fetchExchangeRepeat(transfer, exchangeArr, currentUser)
+                    )
+                  }
+                />
+              </ListItem>
+            ))}
+          </>
+        ) : (
+          <Fallback
+            text={`No Exchange to display. Start by making your first exchange to track your finances. Click the "Exchange" button to record it.`}
+          />
+        )}
       </ListContainer>
     </ServiceCard>
   );

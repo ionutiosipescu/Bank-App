@@ -19,6 +19,7 @@ import Button from "../../../components/UI/Button/Button";
 import SmallDropdown from "../../cardsPage/Dropdown/Dropdown";
 import LabelAction from "../../../components/UI/LabelAction/LabelAction";
 import LabelList from "../../../components/UI/LabelList/LabelList";
+import Fallback from "../../../components/Fallback/Fallback";
 
 // State/Redux
 import { useDispatch, useSelector } from "react-redux";
@@ -60,36 +61,45 @@ function DepositsListCard() {
         </SelectAccountToggle>
       </DepositHeaderList>
       <ListContainer>
-        {depositHistory?.map((transfer, index) => (
-          <ListItem key={index}>
-            <ListItemSection>
-              <LabelAction action={upperCaseFirst(transfer?.status)}>
-                {upperCaseFirst(transfer?.status)}
-              </LabelAction>
-              <IdList> #{transfer.id}</IdList>
-              <AmountContainer>Amount: {transfer.balance}</AmountContainer>
-              <DateContainer>{transfer.date}</DateContainer>
-              <LabelList status={transfer?.id ? "Completed" : "Canceled"}>
-                Completed
-              </LabelList>
-            </ListItemSection>
-            <Button
-              label="Repeat"
-              size="sm"
-              primary="primary"
-              onClick={() =>
-                dispatch(
-                  fetchRepeatDeposit(
-                    transfer,
-                    selectedOptionDeposit,
-                    depositHistory,
-                    currentUser
-                  )
-                )
-              }
-            />
-          </ListItem>
-        ))}
+        {depositHistory.length > 0 ? (
+          <>
+            {" "}
+            {depositHistory?.map((transfer, index) => (
+              <ListItem key={index}>
+                <ListItemSection>
+                  <LabelAction action={upperCaseFirst(transfer?.status)}>
+                    {upperCaseFirst(transfer?.status)}
+                  </LabelAction>
+                  <IdList> #{transfer.id}</IdList>
+                  <AmountContainer>Amount: {transfer.balance}</AmountContainer>
+                  <DateContainer>{transfer.date}</DateContainer>
+                  <LabelList status={transfer?.id ? "Completed" : "Canceled"}>
+                    Completed
+                  </LabelList>
+                </ListItemSection>
+                <Button
+                  label="Repeat"
+                  size="sm"
+                  primary="primary"
+                  onClick={() =>
+                    dispatch(
+                      fetchRepeatDeposit(
+                        transfer,
+                        selectedOptionDeposit,
+                        depositHistory,
+                        currentUser
+                      )
+                    )
+                  }
+                />
+              </ListItem>
+            ))}
+          </>
+        ) : (
+          <Fallback
+            text={`No Deposit or Windraw to display. Start by making your first deposit to track your finances. Click the "Accept" button to record it.`}
+          />
+        )}
       </ListContainer>
     </ServiceCard>
   );

@@ -28,6 +28,7 @@ import { selectCurrentUser } from "../../../../../state-management/Dashboard/use
 import { getLoansArrDb } from "../../../../../state-management/Dashboard/services/loans/loans.action";
 import { selectLoansArr } from "../../../../../state-management/Dashboard/services/loans/loans.selector";
 import { selectHistoryLoans } from "../../../../../state-management/Dashboard/services/loans/loans.selector";
+import Fallback from "../../../../../components/Fallback/Fallback";
 
 function HisotryViewLoans({ dataServices, ...props }) {
   const historyArr = useSelector(selectHistoryLoans);
@@ -75,30 +76,38 @@ function HisotryViewLoans({ dataServices, ...props }) {
           <h1>Loans</h1>
         </CardHeader>
         <ListContainer>
-          {historyArr?.map((history_loan, id) => (
-            <ListItem key={id}>
-              <ListItemSection>
-                <ListIcon>
-                  <BsCashStack />
-                </ListIcon>
-                <LabelContainer>
-                  Loan:{" "}
-                  {history_loan.details.charAt(0).toUpperCase() +
-                    history_loan.details.slice(1)}
-                </LabelContainer>
-                <AmountContainer>
-                  Payment: {history_loan.rate} RON
-                </AmountContainer>
-                <IdContainer>#{history_loan.id}</IdContainer>
-              </ListItemSection>
-              <Button
-                size="md"
-                primary="primary"
-                label="Pay Loan"
-                onClick={() => handleModalOpen(history_loan.id)}
-              />
-            </ListItem>
-          ))}
+          {historyArr.length > 0 ? (
+            <>
+              {historyArr?.map((history_loan, id) => (
+                <ListItem key={id}>
+                  <ListItemSection>
+                    <ListIcon>
+                      <BsCashStack />
+                    </ListIcon>
+                    <LabelContainer>
+                      Loan:{" "}
+                      {history_loan.details.charAt(0).toUpperCase() +
+                        history_loan.details.slice(1)}
+                    </LabelContainer>
+                    <AmountContainer>
+                      Payment: {history_loan.rate} RON
+                    </AmountContainer>
+                    <IdContainer>#{history_loan.id}</IdContainer>
+                  </ListItemSection>
+                  <Button
+                    size="md"
+                    primary="primary"
+                    label="Pay Loan"
+                    onClick={() => handleModalOpen(history_loan.id)}
+                  />
+                </ListItem>
+              ))}
+            </>
+          ) : (
+            <Fallback
+              text={`No Loans to display. Start by making your first loan to track your finances. Click the "RequestLoan" button to record it.`}
+            />
+          )}
         </ListContainer>
       </ServiceViewCard>
       <Modal opened={modalOpen} handleClick={handleModalClose}>

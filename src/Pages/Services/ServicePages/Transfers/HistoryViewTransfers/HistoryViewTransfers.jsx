@@ -34,6 +34,7 @@ import { selectTransferForm } from "../../../../../state-management/Dashboard/se
 // !Dummy Data &  Test Component
 import TransferDetails from "../../../../../components/Test/Test";
 import { accounts } from "../../../../../utils/data/dummyData";
+import Fallback from "../../../../../components/Fallback/Fallback";
 
 function HisotryViewTransfers({ dataServices }) {
   const dispatch = useDispatch();
@@ -74,22 +75,31 @@ function HisotryViewTransfers({ dataServices }) {
           <h2>Transfers</h2>
         </CardHeader>
         <ListContainer>
-          {transferArr?.map((transfer, index) => (
-            <ListItem key={index}>
-              <ListItemSectionTransfer>
-                <UserContainerTransfer>
-                  <img src={accounts[0].image} alt="poza" />
-                </UserContainerTransfer>
-                <h3>{transfer.details}</h3>
-                <IdList> #{transfer.id}</IdList>
-                <AmountContainer>${transfer.transfer}</AmountContainer>
-                <DateContainer>{transfer.date}</DateContainer>
-                <LabelList status={transfer.status || "Completed"}>
-                  {transfer.status || "Completed"}
-                </LabelList>
-              </ListItemSectionTransfer>
-            </ListItem>
-          ))}
+          {transferArr.length > 0 ? (
+            <>
+              {transferArr?.map((transfer, index) => (
+                <ListItem key={index}>
+                  <ListItemSectionTransfer>
+                    <UserContainerTransfer>
+                      <img src={accounts[0].image} alt="poza" />
+                    </UserContainerTransfer>
+                    <h3>{transfer.details}</h3>
+                    <IdList> #{transfer.id}</IdList>
+                    <AmountContainer>${transfer.transfer}</AmountContainer>
+                    <DateContainer>{transfer.date}</DateContainer>
+                    <LabelList status={transfer.status || "Completed"}>
+                      {transfer.status || "Completed"}
+                    </LabelList>
+                  </ListItemSectionTransfer>
+                </ListItem>
+              ))}
+            </>
+          ) : (
+            <Fallback
+              text={`No Transfer to display. Start by making your first transfer to track your finances. Click the "New Transfer" button to record it.`}
+            />
+          )}
+
           {/* <TransferDetails /> */}
         </ListContainer>
       </ServiceViewCard>
