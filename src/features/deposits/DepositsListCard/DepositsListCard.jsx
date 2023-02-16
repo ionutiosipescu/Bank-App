@@ -88,8 +88,7 @@ function DepositsListCard() {
         </SelectAccountToggle>
       </DepositHeaderList>
       <ListContainer>
-<<<<<<< HEAD
-        {depositHistory?.map((transfer, index) => (
+        {/* {depositHistory?.map((transfer, index) => (
           <ListItem key={index}>
             <ListItemSection>
               <LabelAction action={upperCaseFirst(transfer?.status)}>
@@ -109,8 +108,7 @@ function DepositsListCard() {
               onClick={() => handleModalOpen(transfer.id)}
             />
           </ListItem>
-        ))}
-=======
+        ))} */}
         {depositHistory.length > 0 ? (
           <>
             {" "}
@@ -150,7 +148,6 @@ function DepositsListCard() {
             text={`No Deposit or Windraw to display. Start by making your first deposit to track your finances. Click the "Accept" button to record it.`}
           />
         )}
->>>>>>> branch-ionut
       </ListContainer>
       <Modal opened={modalOpen} handleClick={handleModalClose}>
         <ConfirmActionModal

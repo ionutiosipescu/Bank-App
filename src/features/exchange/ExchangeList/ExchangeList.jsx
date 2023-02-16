@@ -25,13 +25,10 @@ import SmallDropdown from "../../cardsPage/Dropdown/Dropdown";
 import { DepositHeaderList } from "../../deposits/DepositsListCard/DepositsListCard.style";
 import { selectExchangeOption } from "../../../state-management/Dashboard/services/helpers/exchangeHelper/exchangeHelper.selector";
 import { setSelectedOptionExchange } from "../../../state-management/Dashboard/services/helpers/exchangeHelper/exchangeHelper.action";
-<<<<<<< HEAD
 import Modal from "../../../components/Modal/Modal";
 import ConfirmActionModal from "../../../components/ConfirmActionModal/ConfirmActionModal";
 import { useState } from "react";
-=======
 import Fallback from "../../../components/Fallback/Fallback";
->>>>>>> branch-ionut
 
 function ExchangeList() {
   const dispatch = useDispatch();
@@ -82,8 +79,7 @@ function ExchangeList() {
         </SelectAccountToggle>
       </DepositHeaderList>
       <ListContainer>
-<<<<<<< HEAD
-        {exchangeArr.map((transfer, index) => (
+        {/* {exchangeArr.map((transfer, index) => (
           <ListItem key={index}>
             <ListItemSection>
               <LabelContainer>
@@ -100,8 +96,7 @@ function ExchangeList() {
               onClick={() => handleModalOpen(transfer.id)}
             />
           </ListItem>
-        ))}
-=======
+        ))} */}
         {exchangeArr.length > 0 ? (
           <>
             {exchangeArr.map((transfer, index) => (
@@ -132,7 +127,6 @@ function ExchangeList() {
             text={`No Exchange to display. Start by making your first exchange to track your finances. Click the "Exchange" button to record it.`}
           />
         )}
->>>>>>> branch-ionut
       </ListContainer>
       <Modal opened={modalOpen} handleClick={handleModalClose}>
         <ConfirmActionModal
