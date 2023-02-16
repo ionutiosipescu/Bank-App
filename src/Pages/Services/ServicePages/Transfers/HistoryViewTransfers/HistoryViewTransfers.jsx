@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 // Style
 import { NewContainer } from "../../../../Cards/Cards.style";
 import { CardHeader } from "../../../../../components/TopCard/TopCard.style";
@@ -41,6 +41,12 @@ function HisotryViewTransfers({ dataServices }) {
   const transferForm = useSelector(selectTransferForm);
   const currentUser = useSelector(selectCurrentUser);
   const transferArr = useSelector(selectTransferArr);
+
+  const [transferData, setTransferData] = useState("");
+
+  const handleTransferdetails = (id) => {
+    setTransferData(transferArr.find((transfer) => transfer.id === id));
+  };
 
   useEffect(() => {
     dispatch(getTransferArr(transferForm, currentUser));
@@ -91,6 +97,13 @@ function HisotryViewTransfers({ dataServices }) {
                       {transfer.status || "Completed"}
                     </LabelList>
                   </ListItemSectionTransfer>
+                  <LinkButton
+                    size="sm"
+                    label="Details"
+                    primary="primary"
+                    to="/services/transfers/transferdetails"
+                    onClick={() => handleTransferdetails(transfer.id)}
+                  />
                 </ListItem>
               ))}
             </>

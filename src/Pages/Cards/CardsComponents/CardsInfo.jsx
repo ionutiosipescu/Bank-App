@@ -11,7 +11,7 @@ import FeatureCards from "../../../features/cardsPage/FeatureCards/FeatureCard";
 import { useSelector } from "react-redux";
 import { selectCardArr } from "../../../state-management/Dashboard/cards/cards.selector";
 
-function TopComponent() {
+function CardsInfo() {
   const accountsArr = useSelector(selectCardArr);
 
   return (
@@ -28,4 +28,4 @@ function TopComponent() {
   );
 }
 
-export default TopComponent;
+export default CardsInfo;

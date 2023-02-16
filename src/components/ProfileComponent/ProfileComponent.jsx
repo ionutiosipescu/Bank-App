@@ -10,7 +10,7 @@ import {
 
 import { RiMailLine, RiMapPinLine, RiPhoneLine } from "react-icons/ri";
 
-import avatar from "../../assets/images/avatar.png";
+import avatar from "../../assets/images/avatar-2.png";
 import LinkButton from "../UI/LinkButton/LinkButton";
 
 function ProfileComponent({ image, name, address, email, phoneNumber }) {

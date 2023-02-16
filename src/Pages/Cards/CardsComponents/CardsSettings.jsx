@@ -15,7 +15,7 @@ import { selectCurrentUser } from "../../../state-management/Dashboard/userData/
 import { selectCardOption } from "../../../state-management/Dashboard/cards/cards.selector";
 import { setSelectedCardOption } from "../../../state-management/Dashboard/cards/cards.action";
 
-function BottomComponent() {
+function CardsSettings() {
   const dispatch = useDispatch();
 
   const currentUser = useSelector(selectCurrentUser);
@@ -61,4 +61,4 @@ function BottomComponent() {
   );
 }
 
-export default BottomComponent;
+export default CardsSettings;

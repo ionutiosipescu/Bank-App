@@ -42,38 +42,6 @@ export const CardContainer = styled.div`
       : props.size === "fit"
       ? "width: fit-content; height: fit-content; margin: 0;"
       : "width: 100%; height: 100%;"};
-  /* @media (max-width: 1680px) {
-    ${(props) =>
-    props.size === "sm"
-      ? "width: 33vw; aspect-ratio: 3/2;"
-      : props.size === "md"
-      ? "width: 50vw; aspect-ratio: 3/2;"
-      : props.size === "fit"
-      ? "width: fit-content; height: fit-content;"
-      : "width: 100%; height: 100%;"};
-    margin: 25px 30px 15px 0;
-  }
-  @media (max-width: 1440px) {
-    ${(props) =>
-    props.size === "sm"
-      ? "width: 33vw; aspect-ratio: 4/3;"
-      : props.size === "md"
-      ? "width: 50vw; aspect-ratio: 8/5;"
-      : props.size === "fit"
-      ? "width: fit-content; height: fit-content;"
-      : "width: 100%; height: 100%;"};
-  }
-  @media (max-width: 1024px) {
-    ${(props) =>
-    props.size === "sm"
-      ? "width: 95vw; aspect-ratio: 4/3;"
-      : props.size === "md"
-      ? "width: 95vw; aspect-ratio: 8/7;"
-      : props.size === "fit"
-      ? "width: fit-content; height: fit-content;"
-      : "width: 100%; height: 100%;"};
-    margin: 15px 10px 15px 0;
-  } */
 `;
 
 export const CardHeader = styled.div`
