@@ -56,25 +56,6 @@ function SavingsListCard() {
         <h2>Savings</h2>
       </CardHeader>
       <ListContainer>
-        {/* {savingData.map((saving, id) => (
-            <ListItem key={id}>
-              <ListItemSection>
-                <ListIcon>
-                  <BsCashStack />
-                </ListIcon>
-                <LabelContainer>{saving.details}</LabelContainer>
-                <AmountContainer>Sum: {saving.transfer}</AmountContainer>
-                <IdContainer>ID {saving.id}</IdContainer>
-              </ListItemSection>
-              <Button
-                label="Repeat"
-                size="sm"
-                primary="primary"
-                onClick={() => handleModalOpen(saving.id)}
-              />
-            </ListItem>
-          ))} */}
-
         {savingData.length > 0 ? (
           <>
             {savingData.map((saving, id) => (
@@ -88,7 +69,12 @@ function SavingsListCard() {
                   <IdContainer>ID {saving.id}</IdContainer>
                 </ListItemSection>
                 <ButtonsControlerBox>
-                  <Button label="Top-Up" size="sm" primary="primary" />
+                  <Button
+                    label="Top-Up"
+                    size="sm"
+                    primary="primary"
+                    onClick={() => handleModalOpen(saving.id)}
+                  />
                   <Button label="Withdraw" size="sm" primary="primary" />
                 </ButtonsControlerBox>
               </ListItem>
@@ -102,7 +88,7 @@ function SavingsListCard() {
       </ListContainer>
       <Modal opened={modalOpen} handleClick={handleModalClose}>
         <ConfirmActionModal
-          action="repeat"
+          action="top-up"
           type="saving"
           amount={modalData.transfer}
           data={modalData}

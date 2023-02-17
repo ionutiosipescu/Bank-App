@@ -88,27 +88,6 @@ function DepositsListCard() {
         </SelectAccountToggle>
       </DepositHeaderList>
       <ListContainer>
-        {/* {depositHistory?.map((transfer, index) => (
-          <ListItem key={index}>
-            <ListItemSection>
-              <LabelAction action={upperCaseFirst(transfer?.status)}>
-                {upperCaseFirst(transfer?.status)}
-              </LabelAction>
-              <IdList> #{transfer.id}</IdList>
-              <AmountContainer>Amount: {transfer.balance}</AmountContainer>
-              <DateContainer>{transfer.date}</DateContainer>
-              <LabelList status={transfer?.id ? "Completed" : "Canceled"}>
-                Completed
-              </LabelList>
-            </ListItemSection>
-            <Button
-              label="Repeat"
-              size="sm"
-              primary="primary"
-              onClick={() => handleModalOpen(transfer.id)}
-            />
-          </ListItem>
-        ))} */}
         {depositHistory.length > 0 ? (
           <>
             {" "}
@@ -129,16 +108,7 @@ function DepositsListCard() {
                   label="Repeat"
                   size="sm"
                   primary="primary"
-                  onClick={() =>
-                    dispatch(
-                      fetchRepeatDeposit(
-                        transfer,
-                        selectedOptionDeposit,
-                        depositHistory,
-                        currentUser
-                      )
-                    )
-                  }
+                  onClick={() => handleModalOpen(transfer.id)}
                 />
               </ListItem>
             ))}
