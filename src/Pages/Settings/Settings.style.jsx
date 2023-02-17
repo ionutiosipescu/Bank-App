@@ -7,7 +7,7 @@ export const SettingsContainer = styled.div`
   align-items: flex-end;
   justify-content: space-between;
   width: calc(100% - 60px);
-  height: 100%;
+  height: 80vh;
   border-radius: 50px;
   margin: 20px 30px 20px 0px;
   padding: 50px;

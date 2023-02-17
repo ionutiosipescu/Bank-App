@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 
-const TransferDetails = () => {
+const TransferPDF = ({ transfer }) => {
   const canvasRef = useRef(null);
 
   const transfers = [
@@ -65,4 +65,4 @@ const TransferDetails = () => {
   );
 };
 
-export default TransferDetails;
+export default TransferPDF;

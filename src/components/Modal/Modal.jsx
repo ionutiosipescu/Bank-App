@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import Button from "../UI/Button/Button";
 import { ModalCard, ModalContainer, ModalWrapper } from "./Modal.style";
 
-function Modal({ children, handleClick, opened, ...props }) {
+function Modal(props) {
+  const { children, handleClick, opened, closeBtn } = props;
+
   const handleKeyDown = (e) => {
     if (e.key === "Escape") {
       handleClick();
@@ -21,14 +23,16 @@ function Modal({ children, handleClick, opened, ...props }) {
       <ModalCard>
         <ModalContainer>
           {children}
-          <Button
-            primary="primary"
-            size="round"
-            type="button"
-            onClick={handleClick}
-          >
-            X
-          </Button>
+          {!closeBtn && (
+            <Button
+              primary="primary"
+              size="round"
+              type="button"
+              onClick={handleClick}
+            >
+              X
+            </Button>
+          )}
         </ModalContainer>
       </ModalCard>
     </ModalWrapper>

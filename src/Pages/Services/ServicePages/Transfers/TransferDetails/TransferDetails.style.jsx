@@ -50,7 +50,7 @@ export const UserInfo = styled.div`
 
 export const DetailsContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-around; */
   align-items: center;
   width: 100%;
   height: 40%;
@@ -62,6 +62,7 @@ export const PaymentInfo = styled.div`
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
+  margin-right: 25%;
 `;
 
 export const TransactionInfo = styled.div`
@@ -79,12 +80,12 @@ export const TransactionInfo = styled.div`
     border-bottom: 1px solid var(--gray);
   }
   & > div > span {
-    min-width: 150px;
+    min-width: 200px;
     padding-right: 20px;
   }
-  & > div > span:first-of-type {
+  /* & > div > span:first-of-type {
     min-width: 300px;
-  }
+  } */
 `;
 
 export const TransactionDetailsInfo = styled.div`

@@ -21,6 +21,7 @@ function EditController({ ...props }) {
   const cardEdit = useSelector(selectCurrentCardEdit);
   const { errorMsg } = cardEdit;
   const cardArr = useSelector(selectCardArr);
+  const { errorMsg } = cardEdit;
 
   const handleModalOpenSave = (id) => {
     dispatch(asyncSaveChanges(cardEdit, cardArr));
