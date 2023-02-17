@@ -79,24 +79,6 @@ function ExchangeList() {
         </SelectAccountToggle>
       </DepositHeaderList>
       <ListContainer>
-        {/* {exchangeArr.map((transfer, index) => (
-          <ListItem key={index}>
-            <ListItemSection>
-              <LabelContainer>
-                {setExchangeArr(transfer.type_exchange)}
-              </LabelContainer>
-              <RateContainer>Rate: 5.23</RateContainer>
-              <AmountContainer>Sum: {transfer.exchange}</AmountContainer>
-              <DateContainer>{transfer.date}</DateContainer>
-            </ListItemSection>
-            <Button
-              label="Repeat"
-              size="sm"
-              primary="primary"
-              onClick={() => handleModalOpen(transfer.id)}
-            />
-          </ListItem>
-        ))} */}
         {exchangeArr.length > 0 ? (
           <>
             {exchangeArr.map((transfer, index) => (
@@ -113,11 +95,7 @@ function ExchangeList() {
                   label="Repeat"
                   size="sm"
                   primary="primary"
-                  onClick={() =>
-                    dispatch(
-                      fetchExchangeRepeat(transfer, exchangeArr, currentUser)
-                    )
-                  }
+                  onClick={() => handleModalOpen(transfer.id)}
                 />
               </ListItem>
             ))}

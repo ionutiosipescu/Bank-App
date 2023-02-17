@@ -108,16 +108,7 @@ function DepositsListCard() {
                   label="Repeat"
                   size="sm"
                   primary="primary"
-                  onClick={() =>
-                    dispatch(
-                      fetchRepeatDeposit(
-                        transfer,
-                        selectedOptionDeposit,
-                        depositHistory,
-                        currentUser
-                      )
-                    )
-                  }
+                  onClick={() => handleModalOpen(transfer.id)}
                 />
               </ListItem>
             ))}
