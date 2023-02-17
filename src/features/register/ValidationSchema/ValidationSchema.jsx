@@ -23,7 +23,21 @@ export const registerSchemaPersonal = yup.object().shape({
     .max(50, "Address is too long")
     .matches(/\d/, { message: "Invalid Address" }) // /\d/ require at least 1 number
     .required("Required"),
-  date: yup.date().required("Required").nullable(),
+  date: yup
+    .date()
+    .required("Date of birth is required")
+    .test("date", "You must be at least 18 years old", function (value) {
+      let today = new Date();
+      let birthDate = new Date(value);
+      let age = today.getFullYear() - birthDate.getFullYear();
+      let month = today.getMonth() - birthDate.getMonth();
+
+      if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+      }
+
+      return age >= 18;
+    }),
   gender: yup.string().required("Required"),
 });
 
