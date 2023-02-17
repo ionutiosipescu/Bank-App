@@ -19,7 +19,6 @@ function EditController({ ...props }) {
 
   const dispatch = useDispatch();
   const cardEdit = useSelector(selectCurrentCardEdit);
-  const { errorMsg } = cardEdit;
   const cardArr = useSelector(selectCardArr);
   const { errorMsg } = cardEdit;
 
