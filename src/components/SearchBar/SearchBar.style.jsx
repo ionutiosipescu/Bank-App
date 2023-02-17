@@ -23,8 +23,8 @@ export const SearchBarContainer = styled.div`
         : "width: 40px;"}
   }
   @media (${device.tablet}) {
-    position: relative;
     justify-content: flex-start;
+    position: relative;
     width: 250px;
     margin-left: 10px;
     padding-left: 20px;
@@ -56,4 +56,28 @@ export const SearchInput = styled.input`
 export const IconInputBox = styled.div`
   display: flex;
   align-items: center;
+`;
+
+export const SearchListContainer = styled.div`
+  position: absolute;
+  background-color: var(--white);
+  width: 100%;
+  border-radius: 10px;
+  padding: 10px;
+  top: 110%;
+  left: 0;
+  z-index: 99;
+  box-shadow: 0px 0px 20px -5px rgba(21, 20, 47, 0.73);
+  & ul {
+    list-style: none;
+  }
+  & li {
+    width: fit-content;
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--gray);
+  }
+  & li a:hover {
+    color: var(--green);
+  }
+  ${(props) => (props.list ? "" : "display: none;")}
 `;

@@ -108,8 +108,8 @@ function SettingsForm() {
             />
           </FormCustomSettings>
         </Formik>
-        {showAuth ? <Auth /> : <></>}
       </AccountContainer>
+      {showAuth ? <Auth /> : <></>}
     </SettingsFormWrapper>
   );
 }

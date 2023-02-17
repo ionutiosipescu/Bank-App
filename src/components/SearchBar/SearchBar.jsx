@@ -3,6 +3,7 @@ import {
   SearchBarContainer,
   SearchInput,
   IconInputBox,
+  SearchListContainer,
 } from "./SearchBar.style";
 
 import { BiSearch } from "react-icons/bi";
@@ -58,6 +59,15 @@ function SearchBar({ active, onClick }) {
     setQuery("");
   };
 
+  ///////////////////////////////
+
+  const [hasChildren, setHasChildren] = useState(false);
+
+  useEffect(() => {
+    const parent = document.getElementById("parent");
+    setHasChildren(parent.hasChildNodes());
+  }, [query]);
+
   useEffect(() => {
     console.log(query, matchingRoutes);
   }, [query]);
@@ -74,21 +84,23 @@ function SearchBar({ active, onClick }) {
           value={query}
         />
       </IconInputBox>
-      {query !== "" && matchingRoutes.length > 0 && (
-        <ul>
-          {matchingRoutes.map((route) => (
-            <li key={route.path}>
-              <Link
-                to={route.path}
-                className={location.pathname === route.path ? "active" : ""}
-                onClick={() => handleOptionClick(route.path)}
-              >
-                {route.title}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )}
+      <SearchListContainer id="parent" list={hasChildren}>
+        {query !== "" && matchingRoutes.length > 0 && (
+          <ul>
+            {matchingRoutes.map((route) => (
+              <li key={route.path}>
+                <Link
+                  to={route.path}
+                  className={location.pathname === route.path ? "active" : ""}
+                  onClick={() => handleOptionClick(route.path)}
+                >
+                  {route.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
+      </SearchListContainer>
     </SearchBarContainer>
   );
 }

@@ -7,7 +7,8 @@ export const SettingsContainer = styled.div`
   align-items: flex-end;
   justify-content: space-between;
   width: calc(100% - 60px);
-  height: 80vh;
+  height: fit-content;
+  min-height: 84vh;
   border-radius: 50px;
   margin: 20px 30px 20px 0px;
   padding: 50px;
@@ -27,6 +28,7 @@ export const SettingsContainer = styled.div`
 
 export const SectionContainer = styled.div`
   display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100%;
   @media (max-width: 1440px) {
@@ -39,11 +41,12 @@ export const PreferenceContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 30%;
-  height: 100%;
-  margin-right: 100px;
-  padding-bottom: 40px;
-  border-right: 2px solid #8e8ea170;
+  width: 100%;
+  /* height: 70vh; */
+  margin-bottom: 50px;
+  padding-bottom: 50px;
+  /* border-right: 2px solid #8e8ea170; */
+  border-bottom: 2px solid var(--gray);
   @media (max-width: 1440px) {
     width: 90%;
     margin: 0;
@@ -55,8 +58,8 @@ export const PreferenceContainer = styled.div`
 
 export const SettingsSection = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  /* flex-direction: column; */
+  justify-content: space-around;
   height: 100%;
   margin: 0px 30px;
   & > span > p {
@@ -72,10 +75,8 @@ export const AccountContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%;
-  min-height: 650px;
+  height: 50%;
   width: 100%;
-  gap: 115px;
   padding-bottom: 30px;
   @media (max-width: 1440px) {
     width: 90%;
