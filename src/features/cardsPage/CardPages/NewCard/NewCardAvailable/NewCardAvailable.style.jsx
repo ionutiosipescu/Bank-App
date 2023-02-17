@@ -114,7 +114,7 @@ export const ListItemDefault = styled.li`
 export const ButtonsContainer = styled.div`
   margin-top: 20px;
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   gap: 30px;
 `;

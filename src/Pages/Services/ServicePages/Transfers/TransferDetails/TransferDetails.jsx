@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import {
   Header,
   TransferDetailsCard,
@@ -15,8 +15,24 @@ import avatar from "./../../../../../assets/images/avatar-2.png";
 import { useSelector } from "react-redux";
 import { selectDetailTransfer } from "../../../../../state-management/Dashboard/services/helpers/transfersHelper/transferHelper.selector";
 
+//////////////////////////
+import jsPDF from "jspdf";
+import "jspdf-autotable";
+import TransferPDF from "../../../../../components/Test/Test";
+
 function TransferDetails() {
   const detailTransfer = useSelector(selectDetailTransfer);
+  const {
+    date,
+    details,
+    from_sender_name,
+    id,
+    to_account_id,
+    to_receiver_name,
+    transfer,
+  } = detailTransfer;
+
+  console.log(detailTransfer);
 
   return (
     <TransferDetailsCard>
@@ -32,18 +48,18 @@ function TransferDetails() {
             <img src={avatar} alt="" />
           </span>
           <span>
-            <p>Name Name</p>
-            <h3>Lorem ipsum dolor sit amet.</h3>
+            <p>{to_receiver_name} nume_familie</p>
+            <h3>Strada Arborelui 22.</h3>
           </span>
         </UserProfile>
         <UserInfo>
           <span>
             <p>Email</p>
-            <h3>email@gmail.com</h3>
+            <h3>receiver_email@gmail.com</h3>
           </span>
           <span>
             <p>Phone</p>
-            <h3>0757299313</h3>
+            <h3>receiver_number</h3>
           </span>
           <span>
             <p>Location</p>
@@ -59,46 +75,28 @@ function TransferDetails() {
           </span>
           <span>
             <p>Date</p>
-            <h3>2023-12-23</h3>
+            <h3>{date}</h3>
           </span>
         </PaymentInfo>
         <TransactionInfo>
           <div>
             <span>
-              <p>Details</p>
-              <h3>My part of the rent.</h3>
-            </span>
-            <span>
               <p>Amount</p>
-              <h3>8377</h3>
+              <h3>{transfer}</h3>
             </span>
             <span>
               <p>Currency</p>
-              <h3>RON</h3>
+              <h3>EUR</h3>
             </span>
             <span>
               <p>Comission</p>
               <h3>3.2%</h3>
             </span>
           </div>
-          <div>
-            <span>
-              <p>Details</p>
-              <h3>Multe datorii! </h3>
-            </span>
-            <span>
-              <p>Comission</p>
-              <h3>3.2%</h3>
-            </span>
-            <span>
-              <p>Comission</p>
-              <h3>3.2%</h3>
-            </span>
-            <span>
-              <p>Comission</p>
-              <h3>3.2%</h3>
-            </span>
-          </div>
+          <span>
+            <p>Details</p>
+            <h3>{details}</h3>
+          </span>
         </TransactionInfo>
       </DetailsContainer>
       <TransactionDetailsInfo>
@@ -109,8 +107,21 @@ function TransferDetails() {
           quasi recusandae! Lorem ipsum dolor sit amet.
         </p>
       </TransactionDetailsInfo>
+      {/* <TransferPDF /> */}
     </TransferDetailsCard>
   );
 }
 
 export default TransferDetails;
+
+////////////////////////////////
+
+// {
+//   date: "2023-02-15";
+//   details: "Payment for the phone you sold me";
+//   from_sender_name: "Alex";
+//   id: 537;
+//   to_account_id: 34;
+//   to_receiver_name: "Alex";
+//   transfer: 744;
+// }

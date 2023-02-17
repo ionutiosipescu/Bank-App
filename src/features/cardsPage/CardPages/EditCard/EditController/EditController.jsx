@@ -17,10 +17,10 @@ function EditController({ ...props }) {
   const [type, setType] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
 
-  const { errorMsg } = cardEdit;
   const dispatch = useDispatch();
   const cardEdit = useSelector(selectCurrentCardEdit);
   const cardArr = useSelector(selectCardArr);
+  const { errorMsg } = cardEdit;
 
   const handleModalOpenSave = (id) => {
     dispatch(asyncSaveChanges(cardEdit, cardArr));

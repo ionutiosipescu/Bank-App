@@ -8,7 +8,7 @@ export const UserContainerTransfer = styled.div`
   justify-content: center;
   align-items: center;
   img {
-    width: 80%;
+    height: 60%;
     aspect-ratio: 1/1;
     border-radius: 50%;
     object-fit: cover;

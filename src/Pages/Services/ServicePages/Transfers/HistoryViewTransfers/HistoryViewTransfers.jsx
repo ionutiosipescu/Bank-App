@@ -108,8 +108,6 @@ function HisotryViewTransfers({ dataServices }) {
               text={`No Transfer to display. Start by making your first transfer to track your finances. Click the "New Transfer" button to record it.`}
             />
           )}
-
-          {/* <TransferDetails /> */}
         </ListContainer>
       </ServiceViewCard>
     </>
