@@ -10,8 +10,29 @@ export const depositSchema = yup.object().shape({
     .min(16, "Invalid Card Number")
     .max(16, "Invalid Card Number")
     .required("Required"),
-  exp_date: yup.date().required("Required").nullable(),
-  cvc: yup.string().min(3, "Invalid CVC").required("Required"),
+  exp_date: yup
+    .date()
+    .typeError("Expiration date is required")
+    .test("is-valid-expiration", "Card is expired", function (value) {
+      // If the value is not a date object, return false
+      if (!(value instanceof Date) || isNaN(value.getTime())) {
+        return false;
+      }
+
+      const dateCard = new Date(value).getFullYear();
+      const dateValidity = dateCard + 6;
+      const dateNow = new Date().getFullYear();
+
+      if (dateNow > dateValidity || dateCard > dateNow) {
+        return false;
+      }
+      return true;
+    }),
+  cvc: yup
+    .string()
+    .min(3, "Invalid CVC")
+    .max(3, "Invalid CVC")
+    .required("Required"),
   amount: yup
     .string()
     .min(2, "Minimum 10 Ron")
