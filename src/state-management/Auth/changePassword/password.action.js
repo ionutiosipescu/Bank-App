@@ -10,3 +10,8 @@ export const setChangePassword = (password, e) => {
   const updateObj = updateChangePassword(password, e);
   return createAction(CHANGE_PASSWORD_TYPES.SET_PASSWORD, updateObj);
 };
+
+export const setResetPassword = () => {
+  const updateObj = { password: "", confirmPassword: "" };
+  return createAction(CHANGE_PASSWORD_TYPES.SET_PASSWORD, updateObj);
+};

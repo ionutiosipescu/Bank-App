@@ -25,7 +25,7 @@ function MainChangePassword() {
         <FromChangePassword />
         <BoxControler>
           <FooterLogIn />
-          <FooterRegister />
+          <FooterRegister passChange={"passChange"} />
         </BoxControler>
       </ChangeContainer>
     </LogInWrapper>
