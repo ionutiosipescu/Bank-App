@@ -184,5 +184,3 @@ export const Error = styled.div`
   position: absolute;
   bottom: -22px;
 `;
-
-export const AuthWrapper = styled.div``;
