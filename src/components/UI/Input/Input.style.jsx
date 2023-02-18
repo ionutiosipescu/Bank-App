@@ -67,6 +67,7 @@ export const GroupRadioRegister = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
+  ${(props) => console.log(props)}
   margin: 0 10px 10px 0;
   width: 100%;
   label {

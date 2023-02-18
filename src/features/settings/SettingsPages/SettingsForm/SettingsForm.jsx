@@ -17,16 +17,25 @@ import Auth from "../../../../components/Auth/Auth";
 import { SettingsFormWrapper } from "../../../../pages/Settings/Settings.style";
 import StatusMessage from "../../../../components/UI/StatusMessage/StatusMessage";
 import { setResetShowMsg } from "../../../../state-management/Dashboard/settings/settings.action";
+import { selectCurrentUser } from "../../../../state-management/Dashboard/userData/userData.selector";
 import { useEffect } from "react";
+import { fetchAuthData } from "../../../../state-management/Dashboard/settings/settings.service";
+import { selectToken } from "../../../../state-management/Auth/registerhelper/registerhelper.selector";
 
 function SettingsForm() {
   const dispatch = useDispatch();
   const settingsData = useSelector(selectSettingsData);
   const { first_name, last_name, address, mobile } = settingsData;
+  const token = useSelector(selectToken);
   const [showAuth, handleShow] = useState(false);
+  const userData = useSelector(selectCurrentUser);
 
   const setData = (e) => {
     dispatch(setSettingsForm(settingsData, e));
+  };
+
+  const onSubmit = () => {
+    dispatch(fetchAuthData(settingsData, userData, token));
   };
 
   useEffect(() => {
@@ -40,13 +49,7 @@ function SettingsForm() {
         <Formik
           validationSchema={settingsSchema}
           initialValues={{ ...settingsData }}
-          onSubmit={(isValid) => {
-            if (isValid) {
-              handleShow(true);
-            } else {
-              handleShow(false);
-            }
-          }}
+          onSubmit={onSubmit}
         >
           <FormCustomSettings>
             <RowSettingsSection>
@@ -89,7 +92,7 @@ function SettingsForm() {
                 value={address || ""}
               />
             </RowSettingsSection>
-            {showAuth ? (
+            {/* {showAuth ? (
               <StatusMessage
                 type="success"
                 text={"You data was verified !"}
@@ -99,7 +102,7 @@ function SettingsForm() {
               />
             ) : (
               <></>
-            )}
+            )} */}
             <Button
               label="Verify Data"
               size="xl"

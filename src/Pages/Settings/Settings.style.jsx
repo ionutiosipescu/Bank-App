@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Form } from "formik";
+import Button from "../../components/UI/Button/Button";
 
 export const SettingsContainer = styled.div`
   display: flex;
@@ -104,7 +105,9 @@ export const FormCustomSettings = styled(Form)`
 `;
 
 export const TitleSettings = styled.h2`
-  margin: 0;
+  margin: 50px 0 20px 0;
+  width: 100%;
+  text-align: center;
 `;
 
 export const SettingsFormWrapper = styled.div`

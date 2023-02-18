@@ -11,7 +11,7 @@ export const FormContainerChangePassword = styled(Form)`
   width: 100%;
   gap: 10px;
   @media ${device.mobileL} {
-    width: 315px;
+    width: 400px;
   }
 `;
 

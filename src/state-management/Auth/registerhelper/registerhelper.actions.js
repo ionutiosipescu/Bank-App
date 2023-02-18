@@ -62,3 +62,7 @@ export const setResetSingUp = () => {
   };
   return createAction(REGISTER_HELPER_TYPES.RESET_SIGNUP, registerUserData);
 };
+
+export const setToken = (token) => {
+  return createAction(REGISTER_HELPER_TYPES.SET_TOKEN, token);
+};

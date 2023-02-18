@@ -11,3 +11,5 @@ export const selectRegisterFailed = (state) => state.registerHelper.error;
 export const selectIsLoading = (state) => state.registerHelper.isLoading;
 
 export const selectEmailCode = (state) => state.registerHelper.emailCode;
+
+export const selectToken = (state) => state.registerHelper.token;

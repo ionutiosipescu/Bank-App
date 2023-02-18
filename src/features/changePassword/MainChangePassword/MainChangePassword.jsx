@@ -43,7 +43,7 @@ function MainChangePassword() {
         <FromChangePassword />
         <BoxControler>
           <FooterLogIn />
-          <FooterRegister />
+          <FooterRegister passChange={"passChange"} />
         </BoxControler>
         <Button size="sm" label="OTP" onClick={handleModalOpen} />
       </ChangeContainer>
