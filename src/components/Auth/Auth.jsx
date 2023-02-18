@@ -42,7 +42,7 @@ function Auth() {
   };
 
   const onSubmit = () => {
-    dispatch(fetchAuthDataPassword(passwordData, userData, authData));
+    dispatch(fetchAuthDataPassword(passwordData, authData));
   };
 
   return (

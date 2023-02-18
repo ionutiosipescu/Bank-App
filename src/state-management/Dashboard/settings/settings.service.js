@@ -1,6 +1,7 @@
 import { createAction } from "../../../utils/helpers/reducer/reducer.utils";
 import { SETTINGS_TYPES } from "./settings.types";
 import { setObjSettings } from "./settings.action";
+import { setObjPassword } from "./settings.action";
 import axios from "axios";
 
 export const requestSettingsStart = () =>
@@ -37,11 +38,12 @@ export const fetchAuthData = (dataObj, userData, token) => {
   };
 };
 
-export const fetchAuthDataPassword = (dataObj, userData, authData) => {
+export const fetchAuthDataPassword = (dataObj, authData) => {
   return async (dispatch) => {
-    console.log(dataObj, userData, authData);
+    console.log(dataObj, authData);
     try {
-      // const dataRequest = await setObjSettings(dataObj, userData);
+      const dataRequest = await setObjPassword(dataObj, authData);
+      console.log(dataRequest);
       // first request authentication
       const {
         data: { tokenType, accessToken, id },
@@ -50,13 +52,13 @@ export const fetchAuthDataPassword = (dataObj, userData, authData) => {
       // await dispatch(requestSettingsStart());
 
       // second request get data
-      // await axios
-      //   .patch(`http://localhost:8080/user/edit?id=${id}`, dataRequest, {
-      //     headers: {
-      //       Authorization: `${tokenType} ${accessToken}`,
-      //     },
-      //   })
-      //   .then((res) => console.log(res));
+      await axios
+        .put(`http://localhost:8080/user/edit/credentials`, dataRequest, {
+          headers: {
+            Authorization: `${tokenType} ${accessToken}`,
+          },
+        })
+        .then((res) => console.log(res));
       // await dispatch(requestSettingsSuccess());
     } catch (err) {
       console.log(err);

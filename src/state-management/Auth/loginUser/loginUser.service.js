@@ -16,6 +16,7 @@ export const postLoginFailed = (error) =>
 // Async User Login
 export const fetchLoginData = (url, registerData) => {
   return async (dispatch) => {
+    console.log(registerData);
     try {
       // First request: login
       const {
