@@ -1,6 +1,7 @@
 import { REGISTER_HELPER_TYPES } from "./registerhelper.types";
 
 const INITIAL_STATE = {
+  token: "",
   userProfile: {
     firstname: "",
     lastname: "",
@@ -48,6 +49,8 @@ export const registerHelperReducer = (state = INITIAL_STATE, action = {}) => {
       return { ...state, emailCode: payload };
     case REGISTER_HELPER_TYPES.RESET_SIGNUP:
       return { ...state, userProfile: { ...payload } };
+    case REGISTER_HELPER_TYPES.SET_TOKEN:
+      return { ...state, token: payload };
     default:
       return state;
   }

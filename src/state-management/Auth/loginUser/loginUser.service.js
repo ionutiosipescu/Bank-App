@@ -2,6 +2,7 @@ import axios from "axios";
 import { setCurrentUser } from "../../Dashboard/userData/userData.action";
 import { createAction } from "../../../utils/helpers/reducer/reducer.utils";
 import { LOGIN_ACTION_TYPES } from "./loginUser.types";
+import { setToken } from "../registerhelper/registerhelper.actions";
 
 export const postLoginStart = () =>
   createAction(LOGIN_ACTION_TYPES.POST_LOGIN_START);
@@ -21,6 +22,7 @@ export const fetchLoginData = (url, registerData) => {
         data: { tokenType, accessToken, id },
       } = await axios.post(url, registerData);
       console.log(tokenType, accessToken, id);
+      await dispatch(setToken(`${tokenType} ${accessToken}`));
       await dispatch(postLoginStart());
       // Use the token type and access token in the second request
       const { data } = await axios.post(

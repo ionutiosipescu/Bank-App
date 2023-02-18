@@ -104,21 +104,13 @@ function HisotryViewTransfers({ dataServices }) {
                       {transfer.status || "Completed"}
                     </LabelList>
                   </ListItemSectionTransfer>
-                  <ButtonsTransferBox>
-                    <LinkButton
-                      size="sm"
-                      label="Details"
-                      primary="primary"
-                      to="/services/transfers/transferdetails"
-                      handleClick={() => dispatch(setDetailTransfer(transfer))}
-                    />
-                    <Button
-                      label="Repeat"
-                      size="sm"
-                      primary="primary"
-                      onClick={() => console.log(transfer)}
-                    />
-                  </ButtonsTransferBox>
+                  <LinkButton
+                    size="sm"
+                    label="Details"
+                    primary="primary"
+                    to="/services/transfers/transferdetails"
+                    handleClick={() => dispatch(setDetailTransfer(transfer))}
+                  />
                 </ListItem>
               ))}
             </>
