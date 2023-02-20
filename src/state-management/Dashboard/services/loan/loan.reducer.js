@@ -1,5 +1,4 @@
-import { collapseTextChangeRangesAcrossMultipleVersions } from "typescript";
-import { LOANS_DATA_TYPES } from "./loans.types";
+import { LOANS_DATA_TYPES } from "./loan.types";
 
 const INITIAL_STATE = {
   loansData: {

@@ -1,5 +1,4 @@
 import { LOGIN_ACTION_TYPES } from "./loginUser.types";
-// import { createAction } from "../../utils/helpers/reducer/reducer.utils";
 import { createAction } from "../../../utils/helpers/reducer/reducer.utils";
 
 const updateLoginUser = (loginData, e) => {

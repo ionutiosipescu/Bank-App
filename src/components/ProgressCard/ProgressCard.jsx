@@ -8,7 +8,6 @@ import {
   ProgressCardContainer,
   ProgressCardIllustration,
 } from "./ProgressCard.style";
-import { upperCaseFirst } from "../../utils/helpers/helperFunctions/upperCaseFirstInitial";
 
 const ProgressCard = ({ ...props }) => {
   const { title, handleClick, amount, paid } = props;

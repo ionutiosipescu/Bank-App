@@ -25,9 +25,9 @@ import Modal from "../../../../../components/Modal/Modal";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { selectCurrentUser } from "../../../../../state-management/Dashboard/userData/userData.selector";
-import { getLoansArrDb } from "../../../../../state-management/Dashboard/services/loans/loans.action";
-import { selectLoansArr } from "../../../../../state-management/Dashboard/services/loans/loans.selector";
-import { selectHistoryLoans } from "../../../../../state-management/Dashboard/services/loans/loans.selector";
+import { getLoansArrDb } from "../../../../../state-management/Dashboard/services/loan/loan.action";
+import { selectLoansArr } from "../../../../../state-management/Dashboard/services/loan/loan.selector";
+import { selectHistoryLoans } from "../../../../../state-management/Dashboard/services/loan/loan.selector";
 import Fallback from "../../../../../components/Fallback/Fallback";
 
 function HisotryViewLoans({ dataServices, ...props }) {

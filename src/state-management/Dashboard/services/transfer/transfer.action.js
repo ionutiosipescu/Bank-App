@@ -1,8 +1,8 @@
-import { TRANSFER_HELPER_TYPES } from "./transferHelper.types";
-import { createAction } from "../../../../../utils/helpers/reducer/reducer.utils";
-import { getLocalDate } from "../../../../../utils/helpers/helperFunctions/date";
-import { findObjectByString } from "../../../../../utils/helpers/helperFunctions/findObject";
-import { generateRandomNumber } from "../../../../../utils/helpers/helperFunctions/randomNumber";
+import { TRANSFER_HELPER_TYPES } from "./transfer.types";
+import { createAction } from "../../../../utils/helpers/reducer/reducer.utils";
+import { getLocalDate } from "../../../../utils/helpers/helperFunctions/date";
+import { findObjectByString } from "../../../../utils/helpers/helperFunctions/findObject";
+import { generateRandomNumber } from "../../../../utils/helpers/helperFunctions/randomNumber";
 import axios from "axios";
 
 // Update Transfer Form

@@ -17,14 +17,14 @@ import {
 } from "./ExchangeList.style";
 import Button from "../../../components/UI/Button/Button";
 import { useDispatch, useSelector } from "react-redux";
-import { selectExchangeArr } from "../../../state-management/Dashboard/services/helpers/exchangeHelper/exchangeHelper.selector";
-import { fetchExchangeRepeat } from "../../../state-management/Dashboard/services/helpers/exchangeHelper/exchangeHelper.action";
+import { selectExchangeArr } from "../../../state-management/Dashboard/services/exchange/exchange.selector";
+import { fetchExchangeRepeat } from "../../../state-management/Dashboard/services/exchange/exchange.action";
 import { selectCurrentUser } from "../../../state-management/Dashboard/userData/userData.selector";
 import { SelectAccountToggle } from "../../deposits/DepositsControlerCard/DepositControlerCard.style";
 import SmallDropdown from "../../cardsPage/Dropdown/Dropdown";
 import { DepositHeaderList } from "../../deposits/DepositsListCard/DepositsListCard.style";
-import { selectExchangeOption } from "../../../state-management/Dashboard/services/helpers/exchangeHelper/exchangeHelper.selector";
-import { setSelectedOptionExchange } from "../../../state-management/Dashboard/services/helpers/exchangeHelper/exchangeHelper.action";
+import { selectExchangeOption } from "../../../state-management/Dashboard/services/exchange/exchange.selector";
+import { setSelectedOptionExchange } from "../../../state-management/Dashboard/services/exchange/exchange.action";
 import Modal from "../../../components/Modal/Modal";
 import ConfirmActionModal from "../../../components/ConfirmActionModal/ConfirmActionModal";
 import { useState } from "react";

@@ -1,4 +1,4 @@
-import { DEPOSITS_HELPER_TYPES } from "./depositsHelper.types";
+import { DEPOSITS_HELPER_TYPES } from "./deposit.types";
 
 const INITIAL_STATE = {
   depositAction: "Deposit",

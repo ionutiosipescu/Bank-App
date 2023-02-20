@@ -8,8 +8,7 @@ import {
   UsersWrapper,
 } from "./Carousel.style";
 import { useDispatch } from "react-redux";
-// import { setAddTransferAccount } from "../../state-management/Dashboard/services/helpers/transfersHelper/transferHelper.action";
-import { fetchTransferAccount } from "../../state-management/Dashboard/services/helpers/transfersHelper/transferHelper.action";
+import { fetchTransferAccount } from "../../state-management/Dashboard/services/transfer/transfer.action";
 
 function Carousel({ items, itemsNumber }) {
   const dispatch = useDispatch();

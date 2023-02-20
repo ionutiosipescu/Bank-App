@@ -1,4 +1,4 @@
-import { SAVINGS_HELPER_TYPES } from "./savingsHelper.types";
+import { SAVINGS_HELPER_TYPES } from "./saving.types";
 
 const INITIAL_STATE = {
   savingAction: "",

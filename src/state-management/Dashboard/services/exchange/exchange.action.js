@@ -1,9 +1,9 @@
-import { createAction } from "../../../../../utils/helpers/reducer/reducer.utils";
-import { getLocalDate } from "../../../../../utils/helpers/helperFunctions/date";
-import { EXCHANGE_HELPER_TYPES } from "./excahngeHelper.types";
-import { findObjectByString } from "../../../../../utils/helpers/helperFunctions/findObject";
+import { createAction } from "../../../../utils/helpers/reducer/reducer.utils";
+import { getLocalDate } from "../../../../utils/helpers/helperFunctions/date";
+import { EXCHANGE_HELPER_TYPES } from "./excahnge.types";
+import { findObjectByString } from "../../../../utils/helpers/helperFunctions/findObject";
 import axios from "axios";
-import { generateRandomNumber } from "../../../../../utils/helpers/helperFunctions/randomNumber";
+import { generateRandomNumber } from "../../../../utils/helpers/helperFunctions/randomNumber";
 
 export const updateExhangeAmount = (exchangeData, e) => {
   const { name, value } = e.target;

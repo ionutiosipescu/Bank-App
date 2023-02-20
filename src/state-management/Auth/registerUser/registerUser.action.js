@@ -1,8 +1,6 @@
 import { REGISTER_ACTION_TYPES } from "./registerUser.types";
 import { createAction } from "../../../utils/helpers/reducer/reducer.utils";
 import { setTypeOfPlanAdd } from "../registerhelper/registerhelper.actions";
-import { setStep } from "../registerhelper/registerhelper.actions";
-import axios from "axios";
 import { getLocalDate } from "../../../utils/helpers/helperFunctions/date";
 
 export const setRegisterObjectAditionals = (registerHelperAditionals) => {

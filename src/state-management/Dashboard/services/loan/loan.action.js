@@ -1,5 +1,5 @@
 import { createAction } from "../../../../utils/helpers/reducer/reducer.utils";
-import { LOANS_DATA_TYPES } from "./loans.types";
+import { LOANS_DATA_TYPES } from "./loan.types";
 import { getLocalDate } from "../../../../utils/helpers/helperFunctions/date";
 import { findObjectByString } from "../../../../utils/helpers/helperFunctions/findObject";
 import axios from "axios";

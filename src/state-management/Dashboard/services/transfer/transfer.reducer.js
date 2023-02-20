@@ -1,4 +1,4 @@
-import { TRANSFER_HELPER_TYPES } from "./transferHelper.types";
+import { TRANSFER_HELPER_TYPES } from "./transfer.types";
 
 const INITIAL_STATE = {
   transferObj: {},

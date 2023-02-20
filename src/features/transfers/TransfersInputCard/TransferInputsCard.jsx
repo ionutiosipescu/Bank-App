@@ -12,18 +12,18 @@ import Button from "./../../../components/UI/Button/Button";
 import Input from "./../../../components/UI/Input/Input";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { selectTransferHelper } from "../../../state-management/Dashboard/services/helpers/transfersHelper/transferHelper.selector";
-import { selectTransferForm } from "../../../state-management/Dashboard/services/helpers/transfersHelper/transferHelper.selector";
-import { setTransferForm } from "../../../state-management/Dashboard/services/helpers/transfersHelper/transferHelper.action";
+import { selectTransferHelper } from "../../../state-management/Dashboard/services/transfer/transfer.selector";
+import { selectTransferForm } from "../../../state-management/Dashboard/services/transfer/transfer.selector";
+import { setTransferForm } from "../../../state-management/Dashboard/services/transfer/transfer.action";
 import { Form, Formik } from "formik";
 import CustomInput from "../../../components/CustomInputs/CustomInput";
 import CustomPassword from "../../../components/CustomInputs/CustomPassword";
 import { transferSchema } from "../ValidationSchema/ValidationSchema";
-import { fetchTransferData } from "../../../state-management/Dashboard/services/helpers/transfersHelper/transferHelper.action";
+import { fetchTransferData } from "../../../state-management/Dashboard/services/transfer/transfer.action";
 import { selectCurrentUser } from "../../../state-management/Dashboard/userData/userData.selector";
 import RadioButton from "../../../components/RadioButton/RadioButton";
-import { setTransformAccount } from "../../../state-management/Dashboard/services/helpers/transfersHelper/transferHelper.action";
-import { selectTransferArr } from "../../../state-management/Dashboard/services/helpers/transfersHelper/transferHelper.selector";
+import { setTransformAccount } from "../../../state-management/Dashboard/services/transfer/transfer.action";
+import { selectTransferArr } from "../../../state-management/Dashboard/services/transfer/transfer.selector";
 
 function TransferInputsCard() {
   const dispatch = useDispatch();

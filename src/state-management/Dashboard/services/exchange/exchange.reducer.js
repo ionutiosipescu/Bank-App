@@ -1,4 +1,4 @@
-import { EXCHANGE_HELPER_TYPES } from "./excahngeHelper.types";
+import { EXCHANGE_HELPER_TYPES } from "./excahnge.types";
 
 const INITIAL_STATE = {
   exchangeData: {

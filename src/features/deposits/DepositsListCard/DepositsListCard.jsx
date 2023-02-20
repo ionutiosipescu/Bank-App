@@ -23,16 +23,13 @@ import Fallback from "../../../components/Fallback/Fallback";
 
 // State/Redux
 import { useDispatch, useSelector } from "react-redux";
-import { selectDepositArr } from "../../../state-management/Dashboard/services/helpers/depositsHelper/deposits.selector";
+import { selectDepositArr } from "../../../state-management/Dashboard/services/deposit/deposit.selector";
 import { upperCaseFirst } from "../../../utils/helpers/helperFunctions/upperCaseFirstInitial";
-import { selectDepositFilter } from "../../../state-management/Dashboard/services/helpers/depositsHelper/deposits.selector";
-import { fetchRepeatDeposit } from "../../../state-management/Dashboard/services/helpers/depositsHelper/deposit.service";
+import { fetchRepeatDeposit } from "../../../state-management/Dashboard/services/deposit/deposit.service";
 import { selectCurrentUser } from "../../../state-management/Dashboard/userData/userData.selector";
-import { options } from "./../../../utils/data/plancardregisterData";
 import { useState } from "react";
-import { useEffect } from "react";
-import { setSelectedOptionDeposit } from "../../../state-management/Dashboard/services/helpers/depositsHelper/depositsHelper.action";
-import { selectDepositOption } from "../../../state-management/Dashboard/services/helpers/depositsHelper/deposits.selector";
+import { setSelectedOptionDeposit } from "../../../state-management/Dashboard/services/deposit/deposit.action";
+import { selectDepositOption } from "../../../state-management/Dashboard/services/deposit/deposit.selector";
 import Modal from "../../../components/Modal/Modal";
 import ConfirmActionModal from "../../../components/ConfirmActionModal/ConfirmActionModal";
 

@@ -8,14 +8,9 @@ import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrentCardAccount } from "../../state-management/Dashboard/cards/cards.action";
-import {
-  selectUserAccount,
-  selectUserDetail,
-} from "../../state-management/Dashboard/userData/userData.selector";
+import { selectUserDetail } from "../../state-management/Dashboard/userData/userData.selector";
 
 import { generateRandomNumber } from "../../utils/helpers/helperFunctions/randomNumber";
-import { cardValidityGenerator } from "./../../utils/helpers/helperFunctions/cardValidityGenerator";
-import { selectCardArr } from "../../state-management/Dashboard/cards/cards.selector";
 import BalanceCardEmpty from "../BalanceCardEmpty/BalanceCardEmpty";
 import { setCurrentCardEdit } from "../../state-management/Dashboard/cards/cards.action";
 import { setCurrentCardNew } from "../../state-management/Dashboard/cards/cards.action";

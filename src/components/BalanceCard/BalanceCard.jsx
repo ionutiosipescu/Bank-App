@@ -2,7 +2,6 @@ import React from "react";
 import { PropTypes } from "prop-types";
 import { CardContainer, CardHeader } from "../UI/Card/Card.style";
 import { CardBody, CardFooter, Circle, Pill } from "./BalanceCard.style";
-import { cardValidityGenerator } from "../../utils/helpers/helperFunctions/cardValidityGenerator";
 
 function BalanceCard({ ...props }) {
   const {

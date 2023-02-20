@@ -1,4 +1,3 @@
-import { DEPOSITS_HELPER_TYPES } from "./depositsHelper.types";
 import axios from "axios";
 import {
   setDepositId,
@@ -7,7 +6,7 @@ import {
   setDepositArr,
   setDepositArrRepeat,
   formatDataRepet,
-} from "./depositsHelper.action";
+} from "./deposit.action";
 
 // Get Arr
 export const getDepositArrDb = (obj, currentUserData) => {

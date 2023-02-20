@@ -1,7 +1,5 @@
-import { SAVINGS_HELPER_TYPES } from "./savingsHelper.types";
-import { createAction } from "../../../../../utils/helpers/reducer/reducer.utils";
-import { generateObjWithdraw } from "./savingsHelper.action";
-import { setSavingArrActions } from "./savingsHelper.action";
+import { generateObjWithdraw } from "./saving.action";
+import { setSavingArrActions } from "./saving.action";
 import axios from "axios";
 
 // Async Saving Post Withdraw
