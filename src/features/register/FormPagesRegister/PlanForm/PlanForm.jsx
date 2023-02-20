@@ -13,10 +13,10 @@ import { selectStep } from "../../../../state-management/Auth/registerhelper/reg
 import { selectPlanObject } from "../../../../state-management/Auth/registerhelper/registerhelper.selector";
 import { selectRegisterUser } from "../../../../state-management/Auth/registerhelper/registerhelper.selector";
 import { setStep } from "../../../../state-management/Auth/registerhelper/registerhelper.actions";
-import { selectRegisterPlan } from "../../../../state-management/Auth/registerUser/registerUser.selector";
-import { updateRegisterPlanAsync } from "../../../../state-management/Auth/registerUser/registerUser.action";
-import { setRegisterUserObject } from "../../../../state-management/Auth/registerUser/registerUser.action";
-import { setRegisterObjectAditionals } from "../../../../state-management/Auth/registerUser/registerUser.action";
+import { selectRegisterPlan } from "../../../../state-management/Auth/registerhelper/registerhelper.selector";
+import { updateRegisterPlanAsync } from "../../../../state-management/Auth/registerhelper/registerhelper.actions";
+import { setRegisterUserObject } from "../../../../state-management/Auth/registerhelper/registerhelper.actions";
+import { setRegisterObjectAditionals } from "../../../../state-management/Auth/registerhelper/registerhelper.actions";
 import e from "cors";
 
 function PlanForm() {

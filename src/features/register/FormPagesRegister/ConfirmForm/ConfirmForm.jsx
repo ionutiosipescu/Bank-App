@@ -1,7 +1,5 @@
 import React from "react";
 import { Fragment } from "react";
-// import { selectRegisterPlan } from "../../../../state-management/registerUser/registerUser.selector";
-// import { selectRegisterUser } from "../../../../state-management/registerhelper/registerhelper.selector";
 import FooterControl from "../../FooterControl/FooterControl";
 import { Form, Formik } from "formik";
 import { useDispatch } from "react-redux";
@@ -19,16 +17,17 @@ import { upperCaseFirstInitial } from "../../../../utils/helpers/helperFunctions
 import { generateRandomKey } from "../../../../utils/helpers/helperFunctions/randomKey";
 import { ErrorMsg } from "../../../../components/Errors/Auth/ErrorMsg.style";
 import { selectStep } from "../../../../state-management/Auth/registerhelper/registerhelper.selector";
-import { selectRegisterData } from "../../../../state-management/Auth/registerUser/registerUser.selector";
+import { selectRegisterData } from "../../../../state-management/Auth/registerhelper/registerhelper.selector";
 import { selectRegisterFailed } from "../../../../state-management/Auth/registerhelper/registerhelper.selector";
-import { fetchRegisterData } from "../../../../state-management/Auth/registerhelper/registerhelper.service";
+// import { fetchRegisterData } from "../../../../state-management/Auth/registerhelper/registerhelper.service";
+import { fetchRegisterMail } from "../../../../state-management/Auth/registerhelper/registerhelper.service";
 
 function ConfirmForm() {
   const errorMsg = useSelector(selectRegisterFailed);
   const dispatch = useDispatch();
   const step = useSelector(selectStep);
   const RegisterData = useSelector(selectRegisterData);
-  const array = RegisterData.account;
+  const array = RegisterData?.account;
   const mappedArray = array.map(({ currency, type_of_plan }) => ({
     currency,
     type_of_plan,
@@ -45,13 +44,7 @@ function ConfirmForm() {
   const handleSubmit = () => {
     console.log(RegisterData);
     console.log(errorMsg);
-    dispatch(
-      fetchRegisterData(
-        "http://localhost:8080/bank/auth/signup",
-        RegisterData,
-        step
-      )
-    );
+    dispatch(fetchRegisterMail(RegisterData, step));
   };
   const setCardCheckbox = (e) => {
     console.log(e);

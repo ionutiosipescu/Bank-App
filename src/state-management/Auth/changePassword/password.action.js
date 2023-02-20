@@ -15,3 +15,19 @@ export const setResetPassword = () => {
   const updateObj = { password: "", confirmPassword: "" };
   return createAction(CHANGE_PASSWORD_TYPES.SET_PASSWORD, updateObj);
 };
+
+// Generate Obj for Request
+export const setObjPassword = async (dataObj, authData) => {
+  const { password } = dataObj;
+  const { username } = authData;
+  const objectPasswordRequest = {
+    username: username,
+    password: password,
+  };
+  console.log(objectPasswordRequest);
+  return objectPasswordRequest;
+};
+
+export const resetPassword = () => {
+  return createAction(CHANGE_PASSWORD_TYPES.RESET_PASSWORD);
+};

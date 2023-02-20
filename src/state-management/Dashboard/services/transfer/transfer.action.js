@@ -1,8 +1,8 @@
-import { TRANSFER_HELPER_TYPES } from "./transferHelper.types";
-import { createAction } from "../../../../../utils/helpers/reducer/reducer.utils";
-import { getLocalDate } from "../../../../../utils/helpers/helperFunctions/date";
-import { findObjectByString } from "../../../../../utils/helpers/helperFunctions/findObject";
-import { generateRandomNumber } from "../../../../../utils/helpers/helperFunctions/randomNumber";
+import { TRANSFER_HELPER_TYPES } from "./transfer.types";
+import { createAction } from "../../../../utils/helpers/reducer/reducer.utils";
+import { getLocalDate } from "../../../../utils/helpers/helperFunctions/date";
+import { findObjectByString } from "../../../../utils/helpers/helperFunctions/findObject";
+import { generateRandomNumber } from "../../../../utils/helpers/helperFunctions/randomNumber";
 import axios from "axios";
 
 // Update Transfer Form
@@ -99,49 +99,10 @@ export const setTransferId = async (obj, currentUserData) => {
   return object.id;
 };
 
-// Get Arr
-export const getTransferArr = (obj, currentUserData) => {
-  return async (dispatch) => {
-    const id = await setTransferId(obj, currentUserData);
-    console.log(id);
-    // if (!id) return;
-    const { data } = await axios.get(
-      `http://localhost:8080/transfers/?id=${id}`
-    );
-    console.log(data);
-    await dispatch(setTransferArrDb(data));
-  };
-};
-
 // Set Arr from DB
 
 export const setTransferArrDb = (transferArr) => {
   return createAction(TRANSFER_HELPER_TYPES.SET_TRANSFER_ARR, transferArr);
-};
-
-// Async Transfer Data
-export const fetchTransferData = (
-  transferData,
-  currentUserData,
-  selectedAccount,
-  arr
-) => {
-  return async (dispatch) => {
-    await dispatch(setTransferArr(transferData, selectedAccount, arr));
-    try {
-      const transferDataRequest = await setTransferData(transferData);
-      const id = await setTransferId(transferData, currentUserData);
-      console.log(id, transferDataRequest);
-      await axios
-        .post(
-          `http://localhost:8080/transfers/transfer/?id=${id}&email=${transferData.email}`,
-          transferDataRequest
-        )
-        .then((res) => console.log(res));
-    } catch (err) {
-      console.log(err);
-    }
-  };
 };
 
 // // Async Repeat Transfer Data
@@ -172,4 +133,8 @@ export const setSelectedOptionTransfer = (e, filter) => {
   const { value } = e.target;
   const newObj = { ...filter, account: value };
   return createAction(TRANSFER_HELPER_TYPES.SET_TRANSFER_OPTION, newObj);
+};
+
+export const resetTransfer = () => {
+  return createAction(TRANSFER_HELPER_TYPES.RESET_TRANSFER);
 };

@@ -10,9 +10,8 @@ import DepositsListCard from "../../../../features/deposits/DepositsListCard/Dep
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { selectCurrentUser } from "../../../../state-management/Dashboard/userData/userData.selector";
-import { selectDepositForm } from "../../../../state-management/Dashboard/services/helpers/depositsHelper/deposits.selector";
-import { getDepositArrDb } from "../../../../state-management/Dashboard/services/helpers/depositsHelper/deposit.service";
-import { selectDepositOption } from "../../../../state-management/Dashboard/services/helpers/depositsHelper/deposits.selector";
+import { getDepositArrDb } from "../../../../state-management/Dashboard/services/deposit/deposit.service";
+import { selectDepositOption } from "../../../../state-management/Dashboard/services/deposit/deposit.selector";
 
 function Deposit() {
   const dispatch = useDispatch();

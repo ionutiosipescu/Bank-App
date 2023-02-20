@@ -1,5 +1,4 @@
-import { collapseTextChangeRangesAcrossMultipleVersions } from "typescript";
-import { LOANS_DATA_TYPES } from "./loans.types";
+import { LOANS_DATA_TYPES } from "./loan.types";
 
 const INITIAL_STATE = {
   loansData: {
@@ -28,6 +27,8 @@ export const loansDataReducer = (state = INITIAL_STATE, action) => {
       return { ...state, loansHistory: [...payload] };
     case LOANS_DATA_TYPES.SET_LOANS_CHECK_DATA:
       return { ...state, loanCheckData: { ...payload } };
+    case LOANS_DATA_TYPES.RESET_LOANS:
+      return INITIAL_STATE;
     default:
       return state;
   }

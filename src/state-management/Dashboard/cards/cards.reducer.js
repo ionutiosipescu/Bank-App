@@ -34,6 +34,8 @@ export const cardReducer = (state = INITIAL_STATE, action = {}) => {
       return { ...state, cardArr: [...payload] };
     case CARD_TYPES.SET_CARD_OPTION:
       return { ...state, selectedOption: payload };
+    case CARD_TYPES.RESET_CARDS:
+      return INITIAL_STATE;
     default:
       return state;
   }

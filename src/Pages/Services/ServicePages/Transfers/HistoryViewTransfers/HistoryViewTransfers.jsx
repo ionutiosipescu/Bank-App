@@ -23,16 +23,16 @@ import LinkButton from "../../../../../components/UI/LinkButton/LinkButton";
 import LabelList from "../../../../../components/UI/LabelList/LabelList";
 import UserCard from "../../../../../components/UserCard/UserCard";
 import Button from "../../../../../components/UI/Button/Button";
-import { selectOptionTransfer } from "../../../../../state-management/Dashboard/services/helpers/transfersHelper/transferHelper.selector";
-import { setSelectedOptionTransfer } from "../../../../../state-management/Dashboard/services/helpers/transfersHelper/transferHelper.action";
+import { selectOptionTransfer } from "../../../../../state-management/Dashboard/services/transfer/transfer.selector";
+import { setSelectedOptionTransfer } from "../../../../../state-management/Dashboard/services/transfer/transfer.action";
 import SmallDropdown from "../../../../../features/cardsPage/Dropdown/Dropdown";
 import { SelectAccountToggle } from "../../../../../features/deposits/DepositsControlerCard/DepositControlerCard.style";
 // State/Redux
 
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { selectTransferArr } from "../../../../../state-management/Dashboard/services/helpers/transfersHelper/transferHelper.selector";
-import { setDetailTransfer } from "../../../../../state-management/Dashboard/services/helpers/transfersHelper/transferHelper.action";
+import { selectTransferArr } from "../../../../../state-management/Dashboard/services/transfer/transfer.selector";
+import { setDetailTransfer } from "../../../../../state-management/Dashboard/services/transfer/transfer.action";
 
 // !Dummy Data &  Test Component
 import { accounts } from "../../../../../utils/data/dummyData";

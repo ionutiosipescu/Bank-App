@@ -10,7 +10,8 @@ export const userDataReducer = (state = INITIAL_STATE, action) => {
   switch (type) {
     case USER_DATA_TYPES.SET_CURRENT_USER:
       return { ...state, userData: { ...payload } };
-
+    case USER_DATA_TYPES.RESET_USER:
+      return INITIAL_STATE;
     default:
       return state;
   }

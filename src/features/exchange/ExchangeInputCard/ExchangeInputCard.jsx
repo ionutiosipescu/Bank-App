@@ -19,13 +19,13 @@ import CustomExchange from "../../../components/CustomInputs/CustomExchange";
 import { Formik, Form } from "formik";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { selectExchangeData } from "../../../state-management/Dashboard/services/helpers/exchangeHelper/exchangeHelper.selector";
-import { setExchangeAmount } from "../../../state-management/Dashboard/services/helpers/exchangeHelper/exchangeHelper.action";
+import { selectExchangeData } from "../../../state-management/Dashboard/services/exchange/exchange.selector";
+import { setExchangeAmount } from "../../../state-management/Dashboard/services/exchange/exchange.action";
 import { ErrorMsg } from "../../../components/Errors/Auth/ErrorMsg.style";
-import { selectExchangeArr } from "../../../state-management/Dashboard/services/helpers/exchangeHelper/exchangeHelper.selector";
-import { fetchExchangeData } from "../../../state-management/Dashboard/services/helpers/exchangeHelper/exchangeHelper.action";
+import { selectExchangeArr } from "../../../state-management/Dashboard/services/exchange/exchange.selector";
+import { fetchExchangeData } from "../../../state-management/Dashboard/services/exchange/exchange.service";
 import { selectCurrentUser } from "../../../state-management/Dashboard/userData/userData.selector";
-import { setExchangeAmountTo } from "../../../state-management/Dashboard/services/helpers/exchangeHelper/exchangeHelper.action";
+import { setExchangeAmountTo } from "../../../state-management/Dashboard/services/exchange/exchange.action";
 
 function ExchangeInputCard() {
   const dispatch = useDispatch();

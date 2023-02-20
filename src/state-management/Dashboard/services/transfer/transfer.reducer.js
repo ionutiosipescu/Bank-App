@@ -1,4 +1,4 @@
-import { TRANSFER_HELPER_TYPES } from "./transferHelper.types";
+import { TRANSFER_HELPER_TYPES } from "./transfer.types";
 
 const INITIAL_STATE = {
   transferObj: {},
@@ -30,6 +30,8 @@ export const transferHelperReducer = (state = INITIAL_STATE, action) => {
       return { ...state, detailTransfer: { ...payload } };
     case TRANSFER_HELPER_TYPES.SET_TRANSFER_OPTION:
       return { ...state, selectedOption: { ...payload } };
+    case TRANSFER_HELPER_TYPES.RESET_TRANSFER:
+      return INITIAL_STATE;
     default:
       return state;
   }

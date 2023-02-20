@@ -13,7 +13,7 @@ import {
 import Button from "./../../../../../components/UI/Button/Button";
 import avatar from "./../../../../../assets/images/avatar-2.png";
 import { useSelector } from "react-redux";
-import { selectDetailTransfer } from "../../../../../state-management/Dashboard/services/helpers/transfersHelper/transferHelper.selector";
+import { selectDetailTransfer } from "../../../../../state-management/Dashboard/services/transfer/transfer.selector";
 
 //////////////////////////
 import jsPDF from "jspdf";

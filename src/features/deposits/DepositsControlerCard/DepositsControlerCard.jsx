@@ -18,23 +18,20 @@ import {
 } from "./DepositControlerCard.style";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { selectDepositAction } from "../../../state-management/Dashboard/services/helpers/depositsHelper/deposits.selector";
-import { selectDepositForm } from "../../../state-management/Dashboard/services/helpers/depositsHelper/deposits.selector";
-import { setDepositAction } from "../../../state-management/Dashboard/services/helpers/depositsHelper/depositsHelper.action";
-import { setDepositForm } from "../../../state-management/Dashboard/services/helpers/depositsHelper/depositsHelper.action";
+import { selectDepositAction } from "../../../state-management/Dashboard/services/deposit/deposit.selector";
+import { selectDepositForm } from "../../../state-management/Dashboard/services/deposit/deposit.selector";
+import { setDepositAction } from "../../../state-management/Dashboard/services/deposit/deposit.action";
+import { setDepositForm } from "../../../state-management/Dashboard/services/deposit/deposit.action";
 import { debounce } from "debounce";
 import { depositSchema } from "../ValidationSchema/ValidationSchemaDeposit";
 import DatePickerField from "../../../components/CustomInputs/CustomDatePicker";
-import { setDepositArr } from "../../../state-management/Dashboard/services/helpers/depositsHelper/depositsHelper.action";
-import { selectDepositArr } from "../../../state-management/Dashboard/services/helpers/depositsHelper/deposits.selector";
+import { selectDepositArr } from "../../../state-management/Dashboard/services/deposit/deposit.selector";
 import RadioButtonsExchange from "../../../components/CustomInputs/CustomRadioInputGroupExchange";
 import { exchangeRadioBtns } from "../../../utils/data/dummyData";
-import { ErrorMsg } from "../../../components/Errors/Auth/ErrorMsg.style";
-import RadioButton from "../../../components/RadioButton/RadioButton";
-import { setDepositAccount } from "../../../state-management/Dashboard/services/helpers/depositsHelper/depositsHelper.action";
-import { fetchDepositData } from "../../../state-management/Dashboard/services/helpers/depositsHelper/deposit.service";
+import { setDepositAccount } from "../../../state-management/Dashboard/services/deposit/deposit.action";
+import { fetchDepositData } from "../../../state-management/Dashboard/services/deposit/deposit.service";
 import { selectCurrentUser } from "../../../state-management/Dashboard/userData/userData.selector";
-import { selectDeposit } from "../../../state-management/Dashboard/services/helpers/depositsHelper/deposits.selector";
+import { selectDeposit } from "../../../state-management/Dashboard/services/deposit/deposit.selector";
 import SmallDropdown from "../../cardsPage/Dropdown/Dropdown";
 
 function DepositsControlerCard() {

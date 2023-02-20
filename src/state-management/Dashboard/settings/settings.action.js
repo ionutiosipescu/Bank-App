@@ -44,3 +44,7 @@ export const setObjSettings = async (settingsData, userData) => {
 export const setResetShowMsg = () => {
   return createAction(SETTINGS_TYPES.RESET_SHOW_MSG);
 };
+
+export const resetSettings = () => {
+  return createAction(SETTINGS_TYPES.RESET_SETTINGS);
+};

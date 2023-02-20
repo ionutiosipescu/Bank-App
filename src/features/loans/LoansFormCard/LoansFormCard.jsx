@@ -17,12 +17,11 @@ import CustomInput from "../../../components/CustomInputs/CustomInput";
 import CustomSelect from "../../../components/CustomInputs/CustomSelect";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { selectLoansData } from "../../../state-management/Dashboard/services/loans/loans.selector";
-import { setLoansData } from "../../../state-management/Dashboard/services/loans/loans.action";
+import { selectLoansData } from "../../../state-management/Dashboard/services/loan/loan.selector";
+import { setLoansData } from "../../../state-management/Dashboard/services/loan/loan.action";
 import { loansSchema } from "../ValidationSchema/ValidationSchema";
-import { setLoansArr } from "../../../state-management/Dashboard/services/loans/loans.action";
-import { selectLoansArr } from "../../../state-management/Dashboard/services/loans/loans.selector";
-import { fetchLoanData } from "../../../state-management/Dashboard/services/loans/loans.action";
+import { selectLoansArr } from "../../../state-management/Dashboard/services/loan/loan.selector";
+import { fetchLoanData } from "../../../state-management/Dashboard/services/loan/loan.service";
 import { selectCurrentUser } from "../../../state-management/Dashboard/userData/userData.selector";
 
 function LoansFormCard() {

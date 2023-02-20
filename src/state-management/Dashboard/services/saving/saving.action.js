@@ -1,8 +1,8 @@
-import { SAVINGS_HELPER_TYPES } from "./savingsHelper.types";
-import { createAction } from "../../../../../utils/helpers/reducer/reducer.utils";
-import { getLocalDate } from "../../../../../utils/helpers/helperFunctions/date";
-import { generateRandomNumber } from "../../../../../utils/helpers/helperFunctions/randomNumber";
-import { findObjectByString } from "../../../../../utils/helpers/helperFunctions/findObject";
+import { SAVINGS_HELPER_TYPES } from "./saving.types";
+import { createAction } from "../../../../utils/helpers/reducer/reducer.utils";
+import { getLocalDate } from "../../../../utils/helpers/helperFunctions/date";
+import { generateRandomNumber } from "../../../../utils/helpers/helperFunctions/randomNumber";
+import { findObjectByString } from "../../../../utils/helpers/helperFunctions/findObject";
 import axios from "axios";
 
 // Update Saving Action
@@ -11,7 +11,7 @@ export const setSavingAction = (saving) => {
 };
 
 // update Saving Obj
-const updateSavingForm = (savingData, e) => {
+export const updateSavingForm = (savingData, e) => {
   const { name, value } = e.target;
   return { ...savingData, [name]: value };
 };
@@ -55,35 +55,31 @@ export const setSavingsId = async (currentUserData) => {
   return object.id;
 };
 
-// Get Arr
-export const getSavingArr = (currentUserData) => {
-  return async (dispatch) => {
-    const id = await setSavingsId(currentUserData);
-    console.log(id);
-    const { data } = await axios.get(`http://localhost:8080/savings/?id=${id}`);
-    await dispatch(setSavingArrDb(data));
-  };
-};
-
 // Set Arr from DB
 
 export const setSavingArrDb = (savingArr) => {
   return createAction(SAVINGS_HELPER_TYPES.SET_SAVINGS_ARR, savingArr);
 };
 
-// Async Saving Post
-export const fetchSavingData = (obj, arr, currentUserData) => {
-  return async (dispatch) => {
-    await dispatch(setSavingArr(obj, arr));
-    const savingData = await setSavingData(obj);
-    const id = await setSavingsId(currentUserData);
-    console.log(savingData);
-    try {
-      await axios
-        .post(`http://localhost:8080/savings/new/?id=${id}`, savingData)
-        .then((res) => console.log(res));
-    } catch (error) {
-      console.log(error);
-    }
+export const generateObjWithdraw = async (savingObj) => {
+  const { id, transfer, status, date, details } = savingObj;
+  const newObj = {
+    id: id,
+    transfer: transfer,
+    status: status,
+    date: date,
+    details: details,
   };
+  console.log(newObj);
+  return newObj;
+};
+
+export const setSavingArrActions = (savingArr, savingObj) => {
+  const { id } = savingObj;
+  const newArr = savingArr.filter((saving) => saving.id !== id);
+  return createAction(SAVINGS_HELPER_TYPES.SET_SAVINGS_ARR, newArr);
+};
+
+export const resetSaving = () => {
+  return createAction(SAVINGS_HELPER_TYPES.RESET_SAVING);
 };

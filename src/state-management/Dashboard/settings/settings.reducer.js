@@ -22,6 +22,8 @@ export const settingsReducer = (state = INITIAL_STATE, action) => {
   switch (type) {
     case SETTINGS_TYPES.SET_SETTINGS:
       return { ...state, settingsData: { ...payload } };
+    case SETTINGS_TYPES.RESET_SETTINGS:
+      return INITIAL_STATE;
     case SETTINGS_TYPES.SET_AUTH:
       return { ...state, auth: { ...payload } };
     case SETTINGS_TYPES.REQUEST_SETTINGS_START:

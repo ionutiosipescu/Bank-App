@@ -1,15 +1,11 @@
 import React from "react";
-import { Formik, Form } from "formik";
-import { RowSettingsSection } from "../../pages/Settings/Settings.style";
+import { Formik } from "formik";
 import CustomInput from "../CustomInputs/CustomInput";
-import Button from "../UI/Button/Button";
 import { AuthSchema } from "./ValidationSchema/ValidationSchema";
 import { useSelector, useDispatch } from "react-redux";
 import { selectAuth } from "../../state-management/Dashboard/settings/settings.selector";
 import { setAuthForm } from "../../state-management/Dashboard/settings/settings.action";
 import { selectCurrentUser } from "../../state-management/Dashboard/userData/userData.selector";
-import { selectSettingsData } from "../../state-management/Dashboard/settings/settings.selector";
-import { fetchAuthData } from "../../state-management/Dashboard/settings/settings.service";
 import { TitleSettings } from "../../pages/Settings/Settings.style";
 import StatusMessage from "../UI/StatusMessage/StatusMessage";
 import { selectSettingErrorRequest } from "../../state-management/Dashboard/settings/settings.selector";
@@ -24,7 +20,7 @@ import {
   AuthForm,
 } from "./Auth.style";
 import { selectPassword } from "../../state-management/Auth/changePassword/password.selector";
-import { fetchAuthDataPassword } from "../../state-management/Dashboard/settings/settings.service";
+import { fetchAuthDataPassword } from "../../state-management/Auth/changePassword/password.service";
 
 function Auth() {
   const dispatch = useDispatch();
@@ -32,7 +28,6 @@ function Auth() {
   const showMessage = useSelector(selectShowMessage);
   const isSubmiting = useSelector(selectSettingIsSubmiting);
   const userData = useSelector(selectCurrentUser);
-  // const settingsData = useSelector(selectSettingsData);
   const passwordData = useSelector(selectPassword);
   const authData = useSelector(selectAuth);
   const { username, password } = authData;
@@ -42,7 +37,7 @@ function Auth() {
   };
 
   const onSubmit = () => {
-    dispatch(fetchAuthDataPassword(passwordData, userData, authData));
+    dispatch(fetchAuthDataPassword(passwordData, authData));
   };
 
   return (

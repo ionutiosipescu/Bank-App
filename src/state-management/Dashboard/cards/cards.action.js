@@ -119,3 +119,7 @@ export const setCardId = async (currentUserData) => {
 export const setSelectedCardOption = (option) => {
   return createAction(CARD_TYPES.SET_CARD_OPTION, option);
 };
+
+export const resetCards = () => {
+  return createAction(CARD_TYPES.RESET_CARDS);
+};

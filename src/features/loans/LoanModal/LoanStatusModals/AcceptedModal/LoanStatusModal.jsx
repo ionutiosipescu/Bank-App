@@ -15,11 +15,11 @@ import Button from "../../../../../components/UI/Button/Button";
 
 // State / Redux
 import { useDispatch, useSelector } from "react-redux";
-import { fetchLoanCreate } from "../../../../../state-management/Dashboard/services/loans/loans.action";
+import { fetchLoanCreate } from "../../../../../state-management/Dashboard/services/loan/loan.service";
 import {
   selectCheckedData,
   selectLoansArr,
-} from "../../../../../state-management/Dashboard/services/loans/loans.selector";
+} from "../../../../../state-management/Dashboard/services/loan/loan.selector";
 import { selectCurrentUser } from "../../../../../state-management/Dashboard/userData/userData.selector";
 import { PayContainer } from "../../../../../components/LoanPayCard/LoanPayCard.style";
 

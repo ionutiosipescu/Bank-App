@@ -12,21 +12,18 @@ import {
 } from "./SavingsInputCard.style";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { setSavingAction } from "../../../state-management/Dashboard/services/helpers/savingsHelper/savingsHelper.action";
-import { setSavingArr } from "../../../state-management/Dashboard/services/helpers/savingsHelper/savingsHelper.action";
-import { setSavingForm } from "../../../state-management/Dashboard/services/helpers/savingsHelper/savingsHelper.action";
-import { selectSavingAction } from "../../../state-management/Dashboard/services/helpers/savingsHelper/savingsHelper.selector";
-import { selectSavingForm } from "../../../state-management/Dashboard/services/helpers/savingsHelper/savingsHelper.selector";
-import { selectSavingArr } from "../../../state-management/Dashboard/services/helpers/savingsHelper/savingsHelper.selector";
+import { setSavingForm } from "../../../state-management/Dashboard/services/saving/saving.action";
+import { selectSavingForm } from "../../../state-management/Dashboard/services/saving/saving.selector";
+import { selectSavingArr } from "../../../state-management/Dashboard/services/saving/saving.selector";
 import { Formik, Form } from "formik";
 import CustomInput from "../../../components/CustomInputs/CustomInput";
 import {
   SavingFormContainer,
   SavingInputsContainer,
 } from "./SavingsInputCard.style";
-import { fetchSavingData } from "../../../state-management/Dashboard/services/helpers/savingsHelper/savingsHelper.action";
+import { fetchSavingData } from "../../../state-management/Dashboard/services/saving/saving.service";
 import { selectCurrentUser } from "../../../state-management/Dashboard/userData/userData.selector";
-import { selectSavingData } from "../../../state-management/Dashboard/services/helpers/savingsHelper/savingsHelper.selector";
+import { selectSavingData } from "../../../state-management/Dashboard/services/saving/saving.selector";
 import { savingSchema } from "../ValidationSchema/ValidationSchemaSaving";
 
 function SavingsInputCard() {

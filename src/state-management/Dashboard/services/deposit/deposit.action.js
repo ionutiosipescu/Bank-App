@@ -1,9 +1,9 @@
-import { DEPOSITS_HELPER_TYPES } from "./depositsHelper.types";
-import { createAction } from "../../../../../utils/helpers/reducer/reducer.utils";
-import { getLocalDate } from "../../../../../utils/helpers/helperFunctions/date";
-import { generateRandomNumber } from "../../../../../utils/helpers/helperFunctions/randomNumber";
-import { LowercaseString } from "../../../../../utils/helpers/helperFunctions/lowercase";
-import { findObjectByString } from "../../../../../utils/helpers/helperFunctions/findObject";
+import { DEPOSITS_HELPER_TYPES } from "./deposit.types";
+import { createAction } from "../../../../utils/helpers/reducer/reducer.utils";
+import { getLocalDate } from "../../../../utils/helpers/helperFunctions/date";
+import { generateRandomNumber } from "../../../../utils/helpers/helperFunctions/randomNumber";
+import { LowercaseString } from "../../../../utils/helpers/helperFunctions/lowercase";
+import { findObjectByString } from "../../../../utils/helpers/helperFunctions/findObject";
 // Update Deposit Action
 
 export const setDepositAction = (e) => {
@@ -102,4 +102,8 @@ export const setSelectedOptionDeposit = (e, filter) => {
   const { value } = e.target;
   const newObj = { ...filter, account: value };
   return createAction(DEPOSITS_HELPER_TYPES.SET_DEPOSIT_OPTION, newObj);
+};
+
+export const resetDeposit = () => {
+  return createAction(DEPOSITS_HELPER_TYPES.RESET_DEPOSIT);
 };

@@ -16,7 +16,7 @@ import {
 } from "./TransfersRecipientCard.style";
 
 import { useSelector } from "react-redux";
-import { selectTransferHelper } from "../../../state-management/Dashboard/services/helpers/transfersHelper/transferHelper.selector";
+import { selectTransferHelper } from "../../../state-management/Dashboard/services/transfer/transfer.selector";
 
 import { accounts } from "../../../utils/data/dummyData";
 

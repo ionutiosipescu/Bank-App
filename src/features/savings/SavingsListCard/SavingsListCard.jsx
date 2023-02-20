@@ -18,16 +18,20 @@ import { BsCashStack } from "react-icons/bs";
 import { accounts } from "../../../utils/data/dummyData";
 import { ListItemSection } from "../../exchange/ExchangeList/ExchangeList.style";
 import { useDispatch, useSelector } from "react-redux";
-import { selectSavingArr } from "../../../state-management/Dashboard/services/helpers/savingsHelper/savingsHelper.selector";
+import { selectSavingArr } from "../../../state-management/Dashboard/services/saving/saving.selector";
 import Modal from "../../../components/Modal/Modal";
 import { useState } from "react";
 import { selectCurrentUser } from "../../../state-management/Dashboard/userData/userData.selector";
-import { fetchSavingData } from "../../../state-management/Dashboard/services/helpers/savingsHelper/savingsHelper.action";
 import ConfirmActionModal from "../../../components/ConfirmActionModal/ConfirmActionModal";
 import Fallback from "../../../components/Fallback/Fallback";
+import { fetchSavingWithdraw } from "../../../state-management/Dashboard/services/saving/saving.service";
+import { fetchSavingTopUp } from "../../../state-management/Dashboard/services/saving/saving.service";
+
 const data = accounts[0].savings;
 
 function SavingsListCard() {
+  const dipatch = useDispatch();
+  const currentUser = useSelector(selectCurrentUser);
   const savingData = useSelector(selectSavingArr);
 
   const [modalOpen, setModalOpen] = useState(false);
@@ -73,9 +77,19 @@ function SavingsListCard() {
                     label="Top-Up"
                     size="sm"
                     primary="primary"
-                    onClick={() => handleModalOpen(saving.id)}
+                    // onClick={() => handleModalOpen(saving.id)}
+                    onClick={() =>
+                      dipatch(fetchSavingTopUp(savingData, saving))
+                    }
                   />
-                  <Button label="Withdraw" size="sm" primary="primary" />
+                  <Button
+                    label="Withdraw"
+                    size="sm"
+                    primary="primary"
+                    onClick={() =>
+                      dipatch(fetchSavingWithdraw(savingData, saving))
+                    }
+                  />
                 </ButtonsControlerBox>
               </ListItem>
             ))}

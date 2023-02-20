@@ -27,6 +27,10 @@ const INITIAL_STATE = {
   isLoading: false,
   error: "",
   emailCode: "",
+  registerData: {
+    userDetail: {},
+    account: [],
+  },
 };
 
 export const registerHelperReducer = (state = INITIAL_STATE, action = {}) => {
@@ -48,9 +52,21 @@ export const registerHelperReducer = (state = INITIAL_STATE, action = {}) => {
     case REGISTER_HELPER_TYPES.GENERATE_EMAIL_CODE:
       return { ...state, emailCode: payload };
     case REGISTER_HELPER_TYPES.RESET_SIGNUP:
-      return { ...state, userProfile: { ...payload } };
+      return INITIAL_STATE;
     case REGISTER_HELPER_TYPES.SET_TOKEN:
       return { ...state, token: payload };
+    case REGISTER_HELPER_TYPES.SET_REGISTER_ADITIONALS:
+      return { ...state, registerData: { ...state.registerData, ...payload } };
+    case REGISTER_HELPER_TYPES.SET_REGISTER_USER:
+      return {
+        ...state,
+        registerData: { ...state.registerData, userDetail: { ...payload } },
+      };
+    case REGISTER_HELPER_TYPES.SET_REGISTER_PLAN_ADD:
+      return {
+        ...state,
+        registerData: { ...state.registerData, account: [...payload] },
+      };
     default:
       return state;
   }

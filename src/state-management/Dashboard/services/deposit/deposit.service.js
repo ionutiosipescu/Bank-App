@@ -1,4 +1,3 @@
-import { DEPOSITS_HELPER_TYPES } from "./depositsHelper.types";
 import axios from "axios";
 import {
   setDepositId,
@@ -7,15 +6,14 @@ import {
   setDepositArr,
   setDepositArrRepeat,
   formatDataRepet,
-} from "./depositsHelper.action";
+} from "./deposit.action";
+import { requests } from "../../../../utils/Requests/requests";
 
 // Get Arr
 export const getDepositArrDb = (obj, currentUserData) => {
   return async (dispatch) => {
     const id = await setDepositId(obj, currentUserData);
-    const { data } = await axios.get(
-      `http://localhost:8080/accounts/deposit/balance/?id=${id}`
-    );
+    const { data } = await axios.get(`${requests.GET_HISTORY_DEPOSIT}${id}`);
     console.log(data);
     await dispatch(setDepositArrDb(data));
   };
@@ -29,10 +27,7 @@ export const fetchDepositData = (depositDataReducer, currentUserData) => {
       const depositData = await setDepositData(depositDataReducer);
       const id = await setDepositId(depositObj, currentUserData);
       await axios
-        .post(
-          `http://localhost:8080/accounts/deposit/balance/?id=${id}`,
-          depositData
-        )
+        .post(`${requests.POST_DEPOSIT}${id}`, depositData)
         .then((res) => console.log(res));
       if (depositObj?.account === selectedOption?.account) {
         await dispatch(setDepositArr(depositDataReducer));
@@ -53,10 +48,7 @@ export const fetchRepeatDeposit = (obj, account, arr, currentUserData) => {
       const id = await setDepositId(account, currentUserData);
       console.log(id, depositData);
       await axios
-        .post(
-          `http://localhost:8080/accounts/deposit/balance/?id=${id}`,
-          depositData
-        )
+        .post(`${requests.POST_DEPOSIT}${id}`, depositData)
         .then((res) => console.log(res));
       await dispatch(setDepositArrRepeat(obj, arr));
     } catch (error) {
