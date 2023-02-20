@@ -87,3 +87,22 @@ export const fetchSavingData = (obj, arr, currentUserData) => {
     }
   };
 };
+
+export const generateObjWithdraw = async (savingObj) => {
+  const { id, transfer, status, date, details } = savingObj;
+  const newObj = {
+    id: id,
+    transfer: transfer,
+    status: status,
+    date: date,
+    details: details,
+  };
+  console.log(newObj);
+  return newObj;
+};
+
+export const setSavingArrActions = (savingArr, savingObj) => {
+  const { id } = savingObj;
+  const newArr = savingArr.filter((saving) => saving.id !== id);
+  return createAction(SAVINGS_HELPER_TYPES.SET_SAVINGS_ARR, newArr);
+};
