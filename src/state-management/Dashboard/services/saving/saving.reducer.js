@@ -16,6 +16,8 @@ export const savingHelperReducer = (state = INITIAL_STATE, action) => {
   switch (type) {
     case SAVINGS_HELPER_TYPES.SET_SAVINGS_ACTION:
       return { ...state, savingAction: payload };
+    case SAVINGS_HELPER_TYPES.RESET_SAVING:
+      return INITIAL_STATE;
     case SAVINGS_HELPER_TYPES.SET_SAVINGS_FORM:
       return { ...state, savingObj: { ...payload } };
     case SAVINGS_HELPER_TYPES.SET_SAVINGS_ARR:

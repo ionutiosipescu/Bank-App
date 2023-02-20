@@ -15,11 +15,16 @@ import { fetchLoginData } from "../../../state-management/Auth/loginUser/loginUs
 import { ButtonSignIn } from "./FormLogin.style";
 import { persistor } from "../../../state-management/store";
 import { setResetSingUp } from "../../../state-management/Auth/registerhelper/registerhelper.actions";
+import { setOtp } from "../../../state-management/Auth/loginUser/loginUser.action";
+import { selectOtp } from "../../../state-management/Auth/loginUser/loginUser.selector";
+import { VerifyOtp } from "../../../state-management/Auth/loginUser/loginUser.service";
+import { resetRedux } from "../../../state-management/Auth/loginUser/loginUser.action";
 
 function FormLogIn() {
   const dispatch = useDispatch();
   const errorMsg = useSelector(selectErrorMessage);
   const loginData = useSelector(selectLoginUser);
+  const otp = useSelector(selectOtp);
   const isSubmitting = useSelector(selectIsSubmiting);
   const navigate = useNavigate();
 
@@ -45,45 +50,57 @@ function FormLogIn() {
   }, [isSubmitting]);
 
   // // restore localStorage
-  // useEffect(() => {
-  //   persistor.purge();
-  //   dispatch(setResetSingUp());
-  // }, []);
-  // restore localStorage
   useEffect(() => {
-    if (localStorage.getItem("persist:root") !== null) {
-      localStorage.removeItem("persist:root");
-      window.location.reload();
-    }
+    persistor.purge();
+    dispatch(resetRedux());
   }, []);
+  // restore localStorage
+  // useEffect(() => {
+  //   if (localStorage.getItem("persist:root") !== null) {
+  //     localStorage.removeItem("persist:root");
+  //     window.location.reload();
+  //   }
+  // }, []);
 
   return (
-    <Formik
-      initialValues={{ ...loginData }}
-      validationSchema={advancedSchema}
-      onSubmit={onSubmit}
-    >
-      <FormContainerLogin>
-        <CustomInput
-          label="Username"
-          name="username"
-          type="text"
-          placeholder="Enter your username"
-          setData={setData}
-        />
-        <CustomPassword
-          label="Password"
-          name="password"
-          type="password"
-          placeholder="Enter your password"
-          setData={setData}
-        />
-        {errorMsg ? <ErrorMsg>{errorMsg}</ErrorMsg> : <></>}
-        <ButtonSignIn type="button" onClick={onSubmit}>
-          Log in
-        </ButtonSignIn>
-      </FormContainerLogin>
-    </Formik>
+    <>
+      <Formik
+        initialValues={{ ...loginData }}
+        validationSchema={advancedSchema}
+        onSubmit={onSubmit}
+      >
+        <FormContainerLogin>
+          <CustomInput
+            label="Username"
+            name="username"
+            type="text"
+            placeholder="Enter your username"
+            setData={setData}
+          />
+          <CustomPassword
+            label="Password"
+            name="password"
+            type="password"
+            placeholder="Enter your password"
+            setData={setData}
+          />
+          {errorMsg ? <ErrorMsg>{errorMsg}</ErrorMsg> : <></>}
+          <ButtonSignIn type="button" onClick={onSubmit}>
+            Log in
+          </ButtonSignIn>
+        </FormContainerLogin>
+      </Formik>
+      <input
+        type="text"
+        placeholder="Complete with otp"
+        name="otp"
+        label="OTP"
+        onChange={(e) => dispatch(setOtp(e.target.value))}
+      />
+      <button type="button" onClick={() => dispatch(VerifyOtp(otp))}>
+        Verify OTP
+      </button>
+    </>
   );
 }
 

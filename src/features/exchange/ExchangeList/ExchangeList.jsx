@@ -18,7 +18,7 @@ import {
 import Button from "../../../components/UI/Button/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { selectExchangeArr } from "../../../state-management/Dashboard/services/exchange/exchange.selector";
-import { fetchExchangeRepeat } from "../../../state-management/Dashboard/services/exchange/exchange.action";
+import { fetchExchangeRepeat } from "../../../state-management/Dashboard/services/exchange/exchange.service";
 import { selectCurrentUser } from "../../../state-management/Dashboard/userData/userData.selector";
 import { SelectAccountToggle } from "../../deposits/DepositsControlerCard/DepositControlerCard.style";
 import SmallDropdown from "../../cardsPage/Dropdown/Dropdown";

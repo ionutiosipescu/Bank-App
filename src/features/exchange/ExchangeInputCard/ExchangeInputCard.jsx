@@ -23,7 +23,7 @@ import { selectExchangeData } from "../../../state-management/Dashboard/services
 import { setExchangeAmount } from "../../../state-management/Dashboard/services/exchange/exchange.action";
 import { ErrorMsg } from "../../../components/Errors/Auth/ErrorMsg.style";
 import { selectExchangeArr } from "../../../state-management/Dashboard/services/exchange/exchange.selector";
-import { fetchExchangeData } from "../../../state-management/Dashboard/services/exchange/exchange.action";
+import { fetchExchangeData } from "../../../state-management/Dashboard/services/exchange/exchange.service";
 import { selectCurrentUser } from "../../../state-management/Dashboard/userData/userData.selector";
 import { setExchangeAmountTo } from "../../../state-management/Dashboard/services/exchange/exchange.action";
 

@@ -19,7 +19,8 @@ import { ErrorMsg } from "../../../../components/Errors/Auth/ErrorMsg.style";
 import { selectStep } from "../../../../state-management/Auth/registerhelper/registerhelper.selector";
 import { selectRegisterData } from "../../../../state-management/Auth/registerhelper/registerhelper.selector";
 import { selectRegisterFailed } from "../../../../state-management/Auth/registerhelper/registerhelper.selector";
-import { fetchRegisterData } from "../../../../state-management/Auth/registerhelper/registerhelper.service";
+// import { fetchRegisterData } from "../../../../state-management/Auth/registerhelper/registerhelper.service";
+import { fetchRegisterMail } from "../../../../state-management/Auth/registerhelper/registerhelper.service";
 
 function ConfirmForm() {
   const errorMsg = useSelector(selectRegisterFailed);
@@ -43,13 +44,7 @@ function ConfirmForm() {
   const handleSubmit = () => {
     console.log(RegisterData);
     console.log(errorMsg);
-    dispatch(
-      fetchRegisterData(
-        "http://localhost:8080/bank/auth/signup",
-        RegisterData,
-        step
-      )
-    );
+    dispatch(fetchRegisterMail(RegisterData, step));
   };
   const setCardCheckbox = (e) => {
     console.log(e);

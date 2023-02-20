@@ -36,7 +36,6 @@ export const fetchLoginData = (url, registerData) => {
         }
       );
       if (!data) return;
-      console.log(data);
       await dispatch(setCurrentUser(data));
       await dispatch(postLoginSuccess());
     } catch (error) {
@@ -51,6 +50,45 @@ export const fetchLoginData = (url, registerData) => {
           "Server is currently unavailable please try again later";
         dispatch(postLoginFailed(errServer));
       }
+    }
+  };
+};
+
+export const VerifyOtp = (otp) => {
+  return async (dispatch) => {
+    try {
+      const data = {
+        userDetail: {
+          first_name: "Aurelius",
+          last_name: "Flavius",
+          birthday: "2003-02-05",
+          country: "romania",
+          address: "Strada Gold 23",
+          gender: "male",
+          mobile: "0734235234",
+          confirmPassword: "Asdf1",
+          created_at: "2023-02-20",
+        },
+        account: [
+          {
+            type_of_plan: "vip",
+            currency: "ron",
+            balance: "",
+            savings: "",
+            created_at: "2023-02-20",
+          },
+        ],
+        username: "Aur",
+        password: "Asdf1",
+        email: "ionutiosipescu2000@gmail.com",
+        otpnum: otp,
+      };
+      console.log(data);
+      await axios
+        .post(`http://localhost:8080/bank/auth/validate`, data)
+        .then((res) => console.log(res));
+    } catch (err) {
+      console.log(err);
     }
   };
 };

@@ -21,7 +21,7 @@ import { selectLoansData } from "../../../state-management/Dashboard/services/lo
 import { setLoansData } from "../../../state-management/Dashboard/services/loan/loan.action";
 import { loansSchema } from "../ValidationSchema/ValidationSchema";
 import { selectLoansArr } from "../../../state-management/Dashboard/services/loan/loan.selector";
-import { fetchLoanData } from "../../../state-management/Dashboard/services/loan/loan.action";
+import { fetchLoanData } from "../../../state-management/Dashboard/services/loan/loan.service";
 import { selectCurrentUser } from "../../../state-management/Dashboard/userData/userData.selector";
 
 function LoansFormCard() {

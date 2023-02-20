@@ -28,6 +28,8 @@ export const depositHelperReducer = (state = INITIAL_STATE, action) => {
       return { ...state, depositArr: [...payload] };
     case DEPOSITS_HELPER_TYPES.SET_DEPOSIT_OPTION:
       return { ...state, selectedOption: { ...payload } };
+    case DEPOSITS_HELPER_TYPES.RESET_DEPOSIT:
+      return INITIAL_STATE;
     default:
       return state;
   }

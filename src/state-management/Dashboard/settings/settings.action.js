@@ -40,19 +40,11 @@ export const setObjSettings = async (settingsData, userData) => {
   return { ...userDetail, ...settingsData };
 };
 
-// Generate Obj for Request
-export const setObjPassword = async (dataObj, authData) => {
-  const { password } = dataObj;
-  const { username } = authData;
-  const objectPasswordRequest = {
-    username: username,
-    password: password,
-  };
-  console.log(objectPasswordRequest);
-  return objectPasswordRequest;
-};
-
 // Reset Show Message
 export const setResetShowMsg = () => {
   return createAction(SETTINGS_TYPES.RESET_SHOW_MSG);
+};
+
+export const resetSettings = () => {
+  return createAction(SETTINGS_TYPES.RESET_SETTINGS);
 };

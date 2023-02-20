@@ -25,7 +25,7 @@ import Modal from "../../../../../components/Modal/Modal";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { selectCurrentUser } from "../../../../../state-management/Dashboard/userData/userData.selector";
-import { getLoansArrDb } from "../../../../../state-management/Dashboard/services/loan/loan.action";
+import { getLoansArrDb } from "../../../../../state-management/Dashboard/services/loan/loan.service";
 import { selectLoansArr } from "../../../../../state-management/Dashboard/services/loan/loan.selector";
 import { selectHistoryLoans } from "../../../../../state-management/Dashboard/services/loan/loan.selector";
 import Fallback from "../../../../../components/Fallback/Fallback";

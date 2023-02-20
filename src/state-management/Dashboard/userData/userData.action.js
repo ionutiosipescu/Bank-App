@@ -5,3 +5,7 @@ import { USER_DATA_TYPES } from "./userData.types";
 export const setCurrentUser = (userData) => {
   return createAction(USER_DATA_TYPES.SET_CURRENT_USER, userData);
 };
+
+export const resetUser = () => {
+  return createAction(USER_DATA_TYPES.RESET_USER);
+};

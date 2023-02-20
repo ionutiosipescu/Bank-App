@@ -16,7 +16,7 @@ import Button from "../UI/Button/Button";
 // State/Redux
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { fetchPayLoanAsync } from "../../state-management/Dashboard/services/loan/loan.action";
+import { fetchPayLoanAsync } from "../../state-management/Dashboard/services/loan/loan.service";
 import { selectLoansArr } from "../../state-management/Dashboard/services/loan/loan.selector";
 import { selectHistoryLoans } from "../../state-management/Dashboard/services/loan/loan.selector";
 

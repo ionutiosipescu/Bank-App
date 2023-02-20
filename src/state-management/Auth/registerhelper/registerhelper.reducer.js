@@ -52,7 +52,7 @@ export const registerHelperReducer = (state = INITIAL_STATE, action = {}) => {
     case REGISTER_HELPER_TYPES.GENERATE_EMAIL_CODE:
       return { ...state, emailCode: payload };
     case REGISTER_HELPER_TYPES.RESET_SIGNUP:
-      return { ...state, userProfile: { ...payload } };
+      return INITIAL_STATE;
     case REGISTER_HELPER_TYPES.SET_TOKEN:
       return { ...state, token: payload };
     case REGISTER_HELPER_TYPES.SET_REGISTER_ADITIONALS:

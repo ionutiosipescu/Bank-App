@@ -15,7 +15,7 @@ import Button from "../../../../../components/UI/Button/Button";
 
 // State / Redux
 import { useDispatch, useSelector } from "react-redux";
-import { fetchLoanCreate } from "../../../../../state-management/Dashboard/services/loan/loan.action";
+import { fetchLoanCreate } from "../../../../../state-management/Dashboard/services/loan/loan.service";
 import {
   selectCheckedData,
   selectLoansArr,

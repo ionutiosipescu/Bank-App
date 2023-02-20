@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectOptionTransfer } from "../../../../state-management/Dashboard/services/transfer/transfer.selector";
 import { selectCurrentUser } from "../../../../state-management/Dashboard/userData/userData.selector";
 import { useEffect } from "react";
-import { getTransferArr } from "../../../../state-management/Dashboard/services/transfer/transfer.action";
+import { getTransferArr } from "../../../../state-management/Dashboard/services/transfer/transfer.service";
 
 function Transfers() {
   const dispatch = useDispatch();

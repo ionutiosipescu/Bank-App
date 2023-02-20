@@ -103,3 +103,7 @@ export const setSelectedOptionDeposit = (e, filter) => {
   const newObj = { ...filter, account: value };
   return createAction(DEPOSITS_HELPER_TYPES.SET_DEPOSIT_OPTION, newObj);
 };
+
+export const resetDeposit = () => {
+  return createAction(DEPOSITS_HELPER_TYPES.RESET_DEPOSIT);
+};

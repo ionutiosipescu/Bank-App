@@ -13,6 +13,8 @@ export const changePasswordReducer = (state = INITIAL_STATE, action = {}) => {
   switch (type) {
     case CHANGE_PASSWORD_TYPES.SET_PASSWORD:
       return { ...state, changePasswordData: { ...payload } };
+    case CHANGE_PASSWORD_TYPES.RESET_PASSWORD:
+      return INITIAL_STATE;
     default:
       return state;
   }

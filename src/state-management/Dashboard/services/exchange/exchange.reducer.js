@@ -1,4 +1,4 @@
-import { EXCHANGE_HELPER_TYPES } from "./excahnge.types";
+import { EXCHANGE_HELPER_TYPES } from "./exchange.types";
 
 const INITIAL_STATE = {
   exchangeData: {
@@ -22,6 +22,8 @@ export const exchangeHelperReducer = (state = INITIAL_STATE, action) => {
       return { ...state, exchangeArr: [...payload] };
     case EXCHANGE_HELPER_TYPES.SET_EXCHANGE_OPTION:
       return { ...state, selectedOption: { ...payload } };
+    case EXCHANGE_HELPER_TYPES.RESET_EXCHANGE:
+      return INITIAL_STATE;
     default:
       return state;
   }

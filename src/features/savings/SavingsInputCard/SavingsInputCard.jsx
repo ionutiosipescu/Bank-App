@@ -21,7 +21,7 @@ import {
   SavingFormContainer,
   SavingInputsContainer,
 } from "./SavingsInputCard.style";
-import { fetchSavingData } from "../../../state-management/Dashboard/services/saving/saving.action";
+import { fetchSavingData } from "../../../state-management/Dashboard/services/saving/saving.service";
 import { selectCurrentUser } from "../../../state-management/Dashboard/userData/userData.selector";
 import { selectSavingData } from "../../../state-management/Dashboard/services/saving/saving.selector";
 import { savingSchema } from "../ValidationSchema/ValidationSchemaSaving";

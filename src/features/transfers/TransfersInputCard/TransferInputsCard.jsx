@@ -19,7 +19,7 @@ import { Form, Formik } from "formik";
 import CustomInput from "../../../components/CustomInputs/CustomInput";
 import CustomPassword from "../../../components/CustomInputs/CustomPassword";
 import { transferSchema } from "../ValidationSchema/ValidationSchema";
-import { fetchTransferData } from "../../../state-management/Dashboard/services/transfer/transfer.action";
+import { fetchTransferData } from "../../../state-management/Dashboard/services/transfer/transfer.service";
 import { selectCurrentUser } from "../../../state-management/Dashboard/userData/userData.selector";
 import RadioButton from "../../../components/RadioButton/RadioButton";
 import { setTransformAccount } from "../../../state-management/Dashboard/services/transfer/transfer.action";

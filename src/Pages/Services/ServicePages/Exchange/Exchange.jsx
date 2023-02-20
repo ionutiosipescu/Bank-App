@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { selectCurrentUser } from "../../../../state-management/Dashboard/userData/userData.selector";
-import { getExchangeArr } from "../../../../state-management/Dashboard/services/exchange/exchange.action";
+import { getExchangeArr } from "../../../../state-management/Dashboard/services/exchange/exchange.service";
 import { selectExchangeOption } from "../../../../state-management/Dashboard/services/exchange/exchange.selector";
 
 function Exchange() {
