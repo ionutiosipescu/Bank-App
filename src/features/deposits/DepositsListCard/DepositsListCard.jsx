@@ -43,8 +43,8 @@ function DepositsListCard() {
   const currentUser = useSelector(selectCurrentUser);
 
   const options = [
-    { value: "ron", label: "ron" },
-    { value: "euro", label: "euro" },
+    { value: "ron", label: "RON" },
+    { value: "euro", label: "EUR" },
   ];
 
   const [modalOpen, setModalOpen] = useState(false);
@@ -67,7 +67,6 @@ function DepositsListCard() {
     setModalData(depositHistory.find((transfer) => transfer.id === id));
   };
 
-  console.log(modalData);
   const handleModalClose = () => {
     setModalOpen(false);
   };
@@ -98,7 +97,10 @@ function DepositsListCard() {
                     {upperCaseFirst(transfer?.status)}
                   </LabelAction>
                   <IdList> #{transfer.id}</IdList>
-                  <AmountContainer>Amount: {transfer.balance}</AmountContainer>
+                  <AmountContainer>
+                    {transfer.balance}{" "}
+                    {`${selectedOptionDeposit.account}`.toUpperCase()}
+                  </AmountContainer>
                   <DateContainer>{transfer.date}</DateContainer>
                   <LabelList status={transfer?.id ? "Completed" : "Canceled"}>
                     Completed

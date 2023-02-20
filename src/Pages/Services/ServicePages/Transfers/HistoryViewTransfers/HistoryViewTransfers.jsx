@@ -44,8 +44,8 @@ function HisotryViewTransfers({ dataServices }) {
   const transferArr = useSelector(selectTransferArr);
 
   const options = [
-    { value: "ron", label: "ron" },
-    { value: "euro", label: "euro" },
+    { value: "ron", label: "RON" },
+    { value: "euro", label: "EUR" },
   ];
 
   return (
@@ -98,7 +98,10 @@ function HisotryViewTransfers({ dataServices }) {
                     </UserContainerTransfer>
                     <h3>{transfer.details}</h3>
                     <IdList> #{transfer.id}</IdList>
-                    <AmountContainer>${transfer.transfer}</AmountContainer>
+                    <AmountContainer>
+                      {transfer.transfer}{" "}
+                      {`${transferOption.account}`.toUpperCase()}{" "}
+                    </AmountContainer>
                     <DateContainer>{transfer.date}</DateContainer>
                     <LabelList status={transfer.status || "Completed"}>
                       {transfer.status || "Completed"}

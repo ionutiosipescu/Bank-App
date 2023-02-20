@@ -1,25 +1,26 @@
 import React from "react";
 import Button from "../UI/Button/Button";
-import { InputsContainer, OTPContainer, OTPInput } from "./OTPModal.style";
+import {
+  InputsContainer,
+  OTPContainer,
+  OTPInput,
+  OTPInput_2,
+} from "./OTPModal.style";
 import { ButtonsContainer } from "./../../features/cardsPage/CardPages/NewCard/NewCardAvailable/NewCardAvailable.style";
 import { useState } from "react";
 import { useRef } from "react";
+import OtpInput from "react-otp-input";
+// import { OtpInput } from "react-otp-input";
 
 function OTPModal(props) {
   const { handleModalClose, handleSubmit } = props;
 
-  const [digits, setDigits] = useState(["", "", "", "", "", ""]);
-  const refs = [useRef(), useRef(), useRef(), useRef(), useRef(), useRef()];
+  const [OTP, setOTP] = useState("");
 
-  const handleDigitChange = (index, event) => {
-    const value = event.target.value;
-    const newDigits = [...digits];
-    newDigits[index] = value;
-    setDigits(newDigits);
+  console.log(OTP);
 
-    if (value.length > 0 && index < 5) {
-      refs[index + 1].current.focus();
-    }
+  const handleOTPChange = (event) => {
+    setOTP(event);
   };
 
   return (
@@ -27,42 +28,12 @@ function OTPModal(props) {
       <h2>Please check your email </h2>
       <p>We've sent a code to {`email@gmail.com`}</p>
       <InputsContainer>
-        <OTPInput
-          maxLength={1}
-          noArrows
-          onChange={(event) => handleDigitChange(0, event)}
-          ref={refs[0]}
-        />
-
-        <OTPInput
-          maxLength={1}
-          noArrows
-          onChange={(event) => handleDigitChange(1, event)}
-          ref={refs[1]}
-        />
-        <OTPInput
-          maxLength={1}
-          noArrows
-          onChange={(event) => handleDigitChange(2, event)}
-          ref={refs[2]}
-        />
-        <OTPInput
-          maxLength={1}
-          noArrows
-          onChange={(event) => handleDigitChange(3, event)}
-          ref={refs[3]}
-        />
-        <OTPInput
-          maxLength={1}
-          noArrows
-          onChange={(event) => handleDigitChange(4, event)}
-          ref={refs[4]}
-        />
-        <OTPInput
-          maxLength={1}
-          noArrows
-          onChange={(event) => handleDigitChange(5, event)}
-          ref={refs[5]}
+        <OtpInput
+          value={OTP}
+          onChange={handleOTPChange}
+          numInputs={6}
+          isInputNum
+          inputStyle={{ width: "40px" }}
         />
       </InputsContainer>
       <p>
