@@ -8,16 +8,16 @@ import { fetchEmailVerification } from "./registerhelper.actions";
 import { createAuthUserWithEmailAndPassword } from "../../../utils/firebase/firebase";
 import { sendEmailVerification } from "firebase/auth";
 
-const email = "ionutiosipescu@yahoo.com";
-const password = "Texas@123";
-export const signup = async () => {
-  try {
-    const { user } = await createAuthUserWithEmailAndPassword(email, password);
-    sendEmailVerification(user);
-  } catch (err) {
-    console.log(err);
-  }
-};
+// const email = "ionutiosipescu@yahoo.com";
+// const password = "Texas@123";
+// export const signup = async () => {
+//   try {
+//     const { user } = await createAuthUserWithEmailAndPassword(email, password);
+//     sendEmailVerification(user);
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
 
 export const postRegisterStart = () =>
   createAction(REGISTER_HELPER_TYPES.POST_REGISTER_START);
@@ -28,10 +28,10 @@ export const postRegisterSuccess = () =>
 export const postRegisterFailed = (error) =>
   createAction(REGISTER_HELPER_TYPES.POST_REGISTER_FAILED, error);
 
-export const generateEmailCode = () => {
-  const code = uuidv4();
-  return createAction(REGISTER_HELPER_TYPES.GENERATE_EMAIL_CODE, code);
-};
+// export const generateEmailCode = () => {
+//   const code = uuidv4();
+//   return createAction(REGISTER_HELPER_TYPES.GENERATE_EMAIL_CODE, code);
+// };
 
 // Async User Profile
 export const fetchRegisterData = (url, registerData, step) => {
@@ -42,7 +42,7 @@ export const fetchRegisterData = (url, registerData, step) => {
       const response = await axios.post(url, registerData);
       //   Guard Clouse
       if (!response.data) return;
-      await signup();
+      // await signup();
       // Generate Email Verification Code
       // await dispatch(generateEmailCode());
       // Send Email

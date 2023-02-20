@@ -8,24 +8,16 @@ import {
 } from "./Dashboard.style";
 
 import BalanceCard from "../../components/BalanceCard/BalanceCard";
-import { accounts } from "../../utils/data/dummyData";
 import TopCard from "../../components/TopCard/TopCard";
 import OverviewCard from "./../../components/OverviewCard/OverviewCard";
 import OutcomeChart from "../../components/OutcomeCard/OutcomeCard";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  selectCurrentUser,
-  selectUserDetail,
-} from "../../state-management/Dashboard/userData/userData.selector";
-import { selectUserAccount } from "../../state-management/Dashboard/userData/userData.selector";
+import { useSelector } from "react-redux";
+import { selectCurrentUser } from "../../state-management/Dashboard/userData/userData.selector";
 import Spinner from "../../components/Spinner/Spinner";
 import { selectIsSubmiting } from "../../state-management/Auth/loginUser/loginUser.selector";
-import { selectCurrentCardAccount } from "../../state-management/Dashboard/cards/cards.selector";
 import { generateRandomNumber } from "../../utils/helpers/helperFunctions/randomNumber";
 import { cardValidityGenerator } from "../../utils/helpers/helperFunctions/cardValidityGenerator";
-import { fetchGetCardAccountArr } from "../../state-management/Dashboard/cards/cards.service";
 import { useEffect } from "react";
-import { setDashboardObjectCard } from "../../state-management/Dashboard/userData/userData.action";
 import { selectCardArr } from "../../state-management/Dashboard/cards/cards.selector";
 
 function Dashboard() {

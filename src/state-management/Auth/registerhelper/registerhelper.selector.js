@@ -13,3 +13,9 @@ export const selectIsLoading = (state) => state.registerHelper.isLoading;
 export const selectEmailCode = (state) => state.registerHelper.emailCode;
 
 export const selectToken = (state) => state.registerHelper.token;
+
+export const selectRegisterData = (state) => state.registerHelper.registerData;
+export const selectRegisterPlan = (state) =>
+  state.registerHelper.registerData.account;
+export const selectRegisterUserFinal = (state) =>
+  state.register.registerData.userDetail;

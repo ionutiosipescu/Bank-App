@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 
-import { registerReducer } from "./Auth/registerUser/registerUser.reducer";
+// import { registerReducer } from "./Auth/registerUser/registerUser.reducer";
 import { loginReducer } from "./Auth/loginUser/loginUser.reducer";
 import { registerHelperReducer } from "./Auth/registerhelper/registerhelper.reducer";
 import { userDataReducer } from "./Dashboard/userData/userData.reducer";
@@ -15,7 +15,7 @@ import { settingsReducer } from "./Dashboard/settings/settings.reducer";
 
 export const rootReducer = combineReducers({
   login: loginReducer,
-  register: registerReducer,
+  // register: registerReducer,
   registerHelper: registerHelperReducer,
   currentUser: userDataReducer,
   loansDataStorage: loansDataReducer,
