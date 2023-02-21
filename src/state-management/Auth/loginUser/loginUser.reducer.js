@@ -6,8 +6,8 @@ const INITIAL_STATE = {
     password: "",
   },
   isSubmiting: false,
-  modalIsOpen: false,
   errorMsg: "",
+  modalIsOpen: false,
   otpError: "",
   otp: "",
 };

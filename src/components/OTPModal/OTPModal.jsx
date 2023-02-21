@@ -19,7 +19,7 @@ import { selectOtpError } from "../../state-management/Auth/loginUser/loginUser.
 import { setOtpError } from "../../state-management/Auth/loginUser/loginUser.action";
 import { controlMoldalAsync } from "../../state-management/Auth/loginUser/loginUser.action";
 
-function OTPModal(props) {
+function OTPModal() {
   const dispatch = useDispatch();
   const errorMsg = useSelector(selectOtpError);
   const otp = useSelector(selectOtp);
@@ -27,7 +27,6 @@ function OTPModal(props) {
   const handleSubmit = () => {
     if (otp.split("").length === 6) {
       dispatch(controlMoldalAsync(false));
-      console.log("Succes");
     } else {
       dispatch(setOtpError("Invalid OTP"));
     }
@@ -41,10 +40,6 @@ function OTPModal(props) {
   const handleModalClose = () => {
     dispatch(controlMoldalAsync(false));
   };
-
-  // useEffect(() => {
-  //   console.log(otp);
-  // }, [otp]);
 
   return (
     <OTPContainer>

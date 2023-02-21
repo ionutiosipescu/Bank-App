@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Formik } from "formik";
 import { advancedSchema } from "../ValidationSchema/ValidationSchema";
 import CustomInput from "../../../components/CustomInputs/CustomInput";
@@ -7,27 +7,22 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { FormContainerLogin } from "./FormLogin.style";
 import { ErrorMsg } from "../../../components/Errors/Auth/ErrorMsg.style";
-import { setLogInUser } from "../../../state-management/Auth/loginUser/loginUser.action";
-import { selectLoginUser } from "../../../state-management/Auth/loginUser/loginUser.selector";
-import { selectIsSubmiting } from "../../../state-management/Auth/loginUser/loginUser.selector";
-import { selectErrorMessage } from "../../../state-management/Auth/loginUser/loginUser.selector";
-import { fetchLoginData } from "../../../state-management/Auth/loginUser/loginUser.service";
 import { ButtonSignIn } from "./FormLogin.style";
 import { persistor } from "../../../state-management/store";
-import { setResetSingUp } from "../../../state-management/Auth/registerhelper/registerhelper.actions";
-import { setOtp } from "../../../state-management/Auth/loginUser/loginUser.action";
-import { selectOtp } from "../../../state-management/Auth/loginUser/loginUser.selector";
-import { VerifyOtp } from "../../../state-management/Auth/loginUser/loginUser.service";
-import { resetRedux } from "../../../state-management/Auth/loginUser/loginUser.action";
 import Modal from "../../../components/Modal/Modal";
 import OTPModal from "../../../components/OTPModal/OTPModal";
-import { setModalIsOpen } from "../../../state-management/Auth/loginUser/loginUser.action";
-import { selectModalIsOpen } from "../../../state-management/Auth/loginUser/loginUser.selector";
-import { controlMoldalAsync } from "../../../state-management/Auth/loginUser/loginUser.action";
-import { validate } from "schema-utils";
-import { ButtonChangePassword } from "../../changePassword/FormChangePassword/FormChangePassword.style";
-import Button from "../../../components/UI/Button/Button";
-import { setOtpError } from "../../../state-management/Auth/loginUser/loginUser.action";
+import {
+  resetRedux,
+  setLogInUser,
+  controlMoldalAsync,
+} from "../../../state-management/Auth/loginUser/loginUser.action";
+import {
+  selectOtp,
+  selectLoginUser,
+  selectIsSubmiting,
+  selectErrorMessage,
+  selectModalIsOpen,
+} from "../../../state-management/Auth/loginUser/loginUser.selector";
 
 function FormLogIn() {
   const dispatch = useDispatch();
@@ -41,6 +36,7 @@ function FormLogIn() {
   // axios request -> response true - > change isSubmitting status
   const onSubmit = () => {
     dispatch(controlMoldalAsync(true));
+    // de schimbat cu cea de jos
     // dispatch(fetchLoginData(loginData));
   };
 
