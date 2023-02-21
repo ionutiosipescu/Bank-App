@@ -19,20 +19,29 @@ import { setOtp } from "../../../state-management/Auth/loginUser/loginUser.actio
 import { selectOtp } from "../../../state-management/Auth/loginUser/loginUser.selector";
 import { VerifyOtp } from "../../../state-management/Auth/loginUser/loginUser.service";
 import { resetRedux } from "../../../state-management/Auth/loginUser/loginUser.action";
+import Modal from "../../../components/Modal/Modal";
+import OTPModal from "../../../components/OTPModal/OTPModal";
+import { setModalIsOpen } from "../../../state-management/Auth/loginUser/loginUser.action";
+import { selectModalIsOpen } from "../../../state-management/Auth/loginUser/loginUser.selector";
+import { controlMoldalAsync } from "../../../state-management/Auth/loginUser/loginUser.action";
+import { validate } from "schema-utils";
+import { ButtonChangePassword } from "../../changePassword/FormChangePassword/FormChangePassword.style";
+import Button from "../../../components/UI/Button/Button";
+import { setOtpError } from "../../../state-management/Auth/loginUser/loginUser.action";
 
 function FormLogIn() {
   const dispatch = useDispatch();
   const errorMsg = useSelector(selectErrorMessage);
   const loginData = useSelector(selectLoginUser);
   const otp = useSelector(selectOtp);
+  const modalOpen = useSelector(selectModalIsOpen);
   const isSubmitting = useSelector(selectIsSubmiting);
   const navigate = useNavigate();
 
   // axios request -> response true - > change isSubmitting status
   const onSubmit = () => {
-    dispatch(
-      fetchLoginData("http://localhost:8080/bank/auth/signin", loginData)
-    );
+    dispatch(controlMoldalAsync(true));
+    // dispatch(fetchLoginData(loginData));
   };
 
   // send data to Redux userProfile
@@ -41,26 +50,19 @@ function FormLogIn() {
   };
 
   // check isSubmitting status -> redirect to dashboard
-  useEffect(() => {
-    if (isSubmitting) {
-      navigate("/dashboard");
-    } else {
-      return;
-    }
-  }, [isSubmitting]);
+  // useEffect(() => {
+  //   if (isSubmitting) {
+  //     navigate("/dashboard");
+  //   } else {
+  //     return;
+  //   }
+  // }, [isSubmitting]);
 
   // // restore localStorage
   useEffect(() => {
     persistor.purge();
     dispatch(resetRedux());
   }, []);
-  // restore localStorage
-  // useEffect(() => {
-  //   if (localStorage.getItem("persist:root") !== null) {
-  //     localStorage.removeItem("persist:root");
-  //     window.location.reload();
-  //   }
-  // }, []);
 
   return (
     <>
@@ -85,29 +87,14 @@ function FormLogIn() {
             setData={setData}
           />
           {errorMsg ? <ErrorMsg>{errorMsg}</ErrorMsg> : <></>}
-          <ButtonSignIn type="button" onClick={onSubmit}>
-            Log in
-          </ButtonSignIn>
+          <ButtonSignIn type="submit">Log in</ButtonSignIn>
         </FormContainerLogin>
       </Formik>
-      <input
-        type="text"
-        placeholder="Complete with otp"
-        name="otp"
-        label="OTP"
-        onChange={(e) => dispatch(setOtp(e.target.value))}
-      />
-      <button type="button" onClick={() => dispatch(VerifyOtp(otp))}>
-        Verify OTP
-      </button>
+      <Modal opened={modalOpen} closeBtn>
+        <OTPModal />
+      </Modal>
     </>
   );
 }
 
 export default FormLogIn;
-
-// const siteKey = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
-
-{
-  /* <CustomreCaptcha name="recaptcha" sitekey={siteKey} /> */
-}

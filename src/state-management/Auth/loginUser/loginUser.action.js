@@ -1,5 +1,6 @@
 import { LOGIN_ACTION_TYPES } from "./loginUser.types";
 import { createAction } from "../../../utils/helpers/reducer/reducer.utils";
+// need refactor
 import { setResetSingUp } from "../registerhelper/registerhelper.actions";
 import { resetPassword } from "../changePassword/password.action";
 import { resetCards } from "../../Dashboard/cards/cards.action";
@@ -25,10 +26,27 @@ export const setOtp = (otp) => {
   return createAction(LOGIN_ACTION_TYPES.SET_OTP, otp);
 };
 
+export const setOtpError = (error) =>
+  createAction(LOGIN_ACTION_TYPES.SET_OTP_ERROR, error);
+
 export const resetLogIn = () => {
   return createAction(LOGIN_ACTION_TYPES.RESET_SIGNIN);
 };
 
+export const setModalIsOpen = (boolean) => {
+  return createAction(LOGIN_ACTION_TYPES.SET_MODAL_IS_OPEN, boolean);
+};
+
+export const controlMoldalAsync = (boolean) => {
+  return async (dispatch) => {
+    if (boolean === false) {
+      await dispatch(setOtp(""));
+    }
+    await dispatch(setModalIsOpen(boolean));
+  };
+};
+
+// TODO de gasit metoda alternativa de a reseta Redux
 export const resetRedux = () => {
   return async (dispatch) => {
     await dispatch(resetLogIn());
@@ -44,13 +62,3 @@ export const resetRedux = () => {
     await dispatch(resetTransfer());
   };
 };
-// // Set isSubmiting (Toogle)
-// export const setIsSubmiting = () => {
-//   const isSubmiting = true;
-//   return createAction(LOGIN_ACTION_TYPES.SET_IS_SUBMITING, isSubmiting);
-// };
-
-// // Error Message
-// export const setErrorMessage = (errorMessage) => {
-//   return createAction(LOGIN_ACTION_TYPES.SET_ERROR_MESSAGE, errorMessage);
-// };

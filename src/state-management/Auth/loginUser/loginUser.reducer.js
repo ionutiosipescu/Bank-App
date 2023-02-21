@@ -6,7 +6,9 @@ const INITIAL_STATE = {
     password: "",
   },
   isSubmiting: false,
+  modalIsOpen: false,
   errorMsg: "",
+  otpError: "",
   otp: "",
 };
 
@@ -22,10 +24,14 @@ export const loginReducer = (state = INITIAL_STATE, action) => {
       return { ...state, isSubmiting: false };
     case LOGIN_ACTION_TYPES.POST_LOGIN_FAILED:
       return { ...state, isSubmiting: false, errorMsg: payload };
-    case LOGIN_ACTION_TYPES.RESET_SIGNIN:
-      return INITIAL_STATE;
+    case LOGIN_ACTION_TYPES.SET_OTP_ERROR:
+      return { ...state, otpError: payload };
     case LOGIN_ACTION_TYPES.SET_OTP:
       return { ...state, otp: payload };
+    case LOGIN_ACTION_TYPES.SET_MODAL_IS_OPEN:
+      return { ...state, modalIsOpen: payload };
+    case LOGIN_ACTION_TYPES.RESET_SIGNIN:
+      return INITIAL_STATE;
     default:
       return state;
   }

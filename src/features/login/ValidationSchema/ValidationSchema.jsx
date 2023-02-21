@@ -13,5 +13,4 @@ export const advancedSchema = yup.object().shape({
     .min(5)
     .matches(passwordRules, { message: "Password does not match" })
     .required("Required"),
-  recaptcha: yup.string().required("Please complete the reCAPTCHA"),
 });
