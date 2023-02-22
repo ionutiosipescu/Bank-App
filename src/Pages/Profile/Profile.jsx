@@ -1,6 +1,11 @@
 import React from "react";
 // Style
-import { PlanContainer, UsersContainer, UsersWrapper } from "./Profile.style";
+import {
+  PlanContainer,
+  UsersListCard,
+  UsersContainer,
+  UsersWrapper,
+} from "./Profile.style";
 import { TopContainer } from "../Cards/Cards.style";
 import { SettingsContainer } from "../Settings/Settings.style";
 
@@ -35,7 +40,7 @@ function Profile() {
           <PlanCard plan={type_of_plan} />
         </PlanContainer>
       </TopContainer>
-      <SettingsContainer>
+      <UsersListCard>
         <UsersWrapper>
           <h2>Recent Users</h2>
           <UsersContainer>
@@ -51,7 +56,7 @@ function Profile() {
             ))}
           </UsersContainer>
         </UsersWrapper>
-      </SettingsContainer>
+      </UsersListCard>
     </>
   );
 }

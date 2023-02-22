@@ -4,15 +4,20 @@ export const ProgressCardContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: calc(25% - 16px);
-  height: 400px;
+  align-items: center;
+  width: 50%;
+  height: 380px;
   background-color: var(--white);
-  padding: 30px;
+  padding: 20px 30px;
+  margin: 10px;
   box-shadow: 0px 0px 25px 0px rgba(79, 78, 105, 0.301);
   border-radius: 30px;
   & > h2,
   > h3 {
     align-self: center;
+    & > span {
+      color: var(--green-dark);
+    }
   }
 `;
 
@@ -29,6 +34,13 @@ export const InfoSection = styled.div`
   align-items: center;
   justify-content: center;
   width: 50%;
+  font-size: 1.2rem;
+  & h4 {
+    color: var(--gray-dark);
+  }
+  & h3 {
+    color: var(--green);
+  }
 `;
 
 export const ProgressCardIllustration = styled.img`

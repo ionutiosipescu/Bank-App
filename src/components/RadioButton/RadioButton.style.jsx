@@ -4,8 +4,8 @@ export const RadioContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 110px;
-  height: 50px;
+  width: 130px;
+  height: 120px;
   cursor: default;
   & > p {
     opacity: 0.8;
@@ -22,7 +22,7 @@ export const RadioPill = styled.div`
   align-items: center;
 
   width: 100%;
-  height: 40px;
+  height: 60px;
   padding: 0px 5px;
   border-radius: 30px;
 
@@ -35,9 +35,9 @@ export const RadioPill = styled.div`
 `;
 
 export const RadioCircle = styled.div`
-  width: 30px;
-  height: 30px;
-  border-radius: 40px;
+  width: 50px;
+  height: 50px;
+  border-radius: 55px;
   cursor: pointer;
   background-color: var(--white);
 `;

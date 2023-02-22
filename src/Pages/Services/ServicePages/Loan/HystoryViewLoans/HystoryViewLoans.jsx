@@ -29,6 +29,10 @@ import { getLoansArrDb } from "../../../../../state-management/Dashboard/service
 import { selectLoansArr } from "../../../../../state-management/Dashboard/services/loan/loan.selector";
 import { selectHistoryLoans } from "../../../../../state-management/Dashboard/services/loan/loan.selector";
 import Fallback from "../../../../../components/Fallback/Fallback";
+import {
+  ImageContainer,
+  NewLoanCardContainer,
+} from "../../../../../features/loans/NewLoanCard/NewLoanCard.style";
 
 function HisotryViewLoans({ dataServices, ...props }) {
   const historyArr = useSelector(selectHistoryLoans);
@@ -69,11 +73,23 @@ function HisotryViewLoans({ dataServices, ...props }) {
             handleClick={() => handleModalOpen(loan.id)}
           />
         ))}
-        <NewLoanCard />
+        {loansArr.length < 1 ? (
+          <NewLoanCardContainer>
+            <ImageContainer>
+              <img
+                src="https://res.cloudinary.com/oportun-dev-stg/images/f_auto,q_auto/v1668801749/oportundev2/oportun-what-does-a-credit-score-start-at_24869406f58/oportun-what-does-a-credit-score-start-at_24869406f58.jpg?_i=AA"
+                alt=""
+              />
+            </ImageContainer>
+          </NewLoanCardContainer>
+        ) : (
+          ""
+        )}
+        <NewLoanCard loans={loansArr.length} />
       </NewContainer>
       <ServiceViewCard>
         <CardHeader>
-          <h1>Loans</h1>
+          <h1>Payments</h1>
         </CardHeader>
         <ListContainer>
           {historyArr.length > 0 ? (
@@ -85,7 +101,7 @@ function HisotryViewLoans({ dataServices, ...props }) {
                       <BsCashStack />
                     </ListIcon>
                     <LabelContainer>
-                      Loan:{" "}
+                      Loan Type:{" "}
                       {history_loan.details.charAt(0).toUpperCase() +
                         history_loan.details.slice(1)}
                     </LabelContainer>
@@ -105,7 +121,7 @@ function HisotryViewLoans({ dataServices, ...props }) {
             </>
           ) : (
             <Fallback
-              text={`No Loans to display. Start by making your first loan to track your finances. Click the "RequestLoan" button to record it.`}
+              text={`No Payments to display. Start by making your first loan to track your finances. Click the "RequestLoan" button to record it.`}
             />
           )}
         </ListContainer>

@@ -13,7 +13,6 @@ function PreferenceControler() {
       <SettingsSection>
         <span>
           <p>Night Mode</p>
-          <br />
           <RadioButton
             label="Notification"
             defaultMode={true}
@@ -24,7 +23,6 @@ function PreferenceControler() {
         <DropDown label="Language" items={["English", "Romanian", "French"]} />
         <span>
           <p>Notifications</p>
-          <br />
           <RadioButton
             label="Dark Mode"
             defaultMode={false}

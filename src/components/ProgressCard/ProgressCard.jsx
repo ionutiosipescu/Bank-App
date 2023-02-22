@@ -39,12 +39,14 @@ const ProgressCard = ({ ...props }) => {
           />
         </InfoSection>
         <InfoSection>
-          <div style={{ display: "flex", flexDirection: "column" }}>
+          <h3>{paid < amount ? paid : amount} RON</h3>
+          <h4>{amount} RON</h4>
+          {/* <div style={{ display: "flex", flexDirection: "column" }}>
             <h3>You payed:</h3>
             <h3>
               {paid} / {amount}
             </h3>
-          </div>
+          </div> */}
           {/* <div style={{ display: "flex" }}>
             <h3>Left:</h3>
             <h3>{amount - paid}</h3>
@@ -54,12 +56,19 @@ const ProgressCard = ({ ...props }) => {
       <ProgressBar>
         <ProgressBarInterior paid={paid} amount={amount} />
       </ProgressBar>
-      <h3>You are almost there!</h3>
+      {paid < amount ? (
+        <h3>
+          Your are <span>{Math.round((paid / amount) * 100)}%</span> there!
+        </h3>
+      ) : (
+        <h3>Your loan is fully paid. Thank you!</h3>
+      )}
       <Button
         label="Pay Loan"
-        size="fullWidth"
         primary="primary"
+        size="xl"
         handleClick={handleClick}
+        disabled={paid >= amount ? true : false}
       />
     </ProgressCardContainer>
   );

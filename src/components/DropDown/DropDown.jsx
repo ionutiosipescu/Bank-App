@@ -22,7 +22,7 @@ function DropDown({ label, items }) {
 
   return (
     <DropDownContainer>
-      <p>{label}</p>
+      {label && <p>{label}</p>}
       <DropDownSelector active={active}>
         <DropDownHeader onClick={handleDropDown}>
           {selected}

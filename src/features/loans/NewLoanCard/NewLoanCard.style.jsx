@@ -6,16 +6,38 @@ export const NewLoanCardContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   overflow: hidden;
-  width: calc(25% - 16px);
-  height: 400px;
-  padding-bottom: 30px;
+  width: ${(props) => (props.loans === 1 ? "100%" : "50%")};
+  height: 380px;
+  padding-bottom: 20px;
+  margin: 10px;
   background-color: var(--white);
   box-shadow: 0px 0px 25px 0px rgba(79, 78, 105, 0.301);
   border-radius: 30px;
-  & img {
-    width: 100%;
+  & > img {
+    height: 80%;
   }
   & span {
-    width: 90%;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    & a {
+      background-color: var(--green-dark);
+      border: 1px solid var(--green-dark);
+    }
+    & a:hover {
+      background-color: var(--green);
+      border: 1px solid var(--green);
+    }
+  }
+  & h2 {
+    color: var(--gray-dark);
+  }
+`;
+
+export const ImageContainer = styled.div`
+  height: 100%;
+  width: 100%;
+  & img {
+    width: 100%;
   }
 `;
