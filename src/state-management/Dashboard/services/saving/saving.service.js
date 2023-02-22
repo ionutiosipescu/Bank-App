@@ -8,6 +8,7 @@ import {
 } from "./saving.action";
 import axios from "axios";
 import { requests, savingComplete } from "../../../../utils/Requests/requests";
+import { updateTransferArr } from "./saving.action";
 
 // Async Saving Post Withdraw
 export const fetchSavingWithdraw = (savingData, savingObj) => {
@@ -26,15 +27,14 @@ export const fetchSavingWithdraw = (savingData, savingObj) => {
 };
 
 // Async Saving Post Top-Up
-export const fetchSavingTopUp = (savingData, savingObj) => {
+export const fetchSavingTopUp = (savingObj, transfer, arr) => {
   return async (dispatch) => {
-    const { account_id, id, transfer } = savingObj;
+    const { account_id, id } = savingObj;
     try {
-      await axios
-        .patch(
-          `${requests.PATCH_TOP_UP}${id}${savingComplete.VALUE}${transfer}${savingComplete.ID_ACCOUNT}${account_id}`
-        )
-        .then((res) => console.log(res));
+      const { data } = await axios.patch(
+        `${requests.PATCH_TOP_UP}${id}${savingComplete.VALUE}${transfer}${savingComplete.ID_ACCOUNT}${account_id}`
+      );
+      await dispatch(updateTransferArr(data));
     } catch (error) {
       console.log(error);
     }

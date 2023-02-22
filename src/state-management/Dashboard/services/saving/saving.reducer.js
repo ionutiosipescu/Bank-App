@@ -8,6 +8,7 @@ const INITIAL_STATE = {
   },
   savingArr: [],
   savingData: {},
+  showModal: false,
 };
 
 export const savingHelperReducer = (state = INITIAL_STATE, action) => {
@@ -26,6 +27,11 @@ export const savingHelperReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         savingData: { ...payload },
+      };
+    case SAVINGS_HELPER_TYPES.SET_MODAL_SAVING:
+      return {
+        ...state,
+        showModal: payload,
       };
     default:
       return state;

@@ -26,34 +26,34 @@ import ConfirmActionModal from "../../../components/ConfirmActionModal/ConfirmAc
 import Fallback from "../../../components/Fallback/Fallback";
 import { fetchSavingWithdraw } from "../../../state-management/Dashboard/services/saving/saving.service";
 import { fetchSavingTopUp } from "../../../state-management/Dashboard/services/saving/saving.service";
+import ModalSaving from "../../../components/Modals/Services/Savings/ModalSaving";
+import { setSavingTransfer } from "../../../state-management/Dashboard/services/saving/saving.action";
+import { selectSavingData } from "../../../state-management/Dashboard/services/saving/saving.selector";
+import { setSavingAction } from "../../../state-management/Dashboard/services/saving/saving.action";
+import { setShowModal } from "../../../state-management/Dashboard/services/saving/saving.action";
+import { selectShowModal } from "../../../state-management/Dashboard/services/saving/saving.selector";
 
 const data = accounts[0].savings;
 
 function SavingsListCard() {
-  const dipatch = useDispatch();
+  const dispatch = useDispatch();
   const currentUser = useSelector(selectCurrentUser);
+  const savingTransfer = useSelector(selectSavingData);
   const savingData = useSelector(selectSavingArr);
+  const modalOpen = useSelector(selectShowModal);
 
-  const [modalOpen, setModalOpen] = useState(false);
-  const [modalData, setModalData] = useState("");
+  // const [modalOpen, setModalOpen] = useState(false);
 
-  const handleRepeat = () => {
-    setModalOpen(false);
-  };
-
-  const handleModalOpen = (id) => {
-    setModalOpen(true);
-    setModalData(savingData.find((saving) => saving.id === id));
+  const handleModalOpen = (saving, e) => {
+    dispatch(setSavingAction(e.target.name));
+    dispatch(setSavingTransfer(saving));
+    dispatch(setShowModal(true));
   };
 
   const handleModalClose = () => {
-    setModalOpen(false);
+    dispatch(setShowModal(false));
   };
 
-  console.log(modalData);
-  useEffect(() => {
-    console.log(savingData);
-  }, [savingData]);
   return (
     <ServiceCard>
       <CardHeader style={{ height: "10%" }}>
@@ -77,18 +77,15 @@ function SavingsListCard() {
                     label="Top-Up"
                     size="sm"
                     primary="primary"
-                    // onClick={() => handleModalOpen(saving.id)}
-                    onClick={() =>
-                      dipatch(fetchSavingTopUp(savingData, saving))
-                    }
+                    name={"top-up"}
+                    onClick={(e) => handleModalOpen(saving, e)}
                   />
                   <Button
                     label="Withdraw"
                     size="sm"
                     primary="primary"
-                    onClick={() =>
-                      dipatch(fetchSavingWithdraw(savingData, saving))
-                    }
+                    name={"withdraw"}
+                    onClick={(e) => handleModalOpen(saving, e)}
                   />
                 </ButtonsControlerBox>
               </ListItem>
@@ -101,14 +98,7 @@ function SavingsListCard() {
         )}
       </ListContainer>
       <Modal opened={modalOpen} handleClick={handleModalClose}>
-        <ConfirmActionModal
-          action="top-up"
-          type="saving"
-          amount={modalData.transfer}
-          data={modalData}
-          handleClick={handleRepeat}
-          handleModalClose={handleModalClose}
-        />
+        <ModalSaving />
       </Modal>
     </ServiceCard>
   );

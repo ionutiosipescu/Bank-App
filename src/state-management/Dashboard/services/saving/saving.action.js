@@ -6,8 +6,8 @@ import { findObjectByString } from "../../../../utils/helpers/helperFunctions/fi
 import axios from "axios";
 
 // Update Saving Action
-export const setSavingAction = (saving) => {
-  return createAction(SAVINGS_HELPER_TYPES.SET_SAVINGS_ACTION, saving);
+export const setSavingAction = (action) => {
+  return createAction(SAVINGS_HELPER_TYPES.SET_SAVINGS_ACTION, action);
 };
 
 // update Saving Obj
@@ -21,7 +21,9 @@ export const setSavingForm = (savingData, e) => {
   return createAction(SAVINGS_HELPER_TYPES.SET_SAVINGS_FORM, savingDataObj);
 };
 
-// Update Saving Arr
+export const updateTransferArr = (newSavingArr) => {
+  return createAction(SAVINGS_HELPER_TYPES.SET_SAVINGS_ARR, newSavingArr);
+};
 
 export const setSavingArr = (obj, arr) => {
   const { transfer, details } = obj;
@@ -82,4 +84,12 @@ export const setSavingArrActions = (savingArr, savingObj) => {
 
 export const resetSaving = () => {
   return createAction(SAVINGS_HELPER_TYPES.RESET_SAVING);
+};
+
+export const setSavingTransfer = (saving) => {
+  return createAction(SAVINGS_HELPER_TYPES.SET_SAVINGS_DATA, saving);
+};
+
+export const setShowModal = (boolean) => {
+  return createAction(SAVINGS_HELPER_TYPES.SET_MODAL_SAVING, boolean);
 };
