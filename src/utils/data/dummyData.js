@@ -7,7 +7,7 @@ const avatar_5 = "https://source.unsplash.com/random/red";
 const avatar_6 = "https://source.unsplash.com/random/flower";
 const avatar_7 = "https://source.unsplash.com/random/city";
 
-const date = new Date();
+export const date = new Date();
 
 export const transferPath = {
   path: "newtransfer",

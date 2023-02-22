@@ -1,16 +1,18 @@
 import styled from "styled-components";
 
 export const UserCardContainer = styled.div`
-  width: 24%;
-  height: 45%;
+  width: calc(25% - 20px);
+  height: calc(50% - 20px);
   padding: 10px 30px;
+  margin: 10px;
   border-radius: 20px;
-  box-shadow: 0px 0px 20px -9px rgba(21, 20, 47, 0.73);
-  cursor: pointer;
+  box-shadow: 0px 0px 20px -10px var(--gray-dark);
   color: var(--text);
+  background-color: var(--white);
+  cursor: pointer;
   transition: 0.3s;
   &:hover {
-    scale: 110%;
+    scale: 105%;
     transition: 0.3s;
   }
   & img {

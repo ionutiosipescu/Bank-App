@@ -17,12 +17,13 @@ function ProfileComponent({ image, name, address, email, phoneNumber }) {
   return (
     <ProfileWrapper>
       <ProfileContainer>
+        {/* <div> */}
+        <img src={avatar} alt="" />
+        {/* </div> */}
         <div>
-          <img src={avatar} alt="" />
-        </div>
-        <div>
-          <h2>{name}</h2>
-          <LinkButton label="Edit Profile" size="md" to="/settings" />
+          {/* <h1>Hi,</h1> */}
+          <h1>{name}</h1>
+          <LinkButton label="Edit Profile" size="sm" to="/settings" />
         </div>
       </ProfileContainer>
       <ProfileInfo>

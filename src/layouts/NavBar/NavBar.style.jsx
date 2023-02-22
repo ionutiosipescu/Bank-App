@@ -1,10 +1,12 @@
 import styled from "styled-components";
+import Button from "../../components/UI/Button/Button";
 import { device } from "../../utils/breakpoints/breakpoints";
 
 export const NavBarContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
   width: 100%;
   height: 60px;
   margin-right: 20px;
@@ -58,4 +60,18 @@ export const ProfileContainer = styled.div`
       margin: 0 15px 0 10px;
     }
   }
+`;
+
+export const NotificationButton = styled(Button)`
+  position: relative;
+`;
+
+export const NotificationDot = styled.span`
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  top: 0;
+  right: 0;
+  border-radius: 50%;
+  background-color: var(--red);
 `;

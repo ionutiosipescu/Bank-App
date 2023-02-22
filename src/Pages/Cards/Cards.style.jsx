@@ -18,7 +18,7 @@ export const NewContainer = styled.div`
   display: flex;
   align-items: center;
   /* justify-content: space-between; */
-  /* height: 25vh; */
+  /* height: 30vh; */
   width: calc(100% - 60px);
   margin: 30px 30px 30px 0px;
   padding: 30px;

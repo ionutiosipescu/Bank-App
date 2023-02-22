@@ -32,9 +32,6 @@ export const PlanSection = styled.div`
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
-  & > * {
-    z-index: 2;
-  }
 `;
 
 export const PlanOptions = styled.div`
@@ -61,8 +58,7 @@ export const Bubble = styled.div`
   aspect-ratio: 1/1;
   border-radius: 50%;
   background-color: var(--white);
-
-  z-index: 1;
+  /* z-index: 1; */
 `;
 
 export const PlanHeader = styled.div`

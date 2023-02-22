@@ -3,21 +3,29 @@ import styled from "styled-components";
 export const ProfileWrapper = styled.div`
   width: 70%;
   height: 100%;
-  border-right: 1px solid var(--gray-dark);
+  /* border-right: 2px solid var(--gray); */
 `;
 
 export const ProfileContainer = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 40%;
-  height: 55%;
+  /* justify-content: space-between; */
+  /* width: 40%; */
+  width: 100%;
+  height: 60%;
+  padding-bottom: 30px;
+  border-bottom: 2px solid var(--gray);
   & img {
-    height: 200px;
+    height: 85%;
     border-radius: 50%;
+    margin-right: 50px;
   }
   & h2 {
     margin-bottom: 30px;
+  }
+  & h1 {
+    margin-bottom: 30px;
+    color: var(--purple);
   }
 `;
 

@@ -45,6 +45,7 @@ code {
 :root {
   --purple: #6160dc;
   --purple-light: #8989f0;
+  --purple-transparent: #b09beb23;
   --purple-dark: #5151bb;
   --blue: #54c5eb;
   --blue-light: #54c5eb88;
