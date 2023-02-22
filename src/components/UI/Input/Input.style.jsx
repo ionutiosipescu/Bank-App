@@ -136,7 +136,7 @@ export const InputForm = styled.input`
   ${(props) =>
     props.large
       ? "height: 60px; padding-left: 20px; font-size: 1.1rem; width: 100%;"
-      : ""}
+      : "padding-left: 20px;"}
   @media (${device.mobileS}) {
     ${(props) =>
       props.large

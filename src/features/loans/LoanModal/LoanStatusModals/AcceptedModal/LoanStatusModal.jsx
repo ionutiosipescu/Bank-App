@@ -154,7 +154,7 @@ function LoanStatusModal({ ...props }) {
         <Button
           size="md"
           primary="primary"
-          label="Continue"
+          label="Accept"
           type="button"
           onClick={() => {
             props.handleClick();

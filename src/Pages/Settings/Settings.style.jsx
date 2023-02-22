@@ -29,7 +29,7 @@ export const SettingsContainer = styled.div`
 
 export const SectionContainer = styled.div`
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   width: 100%;
   height: 100%;
   @media (max-width: 1440px) {
@@ -42,12 +42,11 @@ export const PreferenceContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 100%;
-  /* height: 70vh; */
-  margin-bottom: 50px;
-  padding-bottom: 50px;
-  /* border-right: 2px solid #8e8ea170; */
-  border-bottom: 2px solid var(--gray);
+  width: 30%;
+  height: 70vh;
+  margin-right: 100px;
+  /* padding-bottom: 50px; */
+  border-right: 2px solid var(--gray);
   @media (max-width: 1440px) {
     width: 90%;
     margin: 0;
@@ -59,7 +58,7 @@ export const PreferenceContainer = styled.div`
 
 export const SettingsSection = styled.div`
   display: flex;
-  /* flex-direction: column; */
+  flex-direction: column;
   justify-content: space-around;
   height: 100%;
   margin: 0px 30px;
@@ -113,5 +112,5 @@ export const TitleSettings = styled.h2`
 export const SettingsFormWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 70%;
 `;
