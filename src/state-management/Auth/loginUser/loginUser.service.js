@@ -44,7 +44,7 @@ export const fetchLoginData = (registerData) => {
       await dispatch(postLoginSuccess());
       // }
       // else {
-      await dispatch(controlMoldalAsync(true));
+      // await dispatch(controlMoldalAsync(true));
       // }
     } catch (error) {
       if (!error) return;

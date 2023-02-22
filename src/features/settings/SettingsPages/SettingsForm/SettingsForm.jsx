@@ -1,9 +1,8 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectSettingsData } from "../../../../state-management/Dashboard/settings/settings.selector";
-import { useState } from "react";
 import { setSettingsForm } from "../../../../state-management/Dashboard/settings/settings.action";
-import { Formik, Form } from "formik";
+import { Formik } from "formik";
 import CustomInputSettings from "../../../../components/CustomInputs/CustomInputSettings";
 import {
   RowSettingsSection,
@@ -13,12 +12,8 @@ import {
 import { settingsSchema } from "../../ValidationSchema/ValidationSchema";
 import Button from "../../../../components/UI/Button/Button";
 import { AccountContainer } from "../../../../pages/Settings/Settings.style";
-import Auth from "../../../../components/Auth/Auth";
 import { SettingsFormWrapper } from "../../../../pages/Settings/Settings.style";
-import StatusMessage from "../../../../components/UI/StatusMessage/StatusMessage";
-import { setResetShowMsg } from "../../../../state-management/Dashboard/settings/settings.action";
 import { selectCurrentUser } from "../../../../state-management/Dashboard/userData/userData.selector";
-import { useEffect } from "react";
 import { fetchAuthData } from "../../../../state-management/Dashboard/settings/settings.service";
 import { selectToken } from "../../../../state-management/Auth/registerhelper/registerhelper.selector";
 
@@ -27,7 +22,6 @@ function SettingsForm() {
   const settingsData = useSelector(selectSettingsData);
   const { first_name, last_name, address, mobile } = settingsData;
   const token = useSelector(selectToken);
-  const [showAuth, handleShow] = useState(false);
   const userData = useSelector(selectCurrentUser);
 
   const setData = (e) => {
@@ -37,10 +31,6 @@ function SettingsForm() {
   const onSubmit = () => {
     dispatch(fetchAuthData(settingsData, userData, token));
   };
-
-  useEffect(() => {
-    dispatch(setResetShowMsg());
-  }, []);
 
   return (
     <SettingsFormWrapper>
@@ -92,19 +82,8 @@ function SettingsForm() {
                 value={address || ""}
               />
             </RowSettingsSection>
-            {/* {showAuth ? (
-              <StatusMessage
-                type="success"
-                text={"You data was verified !"}
-                size="full"
-                // show={showAuth}
-                // handleShow={handleShow}
-              />
-            ) : (
-              <></>
-            )} */}
             <Button
-              label="Verify Data"
+              label="Update Profile"
               size="xl"
               primary="primary"
               type="submit"
@@ -112,7 +91,6 @@ function SettingsForm() {
           </FormCustomSettings>
         </Formik>
       </AccountContainer>
-      {showAuth ? <Auth /> : <></>}
     </SettingsFormWrapper>
   );
 }

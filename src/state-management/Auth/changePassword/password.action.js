@@ -31,3 +31,19 @@ export const setObjPassword = async (dataObj, authData) => {
 export const resetPassword = () => {
   return createAction(CHANGE_PASSWORD_TYPES.RESET_PASSWORD);
 };
+
+const updateAuthForm = (authData, e) => {
+  const { name, value } = e.target;
+  return { ...authData, [name]: value };
+};
+
+// Update Auth Form
+export const setAuthForm = (authData, e) => {
+  const authObj = updateAuthForm(authData, e);
+  return createAction(CHANGE_PASSWORD_TYPES.SET_AUTH, authObj);
+};
+
+// Reset Show Message
+export const setResetShowMsg = () => {
+  return createAction(CHANGE_PASSWORD_TYPES.RESET_SHOW_MSG);
+};

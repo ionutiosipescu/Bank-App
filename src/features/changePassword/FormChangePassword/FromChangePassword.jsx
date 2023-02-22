@@ -4,10 +4,7 @@ import {
   FormContainerChangePassword,
   ButtonChangePassword,
 } from "./FormChangePassword.style";
-import Button from "../../../components/UI/Button/Button";
-import { ErrorMsg } from "../../../components/Errors/Auth/ErrorMsg.style";
 import CustomInput from "../../../components/CustomInputs/CustomInput";
-import CustomPassword from "../../../components/CustomInputs/CustomPassword";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { setChangePassword } from "../../../state-management/Auth/changePassword/password.action";

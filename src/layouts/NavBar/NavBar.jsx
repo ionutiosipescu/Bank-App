@@ -23,7 +23,6 @@ import Spinner from "../../components/Spinner/Spinner";
 
 function NavBar() {
   const userData = useSelector(selectCurrentUser);
-  // const { first_name = "", last_name = "" } = userData.userDetail;
 
   const isSubmiting = useSelector(selectIsSubmiting);
 
@@ -37,7 +36,6 @@ function NavBar() {
     <NavBarContainer>
       <SearchBar active={active} onClick={handleActive} />
       <NavBarSection active={active}>
-        {/* <Toggle /> */}
         <LinkButton to="/settings" size="round">
           <RiSettingsLine size={22} />
         </LinkButton>

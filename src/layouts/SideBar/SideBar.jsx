@@ -17,7 +17,6 @@ import {
 import { SiWebmoney } from "react-icons/si";
 import { TiChevronLeft, TiChevronRight, TiPlus } from "react-icons/ti";
 
-import Button from "./../../components/UI/Button/Button";
 import LinkButton from "./../../components/UI/LinkButton/LinkButton";
 
 const pages = [

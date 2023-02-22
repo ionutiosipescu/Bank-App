@@ -1,14 +1,16 @@
 import axios from "axios";
 import { setObjPassword } from "./password.action";
+import { CHANGE_PASSWORD_TYPES } from "./password.types";
+import { createAction } from "../../../utils/helpers/reducer/reducer.utils";
 
-// export const requestSettingsStart = () =>
-//   createAction(SETTINGS_TYPES.REQUEST_SETTINGS_START);
+export const requestPasswordStart = () =>
+  createAction(CHANGE_PASSWORD_TYPES.REQUEST_PASSWORD_START);
 
-// export const requestSettingsSuccess = () =>
-//   createAction(SETTINGS_TYPES.REQUEST_SETTINGS_SUCCESS);
+export const requestPasswordSuccess = () =>
+  createAction(CHANGE_PASSWORD_TYPES.REQUEST_PASSWORD_SUCCESS);
 
-// export const requestSettingsFailed = (error) =>
-//   createAction(SETTINGS_TYPES.REQUEST_SETTINGS_FAILED, error);
+export const requestPasswordFailed = (error) =>
+  createAction(CHANGE_PASSWORD_TYPES.REQUEST_PASSWORD_FAILED, error);
 
 export const fetchAuthDataPassword = (dataObj, authData) => {
   return async (dispatch) => {
@@ -21,7 +23,7 @@ export const fetchAuthDataPassword = (dataObj, authData) => {
         data: { tokenType, accessToken, id },
       } = await axios.post(`http://localhost:8080/bank/auth/signin`, authData);
       console.log(tokenType, accessToken, id);
-      // await dispatch(requestSettingsStart());
+      await dispatch(requestPasswordStart());
 
       // second request get data
       await axios
@@ -31,12 +33,12 @@ export const fetchAuthDataPassword = (dataObj, authData) => {
           },
         })
         .then((res) => console.log(res));
-      // await dispatch(requestSettingsSuccess());
+      await dispatch(requestPasswordSuccess());
     } catch (err) {
       console.log(err);
-      // const errServer =
-      //   "Server is currently unavailable please try again later";
-      // dispatch(requestSettingsFailed(errServer));
+      const errServer =
+        "Server is currently unavailable please try again later";
+      dispatch(requestPasswordFailed(errServer));
     }
   };
 };

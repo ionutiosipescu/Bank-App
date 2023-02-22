@@ -3,15 +3,10 @@ import { Formik } from "formik";
 import CustomInput from "../CustomInputs/CustomInput";
 import { AuthSchema } from "./ValidationSchema/ValidationSchema";
 import { useSelector, useDispatch } from "react-redux";
-import { selectAuth } from "../../state-management/Dashboard/settings/settings.selector";
-import { setAuthForm } from "../../state-management/Dashboard/settings/settings.action";
 import { selectCurrentUser } from "../../state-management/Dashboard/userData/userData.selector";
 import { TitleSettings } from "../../pages/Settings/Settings.style";
 import StatusMessage from "../UI/StatusMessage/StatusMessage";
-import { selectSettingErrorRequest } from "../../state-management/Dashboard/settings/settings.selector";
-import { selectSettingIsSubmiting } from "../../state-management/Dashboard/settings/settings.selector";
 import Spinner from "../Spinner/Spinner";
-import { selectShowMessage } from "../../state-management/Dashboard/settings/settings.selector";
 import {
   AuthRowSection,
   AuthWrapper,
@@ -21,6 +16,12 @@ import {
 } from "./Auth.style";
 import { selectPassword } from "../../state-management/Auth/changePassword/password.selector";
 import { fetchAuthDataPassword } from "../../state-management/Auth/changePassword/password.service";
+
+import { setAuthForm } from "../../state-management/Auth/changePassword/password.action";
+import { selectSettingErrorRequest } from "../../state-management/Auth/changePassword/password.selector";
+import { selectSettingIsSubmiting } from "../../state-management/Auth/changePassword/password.selector";
+import { selectShowMessage } from "../../state-management/Auth/changePassword/password.selector";
+import { selectAuth } from "../../state-management/Auth/changePassword/password.selector";
 
 function Auth() {
   const dispatch = useDispatch();

@@ -14,7 +14,6 @@ import OTPModal from "../../../components/OTPModal/OTPModal";
 import {
   resetRedux,
   setLogInUser,
-  controlMoldalAsync,
 } from "../../../state-management/Auth/loginUser/loginUser.action";
 import {
   selectOtp,
@@ -23,6 +22,7 @@ import {
   selectErrorMessage,
   selectModalIsOpen,
 } from "../../../state-management/Auth/loginUser/loginUser.selector";
+import { fetchLoginData } from "../../../state-management/Auth/loginUser/loginUser.service";
 
 function FormLogIn() {
   const dispatch = useDispatch();
@@ -35,9 +35,9 @@ function FormLogIn() {
 
   // axios request -> response true - > change isSubmitting status
   const onSubmit = () => {
-    dispatch(controlMoldalAsync(true));
+    // dispatch(controlMoldalAsync(true));
     // de schimbat cu cea de jos
-    // dispatch(fetchLoginData(loginData));
+    dispatch(fetchLoginData(loginData));
   };
 
   // send data to Redux userProfile
@@ -46,13 +46,13 @@ function FormLogIn() {
   };
 
   // check isSubmitting status -> redirect to dashboard
-  // useEffect(() => {
-  //   if (isSubmitting) {
-  //     navigate("/dashboard");
-  //   } else {
-  //     return;
-  //   }
-  // }, [isSubmitting]);
+  useEffect(() => {
+    if (isSubmitting) {
+      navigate("/dashboard");
+    } else {
+      return;
+    }
+  }, [isSubmitting]);
 
   // // restore localStorage
   useEffect(() => {
