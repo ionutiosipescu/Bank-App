@@ -35,6 +35,7 @@ import {
 import { savingSchema } from "../ValidationSchema/ValidationSchemaSaving";
 import Spinner from "../../../components/Spinner/Spinner";
 import StatusMessage from "../../../components/UI/StatusMessage/StatusMessage";
+import RequestMessage from "../../../components/RequestMessage/RequestMessage";
 
 function SavingsInputCard() {
   const dispatch = useDispatch();
@@ -90,21 +91,12 @@ function SavingsInputCard() {
               tall
             />
           </SavingInputsContainer>
-          {isSubmiting ? (
-            <Spinner size={"fit"} />
-          ) : showMessage ? (
-            <StatusMessage
-              type={errorMsgRequest ? "error" : "success"}
-              text={
-                errorMsgRequest
-                  ? errorMsgRequest
-                  : "Your Saving has been Succesfuly Added"
-              }
-              size="full"
-            />
-          ) : (
-            <></>
-          )}
+          <RequestMessage
+            isSubmiting={isSubmiting}
+            showMessage={showMessage}
+            errorMsgRequest={errorMsgRequest}
+            text="Your Saving has been Succesfuly Added"
+          />
           <Button
             label="Add Saving"
             size="xl"

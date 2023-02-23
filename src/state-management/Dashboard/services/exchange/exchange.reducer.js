@@ -8,8 +8,11 @@ const INITIAL_STATE = {
   },
   exchangeArr: [],
   selectedOption: {
-    account: "ron",
+    currency: "ron",
   },
+  isSubmiting: false,
+  showMessage: false,
+  errorMsg: "",
 };
 
 export const exchangeHelperReducer = (state = INITIAL_STATE, action) => {
@@ -24,6 +27,23 @@ export const exchangeHelperReducer = (state = INITIAL_STATE, action) => {
       return { ...state, selectedOption: { ...payload } };
     case EXCHANGE_HELPER_TYPES.RESET_EXCHANGE:
       return INITIAL_STATE;
+    case EXCHANGE_HELPER_TYPES.REQUEST_EXCHANGE_START:
+      return { ...state, isSubmiting: true };
+    case EXCHANGE_HELPER_TYPES.REQUEST_EXCHANGE_SUCCESS:
+      return { ...state, isSubmiting: false, showMessage: true, errorMsg: "" };
+    case EXCHANGE_HELPER_TYPES.REQUEST_EXCHANGE_FAILED:
+      return {
+        ...state,
+        isSubmiting: false,
+        showMessage: true,
+        errorMsg: payload,
+      };
+    case EXCHANGE_HELPER_TYPES.RESET_SHOW_MSG:
+      return {
+        ...state,
+        showMessage: false,
+        errorMsg: "",
+      };
     default:
       return state;
   }

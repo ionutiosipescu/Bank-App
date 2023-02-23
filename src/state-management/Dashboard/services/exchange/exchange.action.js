@@ -35,10 +35,12 @@ export const setExchangeData = async (obj) => {
 };
 
 export const setExchangeId = (obj, currentUserData) => {
-  const { account } = obj;
+  const { currency } = obj;
+  console.log(obj);
   const stringCompare = "currency";
   const userAccountArr = currentUserData.account;
-  const object = findObjectByString(account, userAccountArr, stringCompare);
+  const object = findObjectByString(currency, userAccountArr, stringCompare);
+  console.log(object.id);
   return object.id;
 };
 
@@ -48,19 +50,24 @@ export const setExchangeArrDb = (exchangeArr) => {
   return createAction(EXCHANGE_HELPER_TYPES.SET_EXCHANGE_ARR, exchangeArr);
 };
 
-export const setExchangeArr = (obj, arr) => {
+export const setExchangeArr = (obj, arr, selectedOptionExchange) => {
   const { amount, currency } = obj;
   const string = currency === "ron" ? `RonToEuro` : `EuroToRon`;
-  console.log(string);
-  const objArr = {
-    id: generateRandomNumber(3).toString(),
-    type_exchange: string,
-    exchange: amount,
-    date: getLocalDate(),
-    details: "",
-  };
-  const newExchangeArr = [...arr, { ...objArr }];
-  return createAction(EXCHANGE_HELPER_TYPES.SET_EXCHANGE_ARR, newExchangeArr);
+  console.log(currency);
+  console.log(selectedOptionExchange.currency);
+  if (currency === selectedOptionExchange.currency) {
+    const objArr = {
+      id: generateRandomNumber(3).toString(),
+      type_exchange: string,
+      exchange: amount,
+      date: getLocalDate(),
+      details: "",
+    };
+    const newExchangeArr = [...arr, { ...objArr }];
+    return createAction(EXCHANGE_HELPER_TYPES.SET_EXCHANGE_ARR, newExchangeArr);
+  } else {
+    return createAction(EXCHANGE_HELPER_TYPES.SET_EXCHANGE_ARR, arr);
+  }
 };
 
 // REPEAT
@@ -95,10 +102,15 @@ export const setExchangeIdRepeat = (obj, currentUserData) => {
 
 export const setSelectedOptionExchange = (e, filter) => {
   const { value } = e.target;
-  const newObj = { ...filter, account: value };
+  const newObj = { ...filter, currency: value };
   return createAction(EXCHANGE_HELPER_TYPES.SET_EXCHANGE_OPTION, newObj);
 };
 
 export const resetExchange = () => {
   return createAction(EXCHANGE_HELPER_TYPES.RESET_EXCHANGE);
+};
+
+// ResetShowMsg
+export const setResetShowMsg = () => {
+  return createAction(EXCHANGE_HELPER_TYPES.RESET_SHOW_MSG);
 };
