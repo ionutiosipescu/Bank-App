@@ -23,7 +23,7 @@ function StatusMessage({ ...props }) {
 
     const timer = setTimeout(() => {
       setShowMessage(false);
-      handleShow();
+      // handleShow();
     }, 300);
 
     return () => clearTimeout(timer);

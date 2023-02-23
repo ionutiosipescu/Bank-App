@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Button from "../../../components/UI/Button/Button";
 import {
   CornerArt,
@@ -12,7 +12,10 @@ import {
 } from "./SavingsInputCard.style";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { setSavingForm } from "../../../state-management/Dashboard/services/saving/saving.action";
+import {
+  setSavingForm,
+  setResetShowMsg,
+} from "../../../state-management/Dashboard/services/saving/saving.action";
 import { selectSavingForm } from "../../../state-management/Dashboard/services/saving/saving.selector";
 import { selectSavingArr } from "../../../state-management/Dashboard/services/saving/saving.selector";
 import { Formik, Form } from "formik";
@@ -23,8 +26,15 @@ import {
 } from "./SavingsInputCard.style";
 import { fetchSavingData } from "../../../state-management/Dashboard/services/saving/saving.service";
 import { selectCurrentUser } from "../../../state-management/Dashboard/userData/userData.selector";
-import { selectSavingData } from "../../../state-management/Dashboard/services/saving/saving.selector";
+import {
+  selectSavingData,
+  selectError,
+  selectIsSubmiting,
+  selectShowMessage,
+} from "../../../state-management/Dashboard/services/saving/saving.selector";
 import { savingSchema } from "../ValidationSchema/ValidationSchemaSaving";
+import Spinner from "../../../components/Spinner/Spinner";
+import StatusMessage from "../../../components/UI/StatusMessage/StatusMessage";
 
 function SavingsInputCard() {
   const dispatch = useDispatch();
@@ -32,10 +42,12 @@ function SavingsInputCard() {
   const savingArr = useSelector(selectSavingArr);
   const savingData = useSelector(selectSavingData);
   const currentUserData = useSelector(selectCurrentUser);
-  // if i dont have currentUserObj app crash
-  // const idAccount = currentUserData.account[0].id;
-  // const id = idAccount.toString();
-  // console.log(id);
+
+  const errorMsgRequest = useSelector(selectError);
+  const isSubmiting = useSelector(selectIsSubmiting);
+  const showMessage = useSelector(selectShowMessage);
+
+  const { details, transfer } = savingFromData;
 
   const setData = (e) => {
     dispatch(setSavingForm(savingFromData, e));
@@ -44,6 +56,10 @@ function SavingsInputCard() {
   const onSubmit = () => {
     dispatch(fetchSavingData(savingFromData, savingArr, currentUserData));
   };
+
+  useEffect(() => {
+    dispatch(setResetShowMsg());
+  }, []);
 
   return (
     <ServiceInputsCard type="savings">
@@ -61,6 +77,7 @@ function SavingsInputCard() {
               name="details"
               placeholder="Enter your Saving Purpose"
               setData={setData}
+              value={details || ""}
               tall
             />
             <CustomInput
@@ -69,9 +86,25 @@ function SavingsInputCard() {
               name="transfer"
               placeholder="Enter your first saving"
               setData={setData}
+              value={transfer || ""}
               tall
             />
           </SavingInputsContainer>
+          {isSubmiting ? (
+            <Spinner size={"fit"} />
+          ) : showMessage ? (
+            <StatusMessage
+              type={errorMsgRequest ? "error" : "success"}
+              text={
+                errorMsgRequest
+                  ? errorMsgRequest
+                  : "Your Saving has been Succesfuly Added"
+              }
+              size="full"
+            />
+          ) : (
+            <></>
+          )}
           <Button
             label="Add Saving"
             size="xl"

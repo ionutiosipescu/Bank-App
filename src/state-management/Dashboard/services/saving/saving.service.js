@@ -5,10 +5,22 @@ import {
   setSavingData,
   setSavingArrDb,
   setSavingsId,
+  setResetFormSaving,
 } from "./saving.action";
 import axios from "axios";
 import { requests, savingComplete } from "../../../../utils/Requests/requests";
 import { updateTransferArr } from "./saving.action";
+import { SAVINGS_HELPER_TYPES } from "./saving.types";
+import { createAction } from "../../../../utils/helpers/reducer/reducer.utils";
+
+export const requestSavingStart = () =>
+  createAction(SAVINGS_HELPER_TYPES.REQUEST_SAVING_START);
+
+export const requestSavingSuccess = () =>
+  createAction(SAVINGS_HELPER_TYPES.REQUEST_SAVING_SUCCESS);
+
+export const requestSavingFailed = (error) =>
+  createAction(SAVINGS_HELPER_TYPES.REQUEST_SAVING_FAILED, error);
 
 // Async Saving Post Withdraw
 export const fetchSavingWithdraw = (savingData, savingObj) => {
@@ -44,19 +56,45 @@ export const fetchSavingTopUp = (savingObj, transfer, arr) => {
 // Async Saving Post
 export const fetchSavingData = (obj, arr, currentUserData) => {
   return async (dispatch) => {
-    await dispatch(setSavingArr(obj, arr));
     const savingData = await setSavingData(obj);
-    const id = await setSavingsId(currentUserData);
     console.log(savingData);
+    const id = await setSavingsId(currentUserData);
     try {
-      await axios
-        .post(`${requests.POST_CREATE_SAVING}${id}`, savingData)
-        .then((res) => console.log(res));
-    } catch (error) {
-      console.log(error);
+      await dispatch(requestSavingStart());
+      const { data } = await axios.post(
+        `${requests.POST_CREATE_SAVING}${id}`,
+        savingData
+      );
+
+      await dispatch(requestSavingSuccess());
+      await dispatch(setResetFormSaving());
+      await dispatch(setSavingArr(data, arr));
+    } catch (err) {
+      if (!err) return;
+      const errMsg = err?.response?.data?.message;
+      const errServer =
+        "Server is currently unavailable please try again later";
+      if (errMsg) {
+        dispatch(requestSavingFailed(errMsg));
+      } else {
+        dispatch(requestSavingFailed(errServer));
+      }
     }
   };
 };
+
+// if (!error) return;
+// const errMsg = error?.response?.data?.message;
+// //   If error response from Backend exist, then set the error
+// if (errMsg) {
+//   dispatch(postLoginFailed(errMsg));
+// } else {
+//   // If error response from Backend doesnt exist, set errServer
+//   const errServer =
+//     "Server is currently unavailable please try again later";
+//   dispatch(postLoginFailed(errServer));
+// }
+// }
 
 // Get Arr
 export const getSavingArr = (currentUserData) => {
