@@ -64,7 +64,7 @@ export const fetchLoginData = (registerData) => {
 
 export const VerifyOtp = (otp, registerData) => {
   return async (dispatch) => {
-    const email = "ionutiosipescu2000@gmail.com";
+    const email = "aandoneseialex@gmail.com";
     try {
       await axios
         .post(
@@ -102,7 +102,7 @@ export const VerifyOtp = (otp, registerData) => {
 
 export const ResendOtp = () => {
   return async (dispatch) => {
-    const email = "ionutiosipescu2000@gmail.com";
+    const email = "aandoneseialex@gmail.com";
     try {
       await axios.post(
         `http://localhost:8080/bank/auth/resend/otp?email=${email}`
