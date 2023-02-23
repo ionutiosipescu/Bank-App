@@ -18,18 +18,26 @@ import { ErrorMsg } from "../Errors/Auth/ErrorMsg.style";
 import { selectOtpError } from "../../state-management/Auth/loginUser/loginUser.selector";
 import { setOtpError } from "../../state-management/Auth/loginUser/loginUser.action";
 import { controlMoldalAsync } from "../../state-management/Auth/loginUser/loginUser.action";
+import { selectLoginUser } from "../../state-management/Auth/loginUser/loginUser.selector";
+import { VerifyOtp } from "../../state-management/Auth/loginUser/loginUser.service";
+import { ResendOtp } from "../../state-management/Auth/loginUser/loginUser.service";
 
 function OTPModal() {
   const dispatch = useDispatch();
   const errorMsg = useSelector(selectOtpError);
   const otp = useSelector(selectOtp);
+  const loginData = useSelector(selectLoginUser);
 
   const handleSubmit = () => {
     if (otp.split("").length === 6) {
-      dispatch(controlMoldalAsync(false));
+      dispatch(VerifyOtp(otp, loginData));
     } else {
       dispatch(setOtpError("Invalid OTP"));
     }
+  };
+
+  const handleResendOtp = () => {
+    dispatch(ResendOtp());
   };
 
   const handleOTPChange = (e) => {
@@ -55,7 +63,10 @@ function OTPModal() {
         />
       </InputsContainer>
       <p>
-        Didn't get a code? <a href="#">Click to resend</a>
+        Didn't get a code?{" "}
+        <a href="#" onClick={handleResendOtp}>
+          Click to resend
+        </a>
       </p>
       {errorMsg ? <ErrorMsg>{errorMsg}</ErrorMsg> : <></>}
       <ButtonsContainer>

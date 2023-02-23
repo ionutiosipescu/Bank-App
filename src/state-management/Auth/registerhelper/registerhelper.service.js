@@ -55,6 +55,7 @@ export const fetchRegisterMail = (registerData, step) => {
         `http://localhost:8080/bank/auth/otp`,
         registerData
       );
+      console.log(response);
       //   Guard Clouse
       if (!response.data) return;
       //   Increment Page

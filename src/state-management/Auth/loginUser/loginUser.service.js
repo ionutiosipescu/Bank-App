@@ -21,31 +21,31 @@ export const fetchLoginData = (registerData) => {
       // first request - validate if credentials are corect and a user exist
       // response should be status of account: active or notActive
       const {
-        data: { tokenType, accessToken, id },
+        data: { active, type, token, id },
       } = await axios.post(
         "http://localhost:8080/bank/auth/signin",
         registerData
       );
+      console.log(active, type, token, id);
       // aici va veni in plus fata de ce vine acum un status al contului
-      // if(status === active) {
-      await dispatch(setToken(`${tokenType} ${accessToken}`));
-      await dispatch(postLoginStart());
-      const { data } = await axios.post(
-        `http://localhost:8080/user/${id}`,
-        {},
-        {
-          headers: {
-            Authorization: `${tokenType} ${accessToken}`,
-          },
-        }
-      );
-      if (!data) return;
-      await dispatch(setCurrentUser(data));
-      await dispatch(postLoginSuccess());
-      // }
-      // else {
-      // await dispatch(controlMoldalAsync(true));
-      // }
+      if (active) {
+        await dispatch(setToken(`${type} ${token}`));
+        await dispatch(postLoginStart());
+        const { data } = await axios.post(
+          `http://localhost:8080/user/${id}`,
+          {},
+          {
+            headers: {
+              Authorization: `${type} ${token}`,
+            },
+          }
+        );
+        if (!data) return;
+        await dispatch(setCurrentUser(data));
+        await dispatch(postLoginSuccess());
+      } else {
+        await dispatch(controlMoldalAsync(true));
+      }
     } catch (error) {
       if (!error) return;
       const errMsg = error?.response?.data?.message;
@@ -62,50 +62,51 @@ export const fetchLoginData = (registerData) => {
   };
 };
 
-export const VerifyOtp = (otp) => {
+export const VerifyOtp = (otp, registerData) => {
   return async (dispatch) => {
+    const email = "ionutiosipescu2000@gmail.com";
     try {
-      const data = {
-        otpnum: otp,
-      };
-      console.log(data);
       await axios
-        .post(`http://localhost:8080/bank/auth/validate`, data)
+        .post(
+          `http://localhost:8080/bank/auth/validate?otpnum=${otp}&email=${email}`
+        )
         .then((res) => console.log(res));
-      // if(otp === corect) {
-      // const {
-      //   data: { tokenType, accessToken, id },
-      // } = await axios.post(
-      //   "http://localhost:8080/bank/auth/signin",
-      //   registerData
-      // );
-      // await dispatch(setToken(`${tokenType} ${accessToken}`));
-      // await dispatch(postLoginStart());
-      // const { data } = await axios.post(
-      //   `http://localhost:8080/user/${id}`,
-      //   {},
-      //   {
-      //     headers: {
-      //       Authorization: `${tokenType} ${accessToken}`,
-      //     },
-      //   }
-      // );
-      // if (!data) return;
-      // await dispatch(setCurrentUser(data));
-      // await dispatch(postLoginSuccess());
-      // } else {
-      // show error
-      // }
+      const {
+        data: { active, type, token, id },
+      } = await axios.post(
+        "http://localhost:8080/bank/auth/signin",
+        registerData
+      );
+      console.log(active, type, token, id);
+      if (active) {
+        await dispatch(setToken(`${type} ${token}`));
+        await dispatch(postLoginStart());
+        const { data } = await axios.post(
+          `http://localhost:8080/user/${id}`,
+          {},
+          {
+            headers: {
+              Authorization: `${type} ${token}`,
+            },
+          }
+        );
+        if (!data) return;
+        await dispatch(setCurrentUser(data));
+        await dispatch(postLoginSuccess());
+      }
     } catch (err) {
       console.log(err);
     }
   };
 };
 
-export const ResendOtp = (otp) => {
+export const ResendOtp = () => {
   return async (dispatch) => {
+    const email = "ionutiosipescu2000@gmail.com";
     try {
-      // aici va fi un request pentru a retrimite otp
+      await axios.post(
+        `http://localhost:8080/bank/auth/resend/otp?email=${email}`
+      );
     } catch (err) {
       console.log(err);
     }
