@@ -83,25 +83,16 @@ export const fetchSavingData = (obj, arr, currentUserData) => {
   };
 };
 
-// if (!error) return;
-// const errMsg = error?.response?.data?.message;
-// //   If error response from Backend exist, then set the error
-// if (errMsg) {
-//   dispatch(postLoginFailed(errMsg));
-// } else {
-//   // If error response from Backend doesnt exist, set errServer
-//   const errServer =
-//     "Server is currently unavailable please try again later";
-//   dispatch(postLoginFailed(errServer));
-// }
-// }
-
 // Get Arr
 export const getSavingArr = (currentUserData) => {
   return async (dispatch) => {
-    const id = await setSavingsId(currentUserData);
-    console.log(id);
-    const { data } = await axios.get(`${requests.GET_HISTORY_SAVING}${id}`);
-    await dispatch(setSavingArrDb(data));
+    try {
+      const id = await setSavingsId(currentUserData);
+      const { data } = await axios.get(`${requests.GET_HISTORY_SAVING}${id}`);
+      if (!data) return;
+      await dispatch(setSavingArrDb(data));
+    } catch (err) {
+      console.log(err);
+    }
   };
 };

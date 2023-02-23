@@ -24,7 +24,7 @@ function ModalSaving(props) {
   const savingTransfer = useSelector(selectSavingData);
   const savingData = useSelector(selectSavingArr);
   const action = useSelector(selectSavingAction);
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState("");
   const { date, details, id, transfer } = savingTransfer;
 
   const handelAccept = () => {
@@ -33,17 +33,12 @@ function ModalSaving(props) {
       : dispatch(fetchSavingWithdraw(savingData, savingTransfer));
 
     dispatch(setShowModal(false));
+    setAmount("");
   };
 
   const handleOnChange = (e) => {
     setAmount(e.target.value);
   };
-
-  //   const setData = (e) => {
-  // dispatch(setDepositForm(depositFormData, e));
-  //   };
-
-  const INITIAL_OBJECT = {};
 
   return (
     <ActionModalWrapper>

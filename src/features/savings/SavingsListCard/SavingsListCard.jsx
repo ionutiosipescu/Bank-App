@@ -93,7 +93,7 @@ function SavingsListCard() {
           </>
         ) : (
           <Fallback
-            text={`No Saving to display. Start by making your first saving to track your finances. Click the "New Saving" button to record it.`}
+            text={`No Saving to display. Start by making your first saving to track your finances. Click the "Add Saving" button to record it.`}
           />
         )}
       </ListContainer>
