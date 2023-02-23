@@ -15,6 +15,7 @@ import {
   BtnContainerSubmitControler,
   FormContainerInputs,
   SelectAccountToggle,
+  SelectAccountToggleContainer,
 } from "./DepositControlerCard.style";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
@@ -31,8 +32,15 @@ import { exchangeRadioBtns } from "../../../utils/data/dummyData";
 import { setDepositAccount } from "../../../state-management/Dashboard/services/deposit/deposit.action";
 import { fetchDepositData } from "../../../state-management/Dashboard/services/deposit/deposit.service";
 import { selectCurrentUser } from "../../../state-management/Dashboard/userData/userData.selector";
-import { selectDeposit } from "../../../state-management/Dashboard/services/deposit/deposit.selector";
+import {
+  selectDeposit,
+  selectError,
+  selectIsSubmiting,
+  selectShowMessage,
+} from "../../../state-management/Dashboard/services/deposit/deposit.selector";
 import SmallDropdown from "../../cardsPage/Dropdown/Dropdown";
+import RequestMessage from "../../../components/RequestMessage/RequestMessage";
+import { setResetShowMsg } from "../../../state-management/Dashboard/services/deposit/deposit.action";
 
 function DepositsControlerCard() {
   const options = [
@@ -45,6 +53,10 @@ function DepositsControlerCard() {
   const depositArr = useSelector(selectDepositArr);
   const currentUserData = useSelector(selectCurrentUser);
   const depositDataReducer = useSelector(selectDeposit);
+
+  const errorMsgRequest = useSelector(selectError);
+  const isSubmiting = useSelector(selectIsSubmiting);
+  const showMessage = useSelector(selectShowMessage);
 
   const setData = debounce((e) => {
     dispatch(setDepositForm(depositFormData, e));
@@ -65,6 +77,10 @@ function DepositsControlerCard() {
     // console.log(depositAction, e.target.value);
     dispatch(setDepositAction(e));
   };
+
+  useEffect(() => {
+    dispatch(setResetShowMsg());
+  }, []);
   return (
     <ServiceInputsCardDeposit>
       <CardHeader>
@@ -116,30 +132,34 @@ function DepositsControlerCard() {
                 setData={setData}
               />
             </RegisterFormPart>
-            <CustomInput
-              label="Amount"
-              name="amount"
-              type="number"
-              placeholder="Enter your Amount"
-              setData={setData}
-            />
-            <SelectAccountToggle>
-              <span>Select your account: </span>
-              {/* <RadioButton
-                firstText="euro"
-                secondText="ron"
-                name="account"
-                setDataToggle={setDataToggle}
-              /> */}
-              <SmallDropdown
-                options={options}
-                selectedOption={depositDataReducer.depositObj.account}
-                handleChange={(e) =>
-                  dispatch(setDepositAccount(depositDataReducer.depositObj, e))
-                }
+            <RegisterFormPart>
+              <SelectAccountToggleContainer>
+                <span>Select your account: </span>
+                <SmallDropdown
+                  options={options}
+                  selectedOption={depositDataReducer.depositObj.account}
+                  handleChange={(e) =>
+                    dispatch(
+                      setDepositAccount(depositDataReducer.depositObj, e)
+                    )
+                  }
+                />
+              </SelectAccountToggleContainer>
+              <CustomInput
+                label="Amount"
+                name="amount"
+                type="number"
+                placeholder="Enter your Amount"
+                setData={setData}
               />
-            </SelectAccountToggle>
+            </RegisterFormPart>
           </FormContainerInputs>
+          <RequestMessage
+            isSubmiting={isSubmiting}
+            showMessage={showMessage}
+            errorMsgRequest={errorMsgRequest}
+            text="Your Deposit has been Succesfuly Added"
+          />
           <BtnContainerSubmitControler>
             <Button label="Accept" size="xl" primary="primary" type="submit" />
           </BtnContainerSubmitControler>

@@ -32,6 +32,7 @@ function FormLogIn() {
   const modalOpen = useSelector(selectModalIsOpen);
   const isSubmitting = useSelector(selectIsSubmiting);
   const navigate = useNavigate();
+  const { username, password } = loginData;
 
   // axios request -> response true - > change isSubmitting status
   const onSubmit = () => {
@@ -73,6 +74,7 @@ function FormLogIn() {
             name="username"
             type="text"
             placeholder="Enter your username"
+            value={username || ""}
             setData={setData}
           />
           <CustomPassword
@@ -80,6 +82,7 @@ function FormLogIn() {
             name="password"
             type="password"
             placeholder="Enter your password"
+            value={password || ""}
             setData={setData}
           />
           {errorMsg ? <ErrorMsg>{errorMsg}</ErrorMsg> : <></>}

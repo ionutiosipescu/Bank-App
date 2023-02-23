@@ -16,6 +16,7 @@ function Exchange() {
 
   useEffect(() => {
     dispatch(getExchangeArr(selectedOptionExchange, currentUser));
+    console.log(selectedOptionExchange);
   }, [selectedOptionExchange]);
   return (
     <ExchangeWrapper>

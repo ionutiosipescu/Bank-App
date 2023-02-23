@@ -57,3 +57,11 @@ export const SelectAccountToggle = styled.div`
   align-items: center;
   gap: 50px;
 `;
+
+export const SelectAccountToggleContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+`;

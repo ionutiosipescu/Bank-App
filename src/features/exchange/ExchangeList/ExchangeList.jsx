@@ -71,7 +71,7 @@ function ExchangeList() {
           <span>Filter: </span>
           <SmallDropdown
             options={options}
-            selectedOption={selectedOptionExchange?.account}
+            selectedOption={selectedOptionExchange?.currency}
             handleChange={(e) =>
               dispatch(setSelectedOptionExchange(e, selectedOptionExchange))
             }

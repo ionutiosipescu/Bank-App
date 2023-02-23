@@ -26,15 +26,7 @@ export const updateTransferArr = (newSavingArr) => {
 };
 
 export const setSavingArr = (obj, arr) => {
-  const { transfer, details } = obj;
-  const idDeposit = generateRandomNumber(3).toString();
-  const newObj = {
-    transfer: transfer,
-    id: idDeposit,
-    details: details,
-  };
-  // console.log(newObj);
-  const newSavingArr = [...arr, { ...newObj }];
+  const newSavingArr = [...arr, { ...obj }];
   return createAction(SAVINGS_HELPER_TYPES.SET_SAVINGS_ARR, newSavingArr);
 };
 
@@ -92,4 +84,18 @@ export const setSavingTransfer = (saving) => {
 
 export const setShowModal = (boolean) => {
   return createAction(SAVINGS_HELPER_TYPES.SET_MODAL_SAVING, boolean);
+};
+
+// Reset Show Message
+export const setResetShowMsg = () => {
+  return createAction(SAVINGS_HELPER_TYPES.RESET_SHOW_MSG);
+};
+
+// ResetForm
+export const setResetFormSaving = () => {
+  const newObj = {
+    details: "",
+    transfer: "",
+  };
+  return createAction(SAVINGS_HELPER_TYPES.SET_SAVINGS_FORM, newObj);
 };

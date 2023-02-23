@@ -9,6 +9,9 @@ const INITIAL_STATE = {
   savingArr: [],
   savingData: {},
   showModal: false,
+  isSubmiting: false,
+  showMessage: false,
+  errorMsg: "",
 };
 
 export const savingHelperReducer = (state = INITIAL_STATE, action) => {
@@ -32,6 +35,23 @@ export const savingHelperReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         showModal: payload,
+      };
+    case SAVINGS_HELPER_TYPES.REQUEST_SAVING_START:
+      return { ...state, isSubmiting: true };
+    case SAVINGS_HELPER_TYPES.REQUEST_SAVING_SUCCESS:
+      return { ...state, isSubmiting: false, showMessage: true, errorMsg: "" };
+    case SAVINGS_HELPER_TYPES.REQUEST_SAVING_FAILED:
+      return {
+        ...state,
+        isSubmiting: false,
+        showMessage: true,
+        errorMsg: payload,
+      };
+    case SAVINGS_HELPER_TYPES.RESET_SHOW_MSG:
+      return {
+        ...state,
+        showMessage: false,
+        errorMsg: "",
       };
     default:
       return state;

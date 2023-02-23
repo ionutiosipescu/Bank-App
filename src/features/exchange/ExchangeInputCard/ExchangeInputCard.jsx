@@ -20,17 +20,30 @@ import { Formik, Form } from "formik";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { selectExchangeData } from "../../../state-management/Dashboard/services/exchange/exchange.selector";
-import { setExchangeAmount } from "../../../state-management/Dashboard/services/exchange/exchange.action";
+import {
+  setExchangeAmount,
+  resetExchange,
+} from "../../../state-management/Dashboard/services/exchange/exchange.action";
 import { ErrorMsg } from "../../../components/Errors/Auth/ErrorMsg.style";
-import { selectExchangeArr } from "../../../state-management/Dashboard/services/exchange/exchange.selector";
+import {
+  selectExchangeArr,
+  selectError,
+  selectIsSubmiting,
+  selectShowMessage,
+} from "../../../state-management/Dashboard/services/exchange/exchange.selector";
 import { fetchExchangeData } from "../../../state-management/Dashboard/services/exchange/exchange.service";
 import { selectCurrentUser } from "../../../state-management/Dashboard/userData/userData.selector";
 import { setExchangeAmountTo } from "../../../state-management/Dashboard/services/exchange/exchange.action";
+import { accounts } from "./../../../utils/data/dummyData";
+import { handleSubmit } from "./../../../utils/helpers/helperFunctions/HandleSubmit";
+import RequestMessage from "../../../components/RequestMessage/RequestMessage";
+import { selectExchangeOption } from "../../../state-management/Dashboard/services/exchange/exchange.selector";
 
 function ExchangeInputCard() {
   const dispatch = useDispatch();
   const excangeData = useSelector(selectExchangeData);
   const { currency } = excangeData;
+  const selectedOptionExchange = useSelector(selectExchangeOption);
   const exchangeArr = useSelector(selectExchangeArr);
   const currentUser = useSelector(selectCurrentUser);
   const [amount1, setAmount1] = useState(1);
@@ -39,6 +52,10 @@ function ExchangeInputCard() {
   const [currency2, setCurrency2] = useState("euro");
   const [rates, setRates] = useState([]);
   const [errorMsg, setErrorMsg] = useState("");
+
+  const errorMsgRequest = useSelector(selectError);
+  const isSubmiting = useSelector(selectIsSubmiting);
+  const showMessage = useSelector(selectShowMessage);
 
   useEffect(() => {
     setRates(exchangeRates);
@@ -76,6 +93,22 @@ function ExchangeInputCard() {
     setCurrency1(currency1);
   }
 
+  const handleSubmit = () => {
+    dispatch(setExchangeAmountTo(excangeData, amount2));
+    dispatch(
+      fetchExchangeData(
+        excangeData,
+        exchangeArr,
+        currentUser,
+        selectedOptionExchange
+      )
+    );
+  };
+
+  useEffect(() => {
+    dispatch(resetExchange());
+  }, []);
+
   return (
     <ServiceInputsCard type="exchange">
       <h2>New Exchange</h2>
@@ -84,23 +117,9 @@ function ExchangeInputCard() {
           initialValues={excangeData}
           validateOnBlur={false}
           validateOnChange={true}
-          onSubmit={() => {
-            if (excangeData.amount === "") {
-              setErrorMsg("Invalid Amount");
-            } else {
-              setErrorMsg("");
-              dispatch(setExchangeAmountTo(excangeData, amount2));
-              dispatch(
-                fetchExchangeData(excangeData, exchangeArr, currentUser)
-              );
-              console.log("ok", excangeData);
-            }
-          }}
+          onSubmit={handleSubmit}
         >
           <FormExchange>
-            {/* <InfoSection> */}
-            {/* <DropDown label="From" items={["euro", "RON"]} />
-              <Input label="Amount" type="number" min="0" large /> */}
             <CurrencyInput
               onAmountChange={handleAmount1Change}
               onCurrencyChange={handleCurrency1Change}
@@ -109,23 +128,17 @@ function ExchangeInputCard() {
               currency={currency1}
               setData={setData}
             />
-            {/* </InfoSection> */}
-            {/* <InfoSection> */}
-            {/* <DropDown label="To" items={["euro", "RON"]} />
-              <Input label="Amount" type="number" min="0" large /> */}
-            {/* <CurrencyInput
-              onAmountChange={handleAmount2Change}
-              onCurrencyChange={handleCurrency2Change}
-              currencies={Object.keys(rates)}
-              amount={amount2}
-              currency={currency2}
-            /> */}
             <InfoSection>
               <div>{amount2}</div>
               <div>{currency2.toUpperCase()}</div>
             </InfoSection>
-            {errorMsg ? <ErrorMsg>{errorMsg}</ErrorMsg> : <></>}
-            {/* </InfoSection> */}
+            <RequestMessage
+              isSubmiting={isSubmiting}
+              showMessage={showMessage}
+              errorMsgRequest={errorMsgRequest}
+              text="Your Exchange has been Succesfuly Added"
+            />
+            {/* {errorMsg ? <ErrorMsg>{errorMsg}</ErrorMsg> : <></>} */}
             <Button
               label="Exchange"
               size="fullWidth"
