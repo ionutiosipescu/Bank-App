@@ -30,19 +30,9 @@ export const setDepositAccount = (depositData, e) => {
 
 // Update Deposit Arr
 
-export const setDepositArr = (data) => {
-  const { depositObj, depositAction, depositArr, selectedOption } = data;
-  const { amount } = depositObj;
-  const formattedDate = getLocalDate();
-  const idDeposit = generateRandomNumber(3).toString();
-  const newObj = {
-    balance: amount,
-    date: formattedDate,
-    id: idDeposit,
-    details: "",
-    status: depositAction,
-  };
-  const newDepositArr = [...depositArr, { ...newObj }];
+export const setDepositArr = (data, obj) => {
+  const { depositArr } = data;
+  const newDepositArr = [...depositArr, { ...obj }];
   return createAction(DEPOSITS_HELPER_TYPES.SET_DEPOSIT_ARR, newDepositArr);
 };
 
@@ -106,4 +96,22 @@ export const setSelectedOptionDeposit = (e, filter) => {
 
 export const resetDeposit = () => {
   return createAction(DEPOSITS_HELPER_TYPES.RESET_DEPOSIT);
+};
+
+// Reset Form
+export const setResetFormDesposit = () => {
+  const newObj = {
+    card_number: "",
+    card_name: "",
+    exp_date: "",
+    cvc: "",
+    amount: "",
+    account: "ron",
+  };
+  return createAction(DEPOSITS_HELPER_TYPES.SET_DEPOSIT_FORM, newObj);
+};
+
+// Reset Show Message
+export const setResetShowMsg = () => {
+  return createAction(DEPOSITS_HELPER_TYPES.RESET_SHOW_MSG);
 };

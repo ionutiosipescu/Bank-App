@@ -14,6 +14,9 @@ const INITIAL_STATE = {
   selectedOption: {
     account: "ron",
   },
+  isSubmiting: false,
+  showMessage: false,
+  errorMsg: "",
 };
 
 export const depositHelperReducer = (state = INITIAL_STATE, action) => {
@@ -30,6 +33,23 @@ export const depositHelperReducer = (state = INITIAL_STATE, action) => {
       return { ...state, selectedOption: { ...payload } };
     case DEPOSITS_HELPER_TYPES.RESET_DEPOSIT:
       return INITIAL_STATE;
+    case DEPOSITS_HELPER_TYPES.REQUEST_DEPOSIT_START:
+      return { ...state, isSubmiting: true };
+    case DEPOSITS_HELPER_TYPES.REQUEST_DEPOSIT_SUCCESS:
+      return { ...state, isSubmiting: false, showMessage: true, errorMsg: "" };
+    case DEPOSITS_HELPER_TYPES.REQUEST_DEPOSIT_FAILED:
+      return {
+        ...state,
+        isSubmiting: false,
+        showMessage: true,
+        errorMsg: payload,
+      };
+    case DEPOSITS_HELPER_TYPES.RESET_SHOW_MSG:
+      return {
+        ...state,
+        showMessage: false,
+        errorMsg: "",
+      };
     default:
       return state;
   }

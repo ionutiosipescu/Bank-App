@@ -8,6 +8,17 @@ import {
   formatDataRepet,
 } from "./deposit.action";
 import { requests } from "../../../../utils/Requests/requests";
+import { DEPOSITS_HELPER_TYPES } from "./deposit.types";
+import { createAction } from "../../../../utils/helpers/reducer/reducer.utils";
+
+export const requestDepositStart = () =>
+  createAction(DEPOSITS_HELPER_TYPES.REQUEST_DEPOSIT_START);
+
+export const requestDepositSuccess = () =>
+  createAction(DEPOSITS_HELPER_TYPES.REQUEST_DEPOSIT_SUCCESS);
+
+export const requestDepositFailed = (error) =>
+  createAction(DEPOSITS_HELPER_TYPES.REQUEST_DEPOSIT_FAILED, error);
 
 // Get Arr
 export const getDepositArrDb = (obj, currentUserData) => {
@@ -24,18 +35,28 @@ export const fetchDepositData = (depositDataReducer, currentUserData) => {
   return async (dispatch) => {
     const { depositObj, selectedOption } = depositDataReducer;
     try {
+      await dispatch(requestDepositStart());
       const depositData = await setDepositData(depositDataReducer);
       const id = await setDepositId(depositObj, currentUserData);
-      await axios
-        .post(`${requests.POST_DEPOSIT}${id}`, depositData)
-        .then((res) => console.log(res));
+      const {
+        data: { balance },
+      } = await axios.post(`${requests.POST_DEPOSIT}${id}`, depositData);
+      await dispatch(requestDepositSuccess());
       if (depositObj?.account === selectedOption?.account) {
-        await dispatch(setDepositArr(depositDataReducer));
+        await dispatch(setDepositArr(depositDataReducer, balance));
       } else {
         return;
       }
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      if (!err) return;
+      const errMsg = err?.response?.data?.message;
+      const errServer =
+        "Server is currently unavailable please try again later";
+      if (errMsg) {
+        dispatch(requestDepositFailed(errMsg));
+      } else {
+        dispatch(requestDepositFailed(errServer));
+      }
     }
   };
 };
