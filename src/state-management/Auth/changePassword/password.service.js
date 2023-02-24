@@ -2,6 +2,7 @@ import axios from "axios";
 import { setObjPassword } from "./password.action";
 import { CHANGE_PASSWORD_TYPES } from "./password.types";
 import { createAction } from "../../../utils/helpers/reducer/reducer.utils";
+import { requests } from "../../../utils/requests/requests";
 
 export const requestPasswordStart = () =>
   createAction(CHANGE_PASSWORD_TYPES.REQUEST_PASSWORD_START);
@@ -21,13 +22,13 @@ export const fetchAuthDataPassword = (dataObj, authData) => {
       // first request authentication
       const {
         data: { type, token, id },
-      } = await axios.post(`http://localhost:8080/bank/auth/signin`, authData);
+      } = await axios.post(`${requests.POST_AUTHENTICATE_USER}`, authData);
       console.log(type, token, id);
       await dispatch(requestPasswordStart());
 
       // second request get data
       await axios
-        .put(`http://localhost:8080/user/edit/credentials`, dataRequest, {
+        .put(`${requests.PUT_CHANGE_PASSWORD}`, dataRequest, {
           headers: {
             Authorization: `${type} ${token}`,
           },

@@ -2,6 +2,7 @@ import axios from "axios";
 import { REGISTER_TYPES } from "./register.types";
 import { createAction } from "../../../utils/helpers/reducer/reducer.utils";
 import { setStep } from "./register.actions";
+import { requests } from "../../../utils/requests/requests";
 
 export const postRegisterStart = () =>
   createAction(REGISTER_TYPES.POST_REGISTER_START);
@@ -21,7 +22,7 @@ export const fetchRegisterMail = (registerData, step) => {
       console.log(registerData);
       // Post Request
       const response = await axios.post(
-        `http://localhost:8080/bank/auth/otp`,
+        `${requests.POST_SEND_OTP_REGISTER}`,
         registerData
       );
       console.log(response);

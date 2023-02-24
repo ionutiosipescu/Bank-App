@@ -8,7 +8,7 @@ import {
   setExchangeDataRepeat,
   setExchangeIdRepeat,
 } from "./exchange.action";
-import { requests } from "../../../../utils/Requests/requests";
+import { requests } from "../../../../utils/requests/requests";
 import { EXCHANGE_TYPES } from "./exchange.types";
 import { createAction } from "../../../../utils/helpers/reducer/reducer.utils";
 

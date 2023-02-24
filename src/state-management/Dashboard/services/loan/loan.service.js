@@ -11,7 +11,7 @@ import {
   updateHistoryLoansPay,
   setLoanStatus,
 } from "./loan.action";
-import { loanComplete, requests } from "../../../../utils/Requests/requests";
+import { loanComplete, requests } from "../../../../utils/requests/requests";
 import { createAction } from "../../../../utils/helpers/reducer/reducer.utils";
 import { LOANS_DATA_TYPES } from "./loan.types";
 

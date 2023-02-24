@@ -4,6 +4,7 @@ import { createAction } from "../../../utils/helpers/reducer/reducer.utils";
 import { LOGIN_ACTION_TYPES } from "./login.types";
 import { setToken } from "../register/register.actions";
 import { controlMoldalAsync, setEmailValidate } from "./login.action";
+import { requests, loginComplete } from "../../../utils/requests/requests";
 
 export const postLoginStart = () =>
   createAction(LOGIN_ACTION_TYPES.POST_LOGIN_START);
@@ -18,17 +19,14 @@ export const fetchAuthData = (registerData) => {
   return async (dispatch) => {
     const {
       data: { active, type, token, id, email },
-    } = await axios.post(
-      "http://localhost:8080/bank/auth/signin",
-      registerData
-    );
+    } = await axios.post(`${requests.POST_AUTHENTICATE_USER}`, registerData);
     await dispatch(setEmailValidate(email));
     console.log(active, type, token, id, email);
     if (active) {
       await dispatch(setToken(`${type} ${token}`));
       await dispatch(postLoginStart());
       const { data } = await axios.post(
-        `http://localhost:8080/user/${id}`,
+        `${requests.POST_USER_DATA}${id}`,
         {},
         {
           headers: {
@@ -71,9 +69,7 @@ export const VerifyOtp = (otp, registerData, email) => {
   return async (dispatch) => {
     try {
       await axios
-        .post(
-          `http://localhost:8080/bank/auth/validate?otpnum=${otp}&email=${email}`
-        )
+        .post(`${requests.POST_VERIFY_OTP}${otp}${loginComplete.EMAIL}${email}`)
         .then((res) => console.log(res));
       await dispatch(fetchAuthData(registerData));
     } catch (err) {
@@ -85,9 +81,7 @@ export const VerifyOtp = (otp, registerData, email) => {
 export const ResendOtp = (email) => {
   return async (dispatch) => {
     try {
-      await axios.post(
-        `http://localhost:8080/bank/auth/resend/otp?email=${email}`
-      );
+      await axios.post(`${requests.POST_RESEND_OTP}${email}`);
     } catch (err) {
       console.log(err);
     }

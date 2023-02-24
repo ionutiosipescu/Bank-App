@@ -8,18 +8,18 @@ import {
   setResetFormSaving,
 } from "./saving.action";
 import axios from "axios";
-import { requests, savingComplete } from "../../../../utils/Requests/requests";
+import { requests, savingComplete } from "../../../../utils/requests/requests";
 import { updateTransferArr } from "./saving.action";
 import { SAVINGS_TYPES } from "./saving.types";
 import { createAction } from "../../../../utils/helpers/reducer/reducer.utils";
 
-export const requestSavingStart = () =>
+export const requestsavingStart = () =>
   createAction(SAVINGS_TYPES.REQUEST_SAVING_START);
 
-export const requestSavingSuccess = () =>
+export const requestsavingSuccess = () =>
   createAction(SAVINGS_TYPES.REQUEST_SAVING_SUCCESS);
 
-export const requestSavingFailed = (error) =>
+export const requestsavingFailed = (error) =>
   createAction(SAVINGS_TYPES.REQUEST_SAVING_FAILED, error);
 
 // Async Saving Post Withdraw
@@ -60,13 +60,13 @@ export const fetchSavingData = (obj, arr, currentUserData) => {
     console.log(savingData);
     const id = await setSavingsId(currentUserData);
     try {
-      await dispatch(requestSavingStart());
+      await dispatch(requestsavingStart());
       const { data } = await axios.post(
         `${requests.POST_CREATE_SAVING}${id}`,
         savingData
       );
 
-      await dispatch(requestSavingSuccess());
+      await dispatch(requestsavingSuccess());
       await dispatch(setResetFormSaving());
       await dispatch(setSavingArr(data, arr));
     } catch (err) {
@@ -75,9 +75,9 @@ export const fetchSavingData = (obj, arr, currentUserData) => {
       const errServer =
         "Server is currently unavailable please try again later";
       if (errMsg) {
-        dispatch(requestSavingFailed(errMsg));
+        dispatch(requestsavingFailed(errMsg));
       } else {
-        dispatch(requestSavingFailed(errServer));
+        dispatch(requestsavingFailed(errServer));
       }
     }
   };

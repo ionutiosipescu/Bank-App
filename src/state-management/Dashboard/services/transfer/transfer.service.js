@@ -9,7 +9,7 @@ import {
 import {
   requests,
   transferComplete,
-} from "../../../../utils/Requests/requests";
+} from "../../../../utils/requests/requests";
 import { createAction } from "../../../../utils/helpers/reducer/reducer.utils";
 import { TRANSFER_TYPES } from "./transfer.types";
 

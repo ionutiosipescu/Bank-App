@@ -16,7 +16,28 @@ export const transferComplete = {
   EMAIL: `&email=`,
 };
 
+export const loginComplete = {
+  EMAIL: `&email=`,
+};
+
+export const cardsComplete = {
+  TYPE: `&type=`,
+};
+
 export const requests = {
+  // AUTH
+  // login
+  POST_AUTHENTICATE_USER: `${requestGeneral.LOCAL}/bank/auth/signin`,
+  POST_USER_DATA: `${requestGeneral.LOCAL}/user/`,
+  POST_VERIFY_OTP: `${requestGeneral.LOCAL}/bank/auth/validate?otpnum=`,
+  POST_RESEND_OTP: `${requestGeneral.LOCAL}/bank/auth/resend/otp?email=`,
+  // register
+  POST_SEND_OTP_REGISTER: `${requestGeneral.LOCAL}/bank/auth/otp`,
+  // password
+  PUT_CHANGE_PASSWORD: `${requestGeneral.LOCAL}/user/edit/credentials`,
+
+  // DASHBOARD
+  // DASHBOARD_SERVICES
   // loans
   GET_HISTORY_LOAN: `${requestGeneral.LOCAL}/loans/?id=`,
   POST_CREATE_NEW_LOAN: `${requestGeneral.LOCAL}/loans/loan/?id=`,
@@ -36,4 +57,13 @@ export const requests = {
   //   transfer
   GET_HISTORY_TRANSFER: `${requestGeneral.LOCAL}/transfers/?id=`,
   POST_CREATE_TRANSFER: `${requestGeneral.LOCAL}/transfers/transfer/?id=`,
+
+  // DASHBOARD_SETTINGS
+  PATCH_EDIT_PROFILE: `${requestGeneral.LOCAL}/user/edit?id=`,
+
+  // DASHBOARD_CARDS
+  GET_ACCOUNTS: `${requestGeneral.LOCAL}/accounts/?id=`,
+  POST_NEW_ACCOUNT: `${requestGeneral.LOCAL}/accounts/account`,
+  PATCH_EDIT_ACCOUNT_PLAN: `${requestGeneral.LOCAL}/accounts/edit?id=`,
+  DELETE_ACCOUNT: `${requestGeneral.LOCAL}/accounts/delete?id=`,
 };

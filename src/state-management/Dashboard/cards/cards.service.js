@@ -1,15 +1,14 @@
 import { CARD_TYPES } from "./cards.types";
 import { createAction } from "../../../utils/helpers/reducer/reducer.utils";
 import { setCardArr, setAddCardArr } from "./cards.action";
+import { requests, cardsComplete } from "../../../utils/requests/requests";
 import axios from "axios";
 
 // Get Card Account Arr
 export const fetchGetCardAccountArr = (currentUserData) => {
   return async (dispatch) => {
     const { id } = currentUserData;
-    const { data } = await axios.get(
-      `http://localhost:8080/accounts/?id=${id}`
-    );
+    const { data } = await axios.get(`${requests.GET_ACCOUNTS}${id}`);
     await dispatch(setCardArr(data));
   };
 };
@@ -40,7 +39,7 @@ export const fetchAddNewAccount = (currentCardNew, currentUser, cardArr) => {
   return async (dispatch) => {
     const addNewData = await setDataAddNewAccount(currentCardNew, currentUser);
     const { data } = await axios.post(
-      `http://localhost:8080/accounts/account`,
+      `${requests.POST_NEW_ACCOUNT}`,
       addNewData
     );
     await dispatch(setAddCardArr(cardArr, data));
@@ -67,7 +66,7 @@ export const fetchEditCardPlan = (currentEditCard, cardArr) => {
   const { id, type_of_plan } = currentEditCard;
   return async (dispatch) => {
     const { data } = await axios.patch(
-      `http://localhost:8080/accounts/edit?id=${id}&type=${type_of_plan}`
+      `${requests.PATCH_EDIT_ACCOUNT_PLAN}${id}${cardsComplete.TYPE}${type_of_plan}`
     );
     const newArr = await updateEditArrCardPlan(cardArr, data);
     await dispatch(setCardArr(newArr));
@@ -84,7 +83,7 @@ export const fetchRemoveCard = (currentEditCard, cardArr) => {
   const { id } = currentEditCard;
   return async (dispatch) => {
     console.log(id);
-    await axios.delete(`http://localhost:8080/accounts/delete?id=${id}`);
+    await axios.delete(`${requests.DELETE_ACCOUNT}${id}`);
     const newArr = await filterRemoveArr(currentEditCard, cardArr);
     await dispatch(setCardArr(newArr));
   };

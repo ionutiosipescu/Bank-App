@@ -7,7 +7,7 @@ import {
   setDepositArrRepeat,
   formatDataRepet,
 } from "./deposit.action";
-import { requests } from "../../../../utils/Requests/requests";
+import { requests } from "../../../../utils/requests/requests";
 import { DEPOSITS_TYPES } from "./deposit.types";
 import { createAction } from "../../../../utils/helpers/reducer/reducer.utils";
 
