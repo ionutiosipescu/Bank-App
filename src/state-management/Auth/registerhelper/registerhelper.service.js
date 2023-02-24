@@ -15,8 +15,9 @@ export const postRegisterFailed = (error) =>
 // Async User Profile
 export const fetchRegisterMail = (registerData, step) => {
   return async (dispatch) => {
-    dispatch(postRegisterStart());
     try {
+      dispatch(postRegisterStart());
+      await dispatch(setStep(step + 1));
       console.log(registerData);
       // Post Request
       const response = await axios.post(
@@ -27,7 +28,6 @@ export const fetchRegisterMail = (registerData, step) => {
       //   Guard Clouse
       if (!response.data) return;
       //   Increment Page
-      await dispatch(setStep(step + 1));
       dispatch(postRegisterSuccess());
     } catch (error) {
       if (!error) return;

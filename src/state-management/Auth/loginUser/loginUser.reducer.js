@@ -5,6 +5,7 @@ const INITIAL_STATE = {
     username: "",
     password: "",
   },
+  emailValidate: "",
   isSubmiting: false,
   errorMsg: "",
   modalIsOpen: false,
@@ -30,6 +31,8 @@ export const loginReducer = (state = INITIAL_STATE, action) => {
       return { ...state, otp: payload };
     case LOGIN_ACTION_TYPES.SET_MODAL_IS_OPEN:
       return { ...state, modalIsOpen: payload };
+    case LOGIN_ACTION_TYPES.SET_EMAIL_VALIDATE:
+      return { ...state, emailValidate: payload };
     case LOGIN_ACTION_TYPES.RESET_SIGNIN:
       return INITIAL_STATE;
     default:

@@ -21,23 +21,25 @@ import { controlMoldalAsync } from "../../state-management/Auth/loginUser/loginU
 import { selectLoginUser } from "../../state-management/Auth/loginUser/loginUser.selector";
 import { VerifyOtp } from "../../state-management/Auth/loginUser/loginUser.service";
 import { ResendOtp } from "../../state-management/Auth/loginUser/loginUser.service";
+import { selectEmailValidate } from "../../state-management/Auth/loginUser/loginUser.selector";
 
 function OTPModal() {
   const dispatch = useDispatch();
   const errorMsg = useSelector(selectOtpError);
   const otp = useSelector(selectOtp);
   const loginData = useSelector(selectLoginUser);
+  const emailValidate = useSelector(selectEmailValidate);
 
   const handleSubmit = () => {
     if (otp.split("").length === 6) {
-      dispatch(VerifyOtp(otp, loginData));
+      dispatch(VerifyOtp(otp, loginData, emailValidate));
     } else {
       dispatch(setOtpError("Invalid OTP"));
     }
   };
 
   const handleResendOtp = () => {
-    dispatch(ResendOtp());
+    dispatch(ResendOtp(emailValidate));
   };
 
   const handleOTPChange = (e) => {

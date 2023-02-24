@@ -46,6 +46,10 @@ export const controlMoldalAsync = (boolean) => {
   };
 };
 
+export const setEmailValidate = (email) => {
+  return createAction(LOGIN_ACTION_TYPES.SET_EMAIL_VALIDATE, email);
+};
+
 // TODO de gasit metoda alternativa de a reseta Redux
 export const resetRedux = () => {
   return async (dispatch) => {

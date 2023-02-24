@@ -31,24 +31,22 @@ function SuccesPage() {
   }, []);
 
   // After 10 seconds redirect the user
-  // useEffect(() => {
-  //   const timeoutId = setTimeout(() => {
-  //     navigate("/");
-  //   }, 10000);
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      navigate("/");
+    }, 10000);
 
-  //   return () => clearTimeout(timeoutId);
-  // }, []);
+    return () => clearTimeout(timeoutId);
+  }, []);
 
   // Decrement after each second the second variable
-  // useEffect(() => {
-  //   const intervalId = setInterval(() => {
-  //     setSeconds(seconds - 1);
-  //   }, 1000);
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setSeconds(seconds - 1);
+    }, 1000);
 
-  //   return () => clearInterval(intervalId);
-  // }, [seconds]);
-
-  console.log(EmailCode);
+    return () => clearInterval(intervalId);
+  }, [seconds]);
 
   return (
     <React.Fragment>

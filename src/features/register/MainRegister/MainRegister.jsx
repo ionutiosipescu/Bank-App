@@ -5,7 +5,7 @@ import HeroRegister from "../HeroRegister/HeroRegister";
 import {
   MainRegisterWrapper,
   MainRegisterContainer,
-  MainRegisterContainerPlan,
+  MainRegisterWrapperConfirm,
   HeroBox,
 } from "./MainRegister.style";
 import { useSelector } from "react-redux";
@@ -15,6 +15,15 @@ import MultiStepProgressBar from "../../../components/MultiStepProgressBar/Multi
 
 function MainRegister() {
   const step = useSelector(selectStep);
+
+  // let MainRegisterStyle;
+  // switch (step) {
+  //   case 3:
+  //     MainRegisterStyle = MainRegisterWrapperConfirm;
+  //     break;
+  //   default:
+  //     MainRegisterStyle = MainRegisterWrapper;
+  // }
   return (
     <MainRegisterWrapper>
       <MainRegisterContainer>
