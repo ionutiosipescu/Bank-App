@@ -14,6 +14,9 @@ const INITIAL_STATE = {
   selectedOption: {
     account: "ron",
   },
+  isSubmiting: false,
+  showMessage: false,
+  errorMsg: "",
 };
 
 export const transferHelperReducer = (state = INITIAL_STATE, action) => {
@@ -30,6 +33,24 @@ export const transferHelperReducer = (state = INITIAL_STATE, action) => {
       return { ...state, detailTransfer: { ...payload } };
     case TRANSFER_HELPER_TYPES.SET_TRANSFER_OPTION:
       return { ...state, selectedOption: { ...payload } };
+
+    case TRANSFER_HELPER_TYPES.REQUEST_TRANSFER_START:
+      return { ...state, isSubmiting: true };
+    case TRANSFER_HELPER_TYPES.REQUEST_TRANSFER_SUCCESS:
+      return { ...state, isSubmiting: false, showMessage: true, errorMsg: "" };
+    case TRANSFER_HELPER_TYPES.REQUEST_TRANSFER_FAILED:
+      return {
+        ...state,
+        isSubmiting: false,
+        showMessage: true,
+        errorMsg: payload,
+      };
+    case TRANSFER_HELPER_TYPES.RESET_SHOW_MSG:
+      return {
+        ...state,
+        showMessage: false,
+        errorMsg: "",
+      };
     case TRANSFER_HELPER_TYPES.RESET_TRANSFER:
       return INITIAL_STATE;
     default:

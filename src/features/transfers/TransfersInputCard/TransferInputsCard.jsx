@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   CardHeader,
   ServiceCard,
@@ -7,6 +7,8 @@ import {
   TransferBody,
   TransferInputSection,
   TransferInputWrapper,
+  TransferForm,
+  TransferBtnBox,
 } from "./TransfersInputCard.style";
 import Button from "./../../../components/UI/Button/Button";
 import Input from "./../../../components/UI/Input/Input";
@@ -23,7 +25,14 @@ import { fetchTransferData } from "../../../state-management/Dashboard/services/
 import { selectCurrentUser } from "../../../state-management/Dashboard/userData/userData.selector";
 import RadioButton from "../../../components/RadioButton/RadioButton";
 import { setTransformAccount } from "../../../state-management/Dashboard/services/transfer/transfer.action";
-import { selectTransferArr } from "../../../state-management/Dashboard/services/transfer/transfer.selector";
+import {
+  selectTransferArr,
+  selectError,
+  selectIsSubmiting,
+  selectShowMessage,
+} from "../../../state-management/Dashboard/services/transfer/transfer.selector";
+import RequestMessage from "../../../components/RequestMessage/RequestMessage";
+import { setResetShowMsg } from "../../../state-management/Dashboard/services/transfer/transfer.action";
 
 function TransferInputsCard() {
   const dispatch = useDispatch();
@@ -31,6 +40,11 @@ function TransferInputsCard() {
   const transferArr = useSelector(selectTransferArr);
   const selectedAccount = useSelector(selectTransferHelper);
   const currentUser = useSelector(selectCurrentUser);
+
+  const errorMsgRequest = useSelector(selectError);
+  const isSubmiting = useSelector(selectIsSubmiting);
+  const showMessage = useSelector(selectShowMessage);
+
   // const { image, owner, email } = selectedAccount;
   const { email, name, details, transfer } = transferForm;
   // console.log(transferForm);
@@ -49,6 +63,10 @@ function TransferInputsCard() {
     dispatch(setTransformAccount(transferForm, account));
   };
 
+  useEffect(() => {
+    dispatch(setResetShowMsg());
+  }, []);
+
   return (
     <ServiceCard>
       <CardHeader>
@@ -61,7 +79,7 @@ function TransferInputsCard() {
             onSubmit={handleSubmit}
             validationSchema={transferSchema}
           >
-            <Form>
+            <TransferForm>
               <TransferInputSection>
                 <CustomInput
                   name="name"
@@ -108,8 +126,16 @@ function TransferInputsCard() {
                   setDataToggle={setDataToggle}
                 />
               </TransferInputSection>
-              <Button label="Send" size="xl" primary={true} type="submit" />
-            </Form>
+              <RequestMessage
+                isSubmiting={isSubmiting}
+                showMessage={showMessage}
+                errorMsgRequest={errorMsgRequest}
+                text="Your Saving has been Succesfuly Added"
+              />
+              <TransferBtnBox>
+                <Button label="Send" size="xl" primary={true} type="submit" />
+              </TransferBtnBox>
+            </TransferForm>
           </Formik>
         </TransferInputWrapper>
       </TransferBody>

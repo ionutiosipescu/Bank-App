@@ -138,3 +138,20 @@ export const setSelectedOptionTransfer = (e, filter) => {
 export const resetTransfer = () => {
   return createAction(TRANSFER_HELPER_TYPES.RESET_TRANSFER);
 };
+
+// Reset Show Message
+export const setResetShowMsg = () => {
+  return createAction(TRANSFER_HELPER_TYPES.RESET_SHOW_MSG);
+};
+
+// ResetForm
+export const setResetFormTransfer = () => {
+  const newObj = {
+    email: "",
+    name: "",
+    transfer: "",
+    details: "",
+    account: "ron",
+  };
+  return createAction(TRANSFER_HELPER_TYPES.SET_TRANSFER_FORM, newObj);
+};

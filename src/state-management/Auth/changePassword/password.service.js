@@ -20,16 +20,16 @@ export const fetchAuthDataPassword = (dataObj, authData) => {
       console.log(dataRequest);
       // first request authentication
       const {
-        data: { tokenType, accessToken, id },
+        data: { type, token, id },
       } = await axios.post(`http://localhost:8080/bank/auth/signin`, authData);
-      console.log(tokenType, accessToken, id);
+      console.log(type, token, id);
       await dispatch(requestPasswordStart());
 
       // second request get data
       await axios
         .put(`http://localhost:8080/user/edit/credentials`, dataRequest, {
           headers: {
-            Authorization: `${tokenType} ${accessToken}`,
+            Authorization: `${type} ${token}`,
           },
         })
         .then((res) => console.log(res));

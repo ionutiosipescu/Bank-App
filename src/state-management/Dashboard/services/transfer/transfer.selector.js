@@ -5,3 +5,7 @@ export const selectDetailTransfer = (state) =>
   state.transferHelper.detailTransfer;
 export const selectOptionTransfer = (state) =>
   state.transferHelper.selectedOption;
+
+export const selectShowMessage = (state) => state.transferHelper.showMessage;
+export const selectError = (state) => state.transferHelper.errorMsg;
+export const selectIsSubmiting = (state) => state.transferHelper.isSubmiting;

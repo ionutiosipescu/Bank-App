@@ -9,6 +9,17 @@ import {
   requests,
   transferComplete,
 } from "../../../../utils/Requests/requests";
+import { createAction } from "../../../../utils/helpers/reducer/reducer.utils";
+import { TRANSFER_HELPER_TYPES } from "./transfer.types";
+
+export const requestTransferStart = () =>
+  createAction(TRANSFER_HELPER_TYPES.REQUEST_TRANSFER_START);
+
+export const requestTransferSuccess = () =>
+  createAction(TRANSFER_HELPER_TYPES.REQUEST_TRANSFER_SUCCESS);
+
+export const requestTransferFailed = (error) =>
+  createAction(TRANSFER_HELPER_TYPES.REQUEST_TRANSFER_FAILED, error);
 
 // Get Arr
 export const getTransferArr = (obj, currentUserData) => {
@@ -32,6 +43,7 @@ export const fetchTransferData = (
   return async (dispatch) => {
     await dispatch(setTransferArr(transferData, selectedAccount, arr));
     try {
+      await dispatch(requestTransferStart());
       const transferDataRequest = await setTransferData(transferData);
       const id = await setTransferId(transferData, currentUserData);
       console.log(id, transferDataRequest);
@@ -41,8 +53,17 @@ export const fetchTransferData = (
           transferDataRequest
         )
         .then((res) => console.log(res));
+      await dispatch(requestTransferSuccess());
     } catch (err) {
-      console.log(err);
+      if (!err) return;
+      const errMsg = err?.response?.data?.message;
+      const errServer =
+        "Server is currently unavailable please try again later";
+      if (errMsg) {
+        dispatch(requestTransferFailed(errMsg));
+      } else {
+        dispatch(requestTransferFailed(errServer));
+      }
     }
   };
 };

@@ -25,7 +25,6 @@ export const getLoansArrDb = (currentUserData) => {
 // Async Loan
 export const fetchLoanData = (loanObject, arr, currentUserData) => {
   return async (dispatch) => {
-    await dispatch(setLoansArr(loanObject, arr));
     try {
       const loandData = await setLoanData(loanObject);
       const id = await setLoansId(currentUserData);

@@ -14,6 +14,7 @@ const INITIAL_STATE = {
   loanCheckData: {},
   loansArr: [],
   loansHistory: [],
+  loanStatus: "",
 };
 
 export const loansDataReducer = (state = INITIAL_STATE, action) => {
@@ -27,6 +28,8 @@ export const loansDataReducer = (state = INITIAL_STATE, action) => {
       return { ...state, loansHistory: [...payload] };
     case LOANS_DATA_TYPES.SET_LOANS_CHECK_DATA:
       return { ...state, loanCheckData: { ...payload } };
+    case LOANS_DATA_TYPES.SET_LOAN_STATUS:
+      return { ...state, loanStatus: payload };
     case LOANS_DATA_TYPES.RESET_LOANS:
       return INITIAL_STATE;
     default:
