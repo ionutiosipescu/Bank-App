@@ -41,9 +41,10 @@ export const fetchTransferData = (
   arr
 ) => {
   return async (dispatch) => {
-    await dispatch(setTransferArr(transferData, selectedAccount, arr));
+    console.log(transferData, currentUserData, selectedAccount, arr);
     try {
       await dispatch(requestTransferStart());
+      await dispatch(setTransferArr(transferData, selectedAccount, arr));
       const transferDataRequest = await setTransferData(transferData);
       const id = await setTransferId(transferData, currentUserData);
       console.log(id, transferDataRequest);

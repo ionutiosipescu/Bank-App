@@ -130,7 +130,7 @@ function TransferInputsCard() {
                 isSubmiting={isSubmiting}
                 showMessage={showMessage}
                 errorMsgRequest={errorMsgRequest}
-                text="Your Saving has been Succesfuly Added"
+                text="Your Transfer has been Succesfuly Added"
               />
               <TransferBtnBox>
                 <Button label="Send" size="xl" primary={true} type="submit" />
