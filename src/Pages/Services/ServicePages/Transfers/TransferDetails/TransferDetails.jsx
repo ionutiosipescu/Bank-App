@@ -21,7 +21,7 @@ import {
 //////////////////////////
 import jsPDF from "jspdf";
 import "jspdf-autotable";
-import TransferPDF from "../../../../../components/Test/Test";
+import TransferPDF from "../../../../../features/transfers/TransferPDF/TransferPDF";
 import { selectCurrentUser } from "./../../../../../state-management/Dashboard/userData/userData.selector";
 
 function TransferDetails() {
@@ -37,9 +37,7 @@ function TransferDetails() {
     <TransferDetailsCard>
       <Header>
         <h2>Transaction Details</h2>
-        <Button size="md" primary="primary">
-          Download pdf
-        </Button>
+        <TransferPDF />
       </Header>
       <UserDetails>
         <UserProfile>
@@ -111,7 +109,6 @@ function TransferDetails() {
           our customer support team immediately.
         </p>
       </TransactionDetailsInfo>
-      <TransferPDF />
     </TransferDetailsCard>
   );
 }
