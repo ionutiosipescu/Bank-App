@@ -9,8 +9,20 @@ import {
   setCheckData,
   setPayLoan,
   updateHistoryLoansPay,
+  setLoanStatus,
 } from "./loan.action";
 import { loanComplete, requests } from "../../../../utils/Requests/requests";
+import { createAction } from "../../../../utils/helpers/reducer/reducer.utils";
+import { LOANS_DATA_TYPES } from "./loan.types";
+
+export const requestLoansStart = () =>
+  createAction(LOANS_DATA_TYPES.REQUEST_LOANS_START);
+
+export const requestLoansSuccess = () =>
+  createAction(LOANS_DATA_TYPES.REQUEST_LOANS_SUCCESS);
+
+export const requestLoansFailed = (error) =>
+  createAction(LOANS_DATA_TYPES.REQUEST_LOANS_FAILED, error);
 
 // Get Arr from Db
 export const getLoansArrDb = (currentUserData) => {
@@ -22,25 +34,36 @@ export const getLoansArrDb = (currentUserData) => {
   };
 };
 
-// Async Loan
+// Async Loan Check
 export const fetchLoanData = (loanObject, arr, currentUserData) => {
   return async (dispatch) => {
     try {
+      await dispatch(requestLoansStart());
       const loandData = await setLoanData(loanObject);
       const id = await setLoansId(currentUserData);
-      console.log(loandData, id);
       const { data } = await axios.post(
         `${requests.POST_CHECK_NEW_LOAN}${id}`,
         loandData
       );
-      console.log(loandData, id, data);
       await dispatch(setCheckData(data));
-    } catch (error) {
-      console.log(error);
+      await dispatch(requestLoansSuccess());
+      await dispatch(setLoanStatus("approved"));
+    } catch (err) {
+      if (!err) return;
+      const errMsg = err?.response?.data?.message;
+      const errServer =
+        "Server is currently unavailable please try again later";
+      if (errMsg) {
+        dispatch(requestLoansFailed(errMsg));
+      } else {
+        dispatch(requestLoansFailed(errServer));
+      }
+      await dispatch(setLoanStatus("salary"));
     }
   };
 };
 
+// Create Loan
 export const fetchLoanCreate = (currentUserData, data) => {
   return async (dispatch) => {
     try {

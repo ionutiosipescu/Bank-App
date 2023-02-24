@@ -92,3 +92,27 @@ export const setLoansTotalPay = (data, arr) => {
 export const resetLoans = () => {
   return createAction(LOANS_DATA_TYPES.RESET_LOANS);
 };
+
+export const setLoanStatus = (status) => {
+  return createAction(LOANS_DATA_TYPES.SET_LOAN_STATUS, status);
+};
+
+// Reset Show Message
+export const setResetShowMsg = () => {
+  return createAction(LOANS_DATA_TYPES.RESET_SHOW_MSG);
+};
+
+// ResetForm
+export const setResetFormSaving = () => {
+  const newObj = {
+    serie: "",
+    loan_amount: "",
+    income: "",
+    cnp: "",
+    employee_status: "",
+    loan_purpose: "",
+    loan_years: "",
+    marital_status: "",
+  };
+  return createAction(LOANS_DATA_TYPES.RESET_LOANS_FORM, newObj);
+};

@@ -14,7 +14,10 @@ const INITIAL_STATE = {
   loanCheckData: {},
   loansArr: [],
   loansHistory: [],
-  loanStatus: "",
+  loanStatus: "pending",
+  isSubmiting: false,
+  showMessage: false,
+  errorMsg: "",
 };
 
 export const loansDataReducer = (state = INITIAL_STATE, action) => {
@@ -30,6 +33,23 @@ export const loansDataReducer = (state = INITIAL_STATE, action) => {
       return { ...state, loanCheckData: { ...payload } };
     case LOANS_DATA_TYPES.SET_LOAN_STATUS:
       return { ...state, loanStatus: payload };
+    case LOANS_DATA_TYPES.REQUEST_LOANS_START:
+      return { ...state, isSubmiting: true };
+    case LOANS_DATA_TYPES.REQUEST_LOANS_SUCCESS:
+      return { ...state, isSubmiting: false, showMessage: true, errorMsg: "" };
+    case LOANS_DATA_TYPES.REQUEST_LOANS_FAILED:
+      return {
+        ...state,
+        isSubmiting: false,
+        showMessage: true,
+        errorMsg: payload,
+      };
+    case LOANS_DATA_TYPES.RESET_SHOW_MSG:
+      return {
+        ...state,
+        showMessage: false,
+        errorMsg: "",
+      };
     case LOANS_DATA_TYPES.RESET_LOANS:
       return INITIAL_STATE;
     default:

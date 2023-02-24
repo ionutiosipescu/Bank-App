@@ -25,6 +25,9 @@ import { PayContainer } from "../../../../../components/LoanPayCard/LoanPayCard.
 import LoanStatusTitle from "../../../LoanStatusTitle/LoanStatusTitle";
 import LoanApproved from "./LoanApproved/LoanApproved";
 import LoanDeclineIncome from "./LoanDeclineIncome/LoanDeclineIncome";
+import LoanDeclineLimit from "./LoanDeclineLimit/LoanDeclineLimit";
+import LoanStatusMain from "./LoanStatusMain/LoanStatusMain";
+import { selectLoanStatus } from "../../../../../state-management/Dashboard/services/loan/loan.selector";
 
 function LoanStatusModal({ ...props }) {
   const { handleClick } = props;
@@ -33,23 +36,7 @@ function LoanStatusModal({ ...props }) {
   const currentUser = useSelector(selectCurrentUser);
   const checkedData = useSelector(selectCheckedData);
   const loans = useSelector(selectLoansArr);
-  const { details, loan, rate, years, salary } = checkedData;
-
-  const [approved, setApproved] = useState("approved");
-
-  const handleApproved = () => {
-    if (loans.length <= 3) {
-      salary > (25 / 100) * loan + loan
-        ? setApproved("approved")
-        : setApproved("salary");
-    } else {
-      setApproved("limit");
-    }
-  };
-
-  useEffect(() => {
-    handleApproved();
-  }, [checkedData]);
+  const loanStatus = useSelector(selectLoanStatus);
 
   const handleSubmit = () => {
     dispatch(fetchLoanCreate(currentUser, checkedData));
@@ -57,35 +44,8 @@ function LoanStatusModal({ ...props }) {
 
   return (
     <LoanModalWrapper>
-      <LoanStatusTitle approved={approved} details={details} />
-      {approved === "approved" ? (
-        <>
-          <LoanApproved />
-        </>
-      ) : approved === "salary" ? (
-        <>
-          <LoanDeclineIncome />
-        </>
-      ) : (
-        <>
-          <MidContainer>
-            <DeclinedContainer>
-              <DetailPill>
-                Our current limit on the amount of loans you can request is 3!
-              </DetailPill>
-              <DetailPill>
-                We will be happy to help you with a new loan when you fully pay
-                one of your current ones.
-              </DetailPill>
-              <DetailPill>Thank you for your understanding!</DetailPill>
-            </DeclinedContainer>
-            <img
-              src="https://img.freepik.com/free-icon/barrier_318-233590.jpg"
-              alt=""
-            />
-          </MidContainer>
-        </>
-      )}
+      <LoanStatusTitle />
+      <LoanStatusMain />
       <ButtonsContainer>
         <Button
           size="md"
@@ -96,7 +56,7 @@ function LoanStatusModal({ ...props }) {
             props.handleClick();
             handleSubmit();
           }}
-          disabled={approved === "approved" ? false : true}
+          disabled={loanStatus === "approved" ? false : true}
         />
         <Button
           size="md"

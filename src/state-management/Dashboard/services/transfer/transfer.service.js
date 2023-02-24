@@ -4,6 +4,7 @@ import {
   setTransferArrDb,
   setTransferArr,
   setTransferData,
+  setResetFormTransfer,
 } from "./transfer.action";
 import {
   requests,
@@ -34,27 +35,23 @@ export const getTransferArr = (obj, currentUserData) => {
 };
 
 // Async Transfer Data
-export const fetchTransferData = (
-  transferData,
-  currentUserData,
-  selectedAccount,
-  arr
-) => {
+export const fetchTransferData = (transferRedux, currentUserData) => {
+  const { transferForm } = transferRedux;
   return async (dispatch) => {
-    console.log(transferData, currentUserData, selectedAccount, arr);
     try {
       await dispatch(requestTransferStart());
-      await dispatch(setTransferArr(transferData, selectedAccount, arr));
-      const transferDataRequest = await setTransferData(transferData);
-      const id = await setTransferId(transferData, currentUserData);
+      await dispatch(setTransferArr(transferRedux));
+      const transferDataRequest = await setTransferData(transferForm);
+      const id = await setTransferId(transferForm, currentUserData);
       console.log(id, transferDataRequest);
       await axios
         .post(
-          `${requests.POST_CREATE_TRANSFER}${id}${transferComplete.EMAIL}${transferData.email}`,
+          `${requests.POST_CREATE_TRANSFER}${id}${transferComplete.EMAIL}${transferForm.email}`,
           transferDataRequest
         )
         .then((res) => console.log(res));
       await dispatch(requestTransferSuccess());
+      await dispatch(setResetFormTransfer());
     } catch (err) {
       if (!err) return;
       const errMsg = err?.response?.data?.message;

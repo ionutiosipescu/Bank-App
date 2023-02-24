@@ -30,12 +30,14 @@ import {
   selectError,
   selectIsSubmiting,
   selectShowMessage,
+  selectTransfer,
 } from "../../../state-management/Dashboard/services/transfer/transfer.selector";
 import RequestMessage from "../../../components/RequestMessage/RequestMessage";
 import { setResetShowMsg } from "../../../state-management/Dashboard/services/transfer/transfer.action";
 
 function TransferInputsCard() {
   const dispatch = useDispatch();
+  const transferRedux = useSelector(selectTransfer);
   const transferForm = useSelector(selectTransferForm);
   const transferArr = useSelector(selectTransferArr);
   const selectedAccount = useSelector(selectTransferHelper);
@@ -46,7 +48,7 @@ function TransferInputsCard() {
   const showMessage = useSelector(selectShowMessage);
 
   // const { image, owner, email } = selectedAccount;
-  const { email, name, details, transfer } = transferForm;
+  const { email, name, details, transfer, account } = transferForm;
   // console.log(transferForm);
 
   const setData = (e) => {
@@ -54,9 +56,7 @@ function TransferInputsCard() {
   };
 
   const handleSubmit = () => {
-    dispatch(
-      fetchTransferData(transferForm, currentUser, selectedAccount, transferArr)
-    );
+    dispatch(fetchTransferData(transferRedux, currentUser));
   };
 
   const setDataToggle = (account) => {
@@ -107,6 +107,7 @@ function TransferInputsCard() {
                   large
                   type="number"
                   placeholder="Enter your transfer amount"
+                  value={transfer || ""}
                   setData={setData}
                 />
                 <CustomInput
@@ -115,6 +116,7 @@ function TransferInputsCard() {
                   large
                   type="text"
                   placeholder="Enter your transfer details"
+                  value={details || ""}
                   setData={setData}
                 />
               </TransferInputSection>
@@ -123,6 +125,7 @@ function TransferInputsCard() {
                   firstText="euro"
                   secondText="ron"
                   name="account"
+                  value={account || ""}
                   setDataToggle={setDataToggle}
                 />
               </TransferInputSection>

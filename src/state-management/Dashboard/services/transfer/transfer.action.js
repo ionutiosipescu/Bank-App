@@ -26,9 +26,10 @@ export const setTransformAccount = (transferData, currency) => {
 };
 
 // Update Transfer Array
-export const setTransferArr = (transferData, accountSelected, arr) => {
-  const { image } = accountSelected;
-  const { name, transfer, account } = transferData;
+export const setTransferArr = (transferRedux) => {
+  const { transferForm, selectedOption, transferArr } = transferRedux;
+  const { image } = selectedOption;
+  const { name, transfer, account } = transferForm;
   const transferHistory = {
     reciever: name,
     amount: transfer,
@@ -38,7 +39,7 @@ export const setTransferArr = (transferData, accountSelected, arr) => {
     status: "Completed",
     image: image,
   };
-  const newTransferArr = [...arr, { ...transferHistory }];
+  const newTransferArr = [...transferArr, { ...transferHistory }];
   return createAction(TRANSFER_HELPER_TYPES.SET_TRANSFER_ARR, newTransferArr);
 };
 
