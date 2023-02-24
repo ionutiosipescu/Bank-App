@@ -15,7 +15,6 @@ import Profile from "./../Profile/Profile";
 // import Deposit from "../Deposit/Deposit";
 import NewTransfer from "../Services/ServicePages/Transfers/NewTransfer/NewTransfer";
 import ServicesControler from "../Services/ServicesControler/ServicesControler";
-import Notification from "../../features/notifications/Notification/Notification";
 
 function Home() {
   // Variable to set the active state of the Sidebar

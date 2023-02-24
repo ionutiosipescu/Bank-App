@@ -13,26 +13,25 @@ import {
 import Button from "./../../../../../components/UI/Button/Button";
 import avatar from "./../../../../../assets/images/avatar-2.png";
 import { useSelector } from "react-redux";
-import { selectDetailTransfer } from "../../../../../state-management/Dashboard/services/transfer/transfer.selector";
+import {
+  selectDetailTransfer,
+  selectOptionTransfer,
+} from "../../../../../state-management/Dashboard/services/transfer/transfer.selector";
 
 //////////////////////////
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 import TransferPDF from "../../../../../components/Test/Test";
+import { selectCurrentUser } from "./../../../../../state-management/Dashboard/userData/userData.selector";
 
 function TransferDetails() {
   const detailTransfer = useSelector(selectDetailTransfer);
-  const {
-    date,
-    details,
-    from_sender_name,
-    id,
-    to_account_id,
-    to_receiver_name,
-    transfer,
-  } = detailTransfer;
+  const currentUserData = useSelector(selectCurrentUser);
+  const option = useSelector(selectOptionTransfer);
+  const { address, country, first_name, last_name, mobile } =
+    currentUserData.userDetail;
 
-  console.log(detailTransfer);
+  const { date, details, transfer } = detailTransfer;
 
   return (
     <TransferDetailsCard>
@@ -48,22 +47,27 @@ function TransferDetails() {
             <img src={avatar} alt="" />
           </span>
           <span>
-            <p>{to_receiver_name} nume_familie</p>
-            <h3>Strada Arborelui 22.</h3>
+            <h2>
+              {first_name} {last_name}
+            </h2>
+            <br />
+            <p>{address}</p>
           </span>
         </UserProfile>
         <UserInfo>
           <span>
             <p>Email</p>
-            <h3>receiver_email@gmail.com</h3>
+            <h3>{currentUserData.email}</h3>
           </span>
           <span>
             <p>Phone</p>
-            <h3>receiver_number</h3>
+            <h3>{mobile}</h3>
           </span>
           <span>
             <p>Location</p>
-            <h3>Romania</h3>
+            <h3>
+              {`${country}`.charAt(0).toUpperCase() + `${country}`.slice(1)}
+            </h3>
           </span>
         </UserInfo>
       </UserDetails>
@@ -86,7 +90,7 @@ function TransferDetails() {
             </span>
             <span>
               <p>Currency</p>
-              <h3>EUR</h3>
+              <h3>{`${option.account}`.toUpperCase()}</h3>
             </span>
             <span>
               <p>Comission</p>
@@ -102,26 +106,14 @@ function TransferDetails() {
       <TransactionDetailsInfo>
         <p>Note: </p>
         <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo est
-          debitis, sunt numquam obcaecati quaerat explicabo. Mollitia dicta
-          quasi recusandae! Lorem ipsum dolor sit amet.
+          Security is very importtant to our customers. If you have any concerns
+          about this transfer or suspect any fraudulent activity, please contact
+          our customer support team immediately.
         </p>
       </TransactionDetailsInfo>
-      {/* <TransferPDF /> */}
+      <TransferPDF />
     </TransferDetailsCard>
   );
 }
 
 export default TransferDetails;
-
-////////////////////////////////
-
-// {
-//   date: "2023-02-15";
-//   details: "Payment for the phone you sold me";
-//   from_sender_name: "Alex";
-//   id: 537;
-//   to_account_id: 34;
-//   to_receiver_name: "Alex";
-//   transfer: 744;
-// }
