@@ -1,4 +1,4 @@
-export const selectLoginUser = (state) => state.login.LoginData;
+export const selectlogin = (state) => state.login.LoginData;
 
 export const selectIsSubmiting = (state) => state.login.isSubmiting;
 

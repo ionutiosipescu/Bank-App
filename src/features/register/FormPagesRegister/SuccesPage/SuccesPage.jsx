@@ -2,12 +2,12 @@ import React from "react";
 import { SuccesTitle } from "./SuccesPage.style";
 import Confetti from "react-confetti";
 import { useEffect, useState } from "react";
-import { selectIsLoading } from "../../../../state-management/Auth/registerhelper/registerhelper.selector";
+import { selectIsLoading } from "../../../../state-management/Auth/register/register.selector";
 import { useSelector } from "react-redux";
 import Spinner from "../../../../components/Spinner/Spinner";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { selectEmailCode } from "../../../../state-management/Auth/registerhelper/registerhelper.selector";
+import { selectEmailCode } from "../../../../state-management/Auth/register/register.selector";
 
 function SuccesPage() {
   const dispatch = useDispatch();

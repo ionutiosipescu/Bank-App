@@ -20,7 +20,7 @@ import Toggle from "../../components/UI/Toggle/Toggle";
 
 import { useSelector } from "react-redux";
 import { selectCurrentUser } from "../../state-management/Dashboard/userData/userData.selector";
-import { selectIsSubmiting } from "../../state-management/Auth/loginUser/loginUser.selector";
+import { selectIsSubmiting } from "../../state-management/Auth/login/login.selector";
 import Spinner from "../../components/Spinner/Spinner";
 import Notification from "../../features/notifications/Notification/Notification";
 

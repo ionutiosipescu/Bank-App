@@ -8,7 +8,7 @@ import {
 } from "../UI/Input/Input.style";
 import "../UI/Input/Input.css";
 import { useSelector } from "react-redux";
-import { selectPlan } from "../../state-management/registerhelper/registerhelper.selector";
+import { selectPlan } from "../../state-management/register/register.selector";
 import { selectRegisterPlan } from "../../state-management/registerUser/registerUser.selector";
 import { FieldHookConfig } from "formik";
 import { Type } from "@sinclair/typebox";

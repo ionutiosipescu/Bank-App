@@ -1,4 +1,4 @@
-import { TRANSFER_HELPER_TYPES } from "./transfer.types";
+import { TRANSFER_TYPES } from "./transfer.types";
 import { createAction } from "../../../../utils/helpers/reducer/reducer.utils";
 import { getLocalDate } from "../../../../utils/helpers/helperFunctions/date";
 import { findObjectByString } from "../../../../utils/helpers/helperFunctions/findObject";
@@ -13,16 +13,13 @@ const updateDataForm = (transferData, e) => {
 
 export const setTransferForm = (transferData, e) => {
   const formDataObj = updateDataForm(transferData, e);
-  return createAction(TRANSFER_HELPER_TYPES.SET_TRANSFER_FORM, formDataObj);
+  return createAction(TRANSFER_TYPES.SET_TRANSFER_FORM, formDataObj);
 };
 
 // Update Account Currency
 export const setTransformAccount = (transferData, currency) => {
   const updateTransferAccount = { ...transferData, account: currency };
-  return createAction(
-    TRANSFER_HELPER_TYPES.SET_TRANSFER_FORM,
-    updateTransferAccount
-  );
+  return createAction(TRANSFER_TYPES.SET_TRANSFER_FORM, updateTransferAccount);
 };
 
 // Update Transfer Array
@@ -40,13 +37,13 @@ export const setTransferArr = (transferRedux) => {
     image: image,
   };
   const newTransferArr = [...transferArr, { ...transferHistory }];
-  return createAction(TRANSFER_HELPER_TYPES.SET_TRANSFER_ARR, newTransferArr);
+  return createAction(TRANSFER_TYPES.SET_TRANSFER_ARR, newTransferArr);
 };
 
 // Update selected Account
 export const setAddTransferAccount = (account) => {
   console.log(account);
-  return createAction(TRANSFER_HELPER_TYPES.SET_ADD_TRANSFER, account);
+  return createAction(TRANSFER_TYPES.SET_ADD_TRANSFER, account);
 };
 
 // Update Inputs With Selected Account
@@ -59,10 +56,7 @@ export const setChangeAccountForm = (account) => {
     transfer: "",
     account: "ron",
   };
-  return createAction(
-    TRANSFER_HELPER_TYPES.SET_TRANSFER_FORM,
-    updateObjectForm
-  );
+  return createAction(TRANSFER_TYPES.SET_TRANSFER_FORM, updateObjectForm);
 };
 
 // Async Selecting Account and Update the Inputs
@@ -103,7 +97,7 @@ export const setTransferId = async (obj, currentUserData) => {
 // Set Arr from DB
 
 export const setTransferArrDb = (transferArr) => {
-  return createAction(TRANSFER_HELPER_TYPES.SET_TRANSFER_ARR, transferArr);
+  return createAction(TRANSFER_TYPES.SET_TRANSFER_ARR, transferArr);
 };
 
 // // Async Repeat Transfer Data
@@ -125,7 +119,7 @@ export const setTransferArrDb = (transferArr) => {
 // Set Detail Transfer
 
 export const setDetailTransfer = (obj) => {
-  return createAction(TRANSFER_HELPER_TYPES.SET_DETAIL_TRANSFER, obj);
+  return createAction(TRANSFER_TYPES.SET_DETAIL_TRANSFER, obj);
 };
 
 // Selected Option
@@ -133,16 +127,16 @@ export const setDetailTransfer = (obj) => {
 export const setSelectedOptionTransfer = (e, filter) => {
   const { value } = e.target;
   const newObj = { ...filter, account: value };
-  return createAction(TRANSFER_HELPER_TYPES.SET_TRANSFER_OPTION, newObj);
+  return createAction(TRANSFER_TYPES.SET_TRANSFER_OPTION, newObj);
 };
 
 export const resetTransfer = () => {
-  return createAction(TRANSFER_HELPER_TYPES.RESET_TRANSFER);
+  return createAction(TRANSFER_TYPES.RESET_TRANSFER);
 };
 
 // Reset Show Message
 export const setResetShowMsg = () => {
-  return createAction(TRANSFER_HELPER_TYPES.RESET_SHOW_MSG);
+  return createAction(TRANSFER_TYPES.RESET_SHOW_MSG);
 };
 
 // ResetForm
@@ -154,5 +148,5 @@ export const setResetFormTransfer = () => {
     details: "",
     account: "ron",
   };
-  return createAction(TRANSFER_HELPER_TYPES.SET_TRANSFER_FORM, newObj);
+  return createAction(TRANSFER_TYPES.SET_TRANSFER_FORM, newObj);
 };

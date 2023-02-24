@@ -11,23 +11,23 @@ import { useState } from "react";
 import { useRef } from "react";
 import OtpInput from "react-otp-input";
 import { useSelector, useDispatch } from "react-redux";
-import { setOtp } from "../../state-management/Auth/loginUser/loginUser.action";
-import { selectOtp } from "../../state-management/Auth/loginUser/loginUser.selector";
+import { setOtp } from "../../state-management/Auth/login/login.action";
+import { selectOtp } from "../../state-management/Auth/login/login.selector";
 import { Formik, Form } from "formik";
 import { ErrorMsg } from "../Errors/Auth/ErrorMsg.style";
-import { selectOtpError } from "../../state-management/Auth/loginUser/loginUser.selector";
-import { setOtpError } from "../../state-management/Auth/loginUser/loginUser.action";
-import { controlMoldalAsync } from "../../state-management/Auth/loginUser/loginUser.action";
-import { selectLoginUser } from "../../state-management/Auth/loginUser/loginUser.selector";
-import { VerifyOtp } from "../../state-management/Auth/loginUser/loginUser.service";
-import { ResendOtp } from "../../state-management/Auth/loginUser/loginUser.service";
-import { selectEmailValidate } from "../../state-management/Auth/loginUser/loginUser.selector";
+import { selectOtpError } from "../../state-management/Auth/login/login.selector";
+import { setOtpError } from "../../state-management/Auth/login/login.action";
+import { controlMoldalAsync } from "../../state-management/Auth/login/login.action";
+import { selectlogin } from "../../state-management/Auth/login/login.selector";
+import { VerifyOtp } from "../../state-management/Auth/login/login.service";
+import { ResendOtp } from "../../state-management/Auth/login/login.service";
+import { selectEmailValidate } from "../../state-management/Auth/login/login.selector";
 
 function OTPModal() {
   const dispatch = useDispatch();
   const errorMsg = useSelector(selectOtpError);
   const otp = useSelector(selectOtp);
-  const loginData = useSelector(selectLoginUser);
+  const loginData = useSelector(selectlogin);
   const emailValidate = useSelector(selectEmailValidate);
 
   const handleSubmit = () => {

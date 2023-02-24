@@ -56,7 +56,6 @@ function LoanStatusModal({ ...props }) {
             props.handleClick();
             handleSubmit();
           }}
-          disabled={loanStatus === "approved" ? false : true}
         />
         <Button
           size="md"

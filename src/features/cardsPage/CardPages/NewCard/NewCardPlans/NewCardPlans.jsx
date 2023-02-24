@@ -3,7 +3,7 @@ import RadioButtonsPlan from "../../../../../components/CustomInputs/CustomRadio
 import { Formik, Form } from "formik";
 import { options } from "../../../../../utils/data/plancardregisterData";
 import { ErrorMsg } from "../../../../../components/Errors/Auth/ErrorMsg.style";
-import { selectPlanObject } from "../../../../../state-management/Auth/registerhelper/registerhelper.selector";
+import { selectPlanObject } from "../../../../../state-management/Auth/register/register.selector";
 import { CardPlansContainer } from "./NewCardPlans.style";
 import "./NewCardPlans.css";
 import { FormContainerCard } from "./NewCardPlans.style";

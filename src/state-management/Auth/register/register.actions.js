@@ -1,17 +1,17 @@
-import { REGISTER_HELPER_TYPES } from "./registerhelper.types";
+import { REGISTER_TYPES } from "./register.types";
 import { createAction } from "../../../utils/helpers/reducer/reducer.utils";
 import { getLocalDate } from "../../../utils/helpers/helperFunctions/date";
 
 // Update SetStep
 export const setStep = (step) => {
-  return createAction(REGISTER_HELPER_TYPES.SET_STEP, step);
+  return createAction(REGISTER_TYPES.SET_STEP, step);
 };
 
 // Update OnChange -> Plan Form (typeOfPlan)
 export const setTypeOfPlanAdd = (prevPlans, index, e) => {
   const newPlans = [...prevPlans];
   newPlans[index].typeOfPlan = e.target.value;
-  return createAction(REGISTER_HELPER_TYPES.SET_PLAN_DATA, newPlans);
+  return createAction(REGISTER_TYPES.SET_PLAN_DATA, newPlans);
 };
 
 // Update OnChange -> Register Form
@@ -23,33 +23,30 @@ const updateRegisterUser = (register, e) => {
 // Update OnChange -> Register Form
 export const setRegisterUser = (register, e) => {
   const user = updateRegisterUser(register, e);
-  return createAction(REGISTER_HELPER_TYPES.SET_USER_DATA, user);
+  return createAction(REGISTER_TYPES.SET_USER_DATA, user);
 };
 
 // Reset SignUp Forms
 export const setResetSingUp = () => {
-  return createAction(REGISTER_HELPER_TYPES.RESET_SIGNUP);
+  return createAction(REGISTER_TYPES.RESET_SIGNUP);
 };
 
 // Update JWT Token
 export const setToken = (token) => {
-  return createAction(REGISTER_HELPER_TYPES.SET_TOKEN, token);
+  return createAction(REGISTER_TYPES.SET_TOKEN, token);
 };
 
-export const setRegisterObjectAditionals = (registerHelperAditionals) => {
-  const { displayName, password, email } = registerHelperAditionals;
+export const setRegisterObjectAditionals = (registerAditionals) => {
+  const { displayName, password, email } = registerAditionals;
   const cleanAditionals = {
     username: displayName,
     password: password,
     email: email,
   };
-  return createAction(
-    REGISTER_HELPER_TYPES.SET_REGISTER_ADITIONALS,
-    cleanAditionals
-  );
+  return createAction(REGISTER_TYPES.SET_REGISTER_ADITIONALS, cleanAditionals);
 };
 
-export const setRegisterUserObject = (registerHelper) => {
+export const setRegisterUserObject = (register) => {
   const {
     firstname,
     lastname,
@@ -59,7 +56,7 @@ export const setRegisterUserObject = (registerHelper) => {
     gender,
     mobile,
     confirmPassword,
-  } = registerHelper;
+  } = register;
   const formattedDate = getLocalDate();
 
   const cleanProfile = {
@@ -73,7 +70,7 @@ export const setRegisterUserObject = (registerHelper) => {
     confirmPassword: confirmPassword,
     created_at: formattedDate,
   };
-  return createAction(REGISTER_HELPER_TYPES.SET_REGISTER_USER, cleanProfile);
+  return createAction(REGISTER_TYPES.SET_REGISTER_USER, cleanProfile);
 };
 
 // UserPlan
@@ -92,7 +89,7 @@ const setRegisterPlanAdd = (userDataArrPlan, prevPlans, index) => {
     created_at: formattedDate,
   };
   const newArrPlan = [...userDataArrPlan, { ...cleanPlan }];
-  return createAction(REGISTER_HELPER_TYPES.SET_REGISTER_PLAN_ADD, newArrPlan);
+  return createAction(REGISTER_TYPES.SET_REGISTER_PLAN_ADD, newArrPlan);
 };
 
 // Async User Plan
@@ -110,12 +107,12 @@ export const updateRegisterPlanAsync = (
       const newUserDataArrPlan = await [...userDataArrPlan].filter(
         (prevArrPlan) => prevArrPlan.currency !== prevPlans[index].currency
       );
-      // update typeOfPlan in registerPlanData in registerhelper.reducer
+      // update typeOfPlan in registerPlanData in register.reducer
       await dispatch(setTypeOfPlanAdd(prevPlans, index, e));
       // update UserPlan in Redux with currentPlan from registerPlanData
       await dispatch(setRegisterPlanAdd(newUserDataArrPlan, prevPlans, index));
     } else {
-      // update typeOfPlan in registerPlanData in registerhelper.reducer
+      // update typeOfPlan in registerPlanData in register.reducer
       await dispatch(setTypeOfPlanAdd(prevPlans, index, e));
       // update UserPlan in Redux with currentPlan from registerPlanData
       await dispatch(setRegisterPlanAdd(userDataArrPlan, prevPlans, index));

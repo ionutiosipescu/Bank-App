@@ -8,17 +8,17 @@ import {
   formatDataRepet,
 } from "./deposit.action";
 import { requests } from "../../../../utils/Requests/requests";
-import { DEPOSITS_HELPER_TYPES } from "./deposit.types";
+import { DEPOSITS_TYPES } from "./deposit.types";
 import { createAction } from "../../../../utils/helpers/reducer/reducer.utils";
 
 export const requestDepositStart = () =>
-  createAction(DEPOSITS_HELPER_TYPES.REQUEST_DEPOSIT_START);
+  createAction(DEPOSITS_TYPES.REQUEST_DEPOSIT_START);
 
 export const requestDepositSuccess = () =>
-  createAction(DEPOSITS_HELPER_TYPES.REQUEST_DEPOSIT_SUCCESS);
+  createAction(DEPOSITS_TYPES.REQUEST_DEPOSIT_SUCCESS);
 
 export const requestDepositFailed = (error) =>
-  createAction(DEPOSITS_HELPER_TYPES.REQUEST_DEPOSIT_FAILED, error);
+  createAction(DEPOSITS_TYPES.REQUEST_DEPOSIT_FAILED, error);
 
 // Get Arr
 export const getDepositArrDb = (obj, currentUserData) => {

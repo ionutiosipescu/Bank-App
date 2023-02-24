@@ -1,4 +1,4 @@
-import { EXCHANGE_HELPER_TYPES } from "./exchange.types";
+import { EXCHANGE_TYPES } from "./exchange.types";
 
 const INITIAL_STATE = {
   exchangeData: {
@@ -15,30 +15,30 @@ const INITIAL_STATE = {
   errorMsg: "",
 };
 
-export const exchangeHelperReducer = (state = INITIAL_STATE, action) => {
+export const exchangeReducer = (state = INITIAL_STATE, action) => {
   const { type, payload } = action;
 
   switch (type) {
-    case EXCHANGE_HELPER_TYPES.SET_EXCHANGE_DATA:
+    case EXCHANGE_TYPES.SET_EXCHANGE_DATA:
       return { ...state, exchangeData: { ...payload } };
-    case EXCHANGE_HELPER_TYPES.SET_EXCHANGE_ARR:
+    case EXCHANGE_TYPES.SET_EXCHANGE_ARR:
       return { ...state, exchangeArr: [...payload] };
-    case EXCHANGE_HELPER_TYPES.SET_EXCHANGE_OPTION:
+    case EXCHANGE_TYPES.SET_EXCHANGE_OPTION:
       return { ...state, selectedOption: { ...payload } };
-    case EXCHANGE_HELPER_TYPES.RESET_EXCHANGE:
+    case EXCHANGE_TYPES.RESET_EXCHANGE:
       return INITIAL_STATE;
-    case EXCHANGE_HELPER_TYPES.REQUEST_EXCHANGE_START:
+    case EXCHANGE_TYPES.REQUEST_EXCHANGE_START:
       return { ...state, isSubmiting: true };
-    case EXCHANGE_HELPER_TYPES.REQUEST_EXCHANGE_SUCCESS:
+    case EXCHANGE_TYPES.REQUEST_EXCHANGE_SUCCESS:
       return { ...state, isSubmiting: false, showMessage: true, errorMsg: "" };
-    case EXCHANGE_HELPER_TYPES.REQUEST_EXCHANGE_FAILED:
+    case EXCHANGE_TYPES.REQUEST_EXCHANGE_FAILED:
       return {
         ...state,
         isSubmiting: false,
         showMessage: true,
         errorMsg: payload,
       };
-    case EXCHANGE_HELPER_TYPES.RESET_SHOW_MSG:
+    case EXCHANGE_TYPES.RESET_SHOW_MSG:
       return {
         ...state,
         showMessage: false,

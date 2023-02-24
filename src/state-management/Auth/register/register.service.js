@@ -1,16 +1,16 @@
 import axios from "axios";
-import { REGISTER_HELPER_TYPES } from "./registerhelper.types";
+import { REGISTER_TYPES } from "./register.types";
 import { createAction } from "../../../utils/helpers/reducer/reducer.utils";
-import { setStep } from "./registerhelper.actions";
+import { setStep } from "./register.actions";
 
 export const postRegisterStart = () =>
-  createAction(REGISTER_HELPER_TYPES.POST_REGISTER_START);
+  createAction(REGISTER_TYPES.POST_REGISTER_START);
 
 export const postRegisterSuccess = () =>
-  createAction(REGISTER_HELPER_TYPES.POST_REGISTER_SUCCESS);
+  createAction(REGISTER_TYPES.POST_REGISTER_SUCCESS);
 
 export const postRegisterFailed = (error) =>
-  createAction(REGISTER_HELPER_TYPES.POST_REGISTER_FAILED, error);
+  createAction(REGISTER_TYPES.POST_REGISTER_FAILED, error);
 
 // Async User Profile
 export const fetchRegisterMail = (registerData, step) => {

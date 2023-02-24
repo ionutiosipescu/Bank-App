@@ -15,7 +15,7 @@ import { AccountContainer } from "../../../../pages/Settings/Settings.style";
 import { SettingsFormWrapper } from "../../../../pages/Settings/Settings.style";
 import { selectCurrentUser } from "../../../../state-management/Dashboard/userData/userData.selector";
 import { fetchAuthData } from "../../../../state-management/Dashboard/settings/settings.service";
-import { selectToken } from "../../../../state-management/Auth/registerhelper/registerhelper.selector";
+import { selectToken } from "../../../../state-management/Auth/register/register.selector";
 
 function SettingsForm() {
   const dispatch = useDispatch();

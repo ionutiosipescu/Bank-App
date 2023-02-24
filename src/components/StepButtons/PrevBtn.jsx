@@ -1,8 +1,8 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { setStep } from "../../state-management/Auth/registerhelper/registerhelper.actions";
-import { selectStep } from "../../state-management/Auth/registerhelper/registerhelper.selector";
+import { setStep } from "../../state-management/Auth/register/register.actions";
+import { selectStep } from "../../state-management/Auth/register/register.selector";
 import Button from "../UI/NewButton/Button.component";
 
 function PrevBtn() {

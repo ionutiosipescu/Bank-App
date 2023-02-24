@@ -1,9 +1,9 @@
 import axios from "axios";
 import { setCurrentUser } from "../../Dashboard/userData/userData.action";
 import { createAction } from "../../../utils/helpers/reducer/reducer.utils";
-import { LOGIN_ACTION_TYPES } from "./loginUser.types";
-import { setToken } from "../registerhelper/registerhelper.actions";
-import { controlMoldalAsync, setEmailValidate } from "./loginUser.action";
+import { LOGIN_ACTION_TYPES } from "./login.types";
+import { setToken } from "../register/register.actions";
+import { controlMoldalAsync, setEmailValidate } from "./login.action";
 
 export const postLoginStart = () =>
   createAction(LOGIN_ACTION_TYPES.POST_LOGIN_START);

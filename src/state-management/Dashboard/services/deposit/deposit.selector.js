@@ -1,10 +1,11 @@
-export const selectDeposit = (state) => state.depositHelper;
-export const selectDepositAction = (state) => state.depositHelper.depositAction;
-export const selectDepositForm = (state) => state.depositHelper.depositObj;
-export const selectDepositArr = (state) => state.depositHelper.depositArr;
+export const selectDeposit = (state) => state.depositStorage;
+export const selectDepositAction = (state) =>
+  state.depositStorage.depositAction;
+export const selectDepositForm = (state) => state.depositStorage.depositObj;
+export const selectDepositArr = (state) => state.depositStorage.depositArr;
 export const selectDepositOption = (state) =>
-  state.depositHelper.selectedOption;
+  state.depositStorage.selectedOption;
 
-export const selectShowMessage = (state) => state.depositHelper.showMessage;
-export const selectError = (state) => state.depositHelper.errorMsg;
-export const selectIsSubmiting = (state) => state.depositHelper.isSubmiting;
+export const selectShowMessage = (state) => state.depositStorage.showMessage;
+export const selectError = (state) => state.depositStorage.errorMsg;
+export const selectIsSubmiting = (state) => state.depositStorage.isSubmiting;

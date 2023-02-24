@@ -3,7 +3,7 @@ import { CardPlansContainer } from "../../NewCard/NewCardPlans/NewCardPlans.styl
 import RadioButtonsPlan from "../../../../../components/CustomInputs/CustomRadioInputGroupPlan";
 import { Formik, Form } from "formik";
 import { useSelector } from "react-redux";
-import { selectPlanObject } from "../../../../../state-management/Auth/registerhelper/registerhelper.selector";
+import { selectPlanObject } from "../../../../../state-management/Auth/register/register.selector";
 import { options } from "../../../../../utils/data/plancardregisterData";
 import { useDispatch } from "react-redux";
 import { setCardPlanEdit } from "../../../../../state-management/Dashboard/cards/cards.action";

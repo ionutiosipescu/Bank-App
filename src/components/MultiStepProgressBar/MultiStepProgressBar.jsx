@@ -3,7 +3,7 @@ import "react-step-progress-bar/styles.css";
 import { ProgressBar, Step } from "react-step-progress-bar";
 import "./MultiStepProgressBar.css";
 import { useSelector } from "react-redux";
-import { selectStep } from "../../state-management/Auth/registerhelper/registerhelper.selector";
+import { selectStep } from "../../state-management/Auth/register/register.selector";
 import { ProgressBarBank } from "./MultiStepProgressBar.style";
 
 function MultiStepProgressBar() {

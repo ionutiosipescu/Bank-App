@@ -13,21 +13,21 @@ import Modal from "../../../components/Modal/Modal";
 import OTPModal from "../../../components/OTPModal/OTPModal";
 import {
   resetRedux,
-  setLogInUser,
-} from "../../../state-management/Auth/loginUser/loginUser.action";
+  setlogin,
+} from "../../../state-management/Auth/login/login.action";
 import {
   selectOtp,
-  selectLoginUser,
+  selectlogin,
   selectIsSubmiting,
   selectErrorMessage,
   selectModalIsOpen,
-} from "../../../state-management/Auth/loginUser/loginUser.selector";
-import { fetchLoginData } from "../../../state-management/Auth/loginUser/loginUser.service";
+} from "../../../state-management/Auth/login/login.selector";
+import { fetchLoginData } from "../../../state-management/Auth/login/login.service";
 
 function FormLogIn() {
   const dispatch = useDispatch();
   const errorMsg = useSelector(selectErrorMessage);
-  const loginData = useSelector(selectLoginUser);
+  const loginData = useSelector(selectlogin);
   const otp = useSelector(selectOtp);
   const modalOpen = useSelector(selectModalIsOpen);
   const isSubmitting = useSelector(selectIsSubmiting);
@@ -43,7 +43,7 @@ function FormLogIn() {
 
   // send data to Redux userProfile
   const setData = (e) => {
-    dispatch(setLogInUser(loginData, e));
+    dispatch(setlogin(loginData, e));
   };
 
   // check isSubmitting status -> redirect to dashboard

@@ -8,15 +8,15 @@ import "./PlanForm.css";
 import { options } from "../../../../utils/data/plancardregisterData";
 import HeaderPlan from "./HeaderPlan/HeaderPlan";
 import { ErrorMsg } from "../../../../components/Errors/Auth/ErrorMsg.style";
-import { selectPlan } from "../../../../state-management/Auth/registerhelper/registerhelper.selector";
-import { selectStep } from "../../../../state-management/Auth/registerhelper/registerhelper.selector";
-import { selectPlanObject } from "../../../../state-management/Auth/registerhelper/registerhelper.selector";
-import { selectRegisterUser } from "../../../../state-management/Auth/registerhelper/registerhelper.selector";
-import { setStep } from "../../../../state-management/Auth/registerhelper/registerhelper.actions";
-import { selectRegisterPlan } from "../../../../state-management/Auth/registerhelper/registerhelper.selector";
-import { updateRegisterPlanAsync } from "../../../../state-management/Auth/registerhelper/registerhelper.actions";
-import { setRegisterUserObject } from "../../../../state-management/Auth/registerhelper/registerhelper.actions";
-import { setRegisterObjectAditionals } from "../../../../state-management/Auth/registerhelper/registerhelper.actions";
+import { selectPlan } from "../../../../state-management/Auth/register/register.selector";
+import { selectStep } from "../../../../state-management/Auth/register/register.selector";
+import { selectPlanObject } from "../../../../state-management/Auth/register/register.selector";
+import { selectRegisterUser } from "../../../../state-management/Auth/register/register.selector";
+import { setStep } from "../../../../state-management/Auth/register/register.actions";
+import { selectRegisterPlan } from "../../../../state-management/Auth/register/register.selector";
+import { updateRegisterPlanAsync } from "../../../../state-management/Auth/register/register.actions";
+import { setRegisterUserObject } from "../../../../state-management/Auth/register/register.actions";
+import { setRegisterObjectAditionals } from "../../../../state-management/Auth/register/register.actions";
 import e from "cors";
 
 function PlanForm() {
@@ -25,7 +25,7 @@ function PlanForm() {
   const planData = useSelector(selectPlan);
   const plan = useSelector(selectPlanObject);
   const userPlan = useSelector(selectRegisterPlan);
-  const registerHelper = useSelector(selectRegisterUser);
+  const register = useSelector(selectRegisterUser);
   const index = 0;
 
   const handleradio = (e) => {
@@ -44,8 +44,8 @@ function PlanForm() {
           if (userPlan.length === 0) {
             actions.setFieldError("userPlan", "At least one item is required");
           } else {
-            dispatch(setRegisterObjectAditionals(registerHelper));
-            dispatch(setRegisterUserObject(registerHelper));
+            dispatch(setRegisterObjectAditionals(register));
+            dispatch(setRegisterUserObject(register));
             dispatch(setStep(step + 1));
           }
         }}

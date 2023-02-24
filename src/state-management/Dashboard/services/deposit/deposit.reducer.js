@@ -1,4 +1,4 @@
-import { DEPOSITS_HELPER_TYPES } from "./deposit.types";
+import { DEPOSITS_TYPES } from "./deposit.types";
 
 const INITIAL_STATE = {
   depositAction: "Deposit",
@@ -19,32 +19,32 @@ const INITIAL_STATE = {
   errorMsg: "",
 };
 
-export const depositHelperReducer = (state = INITIAL_STATE, action) => {
+export const depositReducer = (state = INITIAL_STATE, action) => {
   const { type, payload } = action;
 
   switch (type) {
-    case DEPOSITS_HELPER_TYPES.SET_DEPOSIT_ACTION:
+    case DEPOSITS_TYPES.SET_DEPOSIT_ACTION:
       return { ...state, depositAction: payload };
-    case DEPOSITS_HELPER_TYPES.SET_DEPOSIT_FORM:
+    case DEPOSITS_TYPES.SET_DEPOSIT_FORM:
       return { ...state, depositObj: { ...payload } };
-    case DEPOSITS_HELPER_TYPES.SET_DEPOSIT_ARR:
+    case DEPOSITS_TYPES.SET_DEPOSIT_ARR:
       return { ...state, depositArr: [...payload] };
-    case DEPOSITS_HELPER_TYPES.SET_DEPOSIT_OPTION:
+    case DEPOSITS_TYPES.SET_DEPOSIT_OPTION:
       return { ...state, selectedOption: { ...payload } };
-    case DEPOSITS_HELPER_TYPES.RESET_DEPOSIT:
+    case DEPOSITS_TYPES.RESET_DEPOSIT:
       return INITIAL_STATE;
-    case DEPOSITS_HELPER_TYPES.REQUEST_DEPOSIT_START:
+    case DEPOSITS_TYPES.REQUEST_DEPOSIT_START:
       return { ...state, isSubmiting: true };
-    case DEPOSITS_HELPER_TYPES.REQUEST_DEPOSIT_SUCCESS:
+    case DEPOSITS_TYPES.REQUEST_DEPOSIT_SUCCESS:
       return { ...state, isSubmiting: false, showMessage: true, errorMsg: "" };
-    case DEPOSITS_HELPER_TYPES.REQUEST_DEPOSIT_FAILED:
+    case DEPOSITS_TYPES.REQUEST_DEPOSIT_FAILED:
       return {
         ...state,
         isSubmiting: false,
         showMessage: true,
         errorMsg: payload,
       };
-    case DEPOSITS_HELPER_TYPES.RESET_SHOW_MSG:
+    case DEPOSITS_TYPES.RESET_SHOW_MSG:
       return {
         ...state,
         showMessage: false,

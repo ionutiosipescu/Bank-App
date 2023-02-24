@@ -1,4 +1,4 @@
-import { TRANSFER_HELPER_TYPES } from "./transfer.types";
+import { TRANSFER_TYPES } from "./transfer.types";
 
 const INITIAL_STATE = {
   transferObj: {},
@@ -19,39 +19,39 @@ const INITIAL_STATE = {
   errorMsg: "",
 };
 
-export const transferHelperReducer = (state = INITIAL_STATE, action) => {
+export const transferReducer = (state = INITIAL_STATE, action) => {
   const { type, payload } = action;
 
   switch (type) {
-    case TRANSFER_HELPER_TYPES.SET_ADD_TRANSFER:
+    case TRANSFER_TYPES.SET_ADD_TRANSFER:
       return { ...state, transferObj: { ...payload } };
-    case TRANSFER_HELPER_TYPES.SET_TRANSFER_FORM:
+    case TRANSFER_TYPES.SET_TRANSFER_FORM:
       return { ...state, transferForm: { ...payload } };
-    case TRANSFER_HELPER_TYPES.SET_TRANSFER_ARR:
+    case TRANSFER_TYPES.SET_TRANSFER_ARR:
       return { ...state, transferArr: [...payload] };
-    case TRANSFER_HELPER_TYPES.SET_DETAIL_TRANSFER:
+    case TRANSFER_TYPES.SET_DETAIL_TRANSFER:
       return { ...state, detailTransfer: { ...payload } };
-    case TRANSFER_HELPER_TYPES.SET_TRANSFER_OPTION:
+    case TRANSFER_TYPES.SET_TRANSFER_OPTION:
       return { ...state, selectedOption: { ...payload } };
 
-    case TRANSFER_HELPER_TYPES.REQUEST_TRANSFER_START:
+    case TRANSFER_TYPES.REQUEST_TRANSFER_START:
       return { ...state, isSubmiting: true };
-    case TRANSFER_HELPER_TYPES.REQUEST_TRANSFER_SUCCESS:
+    case TRANSFER_TYPES.REQUEST_TRANSFER_SUCCESS:
       return { ...state, isSubmiting: false, showMessage: true, errorMsg: "" };
-    case TRANSFER_HELPER_TYPES.REQUEST_TRANSFER_FAILED:
+    case TRANSFER_TYPES.REQUEST_TRANSFER_FAILED:
       return {
         ...state,
         isSubmiting: false,
         showMessage: true,
         errorMsg: payload,
       };
-    case TRANSFER_HELPER_TYPES.RESET_SHOW_MSG:
+    case TRANSFER_TYPES.RESET_SHOW_MSG:
       return {
         ...state,
         showMessage: false,
         errorMsg: "",
       };
-    case TRANSFER_HELPER_TYPES.RESET_TRANSFER:
+    case TRANSFER_TYPES.RESET_TRANSFER:
       return INITIAL_STATE;
     default:
       return state;

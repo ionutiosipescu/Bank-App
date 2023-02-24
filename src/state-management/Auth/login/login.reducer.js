@@ -1,4 +1,4 @@
-import { LOGIN_ACTION_TYPES } from "./loginUser.types";
+import { LOGIN_ACTION_TYPES } from "./login.types";
 
 const INITIAL_STATE = {
   LoginData: {

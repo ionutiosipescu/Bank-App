@@ -1,4 +1,4 @@
-import { DEPOSITS_HELPER_TYPES } from "./deposit.types";
+import { DEPOSITS_TYPES } from "./deposit.types";
 import { createAction } from "../../../../utils/helpers/reducer/reducer.utils";
 import { getLocalDate } from "../../../../utils/helpers/helperFunctions/date";
 import { generateRandomNumber } from "../../../../utils/helpers/helperFunctions/randomNumber";
@@ -7,7 +7,7 @@ import { findObjectByString } from "../../../../utils/helpers/helperFunctions/fi
 // Update Deposit Action
 
 export const setDepositAction = (e) => {
-  return createAction(DEPOSITS_HELPER_TYPES.SET_DEPOSIT_ACTION, e.target.value);
+  return createAction(DEPOSITS_TYPES.SET_DEPOSIT_ACTION, e.target.value);
 };
 
 // update Deposit Obj
@@ -18,14 +18,14 @@ const updateDataForm = (depositData, e) => {
 
 export const setDepositForm = (depositData, e) => {
   const depositDataObj = updateDataForm(depositData, e);
-  return createAction(DEPOSITS_HELPER_TYPES.SET_DEPOSIT_FORM, depositDataObj);
+  return createAction(DEPOSITS_TYPES.SET_DEPOSIT_FORM, depositDataObj);
 };
 
 // update Deposit Account
 export const setDepositAccount = (depositData, e) => {
   const { value } = e.target;
   const depositDataObj = { ...depositData, account: value };
-  return createAction(DEPOSITS_HELPER_TYPES.SET_DEPOSIT_FORM, depositDataObj);
+  return createAction(DEPOSITS_TYPES.SET_DEPOSIT_FORM, depositDataObj);
 };
 
 // Update Deposit Arr
@@ -33,7 +33,7 @@ export const setDepositAccount = (depositData, e) => {
 export const setDepositArr = (data, obj) => {
   const { depositArr } = data;
   const newDepositArr = [...depositArr, { ...obj }];
-  return createAction(DEPOSITS_HELPER_TYPES.SET_DEPOSIT_ARR, newDepositArr);
+  return createAction(DEPOSITS_TYPES.SET_DEPOSIT_ARR, newDepositArr);
 };
 
 // Set Data for Request
@@ -63,7 +63,7 @@ export const setDepositId = async (data, currentUserData) => {
 
 // Set Arr from DB
 export const setDepositArrDb = (depositArr) => {
-  return createAction(DEPOSITS_HELPER_TYPES.SET_DEPOSIT_ARR, depositArr);
+  return createAction(DEPOSITS_TYPES.SET_DEPOSIT_ARR, depositArr);
 };
 
 export const setDepositArrRepeat = (obj, arr) => {
@@ -71,7 +71,7 @@ export const setDepositArrRepeat = (obj, arr) => {
     ...arr,
     { ...obj, id: generateRandomNumber(3).toString() },
   ];
-  return createAction(DEPOSITS_HELPER_TYPES.SET_DEPOSIT_ARR, newDepositArr);
+  return createAction(DEPOSITS_TYPES.SET_DEPOSIT_ARR, newDepositArr);
 };
 
 // format data for repeat Button
@@ -91,11 +91,11 @@ export const formatDataRepet = async (obj) => {
 export const setSelectedOptionDeposit = (e, filter) => {
   const { value } = e.target;
   const newObj = { ...filter, account: value };
-  return createAction(DEPOSITS_HELPER_TYPES.SET_DEPOSIT_OPTION, newObj);
+  return createAction(DEPOSITS_TYPES.SET_DEPOSIT_OPTION, newObj);
 };
 
 export const resetDeposit = () => {
-  return createAction(DEPOSITS_HELPER_TYPES.RESET_DEPOSIT);
+  return createAction(DEPOSITS_TYPES.RESET_DEPOSIT);
 };
 
 // Reset Form
@@ -108,10 +108,10 @@ export const setResetFormDesposit = () => {
     amount: "",
     account: "ron",
   };
-  return createAction(DEPOSITS_HELPER_TYPES.SET_DEPOSIT_FORM, newObj);
+  return createAction(DEPOSITS_TYPES.SET_DEPOSIT_FORM, newObj);
 };
 
 // Reset Show Message
 export const setResetShowMsg = () => {
-  return createAction(DEPOSITS_HELPER_TYPES.RESET_SHOW_MSG);
+  return createAction(DEPOSITS_TYPES.RESET_SHOW_MSG);
 };

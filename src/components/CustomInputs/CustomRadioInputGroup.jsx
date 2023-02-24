@@ -12,7 +12,7 @@ import {
 } from "../UI/Input/Input.style";
 import "../UI/Input/Input.css";
 import { useSelector } from "react-redux";
-import { selectRegisterUser } from "../../state-management/Auth/registerhelper/registerhelper.selector";
+import { selectRegisterUser } from "../../state-management/Auth/register/register.selector";
 
 const RadioButtons = ({ label, ...props }) => {
   const registerData = useSelector(selectRegisterUser);

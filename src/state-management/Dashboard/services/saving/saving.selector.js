@@ -1,9 +1,9 @@
-export const selectSavingAction = (state) => state.savingHelper.savingAction;
-export const selectSavingForm = (state) => state.savingHelper.savingObj;
-export const selectSavingArr = (state) => state.savingHelper.savingArr;
-export const selectSavingData = (state) => state.savingHelper.savingData;
-export const selectShowModal = (state) => state.savingHelper.showModal;
+export const selectSavingAction = (state) => state.savingStorage.savingAction;
+export const selectSavingForm = (state) => state.savingStorage.savingObj;
+export const selectSavingArr = (state) => state.savingStorage.savingArr;
+export const selectSavingData = (state) => state.savingStorage.savingData;
+export const selectShowModal = (state) => state.savingStorage.showModal;
 
-export const selectShowMessage = (state) => state.savingHelper.showMessage;
-export const selectError = (state) => state.savingHelper.errorMsg;
-export const selectIsSubmiting = (state) => state.savingHelper.isSubmiting;
+export const selectShowMessage = (state) => state.savingStorage.showMessage;
+export const selectError = (state) => state.savingStorage.errorMsg;
+export const selectIsSubmiting = (state) => state.savingStorage.isSubmiting;

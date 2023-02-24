@@ -16,11 +16,11 @@ import {
 import { upperCaseFirstInitial } from "../../../../utils/helpers/helperFunctions/upperCaseFirstInitial";
 import { generateRandomKey } from "../../../../utils/helpers/helperFunctions/randomKey";
 import { ErrorMsg } from "../../../../components/Errors/Auth/ErrorMsg.style";
-import { selectStep } from "../../../../state-management/Auth/registerhelper/registerhelper.selector";
-import { selectRegisterData } from "../../../../state-management/Auth/registerhelper/registerhelper.selector";
-import { selectRegisterFailed } from "../../../../state-management/Auth/registerhelper/registerhelper.selector";
-// import { fetchRegisterData } from "../../../../state-management/Auth/registerhelper/registerhelper.service";
-import { fetchRegisterMail } from "../../../../state-management/Auth/registerhelper/registerhelper.service";
+import { selectStep } from "../../../../state-management/Auth/register/register.selector";
+import { selectRegisterData } from "../../../../state-management/Auth/register/register.selector";
+import { selectRegisterFailed } from "../../../../state-management/Auth/register/register.selector";
+// import { fetchRegisterData } from "../../../../state-management/Auth/register/register.service";
+import { fetchRegisterMail } from "../../../../state-management/Auth/register/register.service";
 
 function ConfirmForm() {
   const errorMsg = useSelector(selectRegisterFailed);

@@ -1,7 +1,7 @@
 import React from "react";
 import { SuccesTitle } from "../../features/register/FormPagesRegister/SuccesPage/SuccesPage.style";
 import { useEffect, useState } from "react";
-import { selectIsLoading } from "../../state-management/Auth/registerhelper/registerhelper.selector";
+import { selectIsLoading } from "../../state-management/Auth/register/register.selector";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";

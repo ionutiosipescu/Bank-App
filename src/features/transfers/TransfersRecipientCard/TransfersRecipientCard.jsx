@@ -16,12 +16,12 @@ import {
 } from "./TransfersRecipientCard.style";
 
 import { useSelector } from "react-redux";
-import { selectTransferHelper } from "../../../state-management/Dashboard/services/transfer/transfer.selector";
+import { selecttransferStorage } from "../../../state-management/Dashboard/services/transfer/transfer.selector";
 
 import { accounts } from "../../../utils/data/dummyData";
 
 function TransfersRecipientCard() {
-  const selectedAccount = useSelector(selectTransferHelper);
+  const selectedAccount = useSelector(selecttransferStorage);
   const { image, owner, address, phoneNumber, email } = selectedAccount;
 
   useEffect(() => {

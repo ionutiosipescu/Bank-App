@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { selectStep } from "../../state-management/Auth/registerhelper/registerhelper.selector";
+import { selectStep } from "../../state-management/Auth/register/register.selector";
 import Button from "../UI/NewButton/Button.component";
 
 const NextBtn = () => {

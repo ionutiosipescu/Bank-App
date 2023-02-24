@@ -11,10 +11,10 @@ import FooterControl from "../../FooterControl/FooterControl";
 import DatePickerField from "../../../../components/CustomInputs/CustomDatePicker";
 import { FormContainerPersonal } from "./PersonalForm.style";
 import { handleSubmit } from "../../../../utils/helpers/helperFunctions/HandleSubmit";
-import { selectRegisterUser } from "../../../../state-management/Auth/registerhelper/registerhelper.selector";
-import { setRegisterUser } from "../../../../state-management/Auth/registerhelper/registerhelper.actions";
-import { selectStep } from "../../../../state-management/Auth/registerhelper/registerhelper.selector";
-import { setStep } from "../../../../state-management/Auth/registerhelper/registerhelper.actions";
+import { selectRegisterUser } from "../../../../state-management/Auth/register/register.selector";
+import { setRegisterUser } from "../../../../state-management/Auth/register/register.actions";
+import { selectStep } from "../../../../state-management/Auth/register/register.selector";
+import { setStep } from "../../../../state-management/Auth/register/register.actions";
 
 function PersonalForm() {
   const step = useSelector(selectStep);

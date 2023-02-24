@@ -9,17 +9,17 @@ import {
   setExchangeIdRepeat,
 } from "./exchange.action";
 import { requests } from "../../../../utils/Requests/requests";
-import { EXCHANGE_HELPER_TYPES } from "./exchange.types";
+import { EXCHANGE_TYPES } from "./exchange.types";
 import { createAction } from "../../../../utils/helpers/reducer/reducer.utils";
 
 export const requestExchangeStart = () =>
-  createAction(EXCHANGE_HELPER_TYPES.REQUEST_EXCHANGE_START);
+  createAction(EXCHANGE_TYPES.REQUEST_EXCHANGE_START);
 
 export const requestExchangeSuccess = () =>
-  createAction(EXCHANGE_HELPER_TYPES.REQUEST_EXCHANGE_SUCCESS);
+  createAction(EXCHANGE_TYPES.REQUEST_EXCHANGE_SUCCESS);
 
 export const requestExchangeFailed = (error) =>
-  createAction(EXCHANGE_HELPER_TYPES.REQUEST_EXCHANGE_FAILED, error);
+  createAction(EXCHANGE_TYPES.REQUEST_EXCHANGE_FAILED, error);
 
 // Get Arr
 export const getExchangeArr = (obj, currentUserData) => {

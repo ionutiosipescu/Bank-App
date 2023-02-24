@@ -14,7 +14,7 @@ import Button from "./../../../components/UI/Button/Button";
 import Input from "./../../../components/UI/Input/Input";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { selectTransferHelper } from "../../../state-management/Dashboard/services/transfer/transfer.selector";
+import { selecttransferStorage } from "../../../state-management/Dashboard/services/transfer/transfer.selector";
 import { selectTransferForm } from "../../../state-management/Dashboard/services/transfer/transfer.selector";
 import { setTransferForm } from "../../../state-management/Dashboard/services/transfer/transfer.action";
 import { Form, Formik } from "formik";
@@ -40,7 +40,7 @@ function TransferInputsCard() {
   const transferRedux = useSelector(selectTransfer);
   const transferForm = useSelector(selectTransferForm);
   const transferArr = useSelector(selectTransferArr);
-  const selectedAccount = useSelector(selectTransferHelper);
+  const selectedAccount = useSelector(selecttransferStorage);
   const currentUser = useSelector(selectCurrentUser);
 
   const errorMsgRequest = useSelector(selectError);

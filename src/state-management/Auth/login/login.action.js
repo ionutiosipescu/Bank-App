@@ -1,7 +1,7 @@
-import { LOGIN_ACTION_TYPES } from "./loginUser.types";
+import { LOGIN_ACTION_TYPES } from "./login.types";
 import { createAction } from "../../../utils/helpers/reducer/reducer.utils";
 // need refactor
-import { setResetSingUp } from "../registerhelper/registerhelper.actions";
+import { setResetSingUp } from "../register/register.actions";
 import { resetPassword } from "../changePassword/password.action";
 import { resetCards } from "../../Dashboard/cards/cards.action";
 import { resetSettings } from "../../Dashboard/settings/settings.action";
@@ -12,14 +12,14 @@ import { resetLoans } from "../../Dashboard/services/loan/loan.action";
 import { resetSaving } from "../../Dashboard/services/saving/saving.action";
 import { resetTransfer } from "../../Dashboard/services/transfer/transfer.action";
 
-const updateLoginUser = (loginData, e) => {
+const updatelogin = (loginData, e) => {
   const { name, value } = e.target;
   return { ...loginData, [name]: value };
 };
 
-export const setLogInUser = (loginData, e) => {
-  const loginUserData = updateLoginUser(loginData, e);
-  return createAction(LOGIN_ACTION_TYPES.SET_LOGIN_USER, loginUserData);
+export const setlogin = (loginData, e) => {
+  const loginDataObj = updatelogin(loginData, e);
+  return createAction(LOGIN_ACTION_TYPES.SET_LOGIN_USER, loginDataObj);
 };
 
 export const setOtp = (otp) => {

@@ -1,8 +1,8 @@
-export const selectExchangeData = (state) => state.exchangeHelper.exchangeData;
-export const selectExchangeArr = (state) => state.exchangeHelper.exchangeArr;
+export const selectExchangeData = (state) => state.exchangeStorage.exchangeData;
+export const selectExchangeArr = (state) => state.exchangeStorage.exchangeArr;
 export const selectExchangeOption = (state) =>
-  state.exchangeHelper.selectedOption;
+  state.exchangeStorage.selectedOption;
 
-export const selectShowMessage = (state) => state.exchangeHelper.showMessage;
-export const selectError = (state) => state.exchangeHelper.errorMsg;
-export const selectIsSubmiting = (state) => state.exchangeHelper.isSubmiting;
+export const selectShowMessage = (state) => state.exchangeStorage.showMessage;
+export const selectError = (state) => state.exchangeStorage.errorMsg;
+export const selectIsSubmiting = (state) => state.exchangeStorage.isSubmiting;

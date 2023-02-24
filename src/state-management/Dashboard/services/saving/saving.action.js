@@ -1,4 +1,4 @@
-import { SAVINGS_HELPER_TYPES } from "./saving.types";
+import { SAVINGS_TYPES } from "./saving.types";
 import { createAction } from "../../../../utils/helpers/reducer/reducer.utils";
 import { getLocalDate } from "../../../../utils/helpers/helperFunctions/date";
 import { generateRandomNumber } from "../../../../utils/helpers/helperFunctions/randomNumber";
@@ -7,7 +7,7 @@ import axios from "axios";
 
 // Update Saving Action
 export const setSavingAction = (action) => {
-  return createAction(SAVINGS_HELPER_TYPES.SET_SAVINGS_ACTION, action);
+  return createAction(SAVINGS_TYPES.SET_SAVINGS_ACTION, action);
 };
 
 // update Saving Obj
@@ -18,16 +18,16 @@ export const updateSavingForm = (savingData, e) => {
 
 export const setSavingForm = (savingData, e) => {
   const savingDataObj = updateSavingForm(savingData, e);
-  return createAction(SAVINGS_HELPER_TYPES.SET_SAVINGS_FORM, savingDataObj);
+  return createAction(SAVINGS_TYPES.SET_SAVINGS_FORM, savingDataObj);
 };
 
 export const updateTransferArr = (newSavingArr) => {
-  return createAction(SAVINGS_HELPER_TYPES.SET_SAVINGS_ARR, newSavingArr);
+  return createAction(SAVINGS_TYPES.SET_SAVINGS_ARR, newSavingArr);
 };
 
 export const setSavingArr = (obj, arr) => {
   const newSavingArr = [...arr, { ...obj }];
-  return createAction(SAVINGS_HELPER_TYPES.SET_SAVINGS_ARR, newSavingArr);
+  return createAction(SAVINGS_TYPES.SET_SAVINGS_ARR, newSavingArr);
 };
 
 export const setSavingData = async (obj) => {
@@ -52,7 +52,7 @@ export const setSavingsId = async (currentUserData) => {
 // Set Arr from DB
 
 export const setSavingArrDb = (savingArr) => {
-  return createAction(SAVINGS_HELPER_TYPES.SET_SAVINGS_ARR, savingArr);
+  return createAction(SAVINGS_TYPES.SET_SAVINGS_ARR, savingArr);
 };
 
 export const generateObjWithdraw = async (savingObj) => {
@@ -71,24 +71,24 @@ export const generateObjWithdraw = async (savingObj) => {
 export const setSavingArrActions = (savingArr, savingObj) => {
   const { id } = savingObj;
   const newArr = savingArr.filter((saving) => saving.id !== id);
-  return createAction(SAVINGS_HELPER_TYPES.SET_SAVINGS_ARR, newArr);
+  return createAction(SAVINGS_TYPES.SET_SAVINGS_ARR, newArr);
 };
 
 export const resetSaving = () => {
-  return createAction(SAVINGS_HELPER_TYPES.RESET_SAVING);
+  return createAction(SAVINGS_TYPES.RESET_SAVING);
 };
 
 export const setSavingTransfer = (saving) => {
-  return createAction(SAVINGS_HELPER_TYPES.SET_SAVINGS_DATA, saving);
+  return createAction(SAVINGS_TYPES.SET_SAVINGS_DATA, saving);
 };
 
 export const setShowModal = (boolean) => {
-  return createAction(SAVINGS_HELPER_TYPES.SET_MODAL_SAVING, boolean);
+  return createAction(SAVINGS_TYPES.SET_MODAL_SAVING, boolean);
 };
 
 // Reset Show Message
 export const setResetShowMsg = () => {
-  return createAction(SAVINGS_HELPER_TYPES.RESET_SHOW_MSG);
+  return createAction(SAVINGS_TYPES.RESET_SHOW_MSG);
 };
 
 // ResetForm
@@ -97,5 +97,5 @@ export const setResetFormSaving = () => {
     details: "",
     transfer: "",
   };
-  return createAction(SAVINGS_HELPER_TYPES.SET_SAVINGS_FORM, newObj);
+  return createAction(SAVINGS_TYPES.SET_SAVINGS_FORM, newObj);
 };

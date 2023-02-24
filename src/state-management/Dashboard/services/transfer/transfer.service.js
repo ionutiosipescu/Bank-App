@@ -11,16 +11,16 @@ import {
   transferComplete,
 } from "../../../../utils/Requests/requests";
 import { createAction } from "../../../../utils/helpers/reducer/reducer.utils";
-import { TRANSFER_HELPER_TYPES } from "./transfer.types";
+import { TRANSFER_TYPES } from "./transfer.types";
 
 export const requestTransferStart = () =>
-  createAction(TRANSFER_HELPER_TYPES.REQUEST_TRANSFER_START);
+  createAction(TRANSFER_TYPES.REQUEST_TRANSFER_START);
 
 export const requestTransferSuccess = () =>
-  createAction(TRANSFER_HELPER_TYPES.REQUEST_TRANSFER_SUCCESS);
+  createAction(TRANSFER_TYPES.REQUEST_TRANSFER_SUCCESS);
 
 export const requestTransferFailed = (error) =>
-  createAction(TRANSFER_HELPER_TYPES.REQUEST_TRANSFER_FAILED, error);
+  createAction(TRANSFER_TYPES.REQUEST_TRANSFER_FAILED, error);
 
 // Get Arr
 export const getTransferArr = (obj, currentUserData) => {

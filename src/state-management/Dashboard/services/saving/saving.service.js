@@ -10,17 +10,17 @@ import {
 import axios from "axios";
 import { requests, savingComplete } from "../../../../utils/Requests/requests";
 import { updateTransferArr } from "./saving.action";
-import { SAVINGS_HELPER_TYPES } from "./saving.types";
+import { SAVINGS_TYPES } from "./saving.types";
 import { createAction } from "../../../../utils/helpers/reducer/reducer.utils";
 
 export const requestSavingStart = () =>
-  createAction(SAVINGS_HELPER_TYPES.REQUEST_SAVING_START);
+  createAction(SAVINGS_TYPES.REQUEST_SAVING_START);
 
 export const requestSavingSuccess = () =>
-  createAction(SAVINGS_HELPER_TYPES.REQUEST_SAVING_SUCCESS);
+  createAction(SAVINGS_TYPES.REQUEST_SAVING_SUCCESS);
 
 export const requestSavingFailed = (error) =>
-  createAction(SAVINGS_HELPER_TYPES.REQUEST_SAVING_FAILED, error);
+  createAction(SAVINGS_TYPES.REQUEST_SAVING_FAILED, error);
 
 // Async Saving Post Withdraw
 export const fetchSavingWithdraw = (savingData, savingObj) => {
