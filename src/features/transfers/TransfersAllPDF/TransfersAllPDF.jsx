@@ -9,17 +9,18 @@ import { selectCurrentUser } from "../../../state-management/Dashboard/userData/
 import { selectTransferArr } from "./../../../state-management/Dashboard/services/transfer/transfer.selector";
 import logo from "../../../assets/images/logo.png";
 import { selectCardArr } from "./../../../state-management/Dashboard/cards/cards.selector";
+import { accounts } from "./../../../utils/data/dummyData";
 
 function TransfersAllPDF() {
   const transfers = useSelector(selectTransferArr);
-  const balanceArr = useSelector(selectCardArr);
+  const userData = useSelector(selectCurrentUser);
   const option = useSelector(selectOptionTransfer);
   const balance =
     option.account === "ron"
-      ? `${balanceArr[0].balance} RON`
-      : `${balanceArr[1].balance} EUR`;
+      ? `${userData.account[0].balance} RON`
+      : `${userData.account[1].balance} EUR`;
 
-  console.log(option);
+  console.log(userData.account);
 
   const arrayOfArrays = transfers.map(
     ({ id, transfer, date, details, to_receiver_name }) => [

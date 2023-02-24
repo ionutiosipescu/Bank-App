@@ -40,7 +40,7 @@ export const ProfileInfo = styled.div`
 
 export const InfoSection = styled.div`
   display: flex;
-  width: 30%;
+  width: fit-content;
   flex-direction: row;
   /* max-width: 30%; */
   & > div:last-of-type {
