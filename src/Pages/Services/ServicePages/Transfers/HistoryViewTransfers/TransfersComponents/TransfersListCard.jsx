@@ -62,6 +62,7 @@ function TransfersListCard() {
                   <UserContainerTransfer>
                     <img src={accounts[0].image} alt="poza" />
                   </UserContainerTransfer>
+                  <h3>{`${transfer.from_sender_name} \u2192 ${transfer.to_receiver_name}`}</h3>
                   <h3>{transfer.details}</h3>
                   <IdList> #{transfer.id}</IdList>
                   <AmountContainer>
