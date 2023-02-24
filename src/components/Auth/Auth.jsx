@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Formik } from "formik";
 import CustomInput from "../CustomInputs/CustomInput";
 import { AuthSchema } from "./ValidationSchema/ValidationSchema";
@@ -22,6 +22,8 @@ import { selectSettingErrorRequest } from "../../state-management/Auth/changePas
 import { selectSettingIsSubmiting } from "../../state-management/Auth/changePassword/password.selector";
 import { selectShowMessage } from "../../state-management/Auth/changePassword/password.selector";
 import { selectAuth } from "../../state-management/Auth/changePassword/password.selector";
+import { setResetShowMsg } from "../../state-management/Auth/changePassword/password.action";
+import RequestMessage from "../../components/RequestMessage/RequestMessage";
 
 function Auth() {
   const dispatch = useDispatch();
@@ -40,6 +42,10 @@ function Auth() {
   const onSubmit = () => {
     dispatch(fetchAuthDataPassword(passwordData, authData));
   };
+
+  useEffect(() => {
+    dispatch(setResetShowMsg());
+  }, []);
 
   return (
     <AuthWrapper>
@@ -71,21 +77,12 @@ function Auth() {
                 tall
               />
             </AuthRowSection>
-            {isSubmiting ? (
-              <Spinner size={"fit"} />
-            ) : showMessage ? (
-              <StatusMessage
-                type={errorMsgRequest ? "error" : "success"}
-                text={
-                  errorMsgRequest
-                    ? errorMsgRequest
-                    : "Your account has been updated"
-                }
-                size="full"
-              />
-            ) : (
-              <></>
-            )}
+            <RequestMessage
+              isSubmiting={isSubmiting}
+              showMessage={showMessage}
+              errorMsgRequest={errorMsgRequest}
+              text="Your Saving has been Succesfuly Added"
+            />
             <AuthButton
               label="Submit Password"
               size="fullWidth"
