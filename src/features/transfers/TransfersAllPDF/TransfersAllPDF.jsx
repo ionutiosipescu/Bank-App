@@ -70,14 +70,6 @@ function TransfersAllPDF() {
     // Add the table with transaction details
     const headers = [["ID", "Amount", "Date", "Details", "Name"]];
     const data = arrayOfArrays;
-    // const data = [
-    //   ["01/03/2023", "Deposit", "$1,000.00"],
-    //   ["01/05/2023", "Check #123", "-$100.00"],
-    //   ["01/10/2023", "ATM Withdrawal", "-$200.00"],
-    //   ["01/15/2023", "Online Payment", "-$50.00"],
-    //   ["01/25/2023", "Deposit", "$500.00"],
-    //   ["01/29/2023", "Check #124", "-$75.00"],
-    // ];
 
     doc.autoTable({
       head: headers,

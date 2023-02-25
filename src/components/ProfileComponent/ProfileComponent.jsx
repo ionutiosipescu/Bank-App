@@ -1,5 +1,4 @@
 import React from "react";
-import Button from "../UI/Button/Button";
 import {
   ProfileContainer,
   ProfileWrapper,
@@ -17,11 +16,8 @@ function ProfileComponent({ image, name, address, email, phoneNumber }) {
   return (
     <ProfileWrapper>
       <ProfileContainer>
-        {/* <div> */}
         <img src={avatar} alt="" />
-        {/* </div> */}
         <div>
-          {/* <h1>Hi,</h1> */}
           <h1>{name}</h1>
           <LinkButton label="Edit Profile" size="sm" to="/settings" />
         </div>

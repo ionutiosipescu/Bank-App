@@ -1,12 +1,7 @@
 import React, { useState } from "react";
 
 import Button from "../UI/Button/Button";
-import {
-  CarouselContainer,
-  CarouselWrapper,
-  UserContainer,
-  UsersWrapper,
-} from "./Carousel.style";
+import { CarouselContainer, UserContainer } from "./Carousel.style";
 import { useDispatch } from "react-redux";
 import { fetchTransferAccount } from "../../state-management/Dashboard/services/transfer/transfer.action";
 

@@ -11,8 +11,10 @@ import {
 } from "../../../../pages/Settings/Settings.style";
 import { settingsSchema } from "../../ValidationSchema/ValidationSchema";
 import Button from "../../../../components/UI/Button/Button";
-import { AccountContainer } from "../../../../pages/Settings/Settings.style";
-import { SettingsFormWrapper } from "../../../../pages/Settings/Settings.style";
+import {
+  AccountContainer,
+  SettingsFormWrapper,
+} from "../../../../pages/Settings/Settings.style";
 import { selectCurrentUser } from "../../../../state-management/Dashboard/userData/userData.selector";
 import { fetchAuthData } from "../../../../state-management/Dashboard/settings/settings.service";
 import { selectToken } from "../../../../state-management/Auth/register/register.selector";

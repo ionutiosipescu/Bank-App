@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { Form } from "formik";
-import Button from "../../components/UI/Button/Button";
 
 export const SettingsContainer = styled.div`
   display: flex;
@@ -45,7 +44,6 @@ export const PreferenceContainer = styled.div`
   width: 30%;
   height: 70vh;
   margin-right: 100px;
-  /* padding-bottom: 50px; */
   border-right: 2px solid var(--gray);
   @media (max-width: 1440px) {
     width: 90%;
@@ -100,11 +98,11 @@ export const RowSettingsSection = styled.div`
 export const FormCustomSettings = styled(Form)`
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  margin-top: 60px;
+  gap: 100px;
 `;
 
 export const TitleSettings = styled.h2`
-  margin: 50px 0 20px 0;
   width: 100%;
   text-align: center;
 `;

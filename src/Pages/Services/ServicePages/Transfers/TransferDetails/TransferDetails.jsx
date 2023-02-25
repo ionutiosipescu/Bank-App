@@ -10,7 +10,6 @@ import {
   TransactionInfo,
   TransactionDetailsInfo,
 } from "./TransferDetails.style";
-import Button from "./../../../../../components/UI/Button/Button";
 import avatar from "./../../../../../assets/images/avatar-2.png";
 import { useSelector } from "react-redux";
 import {
@@ -19,8 +18,6 @@ import {
 } from "../../../../../state-management/Dashboard/services/transfer/transfer.selector";
 
 //////////////////////////
-import jsPDF from "jspdf";
-import "jspdf-autotable";
 import TransferPDF from "../../../../../features/transfers/TransferPDF/TransferPDF";
 import { selectCurrentUser } from "./../../../../../state-management/Dashboard/userData/userData.selector";
 
