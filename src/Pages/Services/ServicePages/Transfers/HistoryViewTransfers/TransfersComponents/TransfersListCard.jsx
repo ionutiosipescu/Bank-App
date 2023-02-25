@@ -14,6 +14,7 @@ import {
   ListContainer,
   ListItem,
 } from "../../../../../../features/savings/SavingsListCard/SavingsListCard.style";
+import TransfersAllPDF from "../../../../../../features/transfers/TransfersAllPDF/TransfersAllPDF";
 import {
   setDetailTransfer,
   setSelectedOptionTransfer,
@@ -51,6 +52,7 @@ function TransfersListCard() {
               dispatch(setSelectedOptionTransfer(e, transferOption))
             }
           />
+          <TransfersAllPDF />
         </SelectAccountToggle>
       </CardHeader>
       <ListContainer>

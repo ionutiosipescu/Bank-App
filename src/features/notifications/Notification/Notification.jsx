@@ -9,8 +9,6 @@ import { useState } from "react";
 import NotificationItem from "./../NotificationItem/NotificationItem";
 
 function Notification({ status, ...props }) {
-  const [read, setRead] = useState(false);
-
   return (
     <NotificationCard status={status}>
       <NotificationsHeader>
