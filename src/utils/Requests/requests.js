@@ -26,6 +26,7 @@ export const cardsComplete = {
 
 export const requests = {
   // AUTH
+
   // login
   POST_AUTHENTICATE_USER: `${requestGeneral.LOCAL}/bank/auth/signin`,
   POST_USER_DATA: `${requestGeneral.LOCAL}/user/`,
@@ -37,6 +38,7 @@ export const requests = {
   PUT_CHANGE_PASSWORD: `${requestGeneral.LOCAL}/user/edit/credentials`,
 
   // DASHBOARD
+
   // DASHBOARD_SERVICES
   // loans
   GET_HISTORY_LOAN: `${requestGeneral.LOCAL}/loans/?id=`,
