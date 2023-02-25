@@ -5,6 +5,13 @@ import {
   PresentationInfo,
 } from "../ServiceHomePresentation.style";
 
+import mobileTransfer from "../../assets/mobile_transfer.png";
+import loanDoc from "../../assets/loanDoc.png";
+import exchange from "../../assets/exchange.png";
+import savings from "../../assets/savings.png";
+import withdraw from "../../assets/withdraw.png";
+import support from "../../assets/support.webp";
+
 function ServiceHomeCards() {
   return (
     <>
@@ -19,10 +26,7 @@ function ServiceHomeCards() {
                 transfer services.
               </p>
             </span>
-            <img
-              src="https://cdni.iconscout.com/illustration/premium/thumb/mobile-money-transfer-3494304-2928759.png"
-              alt=""
-            />
+            <img src={mobileTransfer} alt="" />
           </PresentationInfo>
         </CardContainer>
         <CardContainer size="sm">
@@ -34,10 +38,7 @@ function ServiceHomeCards() {
                 Get a small interest loan in minutes and make yours a reality.
               </p>
             </span>
-            <img
-              src="https://cdni.iconscout.com/illustration/premium/thumb/loan-documentation-4521459-3783695.png"
-              alt=""
-            />
+            <img src={loanDoc} alt="" />
           </PresentationInfo>
         </CardContainer>
         <CardContainer size="sm">
@@ -47,10 +48,7 @@ function ServiceHomeCards() {
               <br />
               <p>You have 0 fees for any exchange between your accounts.</p>
             </span>
-            <img
-              src="https://cdni.iconscout.com/illustration/premium/thumb/money-exchange-5379650-4494365.png"
-              alt=""
-            />
+            <img src={exchange} alt="" />
           </PresentationInfo>
         </CardContainer>
       </ChartsWrapper>
@@ -66,10 +64,7 @@ function ServiceHomeCards() {
                 a year!
               </p>
             </span>
-            <img
-              src="https://cdni.iconscout.com/illustration/premium/thumb/saving-money-for-dream-4635504-3894699.png"
-              alt=""
-            />
+            <img src={savings} alt="" />
           </PresentationInfo>
         </CardContainer>
         <CardContainer size="sm">
@@ -82,10 +77,7 @@ function ServiceHomeCards() {
                 10,000ROn.
               </p>
             </span>
-            <img
-              src="https://cdni.iconscout.com/illustration/premium/thumb/man-withdrawing-money-online-5718683-4781199.png"
-              alt=""
-            />
+            <img src={withdraw} alt="" />
           </PresentationInfo>
         </CardContainer>
         <CardContainer size="sm">
@@ -98,10 +90,7 @@ function ServiceHomeCards() {
                 you.
               </p>
             </span>
-            <img
-              src="https://static.vecteezy.com/system/resources/previews/010/869/741/original/faq-concept-illustration-people-looking-through-magnifying-glass-at-interrogation-point-searching-solutions-useful-information-customer-support-solving-problem-free-png.png"
-              alt=""
-            />
+            <img src={support} alt="" />
           </PresentationInfo>
         </CardContainer>
       </ChartsWrapper>
