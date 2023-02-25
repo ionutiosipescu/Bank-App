@@ -58,13 +58,6 @@ function Home() {
     setActive(active === "active" ? "notActive" : "active");
   };
 
-  const dispatch = useDispatch();
-  const currentUser = useSelector(selectCurrentUser);
-  const transferOption = useSelector(selectOptionTransfer);
-  useEffect(() => {
-    dispatch(getTransferArr(transferOption, currentUser));
-  }, [transferOption]);
-
   return (
     <HomeWrapper>
       <SideBar active={active} handleActive={handleActive} />

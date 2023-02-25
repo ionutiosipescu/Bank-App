@@ -30,10 +30,14 @@ function Dashboard() {
   const accountsArr = useSelector(selectCardArr);
   const isSubmiting = useSelector(selectIsSubmiting);
   const userData = useSelector(selectCurrentUser);
+  const notificationOpen = useSelector(selectNotificationOpen);
 
-  useEffect(() => {
-    console.log(accountsArr.length === 0);
-  }, [accountsArr]);
+  // useEffect(() => {
+  //   if (!userData) return;
+  //   if (userData) {
+  //     dispatch(getTransferArr({ account: "ron" }, userData));
+  //   }
+  // }, [userData]);
 
   return (
     <React.Fragment>

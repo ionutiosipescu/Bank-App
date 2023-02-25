@@ -23,11 +23,9 @@ import {
   selectModalIsOpen,
 } from "../../../state-management/Auth/login/login.selector";
 import { fetchLoginData } from "../../../state-management/Auth/login/login.service";
-import { selectNotificationOpen } from "../../../state-management/Dashboard/dashboard/dashboard.selector";
 
 function FormLogIn() {
   const dispatch = useDispatch();
-  const notificationOpen = useSelector(selectNotificationOpen);
   const errorMsg = useSelector(selectErrorMessage);
   const loginData = useSelector(selectlogin);
   const otp = useSelector(selectOtp);
@@ -40,7 +38,7 @@ function FormLogIn() {
   const onSubmit = () => {
     // dispatch(controlMoldalAsync(true));
     // de schimbat cu cea de jos
-    dispatch(fetchLoginData(loginData, notificationOpen));
+    dispatch(fetchLoginData(loginData));
   };
 
   // send data to Redux userProfile

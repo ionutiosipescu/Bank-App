@@ -24,15 +24,13 @@ export const requestTransferFailed = (error) =>
   createAction(TRANSFER_TYPES.REQUEST_TRANSFER_FAILED, error);
 
 // Get Arr
-export const getTransferArr = (obj, currentUserData, notificationOpen) => {
+export const getTransferArr = (obj, currentUserData) => {
   return async (dispatch) => {
     const id = await setTransferId(obj, currentUserData);
     console.log(id);
     // if (!id) return;
     const { data } = await axios.get(`${requests.GET_HISTORY_TRANSFER}${id}`);
-    if (data.length >= 1 && notificationOpen === false) {
-      await dispatch(setRedDot(true));
-    }
+
     await dispatch(setTransferArrDb(data));
   };
 };

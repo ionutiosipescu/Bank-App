@@ -16,7 +16,7 @@ export const postLoginSuccess = () =>
 export const postLoginFailed = (error) =>
   createAction(LOGIN_ACTION_TYPES.POST_LOGIN_FAILED, error);
 
-export const fetchAuthData = (registerData, notificationOpen) => {
+export const fetchAuthData = (registerData) => {
   return async (dispatch) => {
     const {
       data: { active, type, token, id, email },
@@ -38,9 +38,6 @@ export const fetchAuthData = (registerData, notificationOpen) => {
       console.log(data);
       if (!data) return;
       await dispatch(setCurrentUser(data));
-      await dispatch(
-        getTransferArr({ account: "ron" }, data, notificationOpen)
-      );
       await dispatch(postLoginSuccess());
     } else {
       await dispatch(controlMoldalAsync(true));
@@ -49,10 +46,10 @@ export const fetchAuthData = (registerData, notificationOpen) => {
 };
 
 // Async User Login
-export const fetchLoginData = (registerData, notificationOpen) => {
+export const fetchLoginData = (registerData) => {
   return async (dispatch) => {
     try {
-      await dispatch(fetchAuthData(registerData, notificationOpen));
+      await dispatch(fetchAuthData(registerData));
     } catch (error) {
       if (!error) return;
       const errMsg = error?.response?.data?.message;
