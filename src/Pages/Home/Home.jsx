@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { HomeContainer, HomeWrapper } from "./Home.style";
+import { useDispatch, useSelector } from "react-redux";
+import { selectCurrentUser } from "../../state-management/Dashboard/userData/userData.selector";
+import { selectOptionTransfer } from "../../state-management/Dashboard/services/transfer/transfer.selector";
+import { getTransferArr } from "../../state-management/Dashboard/services/transfer/transfer.service";
 
 import SideBar from "../../layouts/SideBar/SideBar";
 import Dashboard from "./../Dashboard/Dashboard";
@@ -53,6 +57,13 @@ function Home() {
   const handleActive = () => {
     setActive(active === "active" ? "notActive" : "active");
   };
+
+  const dispatch = useDispatch();
+  const currentUser = useSelector(selectCurrentUser);
+  const transferOption = useSelector(selectOptionTransfer);
+  useEffect(() => {
+    dispatch(getTransferArr(transferOption, currentUser));
+  }, [transferOption]);
 
   return (
     <HomeWrapper>

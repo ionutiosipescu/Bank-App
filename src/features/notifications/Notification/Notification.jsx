@@ -7,9 +7,11 @@ import {
 import { accounts } from "../../../utils/data/dummyData";
 import { useState } from "react";
 import NotificationItem from "./../NotificationItem/NotificationItem";
+import { useSelector } from "react-redux";
+import { selectTransferArr } from "../../../state-management/Dashboard/services/transfer/transfer.selector";
 
 function Notification({ status, ...props }) {
-  const [read, setRead] = useState(false);
+  const transferArr = useSelector(selectTransferArr);
 
   return (
     <NotificationCard status={status}>
@@ -17,7 +19,7 @@ function Notification({ status, ...props }) {
         <h3>Notifications</h3>
       </NotificationsHeader>
       <NotificationsBody>
-        {accounts.map((account, index) => (
+        {transferArr.map((account, index) => (
           <NotificationItem data={account} />
         ))}
       </NotificationsBody>

@@ -5,6 +5,7 @@ import { LOGIN_ACTION_TYPES } from "./login.types";
 import { setToken } from "../register/register.actions";
 import { controlMoldalAsync, setEmailValidate } from "./login.action";
 import { requests, loginComplete } from "../../../utils/requests/requests";
+import { getTransferArr } from "../../Dashboard/services/transfer/transfer.service";
 
 export const postLoginStart = () =>
   createAction(LOGIN_ACTION_TYPES.POST_LOGIN_START);
@@ -15,7 +16,7 @@ export const postLoginSuccess = () =>
 export const postLoginFailed = (error) =>
   createAction(LOGIN_ACTION_TYPES.POST_LOGIN_FAILED, error);
 
-export const fetchAuthData = (registerData) => {
+export const fetchAuthData = (registerData, notificationOpen) => {
   return async (dispatch) => {
     const {
       data: { active, type, token, id, email },
@@ -37,6 +38,9 @@ export const fetchAuthData = (registerData) => {
       console.log(data);
       if (!data) return;
       await dispatch(setCurrentUser(data));
+      await dispatch(
+        getTransferArr({ account: "ron" }, data, notificationOpen)
+      );
       await dispatch(postLoginSuccess());
     } else {
       await dispatch(controlMoldalAsync(true));
@@ -45,10 +49,10 @@ export const fetchAuthData = (registerData) => {
 };
 
 // Async User Login
-export const fetchLoginData = (registerData) => {
+export const fetchLoginData = (registerData, notificationOpen) => {
   return async (dispatch) => {
     try {
-      await dispatch(fetchAuthData(registerData));
+      await dispatch(fetchAuthData(registerData, notificationOpen));
     } catch (error) {
       if (!error) return;
       const errMsg = error?.response?.data?.message;

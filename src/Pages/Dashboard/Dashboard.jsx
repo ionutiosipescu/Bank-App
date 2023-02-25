@@ -11,7 +11,7 @@ import BalanceCard from "../../components/BalanceCard/BalanceCard";
 import TopCard from "../../components/TopCard/TopCard";
 import OverviewCard from "./../../components/OverviewCard/OverviewCard";
 import OutcomeChart from "../../components/OutcomeCard/OutcomeCard";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { selectCurrentUser } from "../../state-management/Dashboard/userData/userData.selector";
 import Spinner from "../../components/Spinner/Spinner";
 import { selectIsSubmiting } from "../../state-management/Auth/login/login.selector";
@@ -19,8 +19,14 @@ import { generateRandomNumber } from "../../utils/helpers/helperFunctions/random
 import { cardValidityGenerator } from "../../utils/helpers/helperFunctions/cardValidityGenerator";
 import { useEffect } from "react";
 import { selectCardArr } from "../../state-management/Dashboard/cards/cards.selector";
+import { selectOptionTransfer } from "../../state-management/Dashboard/services/transfer/transfer.selector";
+import { getTransferArr } from "../../state-management/Dashboard/services/transfer/transfer.service";
+import { selectNotificationOpen } from "../../state-management/Dashboard/dashboard/dashboard.selector";
 
 function Dashboard() {
+  const dispatch = useDispatch();
+  const currentUser = useSelector(selectCurrentUser);
+  const transferOption = useSelector(selectOptionTransfer);
   const accountsArr = useSelector(selectCardArr);
   const isSubmiting = useSelector(selectIsSubmiting);
   const userData = useSelector(selectCurrentUser);

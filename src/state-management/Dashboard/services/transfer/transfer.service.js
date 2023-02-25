@@ -12,6 +12,7 @@ import {
 } from "../../../../utils/requests/requests";
 import { createAction } from "../../../../utils/helpers/reducer/reducer.utils";
 import { TRANSFER_TYPES } from "./transfer.types";
+import { setRedDot } from "../../dashboard/dashboard.action";
 
 export const requestTransferStart = () =>
   createAction(TRANSFER_TYPES.REQUEST_TRANSFER_START);
@@ -23,13 +24,15 @@ export const requestTransferFailed = (error) =>
   createAction(TRANSFER_TYPES.REQUEST_TRANSFER_FAILED, error);
 
 // Get Arr
-export const getTransferArr = (obj, currentUserData) => {
+export const getTransferArr = (obj, currentUserData, notificationOpen) => {
   return async (dispatch) => {
     const id = await setTransferId(obj, currentUserData);
     console.log(id);
     // if (!id) return;
     const { data } = await axios.get(`${requests.GET_HISTORY_TRANSFER}${id}`);
-    console.log(data);
+    if (data.length >= 1 && notificationOpen === false) {
+      await dispatch(setRedDot(true));
+    }
     await dispatch(setTransferArrDb(data));
   };
 };

@@ -6,6 +6,7 @@ import {
   NotificationItemContainer,
   NotificationItemImage,
 } from "../Notification/Notification.style";
+import avatar from "../../../assets/images/avatar.png";
 
 function NotificationItem({ data, ...props }) {
   const notifDate = date.toDateString();
@@ -18,11 +19,11 @@ function NotificationItem({ data, ...props }) {
   return (
     <NotificationItemContainer onClick={() => setIsRead(!isRead)} read={isRead}>
       <NotificationItemImage>
-        <img src={data.image} alt="" />
+        <img src={avatar} alt="" />
       </NotificationItemImage>
       <NotificaionItemBody>
         <h4>
-          <span>{data.owner}</span> sent you a transfer
+          <span>{data.from_sender_name}</span> sent you a transfer
         </h4>
         <div>
           <h5>{notifDate}</h5>
