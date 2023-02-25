@@ -11,6 +11,7 @@ import { resetExchange } from "../../Dashboard/services/exchange/exchange.action
 import { resetLoans } from "../../Dashboard/services/loan/loan.action";
 import { resetSaving } from "../../Dashboard/services/saving/saving.action";
 import { resetTransfer } from "../../Dashboard/services/transfer/transfer.action";
+import { resetDashboard } from "../../Dashboard/dashboard/dashboard.action";
 
 const updatelogin = (loginData, e) => {
   const { name, value } = e.target;
@@ -64,5 +65,6 @@ export const resetRedux = () => {
     await dispatch(resetLoans());
     await dispatch(resetSaving());
     await dispatch(resetTransfer());
+    await dispatch(resetDashboard());
   };
 };

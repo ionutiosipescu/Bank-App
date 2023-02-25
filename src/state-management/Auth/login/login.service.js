@@ -5,6 +5,7 @@ import { LOGIN_ACTION_TYPES } from "./login.types";
 import { setToken } from "../register/register.actions";
 import { controlMoldalAsync, setEmailValidate } from "./login.action";
 import { requests, loginComplete } from "../../../utils/requests/requests";
+import { getTransferArr } from "../../Dashboard/services/transfer/transfer.service";
 
 export const postLoginStart = () =>
   createAction(LOGIN_ACTION_TYPES.POST_LOGIN_START);
