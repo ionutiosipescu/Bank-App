@@ -12,7 +12,9 @@ import {
 } from "../../../../utils/requests/requests";
 import { createAction } from "../../../../utils/helpers/reducer/reducer.utils";
 import { TRANSFER_TYPES } from "./transfer.types";
+import { setNotificationOpen } from "../../dashboard/dashboard.action";
 import { setRedDot } from "../../dashboard/dashboard.action";
+import { setNotificationTransfer } from "../../dashboard/dashboard.action";
 
 export const requestTransferStart = () =>
   createAction(TRANSFER_TYPES.REQUEST_TRANSFER_START);
@@ -30,27 +32,27 @@ export const getTransferArr = (obj, currentUserData) => {
     console.log(id);
     // if (!id) return;
     const { data } = await axios.get(`${requests.GET_HISTORY_TRANSFER}${id}`);
-
+    console.log(data);
     await dispatch(setTransferArrDb(data));
   };
 };
 
 // Async Transfer Data
 export const fetchTransferData = (transferRedux, currentUserData) => {
-  const { transferForm } = transferRedux;
+  const { transferForm, transferArr } = transferRedux;
   return async (dispatch) => {
     try {
       await dispatch(requestTransferStart());
-      await dispatch(setTransferArr(transferRedux));
       const transferDataRequest = await setTransferData(transferForm);
       const id = await setTransferId(transferForm, currentUserData);
       console.log(id, transferDataRequest);
-      await axios
-        .post(
-          `${requests.POST_CREATE_TRANSFER}${id}${transferComplete.EMAIL}${transferForm.email}`,
-          transferDataRequest
-        )
-        .then((res) => console.log(res));
+      const { data } = await axios.post(
+        `${requests.POST_CREATE_TRANSFER}${id}${transferComplete.EMAIL}${transferForm.email}`,
+        transferDataRequest
+      );
+      console.log(data);
+      await dispatch(setNotificationTransfer(data, transferArr));
+      // await dispatch(setTransferArr(transferRedux));
       await dispatch(requestTransferSuccess());
       await dispatch(setResetFormTransfer());
     } catch (err) {

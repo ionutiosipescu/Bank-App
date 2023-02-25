@@ -8,13 +8,13 @@ import { useEffect } from "react";
 import { getTransferArr } from "../../../../state-management/Dashboard/services/transfer/transfer.service";
 
 function Transfers() {
-  // const dispatch = useDispatch();
-  // const currentUser = useSelector(selectCurrentUser);
-  // const transferOption = useSelector(selectOptionTransfer);
+  const dispatch = useDispatch();
+  const currentUser = useSelector(selectCurrentUser);
+  const transferOption = useSelector(selectOptionTransfer);
 
-  // useEffect(() => {
-  //   dispatch(getTransferArr(transferOption, currentUser));
-  // }, [transferOption]);
+  useEffect(() => {
+    dispatch(getTransferArr(transferOption, currentUser));
+  }, [transferOption]);
 
   return (
     <>

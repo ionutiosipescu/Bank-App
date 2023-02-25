@@ -23,7 +23,7 @@ import { selectCurrentUser } from "../../state-management/Dashboard/userData/use
 import { selectIsSubmiting } from "../../state-management/Auth/login/login.selector";
 import Spinner from "../../components/Spinner/Spinner";
 import Notification from "../../features/notifications/Notification/Notification";
-import { selectTransferArr } from "../../state-management/Dashboard/services/transfer/transfer.selector";
+import { selectNotificationArr } from "../../state-management/Dashboard/dashboard/dashboard.selector";
 import { selectRedDot } from "../../state-management/Dashboard/dashboard/dashboard.selector";
 import { setRedDot } from "../../state-management/Dashboard/dashboard/dashboard.action";
 
@@ -31,7 +31,7 @@ function NavBar() {
   const dispatch = useDispatch();
   const redDot = useSelector(selectRedDot);
   const userData = useSelector(selectCurrentUser);
-  const transferArr = useSelector(selectTransferArr);
+  const transferArr = useSelector(selectNotificationArr);
 
   const isSubmiting = useSelector(selectIsSubmiting);
 
@@ -47,11 +47,9 @@ function NavBar() {
     dispatch(setRedDot(false));
   };
 
-  // useEffect(() => {
-  //   if (transferArr.length >= 1 && notificationOpen === false) {
-  //     dispatch(setRedDot(true));
-  //   }
-  // }, [transferArr]);
+  useEffect(() => {
+    console.log(transferArr);
+  }, [transferArr]);
 
   return (
     <NavBarContainer>

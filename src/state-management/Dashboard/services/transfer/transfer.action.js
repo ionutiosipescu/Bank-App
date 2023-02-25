@@ -87,7 +87,7 @@ export const setTransferData = async (transferData) => {
 // Find Account ID
 export const setTransferId = async (obj, currentUserData) => {
   const { account } = obj;
-  const userAccountArr = currentUserData.account;
+  const userAccountArr = currentUserData?.account;
   const stringCompare = "currency";
   console.log(account, userAccountArr, stringCompare);
   const object = findObjectByString(account, userAccountArr, stringCompare);

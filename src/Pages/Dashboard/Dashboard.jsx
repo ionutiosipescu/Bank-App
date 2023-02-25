@@ -22,6 +22,7 @@ import { selectCardArr } from "../../state-management/Dashboard/cards/cards.sele
 import { selectOptionTransfer } from "../../state-management/Dashboard/services/transfer/transfer.selector";
 import { getTransferArr } from "../../state-management/Dashboard/services/transfer/transfer.service";
 import { selectNotificationOpen } from "../../state-management/Dashboard/dashboard/dashboard.selector";
+import { getTransferArrNotifications } from "../../state-management/Dashboard/dashboard/dashboard.service";
 
 function Dashboard() {
   const dispatch = useDispatch();
@@ -32,12 +33,12 @@ function Dashboard() {
   const userData = useSelector(selectCurrentUser);
   const notificationOpen = useSelector(selectNotificationOpen);
 
-  // useEffect(() => {
-  //   if (!userData) return;
-  //   if (userData) {
-  //     dispatch(getTransferArr({ account: "ron" }, userData));
-  //   }
-  // }, [userData]);
+  useEffect(() => {
+    if (isSubmiting === false) {
+      dispatch(getTransferArrNotifications(userData, notificationOpen));
+    }
+    console.log(isSubmiting);
+  }, [isSubmiting]);
 
   return (
     <React.Fragment>

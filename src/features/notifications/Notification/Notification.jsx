@@ -8,10 +8,10 @@ import { accounts } from "../../../utils/data/dummyData";
 import { useState } from "react";
 import NotificationItem from "./../NotificationItem/NotificationItem";
 import { useSelector } from "react-redux";
-import { selectTransferArr } from "../../../state-management/Dashboard/services/transfer/transfer.selector";
+import { selectNotificationArr } from "../../../state-management/Dashboard/dashboard/dashboard.selector";
 
 function Notification({ status, ...props }) {
-  const transferArr = useSelector(selectTransferArr);
+  const transferArr = useSelector(selectNotificationArr);
 
   return (
     <NotificationCard status={status}>
