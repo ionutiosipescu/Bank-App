@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Button from "../../components/UI/Button/Button";
 import {
@@ -32,6 +32,7 @@ function NavBar() {
   const redDot = useSelector(selectRedDot);
   const userData = useSelector(selectCurrentUser);
   const transferArr = useSelector(selectNotificationArr);
+  const dropdownRef = useRef(null);
 
   const isSubmiting = useSelector(selectIsSubmiting);
 
@@ -62,9 +63,7 @@ function NavBar() {
           <RiNotification4Line size={22} />
           {redDot ? (
             <NotificationDot>{transferArr.length.toString()}</NotificationDot>
-          ) : (
-            <></>
-          )}
+          ) : null}
         </NotificationButton>
         <ProfileContainer as={Link} to="/profile">
           {isSubmiting && userData ? (

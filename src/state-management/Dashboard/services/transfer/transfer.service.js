@@ -51,8 +51,8 @@ export const fetchTransferData = (transferRedux, currentUserData) => {
         transferDataRequest
       );
       console.log(data);
-      await dispatch(setNotificationTransfer(data, transferArr));
-      // await dispatch(setTransferArr(transferRedux));
+      // await dispatch(setNotificationTransfer(data, transferArr));
+      await dispatch(setTransferArr(data, transferArr, id));
       await dispatch(requestTransferSuccess());
       await dispatch(setResetFormTransfer());
     } catch (err) {

@@ -22,7 +22,7 @@ export const setControlNotification = (transferArr, notificationOpen) => {
     if (transferArr.length >= 1 && notificationOpen === false) {
       await dispatch(setRedDot(true));
     } else {
-      await dispatch(setNotificationOpen(false));
+      await dispatch(setRedDot(false));
     }
   };
 };
@@ -33,17 +33,26 @@ export const setControlNotification = (transferArr, notificationOpen) => {
 // showRedDot = true
 // notificationsOpen = false
 
-export const setNotificationTransfer = (dataTransferNew, transferRedux) => {
+export const updateNotificationArr = (newArr) => {
+  return createAction(DASHBOARD_TYPES.SET_TRANSFER_NOTIFICATION_ARR, newArr);
+};
+
+export const setNotificationTransfer = (newArr) => {
   return async (dispatch) => {
-    console.log(dataTransferNew, transferRedux);
-    const { transfer, sender } = dataTransferNew;
-    const newObj = {
-      ...transfer,
-      from_sender_name: sender,
-    };
-    console.log(newObj);
-    const newArr = [...transferRedux, { ...newObj }];
-    console.log(newArr);
+    // before
+    // console.log(dataTransferNew, transferRedux);
+    // const { transfer, sender } = dataTransferNew;
+    // const newObj = {
+    //   ...transfer,
+    //   from_sender_name: sender,
+    // };
+    // console.log(newObj);
+    // const newArr = [...transferRedux, { ...newObj }];
+    // console.log(newArr);
+    // after
+    await dispatch(updateNotificationArr(newArr));
+    await dispatch(setRedDot(true));
+    await dispatch(setNotificationOpen(false));
   };
 };
 export const resetDashboard = () => {
