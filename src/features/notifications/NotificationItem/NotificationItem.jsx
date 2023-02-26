@@ -9,11 +9,9 @@ import {
 import avatar from "../../../assets/images/avatar.png";
 import { useSelector } from "react-redux";
 import { selectUserAccount } from "../../../state-management/Dashboard/userData/userData.selector";
-import { searchById } from "../../../utils/helpers/helperFunctions/searchById";
 
 function NotificationItem({ data, ...props }) {
   const userAccount = useSelector(selectUserAccount);
-  // const ValidateSender = searchById()
   const notifDate = date.toDateString();
   const hour = `${date.getHours()} : ${
     (date.getMinutes() < 10 ? "0" : "") + date.getMinutes()
