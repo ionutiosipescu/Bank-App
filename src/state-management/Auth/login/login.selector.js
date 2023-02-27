@@ -11,3 +11,7 @@ export const selectOtp = (state) => state.login.otp;
 export const selectOtpError = (state) => state.login.otpError;
 
 export const selectEmailValidate = (state) => state.login.emailValidate;
+
+export const selectShowMessageOtp = (state) => state.login.showMessageOtp;
+export const selectErrorOtp = (state) => state.login.errorMsgOtp;
+export const selectIsSubmitingOtp = (state) => state.login.isSubmitingOtp;

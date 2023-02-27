@@ -10,6 +10,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectNotificationArr } from "../../../state-management/Dashboard/dashboard/dashboard.selector";
 import { selectRedDot } from "../../../state-management/Dashboard/dashboard/dashboard.selector";
 import { setRedDot } from "../../../state-management/Dashboard/dashboard/dashboard.action";
+import Fallback from "../../../components/Fallback/Fallback";
+import { Link } from "react-router-dom";
 
 function Notification({ status, ...props }) {
   // const dispatch = useDispatch();
@@ -22,9 +24,18 @@ function Notification({ status, ...props }) {
         <h3>Notifications</h3>
       </NotificationsHeader>
       <NotificationsBody>
-        {transferArr.map((account, index) => (
-          <NotificationItem data={account} />
-        ))}
+        {transferArr.length > 0 ? (
+          <>
+            {" "}
+            {transferArr.map((account, index) => (
+              <Link to={`/services/transfers/transferdetails/${account.id}`}>
+                <NotificationItem data={account} />
+              </Link>
+            ))}
+          </>
+        ) : (
+          <Fallback text={"No Transfers to display"} />
+        )}
       </NotificationsBody>
     </NotificationCard>
   );

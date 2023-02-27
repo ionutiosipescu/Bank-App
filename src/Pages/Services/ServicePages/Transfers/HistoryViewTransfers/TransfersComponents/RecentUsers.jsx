@@ -8,8 +8,12 @@ import {
 import UserCard from "../../../../../../components/UserCard/UserCard";
 
 import { accounts } from "../../../../../../utils/data/dummyData";
+import { useDispatch } from "react-redux";
+import { fetchTransferAccount } from "../../../../../../state-management/Dashboard/services/transfer/transfer.action";
 
 function RecentUsers({ dataServices, ...props }) {
+  const dispatch = useDispatch();
+
   return (
     <NewContainer>
       <RecentUserContainer>
@@ -21,6 +25,9 @@ function RecentUsers({ dataServices, ...props }) {
             phone={account.phoneNumber}
             image={account.image}
             to="/services/transfers/newtransfer"
+            onClick={() => {
+              dispatch(fetchTransferAccount(account));
+            }}
           />
         ))}
         <NewTransferCard>

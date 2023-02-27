@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectSettingsData } from "../../../../state-management/Dashboard/settings/settings.selector";
+import {
+  selectSettingsData,
+  selectSettingErrorRequest,
+  selectSettingIsSubmiting,
+  selectSettingsShowMessage,
+} from "../../../../state-management/Dashboard/settings/settings.selector";
 import { setSettingsForm } from "../../../../state-management/Dashboard/settings/settings.action";
 import { Formik } from "formik";
 import CustomInputSettings from "../../../../components/CustomInputs/CustomInputSettings";
@@ -18,6 +23,8 @@ import {
 import { selectCurrentUser } from "../../../../state-management/Dashboard/userData/userData.selector";
 import { fetchAuthData } from "../../../../state-management/Dashboard/settings/settings.service";
 import { selectToken } from "../../../../state-management/Auth/register/register.selector";
+import RequestMessage from "../../../../components/RequestMessage/RequestMessage";
+import { setResetShowMsg } from "../../../../state-management/Dashboard/settings/settings.action";
 
 function SettingsForm() {
   const dispatch = useDispatch();
@@ -26,6 +33,10 @@ function SettingsForm() {
   const token = useSelector(selectToken);
   const userData = useSelector(selectCurrentUser);
 
+  const errorMsgRequest = useSelector(selectSettingErrorRequest);
+  const isSubmiting = useSelector(selectSettingIsSubmiting);
+  const showMessage = useSelector(selectSettingsShowMessage);
+
   const setData = (e) => {
     dispatch(setSettingsForm(settingsData, e));
   };
@@ -33,6 +44,10 @@ function SettingsForm() {
   const onSubmit = () => {
     dispatch(fetchAuthData(settingsData, userData, token));
   };
+
+  useEffect(() => {
+    dispatch(setResetShowMsg());
+  }, []);
 
   return (
     <SettingsFormWrapper>
@@ -84,6 +99,12 @@ function SettingsForm() {
                 value={address || ""}
               />
             </RowSettingsSection>
+            <RequestMessage
+              isSubmiting={isSubmiting}
+              showMessage={showMessage}
+              errorMsgRequest={errorMsgRequest}
+              text="Your Profile has been Succesfuly Updated"
+            />
             <Button
               label="Update Profile"
               size="xl"

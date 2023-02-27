@@ -51,6 +51,17 @@ export const setEmailValidate = (email) => {
   return createAction(LOGIN_ACTION_TYPES.SET_EMAIL_VALIDATE, email);
 };
 
+// Reset Show Message
+export const setResetShowMsg = () => {
+  return createAction(LOGIN_ACTION_TYPES.RESET_SHOW_MSG);
+};
+
+// ResetForm
+export const setResetFormLogInOtp = () => {
+  const newOTP = "";
+  return createAction(LOGIN_ACTION_TYPES.SET_OTP, newOTP);
+};
+
 // TODO de gasit metoda alternativa de a reseta Redux
 export const resetRedux = () => {
   return async (dispatch) => {

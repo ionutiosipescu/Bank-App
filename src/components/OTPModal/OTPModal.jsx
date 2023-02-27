@@ -21,7 +21,14 @@ import { controlMoldalAsync } from "../../state-management/Auth/login/login.acti
 import { selectlogin } from "../../state-management/Auth/login/login.selector";
 import { VerifyOtp } from "../../state-management/Auth/login/login.service";
 import { ResendOtp } from "../../state-management/Auth/login/login.service";
-import { selectEmailValidate } from "../../state-management/Auth/login/login.selector";
+import {
+  selectEmailValidate,
+  selectErrorOtp,
+  selectIsSubmitingOtp,
+  selectShowMessageOtp,
+} from "../../state-management/Auth/login/login.selector";
+import RequestMessage from "../RequestMessage/RequestMessage";
+import { setResetShowMsg } from "../../state-management/Auth/login/login.action";
 
 function OTPModal() {
   const dispatch = useDispatch();
@@ -29,6 +36,10 @@ function OTPModal() {
   const otp = useSelector(selectOtp);
   const loginData = useSelector(selectlogin);
   const emailValidate = useSelector(selectEmailValidate);
+
+  const errorMsgRequest = useSelector(selectErrorOtp);
+  const isSubmiting = useSelector(selectIsSubmitingOtp);
+  const showMessage = useSelector(selectShowMessageOtp);
 
   const handleSubmit = () => {
     if (otp.split("").length === 6) {
@@ -51,10 +62,14 @@ function OTPModal() {
     dispatch(controlMoldalAsync(false));
   };
 
+  useEffect(() => {
+    dispatch(setResetShowMsg());
+  }, []);
+
   return (
     <OTPContainer>
       <h2>Please check your email </h2>
-      <p>We've sent a code to {`email@gmail.com`}</p>
+      <p>We've sent a code to {emailValidate}</p>
       <InputsContainer>
         <OtpInput
           value={otp}
@@ -70,7 +85,13 @@ function OTPModal() {
           Click to resend
         </a>
       </p>
-      {errorMsg ? <ErrorMsg>{errorMsg}</ErrorMsg> : <></>}
+      <RequestMessage
+        isSubmiting={isSubmiting}
+        showMessage={showMessage}
+        errorMsgRequest={errorMsgRequest}
+        text="Your OTP has been Succesfully Send to Email"
+      />
+      {/* {errorMsg ? <ErrorMsg>{errorMsg}</ErrorMsg> : <></>} */}
       <ButtonsContainer>
         <Button size="md" label="Cancel" onClick={handleModalClose} />
         <Button

@@ -33,6 +33,11 @@ export const resetSettings = () => {
   return createAction(SETTINGS_TYPES.RESET_SETTINGS);
 };
 
+// Reset Show Message
+export const setResetShowMsg = () => {
+  return createAction(SETTINGS_TYPES.RESET_SHOW_MSG);
+};
+
 // De verificat daca sunt de la Settings sau trebuie sterse
 const updateAuthForm = (authData, e) => {
   const { name, value } = e.target;

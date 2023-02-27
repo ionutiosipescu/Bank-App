@@ -9,7 +9,7 @@ function TransferViewControler() {
     <Routes>
       <Route index element={<Transfers />} />
       <Route path="newtransfer" element={<NewTransfer />}></Route>
-      <Route path="transferdetails" element={<TransferDetails />}></Route>
+      <Route path="transferdetails/:id" element={<TransferDetails />}></Route>
     </Routes>
   );
 }

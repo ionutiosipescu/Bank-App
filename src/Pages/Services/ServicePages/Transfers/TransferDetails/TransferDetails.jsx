@@ -11,7 +11,7 @@ import {
   TransactionDetailsInfo,
 } from "./TransferDetails.style";
 import avatar from "./../../../../../assets/images/avatar-2.png";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import {
   selectDetailTransfer,
   selectOptionTransfer,
@@ -19,16 +19,26 @@ import {
 
 //////////////////////////
 import TransferPDF from "../../../../../features/transfers/TransferPDF/TransferPDF";
+import { useParams } from "react-router-dom";
+import { setDetailsTransferNew } from "../../../../../state-management/Dashboard/services/transfer/transfer.action";
 import { selectCurrentUser } from "./../../../../../state-management/Dashboard/userData/userData.selector";
+import { selectTransferArr } from "../../../../../state-management/Dashboard/services/transfer/transfer.selector";
 
 function TransferDetails() {
+  const dispatch = useDispatch();
+  const { id } = useParams();
   const detailTransfer = useSelector(selectDetailTransfer);
   const currentUserData = useSelector(selectCurrentUser);
+  const arrTransfers = useSelector(selectTransferArr);
   const option = useSelector(selectOptionTransfer);
   const { address, country, first_name, last_name, mobile } =
     currentUserData.userDetail;
 
   const { date, details, transfer } = detailTransfer;
+
+  useEffect(() => {
+    dispatch(setDetailsTransferNew(arrTransfers, id));
+  }, [id]);
 
   return (
     <TransferDetailsCard>

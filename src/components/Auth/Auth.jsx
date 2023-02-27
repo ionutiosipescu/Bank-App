@@ -81,7 +81,7 @@ function Auth() {
               isSubmiting={isSubmiting}
               showMessage={showMessage}
               errorMsgRequest={errorMsgRequest}
-              text="Your Saving has been Succesfuly Added"
+              text="Your Password has been Succesfuly Changed"
             />
             <AuthButton
               label="Submit Password"

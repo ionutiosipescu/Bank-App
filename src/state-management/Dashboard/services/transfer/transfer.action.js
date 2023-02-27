@@ -143,6 +143,13 @@ export const setDetailTransfer = (obj) => {
   return createAction(TRANSFER_TYPES.SET_DETAIL_TRANSFER, obj);
 };
 
+export const setDetailsTransferNew = (arr, id) => {
+  console.log(arr, id);
+  const newObjDetail = arr.find((object) => object.id === Number(id));
+  console.log(newObjDetail);
+  return createAction(TRANSFER_TYPES.SET_DETAIL_TRANSFER, newObjDetail);
+};
+
 // Selected Option
 
 export const setSelectedOptionTransfer = (e, filter) => {
