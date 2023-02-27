@@ -51,8 +51,9 @@ export const fetchLoginData = (registerData) => {
     try {
       await dispatch(fetchAuthData(registerData));
     } catch (error) {
+      console.log(error);
       if (!error) return;
-      const errMsg = error?.response?.data?.message;
+      const errMsg = error?.response?.data;
       //   If error response from Backend exist, then set the error
       if (errMsg) {
         dispatch(postLoginFailed(errMsg));

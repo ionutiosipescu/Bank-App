@@ -16,13 +16,13 @@ function TransfersAllPDF() {
   const userData = useSelector(selectCurrentUser);
   const option = useSelector(selectOptionTransfer);
   const balance =
-    option.account === "ron"
-      ? `${userData.account[0].balance} RON`
-      : `${userData.account[1].balance} EUR`;
+    option?.account === "ron"
+      ? `${userData?.account[0]?.balance} RON`
+      : `${userData?.account[1]?.balance} EUR`;
 
-  console.log(userData.account);
+  // console.log(userData.account);
 
-  const arrayOfArrays = transfers.map(
+  const arrayOfArrays = transfers?.map(
     ({ id, transfer, date, details, to_receiver_name }) => [
       id,
       transfer,
