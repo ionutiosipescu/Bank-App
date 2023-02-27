@@ -80,7 +80,7 @@ function TransfersListCard() {
                   size="sm"
                   label="Details"
                   primary="primary"
-                  to="/services/transfers/transferdetails"
+                  to={`/services/transfers/transferdetails/${transfer.id}`}
                   handleClick={() => dispatch(setDetailTransfer(transfer))}
                 />
               </ListItem>
