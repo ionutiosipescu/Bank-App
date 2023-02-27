@@ -3,6 +3,7 @@ import { createAction } from "../../../../utils/helpers/reducer/reducer.utils";
 import { getLocalDate } from "../../../../utils/helpers/helperFunctions/date";
 import { findObjectByString } from "../../../../utils/helpers/helperFunctions/findObject";
 import { generateRandomNumber } from "../../../../utils/helpers/helperFunctions/randomNumber";
+import { setNotificationTransfer } from "../../dashboard/dashboard.action";
 import axios from "axios";
 
 // Update Transfer Form
@@ -22,22 +23,42 @@ export const setTransformAccount = (transferData, currency) => {
   return createAction(TRANSFER_TYPES.SET_TRANSFER_FORM, updateTransferAccount);
 };
 
+// New Modifications after star working on Notification -  Test Mode
+export const updateTransferArr = (newArr) => {
+  return createAction(TRANSFER_TYPES.SET_TRANSFER_ARR, newArr);
+};
+
 // Update Transfer Array
-export const setTransferArr = (transferRedux) => {
-  const { transferForm, selectedOption, transferArr } = transferRedux;
-  const { image } = selectedOption;
-  const { name, transfer, account } = transferForm;
-  const transferHistory = {
-    reciever: name,
-    amount: transfer,
-    account: account,
-    id: generateRandomNumber(6).toString(),
-    date: getLocalDate(),
-    status: "Completed",
-    image: image,
+export const setTransferArr = (dataTransferNew, transferRedux, id) => {
+  // before
+  // const { transferForm, selectedOption, transferArr } = transferRedux;
+  // const { image } = selectedOption;
+  // const { name, transfer, account } = transferForm;
+  // const transferHistory = {
+  //   reciever: name,
+  //   amount: transfer,
+  //   account: account,
+  //   id: generateRandomNumber(6).toString(),
+  //   date: getLocalDate(),
+  //   status: "Completed",
+  //   image: image,
+  // };
+  // const newTransferArr = [...transferArr, { ...transferHistory }];
+  // return createAction(TRANSFER_TYPES.SET_TRANSFER_ARR, newTransferArr);
+
+  // after
+  return async (dispatch) => {
+    const { transfer, sender, receiver } = dataTransferNew;
+    const newObj = {
+      ...transfer,
+      from_sender_name: sender,
+      to_receiver_name: receiver,
+      account_id: id,
+    };
+    const newArr = [...transferRedux, { ...newObj }];
+    await dispatch(updateTransferArr(newArr));
+    await dispatch(setNotificationTransfer(newArr));
   };
-  const newTransferArr = [...transferArr, { ...transferHistory }];
-  return createAction(TRANSFER_TYPES.SET_TRANSFER_ARR, newTransferArr);
 };
 
 // Update selected Account
@@ -87,7 +108,7 @@ export const setTransferData = async (transferData) => {
 // Find Account ID
 export const setTransferId = async (obj, currentUserData) => {
   const { account } = obj;
-  const userAccountArr = currentUserData.account;
+  const userAccountArr = currentUserData?.account;
   const stringCompare = "currency";
   console.log(account, userAccountArr, stringCompare);
   const object = findObjectByString(account, userAccountArr, stringCompare);
@@ -120,6 +141,13 @@ export const setTransferArrDb = (transferArr) => {
 
 export const setDetailTransfer = (obj) => {
   return createAction(TRANSFER_TYPES.SET_DETAIL_TRANSFER, obj);
+};
+
+export const setDetailsTransferNew = (arr, id) => {
+  console.log(arr, id);
+  const newObjDetail = arr.find((object) => object.id === Number(id));
+  console.log(newObjDetail);
+  return createAction(TRANSFER_TYPES.SET_DETAIL_TRANSFER, newObjDetail);
 };
 
 // Selected Option

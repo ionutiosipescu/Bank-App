@@ -2,6 +2,7 @@ import { CARD_TYPES } from "./cards.types";
 import { createAction } from "../../../utils/helpers/reducer/reducer.utils";
 import { setCardArr, setAddCardArr } from "./cards.action";
 import { requests, cardsComplete } from "../../../utils/requests/requests";
+import { resetCardForm } from "./cards.action";
 import axios from "axios";
 
 // Get Card Account Arr
@@ -9,6 +10,7 @@ export const fetchGetCardAccountArr = (currentUserData) => {
   return async (dispatch) => {
     const { id } = currentUserData;
     const { data } = await axios.get(`${requests.GET_ACCOUNTS}${id}`);
+    console.log(data);
     await dispatch(setCardArr(data));
   };
 };
@@ -37,12 +39,14 @@ export const setDataAddNewAccount = (currentCardNew, currentUser) => {
 // Add new Account
 export const fetchAddNewAccount = (currentCardNew, currentUser, cardArr) => {
   return async (dispatch) => {
+    console.log(currentCardNew, currentUser, cardArr);
     const addNewData = await setDataAddNewAccount(currentCardNew, currentUser);
     const { data } = await axios.post(
       `${requests.POST_NEW_ACCOUNT}`,
       addNewData
     );
     await dispatch(setAddCardArr(cardArr, data));
+    await dispatch(resetCardForm());
   };
 };
 

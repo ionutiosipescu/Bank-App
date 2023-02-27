@@ -11,6 +11,7 @@ import { exchangeReducer } from "./Dashboard/services/exchange/exchange.reducer"
 import { cardReducer } from "./Dashboard/cards/cards.reducer";
 import { changePasswordReducer } from "./Auth/changePassword/password.reducer";
 import { settingsReducer } from "./Dashboard/settings/settings.reducer";
+import { dashboardReducer } from "./Dashboard/dashboard/dashboard.reducer";
 
 export const rootReducer = combineReducers({
   login: loginReducer,
@@ -24,4 +25,5 @@ export const rootReducer = combineReducers({
   cardState: cardReducer,
   registerChangePassword: changePasswordReducer,
   settingsState: settingsReducer,
+  dashboardStorage: dashboardReducer,
 });

@@ -99,7 +99,7 @@ export const FormCustomSettings = styled(Form)`
   display: flex;
   flex-direction: column;
   margin-top: 60px;
-  gap: 100px;
+  gap: 55px;
 `;
 
 export const TitleSettings = styled.h2`

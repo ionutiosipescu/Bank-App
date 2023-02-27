@@ -123,3 +123,15 @@ export const setSelectedCardOption = (option) => {
 export const resetCards = () => {
   return createAction(CARD_TYPES.RESET_CARDS);
 };
+
+export const resetCardForm = () => {
+  const newCard = {
+    street: "",
+    postal: "",
+    city: "",
+    phone: "",
+    acceptAddress: false,
+    typeOfPlan: null,
+  };
+  return createAction(CARD_TYPES.SET_CARD, newCard);
+};

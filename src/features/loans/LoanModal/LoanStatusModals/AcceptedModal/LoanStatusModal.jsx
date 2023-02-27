@@ -46,25 +46,31 @@ function LoanStatusModal({ ...props }) {
     <LoanModalWrapper>
       <LoanStatusTitle />
       <LoanStatusMain />
-      <ButtonsContainer>
-        <Button
-          size="md"
-          primary="primary"
-          label="Accept"
-          type="button"
-          onClick={() => {
-            props.handleClick();
-            handleSubmit();
-          }}
-        />
-        <Button
-          size="md"
-          primary="primary"
-          label="Close"
-          type="button"
-          onClick={handleClick}
-        />
-      </ButtonsContainer>
+      {loanStatus === "approved" ? (
+        <>
+          <ButtonsContainer>
+            <Button
+              size="md"
+              primary="primary"
+              label="Accept"
+              type="button"
+              onClick={() => {
+                props.handleClick();
+                handleSubmit();
+              }}
+            />
+            <Button
+              size="md"
+              primary="primary"
+              label="Close"
+              type="button"
+              onClick={handleClick}
+            />
+          </ButtonsContainer>
+        </>
+      ) : (
+        <></>
+      )}
     </LoanModalWrapper>
   );
 }

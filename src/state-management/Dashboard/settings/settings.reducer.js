@@ -21,13 +21,19 @@ export const settingsReducer = (state = INITIAL_STATE, action) => {
     case SETTINGS_TYPES.REQUEST_SETTINGS_START:
       return { ...state, isSubmiting: true };
     case SETTINGS_TYPES.REQUEST_SETTINGS_SUCCESS:
-      return { ...state, isSubmiting: false, showMessage: true };
+      return { ...state, isSubmiting: false, showMessage: true, errorMsg: "" };
     case SETTINGS_TYPES.REQUEST_SETTINGS_FAILED:
       return {
         ...state,
         isSubmiting: false,
         errorMsg: payload,
         showMessage: true,
+      };
+    case SETTINGS_TYPES.RESET_SHOW_MSG:
+      return {
+        ...state,
+        showMessage: false,
+        errorMsg: "",
       };
     case SETTINGS_TYPES.RESET_SETTINGS:
       return INITIAL_STATE;

@@ -1,3 +1,4 @@
 export const findObjectByString = (string, array, stringCompare) => {
-  return array.find((obj) => obj[stringCompare] === string);
+  if (!array) return;
+  return array?.find((obj) => obj[stringCompare] === string);
 };

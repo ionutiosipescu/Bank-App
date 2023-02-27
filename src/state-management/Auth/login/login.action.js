@@ -11,6 +11,7 @@ import { resetExchange } from "../../Dashboard/services/exchange/exchange.action
 import { resetLoans } from "../../Dashboard/services/loan/loan.action";
 import { resetSaving } from "../../Dashboard/services/saving/saving.action";
 import { resetTransfer } from "../../Dashboard/services/transfer/transfer.action";
+import { resetDashboard } from "../../Dashboard/dashboard/dashboard.action";
 
 const updatelogin = (loginData, e) => {
   const { name, value } = e.target;
@@ -50,6 +51,17 @@ export const setEmailValidate = (email) => {
   return createAction(LOGIN_ACTION_TYPES.SET_EMAIL_VALIDATE, email);
 };
 
+// Reset Show Message
+export const setResetShowMsg = () => {
+  return createAction(LOGIN_ACTION_TYPES.RESET_SHOW_MSG);
+};
+
+// ResetForm
+export const setResetFormLogInOtp = () => {
+  const newOTP = "";
+  return createAction(LOGIN_ACTION_TYPES.SET_OTP, newOTP);
+};
+
 // TODO de gasit metoda alternativa de a reseta Redux
 export const resetRedux = () => {
   return async (dispatch) => {
@@ -64,5 +76,6 @@ export const resetRedux = () => {
     await dispatch(resetLoans());
     await dispatch(resetSaving());
     await dispatch(resetTransfer());
+    await dispatch(resetDashboard());
   };
 };

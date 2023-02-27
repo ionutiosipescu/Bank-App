@@ -68,10 +68,15 @@ export const NotificationButton = styled(Button)`
 
 export const NotificationDot = styled.span`
   position: absolute;
-  width: 10px;
-  height: 10px;
-  top: 0;
+  width: 20px;
+  height: 20px;
+  top: -5px;
   right: 0;
+  left: 26px;
   border-radius: 50%;
   background-color: var(--red);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
 `;

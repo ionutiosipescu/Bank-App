@@ -45,20 +45,28 @@ export const fetchLoanData = (loanObject, arr, currentUserData) => {
         `${requests.POST_CHECK_NEW_LOAN}${id}`,
         loandData
       );
+      console.log(data);
       await dispatch(setCheckData(data));
       await dispatch(requestLoansSuccess());
       await dispatch(setLoanStatus("approved"));
     } catch (err) {
       if (!err) return;
       const errMsg = err?.response?.data?.message;
+      console.log(err);
+      console.log(errMsg);
       const errServer =
         "Server is currently unavailable please try again later";
-      if (errMsg) {
-        dispatch(requestLoansFailed(errMsg));
-      } else {
-        dispatch(requestLoansFailed(errServer));
+      switch (errMsg) {
+        case "salary":
+          await dispatch(setLoanStatus("salary"));
+          break;
+        case "limit":
+          await dispatch(setLoanStatus("limit"));
+          break;
+        default:
+          dispatch(requestLoansFailed(errServer));
+          break;
       }
-      await dispatch(setLoanStatus("salary"));
     }
   };
 };
