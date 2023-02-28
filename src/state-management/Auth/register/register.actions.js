@@ -84,8 +84,8 @@ const setRegisterPlanAdd = (userDataArrPlan, prevPlans, index) => {
   const cleanPlan = {
     type_of_plan: typeOfPlan,
     currency: currency,
-    balance: currentBallance,
-    savings: "",
+    // balance: currentBallance,
+    // savings: "",
     created_at: formattedDate,
   };
   const newArrPlan = [...userDataArrPlan, { ...cleanPlan }];
