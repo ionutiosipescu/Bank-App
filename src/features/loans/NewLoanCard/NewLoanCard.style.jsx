@@ -35,9 +35,13 @@ export const NewLoanCardContainer = styled.div`
 `;
 
 export const ImageContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 100%;
   width: 100%;
   & img {
-    width: 100%;
+    width: 120%;
+    height: 115%;
   }
 `;

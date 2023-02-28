@@ -13,7 +13,7 @@ export const CurrencyInputContainer = styled.div`
     background: none;
     border: none;
     outline: none;
-    color: var(--white);
+    color: var(--text-light);
     font-size: 1.2rem;
   }
 `;
@@ -22,7 +22,7 @@ export const CurrencySelect = styled.select`
   background: none;
   border: none;
   outline: none;
-  color: var(--white);
+  color: var(--text-light);
   font-size: 1.2rem;
   & option {
     background-color: var(--purple);

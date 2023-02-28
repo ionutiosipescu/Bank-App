@@ -8,7 +8,7 @@ export const FeatureCard = styled.div`
   width: 35%;
   height: 100%;
   padding: 40px;
-  color: var(--white);
+  color: var(--text-light);
   box-shadow: 0px 0px 15px -6px rgba(21, 20, 47, 0.73);
   ${(props) =>
     props.type === "deposit"

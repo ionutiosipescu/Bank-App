@@ -9,7 +9,8 @@ export const NotificationCard = styled.div`
   overflow: auto;
   border-radius: 10px;
   padding: 20px 0 0 20px;
-  background-color: var(--white);
+  background-color: var(--white-dark);
+  color: var(--text);
   box-shadow: 0px 0px 20px -5px rgba(21, 20, 47, 0.73);
   z-index: 3;
   display: ${(props) => (props.status ? "block" : "none")};
@@ -33,8 +34,6 @@ export const NotificationItemContainer = styled.div`
   margin: 10px 0 10px 0;
   padding: 10px;
   border-radius: 10px;
-  background-color: ${(props) =>
-    props.read ? "" : "var(--purple-transparent)"};
 `;
 
 export const NotificationItemImage = styled.div`
@@ -55,13 +54,24 @@ export const NotificaionItemBody = styled.div`
   justify-content: space-between;
   width: calc(100% - 50px);
   height: 50px;
-  & h4 > span {
-    color: var(--purple);
+  color: var(--text);
+  & h4 span {
+    font-weight: 800;
+    color: var(--purple-dark);
   }
   & > div {
     display: flex;
-  }
-  & > div:last-of-type {
     justify-content: space-between;
   }
+`;
+
+export const NotificationBackDrop = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 95vh;
+  display: ${(props) => (props.status ? "block" : "none")};
+  /* background-color: var(--red); */
+  z-index: 2;
 `;

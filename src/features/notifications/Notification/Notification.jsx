@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, forwardRef } from "react";
 import {
+  NotificationBackDrop,
   NotificationCard,
   NotificationsBody,
   NotificationsHeader,
@@ -13,31 +14,32 @@ import { setRedDot } from "../../../state-management/Dashboard/dashboard/dashboa
 import Fallback from "../../../components/Fallback/Fallback";
 import { Link } from "react-router-dom";
 
-function Notification({ status, ...props }) {
-  // const dispatch = useDispatch();
-  // const redDot = useSelector(selectRedDot);
+function Notification({ status, handleClick, ...props }) {
   const transferArr = useSelector(selectNotificationArr);
 
   return (
-    <NotificationCard status={status}>
-      <NotificationsHeader>
-        <h3>Notifications</h3>
-      </NotificationsHeader>
-      <NotificationsBody>
-        {transferArr.length > 0 ? (
-          <>
-            {" "}
-            {transferArr.map((account, index) => (
-              <Link to={`/services/transfers/transferdetails/${account.id}`}>
-                <NotificationItem data={account} />
-              </Link>
-            ))}
-          </>
-        ) : (
-          <Fallback text={"No Transfers to display"} />
-        )}
-      </NotificationsBody>
-    </NotificationCard>
+    <>
+      <NotificationCard status={status}>
+        <NotificationsHeader>
+          <h3>Notifications</h3>
+        </NotificationsHeader>
+        <NotificationsBody>
+          {transferArr.length > 0 ? (
+            <>
+              {" "}
+              {transferArr.map((account, index) => (
+                <Link to={`/services/transfers/transferdetails/${account.id}`}>
+                  <NotificationItem data={account} />
+                </Link>
+              ))}
+            </>
+          ) : (
+            <Fallback text={"No Transfers to display"} />
+          )}
+        </NotificationsBody>
+      </NotificationCard>
+      <NotificationBackDrop status={status} onClick={handleClick} />
+    </>
   );
 }
 

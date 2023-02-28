@@ -18,8 +18,6 @@ import travel from "../../features/loans//assets/travel.gif";
 
 const ProgressCard = ({ ...props }) => {
   const { title, handleClick, amount, paid } = props;
-  console.log(title);
-
   const getImageSource = () => {
     switch (title) {
       case "car":

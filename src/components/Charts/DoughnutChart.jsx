@@ -17,6 +17,7 @@ function DoughnutChart({ primary, chartData }) {
           "#00a389",
           "#ff4a55",
         ],
+        borderColor: "#ffffff6f",
       },
     ],
   });

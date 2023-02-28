@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {
+  BottomContainer,
   BtnContainer,
   ChevronWrapper,
   LogoContainer,
@@ -19,6 +20,9 @@ import { TiChevronLeft, TiChevronRight, TiPlus } from "react-icons/ti";
 
 import LinkButton from "./../../components/UI/LinkButton/LinkButton";
 
+import inetum from "../../assets/images/logo-inetum.png";
+import { Link } from "react-router-dom";
+
 const pages = [
   {
     link: "dashboard",
@@ -29,7 +33,7 @@ const pages = [
   { link: "services", label: "Services", icon: <BsTools size={22} /> },
 ];
 
-function SideBar({ active, handleActive }) {
+function SideBar({ active, handleActive, width }) {
   const [selected, setSelected] = useState(null);
 
   return (
@@ -41,8 +45,12 @@ function SideBar({ active, handleActive }) {
         <LogoContainer active={active}>
           {active ? (
             <div>
-              <h1>BankName</h1>
-              <TiChevronLeft size={25} onClick={handleActive} />
+              <Link to="/dashboard">
+                <h1>BankName</h1>
+              </Link>
+              {width <= 1050 && (
+                <TiChevronLeft size={25} onClick={handleActive} />
+              )}
             </div>
           ) : (
             <>
@@ -66,13 +74,16 @@ function SideBar({ active, handleActive }) {
           </NavBtn>
         ))}
       </BtnContainer>
-      {active === "active" ? (
-        <LinkButton label="Log Out" to="/" size="100" primary="primary" />
-      ) : (
-        <LinkButton to="/" primary="primary">
-          <BsPersonXFill size={22} />
-        </LinkButton>
-      )}
+      <BottomContainer>
+        <img src={inetum} alt="" />
+        {active === "active" ? (
+          <LinkButton label="Log Out" to="/" size="100" primary="primary" />
+        ) : (
+          <LinkButton to="/" primary="primary">
+            <BsPersonXFill size={22} />
+          </LinkButton>
+        )}
+      </BottomContainer>
     </SideBarWrapper>
   );
 }

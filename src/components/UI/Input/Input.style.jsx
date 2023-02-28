@@ -30,6 +30,7 @@ const StyledGroup = css`
 
 export const Group = styled.div`
   ${StyledGroup}
+  color: var(--text);
   label:after {
     content: "*";
     color: red;
@@ -122,6 +123,7 @@ const InputStyle = css`
   border: 1px solid var(--purple);
   border-radius: 30px;
   padding: 0 12px 0 10px;
+  background-color: var(--white);
   &:focus {
     outline: none;
     border: 2px solid var(--blue);

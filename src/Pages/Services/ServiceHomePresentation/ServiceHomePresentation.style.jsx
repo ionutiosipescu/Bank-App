@@ -36,7 +36,7 @@ export const HeaderArt = styled.span`
     var(--purple-light) 100%
   );
   clip-path: polygon(23% 0, 100% 0%, 100% 100%, 0% 100%);
-  color: var(--white);
+  color: var(--text-light);
   & h2 {
     font-size: 2rem;
     font-weight: 700;

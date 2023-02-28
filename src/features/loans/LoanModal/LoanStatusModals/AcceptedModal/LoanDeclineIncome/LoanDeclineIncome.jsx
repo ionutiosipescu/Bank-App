@@ -1,11 +1,11 @@
 import React from "react";
 import { MidContainer, DetailPill } from "../AcceptedModal.style";
-import { DeclinedContainer } from "../DeclinedModal.style";
+import { DeclinedContainer, DeclinedWrapper } from "../DeclinedModal.style";
 
 function LoanDeclineIncome() {
   return (
     <>
-      <MidContainer>
+      <DeclinedWrapper>
         <DeclinedContainer>
           <DetailPill>
             Your annual salary does not meet are requirements for this loan
@@ -20,7 +20,7 @@ function LoanDeclineIncome() {
           src="https://cdni.iconscout.com/illustration/premium/thumb/payment-declined-3328218-2809504.png"
           alt=""
         />
-      </MidContainer>
+      </DeclinedWrapper>
     </>
   );
 }

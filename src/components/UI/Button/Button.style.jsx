@@ -27,7 +27,7 @@ export const Btn = styled.button`
       : sizeBtn.fullWidth};
   ${(props) =>
     props.primary === "primary"
-      ? "background: var(--purple); color: var(--white);"
+      ? "background: var(--purple); color: var(--text-light);"
       : "background: var(--white); color: var(--purple);"}
   ${(props) =>
     props.disabled ? "opacity: 0.5; cursor: default;" : "cursor: pointer;"}
@@ -35,8 +35,8 @@ export const Btn = styled.button`
     scale: 1.08;
     ${(props) =>
       props.primary === "primary"
-        ? "background: var(--purple-dark); color: var(--white);"
-        : "background: var(--purple-light); color: var(--white); border: 1px solid var(--purple-dark);"}
+        ? "background: var(--purple-dark); color: var(--text-light);"
+        : "background: var(--purple-light); color: var(--text-light); border: 1px solid var(--purple-dark);"}
   }
   & ${(props) => props.children} {
     transition: 0.3;

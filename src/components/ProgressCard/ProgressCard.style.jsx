@@ -16,7 +16,7 @@ export const ProgressCardContainer = styled.div`
   > h3 {
     align-self: center;
     & > span {
-      color: var(--green-dark);
+      color: var(--green);
     }
   }
 `;

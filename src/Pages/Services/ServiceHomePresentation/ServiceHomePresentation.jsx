@@ -7,15 +7,14 @@ import {
 } from "./ServiceHomePresentation.style";
 import ServiceHomeCards from "./ServiceHomeCards/ServiceHomeCards";
 
+import image from "../assets/servicesHome.gif";
+
 function ServiceHomePresentation() {
   return (
     <PresentationPageWrapper>
       <PresentationTopCard>
         <HeaderContainer>
-          <img
-            src="https://cdn.dribbble.com/users/2243452/screenshots/6339193/qcash.gif"
-            alt=""
-          />
+          <img src={image} alt="" />
           <HeaderArt>
             <h2>
               Here you will find all of your services just one click away!

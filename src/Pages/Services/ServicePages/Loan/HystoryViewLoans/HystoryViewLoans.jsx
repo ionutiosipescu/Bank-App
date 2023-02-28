@@ -34,6 +34,8 @@ import {
   NewLoanCardContainer,
 } from "../../../../../features/loans/NewLoanCard/NewLoanCard.style";
 
+import loanImg from "../../../../../assets/images/noLoans.png";
+
 function HisotryViewLoans({ dataServices, ...props }) {
   const historyArr = useSelector(selectHistoryLoans);
   const [modalOpen, setModalOpen] = useState(false);
@@ -76,10 +78,7 @@ function HisotryViewLoans({ dataServices, ...props }) {
         {loansArr.length < 1 ? (
           <NewLoanCardContainer>
             <ImageContainer>
-              <img
-                src="https://res.cloudinary.com/oportun-dev-stg/images/f_auto,q_auto/v1668801749/oportundev2/oportun-what-does-a-credit-score-start-at_24869406f58/oportun-what-does-a-credit-score-start-at_24869406f58.jpg?_i=AA"
-                alt=""
-              />
+              <img src={loanImg} alt="" />
             </ImageContainer>
           </NewLoanCardContainer>
         ) : (
