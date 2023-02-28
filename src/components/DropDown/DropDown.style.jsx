@@ -55,13 +55,15 @@ export const DropDownHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  color: var(--text);
   cursor: pointer;
 `;
 
 export const DropDownItem = styled.p`
   margin: 5px 0;
   cursor: pointer;
+  color: var(--text);
   &:hover {
-    color: var(--purple);
+    color: var(--text-light);
   }
 `;

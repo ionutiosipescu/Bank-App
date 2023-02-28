@@ -9,7 +9,7 @@ export const NavBtnContainer = styled.div`
     props.selected === true
       ? `& :nth-child(1) {
     background-color: var(--purple);
-    color: var(--white);
+    color: var(--text-light);
     transition: 0.3s;
   }
   & * {

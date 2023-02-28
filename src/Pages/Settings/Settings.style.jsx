@@ -13,6 +13,7 @@ export const SettingsContainer = styled.div`
   margin: 20px 30px 20px 0px;
   padding: 50px;
   background-color: var(--white);
+  color: var(--text);
   box-shadow: 0px 0px 15px -8px rgba(21, 20, 47, 0.73);
   & h2 {
     margin-bottom: 50px;

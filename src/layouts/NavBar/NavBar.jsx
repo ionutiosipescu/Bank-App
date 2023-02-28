@@ -76,7 +76,10 @@ function NavBar() {
           )}
         </ProfileContainer>
       </NavBarSection>
-      <Notification status={notificationStatus} />
+      <Notification
+        status={notificationStatus}
+        handleClick={handleNotificationStatus}
+      />
     </NavBarContainer>
   );
 }

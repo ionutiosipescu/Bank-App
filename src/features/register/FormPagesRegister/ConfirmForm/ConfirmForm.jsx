@@ -63,15 +63,35 @@ function ConfirmForm() {
             <FormBox>
               <h3>Account Details:</h3>
               <ul>
-                <li>Address: {address}</li>
-                <li>Country: {upperCaseFirstInitial(country)}</li>
-                <li>First Name: {upperCaseFirstInitial(first_name)}</li>
-                <li>Second Name: {upperCaseFirstInitial(last_name)}</li>
-                <li>Gender: {upperCaseFirstInitial(gender)}</li>
-                <li>Email: {email}</li>
-                <li>Mobile Number: {mobile}</li>
-                <li>Account Name: {upperCaseFirstInitial(username)}</li>
-                <li>Birthdaty: {birthday}</li>
+                <li>
+                  <span>Username:</span> {upperCaseFirstInitial(username)}
+                </li>
+                <li>
+                  <span>First Name:</span> {upperCaseFirstInitial(first_name)}
+                </li>
+                <li>
+                  <span>Second Name:</span> {upperCaseFirstInitial(last_name)}
+                </li>
+
+                <li>
+                  <span>Email:</span> {email}
+                </li>
+                <li>
+                  <span>Mobile Number:</span> {mobile}
+                </li>
+                <li>
+                  <span>Address:</span> {address}
+                </li>
+                <li>
+                  <span>Country: </span>
+                  {upperCaseFirstInitial(country)}
+                </li>
+                <li>
+                  <span>Gender:</span> {upperCaseFirstInitial(gender)}
+                </li>
+                <li>
+                  <span>Birthday:</span> {birthday}
+                </li>
               </ul>
             </FormBox>
             <FormBox>
@@ -85,7 +105,7 @@ function ConfirmForm() {
                         const keySecond = generateRandomKey();
                         return (
                           <li key={keySecond}>
-                            {upperCaseFirstInitial(newKey[0])}:{" "}
+                            <span>{upperCaseFirstInitial(newKey[0])}:</span>{" "}
                             {upperCaseFirstInitial(newKey[1])}
                           </li>
                         );

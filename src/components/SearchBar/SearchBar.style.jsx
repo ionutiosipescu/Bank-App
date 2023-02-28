@@ -43,6 +43,7 @@ export const SearchInput = styled.input`
   height: 100%;
   width: 80%;
   font-size: 1.2rem;
+  background-color: var(--white);
   @media (${device.mobileS}) {
     ${(props) =>
       props.active === "active" ? "display: block;" : "display: none;"}

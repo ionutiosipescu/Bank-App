@@ -66,5 +66,5 @@ export const Icon = styled.div`
   height: 40px;
   border-radius: 40px;
   background-color: var(--purple);
-  color: var(--white);
+  color: var(--text-light);
 `;

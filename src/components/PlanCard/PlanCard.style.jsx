@@ -57,7 +57,7 @@ export const Bubble = styled.div`
 
   aspect-ratio: 1/1;
   border-radius: 50%;
-  background-color: var(--white);
+  background-color: var(--text-light);
   /* z-index: 1; */
 `;
 

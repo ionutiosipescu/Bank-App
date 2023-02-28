@@ -2,7 +2,7 @@
 
 .card-purple {
   background-color: var(--purple) !important;
-  color: var(--white) !important;
+  color: var(--text-light) !important;
 }
 
 .card-green {

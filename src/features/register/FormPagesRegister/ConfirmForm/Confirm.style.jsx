@@ -35,15 +35,10 @@ export const FormContainerConfirm = styled(Form)`
 `;
 
 export const FormDetails = styled.div`
-  gap: 20px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  text-align: center;
-  li {
-    color: #000;
+  & h3 {
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--gray-dark);
   }
   @media ${device.tablet} {
     flex-direction: row;
@@ -52,10 +47,22 @@ export const FormDetails = styled.div`
     text-align: unset;
     align-items: initial;
   }
+  @media ${device.laptop} {
+    gap: 150px;
+    display: flex;
+    justify-content: center;
+    /* flex-direction: column; */
+    /* align-items: center; */
+    width: 100%;
+    /* text-align: center; */
+    li {
+      color: #000;
+    }
+  }
 `;
 
 export const FormBox = styled.div`
-  width: 205px;
+  /* width: 205px; */
   ul {
     display: flex;
     list-style: none;
@@ -66,6 +73,10 @@ export const FormBox = styled.div`
   li {
     margin: 0.5rem 0;
     width: auto;
-    border-bottom: 1px solid #000;
+    padding: 0 0 5px 0;
+    /* border-bottom: 1px solid var(--gray); */
+    & span {
+      color: var(--purple);
+    }
   }
 `;

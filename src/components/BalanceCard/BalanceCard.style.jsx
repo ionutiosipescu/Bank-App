@@ -35,7 +35,7 @@ export const Circle = styled.div`
       : "width: 60px; height: 60px;"};
   border-radius: 50%;
   opacity: 0.4;
-  background-color: var(--white);
+  background-color: var(--text-light);
   ${(props) => (props.one ? "left: 80%" : "left: 73%")}
 `;
 
