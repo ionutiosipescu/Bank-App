@@ -64,7 +64,7 @@ export const PlanCard = styled.div`
       : ""}
   padding: 20px;
   & h2 {
-    color: var(--white);
+    color: var(--text-light);
   }
   & div {
     display: flex;
@@ -73,10 +73,10 @@ export const PlanCard = styled.div`
     height: 70%;
     & h3 {
       padding: 5px;
-      color: var(--gray-light);
+      color: var(--text-light);
       border-bottom: 1px solid var(--gray);
       & span {
-        color: var(--white);
+        color: var(--text-light);
         /* background-color: var(--green); */
         /* padding: 2px; */
         /* border-radius: 10px; */

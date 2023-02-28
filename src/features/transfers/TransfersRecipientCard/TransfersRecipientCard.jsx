@@ -23,6 +23,7 @@ import { accounts } from "../../../utils/data/dummyData";
 function TransfersRecipientCard() {
   const selectedAccount = useSelector(selecttransferStorage);
   const { image, owner, address, phoneNumber, email } = selectedAccount;
+  const defaultUser = accounts[0];
 
   useEffect(() => {
     console.log(selectedAccount);
@@ -36,8 +37,8 @@ function TransfersRecipientCard() {
       <RecipientsContainer>
         <Carousel items={accounts} itemsNumber={3} />
         <UserTitle>
-          <img src={image} alt="" />
-          <h1>{owner}</h1>
+          <img src={image || defaultUser.image} alt="" />
+          <h1>{owner || defaultUser.owner}</h1>
         </UserTitle>
         <UserDescription>
           <UserSection>
@@ -46,7 +47,7 @@ function TransfersRecipientCard() {
             </Icon>
             <DescriptionTitle>
               <h4>Address</h4>
-              <p>{address}</p>
+              <p>{address || defaultUser.address}</p>
             </DescriptionTitle>
           </UserSection>
           <UserSection>
@@ -55,7 +56,7 @@ function TransfersRecipientCard() {
             </Icon>
             <DescriptionTitle>
               <h4>Email</h4>
-              <p>{email}</p>
+              <p>{email || defaultUser.email}</p>
             </DescriptionTitle>
           </UserSection>
           <UserSection>
@@ -64,7 +65,7 @@ function TransfersRecipientCard() {
             </Icon>
             <DescriptionTitle>
               <h4>Phone</h4>
-              <p>{phoneNumber}</p>
+              <p>{phoneNumber || defaultUser.phoneNumber}</p>
             </DescriptionTitle>
           </UserSection>
         </UserDescription>

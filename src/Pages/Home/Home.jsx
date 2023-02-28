@@ -58,8 +58,12 @@ function Home() {
   };
 
   return (
-    <HomeWrapper>
-      <SideBar active={active} handleActive={handleActive} />
+    <HomeWrapper className="">
+      <SideBar
+        active={active}
+        handleActive={handleActive}
+        width={viewportWidth}
+      />
       <HomeContainer active={active}>
         <NavBar />
         <Routes>

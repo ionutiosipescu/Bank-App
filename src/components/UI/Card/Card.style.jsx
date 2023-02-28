@@ -32,7 +32,7 @@ export const CardContainer = styled.div`
       : "var(--white)"};
   color: ${(props) =>
     props.currency == "ron" || props.currency == "euro"
-      ? "var(--white)"
+      ? "var(--text-light)"
       : "var(--text)"};
   ${(props) =>
     props.size === "sm"

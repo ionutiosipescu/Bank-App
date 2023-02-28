@@ -23,6 +23,7 @@ import { selectOptionTransfer } from "../../state-management/Dashboard/services/
 import { getTransferArr } from "../../state-management/Dashboard/services/transfer/transfer.service";
 import { selectNotificationOpen } from "../../state-management/Dashboard/dashboard/dashboard.selector";
 import { getTransferArrNotifications } from "../../state-management/Dashboard/dashboard/dashboard.service";
+import { selectDepositArr } from "../../state-management/Dashboard/services/deposit/deposit.selector";
 
 function Dashboard() {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ function Dashboard() {
   const isSubmiting = useSelector(selectIsSubmiting);
   const userData = useSelector(selectCurrentUser);
   const notificationOpen = useSelector(selectNotificationOpen);
+  const deposits = useSelector(selectDepositArr);
 
   useEffect(() => {
     if (isSubmiting === false) {
@@ -39,6 +41,8 @@ function Dashboard() {
     }
     console.log(isSubmiting);
   }, [isSubmiting]);
+
+  console.log(deposits);
 
   return (
     <React.Fragment>
@@ -62,14 +66,14 @@ function Dashboard() {
               />
               <TopCard
                 label="Income"
-                amount="$5,542.23"
+                amount="5,542 RON"
                 percent="+0.5"
                 size="sm"
                 primary="primary"
               />
               <TopCard
                 label="Outcome"
-                amount="$1,215.37"
+                amount="1,215 RON"
                 percent="-0.2"
                 size="sm"
               />

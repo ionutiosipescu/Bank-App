@@ -76,3 +76,10 @@ export const BtnContainer = styled.div`
   height: fit-content;
   width: 100%;
 `;
+
+export const BottomContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+`;

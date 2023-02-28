@@ -9,7 +9,7 @@ import { selectCurrentUser } from "../../../state-management/Dashboard/userData/
 import { selectTransferArr } from "./../../../state-management/Dashboard/services/transfer/transfer.selector";
 import logo from "../../../assets/images/logo.png";
 import { selectCardArr } from "./../../../state-management/Dashboard/cards/cards.selector";
-import { accounts } from "./../../../utils/data/dummyData";
+import { accounts, date } from "./../../../utils/data/dummyData";
 
 function TransfersAllPDF() {
   const transfers = useSelector(selectTransferArr);
@@ -20,11 +20,12 @@ function TransfersAllPDF() {
       ? `${userData?.account[0]?.balance} RON`
       : `${userData?.account[1]?.balance} EUR`;
 
-  // console.log(userData.account);
+  const name = `${userData.name} ${userData.userDetail.last_name}`;
+
+  console.log(userData);
 
   const arrayOfArrays = transfers?.map(
-    ({ id, transfer, date, details, to_receiver_name }) => [
-      id,
+    ({ transfer, date, details, to_receiver_name }) => [
       transfer,
       date,
       details,
@@ -36,57 +37,53 @@ function TransfersAllPDF() {
     // Create a new jsPDF instance
     const doc = new jsPDF();
 
+    // Add the bank name and address
+    doc.setFontSize(16);
+    doc.text(`My Bank`, 15, 10);
+    doc.setFontSize(12);
+    doc.text(`123 Main St`, 15, 17);
+    doc.text(`Anytown, USA`, 15, 23);
+
     // Define the PDF header and styling
     doc.setFontSize(22);
     doc.setTextColor("#333333");
     doc.setFont("helvetica", "bold");
-    doc.text("Bank Account Statement", 15, 15);
-
-    // Add the bank name and address
-    doc.setFontSize(16);
-    doc.text(`My Bank`, 15, 35);
-    doc.setFontSize(12);
-    doc.text(`123 Main St`, 15, 42);
-    doc.text(`Anytown, USA`, 15, 48);
+    doc.text("Transfers Statement", 15, 45);
 
     // Add logo
-    doc.addImage(logo, "JPEG", 150, 30, 50, 20);
+    doc.addImage(logo, "JPEG", 150, 5, 50, 20);
 
     // Add the user's name and account number
     doc.setFontSize(14);
     doc.setFont("helvetica", "bold");
-    doc.text(`Name: John Smith`, 15, 65);
+    doc.text(`Name: ${name}`, 15, 65);
     doc.text(`Account Number: 1234567890`, 100, 65);
+
+    // Add the balance and styling
+    doc.setFontSize(14);
+    doc.setFont("helvetica", "bold");
+    doc.text(`Current Balance: ${balance}`, 15, 80);
 
     // Add the statement period
     doc.setFontSize(14);
     doc.setFont("helvetica", "bold");
-    doc.text(`Statement Period`, 15, 80);
+    doc.text(`Statement Period`, 15, 95);
     doc.setFontSize(12);
     doc.setFont("helvetica", "normal");
-    doc.text(`From: 01/01/2023`, 15, 90);
-    doc.text(`To: 01/31/2023`, 80, 90);
+    doc.text(`From: 01/01/2023`, 15, 105);
+    doc.text(`To: ${date.toLocaleDateString()}`, 80, 105);
 
     // Add the table with transaction details
-    const headers = [["ID", "Amount", "Date", "Details", "Name"]];
+    const headers = [["Amount", "Date", "Details", "Name"]];
     const data = arrayOfArrays;
 
     doc.autoTable({
       head: headers,
       body: data,
-      startY: 100,
+      startY: 115,
       margin: { top: 10 },
       styles: { fontSize: 12, fontStyle: "normal", cellPadding: 5 },
     });
-
-    // Add the balance and styling
-    doc.setFontSize(14);
-    doc.setFont("helvetica", "bold");
-    doc.text(
-      `Current Balance: ${balance}`,
-      15,
-      doc.autoTable.previous.finalY + 20
-    );
 
     // Add a footer message and styling
     doc.setFontSize(12);
@@ -98,7 +95,7 @@ function TransfersAllPDF() {
     );
 
     // Save the PDF file using the file-saver library
-    doc.save("bank_statement.pdf");
+    doc.save(`${name}_Bank_Statement.pdf`);
   };
   return (
     <Button

@@ -26,7 +26,7 @@ export const DetailsContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   width: 50%;
-  height: 50%;
+  height: 80%;
 `;
 
 export const DetailSection = styled.div`

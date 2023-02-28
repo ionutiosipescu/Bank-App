@@ -4,7 +4,7 @@ import { device } from "./../../utils/breakpoints/breakpoints";
 export const HomeWrapper = styled.div`
   display: flex;
   background-color: var(--gray-light);
-  height: 100%;
+  height: fit-content;
   width: 100%;
 `;
 
@@ -23,6 +23,6 @@ export const HomeContainer = styled.div`
     height: 100%;
     width: calc(100% - 250px);
     margin-left: 250px;
-    padding: 10px 0px 30px 30px;
+    padding: 10px 0px 32px 30px;
   }
 `;

@@ -26,7 +26,7 @@ export const RadioPill = styled.div`
   padding: 0px 5px;
   border-radius: 30px;
 
-  color: var(--white);
+  color: var(--text-light);
   & p {
     ${(props) =>
       props.active === "active" ? "margin-left: 25px;" : "margin-right: 25px;"}

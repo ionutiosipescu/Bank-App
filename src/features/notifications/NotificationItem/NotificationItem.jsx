@@ -6,7 +6,7 @@ import {
   NotificationItemContainer,
   NotificationItemImage,
 } from "../Notification/Notification.style";
-import avatar from "../../../assets/images/avatar.png";
+import avatar from "../../../assets/images/avatar-2.png";
 import { useSelector } from "react-redux";
 import { selectUserAccount } from "../../../state-management/Dashboard/userData/userData.selector";
 
@@ -16,10 +16,9 @@ function NotificationItem({ data, ...props }) {
   const hour = `${date.getHours()} : ${
     (date.getMinutes() < 10 ? "0" : "") + date.getMinutes()
   }`;
-  const [isRead, setIsRead] = useState(false);
 
   return (
-    <NotificationItemContainer onClick={() => setIsRead(!isRead)} read={isRead}>
+    <NotificationItemContainer>
       <NotificationItemImage>
         <img src={avatar} alt="" />
       </NotificationItemImage>

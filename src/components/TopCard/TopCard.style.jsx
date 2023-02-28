@@ -35,3 +35,9 @@ export const CardBody = styled.div`
   height: 90%;
   /* padding-bottom: 10px; */
 `;
+
+export const CardInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;

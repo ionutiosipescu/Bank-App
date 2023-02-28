@@ -44,11 +44,11 @@ export const BtnBoxExchange = styled.div`
   &:hover {
     scale: 1.08;
     background: var(--purple-dark);
-    color: var(--white);
+    color: var(--text-light);
   }
   input[type="radio"]:checked {
     background: var(--purple-dark);
-    color: var(--white);
+    color: var(--text-light);
   }
 `;
 export const SelectAccountToggle = styled.div`
