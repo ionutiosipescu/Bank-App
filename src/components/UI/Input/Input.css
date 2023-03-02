@@ -21,6 +21,7 @@ select.input-error {
   box-shadow: 0px 0px 12px -8px rgba(21, 20, 47, 0.8);
   width: 150px;
   height: 40px;
+  
 }
 .box-exchange:hover {
   scale: 1.08;
@@ -29,7 +30,7 @@ select.input-error {
 }
 .box-exchange.selected {
   background: var(--green-dark);
-  color: var(--white);
+  color: var(--text-white);
   border: 1px solid var(--green-dark);
 }
 .box-exchange.selected:hover {
@@ -47,6 +48,7 @@ select.input-error {
   display: flex;
   flex-direction: column;
   width: 100%;
+  
 }
 /* //////////////////////////////////  */
 
@@ -66,6 +68,7 @@ select.input-error {
 .plan-form .radio-label.selected .plancard-body li {
   color: var(--white);
   border-bottom: 1px solid var(--white);
+  
 }
 
 .plan-form .radio-label.selected .plancard-footer {
@@ -96,6 +99,7 @@ select.input-error {
   border-radius: 25px;
   overflow: hidden;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  background-color: red;
 }
 
 /* Header */
@@ -143,6 +147,7 @@ select.input-error {
   width: 100%;
   z-index: 2;
   margin-bottom: 20px;
+  
 }
 .plan-form .plancard-body ul {
   list-style-type: none;
@@ -153,12 +158,14 @@ select.input-error {
   flex-direction: column;
   gap: 20px;
   text-align: center;
+  
 }
 .plan-form .plancard-body li {
   width: 100%;
   color: var(--gray-dark);
   border-bottom: 1px solid var(--gray-dark);
   padding-bottom: 8px;
+  
 }
 .plan-form .plancard-body li:last-child {
   border: none;

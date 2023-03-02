@@ -107,6 +107,7 @@ export const RadioLabel = styled.label`
 export const RadioPlanContainer = styled.div`
   display: flex;
   flex-direction: column;
+
   margin-bottom: ${(props) => (props.size === "card" ? "0" : "20px")}; // 50px
   justify-content: ${(props) =>
     props.size === "card" ? "space-between" : "center"};
@@ -124,6 +125,7 @@ const InputStyle = css`
   border-radius: 30px;
   padding: 0 12px 0 10px;
   background-color: var(--white);
+  color: var(--text);
   &:focus {
     outline: none;
     border: 2px solid var(--blue);
@@ -172,6 +174,7 @@ export const Checkbox = styled.div`
   justify-content: flex-start;
   align-items: center;
   margin: 15px 0px 15px;
+  color: var(--text);
   input {
     width: fit-content;
     margin: 0 10px 0 0;

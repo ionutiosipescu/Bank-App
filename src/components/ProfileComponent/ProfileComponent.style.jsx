@@ -25,7 +25,7 @@ export const ProfileContainer = styled.div`
   }
   & h1 {
     margin-bottom: 30px;
-    color: var(--purple);
+    color: var(--highlight);
   }
 `;
 
@@ -36,6 +36,7 @@ export const ProfileInfo = styled.div`
   height: 40%;
   margin-top: 40px;
   padding-right: 30px;
+  color: var(--text);
 `;
 
 export const InfoSection = styled.div`

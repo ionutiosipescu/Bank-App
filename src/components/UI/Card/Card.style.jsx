@@ -84,6 +84,7 @@ export const ServiceViewCard = styled.div`
   border-radius: 40px;
   padding: 30px 50px;
   background-color: var(--white);
+  color: var(--text);
   box-shadow: 0px 0px 15px -8px rgba(21, 20, 47, 0.73);
 `;
 
@@ -97,6 +98,7 @@ export const ServiceCard = styled.div`
   border-radius: 40px;
   padding: 30px 40px;
   background-color: var(--white);
+  color: var(--text);
   box-shadow: 0px 0px 15px -8px rgba(21, 20, 47, 0.73);
   @media (max-width: 1515px) {
     width: 63%;
@@ -124,6 +126,7 @@ export const ServiceInputsCard = styled.div`
   overflow: hidden;
   border-radius: 40px;
   background-color: var(--white);
+  color: var(--text);
   box-shadow: 0px 0px 15px -8px rgba(21, 20, 47, 0.73);
   /* Media */
   @media (${device.mobileS}) {
@@ -173,6 +176,7 @@ export const ServiceInputsCardLoans = styled.div`
   border-radius: 40px;
   padding: 30px 40px;
   background-color: var(--white);
+  color: var(--text);
   box-shadow: 0px 0px 15px -8px rgba(21, 20, 47, 0.73);
   /* Media */
   @media (${device.mobileS}) {
@@ -242,6 +246,7 @@ export const ServiceInputsCardDeposit = styled.div`
   border-radius: 40px;
   padding: 30px 40px;
   background-color: var(--white);
+  color: var(--text);
   box-shadow: 0px 0px 15px -8px rgba(21, 20, 47, 0.73);
   /* Media */
   @media (${device.mobileS}) {

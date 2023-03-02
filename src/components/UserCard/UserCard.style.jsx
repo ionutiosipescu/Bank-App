@@ -2,13 +2,13 @@ import styled from "styled-components";
 
 export const UserCardContainer = styled.div`
   width: calc(25% - 20px);
-  height: calc(50% - 20px);
+  height: 100%;
   padding: 10px 30px;
   margin: 10px;
   border-radius: 20px;
   box-shadow: 0px 0px 20px -10px var(--gray-dark);
   color: var(--text);
-  background-color: var(--white);
+  background-color: var(--white-dark);
   cursor: pointer;
   transition: 0.3s;
   &:hover {

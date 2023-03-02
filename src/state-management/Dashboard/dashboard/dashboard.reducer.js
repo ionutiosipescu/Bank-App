@@ -4,6 +4,7 @@ const INITIAL_STATE = {
   showRedDot: false,
   notificationsOpen: false,
   transferNotificationArr: [],
+  darkMode: false,
 };
 
 export const dashboardReducer = (state = INITIAL_STATE, action) => {
@@ -16,6 +17,8 @@ export const dashboardReducer = (state = INITIAL_STATE, action) => {
       return { ...state, notificationsOpen: payload };
     case DASHBOARD_TYPES.SET_TRANSFER_NOTIFICATION_ARR:
       return { ...state, transferNotificationArr: [...payload] };
+    case DASHBOARD_TYPES.SET_DARK_MODE:
+      return { ...state, darkMode: payload };
     case DASHBOARD_TYPES.RESET_DASHBOARD:
       return INITIAL_STATE;
     default:

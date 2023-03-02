@@ -46,9 +46,9 @@ export const DetailPill = styled.div`
   color: var(--text);
   ${(props) =>
     props.type === "text"
-      ? "width: 200px; background-color: var(--gray);"
+      ? "width: 200px; background-color: var(--gray-opp);"
       : props.type === "number"
-      ? "width: fit-content; background-color: var(--gray);"
+      ? "width: fit-content; background-color: var(--gray-opp);"
       : "width: fit-content; background-color: var(--red-light);"}
 `;
 

@@ -8,7 +8,7 @@ export const NewLoanCardContainer = styled.div`
   overflow: hidden;
   width: ${(props) => (props.loans === 1 ? "100%" : "50%")};
   height: 380px;
-  padding-bottom: 20px;
+  padding: 20px;
   margin: 10px;
   background-color: var(--white);
   box-shadow: 0px 0px 25px 0px rgba(79, 78, 105, 0.301);

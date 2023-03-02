@@ -27,6 +27,11 @@ export const setControlNotification = (transferArr, notificationOpen) => {
   };
 };
 
+// Set dark mode
+export const setDarkMode = (boolean) => {
+  return createAction(DASHBOARD_TYPES.SET_DARK_MODE, boolean);
+};
+
 // functia de new transfer new notification
 // verifica contul de ron sau euro
 // ia arr nou si il ilocuieste pe cel din dashboard

@@ -12,6 +12,7 @@ function RadioButton({
 }) {
   const [active, setActive] = useState(defaultMode);
   const [toggleState, setToggleState] = useState(firstText);
+
   const handleRadio = () => {
     setToggleState(toggleState === secondText ? firstText : secondText);
     setActive(active === "active" ? "notActive" : "active");
@@ -25,7 +26,7 @@ function RadioButton({
         <RadioCircle
           onClick={(e) => {
             handleRadio();
-            props.setDataToggle(toggleState);
+            props.setDataToggle && props.setDataToggle(toggleState);
           }}
           name={props.name}
         />

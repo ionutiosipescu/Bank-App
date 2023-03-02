@@ -45,7 +45,22 @@ function Profile() {
         <UsersWrapper>
           <h2>Recent Users</h2>
           <UsersContainer>
-            {accounts.map((account, index) => (
+            {accounts.slice(0, 4).map((account, index) => (
+              <UserCard
+                key={index}
+                name={account.owner}
+                email={account.email}
+                phone={account.phoneNumber}
+                image={account.image}
+                to="/services/transfers/newtransfer"
+                onClick={() => {
+                  dispatch(fetchTransferAccount(account));
+                }}
+              />
+            ))}
+          </UsersContainer>
+          <UsersContainer>
+            {accounts.slice(4, 8).map((account, index) => (
               <UserCard
                 key={index}
                 name={account.owner}

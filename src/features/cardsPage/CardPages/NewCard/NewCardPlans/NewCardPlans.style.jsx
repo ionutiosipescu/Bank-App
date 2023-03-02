@@ -20,6 +20,7 @@ export const FormContainerCard = styled.div`
   padding-bottom: 30px;
   & > h2 {
     margin-bottom: 50px;
+    color: var(--text);
   }
 `;
 export const RowNewCardSection = styled.div`
@@ -27,6 +28,8 @@ export const RowNewCardSection = styled.div`
   flex-direction: row;
   justify-content: space-evenly;
   align-items: flex-end;
+  gap: 20px;
+  margin-bottom: 20px;
   @media (max-width: 1440px) {
     justify-content: space-between;
   }

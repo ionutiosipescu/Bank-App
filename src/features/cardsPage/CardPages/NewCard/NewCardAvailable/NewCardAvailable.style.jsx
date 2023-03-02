@@ -16,7 +16,7 @@ export const NewCardAvailableContainer = styled.div`
   /* place-items: center; */
   min-height: 645px;
   overflow: hidden;
-  border: 1px solid black;
+  border: 1px solid var(--text);
   border-radius: 30px;
   padding: 20px 10px;
   display: flex;
@@ -43,7 +43,7 @@ export const NewCardAvailableContainer = styled.div`
     /* z-index: -1; */
     content: "";
     position: absolute;
-    background: #fff;
+    background: var(--white);
     inset: 5px;
     border-radius: 25px;
   }
@@ -53,7 +53,7 @@ export const Title = styled.h2`
   z-index: 1;
   text-align: center;
   width: 100%;
-  color: #333;
+  color: var(--text);
   margin: 10px 0 30px;
 `;
 
