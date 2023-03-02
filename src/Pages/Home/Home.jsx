@@ -19,8 +19,12 @@ import Profile from "./../Profile/Profile";
 // import Deposit from "../Deposit/Deposit";
 import NewTransfer from "../Services/ServicePages/Transfers/NewTransfer/NewTransfer";
 import ServicesControler from "../Services/ServicesControler/ServicesControler";
+import { selectDarkMode } from "../../state-management/Dashboard/dashboard/dashboard.selector";
 
 function Home() {
+  const darkMode = useSelector(selectDarkMode);
+  console.log(darkMode);
+
   // Variable to set the active state of the Sidebar
   const [active, setActive] = useState("active");
   // Variable to store the viewport width
@@ -58,7 +62,7 @@ function Home() {
   };
 
   return (
-    <HomeWrapper className="">
+    <HomeWrapper className={darkMode && "dark"}>
       <SideBar
         active={active}
         handleActive={handleActive}

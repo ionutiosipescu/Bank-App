@@ -14,8 +14,8 @@ export const Circle = styled.div`
   top: 10%;
   ${(props) =>
     props.size === "fit"
-      ? "width: 30px; height: 30px;"
-      : "width: 60px; height: 60px;"};
+      ? "width: 20px; height: 20px;"
+      : "width: 40px; height: 40px;"};
   border-radius: 50%;
   opacity: 0.4;
   background-color: var(--purple-light);
@@ -24,8 +24,8 @@ export const Circle = styled.div`
 
 export const Pill = styled.div`
   position: absolute;
-  width: ${(props) => (props.size === "fit" ? "60px" : "90px")};
-  height: 300px;
+  width: ${(props) => (props.size === "fit" ? "30px" : "60px")};
+  height: 200px;
   border-radius: 50px;
   ${(props) =>
     props.one ? "top: 40%; left: 88%" : "top: 60%; left: 79%; opacity: 0.5;"};
@@ -34,7 +34,7 @@ export const Pill = styled.div`
 
   /* transform: ${(props) =>
     props.one ? "translate(230px, 70px)" : "translate(170px, 120px)"};
-    opacity: ${(props) => (props.two ? "0.5" : "1")};
+  opacity: ${(props) => (props.two ? "0.5" : "1")};
   @media (max-width: 1395px) {
     transform: ${(props) =>
     props.one ? "translate(190px, 70px)" : "translate(140px, 120px)"};

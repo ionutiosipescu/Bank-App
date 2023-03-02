@@ -8,6 +8,7 @@ export const ProgressCardContainer = styled.div`
   width: 50%;
   height: 380px;
   background-color: var(--white);
+  color: var(--text);
   padding: 20px 30px;
   margin: 10px;
   box-shadow: 0px 0px 25px 0px rgba(79, 78, 105, 0.301);

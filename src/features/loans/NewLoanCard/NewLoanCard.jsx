@@ -2,8 +2,8 @@ import React from "react";
 import LinkButton from "../../../components/UI/LinkButton/LinkButton";
 import { NewLoanCardContainer } from "./NewLoanCard.style";
 
-import wideImg from "../assets/newLoanWide.png";
-import smallImg from "../assets/newLoanSmall.webp";
+import wideImg from "../assets/bank-wide.png";
+import smallImg from "../assets/bank-2.webp";
 
 function NewLoanCard({ loans, ...props }) {
   return (

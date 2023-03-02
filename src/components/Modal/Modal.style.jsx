@@ -10,6 +10,7 @@ export const ModalWrapper = styled.div`
   width: 100%;
   height: 100%;
   background-color: #00000042;
+  color: var(--text);
   z-index: 20;
   ${(props) => (props.opened ? "" : "display: none;")}
 `;

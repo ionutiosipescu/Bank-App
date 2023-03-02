@@ -3,3 +3,4 @@ export const selectNotificationArr = (state) =>
   state.dashboardStorage.transferNotificationArr;
 export const selectNotificationOpen = (state) =>
   state.dashboardStorage.notificationsOpen;
+export const selectDarkMode = (state) => state.dashboardStorage.darkMode;

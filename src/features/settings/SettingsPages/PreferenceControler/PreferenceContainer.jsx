@@ -5,6 +5,7 @@ import {
   SettingsSection,
 } from "../../../../pages/Settings/Settings.style";
 import DropDown from "../../../../components/DropDown/DropDown";
+import DarkModeToggle from "../../DarkModeToggle/DarkModeToggle";
 
 function PreferenceControler() {
   return (
@@ -13,12 +14,7 @@ function PreferenceControler() {
       <SettingsSection>
         <span>
           <p>Night Mode</p>
-          <RadioButton
-            label="Notification"
-            defaultMode={true}
-            firstText="On"
-            secondText="Off"
-          />
+          <DarkModeToggle />
         </span>
         <DropDown label="Language" items={["English", "Romanian", "French"]} />
         <span>

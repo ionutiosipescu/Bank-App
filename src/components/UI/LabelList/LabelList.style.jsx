@@ -14,9 +14,9 @@ export const LabelListStyle = styled.label`
 
   color: ${(props) =>
     props.status === "Completed"
-      ? "var(--green)"
+      ? "var(--green-dark)"
       : props.status === "Canceled"
-      ? "var(--red)"
+      ? "var(--red-dark)"
       : props.status === "Pending"
       ? "var(--gray-dark)"
       : "var(--gray-dark)"};

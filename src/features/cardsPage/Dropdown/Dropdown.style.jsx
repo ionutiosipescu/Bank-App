@@ -13,6 +13,8 @@ export const StyledSelect = styled.select`
   width: 100%;
   margin: 8px 0;
   box-sizing: border-box;
+  background-color: var(--white-dark);
+  color: var(--text);
   &:focus {
     outline: 1px solid var(--purple-dark);
   }

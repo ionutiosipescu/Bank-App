@@ -28,7 +28,10 @@ function Notification({ status, handleClick, ...props }) {
             <>
               {" "}
               {transferArr.map((account, index) => (
-                <Link to={`/services/transfers/transferdetails/${account.id}`}>
+                <Link
+                  to={`/services/transfers/transferdetails/${account.id}`}
+                  key={index}
+                >
                   <NotificationItem data={account} />
                 </Link>
               ))}

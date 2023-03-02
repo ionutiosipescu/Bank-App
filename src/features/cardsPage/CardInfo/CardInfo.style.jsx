@@ -5,6 +5,7 @@ export const Container = styled.div`
   height: 50%;
   padding: 10px;
   margin-top: 30px;
+  color: var(--text);
   & h3 {
     opacity: 0.7;
     font-weight: 600;

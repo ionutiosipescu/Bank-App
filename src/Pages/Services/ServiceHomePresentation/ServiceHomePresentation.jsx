@@ -7,7 +7,7 @@ import {
 } from "./ServiceHomePresentation.style";
 import ServiceHomeCards from "./ServiceHomeCards/ServiceHomeCards";
 
-import image from "../assets/servicesHome.gif";
+import image from "../assets/bank.gif";
 
 function ServiceHomePresentation() {
   return (

@@ -8,7 +8,7 @@ export const NotificationCard = styled.div`
   max-height: 80vh;
   overflow: auto;
   border-radius: 10px;
-  padding: 20px 0 0 20px;
+  padding: 20px;
   background-color: var(--white-dark);
   color: var(--text);
   box-shadow: 0px 0px 20px -5px rgba(21, 20, 47, 0.73);
@@ -24,7 +24,7 @@ export const NotificationsHeader = styled.div`
 
 export const NotificationsBody = styled.div`
   width: 100%;
-  overflow: scroll;
+  /* overflow: scroll; */
 `;
 
 export const NotificationItemContainer = styled.div`
