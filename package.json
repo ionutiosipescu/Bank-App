@@ -20,6 +20,8 @@
     "firebase": "^9.16.0",
     "formik": "^2.2.9",
     "i18n": "^0.15.1",
+    "jest": "^27.5.1",
+    "jest-enzyme": "^7.1.2",
     "js-file-download": "^0.4.12",
     "jspdf": "^2.5.1",
     "jspdf-autotable": "^3.5.28",
@@ -99,6 +101,8 @@
     "@storybook/react": "^6.5.14",
     "@storybook/testing-library": "^0.0.13",
     "babel-plugin-named-exports-order": "^0.0.2",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.7",
     "prop-types": "^15.8.1",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1"

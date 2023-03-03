@@ -11,12 +11,12 @@ function Button({ label, size, primary, handleClick, children, ...props }) {
   );
 }
 
-Button.propTypes = {
-  label: PropTypes.string,
-  to: PropTypes.string,
-  size: PropTypes.oneOf(["sm", "md", "lg", "xl", "round", "fullWidth"]),
-  primary: PropTypes.oneOf(["primary", "secondary"]),
-  handleClick: PropTypes.func,
-};
+// Button.propTypes = {
+//   label: PropTypes.string,
+//   to: PropTypes.string,
+//   size: PropTypes.oneOf(["sm", "md", "lg", "xl", "round", "fullWidth"]),
+//   primary: PropTypes.oneOf(["primary", "secondary"]),
+//   handleClick: PropTypes.func,
+// };
 
 export default Button;
