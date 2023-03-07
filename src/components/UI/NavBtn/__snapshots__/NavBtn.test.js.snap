@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`expect to render NavBtn component 1`] = `
+<styled.div>
+  <LinkButton />
+  <styled.h2
+    as={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "render": [Function],
+      }
+    }
+  />
+</styled.div>
+`;

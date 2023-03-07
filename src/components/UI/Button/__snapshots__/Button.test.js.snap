@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button component matches snapshot 1`] = `
+<styled.button
+  id="button-global"
+  primary="primary"
+  size="sm"
+>
+  Click me
+</styled.button>
+`;

@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StatusMessage component should render with correct props 1`] = `
+<styled.div
+  hide={false}
+  size="full"
+  type="success"
+>
+  <h3>
+    Test message
+  </h3>
+</styled.div>
+`;

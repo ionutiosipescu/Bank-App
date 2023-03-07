@@ -1,54 +1,30 @@
 import React from "react";
-import { mount } from "enzyme";
+import { shallow } from "enzyme";
 import Button from "./Button";
-import Enzyme from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
 
-Enzyme.configure({ adapter: new Adapter() });
+describe("Button component", () => {
+  it("renders without crashing", () => {
+    const wrapper = shallow(<Button />);
+    expect(wrapper.exists()).toBe(true);
+  });
 
-describe("Button", () => {
-  let wrapper;
+  it("renders with label prop", () => {
+    const label = "Click me";
+    const wrapper = shallow(<Button label={label} />);
+    expect(wrapper.find(`[id="button-global"]`).text()).toEqual(label);
+  });
 
-  const mockClick = jest.fn();
+  it("calls handleClick prop on click", () => {
+    const handleClick = jest.fn();
+    const wrapper = shallow(<Button handleClick={handleClick} />);
+    wrapper.find(`[id="button-global"]`).simulate("click");
+    expect(handleClick).toHaveBeenCalled();
+  });
 
-  beforeEach(() => {
-    wrapper = mount(
-      <Button
-        label="Test Button"
-        handleClick={mockClick}
-        size="md"
-        primary="primary"
-        data-test-id="test-button"
-      />
+  it("matches snapshot", () => {
+    const wrapper = shallow(
+      <Button label="Click me" size="sm" primary="primary" />
     );
-  });
-
-  it("renders label text correctly", () => {
-    expect(wrapper.find('[data-test-id="test-button"]').text()).toEqual(
-      "Test Button"
-    );
-  });
-
-  it("calls handleClick on button click", () => {
-    wrapper.find('[data-test-id="test-button"]').simulate("click");
-    expect(mockClick).toHaveBeenCalled();
-  });
-
-  it("applies size prop correctly", () => {
-    expect(wrapper.find('[data-test-id="test-button"]').prop("size")).toEqual(
-      "md"
-    );
-  });
-
-  it("applies primary prop correctly", () => {
-    expect(
-      wrapper.find('[data-test-id="test-button"]').prop("primary")
-    ).toEqual("primary");
-  });
-
-  it("passes through other props", () => {
-    expect(
-      wrapper.find('[data-test-id="test-button"]').prop("data-test-id")
-    ).toEqual("test-button");
+    expect(wrapper).toMatchSnapshot();
   });
 });

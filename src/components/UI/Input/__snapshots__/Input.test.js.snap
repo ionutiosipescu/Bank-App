@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input component should render with correct props 1`] = `
+<styled.div
+  onChange={[MockFunction]}
+  required={true}
+  type="text"
+  value="John"
+>
+  <label>
+    Name
+  </label>
+  <styled.input
+    max={100}
+    min={0}
+    onChange={[MockFunction]}
+    required={true}
+    type="text"
+    value="John"
+  />
+</styled.div>
+`;

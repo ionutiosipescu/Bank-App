@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LabelAction component should render correctly with status prop 1`] = `
+<styled.h3
+  action="Deposit"
+>
+  Test label
+</styled.h3>
+`;
+
+exports[`LabelAction component should render correctly without status prop 1`] = `
+<styled.h3>
+  Test label
+</styled.h3>
+`;

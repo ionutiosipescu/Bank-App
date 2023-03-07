@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`expect to render UserCard component 1`] = `
+<styled.div
+  as={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "render": [Function],
+    }
+  }
+>
+  <styled.div>
+    <img
+      alt="avatar"
+    />
+    <h3>
+       
+    </h3>
+  </styled.div>
+  <styled.div>
+    <styled.div>
+      <styled.div>
+        <RiMailLine
+          size={20}
+        />
+      </styled.div>
+      <div>
+        <p>
+          Email
+        </p>
+        <h5 />
+      </div>
+    </styled.div>
+    <styled.div>
+      <styled.div>
+        <RiPhoneLine
+          size={20}
+        />
+      </styled.div>
+      <div>
+        <p>
+          Phone
+        </p>
+        <h5 />
+      </div>
+    </styled.div>
+  </styled.div>
+</styled.div>
+`;
