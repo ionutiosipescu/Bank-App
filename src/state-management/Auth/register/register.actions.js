@@ -119,3 +119,39 @@ export const updateRegisterPlanAsync = (
     }
   };
 };
+
+// OTP Verification
+export const setEmailValidate = (email) => {
+  return createAction(REGISTER_TYPES.SET_EMAIL_VALIDATE, email);
+};
+
+// ResetForm
+export const setResetFormLogInOtp = () => {
+  const newOTP = "";
+  return createAction(REGISTER_TYPES.SET_OTP, newOTP);
+};
+
+// Reset Show Message
+export const setResetShowMsg = () => {
+  return createAction(REGISTER_TYPES.RESET_SHOW_MSG);
+};
+
+export const setOtp = (otp) => {
+  return createAction(REGISTER_TYPES.SET_OTP, otp);
+};
+
+export const setModalIsOpen = (boolean) => {
+  return createAction(REGISTER_TYPES.SET_MODAL_IS_OPEN, boolean);
+};
+
+export const controlMoldalAsync = (boolean) => {
+  return async (dispatch) => {
+    if (boolean === false) {
+      await dispatch(setOtp(""));
+    }
+    await dispatch(setModalIsOpen(boolean));
+  };
+};
+
+export const setOtpError = (error) =>
+  createAction(REGISTER_TYPES.SET_OTP_ERROR, error);

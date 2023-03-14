@@ -13,6 +13,7 @@ import {
   FormDetails,
   FormBox,
 } from "./Confirm.style";
+import { useNavigate } from "react-router-dom";
 import { upperCaseFirstInitial } from "../../../../utils/helpers/helperFunctions/upperCaseFirstInitial";
 import { generateRandomKey } from "../../../../utils/helpers/helperFunctions/randomKey";
 import { ErrorMsg } from "../../../../components/Errors/Auth/ErrorMsg.style";
@@ -25,6 +26,7 @@ import { fetchRegisterMail } from "../../../../state-management/Auth/register/re
 function ConfirmForm() {
   const errorMsg = useSelector(selectRegisterFailed);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const step = useSelector(selectStep);
   const RegisterData = useSelector(selectRegisterData);
   const array = RegisterData?.account;
@@ -45,6 +47,7 @@ function ConfirmForm() {
     console.log(RegisterData);
     console.log(errorMsg);
     dispatch(fetchRegisterMail(RegisterData, step));
+    navigate("/confirm-otp");
   };
   const setCardCheckbox = (e) => {
     console.log(e);

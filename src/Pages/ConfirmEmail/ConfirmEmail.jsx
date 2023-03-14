@@ -33,6 +33,24 @@ function ConfirmEmail() {
     };
   }, []);
 
+  // After 10 seconds redirect the user
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      navigate("/");
+    }, 10000);
+
+    return () => clearTimeout(timeoutId);
+  }, []);
+
+  // Decrement after each second the second variable
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setSeconds(seconds - 1);
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+  }, [seconds]);
+
   return (
     <ConfirmMailContainer>
       <MainConfirmMailWrapper>

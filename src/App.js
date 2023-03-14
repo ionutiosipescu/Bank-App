@@ -6,12 +6,14 @@ import ProtectedRoutes from "./ProtectedRoutes";
 import ConfirmEmail from "./pages/ConfirmEmail/ConfirmEmail";
 import ConfirmPassword from "./pages/ConfirmPassword/ConfirmPassword";
 import ChangePassword from "./pages/ChangePassword/ChangePassword";
+import OtpConfirm from "./pages/OtpConfirm/OtpConfirm";
 
 function App() {
   return (
     <Routes>
       <Route index path="/" element={<Login />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/confirm-otp" element={<OtpConfirm />} />
       <Route path="/confirm-mail" element={<ConfirmEmail />} />
       <Route path="/confirm-password" element={<ConfirmPassword />} />
       <Route path="/changed-password" element={<ChangePassword />} />

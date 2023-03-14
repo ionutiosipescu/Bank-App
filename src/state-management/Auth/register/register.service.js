@@ -2,7 +2,9 @@ import axios from "axios";
 import { REGISTER_TYPES } from "./register.types";
 import { createAction } from "../../../utils/helpers/reducer/reducer.utils";
 import { setStep } from "./register.actions";
-import { requests } from "../../../utils/requests/requests";
+import { requests, loginComplete } from "../../../utils/requests/requests";
+import { setResetFormLogInOtp } from "./register.actions";
+import { setEmailValidate } from "./register.actions";
 
 export const postRegisterStart = () =>
   createAction(REGISTER_TYPES.POST_REGISTER_START);
@@ -16,16 +18,16 @@ export const postRegisterFailed = (error) =>
 // Async User Profile
 export const fetchRegisterMail = (registerData, step) => {
   return async (dispatch) => {
+    const { email } = registerData;
     try {
       dispatch(postRegisterStart());
       await dispatch(setStep(step + 1));
-      console.log(registerData);
       // Post Request
       const response = await axios.post(
         `${requests.POST_SEND_OTP_REGISTER}`,
         registerData
       );
-      console.log(response);
+      await dispatch(setEmailValidate(email));
       //   Guard Clouse
       if (!response.data) return;
       //   Increment Page
@@ -41,6 +43,62 @@ export const fetchRegisterMail = (registerData, step) => {
         const errServer =
           "Server is currently unavailable please try again later";
         dispatch(postRegisterFailed(errServer));
+      }
+    }
+  };
+};
+
+// OTP
+export const requestRegisterOtpStart = () =>
+  createAction(REGISTER_TYPES.POST_REGISTER_OTP_START);
+
+export const requestRegisterOtpSuccess = () =>
+  createAction(REGISTER_TYPES.POST_REGISTER_OTP_SUCCESS);
+
+export const requestRegisterOtpFailed = (error) =>
+  createAction(REGISTER_TYPES.POST_REGISTER_OTP_FAILED, error);
+
+export const VerifyOtp = (otp, email) => {
+  return async (dispatch) => {
+    try {
+      await dispatch(requestRegisterOtpStart());
+      await axios
+        .post(`${requests.POST_VERIFY_OTP}${otp}${loginComplete.EMAIL}${email}`)
+        .then((res) => console.log(res));
+      await dispatch(requestRegisterOtpSuccess());
+      await dispatch(setResetFormLogInOtp());
+    } catch (err) {
+      if (!err) return;
+      console.log(err);
+      const errMsg = err?.response?.data;
+      const errServer =
+        "Server is currently unavailable please try again later";
+      if (errMsg) {
+        dispatch(requestRegisterOtpFailed(errMsg));
+      } else {
+        dispatch(requestRegisterOtpFailed(errServer));
+      }
+    }
+  };
+};
+
+export const ResendOtp = (email) => {
+  return async (dispatch) => {
+    try {
+      await dispatch(requestRegisterOtpStart());
+      await axios
+        .post(`${requests.POST_RESEND_OTP}${email}`)
+        .then((res) => console.log(res));
+      await dispatch(requestRegisterOtpSuccess());
+    } catch (err) {
+      console.log(err);
+      const errMsg = err?.response?.data;
+      const errServer =
+        "Server is currently unavailable please try again later";
+      if (errMsg) {
+        dispatch(requestRegisterOtpFailed(errMsg));
+      } else {
+        dispatch(requestRegisterOtpFailed(errServer));
       }
     }
   };

@@ -31,6 +31,14 @@ const INITIAL_STATE = {
     userDetail: {},
     account: [],
   },
+  otp: "",
+  isSubmitingOtp: false,
+  showMessageOtp: false,
+  errorMsgOtp: "",
+  emailValidate: "",
+  otpError: "",
+  modalIsOpen: false,
+  navigatePage: false,
 };
 
 export const registerReducer = (state = INITIAL_STATE, action = {}) => {
@@ -67,6 +75,37 @@ export const registerReducer = (state = INITIAL_STATE, action = {}) => {
         ...state,
         registerData: { ...state.registerData, account: [...payload] },
       };
+    case REGISTER_TYPES.SET_EMAIL_VALIDATE:
+      return { ...state, emailValidate: payload };
+    case REGISTER_TYPES.POST_REGISTER_OTP_START:
+      return { ...state, isSubmitingOtp: true };
+    case REGISTER_TYPES.POST_REGISTER_OTP_SUCCESS:
+      return {
+        ...state,
+        isSubmitingOtp: false,
+        showMessageOtp: true,
+        errorMsgOtp: "",
+        navigatePage: true,
+      };
+    case REGISTER_TYPES.POST_REGISTER_OTP_FAILED:
+      return {
+        ...state,
+        isSubmitingOtp: false,
+        showMessageOtp: true,
+        errorMsgOtp: payload,
+      };
+    case REGISTER_TYPES.RESET_SHOW_MSG:
+      return {
+        ...state,
+        showMessageOtp: false,
+        errorMsgOtp: "",
+      };
+    case REGISTER_TYPES.SET_OTP_ERROR:
+      return { ...state, otpError: payload };
+    case REGISTER_TYPES.SET_MODAL_IS_OPEN:
+      return { ...state, modalIsOpen: payload };
+    case REGISTER_TYPES.SET_OTP:
+      return { ...state, otp: payload };
     default:
       return state;
   }
