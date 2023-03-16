@@ -13,6 +13,8 @@ import { ChangePasswordSchema } from "../ValidationSchema/ValidationSchema";
 import { setResetPassword } from "../../../state-management/Auth/changePassword/password.action";
 import Auth from "../../../components/Auth/Auth";
 import Modal from "../../../components/Modal/Modal";
+import { setPasswordData } from "../../../state-management/Auth/changePassword/password.action";
+import { setResetPasswordData } from "../../../state-management/Auth/changePassword/password.action";
 
 function FromChangePassword() {
   const dispatch = useDispatch();
@@ -21,7 +23,12 @@ function FromChangePassword() {
   const { password, confirmPassword } = passwordData;
 
   const setData = (e) => {
-    dispatch(setChangePassword(passwordData, e));
+    const { name, value } = e.target;
+    const eventObj = {
+      name: name,
+      value: value,
+    };
+    dispatch(setPasswordData(passwordData, eventObj));
   };
 
   const handleModalClose = () => {
@@ -31,6 +38,7 @@ function FromChangePassword() {
 
   useEffect(() => {
     setShow(false);
+    dispatch(setResetPasswordData());
   }, []);
 
   return (

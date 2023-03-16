@@ -32,19 +32,16 @@ export type Action<T> = {
   type: T;
 };
 
-// if type and payload is provider will return ActionWithPayload
 export function createAction<T extends string, P>(
   type: T,
   payload: P
 ): ActionWithPayload<T, P>;
 
-// if type is provider will return Action
 export function createAction<T extends string>(
   type: T,
   payload: void
 ): Action<T>;
 
-// function declaration
 export function createAction<T extends string, P>(type: T, payload: P) {
   return { type, payload };
 }

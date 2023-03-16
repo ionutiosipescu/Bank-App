@@ -1,11 +1,12 @@
 import { DataObjProps, AuthObjProps } from "./password.types";
 import { AnyAction } from "redux";
 import {
-  setChangePassword,
   setResetPassword,
   resetPassword,
   setAuthForm,
   setResetShowMsg,
+  setPasswordData,
+  setChangePassword,
 } from "./password.action";
 import {
   requestPasswordStart,
@@ -72,31 +73,4 @@ export const changePasswordReducer = (
     };
   }
   return state;
-
-  // switch (action.type) {
-  //   case CHANGE_PASSWORD_TYPES.SET_PASSWORD:
-  //     return { ...state, changePasswordData: { ...action.payload } };
-  //   case CHANGE_PASSWORD_TYPES.RESET_PASSWORD:
-  //     return INITIAL_STATE;
-  //   case CHANGE_PASSWORD_TYPES.SET_AUTH:
-  //     return { ...state, auth: { ...action.payload } };
-  //   case CHANGE_PASSWORD_TYPES.REQUEST_PASSWORD_START:
-  //     return { ...state, isSubmiting: true };
-  //   case CHANGE_PASSWORD_TYPES.REQUEST_PASSWORD_SUCCESS:
-  //     return { ...state, isSubmiting: false, showMessage: true };
-  //   case CHANGE_PASSWORD_TYPES.REQUEST_PASSWORD_FAILED:
-  //     return {
-  //       ...state,
-  //       isSubmiting: false,
-  //       errorMsg: action.payload,
-  //       showMessage: true,
-  //     };
-  //   case CHANGE_PASSWORD_TYPES.RESET_SHOW_MSG:
-  //     return {
-  //       ...state,
-  //       showMessage: false,
-  //     };
-  //   default:
-  //     return state;
-  // }
 };

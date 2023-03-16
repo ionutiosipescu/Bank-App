@@ -12,9 +12,15 @@ import {
   SetPasswordProps,
   AuthObjProps,
   UpdateAuthProps,
+  EventObj,
 } from "./password.types";
+import {
+  RequestPasswordStart,
+  RequestPasswordFailed,
+  RequestPasswordSuccess,
+} from "./password.service";
 
-export type UpdateChangePassword = ActionWithPayload<
+export type SetChangePassword = ActionWithPayload<
   CHANGE_PASSWORD_TYPES.SET_PASSWORD,
   DataObjProps
 >;
@@ -33,25 +39,38 @@ export type SetAuthForm = ActionWithPayload<
 
 export type SetResetShowMsg = Action<CHANGE_PASSWORD_TYPES.RESET_SHOW_MSG>;
 
+// ^Update Password Form
 const updateChangePassword = (
   password: DataObjProps,
-  e: React.ChangeEvent<HTMLInputElement>
+  e: EventObj
 ): DataObjProps => {
-  const { name, value } = e.target;
+  const { name, value } = e;
   return { ...password, [name]: value };
 };
 
+export const setPasswordData = (password: DataObjProps, e: EventObj) => {
+  console.log(e, password);
+  const passdata = updateChangePassword(password, e);
+  return setChangePassword(passdata);
+};
+
 export const setChangePassword = withMatcher(
-  ({ password, e }: PasswordProps): UpdateChangePassword => {
-    const updateObj = updateChangePassword(password, e);
-    return createAction(CHANGE_PASSWORD_TYPES.SET_PASSWORD, updateObj);
+  (passdata: DataObjProps): SetChangePassword => {
+    return createAction(CHANGE_PASSWORD_TYPES.SET_PASSWORD, passdata);
   }
 );
 
-export const setResetPassword = withMatcher((): SetResetPassword => {
+// ^Reset Password Form
+export const setResetPasswordData = () => {
   const updateObj = { password: "", confirmPassword: "" };
-  return createAction(CHANGE_PASSWORD_TYPES.SET_PASSWORD, updateObj);
-});
+  return setResetPassword(updateObj);
+};
+
+export const setResetPassword = withMatcher(
+  (updateObj: DataObjProps): SetResetPassword => {
+    return createAction(CHANGE_PASSWORD_TYPES.SET_PASSWORD, updateObj);
+  }
+);
 
 // Generate Obj for Request
 export const setObjPassword = async (
@@ -72,21 +91,20 @@ export const resetPassword = withMatcher((): ResetPassword => {
   return createAction(CHANGE_PASSWORD_TYPES.RESET_PASSWORD);
 });
 
-const updateAuthForm = (
-  authData: AuthObjProps,
-  e: React.ChangeEvent<HTMLInputElement>
-): AuthObjProps => {
-  const { name, value } = e.target;
+const updateAuthForm = (authData: AuthObjProps, e: EventObj): AuthObjProps => {
+  const { name, value } = e;
   return { ...authData, [name]: value };
 };
 
-// Update Auth Form
-export const setAuthForm = withMatcher(
-  ({ authData, e }: UpdateAuthProps): SetAuthForm => {
-    const authObj = updateAuthForm(authData, e);
-    return createAction(CHANGE_PASSWORD_TYPES.SET_AUTH, authObj);
-  }
-);
+// ^Update Auth Form
+export const setAuthFormData = (authData: AuthObjProps, e: EventObj) => {
+  const authObj = updateAuthForm(authData, e);
+  return setAuthForm(authObj);
+};
+
+export const setAuthForm = withMatcher((authObj: AuthObjProps): SetAuthForm => {
+  return createAction(CHANGE_PASSWORD_TYPES.SET_AUTH, authObj);
+});
 
 // Reset Show Message
 export const setResetShowMsg = withMatcher((): SetResetShowMsg => {

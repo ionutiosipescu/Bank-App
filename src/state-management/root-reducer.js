@@ -16,7 +16,6 @@ import { dashboardReducer } from "./Dashboard/dashboard/dashboard.reducer";
 export const rootReducer = combineReducers({
   // login: loginReducer,
   // register: registerReducer,
-  // currentUser: userDataReducer,
   // loansDataStorage: loansDataReducer,
   // transferStorage: transferReducer,
   // depositStorage: depositReducer,
@@ -25,5 +24,6 @@ export const rootReducer = combineReducers({
   // cardState: cardReducer,
   // settingsState: settingsReducer,
   // dashboardStorage: dashboardReducer,
+  currentUser: userDataReducer,
   registerChangePassword: changePasswordReducer,
 });
