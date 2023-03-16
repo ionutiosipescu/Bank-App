@@ -8,6 +8,9 @@ import { createTransform } from "redux-persist";
 
 // if development run logger
 // if production dont run logger
+
+export type RootState = ReturnType<typeof rootReducer>
+
 const middleWares = [
   process.env.NODE_ENV === "development" && logger,
   thunk,

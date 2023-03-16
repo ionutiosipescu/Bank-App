@@ -14,16 +14,16 @@ import { settingsReducer } from "./Dashboard/settings/settings.reducer";
 import { dashboardReducer } from "./Dashboard/dashboard/dashboard.reducer";
 
 export const rootReducer = combineReducers({
-  login: loginReducer,
-  register: registerReducer,
-  currentUser: userDataReducer,
-  loansDataStorage: loansDataReducer,
-  transferStorage: transferReducer,
-  depositStorage: depositReducer,
-  savingStorage: savingReducer,
-  exchangeStorage: exchangeReducer,
-  cardState: cardReducer,
+  // login: loginReducer,
+  // register: registerReducer,
+  // currentUser: userDataReducer,
+  // loansDataStorage: loansDataReducer,
+  // transferStorage: transferReducer,
+  // depositStorage: depositReducer,
+  // savingStorage: savingReducer,
+  // exchangeStorage: exchangeReducer,
+  // cardState: cardReducer,
+  // settingsState: settingsReducer,
+  // dashboardStorage: dashboardReducer,
   registerChangePassword: changePasswordReducer,
-  settingsState: settingsReducer,
-  dashboardStorage: dashboardReducer,
 });
