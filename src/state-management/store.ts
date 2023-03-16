@@ -4,17 +4,30 @@ import { rootReducer } from "./root-reducer";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import thunk from "redux-thunk";
-import { createTransform } from "redux-persist";
-
+import { Middleware, applyMiddleware, compose } from "@reduxjs/toolkit";
 // if development run logger
 // if production dont run logger
 
-export type RootState = ReturnType<typeof rootReducer>
+export type RootState = ReturnType<typeof rootReducer>;
+
+// declare global {
+//   interface Window {
+//     __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+//   }
+// }
 
 const middleWares = [
-  process.env.NODE_ENV === "development" && logger,
+  process.env.NODE_ENV !== "production" && logger,
   thunk,
-].filter(Boolean);
+].filter((middleware): middleware is Middleware => Boolean(middleware));
+
+// const composeEnhancer =
+//   (process.env.NODE_ENV !== "production" &&
+//     window &&
+//     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
+//   compose;
+
+// const composedEnhancers = composeEnhancer(applyMiddleware(...middleWares));
 
 const persistConfig = {
   key: "root",
