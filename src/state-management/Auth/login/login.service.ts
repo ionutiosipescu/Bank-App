@@ -1,35 +1,85 @@
 import axios from "axios";
 import { setCurrentUser } from "../../Dashboard/userData/userData.action";
-import { createAction } from "../../../utils/helpers/reducer/reducer.utils";
-import { LOGIN_ACTION_TYPES } from "./login.types";
+import {
+  createAction,
+  Action,
+  ActionWithPayload,
+  withMatcher,
+} from "../../../utils/helpers/reducer/reducer.utils";
+import { LOGIN_ACTION_TYPES, LoginData, RegisterData } from "./login.types";
 import { setToken } from "../register/register.actions";
 import { controlMoldalAsync, setEmailValidate } from "./login.action";
 import { requests, loginComplete } from "../../../utils/requests/requests";
 import { getTransferArr } from "../../Dashboard/services/transfer/transfer.service";
 import { setResetFormLogInOtp } from "./login.action";
+import { Dispatch } from "redux";
+import { ThunkAction, ThunkDispatch } from "redux-thunk";
+import { RootState } from "../../store";
+import { AnyAction } from "redux";
+import { SetEmailValidate } from "./login.action";
+import { ControlModalOtp } from "./login.action";
+
+export type PostLoginStart = Action<LOGIN_ACTION_TYPES.POST_LOGIN_START>;
+
+export type PostLoginSuccess = Action<LOGIN_ACTION_TYPES.POST_LOGIN_SUCCESS>;
+
+export type PostLoginFailed = ActionWithPayload<
+  LOGIN_ACTION_TYPES.POST_LOGIN_FAILED,
+  string
+>;
+
+export type PostLogIn = PostLoginStart | PostLoginSuccess | PostLoginFailed;
+
+export type RequestLogInOtpStart =
+  Action<LOGIN_ACTION_TYPES.REQUEST_LOGIN_OTP_START>;
+
+export type RequestLogInOtpSuccess =
+  Action<LOGIN_ACTION_TYPES.REQUEST_LOGIN_OTP_SUCCESS>;
+
+export type RequestLogInOtpFailed = ActionWithPayload<
+  LOGIN_ACTION_TYPES.REQUEST_LOGIN_OTP_FAILED,
+  string
+>;
+
+export type RequestOtp =
+  | RequestLogInOtpStart
+  | RequestLogInOtpSuccess
+  | RequestLogInOtpFailed;
+
+export type fetchAuthDataProps = PostLogIn | SetEmailValidate | ControlModalOtp;
 
 // Login
-export const postLoginStart = () =>
-  createAction(LOGIN_ACTION_TYPES.POST_LOGIN_START);
+export const postLoginStart = withMatcher(
+  (): PostLoginStart => createAction(LOGIN_ACTION_TYPES.POST_LOGIN_START)
+);
 
-export const postLoginSuccess = () =>
-  createAction(LOGIN_ACTION_TYPES.POST_LOGIN_SUCCESS);
+export const postLoginSuccess = withMatcher(
+  (): PostLoginSuccess => createAction(LOGIN_ACTION_TYPES.POST_LOGIN_SUCCESS)
+);
 
-export const postLoginFailed = (error) =>
-  createAction(LOGIN_ACTION_TYPES.POST_LOGIN_FAILED, error);
+export const postLoginFailed = withMatcher(
+  (error: string): PostLoginFailed =>
+    createAction(LOGIN_ACTION_TYPES.POST_LOGIN_FAILED, error)
+);
 
 // OTP
-export const requestLogInOtpStart = () =>
-  createAction(LOGIN_ACTION_TYPES.REQUEST_LOGIN_OTP_START);
+export const requestLogInOtpStart = withMatcher(
+  (): RequestLogInOtpStart =>
+    createAction(LOGIN_ACTION_TYPES.REQUEST_LOGIN_OTP_START)
+);
 
-export const requestLogInOtpSuccess = () =>
-  createAction(LOGIN_ACTION_TYPES.REQUEST_LOGIN_OTP_SUCCESS);
+export const requestLogInOtpSuccess = withMatcher(
+  (): RequestLogInOtpSuccess =>
+    createAction(LOGIN_ACTION_TYPES.REQUEST_LOGIN_OTP_SUCCESS)
+);
 
-export const requestLogInOtpFailed = (error) =>
-  createAction(LOGIN_ACTION_TYPES.REQUEST_LOGIN_OTP_FAILED, error);
+export const requestLogInOtpFailed = withMatcher(
+  (error: string): RequestLogInOtpFailed =>
+    createAction(LOGIN_ACTION_TYPES.REQUEST_LOGIN_OTP_FAILED, error)
+);
 
-export const fetchAuthData = (registerData) => {
-  return async (dispatch) => {
+export const fetchAuthData = (registerData: LoginData): any => {
+  return async (dispatch: Dispatch) => {
     const {
       data: { active, type, token, id, email },
     } = await axios.post(`${requests.POST_AUTHENTICATE_USER}`, registerData);
@@ -58,11 +108,11 @@ export const fetchAuthData = (registerData) => {
 };
 
 // Async User Login
-export const fetchLoginData = (registerData) => {
-  return async (dispatch) => {
+export const fetchLoginData = (registerData: LoginData) => {
+  return async (dispatch: Dispatch) => {
     try {
       await dispatch(fetchAuthData(registerData));
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
       if (!error) return;
       const errMsg = error?.response?.data;
@@ -79,8 +129,12 @@ export const fetchLoginData = (registerData) => {
   };
 };
 
-export const VerifyOtp = (otp, registerData, email) => {
-  return async (dispatch) => {
+export const VerifyOtp = (
+  otp: number,
+  registerData: LoginData,
+  email: string
+) => {
+  return async (dispatch: Dispatch) => {
     try {
       await dispatch(requestLogInOtpStart());
       await axios
@@ -89,7 +143,7 @@ export const VerifyOtp = (otp, registerData, email) => {
       await dispatch(fetchAuthData(registerData));
       await dispatch(requestLogInOtpSuccess());
       await dispatch(setResetFormLogInOtp());
-    } catch (err) {
+    } catch (err: any) {
       if (!err) return;
       console.log(err);
       const errMsg = err?.response?.data;
@@ -104,15 +158,15 @@ export const VerifyOtp = (otp, registerData, email) => {
   };
 };
 
-export const ResendOtp = (email) => {
-  return async (dispatch) => {
+export const ResendOtp = (email: string) => {
+  return async (dispatch: Dispatch) => {
     try {
       await dispatch(requestLogInOtpStart());
       await axios
         .post(`${requests.POST_RESEND_OTP}${email}`)
         .then((res) => console.log(res));
       await dispatch(requestLogInOtpSuccess());
-    } catch (err) {
+    } catch (err: any) {
       console.log(err);
       const errMsg = err?.response?.data;
       const errServer =

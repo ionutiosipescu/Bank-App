@@ -1,21 +1,43 @@
 import axios from "axios";
 import { REGISTER_TYPES } from "./register.types";
-import { createAction } from "../../../utils/helpers/reducer/reducer.utils";
+import {
+  createAction,
+  Action,
+  ActionWithPayload,
+  withMatcher,
+} from "../../../utils/helpers/reducer/reducer.utils";
 import { setStep } from "./register.actions";
 import { requests } from "../../../utils/requests/requests";
+import { Dispatch } from "redux";
+import { RegisterData } from "./register.types";
 
-export const postRegisterStart = () =>
-  createAction(REGISTER_TYPES.POST_REGISTER_START);
+export type PostRegisterStart = Action<REGISTER_TYPES.POST_REGISTER_START>;
 
-export const postRegisterSuccess = () =>
-  createAction(REGISTER_TYPES.POST_REGISTER_SUCCESS);
+export type PostRegisterSuccess = Action<REGISTER_TYPES.POST_REGISTER_SUCCESS>;
 
-export const postRegisterFailed = (error) =>
-  createAction(REGISTER_TYPES.POST_REGISTER_FAILED, error);
+export type PostRegisterFailed = ActionWithPayload<
+  REGISTER_TYPES.POST_REGISTER_FAILED,
+  string
+>;
+
+export const postRegisterStart = withMatcher(() =>
+  createAction(REGISTER_TYPES.POST_REGISTER_START)
+);
+
+export const postRegisterSuccess = withMatcher(() =>
+  createAction(REGISTER_TYPES.POST_REGISTER_SUCCESS)
+);
+
+export const postRegisterFailed = withMatcher((error: string) =>
+  createAction(REGISTER_TYPES.POST_REGISTER_FAILED, error)
+);
 
 // Async User Profile
-export const fetchRegisterMail = (registerData, step) => {
-  return async (dispatch) => {
+export const fetchRegisterMail = (
+  registerData: RegisterData,
+  step: number
+): any => {
+  return async (dispatch: Dispatch) => {
     try {
       dispatch(postRegisterStart());
       await dispatch(setStep(step + 1));
@@ -30,7 +52,7 @@ export const fetchRegisterMail = (registerData, step) => {
       if (!response.data) return;
       //   Increment Page
       dispatch(postRegisterSuccess());
-    } catch (error) {
+    } catch (error: any) {
       if (!error) return;
       const errMsg = error?.response?.data?.message;
       //   If error response from Backend exist, then set the error

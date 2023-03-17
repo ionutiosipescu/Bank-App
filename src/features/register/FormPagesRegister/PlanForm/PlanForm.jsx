@@ -15,8 +15,8 @@ import { selectRegisterUser } from "../../../../state-management/Auth/register/r
 import { setStep } from "../../../../state-management/Auth/register/register.actions";
 import { selectRegisterPlan } from "../../../../state-management/Auth/register/register.selector";
 import { updateRegisterPlanAsync } from "../../../../state-management/Auth/register/register.actions";
-import { setRegisterUserObject } from "../../../../state-management/Auth/register/register.actions";
-import { setRegisterObjectAditionals } from "../../../../state-management/Auth/register/register.actions";
+import { setRegisterUserObjectHandler } from "../../../../state-management/Auth/register/register.actions";
+import { setRegisterObjectAditionalsHandler } from "../../../../state-management/Auth/register/register.actions";
 import e from "cors";
 
 function PlanForm() {
@@ -44,8 +44,8 @@ function PlanForm() {
           if (userPlan.length === 0) {
             actions.setFieldError("userPlan", "At least one item is required");
           } else {
-            dispatch(setRegisterObjectAditionals(register));
-            dispatch(setRegisterUserObject(register));
+            dispatch(setRegisterObjectAditionalsHandler(register));
+            dispatch(setRegisterUserObjectHandler(register));
             dispatch(setStep(step + 1));
           }
         }}

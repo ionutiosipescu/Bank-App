@@ -10,7 +10,7 @@ import "../../../../components/UI/Input/Input.css";
 import { FormContainerAccount } from "./AccountForm.style";
 import { handleSubmit } from "../../../../utils/helpers/helperFunctions/HandleSubmit";
 import { selectRegisterUser } from "../../../../state-management/Auth/register/register.selector";
-import { setRegisterUser } from "../../../../state-management/Auth/register/register.actions";
+import { setRegisterUserHandler } from "../../../../state-management/Auth/register/register.actions";
 import { selectStep } from "../../../../state-management/Auth/register/register.selector";
 import { setStep } from "../../../../state-management/Auth/register/register.actions";
 
@@ -20,7 +20,7 @@ function AccountForm() {
   const registerData = useSelector(selectRegisterUser);
 
   const setData = (e) => {
-    dispatch(setRegisterUser(registerData, e));
+    dispatch(setRegisterUserHandler(registerData, e));
   };
 
   return (

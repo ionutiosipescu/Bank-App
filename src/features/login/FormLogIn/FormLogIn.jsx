@@ -23,6 +23,7 @@ import {
   selectModalIsOpen,
 } from "../../../state-management/Auth/login/login.selector";
 import { fetchLoginData } from "../../../state-management/Auth/login/login.service";
+import { setLoginDataForm } from "../../../state-management/Auth/login/login.action";
 
 function FormLogIn() {
   const dispatch = useDispatch();
@@ -43,7 +44,12 @@ function FormLogIn() {
 
   // send data to Redux userProfile
   const setData = (e) => {
-    dispatch(setlogin(loginData, e));
+    const { name, value } = e.target;
+    const eventObj = {
+      name: name,
+      value: value,
+    };
+    dispatch(setLoginDataForm(loginData, eventObj));
   };
 
   // check isSubmitting status -> redirect to dashboard
@@ -60,6 +66,10 @@ function FormLogIn() {
     persistor.purge();
     dispatch(resetRedux());
   }, []);
+
+  useEffect(() => {
+    console.log(modalOpen);
+  }, [modalOpen]);
 
   return (
     <>

@@ -12,9 +12,9 @@ import DatePickerField from "../../../../components/CustomInputs/CustomDatePicke
 import { FormContainerPersonal } from "./PersonalForm.style";
 import { handleSubmit } from "../../../../utils/helpers/helperFunctions/HandleSubmit";
 import { selectRegisterUser } from "../../../../state-management/Auth/register/register.selector";
-import { setRegisterUser } from "../../../../state-management/Auth/register/register.actions";
 import { selectStep } from "../../../../state-management/Auth/register/register.selector";
 import { setStep } from "../../../../state-management/Auth/register/register.actions";
+import { setRegisterUserHandler } from "../../../../state-management/Auth/register/register.actions";
 
 function PersonalForm() {
   const step = useSelector(selectStep);
@@ -34,7 +34,7 @@ function PersonalForm() {
   const { firstname, lastname, country, address } = registerData; // destructure data from Redux for updating on every keypress
 
   const setData = (e) => {
-    dispatch(setRegisterUser(registerData, e));
+    dispatch(setRegisterUserHandler(registerData, e));
   };
 
   return (
