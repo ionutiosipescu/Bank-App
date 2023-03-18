@@ -15,7 +15,3 @@ export type UserData = {
   userDetail: ClearUserProfile;
   account: RegisterPlanArr;
 };
-
-export type UserDataProps = {
-  userData: UserData | undefined;
-};

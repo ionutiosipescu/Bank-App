@@ -1,32 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
+import { Btn } from "../Button/Button.style";
 import { Link } from "react-router-dom";
-import Button from "../Button/Button";
+import { FC } from "react";
+import { LinkButtonProps } from "../LinkButton/LinkButton";
 
-import { Label, NavBtnContainer } from "./NavBtn.style";
-import LinkButton from "./../LinkButton/LinkButton";
 
-type NavBtnProps = {
-  to: string,
-  children: React.ReactNode,
-  label: string,
-  active: string,
-  selected: boolean,
-  onClick: () => void,
-  size: string,
-}
-
-function NavBtn({ to, children, label, active, selected, onClick, size }: NavBtnProps) {
+const NavBtn: FC<LinkButtonProps> = ({ label, to, size, primary, handleClick, children }) => {
   return (
-    <NavBtnContainer selected={selected} onClick={onClick}>
-      <LinkButton to={to} size={size}>
-        {children}
-      </LinkButton>
-      <Label as={Link} to={to} active={active}>
-        {label}
-      </Label>
-    </NavBtnContainer>
+    <Btn as={Link} to={to} size={size} onClick={handleClick} primary={primary}>
+      {label}
+      {children}
+    </Btn>
   );
 }
-
 
 export default NavBtn;

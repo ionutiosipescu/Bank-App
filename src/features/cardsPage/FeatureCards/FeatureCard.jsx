@@ -2,7 +2,7 @@ import React from "react";
 import { FeatureCard } from "./FeatureCard.style";
 
 import { BsArrowUp, BsArrowDown } from "react-icons/bs";
-import LinkButton from "./../../../components/UI/LinkButton/LinkButton";
+import LinkButton from "../../../components/UI/LinkButton/LinkButton.tsx";
 
 function FeatureCards({ type }) {
   return (

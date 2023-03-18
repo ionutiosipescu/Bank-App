@@ -1,15 +1,16 @@
 import "../Button/Button.css";
 import React from "react";
+import { FC } from "react";
+import { ButtonHTMLAttributes } from "react";
 
 type NewButtonProps = {
   size: string;
   typeclass: string;
-  type?: "button" | "submit" | "reset"; // add a type for the `type` prop
+  type?: "button" | "submit" | "reset";
   onClick?: () => void;
-  children: React.ReactNode;
-};
+}& ButtonHTMLAttributes<HTMLButtonElement>
 
-const Button = ({size, typeclass, type = "button", onClick, children}: NewButtonProps) => {
+const Button: FC<NewButtonProps> = ({size, typeclass, type = "button", onClick, children}) => {
 
 
   return (

@@ -1,5 +1,5 @@
 import React from "react";
-import LinkButton from "../../../../../../components/UI/LinkButton/LinkButton";
+import LinkButton from "../../../../../../components/UI/LinkButton/LinkButton.tsx";
 import { NewContainer } from "../../../../../Cards/Cards.style";
 import {
   NewTransferCard,

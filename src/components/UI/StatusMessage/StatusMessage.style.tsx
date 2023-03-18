@@ -1,5 +1,14 @@
 import styled, { css, keyframes } from "styled-components";
 import { statusSize } from "../../../utils/componentSizes/statusMessageSizes";
+import { TypeMessages, StatusMessageSizes } from "./StatusMessage";
+import { ButtonHTMLAttributes } from "react";
+
+type MessageContainerProps = {
+  type?: TypeMessages;
+  size?: StatusMessageSizes;
+  hide?: boolean;
+  text?: string | undefined,
+} & ButtonHTMLAttributes<HTMLButtonElement>;
 
 const slideIn = keyframes`
   from {
@@ -47,7 +56,7 @@ const slideOut = keyframes`
   }
 `;
 
-export const MessageContainer = styled.div`
+export const MessageContainer = styled.div<MessageContainerProps>`
   display: flex;
   justify-content: center;
   align-items: center;

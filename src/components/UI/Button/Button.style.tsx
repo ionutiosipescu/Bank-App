@@ -1,7 +1,15 @@
 import styled from "styled-components";
 import { sizeBtn } from "../../../utils/componentSizes/buttonSizes";
+import { ButtonHTMLAttributes } from "react";
 
-export const Btn = styled.button`
+
+export type BtnProps = {
+  size?: string,
+  primary?: string,
+  tall?: string,
+} 
+
+export const Btn = styled.button<BtnProps>`
   z-index: 1;
   display: flex;
   justify-content: center;
@@ -37,8 +45,5 @@ export const Btn = styled.button`
       props.primary === "primary"
         ? "background: var(--purple-dark); color: var(--text-light);"
         : "background: var(--purple-light); color: var(--text-light); border: 1px solid var(--purple-dark);"}
-  }
-  & ${(props) => props.children} {
-    transition: 0.3;
   }
 `;

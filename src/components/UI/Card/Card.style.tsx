@@ -1,7 +1,17 @@
 import styled from "styled-components";
 import { device } from "../../../utils/breakpoints/breakpoints";
+import { Size } from "../Button/Button";
 
-export const CardContainer = styled.div`
+export type Currency = "ron" | "euro" | "none"
+
+export type CardContainerProps = {
+  scale?: string,
+  currency?: Currency,
+  size?: Size,
+  flex?: string,
+}
+
+export const CardContainer = styled.div<CardContainerProps>`
   z-index: 1;
   width: 13vw;
   aspect-ratio: 8/5;
@@ -44,7 +54,7 @@ export const CardContainer = styled.div`
       : "width: 100%; height: 100%;"};
 `;
 
-export const CardHeader = styled.div`
+export const CardHeader = styled.div<CardContainerProps>`
   display: flex;
   width: 100%;
   height: fit-content;
@@ -164,8 +174,12 @@ export const ServiceInputsCard = styled.div`
   }
 `;
 
+export type ServicesProps = {
+  type: string,
+}
+
 // refactor please separate div style!
-export const ServiceInputsCardLoans = styled.div`
+export const ServiceInputsCardLoans = styled.div<ServicesProps>`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -234,7 +248,7 @@ export const ServiceInputsCardLoans = styled.div`
 `;
 
 // refactor also here please separate div style!
-export const ServiceInputsCardDeposit = styled.div`
+export const ServiceInputsCardDeposit = styled.div<ServicesProps>`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -302,7 +316,14 @@ export const ServiceInputsCardDeposit = styled.div`
   }
 `;
 
-export const CornerArt = styled.span`
+export type DirectionsProps = {
+  top: string,
+  bottom: string,
+  right: string,
+  left: string,
+}
+
+export const CornerArt = styled.span<DirectionsProps>`
   position: absolute;
   background-color: var(--purple);
   background: linear-gradient(

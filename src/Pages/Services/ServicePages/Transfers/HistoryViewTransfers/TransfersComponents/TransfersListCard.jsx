@@ -4,7 +4,7 @@ import Fallback from "../../../../../../components/Fallback/Fallback";
 import { CardHeader } from "../../../../../../components/TopCard/TopCard.style";
 import { ServiceViewCard } from "../../../../../../components/UI/Card/Card.style";
 import LabelList from "../../../../../../components/UI/LabelList/LabelList";
-import LinkButton from "../../../../../../components/UI/LinkButton/LinkButton";
+import LinkButton from "../../../../../../components/UI/LinkButton/LinkButton.tsx";
 import SmallDropdown from "../../../../../../features/cardsPage/Dropdown/Dropdown";
 import { SelectAccountToggle } from "../../../../../../features/deposits/DepositsControlerCard/DepositControlerCard.style";
 import { DateContainer } from "../../../../../../features/exchange/ExchangeList/ExchangeList.style";

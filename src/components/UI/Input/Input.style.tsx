@@ -1,19 +1,22 @@
 import styled from "styled-components";
-import DatePicker from "react-datepicker";
 import { device } from "../../../utils/breakpoints/breakpoints";
 import { css } from "styled-components";
-import ReCAPTCHA from "react-google-recaptcha";
+import { BtnProps } from "../Button/Button.style";
 
-const StyledGroup = css`
+export type StyleGroupProps = {
+  small?: string,
+  large?: string,
+  radio?: string,
+}
+
+export type InputProps = BtnProps & StyleGroupProps
+
+const StyledGroup = css<StyleGroupProps>`
   position: relative;
   display: flex;
   flex-direction: column;
   margin: 0 10px 10px 0;
   width: ${(props) => (props.small ? "200px" : "100%")};
-  /* label {
-    ${(props) =>
-    props.large ? " margin-bottom: 20px;" : " margin-bottom: 10px;"};
-  } */
   @media (${device.mobileS}) {
     label {
       ${(props) =>
@@ -41,9 +44,8 @@ export const ReCaptchaGroup = styled.div`
   margin-top: 20px;
 `;
 
-export const StyledReCAPTCHA = styled(ReCAPTCHA)``;
 
-export const GroupRadio = styled.div`
+export const GroupRadio = styled.div<StyleGroupProps>`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -64,11 +66,10 @@ export const GroupRadio = styled.div`
         : "width: 300px; height: 40px;"}
   }
 `;
-export const GroupRadioRegister = styled.div`
+export const GroupRadioRegister = styled.div<StyleGroupProps>`
   position: relative;
   display: flex;
   flex-direction: column;
-  ${(props) => console.log(props)}
   margin: 0 10px 10px 0;
   width: 100%;
   label {
@@ -104,7 +105,7 @@ export const RadioLabel = styled.label`
     color: red;
   }
 `;
-export const RadioPlanContainer = styled.div`
+export const RadioPlanContainer = styled.div<InputProps>`
   display: flex;
   flex-direction: column;
   margin-bottom: ${(props) => (props.size === "card" ? "0" : "20px")}; // 50px
@@ -118,7 +119,7 @@ export const RadioPlanContainer = styled.div`
 `;
 
 // shared style
-const InputStyle = css`
+const InputStyle = css<InputProps>`
   height: ${(props) => (props.tall ? "60px" : "35px")};
   border: 1px solid var(--purple);
   border-radius: 30px;
@@ -131,7 +132,7 @@ const InputStyle = css`
 `;
 
 // lv1
-export const InputForm = styled.input`
+export const InputForm = styled.input<InputProps>`
   ${InputStyle}
   width: ${(props) => (props.small ? "200px" : "100%")};
 
@@ -159,7 +160,7 @@ export const InputForm = styled.input`
   }
 `;
 
-export const InputSelect = styled.select`
+export const InputSelect = styled.select<InputProps>`
   ${InputStyle}
   width: ${(props) => (props.small ? "200px" : "100%")};
 `;

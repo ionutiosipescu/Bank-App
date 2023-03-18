@@ -1,17 +1,19 @@
 import React from "react";
-import { Btn } from "./../Button/Button.style";
+import { Btn } from "../Button/Button.style";
 import { Link } from "react-router-dom";
+import { FC } from "react";
+import { ButtonHTMLAttributes } from "react";
+import { Size } from "../Button/Button";
 
-type LinkButtonProps = {
+export type LinkButtonProps = {
   label?: string,
   to: string,
-  size: string,
+  size?: Size,
   primary?: string,
   handleClick?: () => void,
-  children:React.ReactNode,
-}
+}& ButtonHTMLAttributes<HTMLButtonElement>
 
-function LinkButton({ label, to, size, primary, handleClick, children }: LinkButtonProps) {
+const LinkButton: FC<LinkButtonProps> = ({ label, to, size, primary, handleClick, children }) => {
   return (
     <Btn as={Link} to={to} size={size} onClick={handleClick} primary={primary}>
       {label}

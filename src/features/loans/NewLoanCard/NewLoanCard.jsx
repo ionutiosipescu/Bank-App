@@ -1,5 +1,5 @@
 import React from "react";
-import LinkButton from "../../../components/UI/LinkButton/LinkButton";
+import LinkButton from "../../../components/UI/LinkButton/LinkButton.tsx";
 import { NewLoanCardContainer } from "./NewLoanCard.style";
 
 import wideImg from "../assets/newLoanWide.png";

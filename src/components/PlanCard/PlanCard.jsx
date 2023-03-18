@@ -9,7 +9,7 @@ import {
 } from "./PlanCard.style";
 
 // Components
-import LinkButton from "../UI/LinkButton/LinkButton";
+import LinkButton from "../UI/LinkButton/LinkButton.tsx";
 
 // State/Redux
 import { useSelector } from "react-redux";

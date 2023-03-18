@@ -1,6 +1,6 @@
 import React from "react";
 import { ButtonWrapper, ServicesWrapper } from "./ServicesNavigation.style";
-import LinkButton from "../../../components/UI/LinkButton/LinkButton";
+import LinkButton from "../../../components/UI/LinkButton/LinkButton.tsx";
 
 import { Outlet } from "react-router";
 import { services } from "../../../utils/data/servicesData";

@@ -1,12 +1,14 @@
 import React from "react";
 import { LabelListStyle } from "./LabelList.style";
+import { FC } from "react";
+import { ButtonHTMLAttributes } from "react";
+import { StatusActionsProps } from "./LabelList.style";
 
-type LabelListProps = {
-  status: string,
-  children:React.ReactNode,
-}
+export type LabelListProps = {
+  status?: StatusActionsProps,
+}& ButtonHTMLAttributes<HTMLButtonElement>
 
-function LabelList({ status, children }: LabelListProps) {
+const LabelList: FC<LabelListProps> = ({ status, children }) => {
   return <LabelListStyle status={status}>{children}</LabelListStyle>;
 }
 

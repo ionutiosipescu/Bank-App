@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const LabelActionStyle = styled.h3`
+export type LabelActionStyleProps = {
+action?: string,
+}
+
+export const LabelActionStyle = styled.h3<LabelActionStyleProps>`
   color: ${(props) =>
     props.action === "Deposit"
       ? "var(--green)"

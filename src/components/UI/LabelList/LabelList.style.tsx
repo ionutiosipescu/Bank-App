@@ -1,6 +1,12 @@
 import styled from "styled-components";
 
-export const LabelListStyle = styled.label`
+export type StatusActionsProps = "Completed" | "Canceled" | "Pending"
+
+export type LabelListStyleProps = {
+  status?: StatusActionsProps
+}
+
+export const LabelListStyle = styled.label<LabelListStyleProps>`
   font-family: "Heebo", sans-serif;
   font-size: 0.75rem;
   font-weight: 500;

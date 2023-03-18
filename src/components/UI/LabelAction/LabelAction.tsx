@@ -1,12 +1,13 @@
 import React from "react";
 import { LabelActionStyle } from "./LabelAction.style";
+import { FC } from "react";
+import { ButtonHTMLAttributes } from "react";
 
-type LabelActionProps = {
-  action: string,
-  children: React.ReactNode,
-}
+export type LabelActionProps = {
+action?: string,
+}& ButtonHTMLAttributes<HTMLButtonElement>
 
-function LabelAction({ action, children }: LabelActionProps) {
+const LabelAction: FC<LabelActionProps> = ({ action, children }) => {
   return <LabelActionStyle action={action}>{children}</LabelActionStyle>;
 }
 

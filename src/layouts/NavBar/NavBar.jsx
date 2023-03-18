@@ -15,7 +15,7 @@ import avatar from "../../assets/images/avatar.png";
 
 import { accounts } from "../../utils/data/dummyData";
 import { Link } from "react-router-dom";
-import LinkButton from "../../components/UI/LinkButton/LinkButton";
+import LinkButton from "../../components/UI/LinkButton/LinkButton.tsx";
 
 import { useSelector, useDispatch } from "react-redux";
 import { selectCurrentUser } from "../../state-management/Dashboard/userData/userData.selector";

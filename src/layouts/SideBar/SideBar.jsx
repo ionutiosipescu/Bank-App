@@ -7,6 +7,7 @@ import {
   SideBarWrapper,
 } from "./SideBar.style";
 
+// import NavBtn from "../../components/UI/NavBtn/NavBtn";
 import NavBtn from "../../components/UI/NavBtn/NavBtn";
 
 import {
@@ -18,7 +19,7 @@ import {
 import { SiWebmoney } from "react-icons/si";
 import { TiChevronLeft, TiChevronRight, TiPlus } from "react-icons/ti";
 
-import LinkButton from "./../../components/UI/LinkButton/LinkButton";
+import LinkButton from "../../components/UI/LinkButton/LinkButton.tsx";
 
 import inetum from "../../assets/images/logo-inetum.png";
 import { Link } from "react-router-dom";
