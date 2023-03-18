@@ -27,7 +27,7 @@ type StatusMessageProps = {
   size?: StatusMessageSizes;
   handleShow?: () => void;
   show: boolean;
-} & ButtonHTMLAttributes<HTMLButtonElement>
+} & ButtonHTMLAttributes<HTMLButtonElement>;
 
 const StatusMessage: FC<StatusMessageProps> = ({ ...props }) => {
   const { type, text, size, handleShow, show } = props;
@@ -53,14 +53,14 @@ const StatusMessage: FC<StatusMessageProps> = ({ ...props }) => {
     return () => clearTimeout(timer);
   }, [isHiding]);
 
-  if (!showMessage) {
-    return null;
-  }
-
   return (
-      <MessageContainer type={type} size={size} hide={isHiding}>
-        <h3>{`${text}`?.charAt(0)?.toUpperCase() + text?.slice(1)}</h3>
-      </MessageContainer>
+    <>
+      {showMessage ? (
+        <MessageContainer type={type} size={size} hide={isHiding}>
+          <h3>{`${text}`?.charAt(0)?.toUpperCase() + text?.slice(1)}</h3>
+        </MessageContainer>
+      ) : null}
+    </>
   );
-}
+};
 export default StatusMessage;

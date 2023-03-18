@@ -7,7 +7,7 @@ type MessageContainerProps = {
   type?: TypeMessages;
   size?: StatusMessageSizes;
   hide?: boolean;
-  text?: string | undefined,
+  text?: string | undefined;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 const slideIn = keyframes`
