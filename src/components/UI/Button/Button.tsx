@@ -3,16 +3,23 @@ import { Btn } from "./Button.style";
 import { FC } from "react";
 import { ButtonHTMLAttributes } from "react";
 
-export type Size = "sm" | "md" | "fit"
+export type Size = "sm" | "md" | "fit";
 
 export type ButtonProps = {
-  label?: string,
-  size?: Size,
-  primary?: string,
-  handleClick?: () => void,
-} & ButtonHTMLAttributes<HTMLButtonElement>
+  label?: string;
+  size?: Size;
+  primary?: string;
+  handleClick?: () => void;
+} & ButtonHTMLAttributes<HTMLButtonElement>;
 
-const Button: FC<ButtonProps> = ({ label, size, primary, handleClick, children, ...props }) => {
+const Button: FC<ButtonProps> = ({
+  label,
+  size,
+  primary,
+  handleClick,
+  children,
+  ...props
+}) => {
   return (
     <Btn
       size={size}
@@ -25,6 +32,6 @@ const Button: FC<ButtonProps> = ({ label, size, primary, handleClick, children, 
       {children}
     </Btn>
   );
-}
+};
 
 export default Button;
