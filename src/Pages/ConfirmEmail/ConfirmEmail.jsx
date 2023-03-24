@@ -60,7 +60,7 @@ function ConfirmEmail() {
           <ConfirmContainer>
             <SuccesTitle>
               <Confetti width={width} height={height} recycle={false} />
-              <h1>Your Email has been confirmed</h1>
+              <h1>Your Account has been activated !</h1>
               <h3>Congratulation!</h3>
               <p>You will be redirected to the LogIn Page in {seconds}</p>
             </SuccesTitle>
