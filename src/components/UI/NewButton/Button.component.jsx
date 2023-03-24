@@ -1,10 +1,12 @@
 import "../Button/Button.css";
+import React from "react";
 
-const Button = ({ children, ...props }) => {
+const Button = ({ size, typeclass, type = "button", onClick, children }) => {
   return (
     <button
-      className={`btn btn-${props.size} btn-${props.typeclass} ${props.typeclass}`}
-      {...props}
+      className={`btn btn-${size} btn-${typeclass} ${typeclass}`}
+      type={type}
+      onClick={onClick}
     >
       {children}
     </button>

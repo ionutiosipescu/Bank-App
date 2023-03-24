@@ -1,5 +1,5 @@
 import React from "react";
-import { Btn } from "./../Button/Button.style";
+import { Btn } from "../Button/Button.style";
 import { Link } from "react-router-dom";
 
 function LinkButton({ label, to, size, primary, handleClick, children }) {
