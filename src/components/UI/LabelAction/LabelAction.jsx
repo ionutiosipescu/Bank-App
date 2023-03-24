@@ -1,12 +1,7 @@
 import React from "react";
 import { LabelActionStyle } from "./LabelAction.style";
 
-type LabelActionProps = {
-  action: string,
-  children: React.ReactNode,
-}
-
-function LabelAction({ action, children }: LabelActionProps) {
+function LabelAction({ action, children }) {
   return <LabelActionStyle action={action}>{children}</LabelActionStyle>;
 }
 

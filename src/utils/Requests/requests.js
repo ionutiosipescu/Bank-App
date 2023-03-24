@@ -49,8 +49,8 @@ export const requests = {
   GET_HISTORY_EXCHANGE: `${requestGeneral.LOCAL}/exchanges/?id=`,
   POST_EXCHANGE: `${requestGeneral.LOCAL}/exchanges/exchange?id=`,
   //   deposit
-  GET_HISTORY_DEPOSIT: `${requestGeneral.LOCAL}/accounts/deposit/balance/?id=`,
-  POST_DEPOSIT: `${requestGeneral.LOCAL}/accounts/deposit/balance/?id=`,
+  GET_HISTORY_DEPOSIT: `${requestGeneral.LOCAL}/balance/?id=`,
+  POST_DEPOSIT: `${requestGeneral.LOCAL}/balance/add/?id=`,
   //   saving
   GET_HISTORY_SAVING: `${requestGeneral.LOCAL}/savings/?id=`,
   POST_CREATE_SAVING: `${requestGeneral.LOCAL}/savings/new/?id=`,

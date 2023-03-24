@@ -4,7 +4,7 @@ import Button from "../Button/Button";
 
 import { Label, NavBtnContainer } from "./NavBtn.style";
 import { PropTypes } from "prop-types";
-import LinkButton from "./../LinkButton/LinkButton";
+import LinkButton from "../LinkButton/LinkButton";
 
 function NavBtn({ to, children, label, active, selected, onClick, size }) {
   return (

@@ -1,12 +1,7 @@
 import React from "react";
 import { LabelListStyle } from "./LabelList.style";
 
-type LabelListProps = {
-  status: string,
-  children:React.ReactNode,
-}
-
-function LabelList({ status, children }: LabelListProps) {
+function LabelList({ status, children }) {
   return <LabelListStyle status={status}>{children}</LabelListStyle>;
 }
 
