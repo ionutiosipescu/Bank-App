@@ -22,6 +22,8 @@ import LinkButton from "./../../components/UI/LinkButton/LinkButton";
 
 import inetum from "../../assets/images/logo-inetum.png";
 import { Link } from "react-router-dom";
+import logobank from "../../assets/images/logobank.png";
+import { Logo } from "../../features/login/MainLogIn/MainLogIn.style";
 
 const pages = [
   {
@@ -46,7 +48,7 @@ function SideBar({ active, handleActive, width }) {
           {active ? (
             <div>
               <Link to="/dashboard">
-                <h1>BankName</h1>
+                <Logo src={logobank} />
               </Link>
               {width <= 1050 && (
                 <TiChevronLeft size={25} onClick={handleActive} />

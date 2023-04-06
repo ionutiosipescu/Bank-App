@@ -47,8 +47,9 @@ export const SideBarWrapper = styled.div`
 `;
 
 export const LogoContainer = styled.div`
+  padding-top: 50px;
+  width: 100%;
   display: flex;
-  width: 80%;
   color: var(--purple);
   & * {
     cursor: pointer;
@@ -62,7 +63,7 @@ export const LogoContainer = styled.div`
   & > div {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     width: 100%;
   }
   transition: 0.3s;

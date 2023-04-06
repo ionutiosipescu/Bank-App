@@ -34,6 +34,9 @@ export const LogInContainer = styled.div`
 export const Logo = styled.img`
   width: 150px;
 `;
+export const LogoBankShort = styled.img`
+  width: 240px;
+`;
 export const LogoText = styled.p`
   color: var(--gray-dark);
 `;

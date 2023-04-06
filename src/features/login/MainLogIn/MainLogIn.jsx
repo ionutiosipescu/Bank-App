@@ -9,14 +9,18 @@ import FooterLogIn from "../FooterLogIn/FooterLogIn";
 import HeroLogIn from "../HeroLogIn/HeroLogIn";
 import FormLogIn from "../FormLogIn/FormLogIn";
 import logo from "../../../assets/images/logo.png";
+import logobank2 from "../../../assets/images/logobank2.png";
 import PasswordRedirect from "../PasswordRedirect/PassowrdRedirect";
+import { LogoBankShort } from "./MainLogIn.style";
 
 function MainLogIn() {
   return (
     <LogInWrapper>
       <LogInContainer>
-        <Logo src={logo} />
-        <LogoText>The only place for all your finances!</LogoText>
+        <LogoBankShort src={logobank2} />
+        <LogoText>
+          The only place for all <br /> your finances!
+        </LogoText>
         <FormLogIn />
         <FooterLogIn />
         <PasswordRedirect />
