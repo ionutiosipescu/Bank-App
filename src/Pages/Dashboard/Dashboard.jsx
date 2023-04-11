@@ -24,6 +24,7 @@ import { getTransferArr } from "../../state-management/Dashboard/services/transf
 import { selectNotificationOpen } from "../../state-management/Dashboard/dashboard/dashboard.selector";
 import { getTransferArrNotifications } from "../../state-management/Dashboard/dashboard/dashboard.service";
 import { selectDepositArr } from "../../state-management/Dashboard/services/deposit/deposit.selector";
+import { ButtonsTransferBox } from "./../Services/ServicePages/Transfers/HistoryViewTransfers/HistoryViewTransfers.style";
 
 function Dashboard() {
   const dispatch = useDispatch();
