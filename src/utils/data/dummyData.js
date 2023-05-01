@@ -1,11 +1,11 @@
 // import avatar from "../../assets/images/avatar.png";
-const avatar_1 = "https://source.unsplash.com/random/profile";
-const avatar_2 = "https://source.unsplash.com/random/yellow";
-const avatar_3 = "https://source.unsplash.com/random/green";
-const avatar_4 = "https://source.unsplash.com/random/blue";
-const avatar_5 = "https://source.unsplash.com/random/red";
-const avatar_6 = "https://source.unsplash.com/random/flower";
-const avatar_7 = "https://source.unsplash.com/random/city";
+const avatar_1 = "https://source.unsplash.com/random/?profile";
+const avatar_2 = "https://source.unsplash.com/random/?yellow";
+const avatar_3 = "https://source.unsplash.com/random/?green";
+const avatar_4 = "https://source.unsplash.com/random/?blue";
+const avatar_5 = "https://source.unsplash.com/random/?red";
+const avatar_6 = "https://source.unsplash.com/random/?flower";
+const avatar_7 = "https://source.unsplash.com/random/?city";
 
 export const date = new Date();
 

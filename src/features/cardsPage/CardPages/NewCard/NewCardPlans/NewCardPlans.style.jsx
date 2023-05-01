@@ -23,6 +23,7 @@ export const FormContainerCard = styled.div`
   }
 `;
 export const RowNewCardSection = styled.div`
+  margin-bottom: 20px;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
