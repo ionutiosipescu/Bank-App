@@ -50,8 +50,8 @@ export const loansDataReducer = (state = INITIAL_STATE, action) => {
         showMessage: false,
         errorMsg: "",
       };
-    case LOANS_DATA_TYPES.RESET_LOANS:
-      return INITIAL_STATE;
+    case LOANS_DATA_TYPES.RESET_LOANS_FORM:
+      return { ...state, loansData: { ...payload } };
     default:
       return state;
   }

@@ -90,14 +90,10 @@ function LoansFormCard() {
   } = loansData; // destructure data from Redux for updating on every keypress
   // send data to Redux userProfile
 
-  // const onSubmit = (e) => {};
   const setData = (e) => {
     dispatch(setLoansData(loansData, e));
   };
 
-  // const initialObj = {
-  //   serie: "",
-  // };
   return (
     <ServiceCard>
       <CardHeader>

@@ -10,6 +10,7 @@ import {
   setPayLoan,
   updateHistoryLoansPay,
   setLoanStatus,
+  setResetFormSaving,
 } from "./loan.action";
 import { loanComplete, requests } from "../../../../utils/requests/requests";
 import { createAction } from "../../../../utils/helpers/reducer/reducer.utils";
@@ -49,6 +50,7 @@ export const fetchLoanData = (loanObject, arr, currentUserData) => {
       await dispatch(setCheckData(data));
       await dispatch(requestLoansSuccess());
       await dispatch(setLoanStatus("approved"));
+      await dispatch(setResetFormSaving());
     } catch (err) {
       if (!err) return;
       const errMsg = err?.response?.data?.message;
