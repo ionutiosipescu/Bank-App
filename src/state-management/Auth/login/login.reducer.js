@@ -14,6 +14,7 @@ const INITIAL_STATE = {
   isSubmitingOtp: false,
   showMessageOtp: false,
   errorMsgOtp: "",
+  csrf: "",
 };
 
 export const loginReducer = (state = INITIAL_STATE, action) => {
@@ -32,6 +33,8 @@ export const loginReducer = (state = INITIAL_STATE, action) => {
       return { ...state, otpError: payload };
     case LOGIN_ACTION_TYPES.SET_OTP:
       return { ...state, otp: payload };
+    case LOGIN_ACTION_TYPES.SET_CSRF:
+      return { ...state, csrf: payload };
     case LOGIN_ACTION_TYPES.SET_MODAL_IS_OPEN:
       return { ...state, modalIsOpen: payload };
     case LOGIN_ACTION_TYPES.SET_EMAIL_VALIDATE:

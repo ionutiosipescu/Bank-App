@@ -6,7 +6,7 @@ import { setToken } from "../register/register.actions";
 import { controlMoldalAsync, setEmailValidate } from "./login.action";
 import { requests, loginComplete } from "../../../utils/requests/requests";
 import { getTransferArr } from "../../Dashboard/services/transfer/transfer.service";
-import { setResetFormLogInOtp } from "./login.action";
+import { setResetFormLogInOtp, setCSRF } from "./login.action";
 
 // Login
 export const postLoginStart = () =>
@@ -28,11 +28,29 @@ export const requestLogInOtpSuccess = () =>
 export const requestLogInOtpFailed = (error) =>
   createAction(LOGIN_ACTION_TYPES.REQUEST_LOGIN_OTP_FAILED, error);
 
-export const fetchAuthData = (registerData) => {
+// export const getCSRF = () => {
+//   return async (dispatch) => {
+//     axios.defaults.withCredentials = true;
+//     const { data } = await axios.get(`${requests.GET_GENERATE_CSRF}`);
+//     await dispatch(setCSRF(data));
+//     console.log(data);
+//   };
+// };
+
+export const fetchAuthData = (registerData, csrf) => {
   return async (dispatch) => {
+    console.log(registerData, csrf);
     const {
       data: { active, type, token, id, email },
-    } = await axios.post(`${requests.POST_AUTHENTICATE_USER}`, registerData);
+    } = await axios.post(
+      `${requests.POST_AUTHENTICATE_USER}`,
+      registerData
+      // , {
+      //   headers: {
+      //     "X-CSRF-TOKEN": csrf,
+      //   },
+      // }
+    );
     await dispatch(setEmailValidate(email));
     console.log(active, type, token, id, email);
     if (active) {
@@ -58,10 +76,10 @@ export const fetchAuthData = (registerData) => {
 };
 
 // Async User Login
-export const fetchLoginData = (registerData) => {
+export const fetchLoginData = (registerData, csrf) => {
   return async (dispatch) => {
     try {
-      await dispatch(fetchAuthData(registerData));
+      await dispatch(fetchAuthData(registerData, csrf));
     } catch (error) {
       console.log(error);
       if (!error) return;
@@ -125,3 +143,14 @@ export const ResendOtp = (email) => {
     }
   };
 };
+
+// // Exemplu de request POST în care se adaugă header-ul CSRF Token din cookie
+// const postData = async () => {
+//   addCsrfHeader();
+//   try {
+//     const response = await axios.post('/api/endpoint', { data: 'some data' });
+//     console.log(response.data);
+//   } catch (error) {
+//     console.error(error);
+//   }
+// };

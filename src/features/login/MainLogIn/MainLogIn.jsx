@@ -12,8 +12,17 @@ import logo from "../../../assets/images/logo.png";
 import logobank2 from "../../../assets/images/logobank2.png";
 import PasswordRedirect from "../PasswordRedirect/PassowrdRedirect";
 import { LogoBankShort } from "./MainLogIn.style";
+import { useEffect } from "react";
+import { getCSRF } from "../../../state-management/Auth/login/login.service";
+import { useDispatch } from "react-redux";
 
 function MainLogIn() {
+  const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(getCSRF());
+  // }, []);
+
   return (
     <LogInWrapper>
       <LogInContainer>

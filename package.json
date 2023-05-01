@@ -33,6 +33,7 @@
     "i18n": "^0.15.1",
     "jest": "^27.5.1",
     "jest-enzyme": "^7.1.2",
+    "js-cookie": "^3.0.5",
     "js-file-download": "^0.4.12",
     "jspdf": "^2.5.1",
     "jspdf-autotable": "^3.5.28",

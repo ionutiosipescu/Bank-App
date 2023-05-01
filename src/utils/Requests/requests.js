@@ -32,6 +32,7 @@ export const requests = {
   POST_USER_DATA: `${requestGeneral.LOCAL}/user/`,
   POST_VERIFY_OTP: `${requestGeneral.LOCAL}/bank/auth/validate?otpnum=`,
   POST_RESEND_OTP: `${requestGeneral.LOCAL}/bank/auth/resend/otp?email=`,
+  GET_GENERATE_CSRF: `${requestGeneral.LOCAL}/bank/auth/csrf`,
   // register
   POST_SEND_OTP_REGISTER: `${requestGeneral.LOCAL}/bank/auth/otp`,
   // password

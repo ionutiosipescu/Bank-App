@@ -27,6 +27,10 @@ export const setOtp = (otp) => {
   return createAction(LOGIN_ACTION_TYPES.SET_OTP, otp);
 };
 
+export const setCSRF = (csrf) => {
+  return createAction(LOGIN_ACTION_TYPES.SET_CSRF, csrf);
+};
+
 export const setOtpError = (error) =>
   createAction(LOGIN_ACTION_TYPES.SET_OTP_ERROR, error);
 
