@@ -34,6 +34,7 @@ import {
 } from "../../../state-management/Dashboard/services/transfer/transfer.selector";
 import RequestMessage from "../../../components/RequestMessage/RequestMessage";
 import { setResetShowMsg } from "../../../state-management/Dashboard/services/transfer/transfer.action";
+import { selectCsrf } from "../../../state-management/Auth/login/login.selector";
 
 function TransferInputsCard() {
   const dispatch = useDispatch();
@@ -42,6 +43,7 @@ function TransferInputsCard() {
   const transferArr = useSelector(selectTransferArr);
   const selectedAccount = useSelector(selecttransferStorage);
   const currentUser = useSelector(selectCurrentUser);
+  const csrf = useSelector(selectCsrf);
 
   const errorMsgRequest = useSelector(selectError);
   const isSubmiting = useSelector(selectIsSubmiting);
@@ -56,7 +58,7 @@ function TransferInputsCard() {
   };
 
   const handleSubmit = () => {
-    dispatch(fetchTransferData(transferRedux, currentUser));
+    dispatch(fetchTransferData(transferRedux, currentUser, csrf));
   };
 
   const setDataToggle = (account) => {

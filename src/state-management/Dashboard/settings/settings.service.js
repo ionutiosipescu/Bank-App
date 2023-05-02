@@ -15,7 +15,7 @@ export const requestsettingsSuccess = () =>
 export const requestsettingsFailed = (error) =>
   createAction(SETTINGS_TYPES.REQUEST_SETTINGS_FAILED, error);
 
-export const fetchAuthData = (dataObj, userData, token) => {
+export const fetchAuthData = (dataObj, userData, token, csrf) => {
   return async (dispatch) => {
     const { id } = userData;
     try {
@@ -26,6 +26,7 @@ export const fetchAuthData = (dataObj, userData, token) => {
         .patch(`${requests.PATCH_EDIT_PROFILE}${id}`, dataRequest, {
           headers: {
             Authorization: `${token}`,
+            "X-XSRF-TOKEN": csrf,
           },
         })
         .then((res) => console.log(res));

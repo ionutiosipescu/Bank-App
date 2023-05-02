@@ -28,29 +28,27 @@ export const requestLogInOtpSuccess = () =>
 export const requestLogInOtpFailed = (error) =>
   createAction(LOGIN_ACTION_TYPES.REQUEST_LOGIN_OTP_FAILED, error);
 
-// export const getCSRF = () => {
-//   return async (dispatch) => {
-//     axios.defaults.withCredentials = true;
-//     const { data } = await axios.get(`${requests.GET_GENERATE_CSRF}`);
-//     await dispatch(setCSRF(data));
-//     console.log(data);
-//   };
-// };
+export const getCSRF = () => {
+  return async (dispatch) => {
+    axios.defaults.withCredentials = true;
+    const {
+      data: { token },
+    } = await axios.get(`${requests.GET_GENERATE_CSRF}`);
+    await dispatch(setCSRF(token));
+    console.log(token);
+  };
+};
 
 export const fetchAuthData = (registerData, csrf) => {
   return async (dispatch) => {
     console.log(registerData, csrf);
     const {
       data: { active, type, token, id, email },
-    } = await axios.post(
-      `${requests.POST_AUTHENTICATE_USER}`,
-      registerData
-      // , {
-      //   headers: {
-      //     "X-CSRF-TOKEN": csrf,
-      //   },
-      // }
-    );
+    } = await axios.post(`${requests.POST_AUTHENTICATE_USER}`, registerData, {
+      headers: {
+        "X-XSRF-TOKEN": csrf,
+      },
+    });
     await dispatch(setEmailValidate(email));
     console.log(active, type, token, id, email);
     if (active) {

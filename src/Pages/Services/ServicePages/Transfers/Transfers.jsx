@@ -6,14 +6,16 @@ import { selectOptionTransfer } from "../../../../state-management/Dashboard/ser
 import { selectCurrentUser } from "../../../../state-management/Dashboard/userData/userData.selector";
 import { useEffect } from "react";
 import { getTransferArr } from "../../../../state-management/Dashboard/services/transfer/transfer.service";
+import { selectCsrf } from "../../../../state-management/Auth/login/login.selector";
 
 function Transfers() {
   const dispatch = useDispatch();
+  const csrf = useSelector(selectCsrf);
   const currentUser = useSelector(selectCurrentUser);
   const transferOption = useSelector(selectOptionTransfer);
 
   useEffect(() => {
-    dispatch(getTransferArr(transferOption, currentUser));
+    dispatch(getTransferArr(transferOption, currentUser, csrf));
   }, [transferOption]);
 
   return (

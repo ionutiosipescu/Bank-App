@@ -25,6 +25,7 @@ import { fetchAuthData } from "../../../../state-management/Dashboard/settings/s
 import { selectToken } from "../../../../state-management/Auth/register/register.selector";
 import RequestMessage from "../../../../components/RequestMessage/RequestMessage";
 import { setResetShowMsg } from "../../../../state-management/Dashboard/settings/settings.action";
+import { selectCsrf } from "../../../../state-management/Auth/login/login.selector";
 
 function SettingsForm() {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ function SettingsForm() {
   const { first_name, last_name, address, mobile } = settingsData;
   const token = useSelector(selectToken);
   const userData = useSelector(selectCurrentUser);
+  const csrf = useSelector(selectCsrf);
 
   const errorMsgRequest = useSelector(selectSettingErrorRequest);
   const isSubmiting = useSelector(selectSettingIsSubmiting);
@@ -42,7 +44,7 @@ function SettingsForm() {
   };
 
   const onSubmit = () => {
-    dispatch(fetchAuthData(settingsData, userData, token));
+    dispatch(fetchAuthData(settingsData, userData, token, csrf));
   };
 
   useEffect(() => {

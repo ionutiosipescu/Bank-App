@@ -19,9 +19,9 @@ import { useDispatch } from "react-redux";
 function MainLogIn() {
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(getCSRF());
-  // }, []);
+  useEffect(() => {
+    dispatch(getCSRF());
+  }, []);
 
   return (
     <LogInWrapper>

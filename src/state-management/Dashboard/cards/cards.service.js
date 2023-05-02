@@ -45,6 +45,7 @@ export const fetchAddNewAccount = (currentCardNew, currentUser, cardArr) => {
       `${requests.POST_NEW_ACCOUNT}`,
       addNewData
     );
+    console.log(data);
     await dispatch(setAddCardArr(cardArr, data));
     await dispatch(resetCardForm());
   };
