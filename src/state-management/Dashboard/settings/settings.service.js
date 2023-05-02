@@ -37,6 +37,7 @@ export const fetchAuthData = (dataObj, userData, token, csrf) => {
         {
           headers: {
             Authorization: `${token}`,
+            "X-XSRF-TOKEN": csrf,
           },
         }
       );

@@ -16,7 +16,7 @@ export const postRegisterFailed = (error) =>
   createAction(REGISTER_TYPES.POST_REGISTER_FAILED, error);
 
 // Async User Profile
-export const fetchRegisterMail = (registerData, step) => {
+export const fetchRegisterMail = (registerData, step, csrf) => {
   return async (dispatch) => {
     const { email } = registerData;
     try {
@@ -25,7 +25,12 @@ export const fetchRegisterMail = (registerData, step) => {
       // Post Request
       const response = await axios.post(
         `${requests.POST_SEND_OTP_REGISTER}`,
-        registerData
+        registerData,
+        {
+          headers: {
+            "X-XSRF-TOKEN": csrf,
+          },
+        }
       );
       await dispatch(setEmailValidate(email));
       //   Guard Clouse
@@ -58,12 +63,19 @@ export const requestRegisterOtpSuccess = () =>
 export const requestRegisterOtpFailed = (error) =>
   createAction(REGISTER_TYPES.POST_REGISTER_OTP_FAILED, error);
 
-export const VerifyOtp = (otp, email) => {
+export const VerifyOtp = (otp, email, csrf) => {
   return async (dispatch) => {
     try {
       await dispatch(requestRegisterOtpStart());
       await axios
-        .post(`${requests.POST_VERIFY_OTP}${otp}${loginComplete.EMAIL}${email}`)
+        .post(
+          `${requests.POST_VERIFY_OTP}${otp}${loginComplete.EMAIL}${email}`,
+          {
+            headers: {
+              "X-XSRF-TOKEN": csrf,
+            },
+          }
+        )
         .then((res) => console.log(res));
       await dispatch(requestRegisterOtpSuccess());
       await dispatch(setResetFormLogInOtp());
@@ -82,12 +94,16 @@ export const VerifyOtp = (otp, email) => {
   };
 };
 
-export const ResendOtp = (email) => {
+export const ResendOtp = (email, csrf) => {
   return async (dispatch) => {
     try {
       await dispatch(requestRegisterOtpStart());
       await axios
-        .post(`${requests.POST_RESEND_OTP}${email}`)
+        .post(`${requests.POST_RESEND_OTP}${email}`, {
+          headers: {
+            "X-XSRF-TOKEN": csrf,
+          },
+        })
         .then((res) => console.log(res));
       await dispatch(requestRegisterOtpSuccess());
     } catch (err) {

@@ -20,6 +20,7 @@ import { fetchEditCardPlan } from "../../../state-management/Dashboard/cards/car
 import { fetchRemoveCard } from "../../../state-management/Dashboard/cards/cards.service";
 import { selectCardArr } from "../../../state-management/Dashboard/cards/cards.selector";
 import StatusMessage from "../../../components/UI/StatusMessage/StatusMessage";
+import { selectCsrf } from "../../../state-management/Auth/login/login.selector";
 
 function CardsModal({ ...props }) {
   const { type } = props;
@@ -28,6 +29,7 @@ function CardsModal({ ...props }) {
 
   const dispatch = useDispatch();
   const cardEdit = useSelector(selectCurrentCardEdit);
+  const csrf = useSelector(selectCsrf);
   const cardArr = useSelector(selectCardArr);
   const { id } = cardEdit;
   const accountsArr = [cardEdit];
@@ -42,13 +44,13 @@ function CardsModal({ ...props }) {
   };
 
   const handeSave = () => {
-    dispatch(fetchEditCardPlan(cardEdit, cardArr));
+    dispatch(fetchEditCardPlan(cardEdit, cardArr, csrf));
     console.log("SAVE");
     handleShow();
   };
 
   const handeDelete = () => {
-    dispatch(fetchRemoveCard(cardEdit, cardArr));
+    dispatch(fetchRemoveCard(cardEdit, cardArr, csrf));
     console.log("DELETE Page");
     handleShow();
   };

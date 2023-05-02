@@ -38,6 +38,7 @@ import { accounts } from "./../../../utils/data/dummyData";
 import { handleSubmit } from "./../../../utils/helpers/helperFunctions/HandleSubmit";
 import RequestMessage from "../../../components/RequestMessage/RequestMessage";
 import { selectExchangeOption } from "../../../state-management/Dashboard/services/exchange/exchange.selector";
+import { selectCsrf } from "../../../state-management/Auth/login/login.selector";
 
 function ExchangeInputCard() {
   const dispatch = useDispatch();
@@ -46,6 +47,7 @@ function ExchangeInputCard() {
   const selectedOptionExchange = useSelector(selectExchangeOption);
   const exchangeArr = useSelector(selectExchangeArr);
   const currentUser = useSelector(selectCurrentUser);
+  const csrf = useSelector(selectCsrf);
   const [amount1, setAmount1] = useState(1);
   const [amount2, setAmount2] = useState(1);
   const [currency1, setCurrency1] = useState("ron");
@@ -100,7 +102,8 @@ function ExchangeInputCard() {
         excangeData,
         exchangeArr,
         currentUser,
-        selectedOptionExchange
+        selectedOptionExchange,
+        csrf
       )
     );
   };

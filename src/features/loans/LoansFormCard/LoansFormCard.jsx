@@ -24,6 +24,7 @@ import { selectLoansArr } from "../../../state-management/Dashboard/services/loa
 import { fetchLoanData } from "../../../state-management/Dashboard/services/loan/loan.service";
 import { selectCurrentUser } from "../../../state-management/Dashboard/userData/userData.selector";
 import { useMemo } from "react";
+import { selectCsrf } from "../../../state-management/Auth/login/login.selector";
 
 function LoansFormCard() {
   // Modal State
@@ -76,6 +77,7 @@ function LoansFormCard() {
   ];
   const dispatch = useDispatch();
   const loansArr = useSelector(selectLoansArr);
+  const csrf = useSelector(selectCsrf);
   const loansData = useSelector(selectLoansData);
   const currentUser = useSelector(selectCurrentUser);
   const {
@@ -105,7 +107,7 @@ function LoansFormCard() {
         onSubmit={(isValid) => {
           if (isValid) {
             setModalOpen(true);
-            dispatch(fetchLoanData(loansData, loansArr, currentUser));
+            dispatch(fetchLoanData(loansData, loansArr, currentUser, csrf));
           }
         }}
       >

@@ -18,19 +18,21 @@ import { useState } from "react";
 import InputAmount from "./InputAmount/InputAmount";
 import { Formik, Form } from "formik";
 import CustomInput from "../../../CustomInputs/CustomInput";
+import { selectCsrf } from "../../../../state-management/Auth/login/login.selector";
 
 function ModalSaving(props) {
   const dispatch = useDispatch();
   const savingTransfer = useSelector(selectSavingData);
   const savingData = useSelector(selectSavingArr);
+  const csrf = useSelector(selectCsrf);
   const action = useSelector(selectSavingAction);
   const [amount, setAmount] = useState("");
   const { date, details, id, transfer } = savingTransfer;
 
   const handelAccept = () => {
     action === "top-up"
-      ? dispatch(fetchSavingTopUp(savingTransfer, amount, savingData))
-      : dispatch(fetchSavingWithdraw(savingData, savingTransfer));
+      ? dispatch(fetchSavingTopUp(savingTransfer, amount, savingData, csrf))
+      : dispatch(fetchSavingWithdraw(savingData, savingTransfer, csrf));
 
     dispatch(setShowModal(false));
     setAmount("");

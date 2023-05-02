@@ -36,6 +36,7 @@ import { savingSchema } from "../ValidationSchema/ValidationSchemaSaving";
 import Spinner from "../../../components/Spinner/Spinner";
 import StatusMessage from "../../../components/UI/StatusMessage/StatusMessage";
 import RequestMessage from "../../../components/RequestMessage/RequestMessage";
+import { selectCsrf } from "../../../state-management/Auth/login/login.selector";
 
 function SavingsInputCard() {
   const dispatch = useDispatch();
@@ -43,6 +44,7 @@ function SavingsInputCard() {
   const savingArr = useSelector(selectSavingArr);
   const savingData = useSelector(selectSavingData);
   const currentUserData = useSelector(selectCurrentUser);
+  const csrf = useSelector(selectCsrf);
 
   const errorMsgRequest = useSelector(selectError);
   const isSubmiting = useSelector(selectIsSubmiting);
@@ -55,7 +57,7 @@ function SavingsInputCard() {
   };
 
   const onSubmit = () => {
-    dispatch(fetchSavingData(savingFromData, savingArr, currentUserData));
+    dispatch(fetchSavingData(savingFromData, savingArr, currentUserData, csrf));
   };
 
   useEffect(() => {

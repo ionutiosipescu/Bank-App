@@ -8,14 +8,16 @@ import { useEffect } from "react";
 import { selectCurrentUser } from "../../../../state-management/Dashboard/userData/userData.selector";
 import { getExchangeArr } from "../../../../state-management/Dashboard/services/exchange/exchange.service";
 import { selectExchangeOption } from "../../../../state-management/Dashboard/services/exchange/exchange.selector";
+import { selectCsrf } from "../../../../state-management/Auth/login/login.selector";
 
 function Exchange() {
   const selectedOptionExchange = useSelector(selectExchangeOption);
   const currentUser = useSelector(selectCurrentUser);
+  const csrf = useSelector(selectCsrf);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getExchangeArr(selectedOptionExchange, currentUser));
+    dispatch(getExchangeArr(selectedOptionExchange, currentUser, csrf));
     console.log(selectedOptionExchange);
   }, [selectedOptionExchange]);
   return (

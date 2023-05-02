@@ -60,6 +60,7 @@ export const fetchAuthData = (registerData, csrf) => {
         {
           headers: {
             Authorization: `${type} ${token}`,
+            "X-XSRF-TOKEN": csrf,
           },
         }
       );
@@ -95,14 +96,21 @@ export const fetchLoginData = (registerData, csrf) => {
   };
 };
 
-export const VerifyOtp = (otp, registerData, email) => {
+export const VerifyOtp = (otp, registerData, email, csrf) => {
   return async (dispatch) => {
     try {
       await dispatch(requestLogInOtpStart());
       await axios
-        .post(`${requests.POST_VERIFY_OTP}${otp}${loginComplete.EMAIL}${email}`)
+        .post(
+          `${requests.POST_VERIFY_OTP}${otp}${loginComplete.EMAIL}${email}`,
+          {
+            headers: {
+              "X-XSRF-TOKEN": csrf,
+            },
+          }
+        )
         .then((res) => console.log(res));
-      await dispatch(fetchAuthData(registerData));
+      await dispatch(fetchAuthData(registerData, csrf));
       await dispatch(requestLogInOtpSuccess());
       await dispatch(setResetFormLogInOtp());
     } catch (err) {
@@ -120,12 +128,16 @@ export const VerifyOtp = (otp, registerData, email) => {
   };
 };
 
-export const ResendOtp = (email) => {
+export const ResendOtp = (email, csrf) => {
   return async (dispatch) => {
     try {
       await dispatch(requestLogInOtpStart());
       await axios
-        .post(`${requests.POST_RESEND_OTP}${email}`)
+        .post(`${requests.POST_RESEND_OTP}${email}`, {
+          headers: {
+            "X-XSRF-TOKEN": csrf,
+          },
+        })
         .then((res) => console.log(res));
       await dispatch(requestLogInOtpSuccess());
     } catch (err) {

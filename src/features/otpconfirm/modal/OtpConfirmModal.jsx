@@ -21,11 +21,13 @@ import {
   selectShowMessageOtp,
 } from "../../../state-management/Auth/register/register.selector";
 import RequestMessage from "../../../components/RequestMessage/RequestMessage";
+import { selectCsrf } from "../../../state-management/Auth/login/login.selector";
 
 function OtpConfirmModal() {
   const dispatch = useDispatch();
   const otp = useSelector(selectOtp);
   const emailValidate = useSelector(selectEmailValidate);
+  const csrf = useSelector(selectCsrf);
 
   const errorMsgRequest = useSelector(selectErrorOtp);
   const isSubmiting = useSelector(selectIsSubmitingOtp);
@@ -33,14 +35,14 @@ function OtpConfirmModal() {
 
   const handleSubmit = () => {
     if (otp.split("").length === 6) {
-      dispatch(VerifyOtp(otp, emailValidate));
+      dispatch(VerifyOtp(otp, emailValidate, csrf));
     } else {
       dispatch(setOtpError("Invalid OTP"));
     }
   };
 
   const handleResendOtp = () => {
-    dispatch(ResendOtp(emailValidate));
+    dispatch(ResendOtp(emailValidate, csrf));
   };
 
   const handleOTPChange = (e) => {

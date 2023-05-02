@@ -38,6 +38,7 @@ import {
   selectIsSubmiting,
   selectShowMessage,
 } from "../../../state-management/Dashboard/services/deposit/deposit.selector";
+import { selectCsrf } from "../../../state-management/Auth/login/login.selector";
 import SmallDropdown from "../../cardsPage/Dropdown/Dropdown";
 import RequestMessage from "../../../components/RequestMessage/RequestMessage";
 import { setResetShowMsg } from "../../../state-management/Dashboard/services/deposit/deposit.action";
@@ -53,6 +54,7 @@ function DepositsControlerCard() {
   const depositArr = useSelector(selectDepositArr);
   const currentUserData = useSelector(selectCurrentUser);
   const depositDataReducer = useSelector(selectDeposit);
+  const csrf = useSelector(selectCsrf);
 
   const errorMsgRequest = useSelector(selectError);
   const isSubmiting = useSelector(selectIsSubmiting);
@@ -63,7 +65,7 @@ function DepositsControlerCard() {
   }, 500);
 
   const onSubmit = () => {
-    dispatch(fetchDepositData(depositDataReducer, currentUserData));
+    dispatch(fetchDepositData(depositDataReducer, currentUserData, csrf));
   };
   // const setDataToggle = (account) => {
   //   dispatch(setDepositAccount(depositFormData, account));

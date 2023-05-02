@@ -29,6 +29,7 @@ import {
 } from "../../state-management/Auth/login/login.selector";
 import RequestMessage from "../RequestMessage/RequestMessage";
 import { setResetShowMsg } from "../../state-management/Auth/login/login.action";
+import { selectCsrf } from "../../state-management/Auth/login/login.selector";
 
 function OTPModal() {
   const dispatch = useDispatch();
@@ -36,21 +37,21 @@ function OTPModal() {
   const otp = useSelector(selectOtp);
   const loginData = useSelector(selectlogin);
   const emailValidate = useSelector(selectEmailValidate);
-
+  const csrf = useSelector(selectCsrf);
   const errorMsgRequest = useSelector(selectErrorOtp);
   const isSubmiting = useSelector(selectIsSubmitingOtp);
   const showMessage = useSelector(selectShowMessageOtp);
 
   const handleSubmit = () => {
     if (otp.split("").length === 6) {
-      dispatch(VerifyOtp(otp, loginData, emailValidate));
+      dispatch(VerifyOtp(otp, loginData, emailValidate, csrf));
     } else {
       dispatch(setOtpError("Invalid OTP"));
     }
   };
 
   const handleResendOtp = () => {
-    dispatch(ResendOtp(emailValidate));
+    dispatch(ResendOtp(emailValidate, csrf));
   };
 
   const handleOTPChange = (e) => {

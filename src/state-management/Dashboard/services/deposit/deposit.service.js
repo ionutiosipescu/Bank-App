@@ -21,17 +21,21 @@ export const requestDepositFailed = (error) =>
   createAction(DEPOSITS_TYPES.REQUEST_DEPOSIT_FAILED, error);
 
 // Get Arr
-export const getDepositArrDb = (obj, currentUserData) => {
+export const getDepositArrDb = (obj, currentUserData, csrf) => {
   return async (dispatch) => {
     const id = await setDepositId(obj, currentUserData);
-    const { data } = await axios.get(`${requests.GET_HISTORY_DEPOSIT}${id}`);
+    const { data } = await axios.get(`${requests.GET_HISTORY_DEPOSIT}${id}`, {
+      headers: {
+        "X-XSRF-TOKEN": csrf,
+      },
+    });
     console.log(data);
     await dispatch(setDepositArrDb(data));
   };
 };
 
 // Async Deposit POST
-export const fetchDepositData = (depositDataReducer, currentUserData) => {
+export const fetchDepositData = (depositDataReducer, currentUserData, csrf) => {
   return async (dispatch) => {
     const { depositObj, selectedOption } = depositDataReducer;
     try {
@@ -40,7 +44,11 @@ export const fetchDepositData = (depositDataReducer, currentUserData) => {
       const id = await setDepositId(depositObj, currentUserData);
       const {
         data: { balance },
-      } = await axios.post(`${requests.POST_DEPOSIT}${id}`, depositData);
+      } = await axios.post(`${requests.POST_DEPOSIT}${id}`, depositData, {
+        headers: {
+          "X-XSRF-TOKEN": csrf,
+        },
+      });
       await dispatch(requestDepositSuccess());
       if (depositObj?.account === selectedOption?.account) {
         await dispatch(setDepositArr(depositDataReducer, balance));

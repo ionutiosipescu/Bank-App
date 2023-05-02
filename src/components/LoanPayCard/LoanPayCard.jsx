@@ -19,16 +19,18 @@ import { useSelector } from "react-redux";
 import { fetchPayLoanAsync } from "../../state-management/Dashboard/services/loan/loan.service";
 import { selectLoansArr } from "../../state-management/Dashboard/services/loan/loan.selector";
 import { selectHistoryLoans } from "../../state-management/Dashboard/services/loan/loan.selector";
+import { selectCsrf } from "../../state-management/Auth/login/login.selector";
 
 function LoanPayCard({ data, ...props }) {
   const { handleModalClose } = props;
 
   const { details, loan, rate } = data ? data : "";
   const historyLoansArr = useSelector(selectHistoryLoans);
+  const csrf = useSelector(selectCsrf);
   const loansArr = useSelector(selectLoansArr);
   const dispatch = useDispatch();
   const handleSubmit = () => {
-    dispatch(fetchPayLoanAsync(data, loansArr, historyLoansArr));
+    dispatch(fetchPayLoanAsync(data, loansArr, historyLoansArr, csrf));
     handleModalClose();
   };
   console.log(data);

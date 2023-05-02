@@ -28,18 +28,20 @@ import LoanDeclineIncome from "./LoanDeclineIncome/LoanDeclineIncome";
 import LoanDeclineLimit from "./LoanDeclineLimit/LoanDeclineLimit";
 import LoanStatusMain from "./LoanStatusMain/LoanStatusMain";
 import { selectLoanStatus } from "../../../../../state-management/Dashboard/services/loan/loan.selector";
+import { selectCsrf } from "../../../../../state-management/Auth/login/login.selector";
 
 function LoanStatusModal({ ...props }) {
   const { handleClick } = props;
 
   const dispatch = useDispatch();
   const currentUser = useSelector(selectCurrentUser);
+  const csrf = useSelector(selectCsrf);
   const checkedData = useSelector(selectCheckedData);
   const loans = useSelector(selectLoansArr);
   const loanStatus = useSelector(selectLoanStatus);
 
   const handleSubmit = () => {
-    dispatch(fetchLoanCreate(currentUser, checkedData));
+    dispatch(fetchLoanCreate(currentUser, checkedData, csrf));
   };
 
   return (

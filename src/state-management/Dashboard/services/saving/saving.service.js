@@ -23,13 +23,17 @@ export const requestsavingFailed = (error) =>
   createAction(SAVINGS_TYPES.REQUEST_SAVING_FAILED, error);
 
 // Async Saving Post Withdraw
-export const fetchSavingWithdraw = (savingData, savingObj) => {
+export const fetchSavingWithdraw = (savingData, savingObj, csrf) => {
   return async (dispatch) => {
     const { account_id } = savingObj;
     try {
       const dataRequest = await generateObjWithdraw(savingObj);
       await axios
-        .post(`${requests.POST_WITHDRAW}${account_id}`, dataRequest)
+        .post(`${requests.POST_WITHDRAW}${account_id}`, dataRequest, {
+          headers: {
+            "X-XSRF-TOKEN": csrf,
+          },
+        })
         .then((res) => console.log(res));
       await dispatch(setSavingArrActions(savingData, savingObj));
     } catch (error) {
@@ -39,12 +43,17 @@ export const fetchSavingWithdraw = (savingData, savingObj) => {
 };
 
 // Async Saving Post Top-Up
-export const fetchSavingTopUp = (savingObj, transfer, arr) => {
+export const fetchSavingTopUp = (savingObj, transfer, arr, csrf) => {
   return async (dispatch) => {
     const { account_id, id } = savingObj;
     try {
       const { data } = await axios.patch(
-        `${requests.PATCH_TOP_UP}${id}${savingComplete.VALUE}${transfer}${savingComplete.ID_ACCOUNT}${account_id}`
+        `${requests.PATCH_TOP_UP}${id}${savingComplete.VALUE}${transfer}${savingComplete.ID_ACCOUNT}${account_id}`,
+        {
+          headers: {
+            "X-XSRF-TOKEN": csrf,
+          },
+        }
       );
       await dispatch(updateTransferArr(data));
     } catch (error) {
@@ -54,7 +63,7 @@ export const fetchSavingTopUp = (savingObj, transfer, arr) => {
 };
 
 // Async Saving Post
-export const fetchSavingData = (obj, arr, currentUserData) => {
+export const fetchSavingData = (obj, arr, currentUserData, csrf) => {
   return async (dispatch) => {
     const savingData = await setSavingData(obj);
     console.log(savingData);
@@ -63,7 +72,12 @@ export const fetchSavingData = (obj, arr, currentUserData) => {
       await dispatch(requestsavingStart());
       const { data } = await axios.post(
         `${requests.POST_CREATE_SAVING}${id}`,
-        savingData
+        savingData,
+        {
+          headers: {
+            "X-XSRF-TOKEN": csrf,
+          },
+        }
       );
 
       await dispatch(requestsavingSuccess());
@@ -84,11 +98,15 @@ export const fetchSavingData = (obj, arr, currentUserData) => {
 };
 
 // Get Arr
-export const getSavingArr = (currentUserData) => {
+export const getSavingArr = (currentUserData, csrf) => {
   return async (dispatch) => {
     try {
       const id = await setSavingsId(currentUserData);
-      const { data } = await axios.get(`${requests.GET_HISTORY_SAVING}${id}`);
+      const { data } = await axios.get(`${requests.GET_HISTORY_SAVING}${id}`, {
+        headers: {
+          "X-XSRF-TOKEN": csrf,
+        },
+      });
       if (!data) return;
       await dispatch(setSavingArrDb(data));
     } catch (err) {

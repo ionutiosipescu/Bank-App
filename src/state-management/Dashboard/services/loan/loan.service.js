@@ -26,17 +26,21 @@ export const requestLoansFailed = (error) =>
   createAction(LOANS_DATA_TYPES.REQUEST_LOANS_FAILED, error);
 
 // Get Arr from Db
-export const getLoansArrDb = (currentUserData) => {
+export const getLoansArrDb = (currentUserData, csrf) => {
   return async (dispatch) => {
     const id = await setLoansId(currentUserData);
-    const { data } = await axios.get(`${requests.GET_HISTORY_LOAN}${id}`);
+    const { data } = await axios.get(`${requests.GET_HISTORY_LOAN}${id}`, {
+      headers: {
+        "X-XSRF-TOKEN": csrf,
+      },
+    });
     await dispatch(setLoansArrDb(data.listAllLoans));
     await dispatch(updateHistoryLoans(data.listAllPays));
   };
 };
 
 // Async Loan Check
-export const fetchLoanData = (loanObject, arr, currentUserData) => {
+export const fetchLoanData = (loanObject, arr, currentUserData, csrf) => {
   return async (dispatch) => {
     try {
       await dispatch(requestLoansStart());
@@ -44,7 +48,12 @@ export const fetchLoanData = (loanObject, arr, currentUserData) => {
       const id = await setLoansId(currentUserData);
       const { data } = await axios.post(
         `${requests.POST_CHECK_NEW_LOAN}${id}`,
-        loandData
+        loandData,
+        {
+          headers: {
+            "X-XSRF-TOKEN": csrf,
+          },
+        }
       );
       console.log(data);
       await dispatch(setCheckData(data));
@@ -74,12 +83,16 @@ export const fetchLoanData = (loanObject, arr, currentUserData) => {
 };
 
 // Create Loan
-export const fetchLoanCreate = (currentUserData, data) => {
+export const fetchLoanCreate = (currentUserData, data, csrf) => {
   return async (dispatch) => {
     try {
       const id = await setLoansId(currentUserData);
       await axios
-        .post(`${requests.POST_CREATE_NEW_LOAN}${id}`, data)
+        .post(`${requests.POST_CREATE_NEW_LOAN}${id}`, data, {
+          headers: {
+            "X-XSRF-TOKEN": csrf,
+          },
+        })
         .then((res) => console.log(res));
     } catch (error) {
       console.log(error);
@@ -88,7 +101,7 @@ export const fetchLoanCreate = (currentUserData, data) => {
 };
 
 // Async Pay Loan
-export const fetchPayLoanAsync = (data, arr, historyLoansArr) => {
+export const fetchPayLoanAsync = (data, arr, historyLoansArr, csrf) => {
   return async (dispatch) => {
     const { account_id, id } = data;
     await dispatch(setLoansTotalPay(data, arr));
@@ -97,7 +110,12 @@ export const fetchPayLoanAsync = (data, arr, historyLoansArr) => {
       console.log(dataPayLoan, account_id, id);
       const dataHistory = await axios.post(
         `${requests.POST_PAY_LOAN}${id}${loanComplete.ACCOUNT_ID}${account_id}`,
-        dataPayLoan
+        dataPayLoan,
+        {
+          headers: {
+            "X-XSRF-TOKEN": csrf,
+          },
+        }
       );
       await dispatch(updateHistoryLoansPay(dataHistory, historyLoansArr));
     } catch (error) {

@@ -14,6 +14,7 @@ import { fetchGetCardAccountArr } from "../../../state-management/Dashboard/card
 import { selectCurrentUser } from "../../../state-management/Dashboard/userData/userData.selector";
 import { selectCardOption } from "../../../state-management/Dashboard/cards/cards.selector";
 import { setSelectedCardOption } from "../../../state-management/Dashboard/cards/cards.action";
+import { selectCsrf } from "../../../state-management/Auth/login/login.selector";
 
 function CardsSettings() {
   const dispatch = useDispatch();
@@ -21,11 +22,12 @@ function CardsSettings() {
   const currentUser = useSelector(selectCurrentUser);
 
   // const [selectedOption, setSelectedOption] = useState("New Account");
+  const csrf = useSelector(selectCsrf);
   const selectedOption = useSelector(selectCardOption);
   const [selectedComponent, setSelectedComponent] = useState(<h1>Accounts</h1>);
 
   useEffect(() => {
-    dispatch(fetchGetCardAccountArr(currentUser));
+    dispatch(fetchGetCardAccountArr(currentUser, csrf));
   }, []);
 
   useEffect(() => {

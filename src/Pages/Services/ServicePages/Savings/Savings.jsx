@@ -7,13 +7,15 @@ import { useSelector } from "react-redux";
 import { selectCurrentUser } from "../../../../state-management/Dashboard/userData/userData.selector";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
+import { selectCsrf } from "../../../../state-management/Auth/login/login.selector";
 
 function Savings() {
   const dispatch = useDispatch();
+  const csrf = useSelector(selectCsrf);
   const currentUser = useSelector(selectCurrentUser);
 
   useEffect(() => {
-    dispatch(getSavingArr(currentUser));
+    dispatch(getSavingArr(currentUser, csrf));
   }, []);
   return (
     <SavingsWrapper>

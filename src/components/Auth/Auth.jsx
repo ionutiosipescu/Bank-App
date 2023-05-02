@@ -24,6 +24,7 @@ import { selectShowMessage } from "../../state-management/Auth/changePassword/pa
 import { selectAuth } from "../../state-management/Auth/changePassword/password.selector";
 import { setResetShowMsg } from "../../state-management/Auth/changePassword/password.action";
 import RequestMessage from "../../components/RequestMessage/RequestMessage";
+import { selectCsrf } from "../../state-management/Auth/login/login.selector";
 
 function Auth() {
   const dispatch = useDispatch();
@@ -33,6 +34,7 @@ function Auth() {
   const userData = useSelector(selectCurrentUser);
   const passwordData = useSelector(selectPassword);
   const authData = useSelector(selectAuth);
+  const csrf = useSelector(selectCsrf);
   const { username, password } = authData;
 
   const setData = (e) => {
@@ -40,7 +42,7 @@ function Auth() {
   };
 
   const onSubmit = () => {
-    dispatch(fetchAuthDataPassword(passwordData, authData));
+    dispatch(fetchAuthDataPassword(passwordData, authData, csrf));
   };
 
   useEffect(() => {

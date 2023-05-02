@@ -25,11 +25,13 @@ import { fetchAddNewAccount } from "../../../../../state-management/Dashboard/ca
 import { selectCurrentUser } from "../../../../../state-management/Dashboard/userData/userData.selector";
 import { selectCardArr } from "../../../../../state-management/Dashboard/cards/cards.selector";
 import StatusMessage from "../../../../../components/UI/StatusMessage/StatusMessage";
+import { selectCsrf } from "../../../../../state-management/Auth/login/login.selector";
 
 function NewCardPlans() {
   const cardNew = useSelector(selectCurrentCardNew);
   const currentUser = useSelector(selectCurrentUser);
   const cardArr = useSelector(selectCardArr);
+  const csrf = useSelector(selectCsrf);
   const [errorMsg, setErrorMessage] = useState("");
   const dispatch = useDispatch();
   const card = useSelector(selectCard);
@@ -57,7 +59,7 @@ function NewCardPlans() {
   const handleSubmit = () => {
     if (card.typeOfPlan) {
       setErrorMessage("");
-      dispatch(fetchAddNewAccount(cardNew, currentUser, cardArr));
+      dispatch(fetchAddNewAccount(cardNew, currentUser, cardArr, csrf));
       console.log(card);
       ///////////////
       handleShow();

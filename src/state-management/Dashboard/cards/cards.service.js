@@ -6,10 +6,14 @@ import { resetCardForm } from "./cards.action";
 import axios from "axios";
 
 // Get Card Account Arr
-export const fetchGetCardAccountArr = (currentUserData) => {
+export const fetchGetCardAccountArr = (currentUserData, csrf) => {
   return async (dispatch) => {
     const { id } = currentUserData;
-    const { data } = await axios.get(`${requests.GET_ACCOUNTS}${id}`);
+    const { data } = await axios.get(`${requests.GET_ACCOUNTS}${id}`, {
+      headers: {
+        "X-XSRF-TOKEN": csrf,
+      },
+    });
     console.log(data);
     await dispatch(setCardArr(data));
   };
@@ -37,13 +41,23 @@ export const setDataAddNewAccount = (currentCardNew, currentUser) => {
 };
 
 // Add new Account
-export const fetchAddNewAccount = (currentCardNew, currentUser, cardArr) => {
+export const fetchAddNewAccount = (
+  currentCardNew,
+  currentUser,
+  cardArr,
+  csrf
+) => {
   return async (dispatch) => {
     console.log(currentCardNew, currentUser, cardArr);
     const addNewData = await setDataAddNewAccount(currentCardNew, currentUser);
     const { data } = await axios.post(
       `${requests.POST_NEW_ACCOUNT}`,
-      addNewData
+      addNewData,
+      {
+        headers: {
+          "X-XSRF-TOKEN": csrf,
+        },
+      }
     );
     console.log(data);
     await dispatch(setAddCardArr(cardArr, data));
@@ -67,11 +81,16 @@ export const updateEditArrCardPlan = async (arr, data) => {
 };
 
 // Edit Card Plan
-export const fetchEditCardPlan = (currentEditCard, cardArr) => {
+export const fetchEditCardPlan = (currentEditCard, cardArr, csrf) => {
   const { id, type_of_plan } = currentEditCard;
   return async (dispatch) => {
     const { data } = await axios.patch(
-      `${requests.PATCH_EDIT_ACCOUNT_PLAN}${id}${cardsComplete.TYPE}${type_of_plan}`
+      `${requests.PATCH_EDIT_ACCOUNT_PLAN}${id}${cardsComplete.TYPE}${type_of_plan}`,
+      {
+        headers: {
+          "X-XSRF-TOKEN": csrf,
+        },
+      }
     );
     const newArr = await updateEditArrCardPlan(cardArr, data);
     await dispatch(setCardArr(newArr));
@@ -84,11 +103,15 @@ export const filterRemoveArr = async (currentEditCard, cardArr) => {
   return cardArr.filter((object) => object.id !== currentEditCard.id);
 };
 
-export const fetchRemoveCard = (currentEditCard, cardArr) => {
+export const fetchRemoveCard = (currentEditCard, cardArr, csrf) => {
   const { id } = currentEditCard;
   return async (dispatch) => {
     console.log(id);
-    await axios.delete(`${requests.DELETE_ACCOUNT}${id}`);
+    await axios.delete(`${requests.DELETE_ACCOUNT}${id}`, {
+      headers: {
+        "X-XSRF-TOKEN": csrf,
+      },
+    });
     const newArr = await filterRemoveArr(currentEditCard, cardArr);
     await dispatch(setCardArr(newArr));
   };

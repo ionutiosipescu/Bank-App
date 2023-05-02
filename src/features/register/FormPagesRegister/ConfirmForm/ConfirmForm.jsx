@@ -22,11 +22,13 @@ import { selectRegisterData } from "../../../../state-management/Auth/register/r
 import { selectRegisterFailed } from "../../../../state-management/Auth/register/register.selector";
 // import { fetchRegisterData } from "../../../../state-management/Auth/register/register.service";
 import { fetchRegisterMail } from "../../../../state-management/Auth/register/register.service";
+import { selectCsrf } from "../../../../state-management/Auth/login/login.selector";
 
 function ConfirmForm() {
   const errorMsg = useSelector(selectRegisterFailed);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const csrf = useSelector(selectCsrf);
   const step = useSelector(selectStep);
   const RegisterData = useSelector(selectRegisterData);
   const array = RegisterData?.account;
@@ -46,7 +48,7 @@ function ConfirmForm() {
   const handleSubmit = () => {
     console.log(RegisterData);
     console.log(errorMsg);
-    dispatch(fetchRegisterMail(RegisterData, step));
+    dispatch(fetchRegisterMail(RegisterData, step, csrf));
     navigate("/confirm-otp");
   };
   const setCardCheckbox = (e) => {

@@ -13,7 +13,7 @@ export const requestPasswordSuccess = () =>
 export const requestPasswordFailed = (error) =>
   createAction(CHANGE_PASSWORD_TYPES.REQUEST_PASSWORD_FAILED, error);
 
-export const fetchAuthDataPassword = (dataObj, authData) => {
+export const fetchAuthDataPassword = (dataObj, authData, csrf) => {
   return async (dispatch) => {
     console.log(dataObj, authData);
     try {
@@ -22,7 +22,11 @@ export const fetchAuthDataPassword = (dataObj, authData) => {
       // first request authentication
       const {
         data: { type, token, id },
-      } = await axios.post(`${requests.POST_AUTHENTICATE_USER}`, authData);
+      } = await axios.post(`${requests.POST_AUTHENTICATE_USER}`, authData, {
+        headers: {
+          "X-XSRF-TOKEN": csrf,
+        },
+      });
       console.log(type, token, id);
       await dispatch(requestPasswordStart());
 
@@ -31,6 +35,7 @@ export const fetchAuthDataPassword = (dataObj, authData) => {
         .put(`${requests.PUT_CHANGE_PASSWORD}`, dataRequest, {
           headers: {
             Authorization: `${type} ${token}`,
+            "X-XSRF-TOKEN": csrf,
           },
         })
         .then((res) => console.log(res));

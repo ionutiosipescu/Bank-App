@@ -22,10 +22,14 @@ export const requestExchangeFailed = (error) =>
   createAction(EXCHANGE_TYPES.REQUEST_EXCHANGE_FAILED, error);
 
 // Get Arr
-export const getExchangeArr = (obj, currentUserData) => {
+export const getExchangeArr = (obj, currentUserData, csrf) => {
   return async (dispatch) => {
     const id = await setExchangeId(obj, currentUserData);
-    const { data } = await axios.get(`${requests.GET_HISTORY_EXCHANGE}${id}`);
+    const { data } = await axios.get(`${requests.GET_HISTORY_EXCHANGE}${id}`, {
+      headers: {
+        "X-XSRF-TOKEN": csrf,
+      },
+    });
     console.log(data);
     await dispatch(setExchangeArrDb(data));
   };
@@ -36,7 +40,8 @@ export const fetchExchangeData = (
   obj,
   arr,
   currentUserData,
-  selectedOptionExchange
+  selectedOptionExchange,
+  csrf
 ) => {
   return async (dispatch) => {
     const { amount } = obj;
@@ -50,7 +55,11 @@ export const fetchExchangeData = (
         const exchangeData = await setExchangeData(obj);
         const id = await setExchangeId(obj, currentUserData);
         await axios
-          .post(`${requests.POST_EXCHANGE}${id}`, exchangeData)
+          .post(`${requests.POST_EXCHANGE}${id}`, exchangeData, {
+            headers: {
+              "X-XSRF-TOKEN": csrf,
+            },
+          })
           .then((res) => console.log(res));
         await dispatch(requestExchangeSuccess());
         await dispatch(setExchangeArr(obj, arr, selectedOptionExchange));

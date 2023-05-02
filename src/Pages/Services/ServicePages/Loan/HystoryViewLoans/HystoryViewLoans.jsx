@@ -33,6 +33,7 @@ import {
   ImageContainer,
   NewLoanCardContainer,
 } from "../../../../../features/loans/NewLoanCard/NewLoanCard.style";
+import { selectCsrf } from "../../../../../state-management/Auth/login/login.selector";
 
 import loanImg from "../../../../../assets/images/noLoans.png";
 
@@ -56,10 +57,11 @@ function HisotryViewLoans({ dataServices, ...props }) {
   // console.log(dataServices);
   const dispatch = useDispatch();
   const currentUser = useSelector(selectCurrentUser);
+  const csrf = useSelector(selectCsrf);
   const loansArr = useSelector(selectLoansArr);
 
   useEffect(() => {
-    dispatch(getLoansArrDb(currentUser));
+    dispatch(getLoansArrDb(currentUser, csrf));
   }, []);
   console.log(loansArr);
 
